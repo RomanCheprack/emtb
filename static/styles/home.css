@@ -48,3 +48,29 @@
     text-align:right;
 }
 
+.compare-btn.selected {
+    background-color: #ffc107;
+    color: #fff;
+    border-color: #ffc107;
+}
+
+.card.compare-selected {
+    opacity: 0.7;
+    box-shadow: 0 0 0 2px #ffc107;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+
+.top-0 {
+    top: 0 !important;
+}
+
+.end-0 {
+    right: 0 !important;
+}
+
+.p-2 {
+    padding: 0.5rem !important;
+}

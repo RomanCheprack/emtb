@@ -54,6 +54,10 @@
     סינון נוסף
 </button>
 
+<a href="{{ url_for('compare_bikes') }}" class="btn btn-warning mb-3" id="go-to-compare" style="display: none;">
+    השווה אופניים שנבחרו
+</a>
+
 <div id="bikes-count" class="mb-3">
     נמצאו {{ bikes|length }} אופניים
 </div>
@@ -61,7 +65,13 @@
     <div class="row" id="bikes-list">
         {% for bike in bikes %}
         <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card h-100">
+            <div class="card h-100 position-relative">
+                <div class="position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-sm btn-outline-warning compare-btn"
+                            data-bike-id="{{ bike['slug'] if bike.get('slug') else bike['Model'] }}">
+                        השווה
+                    </button>
+                </div>
                 <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
                 <div class="card-body">
                     <h4 class="card-firm">{{bike['Firm']}}</h4>
@@ -246,7 +256,57 @@
                 document.getElementById('filter-form').dispatchEvent(new Event('submit'));
             });
         }
+        function updateCompareUI(compareList) {
+            document.querySelectorAll('.compare-btn').forEach(btn => {
+                const bikeId = btn.getAttribute('data-bike-id');
+                const card = btn.closest('.card');
+                if (compareList.includes(bikeId)) {
+                    btn.classList.add('selected');
+                    btn.textContent = 'הסר השוואה';
+                    card.classList.add('compare-selected');
+                } else {
+                    btn.classList.remove('selected');
+                    btn.textContent = 'השווה';
+                    card.classList.remove('compare-selected');
+                }
+            });
+            // Show or hide the compare button
+            const compareBtn = document.getElementById('go-to-compare');
+            if (compareBtn) {
+                compareBtn.style.display = compareList.length > 0 ? 'inline-block' : 'none';
+            }
+        }
+
+        // Fetch current compare list on page load
+        let compareList = [];
+        fetch('/api/compare_list')
+            .then(res => res.json())
+            .then(data => {
+                compareList = data.compare_list || [];
+                updateCompareUI(compareList);
+            });
+
+        // Handle compare button click
+        document.querySelectorAll('.compare-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const bikeId = btn.getAttribute('data-bike-id');
+                const isSelected = btn.classList.contains('selected');
+                const url = isSelected ? `/remove_from_compare/${bikeId}` : `/add_to_compare/${bikeId}`;
+                fetch(url, { method: 'POST' })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            compareList = data.compare_list;
+                            updateCompareUI(compareList);
+                        } else if (data.error) {
+                            alert(data.error);
+                        }
+                    });
+            });
+        });
     });
+
+
 </script>
 
 {% endblock %}

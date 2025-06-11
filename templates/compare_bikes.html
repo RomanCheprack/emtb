@@ -1,0 +1,32 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+<h2 class="mb-4 text-center">השוואת אופניים</h2>
+<a href="{{ url_for('home') }}" class="btn btn-secondary mt-4">חזור לדף הראשי</a>
+
+{% if bikes and bikes|length > 0 %}
+<div class="row row-cols-1 row-cols-md-{{ bikes|length }} g-4">
+    {% for bike in bikes %}
+    <div class="col">
+        <div class="card h-100 text-center">
+            <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
+            <div class="card-body">
+                <h4 class="card-firm">{{ bike['Firm'] }}</h4>
+                <h5 class="card-title">{{ bike['Model'] }}</h5>
+                <p class="card-text">מחיר: {{ bike['Price'] }}</p>
+                <p class="card-text">שנה: {{ bike['Year'] }}</p>
+                <p class="card-text">מנוע: {{ bike['Motor'] }}</p>
+                <p class="card-text">סוללה: {{ bike['Battery'] }}</p>
+                <p class="card-text">שלדה: {{ bike['Frame'] }}</p>
+                <a href="{{ bike['Product URL'] }}" class="btn btn-primary mt-2" target="_blank">לפרטים</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info text-center">
+    לא נבחרו אופניים להשוואה.
+</div>
+{% endif %}
+
+{% endblock %}

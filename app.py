@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 import json
 
 app = Flask(__name__)
+app.secret_key = '123456789'  # Set a secure secret key!
 
 def load_all_bikes():
     with open("data/mazman.json", "r", encoding="utf-8") as f:
@@ -89,6 +90,44 @@ def api_bikes():
     with open("data/mazmanjson", "r", encoding="utf-8") as f:
         bikes = json.load(f)
     return jsonify(bikes)
+
+@app.route('/api/compare_list')
+def api_compare_list():
+    return jsonify({'compare_list': session.get('compare_list', [])})
+
+def get_compare_list():
+    return session.get('compare_list', [])
+
+def save_compare_list(compare_list):
+    session['compare_list'] = compare_list
+
+
+@app.route('/add_to_compare/<bike_id>', methods=['POST'])
+def add_to_compare(bike_id):
+    compare_list = get_compare_list()
+    if bike_id not in compare_list:
+        if len(compare_list) < 4:
+            compare_list.append(bike_id)
+            save_compare_list(compare_list)
+            return jsonify({'success': True, 'compare_list': compare_list})
+        else:
+            return jsonify({'success': False, 'error': 'You can compare up to 4 bikes only.'}), 400
+    return jsonify({'success': True, 'compare_list': compare_list})
+
+@app.route('/remove_from_compare/<bike_id>', methods=['POST'])
+def remove_from_compare(bike_id):
+    compare_list = get_compare_list()
+    if bike_id in compare_list:
+        compare_list.remove(bike_id)
+        save_compare_list(compare_list)
+    return jsonify({'success': True, 'compare_list': compare_list})
+
+@app.route('/compare_bikes')
+def compare_bikes():
+    compare_list = get_compare_list()
+    all_bikes = load_all_bikes()
+    bikes_to_compare = [bike for bike in all_bikes if str(bike.get('slug') or bike.get('Model')) in compare_list]
+    return render_template('compare_bikes.html', bikes=bikes_to_compare)
 
 if __name__ == "__main__":
     app.run(debug=True)
