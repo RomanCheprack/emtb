@@ -1,0 +1,252 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="headline">
+    <h1>חפש את החלום הבא</h1>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+<!-- Filter Form -->
+<form id="filter-form" class="mb-4">
+    <div class="row">
+        <!-- Price Range Slider -->
+        <div class="col-12 col-md-6 mb-3 slider-padding-price">
+            <div class="prices-label">
+                <label class="form-label">טווח מחירים (₪)</label>
+            </div>
+            <div id="price-slider"></div>
+            <div class="d-flex justify-content-between mt-2">
+                <small id="min_price_value">0</small>
+                <small id="max_price_value">100000</small>
+            </div>
+            <!-- Hidden inputs for AJAX -->
+            <input type="hidden" id="min_price" name="min_price" value="0">
+            <input type="hidden" id="max_price" name="max_price" value="100000">
+        </div>
+
+        <div class="col-12 col-md-6 mb-3 slider-padding-wh">
+            <div class="wh-label">
+                <label class="form-label">גודל סוללה (Wh)</label>
+            </div>
+            <div id="battery-slider"></div>
+            <div class="d-flex justify-content-between mt-2">
+                <small id="min_battery_value">200</small>
+                <small id="max_battery_value">1000</small>
+            </div>
+            <input type="hidden" id="min_battery" name="min_battery" value="200">
+            <input type="hidden" id="max_battery" name="max_battery" value="1000">
+        </div>
+
+        
+        <!-- Filter and Reset Buttons -->
+        <div class="col-12 col-md-3 mb-3 d-flex align-items-end gap-2">
+            <button type="button" class="btn btn-outline-secondary w-100" id="reset-filters">איפוס</button>
+            <button type="submit" class="btn btn-primary w-100">סנן</button>
+        </div>
+    </div>
+</form>
+
+<!-- Offcanvas Filter Button -->
+<button class="btn btn-outline-secondary mb-3 d-flex align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
+        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .39.812l-4.6 5.748V13.5a.5.5 0 0 1-.276.447l-2 1A.5.5 0 0 1 6 14.5v-6.44L1.61 1.812A.5.5 0 0 1 1.5 1.5z" />
+    </svg>
+    סינון נוסף
+</button>
+
+<div id="bikes-count" class="mb-3">
+    נמצאו {{ bikes|length }} אופניים
+</div>
+
+    <div class="row" id="bikes-list">
+        {% for bike in bikes %}
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
+                <div class="card-body">
+                    <h4 class="card-firm">{{bike['Firm']}}</h4>
+                    <h5 class="card-title">{{ bike['Model'] }}</h5>
+                    <p class="card-text">{{ bike['Motor'] }} | {{ bike['Battery'] }}</p>
+                    <p class="card-text">מחיר: {{ bike['Price'] }} | שנה: {{ bike['Year'] }}</p>
+                    <div class="details-btn">
+                        <a href="{{ bike['Product URL'] }}" class="btn btn-primary" target="_blank">לפרטים</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+<!-- Offcanvas Sidebar for Additional Filters -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasFilters" aria-labelledby="offcanvasFiltersLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasFiltersLabel">סינון נוסף</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Place your additional filter controls here -->
+        <div class="ccol-12 col-md-3 mb-3">
+            <div id="year-checkboxes" class="form-group">
+                <label class="form-label d-block mb-1">שנה</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="year" value="2026" id="year2026">
+                    <label class="form-check-label" for="year2026">2026</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="year" value="2025" id="year2025">
+                    <label class="form-check-label" for="year2025">2025</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="year" value="2024" id="year2024">
+                    <label class="form-check-label" for="year2024">2024</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="year" value="2023" id="year2023">
+                    <label class="form-check-label" for="year2023">2023</label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="example-filter" class="form-label">דוגמה לסינון נוסף</label>
+            <input type="text" class="form-control" id="example-filter" placeholder="הקלד ערך">
+        </div>
+        <!-- Add more filter controls as needed -->
+        <button type="button" class="btn btn-primary w-100" id="apply-offcanvas-filters">החל סינון</button>
+    </div>
+</div>
+
+
+<!-- noUiSlider CSS/JS (include once, ideally in layout.html) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
+<script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- Price Slider Setup ---
+        var priceSlider = document.getElementById('price-slider');
+        var minPriceInput = document.getElementById('min_price');
+        var maxPriceInput = document.getElementById('max_price');
+        var minPriceValue = document.getElementById('min_price_value');
+        var maxPriceValue = document.getElementById('max_price_value');
+
+        noUiSlider.create(priceSlider, {
+            start: [0, 100000],
+            connect: true,
+            step: 100,
+            range: {
+                'min': 0,
+                'max': 100000
+            },
+            format: {
+                to: function (value) { return Math.round(value); },
+                from: function (value) { return Number(value); }
+            }
+        });
+
+        priceSlider.noUiSlider.on('update', function (values, handle) {
+            minPriceInput.value = values[0];
+            maxPriceInput.value = values[1];
+            minPriceValue.textContent = values[0];
+            maxPriceValue.textContent = values[1];
+        });
+
+        // --- Battery Slider Setup ---
+        var batterySlider = document.getElementById('battery-slider');
+        var minBatteryInput = document.getElementById('min_battery');
+        var maxBatteryInput = document.getElementById('max_battery');
+        var minBatteryValue = document.getElementById('min_battery_value');
+        var maxBatteryValue = document.getElementById('max_battery_value');
+
+        noUiSlider.create(batterySlider, {
+            start: [200, 1000],
+            connect: true,
+            step: 10,
+            range: {
+                'min': 200,
+                'max': 1000
+            },
+            format: {
+                to: function (value) { return Math.round(value); },
+                from: function (value) { return Number(value); }
+            }
+        });
+
+        batterySlider.noUiSlider.on('update', function (values, handle) {
+            minBatteryInput.value = values[0];
+            maxBatteryInput.value = values[1];
+            minBatteryValue.textContent = values[0];
+            maxBatteryValue.textContent = values[1];
+        });
+
+        // --- AJAX Filter Form Submission ---
+        document.getElementById('filter-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const min_price = minPriceInput.value;
+            const max_price = maxPriceInput.value;
+            const min_battery = minBatteryInput.value;
+            const max_battery = maxBatteryInput.value;
+            const yearCheckboxes = document.querySelectorAll('input[name="year"]:checked');
+            const years = Array.from(yearCheckboxes).map(cb => cb.value);
+            const params = new URLSearchParams();
+            if (min_price) params.append('min_price', min_price);
+            if (max_price) params.append('max_price', max_price);
+            if (min_battery) params.append('min_battery', min_battery);
+            if (max_battery) params.append('max_battery', max_battery);
+            years.forEach(y => params.append('year', y));
+
+            fetch('/api/filter_bikes?' + params.toString())
+                .then(response => response.json())
+                .then(data => {
+                    const bikesList = document.getElementById('bikes-list');
+                    const bikesCount = document.getElementById('bikes-count');
+                    bikesCount.textContent = `נמצאו ${data.length} אופניים`;
+                    bikesList.innerHTML = '';
+                    if (data.length === 0) {
+                        bikesList.innerHTML = '<div class="col-12"><p>לא נמצאו תוצאות.</p></div>';
+                    } else {
+                        data.forEach(bike => {
+                            bikesList.innerHTML += `
+                        <div class="col-12 col-sm-6 col-md-4 mb-4">
+                            <div class="card h-100">
+                                <img src="${bike['Image URL']}" class="card-img-top" alt="${bike['Model']}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${bike['Model']}</h5>
+                                    <p class="card-text">${bike['Motor']} | ${bike['Battery']}</p>
+                                    <p class="card-text">מחיר: ${bike['Price']} | שנה: ${bike['Year']}</p>
+                                    <div class="details-btn">
+                                        <a href="${bike['Product URL']}" class="btn btn-primary" target="_blank">לפרטים</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        });
+                    }
+                });
+        });
+
+        document.getElementById('apply-offcanvas-filters').addEventListener('click', function () {
+            // Optionally, close the offcanvas
+            var offcanvas = bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('offcanvasFilters'));
+            offcanvas.hide();
+
+            // Trigger the filter form submit (or call your AJAX filter function directly)
+            document.getElementById('filter-form').dispatchEvent(new Event('submit'));
+        });
+
+        // --- Optional: Reset Button Logic ---
+        const resetBtn = document.getElementById('reset-filters');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function () {
+                priceSlider.noUiSlider.set([0, 100000]);
+                batterySlider.noUiSlider.set([200, 1000]);
+                // Uncheck all year checkboxes
+                document.querySelectorAll('input[name="year"]').forEach(cb => cb.checked = false);
+                document.getElementById('filter-form').dispatchEvent(new Event('submit'));
+            });
+        }
+    });
+</script>
+
+{% endblock %}

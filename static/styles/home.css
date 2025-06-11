@@ -1,0 +1,50 @@
+.slider-padding-price,
+.slider-padding-wh {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+@media (min-width: 768px) {
+    .slider-padding-price,
+    .slider-padding-wh {
+        padding-left: 42px;
+        padding-right: 42px;
+    }
+}
+
+.card-firm {
+    text-align: center;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text {
+    text-align: center; 
+}
+
+.details-btn {
+    text-align: center;
+}
+
+.prices-label {
+    text-align: center;
+}
+
+.wh-label {
+    text-align: center;
+}
+
+.year-label {
+    text-align: center;
+}
+
+.headline {
+    text-align: center;
+}
+
+.navbar-nav {
+    text-align:right;
+}
+
