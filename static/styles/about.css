@@ -1,0 +1,36 @@
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.member {
+    width: calc(50% - 20px);
+    min-width: 200px;
+    text-align: center;
+}
+
+.member img {
+     width: 120px;
+     height: 120px;
+     border-radius: 50%;
+     object-fit: cover;
+ }
+
+@media (max-width: 600px) {
+    .member {
+        width: 100%;
+    }
+}
+

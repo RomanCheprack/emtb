@@ -47,16 +47,23 @@
 </form>
 
 <!-- Offcanvas Filter Button -->
-<button class="btn btn-outline-secondary mb-3 d-flex align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
-        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .39.812l-4.6 5.748V13.5a.5.5 0 0 1-.276.447l-2 1A.5.5 0 0 1 6 14.5v-6.44L1.61 1.812A.5.5 0 0 1 1.5 1.5z" />
-    </svg>
-    סינון נוסף
-</button>
+<div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-secondary mb-3 d-flex align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
+                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .39.812l-4.6 5.748V13.5a.5.5 0 0 1-.276.447l-2 1A.5.5 0 0 1 6 14.5v-6.44L1.61 1.812A.5.5 0 0 1 1.5 1.5z" />
+            </svg>
+            סינון נוסף
+        </button>
 
-<a href="{{ url_for('compare_bikes') }}" class="btn btn-warning mb-3" id="go-to-compare" style="display: none;">
-    השווה אופניים שנבחרו
-</a>
+    </div>
+    <a href="{{ url_for('compare_bikes') }}" class="btn btn-warning mb-3" id="go-to-compare" style="display: none;">
+        השווה אופניים שנבחרו  <span id="compare-count"></span>
+    </a>
+</div>
+
+
+
 
 <div id="bikes-count" class="mb-3">
     נמצאו {{ bikes|length }} אופניים
@@ -75,9 +82,9 @@
                 <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
                 <div class="card-body">
                     <h4 class="card-firm">{{bike['Firm']}}</h4>
-                    <h5 class="card-title">{{ bike['Model'] }}</h5>
-                    <p class="card-text">{{ bike['Motor'] }} | {{ bike['Battery'] }}</p>
-                    <p class="card-text">מחיר: {{ bike['Price'] }} | שנה: {{ bike['Year'] }}</p>
+                    <p class="card-title">{{ bike['Model'] }}</p>
+                    <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
+                    <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
                     <div class="details-btn">
                         <a href="{{ bike['Product URL'] }}" class="btn btn-primary" target="_blank">לפרטים</a>
                     </div>
@@ -118,8 +125,15 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="example-filter" class="form-label">דוגמה לסינון נוסף</label>
-            <input type="text" class="form-control" id="example-filter" placeholder="הקלד ערך">
+            <label class="form-label d-block mb-1">מותג</label>
+            <div id="firm-checkboxes" class="form-group">
+                {% for firm in firms %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="firm" value="{{ firm }}" id="firm-{{ loop.index }}">
+                    <label class="form-check-label" for="firm-{{ loop.index }}">{{ firm }}</label>
+                </div>
+                {% endfor %}
+            </div>
         </div>
         <!-- Add more filter controls as needed -->
         <button type="button" class="btn btn-primary w-100" id="apply-offcanvas-filters">החל סינון</button>
@@ -133,6 +147,61 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        function updateCompareUI(compareList) {
+            document.querySelectorAll('.compare-btn').forEach(btn => {
+                const bikeId = btn.getAttribute('data-bike-id');
+                const card = btn.closest('.card');
+                if (compareList.includes(bikeId)) {
+                    btn.classList.add('selected');
+                    btn.textContent = 'הסר השוואה';
+                    card.classList.add('compare-selected');
+                } else {
+                    btn.classList.remove('selected');
+                    btn.textContent = 'השווה';
+                    card.classList.remove('compare-selected');
+                }
+            });
+            // Show or hide the compare button
+            const compareBtn = document.getElementById('go-to-compare');
+            const compareCount = document.getElementById('compare-count');
+            if (compareBtn) {
+                if (compareList.length > 0) {
+                    compareBtn.style.display = 'inline-block';
+                    if (compareCount) {
+                        compareCount.textContent = `(${compareList.length})`;
+                    }
+                } else {
+                    compareBtn.style.display = 'none';
+                }
+            }
+        }
+
+        function attachCompareButtonListeners() {
+            document.querySelectorAll('.compare-btn').forEach(btn => {
+                btn.onclick = function () {
+                    const bikeId = btn.getAttribute('data-bike-id');
+                    const isSelected = btn.classList.contains('selected');
+                    const url = isSelected ? `/remove_from_compare/${bikeId}` : `/add_to_compare/${bikeId}`;
+                    fetch(url, { method: 'POST' })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Get the latest compare list and update the UI
+                                fetch('/api/compare_list')
+                                    .then(res => res.json())
+                                    .then(compareData => {
+                                        const compareList = compareData.compare_list || [];
+                                        updateCompareUI(compareList);
+                                        attachCompareButtonListeners(); // re-attach after UI update
+                                    });
+                            } else if (data.error) {
+                                alert(data.error);
+                            }
+                        });
+                };
+            });
+        }
+
         // --- Price Slider Setup ---
         var priceSlider = document.getElementById('price-slider');
         var minPriceInput = document.getElementById('min_price');
@@ -196,14 +265,22 @@
             const max_price = maxPriceInput.value;
             const min_battery = minBatteryInput.value;
             const max_battery = maxBatteryInput.value;
+            // Collect selected years (checkboxes)
             const yearCheckboxes = document.querySelectorAll('input[name="year"]:checked');
             const years = Array.from(yearCheckboxes).map(cb => cb.value);
+
+            // Collect selected firms (checkboxes)
+            const firmCheckboxes = document.querySelectorAll('input[name="firm"]:checked');
+            const firms = Array.from(firmCheckboxes).map(cb => cb.value);
+
+            // Build query params
             const params = new URLSearchParams();
             if (min_price) params.append('min_price', min_price);
             if (max_price) params.append('max_price', max_price);
             if (min_battery) params.append('min_battery', min_battery);
             if (max_battery) params.append('max_battery', max_battery);
             years.forEach(y => params.append('year', y));
+            firms.forEach(f => params.append('firm', f));
 
             fetch('/api/filter_bikes?' + params.toString())
                 .then(response => response.json())
@@ -217,24 +294,30 @@
                     } else {
                         data.forEach(bike => {
                             bikesList.innerHTML += `
-                        <div class="col-12 col-sm-6 col-md-4 mb-4">
-                            <div class="card h-100">
-                                <img src="${bike['Image URL']}" class="card-img-top" alt="${bike['Model']}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${bike['Model']}</h5>
-                                    <p class="card-text">${bike['Motor']} | ${bike['Battery']}</p>
-                                    <p class="card-text">מחיר: ${bike['Price']} | שנה: ${bike['Year']}</p>
-                                    <div class="details-btn">
-                                        <a href="${bike['Product URL']}" class="btn btn-primary" target="_blank">לפרטים</a>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="card h-100 position-relative">
+                                    <div class="position-absolute top-0 end-0 p-2">
+                                        <button class="btn btn-sm btn-outline-warning compare-btn" data-bike-id="${bike['slug'] || bike['Model']}">השווה</button>
+                                    </div>
+                                    <img src="${bike['Image URL']}" class="card-img-top" alt="${bike['Model']}">
+                                    <div class="card-body">
+                                        <h4 class="card-firm">${bike['Firm']}</h4>
+                                        <p class="card-title">${bike['Model']}</p>
+                                        <h6 class="card-text-price">מחיר: ${bike['Price']}</h6>
+                                        <p class="card-text-year">שנה: ${bike['Year']}</p>
+                                        <div class="details-btn">
+                                            <a href="${bike['Product URL']}" class="btn btn-primary" target="_blank">לפרטים</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        `;
+                            `;
+                            attachCompareButtonListeners();
                         });
                     }
                 });
         });
+        attachCompareButtonListeners();
 
         document.getElementById('apply-offcanvas-filters').addEventListener('click', function () {
             // Optionally, close the offcanvas
@@ -253,29 +336,20 @@
                 batterySlider.noUiSlider.set([200, 1000]);
                 // Uncheck all year checkboxes
                 document.querySelectorAll('input[name="year"]').forEach(cb => cb.checked = false);
+                document.querySelectorAll('input[name="firm"]').forEach(cb => cb.checked = false);
                 document.getElementById('filter-form').dispatchEvent(new Event('submit'));
+                // Clear compare list in session
+                fetch('/clear_compare', { method: 'POST' })
+                    .then(res => res.json())
+                    .then(() => {
+                        // Optionally update UI immediately
+                        updateCompareUI([]);
+                        // Now trigger the filter form submit
+                        document.getElementById('filter-form').dispatchEvent(new Event('submit'));
+                    });
             });
         }
-        function updateCompareUI(compareList) {
-            document.querySelectorAll('.compare-btn').forEach(btn => {
-                const bikeId = btn.getAttribute('data-bike-id');
-                const card = btn.closest('.card');
-                if (compareList.includes(bikeId)) {
-                    btn.classList.add('selected');
-                    btn.textContent = 'הסר השוואה';
-                    card.classList.add('compare-selected');
-                } else {
-                    btn.classList.remove('selected');
-                    btn.textContent = 'השווה';
-                    card.classList.remove('compare-selected');
-                }
-            });
-            // Show or hide the compare button
-            const compareBtn = document.getElementById('go-to-compare');
-            if (compareBtn) {
-                compareBtn.style.display = compareList.length > 0 ? 'inline-block' : 'none';
-            }
-        }
+        
 
         // Fetch current compare list on page load
         let compareList = [];
@@ -305,7 +379,6 @@
             });
         });
     });
-
 
 </script>
 

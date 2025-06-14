@@ -1,22 +1,35 @@
 ﻿{% extends "layout.html" %}
 {% block content %}
+
+
 <h2 class="mb-4 text-center">השוואת אופניים</h2>
-<a href="{{ url_for('home') }}" class="btn btn-secondary mt-4">חזור לדף הראשי</a>
+<div class="col-12 col-md-3 mb-3 d-flex align-items-end gap-2">
+    <div>
+        <a href="{{ url_for('home') }}" class="btn btn-outline-secondary mt-3">חזור לדף הראשי</a>
+
+    </div>
+
+    <div>
+        <button class="btn btn-secondary mt-3" onclick="runAiComparison()">✳לחץ להשוואה חכמה</button>
+    </div>
+
+    <div id="ai-comparison" style="margin-top: 20px; white-space: pre-line; font-family: Arial, sans-serif; direction: rtl; text-align: right;"></div>
+
+</div>
+
+
 
 {% if bikes and bikes|length > 0 %}
 <div class="row row-cols-1 row-cols-md-{{ bikes|length }} g-4">
     {% for bike in bikes %}
-    <div class="col">
+    <div class="col-6 col-md-4 mb-4">
         <div class="card h-100 text-center">
             <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
             <div class="card-body">
-                <h4 class="card-firm">{{ bike['Firm'] }}</h4>
-                <h5 class="card-title">{{ bike['Model'] }}</h5>
-                <p class="card-text">מחיר: {{ bike['Price'] }}</p>
-                <p class="card-text">שנה: {{ bike['Year'] }}</p>
-                <p class="card-text">מנוע: {{ bike['Motor'] }}</p>
-                <p class="card-text">סוללה: {{ bike['Battery'] }}</p>
-                <p class="card-text">שלדה: {{ bike['Frame'] }}</p>
+                <h4 class="card-firm">{{bike['Firm']}}</h4>
+                <p class="card-title">{{ bike['Model'] }}</p>
+                <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
+                <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
                 <a href="{{ bike['Product URL'] }}" class="btn btn-primary mt-2" target="_blank">לפרטים</a>
             </div>
         </div>
@@ -28,5 +41,28 @@
     לא נבחרו אופניים להשוואה.
 </div>
 {% endif %}
+
+
+
+<script>
+    function runAiComparison() {
+        const output = document.getElementById("ai-comparison");
+        output.innerText = "⏳ טוען השוואה חכמה...";
+
+        fetch("/api/compare_ai_from_session")
+            .then(res => res.json())
+            .then(data => {
+                if (data.comparison_text) {
+                    output.innerText = data.comparison_text;
+                } else {
+                    output.innerText = "⚠️ שגיאה: " + (data.error || "לא התקבלה תגובה");
+                }
+            })
+            .catch(err => {
+                output.innerText = "❌ שגיאת רשת: " + err;
+            });
+    }
+</script>
+
 
 {% endblock %}

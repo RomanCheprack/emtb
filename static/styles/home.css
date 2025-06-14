@@ -20,10 +20,13 @@
     text-align: center;
 }
 
-.card-text {
+.card-text-price {
     text-align: center; 
 }
 
+.card-text-year {
+    text-align: center;
+}
 .details-btn {
     text-align: center;
 }
@@ -73,4 +76,9 @@
 
 .p-2 {
     padding: 0.5rem !important;
+}
+
+
+additional-filter-btn {
+    align-items: right;
 }

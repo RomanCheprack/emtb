@@ -1,7 +1,13 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from dotenv import load_dotenv
+from openai import OpenAI
 import json
+import os
+
 
 app = Flask(__name__)
+load_dotenv()  # Load .env variables
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = '123456789'  # Set a secure secret key!
 
 def load_all_bikes():
@@ -22,7 +28,8 @@ def parse_price(price_str):
 @app.route("/")
 def home():
     all_bikes = load_all_bikes()
-    return render_template("home.html", bikes=all_bikes)
+    firms = sorted({bike.get("Firm", "") for bike in all_bikes if bike.get("Firm")})
+    return render_template("home.html", bikes=all_bikes, firms=firms)
 def parse_battery(battery_str):
     if not battery_str:
         return None
@@ -36,6 +43,7 @@ def filter_bikes():
     min_price = request.args.get("min_price", type=int)
     max_price = request.args.get("max_price", type=int)
     years = request.args.getlist("year", type=int)
+    firms = request.args.getlist("firm")
     min_battery = request.args.get("min_battery", type=int)
     max_battery = request.args.get("max_battery", type=int)
 
@@ -64,6 +72,9 @@ def filter_bikes():
                 continue
         if max_battery is not None and max_battery < 1000:
             if battery is not None and battery > max_battery:
+                continue
+        if firms:
+            if bike.get("Firm") not in firms:
                 continue
 
         filtered_bikes.append(bike)
@@ -128,6 +139,70 @@ def compare_bikes():
     all_bikes = load_all_bikes()
     bikes_to_compare = [bike for bike in all_bikes if str(bike.get('slug') or bike.get('Model')) in compare_list]
     return render_template('compare_bikes.html', bikes=bikes_to_compare)
+
+@app.route('/clear_compare', methods=['POST'])
+def clear_compare():
+    session['compare_list'] = []
+    return jsonify({'success': True})
+
+@app.route('/api/compare_ai_from_session', methods=['GET'])
+def compare_ai_from_session():
+    compare_list = get_compare_list()
+    if len(compare_list) < 2:
+        return jsonify({"error": "צריך לבחור לפחות שני דגמים להשוואה."}), 400
+
+    all_bikes = load_all_bikes()
+    bikes_to_compare = [bike for bike in all_bikes if str(bike.get('slug') or bike.get('Model')) in compare_list]
+
+    prompt = create_ai_prompt(bikes_to_compare)
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4.1",
+            messages=[
+                {"role": "system", "content": "אתה יועץ מקצועי לאופני הרים חשמליים בישראל. הסבר בצורה ברורה, עניינית, ובעברית."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+        )
+        text = response.choices[0].message.content
+
+        return jsonify({"comparison_text": text})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+def create_ai_prompt(bikes):
+    prompt = (
+        "You are a professional electric mountain bike sales expert based in Israel.\n"
+        "Your task is to compare 2–3 high-end e-MTBs and help the buyer choose the best one.\n\n"
+        "You are provided with full technical specs for each bike (directly from a trusted internal database).\n"
+        "Based on that data — and your deep understanding of current industry knowledge, review trends, and trail feedback — you will:\n\n"
+        "1. Analyze their components, suspension, motor/battery systems, geometry, weight, and customizability.\n"
+        "2. Use simulated external review knowledge (from YouTube, Pinkbike, BikeRadar, Reddit, forums) to add credibility.\n"
+        "3. Write as if you're selling the better option — but explain why clearly, with numbers, confidence, and value.\n"
+        "4. Only later, show a structured side-by-side comparison.\n\n"
+        "✨ Write in **natural Hebrew**, in the tone of a trusted sales advisor — sharp, funny, clear, and very professional.\n"
+        "Avoid heavy jargon. Use confident, rider-focused language (range, weight, real-world feel, fun, power, confidence, tech). This should read like an expert script ready for voiceover.\n\n"
+        "Start with an engaging introduction (e.g. 'היי! איזה כיף שאתה פה…'). Present the winner bike like a pro salesperson. Then summarize the facts.\n\n"
+        "Here are the bikes:\n\n"
+    )
+
+    for i, bike in enumerate(bikes):
+        prompt += f"אופניים {i + 1}:\n"
+        for key, value in bike.items():
+            prompt += f"{key}: {value}\n"
+        prompt += "\n"
+
+    prompt += (
+        "עכשיו, כתוב השוואה מלאה, מקצועית אך בגובה העיניים, עם המלצה חד משמעית על הדגם שנותן הכי הרבה תמורה לרוכב הישראלי."
+    )
+
+    return prompt
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
