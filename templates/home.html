@@ -62,12 +62,19 @@
     </a>
 </div>
 
+<div class="mb-3 d-flex align-items-center gap-2">
+    <div id="bikes-count" class="mb-3">
+        נמצאו {{ bikes|length }} אופניים
+    </div>
+    <select id="sort-price" class="form-select w-auto">
+        <option value="none">מיין לפי מחיר</option>
+        <option value="asc">מחיר: מהנמוך לגבוה</option>
+        <option value="desc">מחיר: מהגבוה לנמוך</option>
+    </select>
 
-
-
-<div id="bikes-count" class="mb-3">
-    נמצאו {{ bikes|length }} אופניים
 </div>
+
+
 
     <div class="row" id="bikes-list">
         {% for bike in bikes %}
@@ -147,6 +154,22 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('sort-price').addEventListener('change', function () {
+            document.getElementById('filter-form').dispatchEvent(new Event('submit'));
+        });
+
+        function parsePrice(price) {
+            if (!price) return 0;
+            return parseInt(String(price).replace(/[^\d]/g, ''), 10) || 0;
+        }
+        function sortBikesByPrice(bikes, order) {
+            if (order === 'asc') {
+                return bikes.sort((a, b) => parsePrice(a.Price) - parsePrice(b.Price));
+            } else if (order === 'desc') {
+                return bikes.sort((a, b) => parsePrice(b.Price) - parsePrice(a.Price));
+            }
+            return bikes;
+        }
         function updateCompareUI(compareList) {
             document.querySelectorAll('.compare-btn').forEach(btn => {
                 const bikeId = btn.getAttribute('data-bike-id');
@@ -285,14 +308,17 @@
             fetch('/api/filter_bikes?' + params.toString())
                 .then(response => response.json())
                 .then(data => {
+                    const sortOrder = document.getElementById('sort-price').value;
+                    const sortedBikes = sortBikesByPrice(data, sortOrder);
+
                     const bikesList = document.getElementById('bikes-list');
                     const bikesCount = document.getElementById('bikes-count');
-                    bikesCount.textContent = `נמצאו ${data.length} אופניים`;
+                    bikesCount.textContent = `נמצאו ${sortedBikes.length} אופניים`;
                     bikesList.innerHTML = '';
-                    if (data.length === 0) {
+                    if (sortedBikes.length === 0) {
                         bikesList.innerHTML = '<div class="col-12"><p>לא נמצאו תוצאות.</p></div>';
                     } else {
-                        data.forEach(bike => {
+                        sortedBikes.forEach(bike => {
                             bikesList.innerHTML += `
                             <div class="col-12 col-sm-6 col-md-4 mb-4">
                                 <div class="card h-100 position-relative">

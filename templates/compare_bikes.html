@@ -1,6 +1,9 @@
 ﻿{% extends "layout.html" %}
 {% block content %}
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/compare_bikes.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+s
 
 <h2 class="mb-4 text-center">השוואת אופניים</h2>
 <div class="col-12 col-md-3 mb-3 d-flex align-items-end gap-2">
@@ -8,16 +11,13 @@
         <a href="{{ url_for('home') }}" class="btn btn-outline-secondary mt-3">חזור לדף הראשי</a>
 
     </div>
-
     <div>
         <button class="btn btn-secondary mt-3" onclick="runAiComparison()">✳לחץ להשוואה חכמה</button>
     </div>
-
-    <div id="ai-comparison" style="margin-top: 20px; white-space: pre-line; font-family: Arial, sans-serif; direction: rtl; text-align: right;"></div>
-
 </div>
 
-
+<div id="ai-comparison" style="margin-top: 20px; white-space: pre-line; font-family: Arial, sans-serif; direction: rtl; text-align: right;">
+</div>
 
 {% if bikes and bikes|length > 0 %}
 <div class="row row-cols-1 row-cols-md-{{ bikes|length }} g-4">
