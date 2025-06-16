@@ -1,0 +1,97 @@
+.slider-padding-price,
+.slider-padding-wh {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+@media (min-width: 768px) {
+    .slider-padding-price,
+    .slider-padding-wh {
+        padding-left: 42px;
+        padding-right: 42px;
+    }
+}
+
+.card.h-100 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-img-top {
+    /* Set a fixed height for the image area */
+    height: 220px; /* Adjust as needed */
+    width: 100%;
+    object-fit: contain; /* or 'cover' if you want to crop */
+    background: #f8f9fa; /* Optional: subtle background for images with transparency */
+    display: block;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.card-firm {
+    text-align: center;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text-price {
+    text-align: center; 
+}
+
+.card-text-year {
+    text-align: center;
+}
+.details-btn {
+    text-align: center;
+}
+
+.prices-label {
+    text-align: center;
+}
+
+.wh-label {
+    text-align: center;
+}
+
+.year-label {
+    text-align: center;
+}
+
+.headline {
+    text-align: center;
+}
+
+.navbar-nav {
+    text-align:right;
+}
+
+.compare-btn.selected {
+    background-color: #ffc107;
+    color: #fff;
+    border-color: #ffc107;
+}
+
+.card.compare-selected {
+    opacity: 0.7;
+    box-shadow: 0 0 0 2px #ffc107;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+
+additional-filter-btn {
+    align-items: right;
+}
+
+#bikes-count {
+    margin: 16px;
+}
+

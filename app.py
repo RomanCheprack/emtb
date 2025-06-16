@@ -27,9 +27,13 @@ def parse_price(price_str):
 
 @app.route("/")
 def home():
+    return render_template("home.html")
+
+@app.route("/bikes")
+def bikes():
     all_bikes = load_all_bikes()
     firms = sorted({bike.get("Firm", "") for bike in all_bikes if bike.get("Firm")})
-    return render_template("home.html", bikes=all_bikes, firms=firms)
+    return render_template("bikes.html", bikes=all_bikes, firms=firms)
 def parse_battery(battery_str):
     if not battery_str:
         return None
@@ -158,12 +162,12 @@ def compare_ai_from_session():
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4.1",
+            model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "אתה יועץ מקצועי לאופני הרים חשמליים בישראל. הסבר בצורה ברורה, עניינית, ובעברית."},
+                {"role": "system", "content": "Act as a e-mtb sales agent and professional e-mtb expert located in israel"},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7,
+            temperature=0.4,
         )
         text = response.choices[0].message.content
 
@@ -175,14 +179,13 @@ def compare_ai_from_session():
 
 def create_ai_prompt(bikes):
     prompt = (
-        "You are a professional electric mountain bike sales expert based in Israel.\n"
-        "Your task is to compare 2–3 high-end e-MTBs and help the buyer choose the best one.\n\n"
+        "Your task is to compare 2–4 high-end e-MTBs and help the buyer choose the best one with the most added value.\n\n"
         "You are provided with full technical specs for each bike (directly from a trusted internal database).\n"
         "Based on that data — and your deep understanding of current industry knowledge, review trends, and trail feedback — you will:\n\n"
         "1. Analyze their components, suspension, motor/battery systems, geometry, weight, and customizability.\n"
         "2. Use simulated external review knowledge (from YouTube, Pinkbike, BikeRadar, Reddit, forums) to add credibility.\n"
         "3. Write as if you're selling the better option — but explain why clearly, with numbers, confidence, and value.\n"
-        "4. Only later, show a structured side-by-side comparison.\n\n"
+        "4. Only later, show a structured in a designed beautiful table side-by-side comparison.\n\n"
         "✨ Write in **natural Hebrew**, in the tone of a trusted sales advisor — sharp, funny, clear, and very professional.\n"
         "Avoid heavy jargon. Use confident, rider-focused language (range, weight, real-world feel, fun, power, confidence, tech). This should read like an expert script ready for voiceover.\n\n"
         "Start with an engaging introduction (e.g. 'היי! איזה כיף שאתה פה…'). Present the winner bike like a pro salesperson. Then summarize the facts.\n\n"
