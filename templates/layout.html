@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"><link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}">
+
     <title>{{ title or "Bikey" }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -10,30 +11,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="w3-top">
-        <div class="w3-bar w3-black w3-card">
-            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-            <a class="navbar-brand d-flex align-items-center" href="/">
-                <img classs="head_img_roman" src="{{ url_for('static', filename='images/bikey logo.png') }}" alt="Logo" height="40" class="me-2">
-                השוואת אופניים חשמליים
-            </a>            
-            <a href="{{ url_for('bikes') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">אופניים</a>
-            <a href="{{ url_for('about') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">עלינו</a>
-            <a href="{{ url_for('contact') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">צור קשר</a>
-        </div>
-    </div>
+    <header class="header-area">
+        <!-- site-navbar start -->
+        <div class="navbar-area">
+            <div class="container">
+                <nav class="site-navbar">
+                    <!-- site logo -->
+                    <a href="/">
+                        <img src="{{ url_for('static', filename='images/bikey_logo.png') }}" class="site-logo" alt="Bikey logo">
+                    </a>
 
-    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-        <a href="{{ url_for('home') }}" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">בית</a>
-        <a href="{{ url_for('bikes') }}" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">אופניים</a>
-        <a href="{{ url_for('about') }}" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">עלינו</a>
-        <a href="{{ url_for('contact') }}" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">צור קשר</a>
-    </div>
+                    <!-- site menu/nav -->
+                    <ul>
+                        <li><a href="/">בית</a></li>
+                        <li><a href="/bikes">אופניים</a></li>
+                    </ul>
 
-    <div class="container mt-4">
-        {% block content %}{% endblock %}
-    </div>
+                    <!-- nav-toggler for mobile version only -->
+                    <button class="nav-toggler">
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div><!-- navbar-area end -->
+
+    </header>
+    {% block content %}{% endblock %}
 
     <!-- Footer -->
     <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
@@ -45,6 +48,10 @@
         <i class="fa fa-linkedin w3-hover-opacity"></i>
         <p class="w3-medium">© 2025 eMTB בייקי</p>
     </footer>
+
+
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

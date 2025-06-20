@@ -27,7 +27,23 @@ def parse_price(price_str):
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    all_bikes = load_all_bikes()
+    firms = sorted({bike.get("Firm", "") for bike in all_bikes if bike.get("Firm")})
+
+    # ✅ Load compare counts
+    try:
+        with open("data/compare_counts.json", "r", encoding="utf-8") as f:
+            compare_counts = json.load(f)
+    except FileNotFoundError:
+        compare_counts = {}
+
+    # ✅ Sort by popularity
+    top_bike_ids = sorted(compare_counts.items(), key=lambda x: x[1], reverse=True)[:3]
+    top_ids = [bike_id for bike_id, _ in top_bike_ids]
+    top_bikes = [bike for bike in all_bikes if str(bike.get("slug") or bike.get("Model")) in top_ids]
+
+    return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
+
 
 @app.route("/bikes")
 def bikes():
@@ -124,10 +140,23 @@ def add_to_compare(bike_id):
         if len(compare_list) < 4:
             compare_list.append(bike_id)
             save_compare_list(compare_list)
+
+            # ✅ Increment popularity count
+            try:
+                with open("data/compare_counts.json", "r+", encoding="utf-8") as f:
+                    counts = json.load(f)
+                    counts[bike_id] = counts.get(bike_id, 0) + 1
+                    f.seek(0)
+                    json.dump(counts, f, ensure_ascii=False, indent=2)
+                    f.truncate()
+            except Exception as e:
+                print("Error updating compare counts:", e)
+
             return jsonify({'success': True, 'compare_list': compare_list})
         else:
             return jsonify({'success': False, 'error': 'You can compare up to 4 bikes only.'}), 400
     return jsonify({'success': True, 'compare_list': compare_list})
+
 
 @app.route('/remove_from_compare/<bike_id>', methods=['POST'])
 def remove_from_compare(bike_id):
