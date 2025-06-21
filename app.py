@@ -17,7 +17,20 @@ def load_all_bikes():
         bikes2 = json.load(f)
     with open("data/ctc.json", "r", encoding="utf-8") as f:
         bikes3 = json.load(f)
-    return bikes1 + bikes2 + bikes3
+    
+    all_bikes = bikes1 + bikes2 + bikes3
+
+    for bike in all_bikes:
+        if not bike.get('id'):
+            # Create a unique ID from firm-model-year-shop (or product URL)
+            firm = bike.get('Firm', '').replace(" ", "-")
+            model = bike.get('Model', '').replace(" ", "-")
+            year = str(bike.get('Year', ''))
+            url_part = bike.get('Product URL', '').split('/')[-1].split('.')[0]
+            bike['id'] = f"{firm}_{model}_{year}_{url_part}".lower()
+
+    return all_bikes
+
 
 def parse_price(price_str):
     if not price_str:
@@ -101,27 +114,6 @@ def filter_bikes():
     return jsonify(filtered_bikes)
 
 
-@app.route("/brands")
-def brands():
-    with open("data/mazman.json", "r", encoding="utf-8") as f:
-        bikes = json.load(f)
-    brands = sorted(set(bike["Firm"] for bike in bikes))
-    return render_template("brands.html", brands=brands)
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
-@app.route("/api/bikes")
-def api_bikes():
-    with open("data/mazmanjson", "r", encoding="utf-8") as f:
-        bikes = json.load(f)
-    return jsonify(bikes)
-
 @app.route('/api/compare_list')
 def api_compare_list():
     return jsonify({'compare_list': session.get('compare_list', [])})
@@ -170,7 +162,7 @@ def remove_from_compare(bike_id):
 def compare_bikes():
     compare_list = get_compare_list()
     all_bikes = load_all_bikes()
-    bikes_to_compare = [bike for bike in all_bikes if str(bike.get('slug') or bike.get('Model')) in compare_list]
+    bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
     return render_template('compare_bikes.html', bikes=bikes_to_compare)
 
 @app.route('/clear_compare', methods=['POST'])

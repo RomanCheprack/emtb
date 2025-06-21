@@ -95,3 +95,6 @@ additional-filter-btn {
     margin: 16px;
 }
 
+.offcanvas-body {
+    overflow-x: hidden;
+}

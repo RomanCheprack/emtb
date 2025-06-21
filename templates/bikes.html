@@ -57,35 +57,34 @@
 </div>
 
 
-
-<div class="row" id="bikes-list">
-    {% for bike in bikes %}
-    <div class="col-12 col-sm-6 col-md-4 mb-4">
-        <div class="card h-100 position-relative">
-            <div class="position-absolute top-0 end-0 p-2">
-                <button class="btn btn-sm btn-outline-warning compare-btn"
-                        data-bike-id="{{ bike['Model'] }}">
-                    השווה
-                </button>
-            </div>
-            <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
-            <div class="card-body">
-                <h4 class="card-firm">{{bike['Firm']}}</h4>
-                <p class="card-title">{{ bike['Model'] }}</p>
-                <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
-                <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
-                <div class="details-btn">
-                    <button type="button"
-                            class="btn btn-primary details-btn"
-                            data-bike='{{ bike | tojson | safe }}'>
-                        לפרטים
-                    </button>
+<div class="container">
+    <div class="row" id="bikes-list">
+        {% for bike in bikes %}
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100 position-relative">
+                <div class="position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-outline-warning compare-btn" data-bike-id="{{ bike['id'] }}">השווה</button>
+                </div>
+                <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
+                <div class="card-body">
+                    <h4 class="card-firm">{{bike['Firm']}}</h4>
+                    <p class="card-title">{{ bike['Model'] }}</p>
+                    <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
+                    <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
+                    <div class="details-btn">
+                        <button type="button"
+                                class="btn btn-primary details-btn"
+                                data-bike='{{ bike | tojson | safe }}'>
+                            לפרטים
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
+
 
 <!-- Bike Details Modal -->
 <div class="modal fade" id="bikeDetailsModal" tabindex="-1" aria-labelledby="bikeDetailsModalLabel" aria-hidden="true">
@@ -122,7 +121,7 @@
             <input type="hidden" id="min_battery" name="min_battery" value="200">
             <input type="hidden" id="max_battery" name="max_battery" value="1000">
         </div>
-        <div class="ccol-12 col-md-3 mb-3">
+        <div class="col-12 col-md-3 mb-3">
             <div id="year-checkboxes" class="form-group">
                 <label class="form-label d-block mb-1" style="text-align:center; font-weight:bold;">שנה</label>
                 <div class="form-check form-check-inline">
