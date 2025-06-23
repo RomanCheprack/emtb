@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/compare_bikes.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
-s
+
 
 <h2 class="mb-4 text-center">השוואת אופניים</h2>
 <div class="col-12 col-md-3 mb-3 d-flex align-items-end gap-2">
@@ -11,13 +11,8 @@ s
         <a href="{{ url_for('bikes') }}" class="btn btn-outline-secondary mt-3">חזור לדף הראשי</a>
 
     </div>
-    <div>
-        <button class="btn btn-secondary mt-3" onclick="runAiComparison()">✳לחץ להשוואה חכמה</button>
-    </div>
 </div>
 
-<div id="ai-comparison" style="margin-top: 20px; white-space: pre-line; font-family: Arial, sans-serif; direction: rtl; text-align: right;">
-</div>
 
 {% if bikes and bikes|length > 0 %}
 <div class="row row-cols-1 row-cols-md-{{ bikes|length }} g-4">
@@ -37,32 +32,40 @@ s
     {% endfor %}
 </div>
 {% else %}
+
+
 <div class="alert alert-info text-center">
     לא נבחרו אופניים להשוואה.
 </div>
 {% endif %}
 
+<div dir="rtl" class="container mt-4" id="ai-comparison-container" style="display: none;">
+    <h2 class="mb-3 text-center">השוואת מומחה 🤖</h2>
+
+    <div id="ai-intro" class="mb-3 fs-5 text-center"></div>
+
+    <div class="bg-light rounded p-3 mb-4">
+        <h4>🏆 ההמלצה שלנו</h4>
+        <p id="ai-recommendation" class="fw-bold"></p>
+    </div>
+
+    <div class="mb-4">
+        <h4>📊 טבלת השוואה</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="ai-comparison-table">
+                <thead class="table-light">
+                    <tr id="comparison-header-row"></tr>
+                </thead>
+                <tbody id="comparison-body-rows"></tbody>
+            </table>
+        </div>
+    </div>
 
 
-<script>
-    function runAiComparison() {
-        const output = document.getElementById("ai-comparison");
-        output.innerText = "⏳ טוען השוואה חכמה...";
+    <div class="mb-4" id="ai-bike-analysis"></div>
 
-        fetch("/api/compare_ai_from_session")
-            .then(res => res.json())
-            .then(data => {
-                if (data.comparison_text) {
-                    output.innerText = data.comparison_text;
-                } else {
-                    output.innerText = "⚠️ שגיאה: " + (data.error || "לא התקבלה תגובה");
-                }
-            })
-            .catch(err => {
-                output.innerText = "❌ שגיאת רשת: " + err;
-            });
-    }
-</script>
-
+    <div class="alert alert-info text-center" id="ai-expert-tip" role="alert"></div>
+</div>
+<script src="{{ url_for('static', filename='js/compare_bikes.js') }}"></script>
 
 {% endblock %}

@@ -1,14 +1,14 @@
 .slider-padding-price,
 .slider-padding-wh {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 @media (min-width: 768px) {
     .slider-padding-price,
     .slider-padding-wh {
-        padding-left: 42px;
-        padding-right: 42px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
@@ -33,6 +33,7 @@
     flex-direction: column;
     justify-content: flex-end;
 }
+
 .card-firm {
     text-align: center;
 }
@@ -42,12 +43,13 @@
 }
 
 .card-text-price {
-    text-align: center; 
+    text-align: center;
 }
 
 .card-text-year {
     text-align: center;
 }
+
 .details-btn {
     text-align: center;
 }
@@ -69,7 +71,7 @@
 }
 
 .navbar-nav {
-    text-align:right;
+    text-align: right;
 }
 
 .compare-btn.selected {

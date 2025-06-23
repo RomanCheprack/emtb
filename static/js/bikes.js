@@ -165,7 +165,7 @@
                     } else {
                         sortedBikes.forEach(bike => {
                             bikesList.innerHTML += `
-                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                            <div class="col-6 mb-4">
                                 <div class="card h-100 position-relative">
                                     <div class="position-absolute top-0 end-0 p-2">
                                         <button class="btn btn-sm btn-outline-warning compare-btn" data-bike-id="${bike['id']}">השווה</button>

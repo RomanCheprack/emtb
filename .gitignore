@@ -12,3 +12,4 @@ instance/
 # IDEs and editors
 .vs/
 .vscode/
+data/compare_counts.json

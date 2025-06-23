@@ -118,7 +118,7 @@ section {
     padding: 30px;
 }
 
-h3 {
+h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #333;
@@ -229,4 +229,8 @@ h3 {
         -webkit-box-direction: normal;
         flex-direction: column;
     }
+}
+
+.popular {
+    color: #ffffff;
 }

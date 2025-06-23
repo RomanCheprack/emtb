@@ -7,43 +7,47 @@
 <div class="hero-container">
     <div class="hero-body">
         <h1>Bikey</h1>
-        <span>השוואה. המלצה. חשמליים</span>
+        <span>השוואת אופניים חשמליים</span>
         <a href="{{ url_for('bikes') }}" class="btn btn-danger mb-3">השוואה</a>
     </div>
 </div><!-- end hero -->
 
     <div class="w3-container w3-content w3-center w3-padding-34" style="max-width:800px" id="band">
         <section>
-            <h3>?איך זה עובד</h3>
+            <h2>?איך זה עובד</h2>
             <div class="services-grid">
                 <div class="service service1">
-                    <i class="ti-bar-chart"></i>
-                    <h4>בוחרים, מסננים, ממיינים</h4>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <i class="bi bi-search"></i>
+                    <h4>מסננים וממיינים</h4>
+                    <p>
+                        התחל בלמיין את האופניים שמתאימים לך באמת. סנן לפי מחיר, שנת ייצור, גודל סוללה, מותג ועוד – וכל זה בלחיצת כפתור. האתר שלנו מרכז את כל אופני ההרים החשמליים בישראל, ומאפשר לך לבחור רק מה שרלוונטי עבורך. חסוך זמן והתלבטות – בחר חכם מההתחלה..
+                    </p>
                 </div>
 
                 <div class="service service2">
-                    <i class="ti-light-bulb"></i>
+                    <i class="bi bi-bar-chart-line"></i>
                     <h4>השוואה והמלצה</h4>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>בחרת כמה דגמים? מצוין. עכשיו תן לנו לעשות את הקסם. מערכת ההשוואה שלנו מציגה לך טבלה ברורה של הבדלים – לצד ניתוח מקצועי מבוסס בינה מלאכותית, בעברית פשוטה ונגישה. מה מתאים למי, איזה דגם שווה יותר – ואיזו בחירה תיתן לך הכי הרבה תמורה למחיר.</p>
                 </div>
 
                 <div class="service service3">
-                    <i class="ti-money"></i>
+                    <i class="bi bi-cart-check"></i>
                     <h4>רכישה</h4>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>אהבת דגם? אפשר לעבור לרכישה ישירות מהאתר. כל דגם מקושר לאתר החנות שמוכרת אותו – בלי עמלות, בלי התחייבות, פשוט קישור ישיר לרכישה. מצאת את האופניים שלך? הדרך לשביל מתחילה כאן.</p>
                 </div>
             </div>
+            <a href="{{ url_for('bikes') }}" class="btn btn-danger mb-3">השוואה</a>
+
         </section>
 
 
         
     </div>
 
-    <!-- The Tour Section -->
+    <!-- The popular Section -->
     <div class="w3-black" id="top_bikes">
         <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-            <h2 class="w3-wide w3-center">הפופולריים ביותר</h2>
+            <h2 class="w3-wide w3-center popular">הפופולריים ביותר</h2>
             <p class="w3-opacity w3-center"><i>המחושמליים שרוכבים חיפשו הכי הרבה</i></p><br>
 
             <div class="w3-row-padding w3-padding-32" style="margin:0">
@@ -93,7 +97,7 @@
                 <i class="fa fa-phone" style="width:30px"></i> 052-5521657<br>
                 <i class="fa fa-envelope" style="width:30px"> </i>romancheprack@gmail.com<br>
             </div>
-            <div class="w3-col m6">
+            <div dir="rtl" class="w3-col m6">
                 <form action="/action_page.php" target="_blank">
                     <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
                         <div class="w3-half">
@@ -104,7 +108,9 @@
                         </div>
                     </div>
                     <input class="w3-input w3-border" type="text" placeholder="הודעה" required name="Message">
-                    <button class="w3-button w3-black w3-section w3-right" type="submit">שלח</button>
+                    <div class="w3-center">
+                        <button class="w3-button w3-black w3-section" type="submit">שלח</button>
+                    </div>
                 </form>
             </div>
         </div>

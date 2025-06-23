@@ -53,8 +53,8 @@ def home():
     # ✅ Sort by popularity
     top_bike_ids = sorted(compare_counts.items(), key=lambda x: x[1], reverse=True)[:3]
     top_ids = [bike_id for bike_id, _ in top_bike_ids]
-    top_bikes = [bike for bike in all_bikes if str(bike.get("slug") or bike.get("Model")) in top_ids]
-
+    # Ensure you're matching against the 'id' you generate and store in compare_counts.json
+    top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
     return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
 
 
@@ -170,6 +170,7 @@ def clear_compare():
     session['compare_list'] = []
     return jsonify({'success': True})
 
+
 @app.route('/api/compare_ai_from_session', methods=['GET'])
 def compare_ai_from_session():
     compare_list = get_compare_list()
@@ -177,50 +178,115 @@ def compare_ai_from_session():
         return jsonify({"error": "צריך לבחור לפחות שני דגמים להשוואה."}), 400
 
     all_bikes = load_all_bikes()
-    bikes_to_compare = [bike for bike in all_bikes if str(bike.get('slug') or bike.get('Model')) in compare_list]
-
+    bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
     prompt = create_ai_prompt(bikes_to_compare)
 
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o",
             messages=[
-                {"role": "system", "content": "Act as a e-mtb sales agent and professional e-mtb expert located in israel"},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": "Act as a professional e-MTB sales expert located in Israel. Output valid JSON only. No markdown, no free text, no explanation. Keys must be in English. Text in values must be natural Hebrew with no grammar mistakes."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
             ],
             temperature=0.4,
         )
-        text = response.choices[0].message.content
+        
+        raw_text = response.choices[0].message.content.strip()
+        print("✅ raw_text before cleaning:")
+        print(raw_text)
 
-        return jsonify({"comparison_text": text})
+        # Remove wrapping ```json ... ```
+        if raw_text.startswith("```json"):
+            raw_text = raw_text[len("```json"):].strip()
+        elif raw_text.startswith("```"):
+            raw_text = raw_text[len("```"):].strip()
 
+        if raw_text.endswith("```"):
+            raw_text = raw_text[:-3].strip()
+
+        print("✅ raw_text after cleaning:")
+        print(raw_text)
+
+        # Parse JSON
+        try:
+            data = json.loads(raw_text)
+            print("✅ JSON parsed successfully")
+            return jsonify(data)
+        except json.JSONDecodeError as e:
+            print("❌ JSON decode error:", e)
+            return jsonify({
+                "error": "ה-AI לא החזיר תשובת JSON תקינה.",
+                "raw": raw_text
+            }), 500
+
+        
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "שגיאה פנימית. נסה שוב מאוחר יותר.", "details": str(e)}), 500
 
 
 def create_ai_prompt(bikes):
+    # Collect only important fields to reduce noise (customize this list)
+    important_fields = ["Model", "Frame", "Battery", "Motor"]
+
+    # Normalize bikes into a clean list of dicts (with only relevant fields)
+    simplified_bike_data = []
+
+    for bike in bikes:
+        clean_bike = {}
+        model_name = bike.get("Model", "דגם לא ידוע")
+        clean_bike["name"] = model_name
+
+        for field in important_fields:
+            clean_bike[field] = bike.get(field, "לא ידוע")
+        
+        simplified_bike_data.append(clean_bike)
+
+    # Build prompt dynamically with instructions
     prompt = (
-        "Your task is to compare 2–4 high-end e-MTBs and help the buyer choose the best one with the most added value.\n\n"
-        "You are provided with full technical specs for each bike (directly from a trusted internal database).\n"
-        "Based on that data — and your deep understanding of current industry knowledge, review trends, and trail feedback — you will:\n\n"
-        "1. Analyze their components, suspension, motor/battery systems, geometry, weight, and customizability.\n"
-        "2. Use simulated external review knowledge (from YouTube, Pinkbike, BikeRadar, Reddit, forums) to add credibility.\n"
-        "3. Write as if you're selling the better option — but explain why clearly, with numbers, confidence, and value.\n"
-        "4. Only later, show a structured in a designed beautiful table side-by-side comparison.\n\n"
-        "✨ Write in **natural Hebrew**, in the tone of a trusted sales advisor — sharp, funny, clear, and very professional.\n"
-        "Avoid heavy jargon. Use confident, rider-focused language (range, weight, real-world feel, fun, power, confidence, tech). This should read like an expert script ready for voiceover.\n\n"
-        "Start with an engaging introduction (e.g. 'היי! איזה כיף שאתה פה…'). Present the winner bike like a pro salesperson. Then summarize the facts.\n\n"
-        "Here are the bikes:\n\n"
+        "🧠 אתה מומחה במכירת והשוואת אופני הרים חשמליים (e-MTB) בישראל.\n"
+        "קיבלת טבלת מידע מובנית על מספר דגמים.\n"
+        "בנה השוואה ביניהם לפי מבנה JSON הבא בלבד:\n\n"
+        "{\n"
+        '  "intro": "פתיח ידידותי בעברית",\n'
+        '  "recommendation": "מהו הדגם המומלץ ולמה",\n'
+        '  "comparison_table": [\n'
+        '    {\n'
+        '      "feature": "Battery",\n'
+        '      "values": {\n'
+        '        "שם דגם A": "750Wh",\n'
+        '        "שם דגם B": "700Wh",\n'
+        '        "שם דגם C": "720Wh",\n'
+        '        "שם דגם D": "לא מצוין"\n'
+        '      }\n'
+        '    }, ...\n'
+        '  ],\n'
+        '  "bikes": [\n'
+        '    {\n'
+        '      "name": "שם הדגם",\n'
+        '      "pros": ["יתרון 1", "יתרון 2"],\n'
+        '      "cons": ["חיסרון 1", "חיסרון 2"],\n'
+        '      "best_for": "סוג הרוכב שהדגם מתאים לו"\n'
+        '    }, ...\n'
+        '  ],\n'
+        '  "expert_tip": "טיפ מעניין או מצחיק בעברית"\n'
+        "}\n\n"
+        "❗ אל תשתמש ב-Markdown או טקסט חופשי. החזר JSON בלבד.\n"
+        "השתמש רק במפתחות באנגלית וערכים בטקסט טבעי בעברית.\n\n"
+        "📦 להלן נתוני האופניים:\n\n"
     )
 
-    for i, bike in enumerate(bikes):
-        prompt += f"אופניים {i + 1}:\n"
-        for key, value in bike.items():
-            prompt += f"{key}: {value}\n"
-        prompt += "\n"
+    # Add structured JSON block
+    prompt += json.dumps(simplified_bike_data, ensure_ascii=False, indent=2)
 
     prompt += (
-        "עכשיו, כתוב השוואה מלאה, מקצועית אך בגובה העיניים, עם המלצה חד משמעית על הדגם שנותן הכי הרבה תמורה לרוכב הישראלי."
+        "\n\nבחר את התכונות החשובות להשוואה והשווה ביניהן.\n"
+        "המבנה חייב להיות JSON תקני לפי הפורמט שהוגדר למעלה בלבד."
     )
 
     return prompt
