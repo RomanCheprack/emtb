@@ -1,236 +1,195 @@
-﻿*,
+﻿/* Universal Reset */
+*,
 ::before,
 ::after {
     box-sizing: border-box;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Hero Section */
 .hero-container {
     background-image: url('../images/cool-bicycle-studio.jpg');
     background-size: cover;
+    background-position: center;
     height: 100vh;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
     .hero-container::before {
         content: "";
-        background: #000000;
         position: absolute;
         width: 100%;
         height: 100%;
+        background: #000;
         opacity: 0.3;
     }
 
 .hero-body {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
 }
 
-h1 {
-    all:unset;
-    margin: 0;
-    display: inline;
-    color: #FFFFFF;
-    font-size: 7rem;
-    opacity: 0.8;
-    line-height: 120px;
-}
+    .hero-body h1 {
+        font-size: 5rem;
+        line-height: 1.2;
+        opacity: 0.9;
+    }
 
-span {
-    font-size: 2rem;
-    color: #ffffff;
-    opacity: 0.8;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
+    .hero-body span {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 20px;
+    }
 
 .form {
     display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 button {
-    border-radius: 0px 4px 4px 0px;
-    border: 0;
-    padding: 14px;
+    padding: 14px 24px;
+    border: none;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
     cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
 }
 
     button:hover {
         background: #1565C0;
-        color: #ffffff;
+        color: #fff;
     }
 
-.about {
-    margin-top: 20px;
-    text-align: center;
-    color: #000000;
-    font-size: 1.2rem;
-}
-
-
-/* 
-  איך זה עובד 
- */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans');
-
-*, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
-html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    background: #fff;
-    color: #999;
-}
-
-a {
-    text-decoration: none;
-    margin: 1rem 0;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.8125rem;
-    letter-spacing: 1px;
-}
-
-p {
-    font-size: 0.9rem;
-    margin: 0.3rem 0;
-    line-height: 1.5;
-}
-
+/* Section Styling */
 section {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 60px 20px;
     text-align: center;
-    padding: 30px;
 }
 
-h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: #333;
-    font-size: 1.825rem;
-    margin: 1.3rem 0;
-}
+    section h2 {
+        font-size: 2.2rem;
+        color: #111;
+        margin-bottom: 30px;
+    }
 
-.section-lead {
-    max-width: 600px;
-    margin: 1rem auto 1.5rem;
-}
-
-.service a {
-    color: #5b7abb;
-    display: block;
-}
-
-.service h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: #56ceba;
-    font-size: 1.3rem;
-    margin: 1rem 0 0.6rem;
-}
-
+/* Services Grid */
 .services-grid {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-align: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
 }
 
 .service {
+    flex: 1 1 calc(33.333% - 24px); /* 3 cards per row with spacing */
+    max-width: calc(33.333% - 24px);
+    box-sizing: border-box;
     background: #fff;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 4px;
-    text-align: center;
-    -webkit-box-flex: 1;
-    flex: 1;
-    display: -webkit-box;
-    display: flex;
-    flex-wrap: wrap;
+    padding: 24px;
     border: 2px solid #e7e7e7;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     transition: all 0.3s ease;
+    min-height: 420px;
+    order: 0; /* fallback */
 }
 
+.order-mobile-1 { order: 1; }
+.order-mobile-2 { order: 2; }
+.order-mobile-3 { order: 3; }
+
+/* Large screen override */
+@media (min-width: 768px) {
+  .order-desktop-1 { order: 1; }
+  .order-desktop-2 { order: 2; }
+  .order-desktop-3 { order: 3; }
+}
+@media (max-width: 900px) {
+    .service {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
     .service:hover {
-        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
-        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
     .service i {
-        font-size: 3.45rem;
-        margin: 1rem 0;
+        font-size: 3rem;
+        margin-bottom: 16px;
     }
 
+    .service h4 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    .service p {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.6;
+    }
+
+/* Color Variants */
 .service1 i,
-.service1 h4,
-.service1 .cta {
+.service1 h4 {
     color: #42b7ca;
 }
 
-.service1:hover {
-    border: 2px solid #42b7ca;
-}
-
 .service2 i,
-.service2 h4,
-.service2 .cta {
+.service2 h4 {
     color: #425fca;
 }
 
-.service2:hover {
-    border: 2px solid #425fca;
-}
-
 .service3 i,
-.service3 h4,
-.service3 .cta {
+.service3 h4 {
     color: #9c42ca;
 }
 
-.service3:hover {
-    border: 2px solid #9c42ca;
-}
-
-.service .cta span {
-    font-size: 0.6rem;
-}
-
-.service > * {
-    flex: 1 1 100%;
-}
-
-.service .cta {
-    align-self: flex-end;
-}
-
-@media all and (max-width:900px) {
+/* Responsive Cards on Smaller Screens */
+@media (max-width: 768px) {
     .services-grid {
-        display: -webkit-box;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
         flex-direction: column;
+    }
+
+    .hero-body h1 {
+        font-size: 3rem;
+    }
+
+    .hero-body span {
+        font-size: 1.2rem;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
     }
 }
 
+/* Popular Text Style */
 .popular {
-    color: #ffffff;
+    color: #fff;
 }

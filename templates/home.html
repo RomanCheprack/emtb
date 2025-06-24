@@ -15,8 +15,8 @@
     <div class="w3-container w3-content w3-center w3-padding-34" style="max-width:800px" id="band">
         <section>
             <h2>?איך זה עובד</h2>
-            <div class="services-grid">
-                <div class="service service1">
+                <div class="services-grid">
+                    <div class="service service1 order-mobile-1 order-desktop-3">
                     <i class="bi bi-search"></i>
                     <h4>מסננים וממיינים</h4>
                     <p>
@@ -24,19 +24,23 @@
                     </p>
                 </div>
 
-                <div class="service service2">
+                <div class="service service2 order-mobile-2 order-desktop-2">
                     <i class="bi bi-bar-chart-line"></i>
                     <h4>השוואה והמלצה</h4>
                     <p>בחרת כמה דגמים? מצוין. עכשיו תן לנו לעשות את הקסם. מערכת ההשוואה שלנו מציגה לך טבלה ברורה של הבדלים – לצד ניתוח מקצועי מבוסס בינה מלאכותית, בעברית פשוטה ונגישה. מה מתאים למי, איזה דגם שווה יותר – ואיזו בחירה תיתן לך הכי הרבה תמורה למחיר.</p>
                 </div>
 
-                <div class="service service3">
+                <div class="service service3 order-mobile-3 order-desktop-1">
                     <i class="bi bi-cart-check"></i>
                     <h4>רכישה</h4>
                     <p>אהבת דגם? אפשר לעבור לרכישה ישירות מהאתר. כל דגם מקושר לאתר החנות שמוכרת אותו – בלי עמלות, בלי התחייבות, פשוט קישור ישיר לרכישה. מצאת את האופניים שלך? הדרך לשביל מתחילה כאן.</p>
                 </div>
+
             </div>
-            <a href="{{ url_for('bikes') }}" class="btn btn-danger mb-3">השוואה</a>
+            <div class="row">
+                <a href="{{ url_for('bikes') }}" class="btn btn-danger mb-3">השוואה</a>
+            </div>
+            
 
         </section>
 
@@ -58,7 +62,7 @@
                         <h5 class="card-firm"><b>{{ bike['Firm'] }}</b></h5>
                         <p class="w3-opacity">{{ bike['Model'] }}</p>
                         <p class="price">{{ bike['Price'] }}</p>
-                        <a href="{{ bike['Product URL'] }}" target="_blank" class="btn btn-primary">לרכישה</a>
+                        <a href="{{ bike['Product URL'] }}" target="_blank" class="btn btn-primary mb-3">לרכישה</a>
                     </div>
 
                 </div>

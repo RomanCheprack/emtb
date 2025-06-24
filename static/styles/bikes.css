@@ -19,11 +19,10 @@
 }
 
 .card-img-top {
-    /* Set a fixed height for the image area */
-    height: 220px; /* Adjust as needed */
+    height: 220px;
     width: 100%;
-    object-fit: contain; /* or 'cover' if you want to crop */
-    background: #f8f9fa; /* Optional: subtle background for images with transparency */
+    object-fit: contain;
+    background: #f8f9fa;
     display: block;
 }
 
@@ -31,41 +30,44 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-top: 12px;
 }
 
 .card-firm {
     text-align: center;
+    font-weight: bold;
+    min-height: 24px;
 }
 
 .card-title {
     text-align: center;
+    min-height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .card-text-price {
     text-align: center;
+    min-height: 24px;
 }
 
 .card-text-year {
     text-align: center;
+    min-height: 24px;
 }
 
 .details-btn {
     text-align: center;
+    margin-top: auto;
 }
 
-.prices-label {
-    text-align: center;
-}
-
-.wh-label {
-    text-align: center;
-}
-
-.year-label {
-    text-align: center;
-}
-
+.prices-label,
+.wh-label,
+.year-label,
 .headline {
     text-align: center;
 }
