@@ -1,0 +1,17 @@
+﻿[
+  {
+    "slug": "cheap-e-mtb",
+    "title": "אופני הרים חשמליים זולים? בוא נדבר על זה באמת",
+    "author": "רומן צ'פרק'",
+    "date": "2025-06-25",
+    "htmlPath": "templates/posts/cheap-e-mtb.html"
+
+  },
+  {
+    "slug": "second-post",
+    "title": "הפוסט השני",
+    "author": "רומן",
+    "date": "2025-06-20",
+    "content": "<p>ועכשיו מגיע הפוסט השני. תוכן אחר, רעיונות חדשים.</p>"
+  }
+]

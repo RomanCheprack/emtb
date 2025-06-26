@@ -1,14 +1,73 @@
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash, abort
 from dotenv import load_dotenv
 from openai import OpenAI
+from datetime import datetime
 import json
 import os
+import smtplib
+from email.message import EmailMessage
+
 
 
 app = Flask(__name__)
 load_dotenv()  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = '123456789'  # Set a secure secret key!
+
+@app.route("/contact", methods=["POST"])
+def contact():
+    name = request.form["Name"]
+    email = request.form["Email"]
+    message = request.form["Message"]
+
+    # Construct the email
+    msg = EmailMessage()
+    msg["Subject"] = f"New Contact from {name}"
+    msg["From"] = email
+    msg["To"] = "romancheprack@gmail.com"
+    msg.set_content(f"Name: {name}\nEmail: {email}\nMessage:\n{message}")
+
+    # Send the email (adjust SMTP settings)
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
+            smtp.send_message(msg)
+        return render_template("contact_success.html")
+    except Exception as e:
+        print("Email failed:", e)
+        return "אירעה שגיאה בשליחת ההודעה", 500
+
+def load_posts():
+    with open("templates/posts/posts.json", encoding="utf-8-sig") as f:
+        return json.load(f)
+
+@app.route("/blog")
+def blog_list():
+    posts = load_posts()
+    return render_template("blog_list.html", posts=posts)
+
+@app.route("/blog/<slug>")
+def blog_post(slug):
+    posts = load_posts()
+    post = next((p for p in posts if p["slug"] == slug), None)
+    if not post:
+        abort(404)
+
+    post["date"] = datetime.strptime(post["date"], "%Y-%m-%d")
+
+    # מיקום הקובץ עם התוכן של הפוסט
+    content_path = os.path.join("templates", "posts", f"{slug}.html")
+    if not os.path.exists(content_path):
+        abort(404)
+
+    # קורא את התוכן של קובץ ה-HTML לפוסט
+    with open(content_path, encoding="utf-8") as f:
+        post_content = f.read()
+
+    # מוסיף את התוכן שנקרא למשתנה post['content']
+    post["content"] = post_content
+
+    return render_template("blog_post.html", post=post)
 
 def load_all_bikes():
     with open("data/mazman.json", "r", encoding="utf-8") as f:
@@ -17,8 +76,10 @@ def load_all_bikes():
         bikes2 = json.load(f)
     with open("data/ctc.json", "r", encoding="utf-8") as f:
         bikes3 = json.load(f)
+    with open("data/pedalim.json", "r", encoding="utf-8") as f:
+        bikes4 = json.load(f)
     
-    all_bikes = bikes1 + bikes2 + bikes3
+    all_bikes = bikes1 + bikes2 + bikes3+bikes4
 
     for bike in all_bikes:
         if not bike.get('id'):
@@ -163,7 +224,13 @@ def compare_bikes():
     compare_list = get_compare_list()
     all_bikes = load_all_bikes()
     bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
-    return render_template('compare_bikes.html', bikes=bikes_to_compare)
+    spec_fields = [
+        ("Price", "מחיר"),
+        ("Motor", "מנוע"),
+        ("Battery", "סוללה"),
+        ("Frame", "שלדה"),
+    ]
+    return render_template('compare_bikes.html', bikes=bikes_to_compare, specs=spec_fields)
 
 @app.route('/clear_compare', methods=['POST'])
 def clear_compare():
@@ -198,8 +265,8 @@ def compare_ai_from_session():
         )
         
         raw_text = response.choices[0].message.content.strip()
-        print("✅ raw_text before cleaning:")
-        print(raw_text)
+        #print("✅ raw_text before cleaning:")
+        #print(raw_text)
 
         # Remove wrapping ```json ... ```
         if raw_text.startswith("```json"):
@@ -255,17 +322,6 @@ def create_ai_prompt(bikes):
         "{\n"
         '  "intro": "פתיח ידידותי בעברית",\n'
         '  "recommendation": "מהו הדגם המומלץ ולמה",\n'
-        '  "comparison_table": [\n'
-        '    {\n'
-        '      "feature": "Battery",\n'
-        '      "values": {\n'
-        '        "שם דגם A": "750Wh",\n'
-        '        "שם דגם B": "700Wh",\n'
-        '        "שם דגם C": "720Wh",\n'
-        '        "שם דגם D": "לא מצוין"\n'
-        '      }\n'
-        '    }, ...\n'
-        '  ],\n'
         '  "bikes": [\n'
         '    {\n'
         '      "name": "שם הדגם",\n'

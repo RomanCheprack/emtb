@@ -1,0 +1,15 @@
+<style >
+.table th {
+    width: 150px;
+    white-space: nowrap;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+</style >

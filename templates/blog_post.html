@@ -1,0 +1,41 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="container my-5" dir="rtl">
+    <article class="p-4 shadow-lg rounded bg-white border-end border-4" style="border-color: red; max-width: 900px; margin: auto;">
+
+        <!-- Title -->
+        <header class="mb-4">
+            <h1 class="fw-bold text-black display-5">{{ post.title }}</h1>
+            <div class="d-flex justify-content-between text-muted small">
+                <div><i class="bi bi-person-circle"></i> {{ post.author }}</div>
+                <div><i class="bi bi-calendar-event"></i> {{ post.date.strftime('%d/%m/%Y') }}</div>
+            </div>
+        </header>
+
+        <!-- Divider -->
+        <hr class="border-danger opacity-100">
+
+        <!-- Blog Content -->
+        <section class="lh-lg text-black" style="font-size: 1.15rem;">
+            {{ post.content | safe }}
+        </section>
+
+        <!-- Tags (optional) -->
+        {#
+        <div class="mt-4">
+            {% for tag in post.tags %}
+            <span class="badge bg-danger me-1">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        #}
+
+        <!-- Back to Blog List -->
+        <div class="mt-5 text-start">
+            <a href="{{ url_for('blog_list') }}" class="btn btn-outline-danger rounded-pill px-4">
+                ← חזרה לרשימת הפוסטים
+            </a>
+        </div>
+    </article>
+</div>
+{% endblock %}
