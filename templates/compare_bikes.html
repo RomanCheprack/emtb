@@ -17,8 +17,12 @@
 {% if bikes and bikes|length > 0 %}
 <div class="row row-cols-1 row-cols-md-{{ bikes|length }} g-4">
     {% for bike in bikes %}
-    <div class="col-6 col-md-4 mb-4">
-        <div class="card h-100 text-center">
+    <div class="col-6 col-md-4 mb-4 px-1">
+        <div class="card h-100 text-center position-relative">
+            <!-- ❌ Remove Button -->
+            <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
+                    data-bike-id="{{ bike['id'] }}"
+                    aria-label="Remove"></button>
             <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
             <div class="card-body">
                 <h4 class="card-firm">{{bike['Firm']}}</h4>
@@ -47,18 +51,6 @@
     <div class="bg-light rounded p-3 mb-4">
         <h4>🏆 ההמלצה שלנו</h4>
         <p id="ai-recommendation" class="fw-bold"></p>
-    </div>
-
-    <div class="mb-4">
-        <h4>📊 טבלת השוואה</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="ai-comparison-table">
-                <thead class="table-light">
-                    <tr id="comparison-header-row"></tr>
-                </thead>
-                <tbody id="comparison-body-rows"></tbody>
-            </table>
-        </div>
     </div>
 
 

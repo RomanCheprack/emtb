@@ -14,6 +14,10 @@ load_dotenv()  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = '123456789'  # Set a secure secret key!
 
+@app.route('/google123abc456.html')
+def google_verification():
+    return send_from_directory(os.path.dirname(__file__), 'google123abc456.html')
+
 @app.route("/contact", methods=["POST"])
 def contact():
     name = request.form["Name"]
@@ -277,9 +281,6 @@ def compare_ai_from_session():
         if raw_text.endswith("```"):
             raw_text = raw_text[:-3].strip()
 
-        print("✅ raw_text after cleaning:")
-        print(raw_text)
-
         # Parse JSON
         try:
             data = json.loads(raw_text)
@@ -298,30 +299,32 @@ def compare_ai_from_session():
 
 
 def create_ai_prompt(bikes):
-    # Collect only important fields to reduce noise (customize this list)
-    important_fields = ["Model", "Frame", "Battery", "Motor"]
+    # Fields to exclude from AI comparison
+    excluded_fields = {"id", "slug", "Image URL", "Product URL"}
 
-    # Normalize bikes into a clean list of dicts (with only relevant fields)
-    simplified_bike_data = []
-
+    # Collect all unique keys across bikes (excluding irrelevant ones)
+    all_fields = set()
     for bike in bikes:
-        clean_bike = {}
-        model_name = bike.get("Model", "דגם לא ידוע")
-        clean_bike["name"] = model_name
+        all_fields.update(bike.keys())
+    important_fields = sorted(all_fields - excluded_fields)
 
+    # Normalize bikes into a simplified list
+    simplified_bike_data = []
+    for bike in bikes:
+        clean_bike = {"name": bike.get("Model", "דגם לא ידוע")}
         for field in important_fields:
             clean_bike[field] = bike.get(field, "לא ידוע")
-        
         simplified_bike_data.append(clean_bike)
+    print(simplified_bike_data)
 
-    # Build prompt dynamically with instructions
+    # Build the prompt
     prompt = (
         "🧠 אתה מומחה במכירת והשוואת אופני הרים חשמליים (e-MTB) בישראל.\n"
         "קיבלת טבלת מידע מובנית על מספר דגמים.\n"
         "בנה השוואה ביניהם לפי מבנה JSON הבא בלבד:\n\n"
         "{\n"
         '  "intro": "פתיח ידידותי בעברית",\n'
-        '  "recommendation": "מהו הדגם המומלץ ולמה",\n'
+        '  "recommendation": "הסבר בהרחבה מהו הדגם המומלץ ולמה אתה ממליץ אליו. התייחס למפרטה חלקים של האופניים, למחיר וההנחות במקה וקיימות, לביקורות ברשת ואונליין וכל מידע נוסף שתוכל להוסיף לרוכש",\n'
         '  "bikes": [\n'
         '    {\n'
         '      "name": "שם הדגם",\n'
@@ -337,17 +340,14 @@ def create_ai_prompt(bikes):
         "📦 להלן נתוני האופניים:\n\n"
     )
 
-    # Add structured JSON block
     prompt += json.dumps(simplified_bike_data, ensure_ascii=False, indent=2)
-
+    
     prompt += (
         "\n\nבחר את התכונות החשובות להשוואה והשווה ביניהן.\n"
         "המבנה חייב להיות JSON תקני לפי הפורמט שהוגדר למעלה בלבד."
     )
 
     return prompt
-
-
 
 
 if __name__ == "__main__":

@@ -1,6 +1,25 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     runAiComparison();
 });
+    // Delegate remove button clicks
+    document.body.addEventListener('click', function (e) {
+        if (e.target.classList.contains('remove-bike-btn')) {
+            const bikeId = e.target.getAttribute('data-bike-id');
+            fetch(`/remove_from_compare/${bikeId}`, { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Reload the page to update the bike list
+                        location.reload();
+                    }
+                })
+                .catch(err => {
+                    alert("שגיאה במחיקה: " + err.message);
+                });
+        }
+    });
+
+
 
 function runAiComparison() {
     const container = document.getElementById("ai-comparison-container");
@@ -18,35 +37,6 @@ function runAiComparison() {
             document.getElementById('ai-intro').textContent = data.intro || '';
             document.getElementById('ai-recommendation').textContent = data.recommendation || '';
             document.getElementById('ai-expert-tip').textContent = data.expert_tip || '';
-
-            // --- Dynamic Table Header ---
-            const headerRow = document.getElementById('comparison-header-row');
-            headerRow.innerHTML = '<th>תכונה</th>'; // fixed column for features
-
-            data.bikes?.forEach(bike => {
-                headerRow.innerHTML += `
-                    <th>
-                        <strong>${bike.name}</strong>
-                    </th>
-                `;
-            });
-
-            // --- Dynamic Table Body ---
-            const tableBody = document.getElementById('comparison-body-rows');
-            tableBody.innerHTML = '';
-
-            data.comparison_table?.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td><strong>${row.feature}</strong></td>`;
-
-                data.bikes.forEach(bike => {
-                    const bikeName = bike.name;
-                    const value = row.values?.[bikeName] || '—';
-                    tr.innerHTML += `<td>${value}</td>`;
-                });
-
-                tableBody.appendChild(tr);
-            });
 
             // --- AI Bike Analysis Cards ---
             const analysisContainer = document.getElementById('ai-bike-analysis');
