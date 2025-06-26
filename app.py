@@ -1,18 +1,52 @@
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash, abort
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash, abort, Response
 from dotenv import load_dotenv
 from openai import OpenAI
-from datetime import datetime
+from datetime import datetime, timedelta
+from email.message import EmailMessage
 import json
 import os
 import smtplib
-from email.message import EmailMessage
-
-
 
 app = Flask(__name__)
 load_dotenv()  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = '123456789'  # Set a secure secret key!
+
+
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    pages = []
+    now = datetime.now()
+    ten_days_ago = (datetime.now() - timedelta(days=10)).date().isoformat()
+
+    # Static pages
+    pages.append({
+        'loc': url_for('home', _external=True),
+        'lastmod': ten_days_ago
+    })
+    pages.append({
+        'loc': url_for('compare_bikes', _external=True),
+        'lastmod': ten_days_ago
+    })
+
+    blog_posts = load_posts()
+
+    for post in blog_posts:
+        pages.append({
+            'loc': url_for('blog_post', slug=post['slug'], _external=True),
+            'lastmod': post['date']
+        })
+    # Dynamic product pages (example if you store bikes in a DB or list)
+    bikes = load_all_bikes()  # Replace with real DB call or logic
+    for bike in bikes:
+        pages.append({
+            'loc': url_for('bikes', bike_id=bike['id'], _external=True),
+            'lastmod': bike.get('last_updated', ten_days_ago)
+        })
+
+    # Create XML string
+    sitemap_xml = render_template('sitemap.xml', pages=pages)
+    return Response(sitemap_xml, mimetype='application/xml')
 
 @app.route('/google123abc456.html')
 def google_verification():
