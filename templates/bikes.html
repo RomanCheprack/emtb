@@ -44,15 +44,15 @@
 
 
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between align-items-center" style="min-height: 50px;">
     <div id="bikes-count" class="mb-3">
         נמצאו {{ bikes|length }} אופניים
     </div>
-    <a href="{{ url_for('compare_bikes') }}" class="btn btn-warning mb-3" id="go-to-compare" style="display: none;">
-        השווה אופניים שנבחרו  <span id="compare-count"></span>
+    <a href="{{ url_for('compare_bikes') }}" class="btn btn-warning mx-2" id="go-to-compare" style="display: none;">
+        השווה אופניים שנבחרו <span id="compare-count"></span>
     </a>
-
 </div>
+
 
 
 <div class="container">
