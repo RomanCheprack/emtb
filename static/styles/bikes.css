@@ -102,3 +102,7 @@ additional-filter-btn {
 .offcanvas-body {
     overflow-x: hidden;
 }
+
+.input-group {
+    width: auto !important;
+}
