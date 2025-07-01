@@ -1,4 +1,4 @@
-<style >
+
 .table th {
     width: 150px;
     white-space: nowrap;
@@ -12,4 +12,27 @@
     overflow-x: auto;
 }
 
-</style >
+
+.compare-container {
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+.compare-table th:first-child,
+.compare-table tbody th {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 3;
+    white-space: nowrap;
+}
+
+.compare-table thead th {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.price {
+    font-size: 1.1rem;
+}

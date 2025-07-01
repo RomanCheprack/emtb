@@ -1,4 +1,4 @@
-﻿﻿{% extends "layout.html" %}
+﻿{% extends "layout.html" %}
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/compare_bikes.css') }}">
@@ -15,33 +15,64 @@
 
 
 {% if bikes and bikes|length > 0 %}
-<div class="row row-cols-1 row-cols-md-{{ bikes|length }} g-4">
-    {% for bike in bikes %}
-    <div class="col-6 col-md-4 mb-4 px-1">
-        <div class="card h-100 text-center position-relative">
-            <!-- ❌ Remove Button -->
-            <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
-                    data-bike-id="{{ bike['id'] }}"
-                    aria-label="Remove"></button>
-            <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
-            <div class="card-body">
-                <h4 class="card-firm">{{bike['Firm']}}</h4>
-                <p class="card-title">{{ bike['Model'] }}</p>
-                <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
-                <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
-                <a href="{{ bike['Product URL'] }}" class="btn btn-primary mt-2" target="_blank">לפרטים</a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+<div class="compare-container overflow-auto">
+    <table class="table table-bordered compare-table text-center align-middle">
+        <thead>
+            <tr>
+                <th style="min-width: 150px;">דגם</th>
+                {% for bike in bikes %}
+                <th style="min-width: 180px; position: relative;">
+                    <!-- Remove Button -->
+                    <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
+                            data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>
+                    <img src="{{ bike['Image URL'] }}" alt="{{ bike['Model'] }}" class="img-fluid mb-2" style="max-height: 120px; object-fit: contain;">
+                    <h5 class="mb-1">{{ bike['Firm'] }}</h5>
+                    <p class="mb-1">{{ bike['Model'] }}</p>
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% set spec_fields = [
+            "Year", "Frame", "Motor", "Battery", "Fork", "Rear Shox",
+            ] %}
+
+            <!-- 🟥 PRICE ROW -->
+            <tr>
+                <th style="min-width: 150px; background: #fff;">Price</th>
+                {% for bike in bikes %}
+                <td>
+                    {% if bike['Disc_price'] and bike['Disc_price'] != '#N/A' %}
+                    <span style="text-decoration: line-through; color: #888;">{{ bike['Price'] }}</span><br>
+                    <span class="text-danger fw-bold">{{ bike['Disc_price'] }}</span>
+                    {% else %}
+                    {{ bike['Price'] }}
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+
+            <!-- 🟩 ALL OTHER FIELDS -->
+            {% for field in spec_fields %}
+            <tr>
+                <th style="min-width: 150px; background: #fff;">{{ field }}</th>
+                {% for bike in bikes %}
+                <td>{{ bike.get(field, '') }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
 </div>
+
+
 {% else %}
-
-
 <div class="alert alert-info text-center">
     לא נבחרו אופניים להשוואה.
 </div>
 {% endif %}
+
 
 <div dir="rtl" class="container mt-4" id="ai-comparison-container" style="display: none;">
     <h2 class="mb-3 text-center">השוואת מומחה 🤖</h2>
