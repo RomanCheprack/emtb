@@ -131,7 +131,6 @@ def load_all_bikes():
 
     return all_bikes
 
-
 def parse_price(price_str):
     if not price_str:
         return None
@@ -173,6 +172,7 @@ def parse_battery(battery_str):
 @app.route("/api/filter_bikes")
 def filter_bikes():
     all_bikes = load_all_bikes()
+    query = request.args.get("q", "").strip().lower()
     min_price = request.args.get("min_price", type=int)
     max_price = request.args.get("max_price", type=int)
     years = request.args.getlist("year", type=int)
@@ -181,15 +181,15 @@ def filter_bikes():
     max_battery = request.args.get("max_battery", type=int)
 
     filtered_bikes = []
-    for bike in all_bikes:
-        price = parse_price(bike.get("Price"))
-        bike_year = bike.get("Year")
-        battery = parse_battery(bike.get("Battery"))
 
-        try:
-            bike_year = int(bike_year)
-        except (ValueError, TypeError):
-            bike_year = None
+    for bike in all_bikes:
+        # 🔎 Keyword search across all fields
+        if query:
+            if not any(query in str(value).lower() for value in bike.values() if value):
+                continue
+
+        # 💰 Price
+        price = parse_price(bike.get("Price"))
 
         if min_price is not None and min_price > 0:
             if price is not None and price < min_price:
@@ -197,20 +197,34 @@ def filter_bikes():
         if max_price is not None and max_price < 100000:
             if price is not None and price > max_price:
                 continue
-        if years:
-            if bike_year is None or bike_year not in years:
-                continue
+
+        # 🔋 Battery
+        battery = parse_battery(bike.get("Battery"))
         if min_battery is not None and min_battery > 200:
             if battery is not None and battery < min_battery:
                 continue
         if max_battery is not None and max_battery < 1000:
             if battery is not None and battery > max_battery:
                 continue
+
+        # 📅 Year
+        bike_year = bike.get("Year")
+        try:
+            bike_year = int(bike_year)
+        except (ValueError, TypeError):
+            bike_year = None
+        if years:
+            if bike_year is None or bike_year not in years:
+                continue
+
+        # 🏷️ Firm
         if firms:
             if bike.get("Firm") not in firms:
                 continue
 
+        # ✅ Passed all filters
         filtered_bikes.append(bike)
+
     return jsonify(filtered_bikes)
 
 
