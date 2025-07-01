@@ -1,6 +1,8 @@
 ﻿{% extends "layout.html" %}
-
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/blog_posts.css') }}">
+
+
 <div class="container my-5" dir="rtl">
     <article class="p-4 shadow-lg rounded bg-white border-end border-4" style="border-color: red; max-width: 900px; margin: auto;">
 
@@ -17,7 +19,7 @@
         <hr class="border-danger opacity-100">
 
         <!-- Blog Content -->
-        <section class="lh-lg text-black" style="font-size: 1.15rem;">
+        <section class="post-content lh-lg text-black" style="font-size: 1.15rem;">
             {{ post.content | safe }}
         </section>
 

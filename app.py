@@ -189,7 +189,9 @@ def filter_bikes():
                 continue
 
         # 💰 Price
-        price = parse_price(bike.get("Price"))
+        price_str = bike.get("Disc_price") or bike.get("Price")
+        price = parse_price(price_str)
+
 
         if min_price is not None and min_price > 0:
             if price is not None and price < min_price:

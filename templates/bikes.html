@@ -9,7 +9,7 @@
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
         </svg>
     </span>
-    <input type="text" class="form-control" id="search-input" placeholder="חפש לפי מילות מפתח…" 
+    <input type="text" class="form-control" id="search-input" placeholder="חפש לפי מילות מפתח…"
            aria-label="Search bikes"
            aria-describedby="basic-addon1">
 </div>
@@ -58,7 +58,7 @@
 <div class="container">
     <div class="row" id="bikes-list">
         {% for bike in bikes %}
-        <div class="col-6 mb-2 px-1">
+        <div class="col-6 col-lg-2 mb-2 px-1">
             <div class="card h-100 position-relative">
                 <div class="position-absolute top-0 end-0 p-2">
                     <button class="btn btn-outline-warning compare-btn" data-bike-id="{{ bike['id'] }}">השווה</button>
@@ -67,7 +67,16 @@
                 <div class="card-body">
                     <h4 class="card-firm">{{bike['Firm']}}</h4>
                     <p class="card-title">{{ bike['Model'] }}</p>
+                    {% if bike['Disc_price'] %}
+                    <h6 class="card-text-price">
+                        מחיר:
+                        <span style="text-decoration: line-through; color: #888;">{{ bike['Price'] }}</span>
+                        <span class="text-danger fw-bold ms-2">{{ bike['Disc_price'] }}</span>
+                    </h6>
+                    {% else %}
                     <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
+                    {% endif %}
+
                     <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
                     <div class="details-btn">
                         <button type="button"
@@ -169,6 +178,10 @@
         <button type="button" class="btn btn-primary w-100" id="apply-offcanvas-filters">החל סינון</button>
     </div>
 </div>
+
+<p style="font-size: 0.9em; color: #666; text-align: right;">
+    המחירים המוצגים נאספו מהאתרים הרשמים של החנויות, ואינם מתעדכנים בזמן אמת. ייתכנו פערים בין המחיר המוצג לבין המחיר בפועל בחנות. – נשמח שתעדכנו אותנו אם התגלו פערים
+</p>
 
 
 <!-- noUiSlider CSS/JS (include once, ideally in layout.html) -->
