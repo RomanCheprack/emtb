@@ -71,13 +71,22 @@
         firms.forEach(f => params.append("firm", f));
 
         fetch(`/api/filter_bikes?${params.toString()}`)
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then((bikes) => {
                 const sortOrder = sortDropdown.value;
                 if (sortOrder === "asc") {
-                    bikes.sort((a, b) => parseInt(a.Price?.replace(/[^\d]/g, '')) - parseInt(b.Price?.replace(/[^\d]/g, '')));
+                    bikes.sort((a, b) =>
+                        parseInt(a.Price?.replace(/[^\d]/g, '')) - parseInt(b.Price?.replace(/[^\d]/g, ''))
+                    );
                 } else if (sortOrder === "desc") {
-                    bikes.sort((a, b) => parseInt(b.Price?.replace(/[^\d]/g, '')) - parseInt(a.Price?.replace(/[^\d]/g, '')));
+                    bikes.sort((a, b) =>
+                        parseInt(b.Price?.replace(/[^\d]/g, '')) - parseInt(a.Price?.replace(/[^\d]/g, ''))
+                    );
                 }
 
                 const bikesList = document.getElementById("bikes-list");
@@ -91,35 +100,41 @@
                     bikesCount.textContent = `נמצאו ${bikes.length} אופניים`;
                     bikes.forEach((bike) => {
                         bikesList.innerHTML += `
-                <div class="col-6 col-lg-4 mb-2 px-1">
-                    <div class="card h-100 position-relative">
-                        <div class="position-absolute top-0 end-0 p-2">
-                            <button class="btn btn-outline-warning compare-btn" data-bike-id="${bike.id}">השווה</button>
-                        </div>
-                        <img src="${bike["Image URL"]}" class="card-img-top" alt="${bike.Model}">
-                        <div class="card-body">
-                             <h4 class="card-firm">${bike.Firm}</h4>
-                             <p class="card-title">${bike.Model}</p>
-                             <h6 class="card-text-price">
-                                מחיר:
-                                ${bike.Disc_price
-                                                        ? `<span style="text-decoration: line-through; color: #888;">${bike.Price}</span>
-                                     <span class="text-danger fw-bold ms-2">${bike.Disc_price}</span>`
-                                                        : `${bike.Price}`}
-                             </h6>
-                             <p class="card-text-year">שנה: ${bike.Year}</p>
-                             <div class="details-btn">
-                                 <button type="button" class="btn btn-primary details-btn" data-bike='${JSON.stringify(bike)}'>לפרטים</button>
-                             </div>
+                    <div class="col-6 col-lg-2 mb-2 px-1">
+                        <div class="card h-100 position-relative">
+                            <div class="position-absolute top-0 end-0 p-2">
+                                <button class="btn btn-outline-warning compare-btn" data-bike-id="${bike.id}">השווה</button>
+                            </div>
+                            <img src="${bike["Image URL"]}" class="card-img-top" alt="${bike.Model}">
+                            <div class="card-body">
+                                <h4 class="card-firm">${bike.Firm}</h4>
+                                <p class="card-title">${bike.Model}</p>
+                                <h6 class="card-text-price">
+                                    מחיר:
+                                   ${bike.Disc_price && bike.Disc_price !== "#N/A"
+                                        ? `<span style="text-decoration: line-through; color: #888;">${bike.Price}</span>
+                                        <span class="text-danger fw-bold ms-2">${bike.Disc_price}</span>`
+                                   : `${bike.Price}`}
+
+                                </h6>
+                                <p class="card-text-year">שנה: ${bike.Year}</p>
+                                <div class="details-btn">
+                                    <button type="button" class="btn btn-primary details-btn" data-bike='${JSON.stringify(bike)}'>לפרטים</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
+                `;
                     });
                 }
 
                 attachCompareButtonListeners();
+                attachDetailsButtonListeners(); // ✅ make sure this exists somewhere above!
+            })
+            .catch((err) => {
+                console.error("❌ Error in fetch or JSON:", err);
             });
+
     }
 
     function attachCompareButtonListeners() {

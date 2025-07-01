@@ -134,7 +134,8 @@ def load_all_bikes():
 def parse_price(price_str):
     if not price_str:
         return None
-    return int(''.join(filter(str.isdigit, str(price_str))))
+    digits_only = ''.join(filter(str.isdigit, str(price_str)))
+    return int(digits_only) if digits_only else None
 
 
 @app.route("/")
@@ -168,6 +169,8 @@ def parse_battery(battery_str):
     # Extract digits from the string (e.g., "625Wh" -> 625)
     digits = ''.join(filter(str.isdigit, battery_str))
     return int(digits) if digits else None
+
+
 
 @app.route("/api/filter_bikes")
 def filter_bikes():
