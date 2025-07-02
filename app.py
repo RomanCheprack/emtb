@@ -117,8 +117,12 @@ def load_all_bikes():
         bikes3 = json.load(f)
     with open("data/pedalim.json", "r", encoding="utf-8") as f:
         bikes4 = json.load(f)
+    with open("data/whistle.json", "r", encoding="utf-8") as f:
+        bikes5 = json.load(f)
+    with open("data/ktm.json", "r", encoding="utf-8") as f:
+        bikes6 = json.load(f)
     
-    all_bikes = bikes1 + bikes2 + bikes3+bikes4
+    all_bikes = bikes1 + bikes2 + bikes3 + bikes4 + bikes5 + bikes6
 
     for bike in all_bikes:
         if not bike.get('id'):
@@ -152,9 +156,11 @@ def home():
 
     # ✅ Sort by popularity
     top_bike_ids = sorted(compare_counts.items(), key=lambda x: x[1], reverse=True)[:3]
+    print(top_bike_ids)
     top_ids = [bike_id for bike_id, _ in top_bike_ids]
     # Ensure you're matching against the 'id' you generate and store in compare_counts.json
     top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
+    
     return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
 
 
@@ -369,7 +375,7 @@ def create_ai_prompt(bikes):
         for field in important_fields:
             clean_bike[field] = bike.get(field, "לא ידוע")
         simplified_bike_data.append(clean_bike)
-    print(simplified_bike_data)
+    #print(simplified_bike_data)
 
     # Build the prompt
     prompt = (

@@ -202,3 +202,21 @@ section {
 .popular {
     color: #fff;
 }
+
+.card-img-container {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img-top {
+    height: 220px;
+    width: 100%;
+    object-fit: contain;
+    background: #f8f9fa;
+    display: block;
+}
