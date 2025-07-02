@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://romanahi8689.pythonanywhere.com/sitemap.xml
+Sitemap: https://rideal.co.il.com/sitemap.xml
