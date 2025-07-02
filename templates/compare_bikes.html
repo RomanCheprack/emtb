@@ -43,8 +43,8 @@
                 {% for bike in bikes %}
                 <td>
                     {% if bike['Disc_price'] and bike['Disc_price'] != '#N/A' %}
-                    <span style="text-decoration: line-through; color: #888;">{{ bike['Price'] }}</span><br>
-                    <span class="text-danger fw-bold">{{ bike['Disc_price'] }}</span>
+                    <span style="text-decoration: line-through; color: #888;">₪{{ bike['Price'] }}</span><br>
+                    <span class="text-danger fw-bold">₪{{ bike['Disc_price'] }}</span>
                     {% else %}
                     {{ bike['Price'] }}
                     {% endif %}

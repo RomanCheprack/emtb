@@ -68,11 +68,11 @@
                     {% if bike['Disc_price'] %}
                     <h6 class="card-text-price">
                         מחיר:
-                        <span style="text-decoration: line-through; color: #888;">{{ bike['Price'] }}</span>
-                        <span class="text-danger fw-bold ms-2">{{ bike['Disc_price'] }}</span>
+                        <span style="text-decoration: line-through; color: #888;">₪{{ bike['Price'] }}</span>
+                        <span class="text-danger fw-bold ms-2">₪{{ bike['Disc_price'] }}</span>
                     </h6>
                     {% else %}
-                    <h6 class="card-text-price">מחיר: {{ bike['Price'] }}</h6>
+                    <h6 class="card-text-price">מחיר: ₪{{ bike['Price'] }}</h6>
                     {% endif %}
 
                     <p class="card-text-year">שנה: {{ bike['Year'] }}</p>

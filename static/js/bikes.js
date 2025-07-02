@@ -112,9 +112,9 @@
                                 <h6 class="card-text-price">
                                     מחיר:
                                    ${bike.Disc_price && bike.Disc_price !== "#N/A"
-                                        ? `<span style="text-decoration: line-through; color: #888;">${bike.Price}</span>
+                                        ? `<span style="text-decoration: line-through; color: #888;">₪${bike.Price}</span>
                                         <span class="text-danger fw-bold ms-2">${bike.Disc_price}</span>`
-                                   : `${bike.Price}`}
+                                   : `₪${bike.Price}`}
 
                                 </h6>
                                 <p class="card-text-year">שנה: ${bike.Year}</p>
