@@ -11,7 +11,7 @@ import smtplib
 app = Flask(__name__)
 load_dotenv()  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-app.secret_key = '123456789'  # Set a secure secret key!
+app.secret_key = 'app_secret_key'  # Set a secure secret key!
 
 
 @app.route('/sitemap.xml', methods=['GET'])
