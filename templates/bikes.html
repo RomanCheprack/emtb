@@ -46,7 +46,7 @@
     <div id="bikes-count" class="mb-3">
         נמצאו {{ bikes|length }} אופניים
     </div>
-    <a href="{{ url_for('compare_bikes') }}" class="btn btn-warning mx-2" id="go-to-compare" style="display: none;">
+    <a href="{{ url_for('compare_bikes') }}" class="btn btn-danger mx-2" id="go-to-compare" style="display: none;">
         השווה אופניים שנבחרו <span id="compare-count"></span>
     </a>
 </div>
@@ -59,7 +59,7 @@
         <div class="col-6 col-lg-2 mb-2 px-1">
             <div class="card h-100 position-relative">
                 <div class="position-absolute top-0 end-0 p-2">
-                    <button class="btn btn-outline-warning compare-btn" data-bike-id="{{ bike['id'] }}">השווה</button>
+                    <button class="btn btn-outline-danger compare-btn" data-bike-id="{{ bike['id'] }}">השווה</button>
                 </div>
                 <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
                 <div class="card-body">
@@ -67,15 +67,14 @@
                     <p class="card-title">{{ bike['Model'] }}</p>
                     {% if bike['Disc_price'] %}
                     <h6 class="card-text-price">
-                        מחיר:
                         <span style="text-decoration: line-through; color: #888;">₪{{ bike['Price'] }}</span>
                         <span class="text-danger fw-bold ms-2">₪{{ bike['Disc_price'] }}</span>
                     </h6>
                     {% else %}
-                    <h6 class="card-text-price">מחיר: ₪{{ bike['Price'] }}</h6>
+                    <h6 class="card-text-price"> ₪{{ bike['Price'] }}</h6>
                     {% endif %}
 
-                    <p class="card-text-year">שנה: {{ bike['Year'] }}</p>
+                    <p class="card-text-year">{{ bike['Year'] }}</p>
                     <div class="details-btn">
                         <button type="button"
                                 class="btn btn-primary details-btn"

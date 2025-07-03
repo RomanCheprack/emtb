@@ -77,14 +77,14 @@
 }
 
 .compare-btn.selected {
-    background-color: #ffc107;
+    background-color: #f30303;
     color: #fff;
-    border-color: #ffc107;
+    border-color: #f30303;
 }
 
 .card.compare-selected {
     opacity: 0.7;
-    box-shadow: 0 0 0 2px #ffc107;
+    box-shadow: 0 0 0 2px #f30303;
 }
 
 .position-absolute {

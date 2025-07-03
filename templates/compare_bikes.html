@@ -19,9 +19,9 @@
     <table class="table table-bordered compare-table text-center align-middle">
         <thead>
             <tr>
-                <th style="min-width: 150px;">דגם</th>
+                <th class="model-th" style="position:relative;">דגם</th>
                 {% for bike in bikes %}
-                <th style="min-width: 180px; position: relative;">
+                <th class="specs-th">
                     <!-- Remove Button -->
                     <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
                             data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>

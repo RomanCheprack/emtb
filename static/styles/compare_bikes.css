@@ -36,3 +36,16 @@
 .price {
     font-size: 1.1rem;
 }
+
+.specs-th {
+    position: relative;
+}
+
+th {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 100px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

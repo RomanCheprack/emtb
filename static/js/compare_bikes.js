@@ -76,7 +76,10 @@ function runAiComparison() {
                 const card = document.createElement('div');
                 card.className = 'card mb-3';
                 card.innerHTML = `
-                    <div class="card-header fw-bold">${bike.name}</div>
+                    <div class="card-header fw-bold d-flex justify-content-between align-items-center">
+                        <span>${bike.name}</span>
+                        <button class="btn btn-danger btn-sm remove-bike-btn" data-bike-id="${bike.id}" title="הסר דגם">✖</button>
+                    </div>
                     <div class="card-body">
                         <p><strong>👍 יתרונות:</strong> ${bike.pros?.join(', ')}</p>
                         <p><strong>👎 חסרונות:</strong> ${bike.cons?.join(', ')}</p>
