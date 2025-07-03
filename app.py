@@ -63,7 +63,7 @@ def contact():
     msg = EmailMessage()
     msg["Subject"] = f"New Contact from {name}"
     msg["From"] = email
-    msg["To"] = "romancheprack@gmail.com"
+    msg["To"] = "rideal.bikes@gmail.com"
     msg.set_content(f"Name: {name}\nEmail: {email}\nMessage:\n{message}")
 
     # Send the email (adjust SMTP settings)
