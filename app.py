@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash, abort, Response
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -9,7 +8,7 @@ import os
 import smtplib
 
 app = Flask(__name__)
-load_dotenv()  # Load .env variables
+load_dotenv(override=True)  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = 'app_secret_key'  # Set a secure secret key!
 
@@ -49,10 +48,6 @@ def sitemap():
     sitemap_xml = render_template('sitemap.xml', pages=pages)
     return Response(sitemap_xml, mimetype='application/xml')
 
-@app.route('/google123abc456.html')
-def google_verification():
-    return send_from_directory(os.path.dirname(__file__), 'google123abc456.html')
-
 @app.route("/contact", methods=["POST"])
 def contact():
     name = request.form["Name"]
@@ -69,7 +64,11 @@ def contact():
     # Send the email (adjust SMTP settings)
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            print("EMAIL_USER from os.getenv:", os.getenv("EMAIL_USER"))
+            print("EMAIL_PASS from os.getenv:", os.getenv("EMAIL_PASS"))
+            print("About to login to SMTP")
             smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
+            print("Logged in to SMTP")
             smtp.send_message(msg)
         return render_template("contact_success.html")
     except Exception as e:
