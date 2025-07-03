@@ -1,34 +1,64 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     runAiComparison();
 });
-    // Delegate remove button clicks
-    document.body.addEventListener('click', function (e) {
-        if (e.target.classList.contains('remove-bike-btn')) {
-            const bikeId = e.target.getAttribute('data-bike-id');
-            fetch(`/remove_from_compare/${bikeId}`, { method: 'POST' })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        // Reload the page to update the bike list
-                        location.reload();
-                    }
-                })
-                .catch(err => {
-                    alert("שגיאה במחיקה: " + err.message);
-                });
-        }
-    });
 
+// Clock animation variables
+let clockInterval;
+function startClockAnimation() {
+    const clock = document.getElementById('ai-clock');
+    if (!clock) return;
+    const clocks = ['🕛','🕐','🕑','🕒','🕓','🕔','🕕','🕖','🕗','🕘','🕙','🕚'];
+    let i = 0;
+    clockInterval = setInterval(() => {
+        clock.textContent = clocks[i % clocks.length];
+        i++;
+    }, 300);
+}
+function stopClockAnimation() {
+    clearInterval(clockInterval);
+    const clock = document.getElementById('ai-clock');
+    if (clock) clock.textContent = '🕒';
+}
 
+// Delegate remove button clicks
+document.body.addEventListener('click', function (e) {
+    if (e.target.classList.contains('remove-bike-btn')) {
+        const bikeId = e.target.getAttribute('data-bike-id');
+        fetch(`/remove_from_compare/${bikeId}`, { method: 'POST' })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    // Reload the page to update the bike list
+                    location.reload();
+                }
+            })
+            .catch(err => {
+                alert("שגיאה במחיקה: " + err.message);
+            });
+    }
+});
 
 function runAiComparison() {
     const container = document.getElementById("ai-comparison-container");
     container.style.display = "block";
     container.scrollIntoView({ behavior: "smooth" });
 
+    // Show loading message
+    const loadingDiv = document.getElementById('ai-loading');
+    if (loadingDiv) {
+        loadingDiv.style.display = 'block';
+        startClockAnimation();
+    }
+
     fetch("/api/compare_ai_from_session")
         .then(res => res.json())
         .then(data => {
+            // Hide loading message
+            if (loadingDiv) {
+                loadingDiv.style.display = 'none';
+                stopClockAnimation();
+            }
+
             if (data.error) {
                 container.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
                 return;
@@ -57,6 +87,10 @@ function runAiComparison() {
             });
         })
         .catch(err => {
+            if (loadingDiv) {
+                loadingDiv.style.display = 'none';
+                stopClockAnimation();
+            }
             container.innerHTML = `<div class="alert alert-danger">שגיאה: ${err.message}</div>`;
         });
 }
