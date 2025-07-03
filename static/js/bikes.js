@@ -51,6 +51,32 @@
         maxBatteryValue.textContent = values[1];
     });
 
+    function updateFirmDropdownText() {
+        const selectedFirms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
+        const dropdownButton = document.getElementById('firmDropdown');
+        
+        if (selectedFirms.length === 0) {
+            dropdownButton.textContent = 'בחר מותגים';
+        } else if (selectedFirms.length === 1) {
+            dropdownButton.textContent = selectedFirms[0];
+        } else {
+            dropdownButton.textContent = `${selectedFirms.length} מותגים נבחרו`;
+        }
+    }
+
+    function updateMotorBrandDropdownText() {
+        const selectedMotorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
+        const dropdownButton = document.getElementById('motorBrandDropdown');
+        
+        if (selectedMotorBrands.length === 0) {
+            dropdownButton.textContent = 'בחר מותגי מנוע';
+        } else if (selectedMotorBrands.length === 1) {
+            dropdownButton.textContent = selectedMotorBrands[0].charAt(0).toUpperCase() + selectedMotorBrands[0].slice(1);
+        } else {
+            dropdownButton.textContent = `${selectedMotorBrands.length} מותגי מנוע נבחרו`;
+        }
+    }
+
     function applyFilters() {
         const query = searchInput.value.trim();
         const min_price = minPriceInput.value;
@@ -58,8 +84,10 @@
         const min_battery = minBatteryInput.value;
         const max_battery = maxBatteryInput.value;
 
-        const years = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => cb.value);
-        const firms = Array.from(document.querySelectorAll('input[name="firm"]:checked')).map(cb => cb.value);
+        const firms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
+        const motorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
+
+        const frameMaterial = document.querySelector('input[name="frame_material"]:checked')?.value;
 
         const params = new URLSearchParams();
         if (query) params.append("q", query);
@@ -67,8 +95,12 @@
         if (max_price) params.append("max_price", max_price);
         if (min_battery) params.append("min_battery", min_battery);
         if (max_battery) params.append("max_battery", max_battery);
-        years.forEach(y => params.append("year", y));
         firms.forEach(f => params.append("firm", f));
+        motorBrands.forEach(brand => params.append("motor_brand", brand));
+        if (frameMaterial) params.append("frame_material", frameMaterial);
+
+        const years = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => cb.value);
+        years.forEach(y => params.append("year", y));
 
         fetch(`/api/filter_bikes?${params.toString()}`)
             .then((res) => {
@@ -128,7 +160,7 @@
                 }
 
                 attachCompareButtonListeners();
-                attachDetailsButtonListeners(); // ✅ make sure this exists somewhere above!
+                 //attachDetailsButtonListeners(); // ✅ make sure this exists somewhere above!
             })
             .catch((err) => {
                 console.error("❌ Error in fetch or JSON:", err);
@@ -264,9 +296,27 @@
         searchInput.value = "";
         sortDropdown.value = "none";
 
-        document.querySelectorAll('input[name="year"], input[name="firm"]').forEach((cb) => {
+        // Reset year checkboxes
+        document.querySelectorAll('input[name="year"]').forEach((cb) => {
             cb.checked = false;
         });
+
+        // Reset frame material radios
+        document.querySelectorAll('input[name="frame_material"]').forEach((cb) => {
+            cb.checked = false;
+        });
+
+        // Reset firm checkboxes
+        document.querySelectorAll('.firm-checkbox').forEach(cb => {
+            cb.checked = false;
+        });
+        updateFirmDropdownText();
+
+        // Reset motor brand checkboxes
+        document.querySelectorAll('.motor-brand-checkbox').forEach(cb => {
+            cb.checked = false;
+        });
+        updateMotorBrandDropdownText();
 
         fetch("/clear_compare", { method: "POST" }).then(() => {
             updateCompareUI([]);
@@ -279,6 +329,22 @@
     document.querySelectorAll('input[name="year"], input[name="firm"]').forEach((cb) =>
         cb.addEventListener("change", applyFilters)
     );
+
+    // Add listeners for firm checkboxes
+    document.querySelectorAll('.firm-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateFirmDropdownText();
+            applyFilters();
+        });
+    });
+
+    // Add listeners for motor brand checkboxes
+    document.querySelectorAll('.motor-brand-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateMotorBrandDropdownText();
+            applyFilters();
+        });
+    });
 
     fetch("/api/compare_list")
         .then((res) => res.json())

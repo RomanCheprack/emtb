@@ -12,6 +12,9 @@ load_dotenv(override=True)  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = 'app_secret_key'  # Set a secure secret key!
 
+MOTOR_BRANDS = [
+    'shimano', 'bosch', 'tq', 'specialized', 'giant', 'fazua', 'dji', 'yamaha'
+]
 
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
@@ -175,7 +178,20 @@ def parse_battery(battery_str):
     digits = ''.join(filter(str.isdigit, battery_str))
     return int(digits) if digits else None
 
+def get_frame_material(bike):
+    frame_val = bike.get('Frame', '')
+    model_val = bike.get('Model', '')
+    combined = f"{frame_val} {model_val}".lower()
+    if 'carbon' in combined:
+        return 'carbon'
+    return 'aluminium'
 
+def get_motor_brand(bike):
+    motor_val = bike.get('Motor', '')
+    for brand in MOTOR_BRANDS:
+        if brand.lower() in motor_val.lower():
+            return brand.lower()
+    return 'other'
 
 @app.route("/api/filter_bikes")
 def filter_bikes():
@@ -187,6 +203,8 @@ def filter_bikes():
     firms = request.args.getlist("firm")
     min_battery = request.args.get("min_battery", type=int)
     max_battery = request.args.get("max_battery", type=int)
+    frame_material = request.args.get("frame_material", type=str)  # 'carbon' or 'aluminium'
+    motor_brands = request.args.getlist("motor_brand", type=str)
 
     filtered_bikes = []
 
@@ -199,7 +217,6 @@ def filter_bikes():
         # 💰 Price
         price_str = bike.get("Disc_price") or bike.get("Price")
         price = parse_price(price_str)
-
 
         if min_price is not None and min_price > 0:
             if price is not None and price < min_price:
@@ -230,6 +247,16 @@ def filter_bikes():
         # 🏷️ Firm
         if firms:
             if bike.get("Firm") not in firms:
+                continue
+
+        # 🆕 Frame Material
+        if frame_material:
+            if get_frame_material(bike) != frame_material.lower():
+                continue
+
+        # 🆕 Motor Brand
+        if motor_brands:
+            if get_motor_brand(bike) not in [brand.lower() for brand in motor_brands]:
                 continue
 
         # ✅ Passed all filters

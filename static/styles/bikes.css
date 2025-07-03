@@ -106,3 +106,31 @@ additional-filter-btn {
 .input-group {
     width: auto !important;
 }
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-menu .form-check {
+    padding: 0.5rem 1rem;
+    margin: 0;
+}
+
+.dropdown-menu .form-check:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-menu .form-check-input {
+    margin-right: 0.5rem;
+}
+
+.dropdown-menu .form-check-label {
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+}
+
+.form-check {
+    margin-left: 20px !important; 
+}

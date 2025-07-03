@@ -79,7 +79,7 @@
                         <button type="button"
                                 class="btn btn-primary details-btn"
                                 data-bike='{{ bike | tojson | safe }}'>
-                            לפרטים
+                            מפרט
                         </button>
                     </div>
                 </div>
@@ -139,6 +139,91 @@
             <input type="hidden" id="min_battery" name="min_battery" value="200">
             <input type="hidden" id="max_battery" name="max_battery" value="1000">
         </div>
+        <!-- Custom Firm Dropdown Filter -->
+        <div class="mb-3">
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">מותג</label>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="firmDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    בחר מותגים
+                </button>
+                <ul class="dropdown-menu w-100" id="firmDropdownMenu">
+                    {% for firm in firms %}
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input firm-checkbox" type="checkbox" value="{{ firm }}" id="firm-{{ loop.index }}">
+                            <label class="form-check-label" for="firm-{{ loop.index }}">{{ firm }}</label>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- Custom Motor Brand Dropdown Filter -->
+        <div class="mb-3">
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">מותג מנוע</label>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="motorBrandDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    בחר מותגי מנוע
+                </button>
+                <ul class="dropdown-menu w-100" id="motorBrandDropdownMenu">
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="shimano" id="motor-brand-shimano">
+                            <label class="form-check-label" for="motor-brand-shimano">Shimano</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="bosch" id="motor-brand-bosch">
+                            <label class="form-check-label" for="motor-brand-bosch">Bosch</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="tq" id="motor-brand-tq">
+                            <label class="form-check-label" for="motor-brand-tq">TQ</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="specialized" id="motor-brand-specialized">
+                            <label class="form-check-label" for="motor-brand-specialized">Specialized</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="giant" id="motor-brand-giant">
+                            <label class="form-check-label" for="motor-brand-giant">Giant</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="fazua" id="motor-brand-fazua">
+                            <label class="form-check-label" for="motor-brand-fazua">Fazua</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="dji" id="motor-brand-dji">
+                            <label class="form-check-label" for="motor-brand-dji">DJI</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="yamaha" id="motor-brand-yamaha">
+                            <label class="form-check-label" for="motor-brand-yamaha">Yamaha</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input motor-brand-checkbox" type="checkbox" value="other" id="motor-brand-other">
+                            <label class="form-check-label" for="motor-brand-other">אחר</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Year Filter -->
         <div class="col-12 col-md-3 mb-3">
             <div id="year-checkboxes" class="form-group">
                 <label class="form-label d-block mb-1" style="text-align:center; font-weight:bold;">שנה</label>
@@ -160,17 +245,19 @@
                 </div>
             </div>
         </div>
+        <!-- Frame Material Filter -->
         <div class="mb-3">
-            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">מותג</label>
-            <div id="firm-checkboxes" class="form-group">
-                {% for firm in firms %}
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="firm" value="{{ firm }}" id="firm-{{ loop.index }}">
-                    <label class="form-check-label" for="firm-{{ loop.index }}">{{ firm }}</label>
-                </div>
-                {% endfor %}
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">חומר שלדה</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frame_material" id="frame-material-carbon" value="carbon">
+                <label class="form-check-label" for="frame-material-carbon">קרבון</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frame_material" id="frame-material-aluminium" value="aluminium">
+                <label class="form-check-label" for="frame-material-aluminium">אלומיניום</label>
             </div>
         </div>
+        
         <!-- Add more filter controls as needed -->
         <button type="button" class="btn btn-primary w-100" id="apply-offcanvas-filters">החל סינון</button>
     </div>
