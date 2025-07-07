@@ -204,6 +204,13 @@ def load_all_bikes():
                 'Pedals': bike.pedals,
                 'B.B': bike.bb,
                 'מספר הילוכים:': bike.gear_count,
+                
+                # Additional fields that were missing
+                'Weight': bike.weight,
+                'Size': bike.size,
+                'Hub': bike.hub,
+                'Brakes': bike.brakes,
+                'Tires': bike.tires,
             }
             bikes_data.append(bike_dict)
         return bikes_data

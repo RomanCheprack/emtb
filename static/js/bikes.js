@@ -224,12 +224,16 @@
     });
 
     function showBikeDetailsModal(bike) {
-        const fieldOrder = [
-            "Firm", "Model", "Year", "Price", "Frame", "Motor", "Battery", "Fork", "Rear Shox",
-            "Stem", "Handelbar", "Front Brake", "Rear Brake", "Shifter", "Rear Der", "Cassette", "Chain",
-            "Crank Set", "Front Wheel", "Rear Wheel", "Rims", "Front Axle", "Rear Axle", "Spokes", "Tubes",
+        // Fields to exclude from the table (metadata fields, not specifications)
+        const excludeFields = ["Firm", "Model", "Image URL", "Product URL", "slug", "id"];
+        
+        // Fields to show first (important specs)
+        const priorityFields = [
+            "Year", "Price", "Disc_price", "Frame", "Motor", "Battery", "Fork", "Rear Shox",
+            "Stem", "Handelbar", "Brakes", "Front Brake", "Rear Brake", "Shifter", "Rear Der", "Cassette", "Chain",
+            "Crank Set", "Front Wheel", "Rear Wheel", "Rims", "Front Axle", "Rear Axle", "Spokes", "Tubes", "Tires",
             "Front Tire", "Rear Tire", "Saddle", "Seat Post", "Clamp", "Charger", "Wheel Size", "Headset",
-            "Brake Lever", "Screen", "Extras", "Pedals", "B.B", "מספר הילוכים:"
+            "Brake Lever", "Screen", "Extras", "Pedals", "B.B", "מספר הילוכים:", "Weight", "Size", "Hub"
         ];
 
         let html = `
@@ -245,22 +249,20 @@
                         <tbody>
     `;
 
-        // Preferred order
-        fieldOrder.forEach(key => {
-            if (
-                key !== "Firm" && key !== "Model" && key !== "Image URL" && key !== "Product URL" && key !== "slug" &&
-                bike[key] && String(bike[key]).trim() !== ""
-            ) {
+        // First, show priority fields in order
+        priorityFields.forEach(key => {
+            if (bike[key] && String(bike[key]).trim() !== "" && !excludeFields.includes(key)) {
                 html += `<tr><th style="width:40%;">${key}</th><td>${bike[key]}</td></tr>`;
             }
         });
 
-        // Any remaining fields not in preferred list
+        // Then show all remaining fields that have values
         Object.keys(bike).forEach(key => {
             if (
-                !fieldOrder.includes(key) &&
-                key !== "Firm" && key !== "Model" && key !== "Image URL" && key !== "Product URL" && key !== "slug" &&
-                bike[key] && String(bike[key]).trim() !== ""
+                !priorityFields.includes(key) && 
+                !excludeFields.includes(key) &&
+                bike[key] && 
+                String(bike[key]).trim() !== ""
             ) {
                 html += `<tr><th style="width:40%;">${key}</th><td>${bike[key]}</td></tr>`;
             }
