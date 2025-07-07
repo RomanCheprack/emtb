@@ -161,7 +161,7 @@ def load_all_bikes():
                 'Rear Shox': bike.rear_shox,
                 'Image URL': bike.image_url,
                 'Product URL': bike.product_url,
-                
+
                 # Additional fields
                 'Stem': bike.stem,
                 'Handelbar': bike.handelbar,
@@ -222,7 +222,7 @@ def home():
         top_bikes = []
     finally:
         session.close()
-    
+
     return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
 
 
@@ -383,7 +383,7 @@ def compare_bikes():
 def view_comparison(slug):
     """View a specific comparison by slug"""
     session = get_session()
-    
+
     try:
         # Check if slug is a number (old ID format)
         if slug.isdigit():
@@ -391,30 +391,30 @@ def view_comparison(slug):
         else:
             # New slug format
             comparison = session.query(Comparison).filter_by(slug=slug).first()
-        
+
         if not comparison:
             abort(404)
-        
+
         # Get bike IDs and load bike details
         bike_ids = comparison.get_bike_ids()
         all_bikes = load_all_bikes()
         bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in bike_ids]
-        
+
         # Get comparison data
         comparison_data = comparison.get_comparison_data()
-        
+
         # Create a shareable URL for this comparison (prefer slug over ID)
         if comparison.slug:
             share_url = request.host_url.rstrip('/') + url_for('view_comparison', slug=comparison.slug)
         else:
             share_url = request.host_url.rstrip('/') + url_for('view_comparison', comparison_id=comparison.id)
-        
-        return render_template('shared_comparison.html', 
+
+        return render_template('shared_comparison.html',
                              comparison=comparison,
                              bikes=bikes_to_compare,
                              comparison_data=comparison_data,
                              share_url=share_url)
-                             
+
     except Exception as e:
         print(f"Error viewing comparison {slug}: {e}")
         abort(500)
@@ -452,7 +452,7 @@ def compare_ai_from_session():
             ],
             temperature=0.4,
         )
-        
+
         raw_text = response.choices[0].message.content.strip()
         #print("✅ raw_text before cleaning:")
         #print(raw_text)
@@ -470,29 +470,29 @@ def compare_ai_from_session():
         try:
             data = json.loads(raw_text)
             print("✅ JSON parsed successfully")
-            
+
             # ✅ Save comparison to database
             session = get_session()
             try:
                 comparison = Comparison()
                 comparison.set_bike_ids(compare_list)
                 comparison.set_comparison_data(data)
-                
+
                 # Generate SEO-friendly slug using bike data from database
                 slug = comparison.generate_slug(compare_list, session)
                 comparison.slug = slug
-                
+
                 session.add(comparison)
                 session.commit()
                 print(f"✅ Saved comparison to database with ID: {comparison.id}, Slug: {slug}")
-                
+
                 # Create response data after successful save
                 response_data = {
                     "comparison_id": comparison.id,
                     "share_url": request.host_url.rstrip('/') + url_for('view_comparison', slug=comparison.slug),
                     "data": data
                 }
-                
+
             except Exception as e:
                 print(f"❌ Error saving to database: {e}")
                 session.rollback()
@@ -500,7 +500,7 @@ def compare_ai_from_session():
                 return jsonify({"error": "שגיאה בשמירת ההשוואה", "details": str(e)}), 500
             finally:
                 session.close()
-            
+
             return jsonify(response_data)
         except json.JSONDecodeError as e:
             print("❌ JSON decode error:", e)
@@ -509,7 +509,7 @@ def compare_ai_from_session():
                 "raw": raw_text
             }), 500
 
-        
+
     except Exception as e:
         return jsonify({"error": "שגיאה פנימית. נסה שוב מאוחר יותר.", "details": str(e)}), 500
 
@@ -557,7 +557,7 @@ def create_ai_prompt(bikes):
     )
 
     prompt += json.dumps(simplified_bike_data, ensure_ascii=False, indent=2)
-    
+
     prompt += (
         "\n\nבחר את התכונות החשובות להשוואה והשווה ביניהן.\n"
         "המבנה חייב להיות JSON תקני לפי הפורמט שהוגדר למעלה בלבד."
