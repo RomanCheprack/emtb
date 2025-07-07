@@ -377,4 +377,29 @@
         const bike = JSON.parse(card.getAttribute('data-bike'));
         showBikeDetailsModal(bike);
     });
+
+    // Sticky compare button functionality
+    window.addEventListener('scroll', function() {
+        const compareBtn = document.getElementById('go-to-compare');
+        if (compareBtn && compareBtn.style.display !== 'none') {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 100) { // Show after scrolling 100px
+                compareBtn.style.position = 'fixed';
+                compareBtn.style.top = '10px'; // Stick to very top
+                compareBtn.style.right = '20px';
+                compareBtn.style.zIndex = '1050';
+                compareBtn.style.padding = '8px 16px';
+                compareBtn.style.borderRadius = '5px';
+                compareBtn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            } else {
+                compareBtn.style.position = 'static';
+                compareBtn.style.top = '';
+                compareBtn.style.right = '';
+                compareBtn.style.zIndex = '';
+                compareBtn.style.padding = '';
+                compareBtn.style.borderRadius = '';
+                compareBtn.style.boxShadow = '';
+            }
+        }
+    });
 });
