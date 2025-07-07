@@ -22,6 +22,11 @@ app.secret_key = 'app_secret_key'  # Set a secure secret key!
 # Initialize database
 init_db()
 
+GITHUB_WEBHOOK_SECRET = os.environ.get('GITHUB_WEBHOOK_SECRET')
+
+if not GITHUB_WEBHOOK_SECRET:
+    print("WARNING: GITHUB_WEBHOOK_SECRET is not set! Webhook will be insecure in production.")
+
 MOTOR_BRANDS = [
     'shimano', 'bosch', 'tq', 'specialized', 'giant', 'fazua', 'dji', 'yamaha'
 ]
