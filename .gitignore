@@ -22,8 +22,9 @@ instance/
 data/
 
 #db
+emtb.db
 *.db
-*.sql
+data_export.sql
 *.sqlite3
 
 #tests
