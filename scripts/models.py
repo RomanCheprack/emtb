@@ -122,7 +122,7 @@ class Comparison(Base):
         
         # If session is provided, get bike details from database
         if session:
-            from models import Bike
+            from scripts.models import Bike
             for bike_id in bike_ids_list:
                 bike = session.query(Bike).filter_by(id=bike_id).first()
                 if bike:

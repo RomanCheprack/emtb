@@ -1,5 +1,19 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     runAiComparison();
+    // WhatsApp floating share button logic
+    var floatBtn = document.getElementById('whatsapp-share-float');
+    if (floatBtn) {
+        floatBtn.addEventListener('click', function() {
+            if (typeof shareComparison === 'function') {
+                shareComparison();
+            }
+        });
+    }
+    // Hide the button if there are no bikes to compare
+    var bikesTable = document.querySelector('.compare-table');
+    if (!bikesTable && floatBtn) {
+        floatBtn.style.display = 'none';
+    }
 });
 
 // Clock animation variables
@@ -132,6 +146,15 @@ function runAiComparison() {
                 `;
                 analysisContainer.appendChild(card);
             });
+
+            const floatBtn = document.getElementById('whatsapp-share-float');
+            if (floatBtn && data.comparison_id && data.share_url) {
+                floatBtn.style.display = 'flex';
+                floatBtn.setAttribute('data-comparison-id', data.comparison_id);
+                floatBtn.setAttribute('data-share-url', data.share_url);
+            } else if (floatBtn) {
+                floatBtn.style.display = 'none';
+            }
         })
         .catch(err => {
             if (loadingDiv) {
@@ -144,9 +167,9 @@ function runAiComparison() {
 
 // Function to share comparison
 function shareComparison() {
-    const shareButton = document.getElementById('shareButton');
-    const shareUrl = shareButton.getAttribute('data-share-url');
-    const comparisonId = shareButton.getAttribute('data-comparison-id');
+    const floatBtn = document.getElementById('whatsapp-share-float');
+    const shareUrl = floatBtn.getAttribute('data-share-url');
+    const comparisonId = floatBtn.getAttribute('data-comparison-id');
     
     if (!shareUrl) {
         alert('אין השוואה זמינה לשיתוף');

@@ -70,7 +70,7 @@ def sitemap():
     # Add persistent comparison pages
     session = get_session()
     try:
-        from models import Comparison
+        from scripts.models import Comparison
         comparisons = session.query(Comparison).all()
         for comparison in comparisons:
             if comparison.slug:
