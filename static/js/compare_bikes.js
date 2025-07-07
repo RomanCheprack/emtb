@@ -1,5 +1,9 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     runAiComparison();
+    
+    // Initialize collapsible cells
+    initializeCollapsibleCells();
+    
     // WhatsApp floating share button logic
     var floatBtn = document.getElementById('whatsapp-share-float');
     if (floatBtn) {
@@ -15,6 +19,36 @@
         floatBtn.style.display = 'none';
     }
 });
+
+// Initialize collapsible cells functionality
+function initializeCollapsibleCells() {
+    // Add click event listeners to toggle buttons
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.toggle-text')) {
+            e.preventDefault();
+            const button = e.target.closest('.toggle-text');
+            const cellContent = button.closest('.cell-content');
+            const collapsedText = cellContent.querySelector('.cell-text.collapsed');
+            const expandedText = cellContent.querySelector('.cell-text.expanded');
+            const showMore = button.querySelector('.show-more');
+            const showLess = button.querySelector('.show-less');
+            
+            if (collapsedText.style.display !== 'none') {
+                // Expand
+                collapsedText.style.display = 'none';
+                expandedText.style.display = 'block';
+                showMore.style.display = 'none';
+                showLess.style.display = 'inline';
+            } else {
+                // Collapse
+                collapsedText.style.display = 'block';
+                expandedText.style.display = 'none';
+                showMore.style.display = 'inline';
+                showLess.style.display = 'none';
+            }
+        }
+    });
+}
 
 // Clock animation variables
 let clockInterval;

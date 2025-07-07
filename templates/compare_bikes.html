@@ -66,7 +66,22 @@
             <tr>
                 <th style="min-width: 150px; background: #fff;">{{ field }}</th>
                 {% for bike in bikes %}
-                <td>{{ bike.get(field, '') }}</td>
+                <td class="collapsible-cell">
+                    {% set value = bike.get(field, '') %}
+                    {% set value_str = value|string %}
+                    {% if value_str|length > 50 %}
+                        <div class="cell-content">
+                            <span class="cell-text collapsed">{{ value_str[:50] }}...</span>
+                            <span class="cell-text expanded" style="display: none;">{{ value_str }}</span>
+                            <button class="btn btn-link btn-sm toggle-text" style="padding: 0; margin-top: 5px; font-size: 0.8em;">
+                                <span class="show-more">הצג עוד</span>
+                                <span class="show-less" style="display: none;">הצג פחות</span>
+                            </button>
+                        </div>
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                </td>
                 {% endfor %}
             </tr>
             {% endfor %}

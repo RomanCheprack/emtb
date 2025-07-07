@@ -48,4 +48,44 @@ th {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
+
+/* Collapsible cell styles */
+.collapsible-cell {
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.cell-content {
+    position: relative;
+}
+
+.cell-text {
+    display: block;
+    line-height: 1.4;
+}
+
+.cell-text.collapsed {
+    max-height: 3em;
+    overflow: hidden;
+}
+
+.toggle-text {
+    color: #007bff !important;
+    text-decoration: none !important;
+    font-size: 0.75em !important;
+    padding: 2px 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+
+.toggle-text:hover {
+    color: #0056b3 !important;
+    text-decoration: underline !important;
+}
+
+.toggle-text:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
