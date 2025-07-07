@@ -8,6 +8,12 @@ import os
 import smtplib
 from scripts.models import init_db, get_session, Bike, Comparison, CompareCount
 
+# --- NEW IMPORTS FOR WEBHOOK ---
+import subprocess # To run shell commands like 'git pull'
+import hmac # For cryptographic signing and verification (webhook secret)
+import hashlib # For hashing (part of cryptographic signing)
+# --- END NEW IMPORTS ---
+
 app = Flask(__name__)
 load_dotenv(override=True)  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -564,6 +570,87 @@ def create_ai_prompt(bikes):
     )
 
     return prompt
+
+# --- NEW: WEBHOOK ENDPOINT ---
+# This route will be triggered by GitHub pushes to automatically pull and reload
+@app.route('/webhook', methods=['POST'])
+def handle_webhook():
+    # 1. Verify the request is a JSON payload
+    if request.headers.get('Content-Type') != 'application/json':
+        abort(400, "Invalid Content Type")
+
+    # 2. Verify the GitHub signature (for security)
+    # This checks if the request genuinely came from GitHub and hasn't been tampered with.
+    if not GITHUB_WEBHOOK_SECRET:
+        # If no secret is configured, this webhook is insecure!
+        print("Warning: GITHUB_WEBHOOK_SECRET not configured. Skipping signature check.")
+    else:
+        # Ensure the X-Hub-Signature header is present
+        if 'X-Hub-Signature' not in request.headers:
+            print("Webhook: Missing X-Hub-Signature header. Request rejected.")
+            abort(403, "Missing X-Hub-Signature")
+
+        # Reconstruct the payload to verify signature
+        # request.data contains the raw request body
+        payload_body = request.data
+        
+        # Calculate the expected signature
+        signature = 'sha1=' + hmac.new(
+            GITHUB_WEBHOOK_SECRET.encode('utf-8'),
+            payload_body,
+            hashlib.sha1
+        ).hexdigest()
+
+        # Compare the calculated signature with the signature from the header
+        if not hmac.compare_digest(signature, request.headers['X-Hub-Signature']):
+            print("Webhook signature mismatch! Request rejected.")
+            abort(403, "Invalid X-Hub-Signature")
+        print("Webhook signature verified successfully.")
+
+    data = request.json # Safely parse JSON after verification
+    # Log the Git ref that triggered the webhook (e.g., 'refs/heads/main')
+    print(f"Received webhook from GitHub for ref: {data.get('ref', 'N/A')}")
+    print(f"Commit message: {data.get('head_commit', {}).get('message', 'N/A')}")
+
+
+    # --- Git Pull Logic ---
+    try:
+        # Change directory to your project's root first
+        # This is crucial so 'git pull' runs in the correct location.
+        project_dir = '/home/romanahi8689/emtb' 
+        os.chdir(project_dir) 
+        
+        # Execute 'git pull origin main' to fetch and merge latest changes
+        # 'capture_output=True' captures stdout/stderr, 'text=True' decodes to string,
+        # 'check=True' raises CalledProcessError on non-zero exit codes.
+        result = subprocess.run(['git', 'pull', 'origin', 'main'], capture_output=True, text=True, check=True)
+        print(f"Git pull output (stdout):\n{result.stdout}")
+        if result.stderr:
+            print(f"Git pull output (stderr):\n{result.stderr}")
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error during git pull (return code {e.returncode}): {e.stderr}")
+        return f"Git pull failed: {e.stderr}", 500
+    except Exception as e:
+        print(f"Unexpected error during git pull: {e}")
+        return "Internal server error during git pull", 500
+
+    # --- Reload the web application on PythonAnywhere ---
+    # Touching the WSGI file tells PythonAnywhere to restart your web application.
+    try:
+        # You MUST replace this with your exact WSGI file path from your PythonAnywhere 'Web' tab.
+        # It's usually found under 'WSGI configuration file'.
+        # Example: '/var/www/romanahi8689_www_rideal_co_il_wsgi.py'
+        wsgi_file_path = '/var/www/www_rideal_co_il_wsgi.py' # <--- REPLACE THIS PATH!
+        
+        os.system(f'touch {wsgi_file_path}')
+        print(f"Touched {wsgi_file_path} to reload web app.")
+    except Exception as e:
+        print(f"Error reloading web app: {e}")
+        # Log the error, but we still return 200 to GitHub as the pull might have succeeded.
+    
+    return "Webhook processed and app reloaded successfully", 200
+# --- END NEW WEBHOOK ENDPOINT ---
 
 
 if __name__ == "__main__":
