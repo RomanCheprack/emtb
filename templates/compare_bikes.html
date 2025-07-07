@@ -5,11 +5,20 @@
 <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
 
 
-<h2 class="mb-4 text-center">השוואת אופניים</h2>
-<div class="col-12 col-md-3 mb-3 d-flex align-items-end gap-2">
-    <div>
-        <a href="{{ url_for('bikes') }}" class="btn btn-outline-secondary mt-3">חזור לדף הראשי</a>
-
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="text-center flex-grow-1">השוואת אופניים</h2>
+            <div class="d-flex gap-2">
+                <!-- Share Button -->
+                <button id="shareButton" class="btn btn-primary" onclick="shareComparison()" style="display: none;">
+                    <i class="fas fa-share-alt"></i> שתף השוואה
+                </button>
+                <a href="{{ url_for('bikes') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-right"></i> חזור לדף הראשי
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 

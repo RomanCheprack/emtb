@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+
+{% block title %}
+השוואת אופניים - {{ comparison_data.intro[:50] if comparison_data.intro else 'השוואה מקצועית' }}
+{% endblock %}
+
+{% block meta %}
+<meta name="description" content="השוואה מקצועית בין אופני הרים חשמליים. {{ comparison_data.intro[:150] if comparison_data.intro else 'קבל המלצות מומחים לבחירת האופניים המתאימים לך' }}">
+<meta property="og:title" content="השוואת אופניים - {{ comparison_data.intro[:50] if comparison_data.intro else 'השוואה מקצועית' }}">
+<meta property="og:description" content="{{ comparison_data.intro[:200] if comparison_data.intro else 'השוואה מקצועית בין אופני הרים חשמליים' }}">
+<meta property="og:url" content="{{ share_url }}">
+<meta property="og:type" content="article">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Share Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-share-alt"></i> שתף השוואה זו
+                    </h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="shareUrl" value="{{ share_url }}" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" onclick="copyShareUrl()">
+                                <i class="fas fa-copy"></i> העתק קישור
+                            </button>
+                        </div>
+                    </div>
+                    <small class="text-muted">תאריך השוואה: {{ comparison.created_at.strftime('%d/%m/%Y %H:%M') }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bikes Overview -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>השוואה בין {{ bikes|length }} אופניים</h2>
+            <div class="row">
+                {% for bike in bikes %}
+                <div class="col-md-{{ 12 // bikes|length }} mb-3">
+                    <div class="card h-100">
+                        {% if bike['Image URL'] %}
+                        <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Firm'] }} {{ bike['Model'] }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bike['Firm'] }} {{ bike['Model'] }}</h5>
+                            <p class="card-text">
+                                <strong>מחיר:</strong> {{ bike['Price'] }}<br>
+                                {% if bike['Disc_price'] %}
+                                <strong>מחיר מוזל:</strong> {{ bike['Disc_price'] }}<br>
+                                {% endif %}
+                                <strong>שנה:</strong> {{ bike['Year'] }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Comparison Results -->
+    {% if comparison_data %}
+    <div class="row">
+        <div class="col-12">
+            <!-- Intro -->
+            {% if comparison_data.intro %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4>מבוא</h4>
+                    <p>{{ comparison_data.intro }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Recommendation -->
+            {% if comparison_data.recommendation %}
+            <div class="card mb-4 border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h4><i class="fas fa-star"></i> המלצת המומחה</h4>
+                </div>
+                <div class="card-body">
+                    <p>{{ comparison_data.recommendation }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Individual Bike Analysis -->
+            {% if comparison_data.bikes %}
+            <div class="row">
+                {% for bike_analysis in comparison_data.bikes %}
+                <div class="col-md-{{ 12 // comparison_data.bikes|length }} mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5>{{ bike_analysis.name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Pros -->
+                            {% if bike_analysis.pros %}
+                            <h6 class="text-success"><i class="fas fa-plus-circle"></i> יתרונות</h6>
+                            <ul class="list-unstyled">
+                                {% for pro in bike_analysis.pros %}
+                                <li><i class="fas fa-check text-success"></i> {{ pro }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
+                            <!-- Cons -->
+                            {% if bike_analysis.cons %}
+                            <h6 class="text-danger"><i class="fas fa-minus-circle"></i> חסרונות</h6>
+                            <ul class="list-unstyled">
+                                {% for con in bike_analysis.cons %}
+                                <li><i class="fas fa-times text-danger"></i> {{ con }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
+                            <!-- Best For -->
+                            {% if bike_analysis.best_for %}
+                            <h6 class="text-info"><i class="fas fa-user"></i> מתאים ל</h6>
+                            <p>{{ bike_analysis.best_for }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Expert Tip -->
+            {% if comparison_data.expert_tip %}
+            <div class="card mb-4 border-warning">
+                <div class="card-header bg-warning">
+                    <h4><i class="fas fa-lightbulb"></i> טיפ מומחה</h4>
+                </div>
+                <div class="card-body">
+                    <p>{{ comparison_data.expert_tip }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Action Buttons -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a href="{{ url_for('compare_bikes') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> צור השוואה חדשה
+            </a>
+            <a href="{{ url_for('bikes') }}" class="btn btn-secondary">
+                <i class="fas fa-bicycle"></i> חזור לכל האופניים
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Social Media Share Buttons -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body text-center">
+                <h6>שתף ברשתות חברתיות:</h6>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-outline-primary" onclick="shareOnSocial('facebook')" title="שתף בפייסבוק">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+                    <button class="btn btn-outline-info" onclick="shareOnSocial('twitter')" title="שתף בטוויטר">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="btn btn-outline-success" onclick="shareOnSocial('whatsapp')" title="שתף בווטסאפ">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="btn btn-outline-primary" onclick="shareOnSocial('telegram')" title="שתף בטלגרם">
+                        <i class="fab fa-telegram"></i>
+                    </button>
+                </div>
+                
+                <div class="mt-3">
+                    <button class="btn btn-outline-secondary me-2" onclick="printComparison()" title="הדפס השוואה">
+                        <i class="fas fa-print"></i> הדפס
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="downloadAsPDF()" title="הורד כקובץ PDF">
+                        <i class="fas fa-file-pdf"></i> הורד PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include the shared comparison JavaScript -->
+<script src="{{ url_for('static', filename='js/shared_comparison.js') }}"></script>
+{% endblock %} 

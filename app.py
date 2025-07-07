@@ -6,11 +6,15 @@ from email.message import EmailMessage
 import json
 import os
 import smtplib
+from models import init_db, get_session, Bike, Comparison, CompareCount
 
 app = Flask(__name__)
 load_dotenv(override=True)  # Load .env variables
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = 'app_secret_key'  # Set a secure secret key!
+
+# Initialize database
+init_db()
 
 MOTOR_BRANDS = [
     'shimano', 'bosch', 'tq', 'specialized', 'giant', 'fazua', 'dji', 'yamaha'
@@ -25,27 +29,52 @@ def sitemap():
     # Static pages
     pages.append({
         'loc': url_for('home', _external=True),
-        'lastmod': ten_days_ago
+        'lastmod': ten_days_ago,
+        'priority': '1.0'
     })
     pages.append({
-        'loc': url_for('compare_bikes', _external=True),
-        'lastmod': ten_days_ago
+        'loc': url_for('bikes', _external=True),
+        'lastmod': ten_days_ago,
+        'priority': '0.8'
+    })
+    pages.append({
+        'loc': url_for('blog_list', _external=True),
+        'lastmod': ten_days_ago,
+        'priority': '0.8'
     })
 
+    # Blog posts
     blog_posts = load_posts()
-
     for post in blog_posts:
         pages.append({
             'loc': url_for('blog_post', slug=post['slug'], _external=True),
-            'lastmod': post['date']
+            'lastmod': post['date'],
+            'priority': '0.6'
         })
-    # Dynamic product pages (example if you store bikes in a DB or list)
-    bikes = load_all_bikes()  # Replace with real DB call or logic
+
+    # Individual bike pages
+    bikes = load_all_bikes()
     for bike in bikes:
         pages.append({
             'loc': url_for('bikes', bike_id=bike['id'], _external=True),
-            'lastmod': bike.get('last_updated', ten_days_ago)
+            'lastmod': ten_days_ago,
+            'priority': '0.5'
         })
+
+    # Add persistent comparison pages
+    session = get_session()
+    try:
+        from models import Comparison
+        comparisons = session.query(Comparison).all()
+        for comparison in comparisons:
+            if comparison.slug:
+                pages.append({
+                    'loc': url_for('view_comparison', slug=comparison.slug, _external=True),
+                    'lastmod': comparison.created_at.date().isoformat() if comparison.created_at else ten_days_ago,
+                    'priority': '0.7'
+                })
+    finally:
+        session.close()
 
     # Create XML string
     sitemap_xml = render_template('sitemap.xml', pages=pages)
@@ -111,31 +140,64 @@ def blog_post(slug):
     return render_template("blog_post.html", post=post)
 
 def load_all_bikes():
-    with open("data/mazman.json", "r", encoding="utf-8") as f:
-        bikes1 = json.load(f)
-    with open("data/recycles.json", "r", encoding="utf-8") as f:
-        bikes2 = json.load(f)
-    with open("data/ctc.json", "r", encoding="utf-8") as f:
-        bikes3 = json.load(f)
-    with open("data/pedalim.json", "r", encoding="utf-8") as f:
-        bikes4 = json.load(f)
-    with open("data/whistle.json", "r", encoding="utf-8") as f:
-        bikes5 = json.load(f)
-    with open("data/ktm.json", "r", encoding="utf-8") as f:
-        bikes6 = json.load(f)
-    
-    all_bikes = bikes1 + bikes2 + bikes3 + bikes4 + bikes5 + bikes6
-
-    for bike in all_bikes:
-        if not bike.get('id'):
-            # Create a unique ID from firm-model-year-shop (or product URL)
-            firm = bike.get('Firm', '').replace(" ", "-")
-            model = bike.get('Model', '').replace(" ", "-")
-            year = str(bike.get('Year', ''))
-            url_part = bike.get('Product URL', '').split('/')[-1].split('.')[0]
-            bike['id'] = f"{firm}_{model}_{year}_{url_part}".lower()
-
-    return all_bikes
+    """Load all bikes from the database"""
+    session = get_session()
+    try:
+        bikes = session.query(Bike).all()
+        # Convert SQLAlchemy objects to dictionaries
+        bikes_data = []
+        for bike in bikes:
+            bike_dict = {
+                'id': bike.id,
+                'Firm': bike.firm,
+                'Model': bike.model,
+                'Year': bike.year,
+                'Price': bike.price,
+                'Disc_price': bike.disc_price,
+                'Frame': bike.frame,
+                'Motor': bike.motor,
+                'Battery': bike.battery,
+                'Fork': bike.fork,
+                'Rear Shox': bike.rear_shox,
+                'Image URL': bike.image_url,
+                'Product URL': bike.product_url,
+                
+                # Additional fields
+                'Stem': bike.stem,
+                'Handelbar': bike.handelbar,
+                'Front Brake': bike.front_brake,
+                'Rear Brake': bike.rear_brake,
+                'Shifter': bike.shifter,
+                'Rear Der': bike.rear_der,
+                'Cassette': bike.cassette,
+                'Chain': bike.chain,
+                'Crank Set': bike.crank_set,
+                'Front Wheel': bike.front_wheel,
+                'Rear Wheel': bike.rear_wheel,
+                'Rims': bike.rims,
+                'Front Axle': bike.front_axle,
+                'Rear Axle': bike.rear_axle,
+                'Spokes': bike.spokes,
+                'Tubes': bike.tubes,
+                'Front Tire': bike.front_tire,
+                'Rear Tire': bike.rear_tire,
+                'Saddle': bike.saddle,
+                'Seat Post': bike.seat_post,
+                'Clamp': bike.clamp,
+                'Charger': bike.charger,
+                'Wheel Size': bike.wheel_size,
+                'Headset': bike.headset,
+                'Brake Lever': bike.brake_lever,
+                'Screen': bike.screen,
+                'Extras': bike.extras,
+                'Pedals': bike.pedals,
+                'B.B': bike.bb,
+                'מספר הילוכים:': bike.gear_count,
+            }
+            bikes_data.append(bike_dict)
+        return bikes_data
+    finally:
+        session.close()
 
 def parse_price(price_str):
     if not price_str:
@@ -149,19 +211,17 @@ def home():
     all_bikes = load_all_bikes()
     firms = sorted({bike.get("Firm", "") for bike in all_bikes if bike.get("Firm")})
 
-    # ✅ Load compare counts
+    # ✅ Load compare counts from database
+    session = get_session()
     try:
-        with open("data/compare_counts.json", "r", encoding="utf-8") as f:
-            compare_counts = json.load(f)
-    except FileNotFoundError:
-        compare_counts = {}
-
-    # ✅ Sort by popularity
-    top_bike_ids = sorted(compare_counts.items(), key=lambda x: x[1], reverse=True)[:3]
-    print(top_bike_ids)
-    top_ids = [bike_id for bike_id, _ in top_bike_ids]
-    # Ensure you're matching against the 'id' you generate and store in compare_counts.json
-    top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
+        top_compare_counts = session.query(CompareCount).order_by(CompareCount.count.desc()).limit(3).all()
+        top_ids = [cc.bike_id for cc in top_compare_counts]
+        top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
+    except Exception as e:
+        print(f"Error loading compare counts: {e}")
+        top_bikes = []
+    finally:
+        session.close()
     
     return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
 
@@ -284,14 +344,11 @@ def add_to_compare(bike_id):
             compare_list.append(bike_id)
             save_compare_list(compare_list)
 
-            # ✅ Increment popularity count
+            # ✅ Increment popularity count in database
             try:
-                with open("data/compare_counts.json", "r+", encoding="utf-8") as f:
-                    counts = json.load(f)
-                    counts[bike_id] = counts.get(bike_id, 0) + 1
-                    f.seek(0)
-                    json.dump(counts, f, ensure_ascii=False, indent=2)
-                    f.truncate()
+                from migrate_compare_counts import update_compare_count
+                update_compare_count(bike_id)
+                print(f"Updated compare count for bike {bike_id}")
             except Exception as e:
                 print("Error updating compare counts:", e)
 
@@ -321,6 +378,48 @@ def compare_bikes():
         ("Frame", "שלדה"),
     ]
     return render_template('compare_bikes.html', bikes=bikes_to_compare, specs=spec_fields)
+
+@app.route('/comparison/<path:slug>')
+def view_comparison(slug):
+    """View a specific comparison by slug"""
+    session = get_session()
+    
+    try:
+        # Check if slug is a number (old ID format)
+        if slug.isdigit():
+            comparison = session.query(Comparison).filter_by(id=int(slug)).first()
+        else:
+            # New slug format
+            comparison = session.query(Comparison).filter_by(slug=slug).first()
+        
+        if not comparison:
+            abort(404)
+        
+        # Get bike IDs and load bike details
+        bike_ids = comparison.get_bike_ids()
+        all_bikes = load_all_bikes()
+        bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in bike_ids]
+        
+        # Get comparison data
+        comparison_data = comparison.get_comparison_data()
+        
+        # Create a shareable URL for this comparison (prefer slug over ID)
+        if comparison.slug:
+            share_url = request.host_url.rstrip('/') + url_for('view_comparison', slug=comparison.slug)
+        else:
+            share_url = request.host_url.rstrip('/') + url_for('view_comparison', comparison_id=comparison.id)
+        
+        return render_template('shared_comparison.html', 
+                             comparison=comparison,
+                             bikes=bikes_to_compare,
+                             comparison_data=comparison_data,
+                             share_url=share_url)
+                             
+    except Exception as e:
+        print(f"Error viewing comparison {slug}: {e}")
+        abort(500)
+    finally:
+        session.close()
 
 @app.route('/clear_compare', methods=['POST'])
 def clear_compare():
@@ -371,7 +470,38 @@ def compare_ai_from_session():
         try:
             data = json.loads(raw_text)
             print("✅ JSON parsed successfully")
-            return jsonify(data)
+            
+            # ✅ Save comparison to database
+            session = get_session()
+            try:
+                comparison = Comparison()
+                comparison.set_bike_ids(compare_list)
+                comparison.set_comparison_data(data)
+                
+                # Generate SEO-friendly slug using bike data from database
+                slug = comparison.generate_slug(compare_list, session)
+                comparison.slug = slug
+                
+                session.add(comparison)
+                session.commit()
+                print(f"✅ Saved comparison to database with ID: {comparison.id}, Slug: {slug}")
+                
+                # Create response data after successful save
+                response_data = {
+                    "comparison_id": comparison.id,
+                    "share_url": request.host_url.rstrip('/') + url_for('view_comparison', slug=comparison.slug),
+                    "data": data
+                }
+                
+            except Exception as e:
+                print(f"❌ Error saving to database: {e}")
+                session.rollback()
+                # Return error response
+                return jsonify({"error": "שגיאה בשמירת ההשוואה", "details": str(e)}), 500
+            finally:
+                session.close()
+            
+            return jsonify(response_data)
         except json.JSONDecodeError as e:
             print("❌ JSON decode error:", e)
             return jsonify({

@@ -64,15 +64,59 @@ function runAiComparison() {
                 return;
             }
 
-            document.getElementById('ai-intro').textContent = data.intro || '';
-            document.getElementById('ai-recommendation').textContent = data.recommendation || '';
-            document.getElementById('ai-expert-tip').textContent = data.expert_tip || '';
+            // Debug: Log the full response
+            console.log('Full API response:', data);
+            
+            // Handle new response format with comparison_id and share_url
+            let comparisonData = data;
+            
+            // Check if this is the new format with nested data
+            if (data.data) {
+                comparisonData = data.data;
+                console.log('Using nested data:', comparisonData);
+            } else {
+                console.log('Using direct data:', comparisonData);
+            }
+            
+            // Show share button if we have comparison data
+            const shareButton = document.getElementById('shareButton');
+            if (shareButton && data.comparison_id && data.share_url) {
+                console.log('Showing share button with:', data.comparison_id, data.share_url);
+                shareButton.style.display = 'block';
+                shareButton.setAttribute('data-comparison-id', data.comparison_id);
+                shareButton.setAttribute('data-share-url', data.share_url);
+            } else {
+                console.log('Share button conditions not met:', {
+                    hasShareButton: !!shareButton,
+                    hasComparisonId: !!data.comparison_id,
+                    hasShareUrl: !!data.share_url,
+                    data: data
+                });
+            }
+
+            // Update the UI with ChatGPT response
+            const introElement = document.getElementById('ai-intro');
+            const recommendationElement = document.getElementById('ai-recommendation');
+            const expertTipElement = document.getElementById('ai-expert-tip');
+            
+            if (introElement) {
+                introElement.textContent = comparisonData.intro || '';
+                console.log('Set intro:', comparisonData.intro);
+            }
+            if (recommendationElement) {
+                recommendationElement.textContent = comparisonData.recommendation || '';
+                console.log('Set recommendation:', comparisonData.recommendation);
+            }
+            if (expertTipElement) {
+                expertTipElement.textContent = comparisonData.expert_tip || '';
+                console.log('Set expert tip:', comparisonData.expert_tip);
+            }
 
             // --- AI Bike Analysis Cards ---
             const analysisContainer = document.getElementById('ai-bike-analysis');
             analysisContainer.innerHTML = '';
 
-            data.bikes?.forEach(bike => {
+            comparisonData.bikes?.forEach(bike => {
                 const card = document.createElement('div');
                 card.className = 'card mb-3';
                 card.innerHTML = `
@@ -96,4 +140,64 @@ function runAiComparison() {
             }
             container.innerHTML = `<div class="alert alert-danger">שגיאה: ${err.message}</div>`;
         });
+}
+
+// Function to share comparison
+function shareComparison() {
+    const shareButton = document.getElementById('shareButton');
+    const shareUrl = shareButton.getAttribute('data-share-url');
+    const comparisonId = shareButton.getAttribute('data-comparison-id');
+    
+    if (!shareUrl) {
+        alert('אין השוואה זמינה לשיתוף');
+        return;
+    }
+    
+    // Check if Web Share API is available (mobile devices)
+    if (navigator.share) {
+        navigator.share({
+            title: 'השוואת אופניים - המלצת מומחה',
+            text: 'בדוק את ההשוואה המקצועית בין אופני הרים חשמליים',
+            url: shareUrl
+        }).then(() => {
+            console.log('Shared successfully');
+        }).catch((error) => {
+            console.log('Error sharing:', error);
+            // Fallback to copy URL
+            copyShareUrl(shareUrl);
+        });
+    } else {
+        // Fallback for desktop browsers
+        copyShareUrl(shareUrl);
+    }
+}
+
+// Function to copy share URL to clipboard (for compare_bikes page)
+function copyShareUrl(url) {
+    navigator.clipboard.writeText(url).then(function() {
+        // Show success message
+        const button = event.target.closest('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> הועתק!';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-success');
+        
+        setTimeout(function() {
+            button.innerHTML = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Show success message
+        alert('הקישור הועתק ללוח!');
+    });
 }
