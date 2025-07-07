@@ -133,7 +133,7 @@
                     bikes.forEach((bike) => {
                         bikesList.innerHTML += `
                     <div class="col-6 col-lg-2 mb-2 px-1">
-                        <div class="card h-100 position-relative">
+                        <div class="card h-100 position-relative bike-card" data-bike='${JSON.stringify(bike)}'>
                             <div class="position-absolute top-0 end-0 p-2">
                                 <button class="btn btn-outline-danger compare-btn" data-bike-id="${bike.id}">השווה</button>
                             </div>
@@ -282,9 +282,6 @@
         modal.show();
     }
 
-
-
-
     document.getElementById("apply-offcanvas-filters").addEventListener("click", () => {
         bootstrap.Offcanvas.getOrCreateInstance(document.getElementById("offcanvasFilters")).hide();
         applyFilters();
@@ -351,4 +348,14 @@
         .then((data) => updateCompareUI(data.compare_list || []));
 
     applyFilters();  // initial load
+
+    // Add event delegation for .bike-card clicks
+    document.getElementById('bikes-list').addEventListener('click', function(e) {
+        const card = e.target.closest('.bike-card');
+        if (!card) return;
+        // Prevent click if compare or details button is clicked
+        if (e.target.closest('.compare-btn') || e.target.closest('.details-btn')) return;
+        const bike = JSON.parse(card.getAttribute('data-bike'));
+        showBikeDetailsModal(bike);
+    });
 });

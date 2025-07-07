@@ -6,7 +6,7 @@ from email.message import EmailMessage
 import json
 import os
 import smtplib
-from models import init_db, get_session, Bike, Comparison, CompareCount
+from scripts.models import init_db, get_session, Bike, Comparison, CompareCount
 
 app = Flask(__name__)
 load_dotenv(override=True)  # Load .env variables

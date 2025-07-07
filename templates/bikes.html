@@ -57,7 +57,7 @@
     <div class="row" id="bikes-list">
         {% for bike in bikes %}
         <div class="col-6 col-lg-2 mb-2 px-1">
-            <div class="card h-100 position-relative">
+            <div class="card h-100 position-relative bike-card" data-bike='{{ bike | tojson | safe }}'>
                 <div class="position-absolute top-0 end-0 p-2">
                     <button class="btn btn-outline-danger compare-btn" data-bike-id="{{ bike['id'] }}">השווה</button>
                 </div>
