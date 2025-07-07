@@ -252,7 +252,24 @@
         // First, show priority fields in order
         priorityFields.forEach(key => {
             if (bike[key] && String(bike[key]).trim() !== "" && !excludeFields.includes(key)) {
-                html += `<tr><th style="width:40%;">${key}</th><td>${bike[key]}</td></tr>`;
+                let displayKey = key;
+                let displayValue = bike[key];
+                
+                // Special handling for Disc_price
+                if (key === "Disc_price") {
+                    displayKey = "Discount";
+                    displayValue = `<span style="color: red; font-weight: bold;">₪${bike[key]}</span>`;
+                }
+                // Special handling for Price - show in red if there's a discount
+                else if (key === "Price" && bike["Disc_price"] && bike["Disc_price"].trim() !== "") {
+                    displayValue = `<span style="text-decoration: line-through; color: #888;">₪${bike[key]}</span>`;
+                }
+                // Regular price formatting
+                else if (key === "Price") {
+                    displayValue = `₪${bike[key]}`;
+                }
+                
+                html += `<tr><th style="width:40%;">${displayKey}</th><td>${displayValue}</td></tr>`;
             }
         });
 
