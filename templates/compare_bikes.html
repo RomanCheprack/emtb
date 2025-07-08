@@ -5,19 +5,38 @@
 <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
 
 
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="text-center flex-grow-1">השוואת אופניים</h2>
-            <div class="d-flex gap-2">
-                <!-- Share Button (removed) -->
-                <!-- <button id="shareButton" class="btn btn-primary" onclick="shareComparison()" style="display: none;">
-                    <i class="fas fa-share-alt"></i> שתף השוואה
-                </button> -->
-                <a href="{{ url_for('bikes') }}" class="btn btn-outline-secondary">
-                    <i class="fas fa-arrow-right"></i> חזור לדף הראשי
-                </a>
+<div class="main-header" style="background: #fff; border-radius: 0 0 12px 12px; border-bottom: 4px solid #d32f2f; padding: 24px 16px 12px 16px; margin-bottom: 24px;">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="flex-grow-1 text-center">
+            <h1 class="mb-2" style="color: #111; font-weight: 800; letter-spacing: 0.5px; font-size: 2.1rem;">
+                השוואת אופניים
+            </h1>
+        </div>
+        <div class="w-100 w-md-auto d-flex justify-content-center justify-content-md-end">
+            <a href="{{ url_for('bikes') }}" class="btn btn-outline-danger" style="font-weight: 500; min-width: 140px;">
+                <i class="fas fa-arrow-right"></i> חזור לדף הראשי
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="comparison-header" style="background: #f8f9fa; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 32px 16px 24px 16px; margin-bottom: 32px; border: 1px solid #eee;">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div class="flex-grow-1 text-center">
+            <h2 class="mb-2" style="color: #111; font-weight: 700; letter-spacing: 0.5px; font-size: 1.5rem;">
+                השוואת מומחה
+                <span style="color: #d32f2f; font-size: 1.2em; vertical-align: middle;">🤖</span>
+            </h2>
+            <div style="width: 60px; height: 4px; background: #d32f2f; margin: 0 auto 12px auto; border-radius: 2px;"></div>
+        </div>
+        <div class="w-100 w-md-auto" style="max-width: 350px;">
+            <div id="ai-loading" style="display:none; text-align:center; margin:0 0 12px 0;">
+                <span id="ai-spinner" class="spinner-border text-danger" role="status" style="width: 2.5rem; height: 2.5rem; vertical-align: middle;">
+                    <span class="visually-hidden">Loading...</span>
+                </span>
+                <span id="ai-thinking-text" style="font-size: 1.1em; margin-right: 12px; vertical-align: middle; color: #111;">המומחה שלנו חושב עבורך<span id="ai-dots"></span></span>
             </div>
+            <div id="ai-intro" class="fs-6 text-center" style="color: #333; min-height: 24px;"></div>
         </div>
     </div>
 </div>
@@ -28,24 +47,23 @@
     <table class="table table-bordered compare-table text-center align-middle">
         <thead>
             <tr>
-                <th class="model-th" style="position:relative;">דגם</th>
+                <th class="model-th" style="position:relative;"></th>
                 {% for bike in bikes %}
-                <th class="specs-th">
-                    <!-- Remove Button -->
-                    <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
-                            data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>
-                    <img src="{{ bike['Image URL'] }}" alt="{{ bike['Model'] }}" class="img-fluid mb-2" style="max-height: 120px; object-fit: contain;">
-                    <h5 class="mb-1">{{ bike['Firm'] }}</h5>
-                    <p class="mb-1">{{ bike['Model'] }}</p>
-                </th>
+                <th class="specs-th align-middle" style="min-width: 160px; max-width: 180px;">
+    <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
+            data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="height: 100px; display: flex; align-items: center;">
+            <img src="{{ bike['Image URL'] }}" alt="{{ bike['Model'] }}" class="img-fluid mb-2"
+                 style="max-height: 100px; max-width: 100%; object-fit: contain; border-radius: 6px; background: #f8f9fa; padding: 4px;">
+        </div>
+        <h5 class="mb-1" style="font-size: 1.05em; color: #000000; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;" title="{{ bike['Firm'] }}">{{ bike['Firm'] }}</h5>
+    </div>
+</th>
                 {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% set spec_fields = [
-            "Year", "Frame", "Motor", "Battery", "Fork", "Rear Shox",
-            ] %}
-
             <!-- 🟥 PRICE ROW -->
             <tr>
                 <th style="min-width: 150px; background: #fff;">Price</th>
@@ -61,25 +79,20 @@
                 {% endfor %}
             </tr>
 
-            <!-- 🟩 ALL OTHER FIELDS -->
-            {% for field in spec_fields %}
+            <!-- 🟩 ALL FIELDS FROM DB -->
+            {% for field in fields_to_show %}
             <tr>
                 <th style="min-width: 150px; background: #fff;">{{ field }}</th>
                 {% for bike in bikes %}
                 <td class="collapsible-cell">
                     {% set value = bike.get(field, '') %}
                     {% set value_str = value|string %}
-                    {% if value_str|length > 50 %}
-                        <div class="cell-content">
-                            <span class="cell-text collapsed">{{ value_str[:50] }}...</span>
-                            <span class="cell-text expanded" style="display: none;">{{ value_str }}</span>
-                            <button class="btn btn-link btn-sm toggle-text" style="padding: 0; margin-top: 5px; font-size: 0.8em;">
-                                <span class="show-more">הצג עוד</span>
-                                <span class="show-less" style="display: none;">הצג פחות</span>
-                            </button>
-                        </div>
+                    {% if value_str|length > 40 %}
+                        <span class="cell-short">{{ value_str[:60] }}...</span>
+                        <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                        <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
                     {% else %}
-                        {{ value }}
+                        {{ value_str }}
                     {% endif %}
                 </td>
                 {% endfor %}
@@ -99,19 +112,10 @@
 
 
 <div dir="rtl" class="container mt-4" id="ai-comparison-container" style="display: none;">
-    <h2 class="mb-3 text-center">השוואת מומחה 🤖</h2>
-    <div id="ai-loading" style="display:none; text-align:center; margin:20px;">
-        <span id="ai-clock">🕒</span>
-        <span>המומחה שלנו חושב מהו הדגם המתאים ביותר עבורך...</span>
-      </div>
-    <div id="ai-intro" class="mb-3 fs-5 text-center"></div>
-
     <div class="bg-light rounded p-3 mb-4">
         <h4>🏆 ההמלצה שלנו</h4>
         <p id="ai-recommendation" class="fw-bold"></p>
     </div>
-
-
     <div class="mb-4" id="ai-bike-analysis"></div>
 
     <div class="alert alert-info text-center" id="ai-expert-tip" role="alert"></div>
@@ -125,7 +129,7 @@
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.363.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.617h-.001a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.455 4.436-9.89 9.893-9.89 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.896 6.991c-.003 5.455-4.438 9.89-9.893 9.89m8.413-18.304A11.815 11.815 0 0 0 12.05.001C5.495 0 .001 5.493 0 12.247c0 2.159.566 4.268 1.641 6.115L.057 23.925a1.001 1.001 0 0 0 1.225 1.225l5.605-1.584a11.88 11.88 0 0 0 5.162 1.211h.005c6.554 0 11.947-5.492 11.95-12.247a11.82 11.82 0 0 0-3.486-8.651"/>
         </svg>
     </span>
-    <span style="margin-right: 10px; font-weight: bold; color: #25D366; background: #fff; padding: 6px 14px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); font-size: 1.1em;">שתף!</span>
+    <span style="margin-right: 10px; font-weight: bold; color: #25D366; background: #fff; padding: 6px 14px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); font-size: 1.1em;">!שתף</span>
 </div>
 
 {% endblock %}

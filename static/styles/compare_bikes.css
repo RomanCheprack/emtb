@@ -50,42 +50,49 @@ th {
     text-overflow: ellipsis;
 }
 
-/* Collapsible cell styles */
-.collapsible-cell {
-    max-width: 200px;
-    word-wrap: break-word;
+.model-th {
+    position: sticky !important;
+    left: 0;
+    background: #fff;
+    z-index: 4;
+    white-space: nowrap;
 }
 
-.cell-content {
+.collapsible-cell {
+    max-width: 220px;
+    word-break: break-word;
     position: relative;
 }
-
-.cell-text {
-    display: block;
-    line-height: 1.4;
+.cell-short {
+    display: inline;
+}
+.cell-full {
+    display: none;
+}
+.show-more-btn {
+    color: #007bff;
+    background: none;
+    border: none;
+    padding: 0 2px;
+    margin-right: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+}
+.show-more-btn:focus {
+    outline: none;
 }
 
-.cell-text.collapsed {
-    max-height: 3em;
+.specs-th img {
+    max-height: 100px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #f8f9fa;
+    padding: 4px;
+}
+.specs-th h5, .specs-th p {
+    white-space: nowrap;
     overflow: hidden;
-}
-
-.toggle-text {
-    color: #007bff !important;
-    text-decoration: none !important;
-    font-size: 0.75em !important;
-    padding: 2px 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    background: none !important;
-}
-
-.toggle-text:hover {
-    color: #0056b3 !important;
-    text-decoration: underline !important;
-}
-
-.toggle-text:focus {
-    box-shadow: none !important;
-    outline: none !important;
+    text-overflow: ellipsis;
+    max-width: 140px;
 }

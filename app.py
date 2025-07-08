@@ -204,8 +204,6 @@ def load_all_bikes():
                 'Pedals': bike.pedals,
                 'B.B': bike.bb,
                 'מספר הילוכים:': bike.gear_count,
-                
-                # Additional fields that were missing
                 'Weight': bike.weight,
                 'Size': bike.size,
                 'Hub': bike.hub,
@@ -389,13 +387,45 @@ def compare_bikes():
     compare_list = get_compare_list()
     all_bikes = load_all_bikes()
     bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
-    spec_fields = [
-        ("Price", "מחיר"),
-        ("Motor", "מנוע"),
-        ("Battery", "סוללה"),
-        ("Frame", "שלדה"),
-    ]
-    return render_template('compare_bikes.html', bikes=bikes_to_compare, specs=spec_fields)
+
+    # Key fields to always show
+    always_show = ["Model", "Price", "Year", "Motor", "Battery"]
+
+    # Disc_price: show if at least one bike has it non-empty
+    show_disc_price = any(
+        bike.get("Disc_price") not in [None, '', 'N/A', '#N/A']
+        for bike in bikes_to_compare
+    )
+    if show_disc_price:
+        always_show.append("Disc_price")
+
+    # Get all unique fields from all bikes
+    all_fields = set()
+    for bike in bikes_to_compare:
+        all_fields.update(bike.keys())
+
+    # Remove fields you don't want to show
+    exclude_fields = {'id', 'slug', 'Image URL', 'Product URL'}
+    candidate_fields = [f for f in all_fields if f not in exclude_fields and f not in always_show]
+
+    # Only keep fields that are present and non-empty in ALL bikes
+    fields_to_show = []
+    for field in candidate_fields:
+        if all(
+            field in bike and bike[field] not in [None, '', 'N/A', '#N/A']
+            for bike in bikes_to_compare
+        ):
+            fields_to_show.append(field)
+
+    # Final order: always_show first, then the rest (sorted)
+    fields_to_show = always_show + sorted(fields_to_show)
+
+    return render_template(
+        'compare_bikes.html',
+        bikes=bikes_to_compare,
+        fields_to_show=fields_to_show,
+        # ...other context...
+    )
 
 @app.route('/comparison/<path:slug>')
 def view_comparison(slug):

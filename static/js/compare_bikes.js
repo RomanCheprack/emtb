@@ -1,9 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     runAiComparison();
     
-    // Initialize collapsible cells
-    initializeCollapsibleCells();
-    
     // WhatsApp floating share button logic
     var floatBtn = document.getElementById('whatsapp-share-float');
     if (floatBtn) {
@@ -20,52 +17,38 @@
     }
 });
 
-// Initialize collapsible cells functionality
-function initializeCollapsibleCells() {
-    // Add click event listeners to toggle buttons
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.toggle-text')) {
-            e.preventDefault();
-            const button = e.target.closest('.toggle-text');
-            const cellContent = button.closest('.cell-content');
-            const collapsedText = cellContent.querySelector('.cell-text.collapsed');
-            const expandedText = cellContent.querySelector('.cell-text.expanded');
-            const showMore = button.querySelector('.show-more');
-            const showLess = button.querySelector('.show-less');
-            
-            if (collapsedText.style.display !== 'none') {
-                // Expand
-                collapsedText.style.display = 'none';
-                expandedText.style.display = 'block';
-                showMore.style.display = 'none';
-                showLess.style.display = 'inline';
-            } else {
-                // Collapse
-                collapsedText.style.display = 'block';
-                expandedText.style.display = 'none';
-                showMore.style.display = 'inline';
-                showLess.style.display = 'none';
-            }
+// Animated thinking dots and cycling text
+let thinkingInterval;
+const thinkingMessages = [
+    "המומחה שלנו חושב עבורך",
+    "בודק מפרטים...",
+    "מנתח יתרונות וחסרונות...",
+    "מחשב המלצה אישית..."
+];
+let thinkingIndex = 0;
+
+function startThinkingAnimation() {
+    const textElem = document.getElementById('ai-thinking-text');
+    const dotsElem = document.getElementById('ai-dots');
+    thinkingIndex = 0;
+    let dotCount = 0;
+    if (!textElem || !dotsElem) return;
+    thinkingInterval = setInterval(() => {
+        // Cycle message every 2.5 seconds
+        if (dotCount % 5 === 0) {
+            textElem.textContent = thinkingMessages[thinkingIndex % thinkingMessages.length];
+            thinkingIndex++;
         }
-    });
+        // Animate dots
+        dotsElem.textContent = '.'.repeat(dotCount % 4);
+        dotCount++;
+    }, 500);
 }
 
-// Clock animation variables
-let clockInterval;
-function startClockAnimation() {
-    const clock = document.getElementById('ai-clock');
-    if (!clock) return;
-    const clocks = ['🕛','🕐','🕑','🕒','🕓','🕔','🕕','🕖','🕗','🕘','🕙','🕚'];
-    let i = 0;
-    clockInterval = setInterval(() => {
-        clock.textContent = clocks[i % clocks.length];
-        i++;
-    }, 300);
-}
-function stopClockAnimation() {
-    clearInterval(clockInterval);
-    const clock = document.getElementById('ai-clock');
-    if (clock) clock.textContent = '🕒';
+function stopThinkingAnimation() {
+    clearInterval(thinkingInterval);
+    const dotsElem = document.getElementById('ai-dots');
+    if (dotsElem) dotsElem.textContent = '';
 }
 
 // Delegate remove button clicks
@@ -86,16 +69,34 @@ document.body.addEventListener('click', function (e) {
     }
 });
 
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('show-more-btn')) {
+        const btn = e.target;
+        const cell = btn.closest('.collapsible-cell');
+        const shortSpan = cell.querySelector('.cell-short');
+        const fullSpan = cell.querySelector('.cell-full');
+        if (btn.textContent.includes('הצג עוד')) {
+            shortSpan.style.display = 'none';
+            fullSpan.style.display = 'inline';
+            btn.textContent = 'הצג פחות';
+        } else {
+            shortSpan.style.display = 'inline';
+            fullSpan.style.display = 'none';
+            btn.textContent = 'הצג עוד';
+        }
+    }
+});
+
 function runAiComparison() {
     const container = document.getElementById("ai-comparison-container");
     container.style.display = "block";
-    container.scrollIntoView({ behavior: "smooth" });
+    //container.scrollIntoView({ behavior: "smooth" });
 
     // Show loading message
     const loadingDiv = document.getElementById('ai-loading');
     if (loadingDiv) {
         loadingDiv.style.display = 'block';
-        startClockAnimation();
+        startThinkingAnimation();
     }
 
     fetch("/api/compare_ai_from_session")
@@ -104,7 +105,7 @@ function runAiComparison() {
             // Hide loading message
             if (loadingDiv) {
                 loadingDiv.style.display = 'none';
-                stopClockAnimation();
+                stopThinkingAnimation();
             }
 
             if (data.error) {
@@ -170,7 +171,6 @@ function runAiComparison() {
                 card.innerHTML = `
                     <div class="card-header fw-bold d-flex justify-content-between align-items-center">
                         <span>${bike.name}</span>
-                        <button class="btn btn-danger btn-sm remove-bike-btn" data-bike-id="${bike.id}" title="הסר דגם">✖</button>
                     </div>
                     <div class="card-body">
                         <p><strong>👍 יתרונות:</strong> ${bike.pros?.join(', ')}</p>
@@ -193,7 +193,7 @@ function runAiComparison() {
         .catch(err => {
             if (loadingDiv) {
                 loadingDiv.style.display = 'none';
-                stopClockAnimation();
+                stopThinkingAnimation();
             }
             container.innerHTML = `<div class="alert alert-danger">שגיאה: ${err.message}</div>`;
         });
