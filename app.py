@@ -491,7 +491,12 @@ def compare_ai_from_session():
             messages=[
                 {
                     "role": "system",
-                    "content": "Act as a professional e-MTB sales expert located in Israel. Output valid JSON only. No markdown, no free text, no explanation. Keys must be in English. Text in values must be natural Hebrew with no grammar mistakes."
+                    "content": (
+                        "Act as a top-tier e-MTB sales and product expert based in Israel who has deep knowledge "
+                        "of the local market, parts specs, brands, riding styles, and value-for-money strategies. "
+                        "Use your understanding of online reviews (BikeRadar, Pinkbike, Reddit, etc.) to enrich your recommendations. "
+                        "Output valid JSON only. No Markdown. No free text. Keys must be in English. Text must be fluent, helpful, and natural in Hebrew."
+                    )
                 },
                 {
                     "role": "user",
@@ -563,55 +568,53 @@ def compare_ai_from_session():
 
 
 def create_ai_prompt(bikes):
-    # Fields to exclude from AI comparison
     excluded_fields = {"id", "slug", "Image URL", "Product URL"}
 
-    # Collect all unique keys across bikes (excluding irrelevant ones)
     all_fields = set()
     for bike in bikes:
         all_fields.update(bike.keys())
     important_fields = sorted(all_fields - excluded_fields)
 
-    # Normalize bikes into a simplified list
     simplified_bike_data = []
     for bike in bikes:
         clean_bike = {"name": bike.get("Model", "דגם לא ידוע")}
         for field in important_fields:
             clean_bike[field] = bike.get(field, "לא ידוע")
         simplified_bike_data.append(clean_bike)
-    #print(simplified_bike_data)
 
-    # Build the prompt
+    bikes_json = {"bikes": simplified_bike_data}
+
     prompt = (
         "🧠 אתה מומחה במכירת והשוואת אופני הרים חשמליים (e-MTB) בישראל.\n"
-        "קיבלת טבלת מידע מובנית על מספר דגמים.\n"
-        "בנה השוואה ביניהם לפי מבנה JSON הבא בלבד:\n\n"
+        "קיבלת מידע על מספר דגמים.\n"
+        "עליך לבצע השוואה מעמיקה ביניהם, לפי המבנה הבא בלבד:\n\n"
         "{\n"
-        '  "intro": "פתיח ידידותי בעברית כמו מוחה לאופניים שמדבר נחמד בגוף ראשון אבל בגובה העיניים",\n'
-        '  "recommendation": "הסבר בהרחבה מהו הדגם המומלץ ולמה אתה ממליץ אליו. התייחס למפרט חלקים של האופניים, למחיר וההנחות, אם יש ביקורות ברשת ציין אותם ואת המקורות וכל מידע נוסף שתוכל להוסיף לרוכש",\n'
+        '  "intro": "היי! איזה כיף שאתה משווה בין הדגמים – הנה ההתרשמות האישית שלי בתור אחד שחי אופני הרים חשמליים כבר שנים:",\n'
+        '  "recommendation": "הסבר איזה דגם הכי משתלם ומדוע. התייחס למפרט, למחיר, לשם המותג, לתחזוקה ולתגובות רוכבים אם אתה מכיר. אם קראת עליו באתרי סקירה או פורומים, ציין זאת והבא טיעונים מחזקים מהמקורות (למשל Pinkbike, BikeRadar, Reddit ועוד).",\n'
         '  "bikes": [\n'
         '    {\n'
         '      "name": "שם הדגם",\n'
-        '      "pros": ["תציין את היתרונות בהרחבה תוך התייחסות למפרט החלקים, התמורה למחיר במיוחד עם יש הנחות"],\n'
-        '      "cons": ["תציין את החסרונות בהרחבה תוך התייחסות למפרט החלקים מבחינת המחיר מפרט החלקים עמידות, התאמה, אמינות"],\n'
-        '      "best_for": "הסבר בהרחבה מיהו הרוכב שהדגם מתאים לו ולמה. אל תשתמש במילים כמו "מקצועניים" תוך התייחסות לקטגוריה של האופניים תחרותי או אנדורו, מהלך בולמים ארוך זנב קשיח או שיכוך מלא ועוד. "\n'
+        '      "pros": ["תציין יתרונות אמיתיים שקשורים לרכיבה, מחיר, חלקים, משקל, נוחות, אמינות, תמיכה של החנות וכו׳"],\n'
+        '      "cons": ["תציין חסרונות אמיתיים – מפרט נחות, מחיר גבוה מדי, משקל, חלקים בסיסיים, מותג פחות ידוע וכו׳"],\n'
+        '      "best_for": "מיהו הרוכב שהאופניים האלה הכי מתאימים לו ולמה. לא להשתמש במונחים עמומים כמו "מקצוענים". להעדיף תיאור סגנון רכיבה, שימוש, מיקום בארץ, תקציב או תנאי שטח."\n'
         '    }, ...\n'
         '  ],\n'
-        '  "expert_tip": "טיפ מעניין, מצחיק, חשוב ובעל ערך רב לרוכב המחפש לרכוש אופניים חשמלי"\n'
+        '  "expert_tip": "טיפ של אלופים: אל תבחר רק לפי מספרים. תחשוב גם איפה אתה רוכב, כמה אתה שוקל, וכמה קל יהיה לתחזק את האופניים בעתיד."\n'
         "}\n\n"
         "❗ אל תשתמש ב-Markdown או טקסט חופשי. החזר JSON בלבד.\n"
-        "השתמש רק במפתחות באנגלית וערכים בטקסט טבעי בעברית.\n\n"
-        "📦 להלן נתוני האופניים:\n\n"
+        "השתמש רק במפתחות באנגלית וערכים בטקסט טבעי בעברית.\n"
+        "נסה להתבסס גם על מידע קיים מהאינטרנט שברשותך, כולל אתרי סקירות כמו Pinkbike, emtb-test.com, BikeRadar, Reddit פורומים של רוכבים וכו׳. אם קיימים יתרונות או חסרונות שידועים מהסקירות האלו, כלל אותם בהסברים שלך.\n\n"
+        "📦 להלן נתוני האופניים במבנה JSON תחת מפתח 'bikes':\n\n"
     )
 
-    prompt += json.dumps(simplified_bike_data, ensure_ascii=False, indent=2)
-
+    prompt += json.dumps(bikes_json, ensure_ascii=False, indent=2)
     prompt += (
         "\n\nבחר את התכונות החשובות להשוואה והשווה ביניהן.\n"
         "המבנה חייב להיות JSON תקני לפי הפורמט שהוגדר למעלה בלבד."
     )
 
     return prompt
+
 
 # --- NEW: WEBHOOK ENDPOINT ---
 # This route will be triggered by GitHub pushes to automatically pull and reload

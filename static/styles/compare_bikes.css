@@ -59,9 +59,11 @@ th {
 }
 
 .collapsible-cell {
-    max-width: 220px;
-    word-break: break-word;
-    position: relative;
+    max-width: 320px;
+    min-width: 120px;
+    word-break: normal;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 .cell-short {
     display: inline;
@@ -95,4 +97,14 @@ th {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 140px;
+}
+
+.compare-table th,
+.compare-table td {
+    padding: 12px 16px;
+    font-size: 1.05em;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    vertical-align: middle;
 }
