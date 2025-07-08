@@ -52,31 +52,21 @@ function copyShareUrl() {
 
 // Function to share on social media
 function shareOnSocial(platform) {
-    const shareUrl = document.getElementById('shareUrl').value;
-    const title = document.title;
-    const description = document.querySelector('meta[name="description"]')?.content || '';
-    
-    let shareLink = '';
-    
-    switch(platform) {
-        case 'facebook':
-            shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-            break;
-        case 'twitter':
-            shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`;
-            break;
-        case 'whatsapp':
-            shareLink = `https://wa.me/?text=${encodeURIComponent(title + ' ' + shareUrl)}`;
-            break;
-        case 'telegram':
-            shareLink = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`;
-            break;
-        default:
-            return;
+    var url = encodeURIComponent(window.location.href);
+    var text = encodeURIComponent(document.title);
+
+    var shareUrl = "";
+    if (platform === "facebook") {
+        shareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+    } else if (platform === "whatsapp") {
+        shareUrl = "https://wa.me/?text=" + url;
+    } else if (platform === "telegram") {
+        shareUrl = "https://t.me/share/url?url=" + url + "&text=" + text;
     }
-    
-    // Open in new window
-    window.open(shareLink, '_blank', 'width=600,height=400');
+
+    if (shareUrl) {
+        window.open(shareUrl, "_blank", "noopener,noreferrer");
+    }
 }
 
 // Function to print the comparison

@@ -9,10 +9,26 @@
     background: transparent;
 }
 
-html {
+html, body {
+    overflow-x: hidden;
     font-size: 16px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.container, .container-fluid {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body[dir="rtl"], [dir="rtl"] {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 

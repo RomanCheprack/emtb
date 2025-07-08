@@ -13,46 +13,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <!-- Share Section -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <i class="fas fa-share-alt"></i> שתף השוואה זו
-                    </h5>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="shareUrl" value="{{ share_url }}" readonly>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="copyShareUrl()">
-                                <i class="fas fa-copy"></i> העתק קישור
-                            </button>
-                        </div>
-                    </div>
-                    <small class="text-muted">תאריך השוואה: {{ comparison.created_at.strftime('%d/%m/%Y %H:%M') }}</small>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Bikes Overview -->
     <div class="row mb-4">
         <div class="col-12">
-            <h2>השוואה בין {{ bikes|length }} אופניים</h2>
-            <div class="row">
+            <h2 dir="rtl" class="mb-4 text-end" style="color: #111; font-weight: 800; border-bottom: 4px solid #d32f2f; display: inline-block; padding-bottom: 4px; width: 100%; margin-top: 24px;">השוואה בין {{ bikes|length }} אופניים</h2>
+            <div class="row g-3">
                 {% for bike in bikes %}
                 <div class="col-md-{{ 12 // bikes|length }} mb-3">
-                    <div class="card h-100">
+                    <div class="card h-100 shadow-sm" style="border-radius: 10px;">
                         {% if bike['Image URL'] %}
-                        <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Firm'] }} {{ bike['Model'] }}">
+                        <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Firm'] }} {{ bike['Model'] }}" style="object-fit: contain; max-height: 160px; background: #f8f9fa;">
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ bike['Firm'] }} {{ bike['Model'] }}</h5>
-                            <p class="card-text">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="color: #000000; font-weight: 700;">{{ bike['Firm'] }} {{ bike['Model'] }}</h5>
+                            <p class="card-text" style="color: #222;">
                                 <strong>מחיר:</strong> {{ bike['Price'] }}<br>
                                 {% if bike['Disc_price'] %}
-                                <strong>מחיר מוזל:</strong> {{ bike['Disc_price'] }}<br>
+                                <strong>מחיר מוזל:</strong> <span style="color: #d32f2f;">{{ bike['Disc_price'] }}</span><br>
                                 {% endif %}
                                 <strong>שנה:</strong> {{ bike['Year'] }}
                             </p>
@@ -66,38 +43,38 @@
 
     <!-- AI Comparison Results -->
     {% if comparison_data %}
-    <div class="row">
+    <div dir="rtl" class="row">
         <div class="col-12">
             <!-- Intro -->
             {% if comparison_data.intro %}
-            <div class="card mb-4">
+            <div class="card mb-4 shadow-sm" style="border-right: 4px solid #d32f2f;">
                 <div class="card-body">
-                    <h4>מבוא</h4>
-                    <p>{{ comparison_data.intro }}</p>
+                    <h4 style="color: #d32f2f;"><i class="fas fa-info-circle"></i>המומחה</h4>
+                    <p style="color: #222;">{{ comparison_data.intro }}</p>
                 </div>
             </div>
             {% endif %}
 
             <!-- Recommendation -->
             {% if comparison_data.recommendation %}
-            <div class="card mb-4 border-primary">
-                <div class="card-header bg-primary text-white">
+            <div class="card mb-4 border-0 shadow-sm" style="border-right: 4px solid #d32f2f;">
+                <div class="card-header bg-danger text-white" style="border-radius: 10px 10px 0 0;">
                     <h4><i class="fas fa-star"></i> המלצת המומחה</h4>
                 </div>
                 <div class="card-body">
-                    <p>{{ comparison_data.recommendation }}</p>
+                    <p style="color: #111;">{{ comparison_data.recommendation }}</p>
                 </div>
             </div>
             {% endif %}
 
             <!-- Individual Bike Analysis -->
             {% if comparison_data.bikes %}
-            <div class="row">
+            <div class="row g-3">
                 {% for bike_analysis in comparison_data.bikes %}
                 <div class="col-md-{{ 12 // comparison_data.bikes|length }} mb-4">
-                    <div class="card h-100">
-                        <div class="card-header">
-                            <h5>{{ bike_analysis.name }}</h5>
+                    <div class="card h-100 shadow-sm" style="border-radius: 10px;">
+                        <div class="card-header" style="background: #f8f9fa;">
+                            <h5 style="color: #d32f2f;">{{ bike_analysis.name }}</h5>
                         </div>
                         <div class="card-body">
                             <!-- Pros -->
@@ -134,8 +111,8 @@
 
             <!-- Expert Tip -->
             {% if comparison_data.expert_tip %}
-            <div class="card mb-4 border-warning">
-                <div class="card-header bg-warning">
+            <div class="card mb-4 border-0 shadow-sm" style="border-right: 4px solid #ffc107;">
+                <div class="card-header bg-warning" style="border-radius: 10px 10px 0 0;">
                     <h4><i class="fas fa-lightbulb"></i> טיפ מומחה</h4>
                 </div>
                 <div class="card-body">
@@ -150,10 +127,7 @@
     <!-- Action Buttons -->
     <div class="row mt-4">
         <div class="col-12 text-center">
-            <a href="{{ url_for('compare_bikes') }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> צור השוואה חדשה
-            </a>
-            <a href="{{ url_for('bikes') }}" class="btn btn-secondary">
+            <a href="{{ url_for('bikes') }}" class="btn btn-outline-dark" style="font-weight: 600;">
                 <i class="fas fa-bicycle"></i> חזור לכל האופניים
             </a>
         </div>
@@ -161,32 +135,17 @@
 </div>
 
 <!-- Social Media Share Buttons -->
-<div class="row mt-4">
+<div class="row mt-4" dir="rtl">
     <div class="col-12">
-        <div class="card">
+        <div class="card shadow-sm">
             <div class="card-body text-center">
-                <h6>שתף ברשתות חברתיות:</h6>
+                <h6 style="color: #d32f2f;">שתף ברשתות חברתיות:</h6>
                 <div class="btn-group" role="group">
                     <button class="btn btn-outline-primary" onclick="shareOnSocial('facebook')" title="שתף בפייסבוק">
                         <i class="fab fa-facebook"></i>
                     </button>
-                    <button class="btn btn-outline-info" onclick="shareOnSocial('twitter')" title="שתף בטוויטר">
-                        <i class="fab fa-twitter"></i>
-                    </button>
                     <button class="btn btn-outline-success" onclick="shareOnSocial('whatsapp')" title="שתף בווטסאפ">
                         <i class="fab fa-whatsapp"></i>
-                    </button>
-                    <button class="btn btn-outline-primary" onclick="shareOnSocial('telegram')" title="שתף בטלגרם">
-                        <i class="fab fa-telegram"></i>
-                    </button>
-                </div>
-                
-                <div class="mt-3">
-                    <button class="btn btn-outline-secondary me-2" onclick="printComparison()" title="הדפס השוואה">
-                        <i class="fas fa-print"></i> הדפס
-                    </button>
-                    <button class="btn btn-outline-secondary" onclick="downloadAsPDF()" title="הורד כקובץ PDF">
-                        <i class="fas fa-file-pdf"></i> הורד PDF
                     </button>
                 </div>
             </div>
