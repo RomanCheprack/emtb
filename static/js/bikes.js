@@ -144,7 +144,7 @@
                                 <h6 class="card-text-price">
                                    ${bike.Disc_price && bike.Disc_price !== "#N/A"
                                         ? `<span style="text-decoration: line-through; color: #888;">₪${bike.Price}</span>
-                                        <span class="text-danger fw-bold ms-2">${bike.Disc_price}</span>`
+                                        <span class="text-danger fw-bold ms-2">₪${bike.Disc_price}</span>`
                                    : `₪${bike.Price}`}
 
                                 </h6>

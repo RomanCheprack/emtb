@@ -98,6 +98,20 @@
                 {% endfor %}
             </tr>
             {% endfor %}
+            <tr>
+                <th style="min-width: 150px; background: #fff;">רכישה</th>
+                {% for bike in bikes %}
+                <td>
+                    {% if bike['Product URL'] %}
+                        <a href="{{ bike['Product URL'] }}" target="_blank" rel="noopener" class="btn btn-success" style="font-weight:600;">
+                            רכישה
+                        </a>
+                    {% else %}
+                        <span class="text-muted">לא זמין</span>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
         </tbody>
 
     </table>
