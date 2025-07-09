@@ -134,9 +134,6 @@
                         bikesList.innerHTML += `
                     <div class="col-6 col-lg-2 mb-2 px-1">
                         <div class="card h-100 position-relative bike-card" data-bike='${JSON.stringify(bike)}'>
-                            <div class="position-absolute top-0 end-0 p-2">
-                                <button class="btn btn-outline-danger compare-btn" data-bike-id="${bike.id}">השווה</button>
-                            </div>
                             <img src="${bike["Image URL"]}" class="card-img-top" alt="${bike.Model}">
                             <div class="card-body">
                                 <h4 class="card-firm">${bike.Firm}</h4>
@@ -149,8 +146,14 @@
 
                                 </h6>
                                 <p class="card-text-year">${bike.Year}</p>
-                                <div class="details-btn">
-                                    <button type="button" class="btn btn-primary details-btn" data-bike='${JSON.stringify(bike)}'>מפרט</button>
+                                <div class="details-btn mb-2">
+                                    <button type="button" class="btn btn-outline-dark details-btn" data-bike='${JSON.stringify(bike)}'>מפרט</button>
+                                </div>
+                                <div class="compare-btn-container">
+                                    <button class="btn btn-compare compare-btn" data-bike-id="${bike.id}">
+                                        <i class="fas fa-balance-scale me-1"></i>
+                                        הוסף להשוואה
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -192,11 +195,11 @@
             const card = btn.closest(".card");
             if (compareList.includes(bikeId)) {
                 btn.classList.add("selected");
-                btn.textContent = "הסר השוואה";
+                btn.innerHTML = '<i class="fas fa-check me-1"></i>הסר השוואה';
                 card.classList.add("compare-selected");
             } else {
                 btn.classList.remove("selected");
-                btn.textContent = "השווה";
+                btn.innerHTML = '<i class="fas fa-balance-scale me-1"></i>הוסף להשוואה';
                 card.classList.remove("compare-selected");
             }
         });
@@ -205,7 +208,7 @@
         const compareCount = document.getElementById("compare-count");
         if (compareList.length > 0) {
             compareBtn.style.display = "inline-block";
-            compareCount.textContent = `(${compareList.length})`;
+            compareCount.textContent = `${compareList.length}`;
         } else {
             compareBtn.style.display = "none";
         }

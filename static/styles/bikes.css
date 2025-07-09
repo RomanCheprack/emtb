@@ -76,15 +76,91 @@
     text-align: right;
 }
 
-.compare-btn.selected {
-    background-color: #f30303;
-    color: #fff;
-    border-color: #f30303;
+/* New Compare Button Styles */
+.compare-btn-container {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.btn-compare {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-compare:hover {
+    background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.btn-compare:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.btn-compare.selected {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-compare.selected:hover {
+    background: linear-gradient(135deg, #218838 0%, #1ea085 100%);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+/* Reduce margins for other card elements to make room */
+.card-firm {
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+    margin-bottom: 4px;
+}
+
+.card-title {
+    text-align: center;
+    min-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 4px;
+}
+
+.card-text-price {
+    text-align: center;
+    min-height: 20px;
+    margin-bottom: 4px;
+}
+
+.card-text-year {
+    text-align: center;
+    min-height: 20px;
+    margin-bottom: 8px;
+}
+
+.details-btn {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 8px;
 }
 
 .card.compare-selected {
-    opacity: 0.7;
-    box-shadow: 0 0 0 2px #f30303;
+    opacity: 0.9;
+    box-shadow: 0 0 0 3px #28a745, 0 4px 12px rgba(40, 167, 69, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
 }
 
 .position-absolute {
