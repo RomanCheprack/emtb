@@ -33,6 +33,23 @@
     <!-- Font Awesome CDN (latest 6.x version) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <!-- For .ico file -->
+
+    <!-- For .png file (modern browsers) -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/rideal_logo_black.jpg') }}">
+    
+    <!-- Open Graph / Facebook / WhatsApp / Telegram -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rideal.co.il/">
+    <meta property="og:title" content="Rideal - השוואת אופני eMTB בעברית">
+    <meta property="og:description" content="השווה דגמי אופני הרים חשמליים בעברית, בקלות ובחינם.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.jpg', _external=True) }}">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rideal.co.il/">
+    <meta name="twitter:title" content="Rideal - השוואת אופני eMTB בעברית">
+    <meta name="twitter:description" content="השווה דגמי אופני הרים חשמליים בעברית, בקלות ובחינם.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.jpg', _external=True) }}">
 </head>
 
 <body>
