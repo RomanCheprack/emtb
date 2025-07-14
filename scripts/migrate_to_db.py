@@ -4,7 +4,8 @@ from models import init_db, get_session, Bike
 
 def load_bikes_from_json():
     """Load all bikes from standardized JSON files for migration purposes"""
-    data_dir = "data"
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
+
     
     # Try to load from combined standardized file first
     combined_file = os.path.join(data_dir, "all_bikes_standardized.json")
