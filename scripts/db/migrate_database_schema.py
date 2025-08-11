@@ -7,7 +7,7 @@ def migrate_database_schema():
     print("Starting database schema migration...")
     
     # Get the database file path
-    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'emtb.db')
+    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'emtb.db')
     
     if not os.path.exists(db_path):
         print("Database file not found. Creating new database...")

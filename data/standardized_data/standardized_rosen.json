@@ -1,0 +1,300 @@
+[
+  {
+    "firm": "Merida",
+    "model": "eBIG-NINE 475",
+    "year": null,
+    "price": 18179,
+    "disc_price": 13998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/MERIDA-eBIG-NINE-475-אופני-הרים-חשמליים"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT A70 POWERPLAY",
+    "year": null,
+    "price": 38528,
+    "disc_price": 19998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופניים-חשמליים-אופניים-חשמליות-אופני-הרים-חשמליים-ROCKY-MOUNTAIN-INSTINCT-A70-POWERPLAY-EMTB"
+  },
+  {
+    "firm": "BMC",
+    "model": "Fourstroke AMP LT THREE XC",
+    "year": null,
+    "price": 34998,
+    "disc_price": 27998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-BMC-Fourstroke-AMP-LT-THREE-XC"
+  },
+  {
+    "firm": "BMC",
+    "model": "Fourstroke AMP LT TWO XC",
+    "year": null,
+    "price": 41998,
+    "disc_price": 32998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/BMC-Fourstroke-AMP-LT-TWO-XC"
+  },
+  {
+    "firm": "BMC",
+    "model": "Fourstroke AMP LT ONE   XC",
+    "year": null,
+    "price": 54289,
+    "disc_price": 39998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-BMC-Fourstroke-AMP-LT-ONE-XC",
+    "size": "S, M, L"
+  },
+  {
+    "firm": "Merida",
+    "model": "eONE-SIXTY 575",
+    "year": null,
+    "price": 27498,
+    "disc_price": 19998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-MERIDA-eONE-SIXTY-575"
+  },
+  {
+    "firm": "Merida",
+    "model": "NEW   eONE-SIXTY 575 e-MTB",
+    "year": null,
+    "price": 27270,
+    "disc_price": 21998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-NEW-MERIDA-eONE-SIXTY-575-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT POWER PLAY  Carbon C 70  e-MTB",
+    "year": null,
+    "price": 56499,
+    "disc_price": 24998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-ROCKY-MOUNTAIN-INSTINCT-POWER-PLAY-C-70-e-MTB"
+  },
+  {
+    "firm": "Merida",
+    "model": "eONE-SIXTY 775",
+    "year": null,
+    "price": 32442,
+    "disc_price": 25954,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-750-MERIDA-eONE-SIXTY-775-e-MTB-w/h",
+    "size": "S, M, L,"
+  },
+  {
+    "firm": "Merida",
+    "model": "NEW  eONE-SIXTY 675 e-MTB",
+    "year": null,
+    "price": 30680,
+    "disc_price": 26998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-NEW-MERIDA-eONE-SIXTY-675-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "ALTITUDE A70 Power Play",
+    "year": null,
+    "price": 53120,
+    "disc_price": 27998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-ALTITUDE-A70-Power-Play",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "ALTITUDE A50 Power Play",
+    "year": null,
+    "price": 45300,
+    "disc_price": 24980,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-ALTITUDE-A50-Power-Play",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT A50 Power Play",
+    "year": null,
+    "price": 45572,
+    "disc_price": 21998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-INSTINCT-A50-Power-Play",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "Merida",
+    "model": "eONE-SIXTY 975",
+    "year": null,
+    "price": 36000,
+    "disc_price": 28998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/MERIDA-eONE-SIXTY-975-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "Instinct Carbon C70 Power Play",
+    "year": null,
+    "price": 57974,
+    "disc_price": 29898,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/index.php?dir=site&page=catalog&op=item&cs=24864",
+    "frame": "",
+    "fork": "",
+    "rear_shock": "",
+    "headset": "",
+    "stem": "",
+    "handlebar": "",
+    "grips": "",
+    "brakes": "",
+    "shifter": "",
+    "rear_derailleur": "",
+    "cassette": "",
+    "chain": "",
+    "spokes": "",
+    "rims": "",
+    "tires": "",
+    "seat_post": "",
+    "saddle": "",
+    "battery": "",
+    "screen": "",
+    "weight": ""
+  },
+  {
+    "firm": "Merida",
+    "model": "NEW  eONE-SIXTY 875 e-MTB",
+    "year": null,
+    "price": 34089,
+    "disc_price": 29998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמליים-NEW-MERIDA-eONE-SIXTY-875-e-MTB",
+    "chain": "LG500"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT Carbon C50 Power Play",
+    "year": null,
+    "price": 50690,
+    "disc_price": 26985,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/index.php?dir=site&page=catalog&op=item&cs=29394",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "Altitude Carbon C70 Power Play",
+    "year": null,
+    "price": 48239,
+    "disc_price": 33985,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/index.php?dir=site&page=catalog&op=item&cs=29119"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "ALTITUDE Carbon C70 Power Play",
+    "year": null,
+    "price": 54282,
+    "disc_price": 33985,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-ALTITUDE-C70-Power-Play",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "BMC",
+    "model": "140/150 מ\"מ   SCOR 4060 Z ST S e-MTB",
+    "year": null,
+    "price": 41665,
+    "disc_price": 24998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/SCOR-4060-Z-ST-S-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT A30 Power Play",
+    "year": null,
+    "price": 39920,
+    "disc_price": 19998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-INSTINCT-A30-Power-Play",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "BMC",
+    "model": "160/170 מ\"מ  SCOR 4060 Z LT S e-MTB",
+    "year": null,
+    "price": 41665,
+    "disc_price": 24998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/SCOR-4060-Z-LT-S-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "Fusion 30 Power Play",
+    "year": null,
+    "price": 19998,
+    "disc_price": 11998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/index.php?dir=site&page=catalog&op=item&cs=29109"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT SL A30 e-MTB",
+    "year": null,
+    "price": 32998,
+    "disc_price": 22998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-INSTINCT-SL-A30-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT SL A50 e-MTB",
+    "year": null,
+    "price": 38632,
+    "disc_price": 25998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-INSTINCT-SL-A50-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "Instinct  Carbon C70 Power Play",
+    "year": null,
+    "price": 53177,
+    "disc_price": 33985,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/אופני-הרים-חשמלים-New-ROCKY-MOUNTAIN-Instinct-C70"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT Carbon SL C50 e-MTB",
+    "year": null,
+    "price": 45766,
+    "disc_price": 32998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-INSTINCT-SL-C50-e-MTB"
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "ALTITUDE Carbon C90 Power Play",
+    "year": null,
+    "price": 69989,
+    "disc_price": 44998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-ALTITUDE-C90-Power-Play",
+    "battery": "",
+    "screen": ""
+  },
+  {
+    "firm": "Rocky Mountain",
+    "model": "INSTINCT Carbon SL C90 e-MTB",
+    "year": null,
+    "price": 74636,
+    "disc_price": 44998,
+    "image_url": "https://www.rosen-meents.co.il/anim.gif",
+    "product_url": "https://www.rosen-meents.co.il/ROCKY-MOUNTAIN-INSTINCT-SL-C90-e-MTB"
+  }
+]

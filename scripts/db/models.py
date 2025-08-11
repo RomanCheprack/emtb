@@ -198,8 +198,8 @@ class CompareCount(Base):
 
 # Database setup
 def get_database_url():
-    """Get absolute path to the emtb.db file inside /app directory"""
-    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    """Get absolute path to the emtb.db file in the project root directory"""
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
     db_path = os.path.join(base_dir, 'emtb.db')
     return f"sqlite:///{db_path}?check_same_thread=False"
 

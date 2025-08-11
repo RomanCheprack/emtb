@@ -19,8 +19,7 @@ instance/
 *.wsgi
 
 #data
-data/standardized_data/
-data/scraped_raw_data/
+
 
 #db
 emtb.db
