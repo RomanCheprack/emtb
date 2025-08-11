@@ -1,6 +1,13 @@
 import json
 import os
-from ..db.models import init_db, get_session, CompareCount
+import sys
+
+# Add the scripts directory to the Python path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+scripts_dir = os.path.join(current_dir, '..')
+sys.path.insert(0, scripts_dir)
+
+from db.models import init_db, get_session, CompareCount
 
 def migrate_compare_counts():
     """Migrate compare counts from JSON file to database"""

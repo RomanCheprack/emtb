@@ -1,14 +1,86 @@
+#!/usr/bin/env python3
+"""
+Standalone migration script for PythonAnywhere
+This script can be run directly without import issues
+"""
+
 import json
 import os
 import sys
+import re
+import urllib.parse
 
-# Add the scripts directory to the Python path for imports
+# Add the current directory to Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
-scripts_dir = os.path.join(current_dir, '..')
-sys.path.insert(0, scripts_dir)
+sys.path.insert(0, current_dir)
 
-from models import init_db, get_session, Bike
-from utils import clean_bike_field_value, load_bikes_from_json
+# Import database models
+from db.models import init_db, get_session, Bike
+
+def clean_bike_field_value(value):
+    """Clean bike field values to ensure they're safe for database storage"""
+    if value is None:
+        return None
+    
+    # Convert to string and clean any problematic characters
+    cleaned_value = str(value)
+    
+    # Remove all control characters except basic whitespace
+    cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in ' \t\n\r')
+    
+    # Replace problematic characters that could break JSON
+    cleaned_value = cleaned_value.replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+    cleaned_value = cleaned_value.replace('"', "'")   # Replace double quotes with single quotes
+    cleaned_value = cleaned_value.replace('\\', '/')  # Replace backslashes with forward slashes
+    cleaned_value = cleaned_value.replace(';', ', ')  # Replace semicolons with commas
+    
+    # Remove any remaining control characters
+    cleaned_value = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', cleaned_value)
+    
+    # Remove duplicate spaces
+    cleaned_value = re.sub(r'\s+', ' ', cleaned_value)
+    
+    # Trim whitespace
+    cleaned_value = cleaned_value.strip()
+    
+    return cleaned_value if cleaned_value else None
+
+def load_bikes_from_json():
+    """Load all bikes from standardized JSON files"""
+    # Get the path to the standardized data directory
+    standardized_data_dir = os.path.join(current_dir, '..', 'data', 'standardized_data')
+    
+    if not os.path.exists(standardized_data_dir):
+        print(f"Warning: Standardized data directory not found: {standardized_data_dir}")
+        return []
+    
+    # Try to load from combined standardized file first
+    combined_file = os.path.join(standardized_data_dir, "all_bikes_standardized.json")
+    if os.path.exists(combined_file):
+        print(f"Loading from combined file: {combined_file}")
+        with open(combined_file, 'r', encoding='utf-8') as f:
+            bikes = json.load(f)
+        return bikes
+    
+    # If no combined file, load from individual standardized files
+    standardized_files = [f for f in os.listdir(standardized_data_dir) if f.startswith('standardized_') and f.endswith('.json')]
+    
+    if not standardized_files:
+        print(f"Warning: No standardized JSON files found in {standardized_data_dir}")
+        return []
+    
+    all_bikes = []
+    for filename in standardized_files:
+        filepath = os.path.join(standardized_data_dir, filename)
+        print(f"Loading from {filename}...")
+        
+        with open(filepath, 'r', encoding='utf-8') as f:
+            bikes = json.load(f)
+        
+        all_bikes.extend(bikes)
+        print(f"  Loaded {len(bikes)} bikes from {filename}")
+    
+    return all_bikes
 
 def migrate_bikes_to_db():
     """Migrate all bikes from standardized JSON files to SQLite database"""
@@ -61,7 +133,6 @@ def migrate_bikes_to_db():
                 fork=clean_bike_field_value(bike_data.get('fork', '')),
                 rear_shock=clean_bike_field_value(bike_data.get('rear_shock', '')),
                 
-                
                 # Additional standardized fields
                 stem=clean_bike_field_value(bike_data.get('stem', '')),
                 handelbar=clean_bike_field_value(bike_data.get('handlebar', '')),
@@ -94,33 +165,39 @@ def migrate_bikes_to_db():
                 bb=clean_bike_field_value(bike_data.get('bottom_bracket', '')),
                 gear_count=clean_bike_field_value(bike_data.get('gear_count', '')),
                 
-                # Additional fields that might be in standardized data
+                # Additional fields
                 weight=clean_bike_field_value(bike_data.get('weight', '')),
                 size=clean_bike_field_value(bike_data.get('size', '')),
                 hub=clean_bike_field_value(bike_data.get('hub', '')),
                 brakes=clean_bike_field_value(bike_data.get('brakes', '')),
                 tires=clean_bike_field_value(bike_data.get('tires', '')),
                 
-                # NEW FIELDS - Added based on JSON analysis
+                # New fields
                 wh=bike_data.get('wh'),
                 gallery_images_urls=json.dumps(bike_data.get('gallery_images_urls', [])) if bike_data.get('gallery_images_urls') else None,
                 fork_length=bike_data.get('fork_length') or bike_data.get('fork length'),
-                sub_category=clean_bike_field_value(bike_data.get('sub_category') or bike_data.get('sub-category')),
-                rear_wheel_maxtravel=clean_bike_field_value(bike_data.get('rear_wheel_maxtravel') or bike_data.get('rear wheel maxtravel')),
-                battery_capacity=clean_bike_field_value(bike_data.get('battery_capacity')),
-                front_wheel_size=clean_bike_field_value(bike_data.get('front_wheel_size') or bike_data.get('front wheel size')),
-                rear_wheel_size=clean_bike_field_value(bike_data.get('rear_wheel_size') or bike_data.get('rear wheel size')),
-                battery_watts_per_hour=clean_bike_field_value(bike_data.get('battery_watts_per_hour') or bike_data.get('battery watts per hour'))
+                sub_category=clean_bike_field_value(bike_data.get('sub_category', '')),
+                rear_wheel_maxtravel=clean_bike_field_value(bike_data.get('rear_wheel_maxtravel', '')),
+                battery_capacity=clean_bike_field_value(bike_data.get('battery_capacity', '')),
+                front_wheel_size=clean_bike_field_value(bike_data.get('front_wheel_size', '')),
+                rear_wheel_size=clean_bike_field_value(bike_data.get('rear_wheel_size', '')),
+                battery_watts_per_hour=clean_bike_field_value(bike_data.get('battery_watts_per_hour', ''))
             )
             
             session.add(bike)
             migrated_count += 1
-            print(f"Added bike: {bike_data['id']}")
+            
+            if migrated_count % 10 == 0:
+                print(f"Migrated {migrated_count} bikes...")
         
         # Commit all changes
         session.commit()
-        print(f"Successfully migrated {migrated_count} standardized bikes to database")
+        print(f"Successfully migrated {migrated_count} bikes to database")
         print(f"Skipped {skipped_count} existing bikes")
+        
+        # Verify migration
+        total_bikes = session.query(Bike).count()
+        print(f"Total bikes in database: {total_bikes}")
         
     except Exception as e:
         print(f"Error during migration: {e}")
@@ -129,23 +206,7 @@ def migrate_bikes_to_db():
     finally:
         session.close()
 
-def migrate_compare_counts():
-    """Migrate compare counts from JSON to database (if needed)"""
-    print("Migrating compare counts...")
-    
-    try:
-        with open("data/compare_counts.json", "r", encoding="utf-8") as f:
-            compare_counts = json.load(f)
-        
-        # You can add a CompareCount model if you want to store this in DB
-        # For now, we'll keep it as JSON since it's simple
-        print(f"Compare counts loaded: {len(compare_counts)} entries")
-        
-    except FileNotFoundError:
-        print("No compare_counts.json found, skipping...")
-
 if __name__ == "__main__":
-    print("Starting migration process...")
+    print("Starting database migration...")
     migrate_bikes_to_db()
-    migrate_compare_counts()
-    print("Migration completed!") 
+    print("Migration completed successfully!")
