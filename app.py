@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash, abort, Response
+from flask_caching import Cache
 from dotenv import load_dotenv
 from openai import OpenAI
 from datetime import datetime, timedelta
@@ -7,6 +8,7 @@ import json
 import os
 import smtplib
 from scripts.models import init_db, get_session, Bike, Comparison, CompareCount
+from sqlalchemy import or_ # Added for OR queries in filter_bikes
 
 # --- NEW IMPORTS FOR WEBHOOK ---
 import subprocess # To run shell commands like 'git pull'
@@ -14,13 +16,63 @@ import hmac # For cryptographic signing and verification (webhook secret)
 import hashlib # For hashing (part of cryptographic signing)
 # --- END NEW IMPORTS ---
 
+def format_number_with_commas(value):
+    """Format a number with commas for better readability"""
+    if value is None:
+        return ""
+    
+    # Handle edge cases
+    if isinstance(value, (dict, list)):
+        return str(value)
+    
+    # Convert to string first to check if it's a text value
+    value_str = str(value).strip()
+    
+    # If it's the Hebrew text "צור קשר", return it as-is
+    if value_str == "צור קשר":
+        return value_str
+    
+    try:
+        # Convert to integer and format with commas
+        return "{:,}".format(int(float(value)))
+    except (ValueError, TypeError):
+        # If conversion fails, return the original value
+        return value_str
+
 app = Flask(__name__)
 load_dotenv(override=True)  # Load .env variables
+
+# Register Jinja2 filter for number formatting
+app.jinja_env.filters['format_number'] = format_number_with_commas
+
+# Enable debug mode for better error messages
+app.debug = True
+
+# Configure caching
+cache = Cache(config={
+    'CACHE_TYPE': 'simple',
+    'CACHE_DEFAULT_TIMEOUT': 300  # 5 minutes
+})
+cache.init_app(app)
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app.secret_key = 'app_secret_key'  # Set a secure secret key!
 
 # Initialize database
 init_db()
+
+# Global error handler for JSON routes
+@app.errorhandler(500)
+def internal_error(error):
+    if request.path.startswith('/api/') or request.path.startswith('/add_to_compare/') or request.path.startswith('/remove_from_compare/'):
+        return jsonify({'success': False, 'error': 'Internal server error'}), 500
+    return error
+
+@app.errorhandler(404)
+def not_found_error(error):
+    if request.path.startswith('/api/') or request.path.startswith('/add_to_compare/') or request.path.startswith('/remove_from_compare/'):
+        return jsonify({'success': False, 'error': 'Route not found'}), 404
+    return error
 
 GITHUB_WEBHOOK_SECRET = os.environ.get('GITHUB_WEBHOOK_SECRET')
 
@@ -150,70 +202,139 @@ def blog_post(slug):
 
     return render_template("blog_post.html", post=post)
 
+@cache.memoize(timeout=300)  # Cache for 5 minutes
 def load_all_bikes():
-    """Load all bikes from the database"""
-    session = get_session()
+    """Load all bikes from the database with optimized querying"""
+    db_session = get_session()
     try:
-        bikes = session.query(Bike).all()
-        # Convert SQLAlchemy objects to dictionaries
+        # Use more efficient query with specific columns
+        bikes = db_session.query(Bike).all()
+        
+        # Convert to dictionaries more efficiently
         bikes_data = []
         for bike in bikes:
+            # Convert all values to strings to avoid any complex object issues
             bike_dict = {
-                'id': bike.id,
-                'Firm': bike.firm,
-                'Model': bike.model,
-                'Year': bike.year,
-                'Price': bike.price,
-                'Disc_price': bike.disc_price,
-                'Frame': bike.frame,
-                'Motor': bike.motor,
-                'Battery': bike.battery,
-                'Fork': bike.fork,
-                'Rear Shox': bike.rear_shox,
-                'Image URL': bike.image_url,
-                'Product URL': bike.product_url,
-
-                # Additional fields
-                'Stem': bike.stem,
-                'Handelbar': bike.handelbar,
-                'Front Brake': bike.front_brake,
-                'Rear Brake': bike.rear_brake,
-                'Shifter': bike.shifter,
-                'Rear Der': bike.rear_der,
-                'Cassette': bike.cassette,
-                'Chain': bike.chain,
-                'Crank Set': bike.crank_set,
-                'Front Wheel': bike.front_wheel,
-                'Rear Wheel': bike.rear_wheel,
-                'Rims': bike.rims,
-                'Front Axle': bike.front_axle,
-                'Rear Axle': bike.rear_axle,
-                'Spokes': bike.spokes,
-                'Tubes': bike.tubes,
-                'Front Tire': bike.front_tire,
-                'Rear Tire': bike.rear_tire,
-                'Saddle': bike.saddle,
-                'Seat Post': bike.seat_post,
-                'Clamp': bike.clamp,
-                'Charger': bike.charger,
-                'Wheel Size': bike.wheel_size,
-                'Headset': bike.headset,
-                'Brake Lever': bike.brake_lever,
-                'Screen': bike.screen,
-                'Extras': bike.extras,
-                'Pedals': bike.pedals,
-                'B.B': bike.bb,
-                'מספר הילוכים:': bike.gear_count,
-                'Weight': bike.weight,
-                'Size': bike.size,
-                'Hub': bike.hub,
-                'Brakes': bike.brakes,
-                'Tires': bike.tires,
+                'id': str(bike.id) if bike.id else None,
+                'firm': str(bike.firm) if bike.firm else None,
+                'model': str(bike.model) if bike.model else None,
+                'year': str(bike.year) if bike.year else None,
+                'price': str(bike.price) if bike.price else None,
+                'disc_price': str(bike.disc_price) if bike.disc_price else None,
+                'frame': str(bike.frame) if bike.frame else None,
+                'motor': str(bike.motor) if bike.motor else None,
+                'battery': str(bike.battery) if bike.battery else None,
+                'fork': str(bike.fork) if bike.fork else None,
+                'rear_shock': str(bike.rear_shock) if bike.rear_shock else None,
+                'image_url': str(bike.image_url) if bike.image_url else None,
+                'product_url': str(bike.product_url) if bike.product_url else None,
+                'stem': str(bike.stem) if bike.stem else None,
+                'handelbar': str(bike.handelbar) if bike.handelbar else None,
+                'front_brake': str(bike.front_brake) if bike.front_brake else None,
+                'rear_brake': str(bike.rear_brake) if bike.rear_brake else None,
+                'shifter': str(bike.shifter) if bike.shifter else None,
+                'rear_der': str(bike.rear_der) if bike.rear_der else None,
+                'cassette': str(bike.cassette) if bike.cassette else None,
+                'chain': str(bike.chain) if bike.chain else None,
+                'crank_set': str(bike.crank_set) if bike.crank_set else None,
+                'front_wheel': str(bike.front_wheel) if bike.front_wheel else None,
+                'rear_wheel': str(bike.rear_wheel) if bike.rear_wheel else None,
+                'rims': str(bike.rims) if bike.rims else None,
+                'front_axle': str(bike.front_axle) if bike.front_axle else None,
+                'rear_axle': str(bike.rear_axle) if bike.rear_axle else None,
+                'spokes': str(bike.spokes) if bike.spokes else None,
+                'tubes': str(bike.tubes) if bike.tubes else None,
+                'front_tire': str(bike.front_tire) if bike.front_tire else None,
+                'rear_tire': str(bike.rear_tire) if bike.rear_tire else None,
+                'saddle': str(bike.saddle) if bike.saddle else None,
+                'seat_post': str(bike.seat_post) if bike.seat_post else None,
+                'clamp': str(bike.clamp) if bike.clamp else None,
+                'charger': str(bike.charger) if bike.charger else None,
+                'wheel_size': str(bike.wheel_size) if bike.wheel_size else None,
+                'headset': str(bike.headset) if bike.headset else None,
+                'brake_lever': str(bike.brake_lever) if bike.brake_lever else None,
+                'screen': str(bike.screen) if bike.screen else None,
+                'extras': str(bike.extras) if bike.extras else None,
+                'pedals': str(bike.pedals) if bike.pedals else None,
+                'bb': str(bike.bb) if bike.bb else None,
+                'weight': str(bike.weight) if bike.weight else None,
+                'size': str(bike.size) if bike.size else None,
+                'hub': str(bike.hub) if bike.hub else None,
+                'brakes': str(bike.brakes) if bike.brakes else None,
+                'tires': str(bike.tires) if bike.tires else None,
+                'wh': str(bike.wh) if bike.wh else None,
+                'gallery_images_urls': str(bike.gallery_images_urls) if bike.gallery_images_urls else None,
+                'fork_length': str(bike.fork_length) if bike.fork_length else None,
+                'sub_category': str(bike.sub_category) if bike.sub_category else None,
+                'rear_wheel_maxtravel': str(bike.rear_wheel_maxtravel) if bike.rear_wheel_maxtravel else None,
+                'battery_capacity': str(bike.battery_capacity) if bike.battery_capacity else None,
+                'front_wheel_size': str(bike.front_wheel_size) if bike.front_wheel_size else None,
+                'rear_wheel_size': str(bike.rear_wheel_size) if bike.rear_wheel_size else None,
+                'battery_watts_per_hour': str(bike.battery_watts_per_hour) if bike.battery_watts_per_hour else None,
             }
-            bikes_data.append(bike_dict)
+            # Clean the bike data to ensure it's safe for JSON serialization
+            cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
+            bikes_data.append(cleaned_bike_dict)
         return bikes_data
     finally:
-        session.close()
+        db_session.close()
+
+@cache.memoize(timeout=600)  # Cache for 10 minutes
+def get_all_firms():
+    """Get all unique firms from database"""
+    db_session = get_session()
+    try:
+        firms = db_session.query(Bike.firm).distinct().all()
+        return sorted([firm[0] for firm in firms if firm[0]])
+    finally:
+        db_session.close()
+
+@cache.memoize(timeout=600)  # Cache for 10 minutes
+def get_all_sub_categories():
+    """Get all unique sub-categories from database"""
+    db_session = get_session()
+    try:
+        sub_categories = db_session.query(Bike.sub_category).distinct().all()
+        return sorted([cat[0] for cat in sub_categories if cat[0]])
+    finally:
+        db_session.close()
+
+def load_bikes_for_display(limit=None, offset=0):
+    """Load bikes with pagination for better performance"""
+    db_session = get_session()
+    try:
+        query = db_session.query(Bike)
+        if limit:
+            query = query.limit(limit).offset(offset)
+        bikes = query.all()
+        
+        bikes_data = []
+        for bike in bikes:
+            # Convert all values to strings to avoid any complex object issues
+            bike_dict = {
+                'id': str(bike.id) if bike.id else None,
+                'Firm': str(bike.firm) if bike.firm else None,
+                'Model': str(bike.model) if bike.model else None,
+                'Year': str(bike.year) if bike.year else None,
+                'Price': str(bike.price) if bike.price else None,
+                'Disc_price': str(bike.disc_price) if bike.disc_price else None,
+                'Frame': str(bike.frame) if bike.frame else None,
+                'Motor': str(bike.motor) if bike.motor else None,
+                'Battery': str(bike.battery) if bike.battery else None,
+                'Fork': str(bike.fork) if bike.fork else None,
+                'Rear Shock': str(bike.rear_shock) if bike.rear_shock else None,
+                'Image URL': str(bike.image_url) if bike.image_url else None,
+                'Product URL': str(bike.product_url) if bike.product_url else None,
+                'wh': str(bike.wh) if bike.wh else None,
+                'fork_length': str(bike.fork_length) if bike.fork_length else None,
+                'sub_category': str(bike.sub_category) if bike.sub_category else None,
+            }
+            # Clean the bike data to ensure it's safe for JSON serialization
+            cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
+            bikes_data.append(cleaned_bike_dict)
+        return bikes_data
+    finally:
+        db_session.close()
 
 def parse_price(price_str):
     if not price_str:
@@ -221,32 +342,102 @@ def parse_price(price_str):
     digits_only = ''.join(filter(str.isdigit, str(price_str)))
     return int(digits_only) if digits_only else None
 
+def clean_bike_data_for_json(bike_dict):
+    """Clean bike data to ensure it's safe for JSON serialization"""
+    cleaned_dict = {}
+    for key, value in bike_dict.items():
+        if value is not None:
+            # Convert to string and clean any problematic characters
+            cleaned_value = str(value)
+            # Remove or replace problematic characters that could break JSON
+            cleaned_value = cleaned_value.replace('\n', ' ').replace('\r', ' ')
+            cleaned_value = cleaned_value.replace('\t', ' ')
+            # Remove any null bytes or other control characters
+            cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in '\n\r\t')
+            # Trim whitespace
+            cleaned_value = cleaned_value.strip()
+            if cleaned_value:  # Only add non-empty values
+                cleaned_dict[key] = cleaned_value
+        else:
+            cleaned_dict[key] = None
+    return cleaned_dict
+
 
 @app.route("/")
 def home():
     all_bikes = load_all_bikes()
-    firms = sorted({bike.get("Firm", "") for bike in all_bikes if bike.get("Firm")})
+    firms = get_all_firms()
 
     # ✅ Load compare counts from database
-    session = get_session()
+    db_session = get_session()
     try:
-        top_compare_counts = session.query(CompareCount).order_by(CompareCount.count.desc()).limit(3).all()
+        top_compare_counts = db_session.query(CompareCount).order_by(CompareCount.count.desc()).limit(3).all()
         top_ids = [cc.bike_id for cc in top_compare_counts]
         top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
     except Exception as e:
         print(f"Error loading compare counts: {e}")
         top_bikes = []
     finally:
-        session.close()
+        db_session.close()
 
     return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
 
 
+@app.route("/debug_bike_data")
+def debug_bike_data():
+    """Temporary route to debug bike data structure"""
+    all_bikes = load_all_bikes()
+    if all_bikes:
+        first_bike = all_bikes[0]
+        debug_info = {
+            'total_bikes': len(all_bikes),
+            'first_bike_keys': list(first_bike.keys()),
+            'price_field': {
+                'type': str(type(first_bike.get('price'))),
+                'value': str(first_bike.get('price')),
+                'is_dict': isinstance(first_bike.get('price'), dict)
+            },
+            'all_dict_fields': {}
+        }
+        
+        for key, value in first_bike.items():
+            if isinstance(value, dict):
+                debug_info['all_dict_fields'][key] = {
+                    'type': str(type(value)),
+                    'keys': list(value.keys()) if isinstance(value, dict) else None,
+                    'value': str(value)
+                }
+        
+        return jsonify(debug_info)
+    return jsonify({'error': 'No bikes found'})
+
 @app.route("/bikes")
 def bikes():
     all_bikes = load_all_bikes()
-    firms = sorted({bike.get("Firm", "") for bike in all_bikes if bike.get("Firm")})
-    return render_template("bikes.html", bikes=all_bikes, firms=firms)
+    firms = get_all_firms()
+    sub_categories = get_all_sub_categories()
+    
+    # Debug: Check the first bike's data structure
+    if all_bikes:
+        print("DEBUG: First bike data structure:")
+        for key, value in all_bikes[0].items():
+            print(f"  {key}: {type(value)} = {value}")
+        
+        # Check specifically for Price field
+        first_bike = all_bikes[0]
+        if 'price' in first_bike:
+            print(f"DEBUG: Price field type: {type(first_bike['price'])}")
+            print(f"DEBUG: Price field value: {first_bike['price']}")
+            if isinstance(first_bike['price'], dict):
+                print(f"DEBUG: Price is a dict with keys: {list(first_bike['price'].keys())}")
+        
+        # Check for any dict values in the bike data
+        print("DEBUG: Checking for dict values in bike data:")
+        for key, value in first_bike.items():
+            if isinstance(value, dict):
+                print(f"  WARNING: {key} is a dict: {value}")
+    
+    return render_template("bikes.html", bikes=all_bikes, firms=firms, sub_categories=sub_categories)
 def parse_battery(battery_str):
     if not battery_str:
         return None
@@ -255,15 +446,15 @@ def parse_battery(battery_str):
     return int(digits) if digits else None
 
 def get_frame_material(bike):
-    frame_val = bike.get('Frame', '')
-    model_val = bike.get('Model', '')
+    frame_val = bike.get('frame', '')
+    model_val = bike.get('model', '')
     combined = f"{frame_val} {model_val}".lower()
     if 'carbon' in combined:
         return 'carbon'
     return 'aluminium'
 
 def get_motor_brand(bike):
-    motor_val = bike.get('Motor', '')
+    motor_val = bike.get('motor', '')
     for brand in MOTOR_BRANDS:
         if brand.lower() in motor_val.lower():
             return brand.lower()
@@ -271,74 +462,107 @@ def get_motor_brand(bike):
 
 @app.route("/api/filter_bikes")
 def filter_bikes():
-    all_bikes = load_all_bikes()
-    query = request.args.get("q", "").strip().lower()
-    min_price = request.args.get("min_price", type=int)
-    max_price = request.args.get("max_price", type=int)
-    years = request.args.getlist("year", type=int)
-    firms = request.args.getlist("firm")
-    min_battery = request.args.get("min_battery", type=int)
-    max_battery = request.args.get("max_battery", type=int)
-    frame_material = request.args.get("frame_material", type=str)  # 'carbon' or 'aluminium'
-    motor_brands = request.args.getlist("motor_brand", type=str)
+    db_session = get_session()
+    try:
+        query = request.args.get("q", "").strip().lower()
+        min_price = request.args.get("min_price", type=int)
+        max_price = request.args.get("max_price", type=int)
+        years = request.args.getlist("year", type=int)
+        firms = request.args.getlist("firm")
+        min_battery = request.args.get("min_battery", type=int)
+        max_battery = request.args.get("max_battery", type=int)
+        frame_material = request.args.get("frame_material", type=str)
+        motor_brands = request.args.getlist("motor_brand", type=str)
+        sub_categories = request.args.getlist("sub_category", type=str)
 
-    filtered_bikes = []
+        # Start with base query - only select needed columns for better performance
+        db_query = db_session.query(
+            Bike.id, Bike.firm, Bike.model, Bike.year, Bike.price, Bike.disc_price,
+            Bike.frame, Bike.motor, Bike.battery, Bike.fork, Bike.rear_shock,
+            Bike.image_url, Bike.product_url, Bike.wh, Bike.fork_length, Bike.sub_category
+        )
 
-    for bike in all_bikes:
-        # 🔎 Keyword search across all fields
+        # Apply filters using database queries for better performance
         if query:
-            if not any(query in str(value).lower() for value in bike.values() if value):
-                continue
+            # Search across multiple fields using OR conditions
+            search_conditions = []
+            for field in [Bike.firm, Bike.model, Bike.frame, Bike.motor, Bike.battery]:
+                search_conditions.append(field.ilike(f'%{query}%'))
+            db_query = db_query.filter(or_(*search_conditions))
 
-        # 💰 Price
-        price_str = bike.get("Disc_price") or bike.get("Price")
-        price = parse_price(price_str)
-
-        if min_price is not None and min_price > 0:
-            if price is not None and price < min_price:
-                continue
-        if max_price is not None and max_price < 100000:
-            if price is not None and price > max_price:
-                continue
-
-        # 🔋 Battery
-        battery = parse_battery(bike.get("Battery"))
-        if min_battery is not None and min_battery > 200:
-            if battery is not None and battery < min_battery:
-                continue
-        if max_battery is not None and max_battery < 1000:
-            if battery is not None and battery > max_battery:
-                continue
-
-        # 📅 Year
-        bike_year = bike.get("Year")
-        try:
-            bike_year = int(bike_year)
-        except (ValueError, TypeError):
-            bike_year = None
         if years:
-            if bike_year is None or bike_year not in years:
-                continue
+            db_query = db_query.filter(Bike.year.in_(years))
 
-        # 🏷️ Firm
         if firms:
-            if bike.get("Firm") not in firms:
-                continue
+            db_query = db_query.filter(Bike.firm.in_(firms))
 
-        # 🆕 Frame Material
-        if frame_material:
-            if get_frame_material(bike) != frame_material.lower():
-                continue
+        if min_battery is not None and min_battery > 200:
+            db_query = db_query.filter(Bike.wh >= min_battery)
 
-        # 🆕 Motor Brand
-        if motor_brands:
-            if get_motor_brand(bike) not in [brand.lower() for brand in motor_brands]:
-                continue
+        if max_battery is not None and max_battery < 1000:
+            db_query = db_query.filter(Bike.wh <= max_battery)
 
-        # ✅ Passed all filters
-        filtered_bikes.append(bike)
+        if sub_categories:
+            db_query = db_query.filter(Bike.sub_category.in_(sub_categories))
 
-    return jsonify(filtered_bikes)
+        # Execute query and convert to list for faster iteration
+        bikes = db_query.all()
+
+        # Apply price filtering (since price is stored as string)
+        filtered_bikes = []
+        for bike in bikes:
+            # Price filtering
+            price_str = bike.disc_price or bike.price
+            price = parse_price(price_str)
+            
+            if min_price is not None and min_price > 0:
+                if price is not None and price < min_price:
+                    continue
+            if max_price is not None and max_price < 100000:
+                if price is not None and price > max_price:
+                    continue
+
+            # Frame material filtering
+            if frame_material:
+                bike_frame_material = get_frame_material({
+                    'frame': bike.frame,
+                    'model': bike.model
+                })
+                if bike_frame_material != frame_material.lower():
+                    continue
+
+            # Motor brand filtering
+            if motor_brands:
+                bike_motor_brand = get_motor_brand({'motor': bike.motor})
+                if bike_motor_brand not in [brand.lower() for brand in motor_brands]:
+                    continue
+
+            # Convert to dictionary with only needed fields
+            bike_dict = {
+                'id': str(bike.id) if bike.id else None,
+                'firm': str(bike.firm) if bike.firm else None,
+                'model': str(bike.model) if bike.model else None,
+                'year': str(bike.year) if bike.year else None,
+                'price': str(bike.price) if bike.price else None,
+                'disc_price': str(bike.disc_price) if bike.disc_price else None,
+                'frame': str(bike.frame) if bike.frame else None,
+                'motor': str(bike.motor) if bike.motor else None,
+                'battery': str(bike.battery) if bike.battery else None,
+                'fork': str(bike.fork) if bike.fork else None,
+                'rear_shock': str(bike.rear_shock) if bike.rear_shock else None,
+                'image_url': str(bike.image_url) if bike.image_url else None,
+                'product_url': str(bike.product_url) if bike.product_url else None,
+                'wh': str(bike.wh) if bike.wh else None,
+                'fork_length': str(bike.fork_length) if bike.fork_length else None,
+                'sub_category': str(bike.sub_category) if bike.sub_category else None,
+            }
+            # Clean the bike data to ensure it's safe for JSON serialization
+            cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
+            filtered_bikes.append(cleaned_bike_dict)
+
+        return jsonify(filtered_bikes)
+    finally:
+        db_session.close()
 
 
 @app.route('/api/compare_list')
@@ -346,47 +570,93 @@ def api_compare_list():
     return jsonify({'compare_list': session.get('compare_list', [])})
 
 def get_compare_list():
-    return session.get('compare_list', [])
+    try:
+        return session.get('compare_list', [])
+    except Exception as e:
+        print(f"Error getting compare list from session: {e}")
+        return []
 
 def save_compare_list(compare_list):
-    session['compare_list'] = compare_list
+    try:
+        session['compare_list'] = compare_list
+        session.modified = True  # Ensure session is marked as modified
+    except Exception as e:
+        print(f"Error saving compare list to session: {e}")
 
 
-@app.route('/add_to_compare/<bike_id>', methods=['POST'])
-def add_to_compare(bike_id):
-    compare_list = get_compare_list()
-    if bike_id not in compare_list:
-        if len(compare_list) < 4:
-            compare_list.append(bike_id)
+@app.route('/add_to_compare', methods=['POST'])
+def add_to_compare():
+    try:
+        # Get bike_id from request data instead of URL path
+        bike_id = request.json.get('bike_id') if request.is_json else request.form.get('bike_id')
+        
+        # Check if bike_id is valid
+        if not bike_id or bike_id.strip() == '':
+            return jsonify({'success': False, 'error': 'Invalid bike ID'}), 400
+        
+        # Store the bike_id in its original form (no encoding needed since we're using JSON body)
+        normalized_bike_id = bike_id
+        
+        print(f"Adding bike to compare - Bike ID: {bike_id}")
+        
+        compare_list = get_compare_list()
+        if normalized_bike_id not in compare_list:
+            if len(compare_list) < 4:
+                compare_list.append(normalized_bike_id)
+                save_compare_list(compare_list)
+
+                # ✅ Increment popularity count in database
+                try:
+                    from scripts.migrate_compare_counts import update_compare_count
+                    update_compare_count(normalized_bike_id)
+                    print(f"Updated compare count for bike {normalized_bike_id}")
+                except Exception as e:
+                    print("Error updating compare counts:", e)
+
+                return jsonify({'success': True, 'compare_list': compare_list})
+            else:
+                return jsonify({'success': False, 'error': 'You can compare up to 4 bikes only.'}), 400
+        return jsonify({'success': True, 'compare_list': compare_list})
+    except Exception as e:
+        print(f"Error in add_to_compare: {e}")
+        return jsonify({'success': False, 'error': f'Server error: {str(e)}'}), 500
+
+
+@app.route('/remove_from_compare', methods=['POST'])
+def remove_from_compare():
+    try:
+        # Get bike_id from request data instead of URL path
+        bike_id = request.json.get('bike_id') if request.is_json else request.form.get('bike_id')
+        
+        # Check if bike_id is valid
+        if not bike_id or bike_id.strip() == '':
+            return jsonify({'success': False, 'error': 'Invalid bike ID'}), 400
+        
+        # Store the bike_id in its original form (no encoding needed since we're using JSON body)
+        normalized_bike_id = bike_id
+        
+        print(f"Removing bike from compare - Bike ID: {bike_id}")
+        
+        compare_list = get_compare_list()
+        if normalized_bike_id in compare_list:
+            compare_list.remove(normalized_bike_id)
             save_compare_list(compare_list)
-
-            # ✅ Increment popularity count in database
-            try:
-                from migrate_compare_counts import update_compare_count
-                update_compare_count(bike_id)
-                print(f"Updated compare count for bike {bike_id}")
-            except Exception as e:
-                print("Error updating compare counts:", e)
-
-            return jsonify({'success': True, 'compare_list': compare_list})
-        else:
-            return jsonify({'success': False, 'error': 'You can compare up to 4 bikes only.'}), 400
-    return jsonify({'success': True, 'compare_list': compare_list})
-
-
-@app.route('/remove_from_compare/<bike_id>', methods=['POST'])
-def remove_from_compare(bike_id):
-    compare_list = get_compare_list()
-    if bike_id in compare_list:
-        compare_list.remove(bike_id)
-        save_compare_list(compare_list)
-    return jsonify({'success': True, 'compare_list': compare_list})
+        return jsonify({'success': True, 'compare_list': compare_list})
+    except Exception as e:
+        print(f"Error in remove_from_compare: {e}")
+        return jsonify({'success': False, 'error': f'Server error: {str(e)}'}), 500
 
 @app.route('/compare_bikes')
 def compare_bikes():
     compare_list = get_compare_list()
     all_bikes = load_all_bikes()
-    bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
+    
+    # Find bikes that are in the compare list (using original bike IDs)
+    bikes_to_compare = []
+    for bike in all_bikes:
+        bike_id = bike.get('id')
+        if bike_id and bike_id in compare_list:
+            bikes_to_compare.append(bike)
 
     # Key fields to always show
     always_show = ["Model", "Price", "Year", "Motor", "Battery"]
@@ -430,15 +700,15 @@ def compare_bikes():
 @app.route('/comparison/<path:slug>')
 def view_comparison(slug):
     """View a specific comparison by slug"""
-    session = get_session()
+    db_session = get_session()
 
     try:
         # Check if slug is a number (old ID format)
         if slug.isdigit():
-            comparison = session.query(Comparison).filter_by(id=int(slug)).first()
+            comparison = db_session.query(Comparison).filter_by(id=int(slug)).first()
         else:
             # New slug format
-            comparison = session.query(Comparison).filter_by(slug=slug).first()
+            comparison = db_session.query(Comparison).filter_by(slug=slug).first()
 
         if not comparison:
             abort(404)
@@ -467,7 +737,7 @@ def view_comparison(slug):
         print(f"Error viewing comparison {slug}: {e}")
         abort(500)
     finally:
-        session.close()
+        db_session.close()
 
 @app.route('/clear_compare', methods=['POST'])
 def clear_compare():
@@ -525,18 +795,18 @@ def compare_ai_from_session():
             print("✅ JSON parsed successfully")
 
             # ✅ Save comparison to database
-            session = get_session()
+            db_session = get_session()
             try:
                 comparison = Comparison()
                 comparison.set_bike_ids(compare_list)
                 comparison.set_comparison_data(data)
 
                 # Generate SEO-friendly slug using bike data from database
-                slug = comparison.generate_slug(compare_list, session)
+                slug = comparison.generate_slug(compare_list, db_session)
                 comparison.slug = slug
 
-                session.add(comparison)
-                session.commit()
+                db_session.add(comparison)
+                db_session.commit()
                 print(f"✅ Saved comparison to database with ID: {comparison.id}, Slug: {slug}")
 
                 # Create response data after successful save
@@ -548,11 +818,11 @@ def compare_ai_from_session():
 
             except Exception as e:
                 print(f"❌ Error saving to database: {e}")
-                session.rollback()
+                db_session.rollback()
                 # Return error response
                 return jsonify({"error": "שגיאה בשמירת ההשוואה", "details": str(e)}), 500
             finally:
-                session.close()
+                db_session.close()
 
             return jsonify(response_data)
         except json.JSONDecodeError as e:
@@ -618,83 +888,56 @@ def create_ai_prompt(bikes):
 
 # --- NEW: WEBHOOK ENDPOINT ---
 # This route will be triggered by GitHub pushes to automatically pull and reload
+def clear_bike_cache():
+    """Clear bike-related cache when data is updated"""
+    cache.delete_memoized(load_all_bikes)
+    cache.delete_memoized(get_all_firms)
+
 @app.route('/webhook', methods=['POST'])
 def handle_webhook():
     # 1. Verify the request is a JSON payload
-    if request.headers.get('Content-Type') != 'application/json':
-        abort(400, "Invalid Content Type")
-
-    # 2. Verify the GitHub signature (for security)
-    # This checks if the request genuinely came from GitHub and hasn't been tampered with.
-    if not GITHUB_WEBHOOK_SECRET:
-        # If no secret is configured, this webhook is insecure!
-        print("Warning: GITHUB_WEBHOOK_SECRET not configured. Skipping signature check.")
-    else:
-        # Ensure the X-Hub-Signature header is present
-        if 'X-Hub-Signature' not in request.headers:
-            print("Webhook: Missing X-Hub-Signature header. Request rejected.")
-            abort(403, "Missing X-Hub-Signature")
-
-        # Reconstruct the payload to verify signature
-        # request.data contains the raw request body
-        payload_body = request.data
-        
-        # Calculate the expected signature
-        signature = 'sha1=' + hmac.new(
-            GITHUB_WEBHOOK_SECRET.encode('utf-8'),
-            payload_body,
-            hashlib.sha1
-        ).hexdigest()
-
-        # Compare the calculated signature with the signature from the header
-        if not hmac.compare_digest(signature, request.headers['X-Hub-Signature']):
-            print("Webhook signature mismatch! Request rejected.")
-            abort(403, "Invalid X-Hub-Signature")
-        print("Webhook signature verified successfully.")
-
-    data = request.json # Safely parse JSON after verification
-    # Log the Git ref that triggered the webhook (e.g., 'refs/heads/main')
-    print(f"Received webhook from GitHub for ref: {data.get('ref', 'N/A')}")
-    print(f"Commit message: {data.get('head_commit', {}).get('message', 'N/A')}")
-
-
-    # --- Git Pull Logic ---
-    try:
-        # Change directory to your project's root first
-        # This is crucial so 'git pull' runs in the correct location.
-        project_dir = '/home/romanahi8689/emtb' 
-        os.chdir(project_dir) 
-        
-        # Execute 'git pull origin main' to fetch and merge latest changes
-        # 'capture_output=True' captures stdout/stderr, 'text=True' decodes to string,
-        # 'check=True' raises CalledProcessError on non-zero exit codes.
-        result = subprocess.run(['git', 'pull', 'origin', 'main'], capture_output=True, text=True, check=True)
-        print(f"Git pull output (stdout):\n{result.stdout}")
-        if result.stderr:
-            print(f"Git pull output (stderr):\n{result.stderr}")
-
-    except subprocess.CalledProcessError as e:
-        print(f"Error during git pull (return code {e.returncode}): {e.stderr}")
-        return f"Git pull failed: {e.stderr}", 500
-    except Exception as e:
-        print(f"Unexpected error during git pull: {e}")
-        return "Internal server error during git pull", 500
-
-    # --- Reload the web application on PythonAnywhere ---
-    # Touching the WSGI file tells PythonAnywhere to restart your web application.
-    try:
-        # You MUST replace this with your exact WSGI file path from your PythonAnywhere 'Web' tab.
-        # It's usually found under 'WSGI configuration file'.
-        # Example: '/var/www/romanahi8689_www_rideal_co_il_wsgi.py'
-        wsgi_file_path = '/var/www/www_rideal_co_il_wsgi.py' # <--- REPLACE THIS PATH!
-        
-        os.system(f'touch {wsgi_file_path}')
-        print(f"Touched {wsgi_file_path} to reload web app.")
-    except Exception as e:
-        print(f"Error reloading web app: {e}")
-        # Log the error, but we still return 200 to GitHub as the pull might have succeeded.
+    if not request.is_json:
+        return jsonify({"error": "Invalid content type"}), 400
     
-    return "Webhook processed and app reloaded successfully", 200
+    # 2. Get the request body
+    payload = request.get_json()
+    
+    # 3. Verify the webhook signature (if secret is set)
+    if GITHUB_WEBHOOK_SECRET:
+        signature = request.headers.get('X-Hub-Signature-256')
+        if not signature:
+            return jsonify({"error": "Missing signature"}), 401
+        
+        # Verify the signature
+        expected_signature = 'sha256=' + hmac.new(
+            GITHUB_WEBHOOK_SECRET.encode('utf-8'),
+            request.get_data(),
+            hashlib.sha256
+        ).hexdigest()
+        
+        if not hmac.compare_digest(signature, expected_signature):
+            return jsonify({"error": "Invalid signature"}), 401
+    
+    # 4. Check if this is a push event to the main branch
+    if payload.get('ref') == 'refs/heads/main':
+        try:
+            # 5. Pull the latest changes
+            result = subprocess.run(['git', 'pull'], 
+                                  capture_output=True, 
+                                  text=True, 
+                                  cwd=os.path.dirname(os.path.abspath(__file__)))
+            
+            if result.returncode == 0:
+                # Clear cache after successful update
+                clear_bike_cache()
+                return jsonify({"message": "Successfully updated", "output": result.stdout}), 200
+            else:
+                return jsonify({"error": "Failed to pull changes", "output": result.stderr}), 500
+                
+        except Exception as e:
+            return jsonify({"error": f"Error during update: {str(e)}"}), 500
+    
+    return jsonify({"message": "Webhook received but no action taken"}), 200
 # --- END NEW WEBHOOK ENDPOINT ---
 
 

@@ -55,13 +55,19 @@
                 {% for bike in top_bikes %}
                 <div class="w3-third w3-margin-bottom">
                     <div class="card-img-container">
-                        <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
+                        <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
                     </div>
                     <div class="w3-container w3-white" style="display: flex; flex-direction: column; align-items: center;">
-                        <h5 class="card-firm"><b>{{ bike['Firm'] }}</b></h5>
-                        <p class="w3-opacity">{{ bike['Model'] }}</p>
-                        <p class="price">₪{{ bike['Price'] }}</p>
-                        <a href="{{ bike['Product URL'] }}" target="_blank" class="btn btn-primary mb-3">לרכישה</a>
+                        <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
+                        <p class="w3-opacity">{{ bike['model'] }}</p>
+                        <p class="price">
+                            {% if bike['price'] | format_number == 'צור קשר' %}
+                                {{ bike['price'] | format_number }}
+                            {% else %}
+                                ₪{{ bike['price'] | format_number }}
+                            {% endif %}
+                        </p>
+                        <a href="{{ bike['product_url'] }}" target="_blank" class="btn btn-primary mb-3">לרכישה</a>
                     </div>
 
                 </div>

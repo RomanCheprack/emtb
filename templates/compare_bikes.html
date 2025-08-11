@@ -44,77 +44,89 @@
 
 {% if bikes and bikes|length > 0 %}
 <div class="compare-container overflow-auto">
-    <table class="table table-bordered compare-table text-center align-middle">
-        <thead>
-            <tr>
-                <th class="model-th" style="position:relative;"></th>
-                {% for bike in bikes %}
-                <th class="specs-th align-middle" style="min-width: 160px; max-width: 180px;">
-    <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
-            data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
-        <div style="height: 100px; display: flex; align-items: center;">
-            <img src="{{ bike['Image URL'] }}" alt="{{ bike['Model'] }}" class="img-fluid mb-2"
-                 style="max-height: 100px; max-width: 100%; object-fit: contain; border-radius: 6px; background: #f8f9fa; padding: 4px;">
-        </div>
-        <h5 class="mb-1" style="font-size: 1.05em; color: #000000; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;" title="{{ bike['Firm'] }}">{{ bike['Firm'] }}</h5>
-    </div>
-</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 🟥 PRICE ROW -->
-            <tr>
-                <th style="min-width: 150px; background: #fff;">Price</th>
-                {% for bike in bikes %}
-                <td>
-                    {% if bike['Disc_price'] and bike['Disc_price'] != '#N/A' %}
-                    <span style="text-decoration: line-through; color: #888;">₪{{ bike['Price'] }}</span><br>
-                    <span class="text-danger fw-bold">₪{{ bike['Disc_price'] }}</span>
-                    {% else %}
-                    {{ bike['Price'] }}
-                    {% endif %}
-                </td>
-                {% endfor %}
-            </tr>
+         <table class="table table-bordered compare-table text-center align-middle">
+         <thead>
+             <tr>
+                 <th class="model-th" style="position:relative;"></th>
+                 {% for bike in bikes %}
+                 <th class="specs-th align-middle" style="min-width: 160px; max-width: 180px;">
+     <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
+             data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>
+     <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+         <div style="height: 100px; display: flex; align-items: center;">
+             <img src="{{ bike['image_url'] }}" alt="{{ bike['model'] }}" class="img-fluid mb-2"
+                  style="max-height: 100px; max-width: 100%; object-fit: contain; border-radius: 6px; background: #f8f9fa; padding: 4px;">
+         </div>
+         <h5 class="mb-1" style="font-size: 1.05em; color: #000000; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;" title="{{ bike['firm'] }}">{{ bike['firm'] }}</h5>
+     </div>
+ </th>
+                 {% endfor %}
+             </tr>
+         </thead>
+         <tbody>
+             <!-- 🟥 PRICE ROW -->
+             <tr>
+                 <th style="min-width: 150px; background: #fff;">Price</th>
+                 {% for bike in bikes %}
+                 <td>
+                     {% if bike['disc_price'] and bike['disc_price'] != '#N/A' %}
+                         {% if bike['price'] | format_number == 'צור קשר' %}
+                             <span style="text-decoration: line-through; color: #888;">{{ bike['price'] | format_number }}</span><br>
+                         {% else %}
+                             <span style="text-decoration: line-through; color: #888;">₪{{ bike['price'] | format_number }}</span><br>
+                         {% endif %}
+                         {% if bike['disc_price'] | format_number == 'צור קשר' %}
+                             <span class="text-danger fw-bold">{{ bike['disc_price'] | format_number }}</span>
+                         {% else %}
+                             <span class="text-danger fw-bold">₪{{ bike['disc_price'] | format_number }}</span>
+                         {% endif %}
+                     {% else %}
+                         {% if bike['price'] | format_number == 'צור קשר' %}
+                             {{ bike['price'] | format_number }}
+                         {% else %}
+                             ₪{{ bike['price'] | format_number }}
+                         {% endif %}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+             </tr>
 
-            <!-- 🟩 ALL FIELDS FROM DB -->
-            {% for field in fields_to_show %}
-            <tr>
-                <th style="min-width: 150px; background: #fff;">{{ field }}</th>
-                {% for bike in bikes %}
-                <td class="collapsible-cell">
-                    {% set value = bike.get(field, '') %}
-                    {% set value_str = value|string %}
-                    {% if value_str|length > 40 %}
-                        <span class="cell-short">{{ value_str[:60] }}...</span>
-                        <span class="cell-full" style="display:none;">{{ value_str }}</span>
-                        <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
-                    {% else %}
-                        {{ value_str }}
-                    {% endif %}
-                </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-            <tr>
-                <th style="min-width: 150px; background: #fff;">רכישה</th>
-                {% for bike in bikes %}
-                <td>
-                    {% if bike['Product URL'] %}
-                        <a href="{{ bike['Product URL'] }}" target="_blank" rel="noopener" class="btn btn-success" style="font-weight:600;">
-                            רכישה
-                        </a>
-                    {% else %}
-                        <span class="text-muted">לא זמין</span>
-                    {% endif %}
-                </td>
-                {% endfor %}
-            </tr>
-        </tbody>
+             <!-- 🟩 ALL FIELDS FROM DB -->
+             {% for field in fields_to_show %}
+             <tr>
+                 <th style="min-width: 150px; background: #fff;">{{ field }}</th>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get(field, '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:60] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+             </tr>
+             {% endfor %}
+             <tr>
+                 <th style="min-width: 150px; background: #fff;">רכישה</th>
+                 {% for bike in bikes %}
+                 <td>
+                     {% if bike['product_url'] %}
+                         <a href="{{ bike['product_url'] }}" target="_blank" rel="noopener" class="btn btn-success" style="font-weight:600;">
+                             רכישה
+                         </a>
+                     {% else %}
+                         <span class="text-muted">לא זמין</span>
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+             </tr>
+         </tbody>
 
-    </table>
+     </table>
 </div>
 
 

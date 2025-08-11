@@ -21,17 +21,27 @@
                 {% for bike in bikes %}
                 <div class="col-md-{{ 12 // bikes|length }} mb-3">
                     <div class="card h-100 shadow-sm" style="border-radius: 10px;">
-                        {% if bike['Image URL'] %}
-                        <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Firm'] }} {{ bike['Model'] }}" style="object-fit: contain; max-height: 160px; background: #f8f9fa;">
+                        {% if bike['image_url'] %}
+                        <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['firm'] }} {{ bike['model'] }}" style="object-fit: contain; max-height: 160px; background: #f8f9fa;">
                         {% endif %}
                         <div class="card-body text-center">
-                            <h5 class="card-title" style="color: #000000; font-weight: 700;">{{ bike['Firm'] }} {{ bike['Model'] }}</h5>
+                            <h5 class="card-title" style="color: #000000; font-weight: 700;">{{ bike['firm'] }} {{ bike['model'] }}</h5>
                             <p class="card-text" style="color: #222;">
-                                <strong>מחיר:</strong> {{ bike['Price'] }}<br>
-                                {% if bike['Disc_price'] %}
-                                <strong>מחיר מוזל:</strong> <span style="color: #d32f2f;">{{ bike['Disc_price'] }}</span><br>
+                                <strong>מחיר:</strong> 
+                                {% if bike['price'] | format_number == 'צור קשר' %}
+                                    {{ bike['price'] | format_number }}<br>
+                                {% else %}
+                                    ₪{{ bike['price'] | format_number }}<br>
                                 {% endif %}
-                                <strong>שנה:</strong> {{ bike['Year'] }}
+                                {% if bike['disc_price'] %}
+                                <strong>מחיר מוזל:</strong> 
+                                    {% if bike['disc_price'] | format_number == 'צור קשר' %}
+                                        <span style="color: #d32f2f;">{{ bike['disc_price'] | format_number }}</span><br>
+                                    {% else %}
+                                        <span style="color: #d32f2f;">₪{{ bike['disc_price'] | format_number }}</span><br>
+                                    {% endif %}
+                                {% endif %}
+                                <strong>שנה:</strong> {{ bike['year'] }}
                             </p>
                         </div>
                     </div>

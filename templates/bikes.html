@@ -58,23 +58,38 @@
         {% for bike in bikes %}
         <div class="col-6 col-lg-2 mb-2 px-1">
             <div class="card h-100 position-relative bike-card" data-bike='{{ bike | tojson | safe }}'>
-                <img src="{{ bike['Image URL'] }}" class="card-img-top" alt="{{ bike['Model'] }}">
+                <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
                 <div class="card-body">
-                    <h4 class="card-firm">{{bike['Firm']}}</h4>
-                    <p class="card-title">{{ bike['Model'] }}</p>
-                    {% if bike['Disc_price'] %}
-                    <h6 class="card-text-price">
-                        <span style="text-decoration: line-through; color: #888;">₪{{ bike['Price'] }}</span>
-                        <span class="text-danger fw-bold ms-2">₪{{ bike['Disc_price'] }}</span>
-                    </h6>
+                    <h2 class="card-firm">{{bike['firm']}}</h2>
+                    <p class="card-title">{{ bike['model'] }}</p>
+                    {% if bike['disc_price'] %}
+                    <p class="card-text-price">
+                        {% if bike['price'] | format_number == 'צור קשר' %}
+                            <span style="text-decoration: line-through; color: #888;">{{ bike['price'] | format_number }}</span>
+                        {% else %}
+                            <span style="text-decoration: line-through; color: #888;">₪ {{ bike['price'] | format_number }}</span>
+                        {% endif %}
+                        <br>
+                        {% if bike['disc_price'] | format_number == 'צור קשר' %}
+                            <span class="text-danger fw-bold ms-2">{{ bike['disc_price'] | format_number }}</span>
+                        {% else %}
+                            <span class="text-danger fw-bold ms-2">₪ {{ bike['disc_price'] | format_number }}</span>
+                        {% endif %}
+                    </p>
                     {% else %}
-                    <h6 class="card-text-price"> ₪{{ bike['Price'] }}</h6>
+                    <h6 class="card-text-price">
+                        {% if bike['price'] | format_number == 'צור קשר' %}
+                            {{ bike['price'] | format_number }}
+                        {% else %}
+                            ₪ {{ bike['price'] | format_number }}
+                        {% endif %}
+                    </h6>
                     {% endif %}
 
-                    <p class="card-text-year">{{ bike['Year'] }}</p>
+                    <p class="card-text-year">{{ bike['year'] }}</p>
                     <div class="details-btn mb-2">
                         <button type="button"
-                                class="btn btn-outline-dark details-btn"
+                                class="btn btn-outline-info details-btn"
                                 data-bike='{{ bike | tojson | safe }}'>
                             מפרט
                         </button>
@@ -151,7 +166,7 @@
                 </button>
                 <ul class="dropdown-menu w-100" id="firmDropdownMenu">
                     {% for firm in firms %}
-                    <li>
+                    <li style="margin-left: 15px;">
                         <div class="form-check">
                             <input class="form-check-input firm-checkbox" type="checkbox" value="{{ firm }}" id="firm-{{ loop.index }}">
                             <label class="form-check-label" for="firm-{{ loop.index }}">{{ firm }}</label>
@@ -259,6 +274,25 @@
                 <input class="form-check-input" type="radio" name="frame_material" id="frame-material-aluminium" value="aluminium">
                 <label class="form-check-label" for="frame-material-aluminium">אלומיניום</label>
             </div>
+        </div>
+        
+        <!-- Sub Category Filter -->
+        <div class="mb-3">
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">סוג אופניים</label>
+            {% for sub_category in sub_categories %}
+            <div class="form-check form-check-inline">
+                <input class="form-check-input sub-category-checkbox" type="checkbox" name="sub_category" value="{{ sub_category }}" id="sub-category-{{ loop.index }}">
+                <label class="form-check-label" for="sub-category-{{ loop.index }}">
+                    {% if sub_category == 'trail' %}שבילים                    
+                    {% elif sub_category == 'enduro' %}אנדורו
+                    {% elif sub_category == 'cross-country' %}קרוס קאנטרי
+                    {% elif sub_category == 'downhill' %}דאונהיל
+                    {% elif sub_category == 'all-mountain' %}אול מאונטיין
+                    {% elif sub_category == 'freeride' %}פרירייד
+                    {% else %}{{ sub_category }}{% endif %}
+                </label>
+            </div>
+            {% endfor %}
         </div>
         
         <!-- Add more filter controls as needed -->

@@ -21,7 +21,7 @@ class Bike(Base):
     motor = Column(String(255))
     battery = Column(String(255))
     fork = Column(String(255))
-    rear_shox = Column(String(255))
+    rear_shock = Column(String(255))
     
     
     # Additional standardized fields
@@ -62,6 +62,15 @@ class Bike(Base):
     hub = Column(String(255))
     brakes = Column(String(255))
     tires = Column(String(255))
+    wh = Column(Integer)  # Battery capacity in Wh (e.g., 750, 800, etc.)
+    gallery_images_urls = Column(Text)  # JSON array of image URLs
+    fork_length = Column(Integer)  # Fork travel in mm (e.g., 140, 160, 170)
+    sub_category = Column(String(255))  # "trail", "enduro", "cross-country", etc.
+    rear_wheel_maxtravel = Column(String(255))  # Rear wheel max travel
+    battery_capacity = Column(String(255))  # Alternative battery capacity field
+    front_wheel_size = Column(String(255))  # Front wheel size
+    rear_wheel_size = Column(String(255))  # Rear wheel size
+    battery_watts_per_hour = Column(String(255))  # Alternative battery specification
 
 class Comparison(Base):
     __tablename__ = 'comparisons'
@@ -192,16 +201,33 @@ def get_database_url():
     """Get absolute path to the emtb.db file inside /app directory"""
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     db_path = os.path.join(base_dir, 'emtb.db')
-    return f"sqlite:///{db_path}"
+    return f"sqlite:///{db_path}?check_same_thread=False"
 
+# Global engine for connection pooling
+_engine = None
+_Session = None
+
+def get_engine():
+    """Get a singleton database engine with connection pooling"""
+    global _engine
+    if _engine is None:
+        _engine = create_engine(
+            get_database_url(),
+            pool_size=10,
+            max_overflow=20,
+            pool_pre_ping=True,
+            pool_recycle=3600
+        )
+    return _engine
+
+def get_session():
+    """Get a database session from the pooled engine"""
+    global _Session
+    if _Session is None:
+        _Session = sessionmaker(bind=get_engine())
+    return _Session()
 
 def init_db():
     """Initialize the database"""
-    engine = create_engine(get_database_url())
-    Base.metadata.create_all(engine)
-
-def get_session():
-    """Get a database session"""
-    engine = create_engine(get_database_url())
-    Session = sessionmaker(bind=engine)
-    return Session() 
+    engine = get_engine()
+    Base.metadata.create_all(engine) 

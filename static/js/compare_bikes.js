@@ -55,7 +55,13 @@ function stopThinkingAnimation() {
 document.body.addEventListener('click', function (e) {
     if (e.target.classList.contains('remove-bike-btn')) {
         const bikeId = e.target.getAttribute('data-bike-id');
-        fetch(`/remove_from_compare/${bikeId}`, { method: 'POST' })
+        fetch('/remove_from_compare', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ bike_id: bikeId })
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.success) {

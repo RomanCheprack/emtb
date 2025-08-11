@@ -1,55 +1,83 @@
-import json
+import sqlite3
 import os
+import json
 from models import init_db, get_session, Bike
 
-def load_bikes_from_json():
-    """Load all bikes from standardized JSON files for migration purposes"""
-    standardized_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'standardized_data')
-
+def drop_and_recreate_bikes_table():
+    """Drop the bikes table and recreate it with standardized data"""
+    print("Starting bikes table recreation...")
     
-    # Try to load from combined standardized file first
-    combined_file = os.path.join(standardized_data_dir, "all_bikes_standardized.json")
-    if os.path.exists(combined_file):
-        print(f"Loading from combined file: {combined_file}")
-        with open(combined_file, 'r', encoding='utf-8') as f:
-            bikes = json.load(f)
-        return bikes
+    # Get the database file path
+    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'emtb.db')
     
-    # If no combined file, load from individual standardized files
-    standardized_files = [f for f in os.listdir(standardized_data_dir) if f.startswith('standardized_') and f.endswith('.json')]
+    # Connect to the database
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
     
-    all_bikes = []
-    for filename in standardized_files:
-        filepath = os.path.join(standardized_data_dir, filename)
-        print(f"Loading from {filename}...")
+    try:
+        # Drop the bikes table
+        print("Dropping bikes table...")
+        cursor.execute("DROP TABLE IF EXISTS bikes")
+        print("✓ Bikes table dropped successfully")
         
-        with open(filepath, 'r', encoding='utf-8') as f:
-            bikes = json.load(f)
+        # Commit the drop
+        conn.commit()
         
-        all_bikes.extend(bikes)
-        print(f"  Loaded {len(bikes)} bikes from {filename}")
-    
-    return all_bikes
+        # Close connection
+        conn.close()
+        
+        # Recreate the table using SQLAlchemy
+        print("Recreating bikes table with new schema...")
+        init_db()
+        print("✓ Bikes table recreated with new schema")
+        
+        # Now migrate the standardized data
+        print("Migrating standardized data to new table...")
+        migrate_standardized_data()
+        
+    except Exception as e:
+        print(f"Error during table recreation: {e}")
+        conn.rollback()
+        raise
+    finally:
+        if conn:
+            conn.close()
 
-def migrate_bikes_to_db():
-    """Migrate all bikes from standardized JSON files to SQLite database"""
-    print("Starting migration of standardized bikes to SQLite...")
-    
-    # Initialize database
-    init_db()
+def migrate_standardized_data():
+    """Migrate all standardized bikes to the new table"""
     session = get_session()
     
     try:
-        # Load all bikes from existing JSON files
-        all_bikes = load_bikes_from_json()
+        # Load standardized data
+        standardized_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'standardized_data')
         
-        print(f"Found {len(all_bikes)} bikes to migrate")
+        # Try to load from combined standardized file first
+        combined_file = os.path.join(standardized_data_dir, "all_bikes_standardized.json")
+        if os.path.exists(combined_file):
+            print(f"Loading from combined file: {combined_file}")
+            with open(combined_file, 'r', encoding='utf-8') as f:
+                bikes = json.load(f)
+        else:
+            print("Combined file not found, loading individual files...")
+            # Load from individual standardized files
+            standardized_files = [f for f in os.listdir(standardized_data_dir) if f.startswith('standardized_') and f.endswith('.json')]
+            bikes = []
+            for filename in standardized_files:
+                filepath = os.path.join(standardized_data_dir, filename)
+                print(f"Loading from {filename}...")
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    file_bikes = json.load(f)
+                    bikes.extend(file_bikes)
+                print(f"  Loaded {len(file_bikes)} bikes from {filename}")
+        
+        print(f"Found {len(bikes)} bikes to migrate")
         
         # Migrate each bike
         migrated_count = 0
-        skipped_count = 0
+        duplicate_count = 0
+        seen_ids = set()
         
-        for bike_data in all_bikes:
+        for bike_data in bikes:
             # Generate ID if not present
             if not bike_data.get('id'):
                 firm = bike_data.get('firm', '').replace(" ", "-")
@@ -57,16 +85,20 @@ def migrate_bikes_to_db():
                 year = str(bike_data.get('year', ''))
                 url_part = bike_data.get('product_url', '').split('/')[-1].split('.')[0] if bike_data.get('product_url') else 'unknown'
                 bike_data['id'] = f"{firm}_{model}_{year}_{url_part}".lower()
-                print(f"Generated ID for bike: {bike_data['id']}")
             
-            # Check if bike already exists
-            existing_bike = session.query(Bike).filter_by(id=bike_data['id']).first()
-            if existing_bike:
-                print(f"Bike {bike_data['id']} already exists, skipping...")
-                skipped_count += 1
-                continue
+            # Handle duplicate IDs by adding a suffix
+            original_id = bike_data['id']
+            counter = 1
+            while bike_data['id'] in seen_ids:
+                bike_data['id'] = f"{original_id}_{counter}"
+                counter += 1
+            seen_ids.add(bike_data['id'])
             
-            # Create new bike record with standardized fields
+            if counter > 1:
+                duplicate_count += 1
+                print(f"Fixed duplicate ID: {original_id} -> {bike_data['id']}")
+            
+            # Create new bike record with all standardized fields
             bike = Bike(
                 id=bike_data.get('id', ''),
                 firm=bike_data.get('firm', ''),
@@ -81,7 +113,6 @@ def migrate_bikes_to_db():
                 battery=bike_data.get('battery', ''),
                 fork=bike_data.get('fork', ''),
                 rear_shock=bike_data.get('rear_shock', ''),
-                
                 
                 # Additional standardized fields
                 stem=bike_data.get('stem', ''),
@@ -136,12 +167,15 @@ def migrate_bikes_to_db():
             
             session.add(bike)
             migrated_count += 1
-            print(f"Added bike: {bike_data['id']}")
+            
+            if migrated_count % 50 == 0:
+                print(f"Migrated {migrated_count} bikes...")
         
         # Commit all changes
         session.commit()
-        print(f"Successfully migrated {migrated_count} standardized bikes to database")
-        print(f"Skipped {skipped_count} existing bikes")
+        print(f"✓ Successfully migrated {migrated_count} bikes to new table")
+        if duplicate_count > 0:
+            print(f"  Fixed {duplicate_count} duplicate IDs")
         
     except Exception as e:
         print(f"Error during migration: {e}")
@@ -150,23 +184,16 @@ def migrate_bikes_to_db():
     finally:
         session.close()
 
-def migrate_compare_counts():
-    """Migrate compare counts from JSON to database (if needed)"""
-    print("Migrating compare counts...")
-    
-    try:
-        with open("data/compare_counts.json", "r", encoding="utf-8") as f:
-            compare_counts = json.load(f)
-        
-        # You can add a CompareCount model if you want to store this in DB
-        # For now, we'll keep it as JSON since it's simple
-        print(f"Compare counts loaded: {len(compare_counts)} entries")
-        
-    except FileNotFoundError:
-        print("No compare_counts.json found, skipping...")
-
 if __name__ == "__main__":
-    print("Starting migration process...")
-    migrate_bikes_to_db()
-    migrate_compare_counts()
-    print("Migration completed!") 
+    print("=== Bikes Table Recreation Tool ===")
+    print("This will DROP the existing bikes table and recreate it with standardized data.")
+    print("Make sure you have backed up any important data!")
+    print()
+    
+    # Ask for confirmation
+    response = input("Are you sure you want to continue? (yes/no): ")
+    if response.lower() in ['yes', 'y']:
+        drop_and_recreate_bikes_table()
+        print("\n✓ Bikes table recreation completed successfully!")
+    else:
+        print("Operation cancelled.") 
