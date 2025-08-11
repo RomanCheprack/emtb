@@ -43,17 +43,17 @@ def main():
     print("🚀 Starting EMTB data workflow...")
     
     # Step 1: Run all scrapers
-    if not run_script("run_all_scrapers.py", "Running all scrapers"):
+    if not run_script("scrapers/run_all_scrapers.py", "Running all scrapers"):
         print("❌ Scraping failed, stopping workflow")
         return
     
     # Step 2: Standardize JSON files
-    if not run_script("standardize_json.py", "Standardizing JSON files"):
+    if not run_script("data/standardize_json.py", "Standardizing JSON files"):
         print("❌ Standardization failed, stopping workflow")
         return
     
     # Step 3: Migrate to database
-    if not run_script("migrate_to_db.py", "Migrating data to database"):
+    if not run_script("db/migrate_to_db.py", "Migrating data to database"):
         print("❌ Migration failed, stopping workflow")
         return
     

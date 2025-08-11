@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const bikeDiv = document.createElement('div');
                 bikeDiv.className = 'col-6 col-lg-2 mb-2 px-1';
                 bikeDiv.innerHTML = `
-                    <div class="card h-100 position-relative bike-card" data-bike='${JSON.stringify(bike)}'>
+                    <div class="card h-100 position-relative bike-card" data-bike-id="${bike.id}">
                         <img src="${bike["image_url"]}" class="card-img-top" alt="${bike.model}">
                         <div class="card-body">
                             <h2 class="card-firm">${bike.firm}</h2>
@@ -153,14 +153,27 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }`}
                             </p>
                             <p class="card-text-year">${bike.year}</p>
-                            <div class="details-btn mb-2">
-                                <button type="button" class="btn btn-outline-info details-btn" data-bike='${JSON.stringify(bike)}'>מפרט</button>
-                            </div>
-                            <div class="compare-btn-container">
-                                <button class="btn btn-compare compare-btn" data-bike-id="${bike.id}">
-                                    <i class="fas fa-balance-scale me-1"></i>
-                                    הוסף להשוואה
-                                </button>
+                            <div class="button-container">
+                                <div class="top-buttons-container">
+                                    <div class="details-btn-container">
+                                        <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${bike.id}">
+                                            <i class="fas fa-info-circle me-1"></i>
+                                            מפרט
+                                        </button>
+                                    </div>
+                                    <div class="purchase-btn-container">
+                                        <button class="btn btn-outline-primary purchase-btn" data-bike-id="${bike.id}" data-product-url="${bike.product_url || ''}">
+                                            <i class="fas fa-shopping-cart me-1"></i>
+                                            רכישה
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="compare-btn-container">
+                                    <button class="btn btn-outline-danger compare-btn" data-bike-id="${bike.id}">
+                                        <i class="fas fa-balance-scale me-1"></i>
+                                        הוסף להשוואה
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -227,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 bikesCount.textContent = `נמצאו ${bikes.length} אופניים`;
 
                 attachCompareButtonListeners();
+                attachPurchaseButtonListeners();
                 // Restore compare UI state after regenerating HTML
                 fetch("/api/compare_list")
                     .then((res) => res.json())
@@ -289,6 +303,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function attachPurchaseButtonListeners() {
+        document.querySelectorAll(".purchase-btn").forEach((btn) => {
+            btn.onclick = () => {
+                const productUrl = btn.getAttribute("data-product-url");
+                
+                if (productUrl && productUrl.trim() !== '') {
+                    // Open the product URL in a new tab
+                    window.open(productUrl, '_blank');
+                } else {
+                    // Show a message if no product URL is available
+                    alert('לא ניתן לרכוש כרגע - אין קישור למוצר זמין');
+                }
+            };
+        });
+    }
+
     function updateCompareUI(compareList) {
         console.log("Updating compare UI with list:", compareList);
         document.querySelectorAll(".compare-btn").forEach((btn) => {
@@ -301,10 +331,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.classList.add("selected");
                 btn.innerHTML = '<i class="fas fa-check me-1"></i>הסר השוואה';
                 card.classList.add("compare-selected");
+                console.log(`✅ Bike ${bikeId} is now SELECTED`);
             } else {
                 btn.classList.remove("selected");
                 btn.innerHTML = '<i class="fas fa-balance-scale me-1"></i>הוסף להשוואה';
                 card.classList.remove("compare-selected");
+                console.log(`❌ Bike ${bikeId} is now DESELECTED`);
             }
         });
 
@@ -318,7 +350,52 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function showBikeDetailsModal(bike) {
+    function fetchBikeDetailsAndShowModal(bikeId) {
+    // Show loading state
+    const modalElement = document.getElementById('bikeDetailsModal');
+    const modalBody = document.getElementById('bike-details-content');
+    
+    // Clear any existing modal instance and backdrop
+    const existingModal = bootstrap.Modal.getInstance(modalElement);
+    if (existingModal) {
+        existingModal.dispose();
+    }
+    
+    // Remove any existing backdrop
+    const existingBackdrop = document.querySelector('.modal-backdrop');
+    if (existingBackdrop) {
+        existingBackdrop.remove();
+    }
+    
+    // Remove modal-open class from body
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+    
+    modalBody.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">טוען...</span></div><p class="mt-2">טוען פרטי האופניים...</p></div>';
+    
+    // Create new modal instance and show
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+    
+    // Fetch bike details from API
+    fetch(`/api/bike/${encodeURIComponent(bikeId)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(bike => {
+            showBikeDetailsModal(bike);
+        })
+        .catch(error => {
+            console.error('Error fetching bike details:', error);
+            modalBody.innerHTML = '<div class="alert alert-danger">שגיאה בטעינת פרטי האופניים. אנא נסה שוב.</div>';
+        });
+}
+
+function showBikeDetailsModal(bike) {
         console.log('Showing bike details modal for:', bike);
         
         // Validate bike object
@@ -419,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 // Translate the field name
                 const translatedKey = fieldTranslations[key] || key;
-                html += `<tr><th style="width:40%; text-align: right;">${translatedKey}</th><td style="text-align: left;">${value}</td></tr>`;
+                html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
             }
         });
 
@@ -451,7 +528,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             
-            const modal = new bootstrap.Modal(modalElement);
+            // Get existing modal instance or create new one
+            let modal = bootstrap.Modal.getInstance(modalElement);
+            if (!modal) {
+                modal = new bootstrap.Modal(modalElement);
+            }
+            
+            // Add event listener to properly clean up when modal is hidden
+            modalElement.addEventListener('hidden.bs.modal', function () {
+                // Remove backdrop
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();
+                }
+                
+                // Clean up body classes and styles
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+            }, { once: true });
+            
             modal.show();
         } catch (error) {
             console.error('Error showing bike details modal:', error);
@@ -530,6 +626,7 @@ document.addEventListener("DOMContentLoaded", () => {
             bikesCount.textContent = `נמצאו ${bikes.length} אופניים`;
 
             attachCompareButtonListeners();
+            attachPurchaseButtonListeners();
         })
         .catch((err) => {
             console.error("Error in reset:", err);
@@ -576,20 +673,34 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((res) => res.json())
         .then((data) => updateCompareUI(data.compare_list || []));
 
+    // Attach initial button listeners
+    attachCompareButtonListeners();
+    attachPurchaseButtonListeners();
+
     // Debug: Check initial bike data structure
     console.log('Initial bikes count:', document.querySelectorAll('.bike-card').length);
     document.querySelectorAll('.bike-card').forEach((card, index) => {
-        const bikeData = card.getAttribute('data-bike');
-        console.log(`Bike ${index + 1} data:`, bikeData);
-        try {
-            const bike = JSON.parse(bikeData);
-            console.log(`Bike ${index + 1} parsed successfully:`, bike);
-        } catch (error) {
-            console.error(`Bike ${index + 1} JSON parse error:`, error);
-        }
+        const bikeId = card.getAttribute('data-bike-id');
+        console.log(`Bike ${index + 1} ID:`, bikeId);
     });
     
     applyFilters();  // initial load
+
+    // Add global modal cleanup event listener
+    document.addEventListener('hidden.bs.modal', function (event) {
+        if (event.target.id === 'bikeDetailsModal') {
+            // Remove backdrop
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) {
+                backdrop.remove();
+            }
+            
+            // Clean up body classes and styles
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        }
+    });
 
     // Add event delegation for .bike-card clicks and details buttons
     document.getElementById('bikes-list').addEventListener('click', function(e) {
@@ -598,33 +709,19 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Handle details button clicks
         if (e.target.closest('.details-btn')) {
-            try {
-                const bikeData = card.getAttribute('data-bike');
-                console.log('Details button clicked, bike data:', bikeData);
-                const bike = JSON.parse(bikeData);
-                showBikeDetailsModal(bike);
-            } catch (error) {
-                console.error('Error parsing bike data for details button:', error);
-                console.error('Raw bike data:', card.getAttribute('data-bike'));
-                alert('שגיאה בטעינת פרטי האופניים. אנא נסה שוב.');
-            }
+            const bikeId = card.getAttribute('data-bike-id');
+            console.log('Details button clicked, bike ID:', bikeId);
+            fetchBikeDetailsAndShowModal(bikeId);
             return;
         }
         
-        // Prevent click if compare button is clicked
-        if (e.target.closest('.compare-btn')) return;
+        // Prevent click if compare button, purchase button, or details button is clicked
+        if (e.target.closest('.compare-btn') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn')) return;
         
         // Handle card clicks (excluding buttons)
-        try {
-            const bikeData = card.getAttribute('data-bike');
-            console.log('Card clicked, bike data:', bikeData);
-            const bike = JSON.parse(bikeData);
-            showBikeDetailsModal(bike);
-        } catch (error) {
-            console.error('Error parsing bike data for card click:', error);
-            console.error('Raw bike data:', card.getAttribute('data-bike'));
-            alert('שגיאה בטעינת פרטי האופניים. אנא נסה שוב.');
-        }
+        const bikeId = card.getAttribute('data-bike-id');
+        console.log('Card clicked, bike ID:', bikeId);
+        fetchBikeDetailsAndShowModal(bikeId);
     });
 
     // Sticky compare button functionality

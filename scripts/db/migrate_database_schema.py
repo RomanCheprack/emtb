@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from models import get_session, Bike
+from .models import get_session, Bike
 
 def migrate_database_schema():
     """Safely migrate the database schema by adding new columns without dropping data"""
@@ -11,7 +11,7 @@ def migrate_database_schema():
     
     if not os.path.exists(db_path):
         print("Database file not found. Creating new database...")
-        from models import init_db
+        from .models import init_db
         init_db()
         return
     

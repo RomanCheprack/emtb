@@ -17,11 +17,11 @@ class Bike(Base):
     disc_price = Column(String(255))
     image_url = Column(String(500))
     product_url = Column(String(500))
-    frame = Column(String(255))
-    motor = Column(String(255))
-    battery = Column(String(255))
-    fork = Column(String(255))
-    rear_shock = Column(String(255))
+    frame = Column(String(500))  # Increased length to handle longer frame descriptions
+    motor = Column(String(500))  # Increased length for motor descriptions
+    battery = Column(String(500))  # Increased length for battery descriptions
+    fork = Column(String(500))  # Increased length for fork descriptions
+    rear_shock = Column(String(500))  # Increased length for rear shock descriptions
     
     
     # Additional standardized fields

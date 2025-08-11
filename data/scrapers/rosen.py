@@ -329,9 +329,9 @@ def extract_specs_rosen_merida(soup):
                         if detail_text:
                             spec_details.append(detail_text)
                     
-                    # Join all details with semicolon separator
+                    # Join all details with comma separator (instead of semicolon to avoid JSON issues)
                     if spec_details:
-                        specs[p_text] = "; ".join(spec_details)
+                        specs[p_text] = ", ".join(spec_details)
                     
                     i += 2  # Skip both p and ul elements
                 else:

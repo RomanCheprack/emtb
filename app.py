@@ -7,7 +7,7 @@ from email.message import EmailMessage
 import json
 import os
 import smtplib
-from scripts.models import init_db, get_session, Bike, Comparison, CompareCount
+from scripts.db.models import init_db, get_session, Bike, Comparison, CompareCount
 from sqlalchemy import or_ # Added for OR queries in filter_bikes
 
 # --- NEW IMPORTS FOR WEBHOOK ---
@@ -344,18 +344,31 @@ def parse_price(price_str):
 
 def clean_bike_data_for_json(bike_dict):
     """Clean bike data to ensure it's safe for JSON serialization"""
+    import re
     cleaned_dict = {}
     for key, value in bike_dict.items():
         if value is not None:
             # Convert to string and clean any problematic characters
             cleaned_value = str(value)
-            # Remove or replace problematic characters that could break JSON
-            cleaned_value = cleaned_value.replace('\n', ' ').replace('\r', ' ')
-            cleaned_value = cleaned_value.replace('\t', ' ')
-            # Remove any null bytes or other control characters
-            cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in '\n\r\t')
+            
+            # Remove all control characters except basic whitespace
+            cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in ' \t\n\r')
+            
+            # Replace problematic characters that could break JSON
+            cleaned_value = cleaned_value.replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+            cleaned_value = cleaned_value.replace('"', "'")   # Replace double quotes with single quotes
+            cleaned_value = cleaned_value.replace('\\', '/')  # Replace backslashes with forward slashes
+            cleaned_value = cleaned_value.replace(';', ', ')  # Replace semicolons with commas
+            
+            # Remove any remaining control characters
+            cleaned_value = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', cleaned_value)
+            
+            # Remove duplicate spaces
+            cleaned_value = re.sub(r'\s+', ' ', cleaned_value)
+            
             # Trim whitespace
             cleaned_value = cleaned_value.strip()
+            
             if cleaned_value:  # Only add non-empty values
                 cleaned_dict[key] = cleaned_value
         else:
@@ -561,6 +574,50 @@ def filter_bikes():
             filtered_bikes.append(cleaned_bike_dict)
 
         return jsonify(filtered_bikes)
+    finally:
+        db_session.close()
+
+
+@app.route('/api/bike/<path:bike_id>')
+def get_bike_details(bike_id):
+    """Get bike details by ID for AJAX requests"""
+    try:
+        db_session = get_session()
+        
+        # Find the bike with the exact ID
+        bike = db_session.query(Bike).filter_by(id=bike_id).first()
+        
+        if not bike:
+            return jsonify({'error': 'Bike not found'}), 404
+        
+        # Convert bike to dictionary with only needed fields
+        bike_dict = {
+            'id': str(bike.id) if bike.id else None,
+            'firm': str(bike.firm) if bike.firm else None,
+            'model': str(bike.model) if bike.model else None,
+            'year': str(bike.year) if bike.year else None,
+            'price': str(bike.price) if bike.price else None,
+            'disc_price': str(bike.disc_price) if bike.disc_price else None,
+            'frame': str(bike.frame) if bike.frame else None,
+            'motor': str(bike.motor) if bike.motor else None,
+            'battery': str(bike.battery) if bike.battery else None,
+            'fork': str(bike.fork) if bike.fork else None,
+            'rear_shock': str(bike.rear_shock) if bike.rear_shock else None,
+            'image_url': str(bike.image_url) if bike.image_url else None,
+            'product_url': str(bike.product_url) if bike.product_url else None,
+            'wh': str(bike.wh) if bike.wh else None,
+            'fork_length': str(bike.fork_length) if bike.fork_length else None,
+            'sub_category': str(bike.sub_category) if bike.sub_category else None,
+        }
+        
+        # Clean the bike data to ensure it's safe for JSON serialization
+        cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
+        
+        return jsonify(cleaned_bike_dict)
+        
+    except Exception as e:
+        print(f"Error getting bike details: {e}")
+        return jsonify({'error': 'Server error'}), 500
     finally:
         db_session.close()
 

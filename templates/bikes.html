@@ -43,7 +43,7 @@
 
 
 <div class="d-flex justify-content-between align-items-center" style="min-height: 50px;">
-    <div id="bikes-count" class="mb-3">
+    <div id="bikes-count" class="mb-3" style="margin-left: 15px;">
         נמצאו {{ bikes|length }} אופניים
     </div>
     <a href="{{ url_for('compare_bikes') }}" class="btn btn-success mx-2" id="go-to-compare" style="display: none;">
@@ -57,7 +57,7 @@
     <div class="row" id="bikes-list">
         {% for bike in bikes %}
         <div class="col-6 col-lg-2 mb-2 px-1">
-            <div class="card h-100 position-relative bike-card" data-bike='{{ bike | tojson | safe }}'>
+            <div class="card h-100 position-relative bike-card" data-bike-id="{{ bike['id'] }}">
                 <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
                 <div class="card-body">
                     <h2 class="card-firm">{{bike['firm']}}</h2>
@@ -87,18 +87,29 @@
                     {% endif %}
 
                     <p class="card-text-year">{{ bike['year'] }}</p>
-                    <div class="details-btn mb-2">
-                        <button type="button"
-                                class="btn btn-outline-info details-btn"
-                                data-bike='{{ bike | tojson | safe }}'>
-                            מפרט
-                        </button>
-                    </div>
-                    <div class="compare-btn-container">
-                        <button class="btn btn-compare compare-btn" data-bike-id="{{ bike['id'] }}">
-                            <i class="fas fa-balance-scale me-1"></i>
-                            הוסף להשוואה
-                        </button>
+                    <div class="button-container">
+                        <div class="top-buttons-container">
+                            <div class="details-btn-container">
+                                <button type="button"
+                                        class="btn btn-outline-secondary details-btn"
+                                        data-bike-id="{{ bike['id'] }}">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    מפרט
+                                </button>
+                            </div>
+                            <div class="purchase-btn-container">
+                                <button class="btn btn-outline-primary purchase-btn" data-bike-id="{{ bike['id'] }}" data-product-url="{{ bike.get('product_url', '') }}">
+                                    <i class="fas fa-shopping-cart me-1"></i>
+                                    רכישה
+                                </button>
+                            </div>
+                        </div>
+                        <div class="compare-btn-container">
+                            <button class="btn btn-outline-danger compare-btn" data-bike-id="{{ bike['id'] }}">
+                                <i class="fas fa-balance-scale me-1"></i>
+                                הוסף להשוואה
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

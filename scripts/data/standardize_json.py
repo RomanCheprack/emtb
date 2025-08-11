@@ -2,6 +2,27 @@ import json
 import os
 from collections import defaultdict
 
+def clean_bike_field_value(value):
+    """Clean bike field values to ensure they're safe for JSON serialization and database storage"""
+    if value is None:
+        return None
+    
+    # Convert to string and clean any problematic characters
+    cleaned_value = str(value)
+    # Remove or replace problematic characters that could break JSON or database operations
+    cleaned_value = cleaned_value.replace('\n', ' ').replace('\r', ' ')
+    cleaned_value = cleaned_value.replace('\t', ' ')
+    # Handle semicolons and other special characters that might cause issues
+    cleaned_value = cleaned_value.replace(';', ', ')  # Replace semicolons with commas
+    cleaned_value = cleaned_value.replace('"', "'")   # Replace double quotes with single quotes
+    cleaned_value = cleaned_value.replace('\\', '/')  # Replace backslashes with forward slashes
+    # Remove any null bytes or other control characters
+    cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in '\n\r\t')
+    # Trim whitespace
+    cleaned_value = cleaned_value.strip()
+    
+    return cleaned_value if cleaned_value else None
+
 # Field mapping: various field names -> standardized names
 FIELD_MAPPING = {
     # English fields
@@ -435,14 +456,17 @@ def standardize_bike_data(bike_data):
 
         if cleaned_original_field in FIELD_MAPPING:
             standardized_field = FIELD_MAPPING[cleaned_original_field] # Use cleaned field here
+            # Clean the value to handle semicolons and other problematic characters
+            cleaned_value = clean_bike_field_value(value)
+            
             # If field already exists, merge values (for cases like rims, wheels, etc.)
-            if standardized_field in standardized and value:
+            if standardized_field in standardized and cleaned_value:
                 if standardized[standardized_field]:
-                    standardized[standardized_field] += f" / {value}"
+                    standardized[standardized_field] += f" / {cleaned_value}"
                 else:
-                    standardized[standardized_field] = value
+                    standardized[standardized_field] = cleaned_value
             else:
-                standardized[standardized_field] = value
+                standardized[standardized_field] = cleaned_value
         # Remove unknown fields - they won't be included in standardized output
 
     return standardized

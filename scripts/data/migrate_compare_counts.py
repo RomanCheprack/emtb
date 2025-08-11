@@ -1,6 +1,6 @@
 import json
 import os
-from models import init_db, get_session, CompareCount
+from ..db.models import init_db, get_session, CompareCount
 
 def migrate_compare_counts():
     """Migrate compare counts from JSON file to database"""
