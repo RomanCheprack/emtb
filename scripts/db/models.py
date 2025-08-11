@@ -131,7 +131,7 @@ class Comparison(Base):
         
         # If session is provided, get bike details from database
         if session:
-            from scripts.models import Bike
+            # Bike class is already defined in this file, no need to import
             for bike_id in bike_ids_list:
                 bike = session.query(Bike).filter_by(id=bike_id).first()
                 if bike:

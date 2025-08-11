@@ -127,7 +127,7 @@ def sitemap():
     # Add persistent comparison pages
     session = get_session()
     try:
-        from scripts.models import Comparison
+        # Comparison is already imported at the top of the file
         comparisons = session.query(Comparison).all()
         for comparison in comparisons:
             if comparison.slug:
@@ -396,59 +396,13 @@ def home():
     return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
 
 
-@app.route("/debug_bike_data")
-def debug_bike_data():
-    """Temporary route to debug bike data structure"""
-    all_bikes = load_all_bikes()
-    if all_bikes:
-        first_bike = all_bikes[0]
-        debug_info = {
-            'total_bikes': len(all_bikes),
-            'first_bike_keys': list(first_bike.keys()),
-            'price_field': {
-                'type': str(type(first_bike.get('price'))),
-                'value': str(first_bike.get('price')),
-                'is_dict': isinstance(first_bike.get('price'), dict)
-            },
-            'all_dict_fields': {}
-        }
-        
-        for key, value in first_bike.items():
-            if isinstance(value, dict):
-                debug_info['all_dict_fields'][key] = {
-                    'type': str(type(value)),
-                    'keys': list(value.keys()) if isinstance(value, dict) else None,
-                    'value': str(value)
-                }
-        
-        return jsonify(debug_info)
-    return jsonify({'error': 'No bikes found'})
+
 
 @app.route("/bikes")
 def bikes():
     all_bikes = load_all_bikes()
     firms = get_all_firms()
     sub_categories = get_all_sub_categories()
-    
-    # Debug: Check the first bike's data structure
-    if all_bikes:
-        print("DEBUG: First bike data structure:")
-        for key, value in all_bikes[0].items():
-            print(f"  {key}: {type(value)} = {value}")
-        
-        # Check specifically for Price field
-        first_bike = all_bikes[0]
-        if 'price' in first_bike:
-            print(f"DEBUG: Price field type: {type(first_bike['price'])}")
-            print(f"DEBUG: Price field value: {first_bike['price']}")
-            if isinstance(first_bike['price'], dict):
-                print(f"DEBUG: Price is a dict with keys: {list(first_bike['price'].keys())}")
-        
-        # Check for any dict values in the bike data
-        print("DEBUG: Checking for dict values in bike data:")
-        for key, value in first_bike.items():
-            if isinstance(value, dict):
-                print(f"  WARNING: {key} is a dict: {value}")
     
     return render_template("bikes.html", bikes=all_bikes, firms=firms, sub_categories=sub_categories)
 def parse_battery(battery_str):
@@ -716,15 +670,15 @@ def compare_bikes():
             bikes_to_compare.append(bike)
 
     # Key fields to always show
-    always_show = ["Model", "Price", "Year", "Motor", "Battery"]
+    always_show = ["model", "price", "year", "motor", "battery"]
 
     # Disc_price: show if at least one bike has it non-empty
     show_disc_price = any(
-        bike.get("Disc_price") not in [None, '', 'N/A', '#N/A']
+        bike.get("disc_price") not in [None, '', 'N/A', '#N/A']
         for bike in bikes_to_compare
     )
     if show_disc_price:
-        always_show.append("Disc_price")
+        always_show.append("disc_price")
 
     # Get all unique fields from all bikes
     all_fields = set()
@@ -732,7 +686,7 @@ def compare_bikes():
         all_fields.update(bike.keys())
 
     # Remove fields you don't want to show
-    exclude_fields = {'id', 'slug', 'Image URL', 'Product URL'}
+    exclude_fields = {'id', 'slug', 'image_url', 'product_url'}
     candidate_fields = [f for f in all_fields if f not in exclude_fields and f not in always_show]
 
     # Only keep fields that are present and non-empty in ALL bikes
@@ -804,13 +758,26 @@ def clear_compare():
 
 @app.route('/api/compare_ai_from_session', methods=['GET'])
 def compare_ai_from_session():
-    compare_list = get_compare_list()
-    if len(compare_list) < 2:
-        return jsonify({"error": "צריך לבחור לפחות שני דגמים להשוואה."}), 400
+    try:
+        # Check if OpenAI API key is set
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            return jsonify({"error": "OpenAI API key not configured", "details": "OPENAI_API_KEY environment variable is missing"}), 500
+        
+        compare_list = get_compare_list()
+        
+        if len(compare_list) < 2:
+            return jsonify({"error": "צריך לבחור לפחות שני דגמים להשוואה."}), 400
 
-    all_bikes = load_all_bikes()
-    bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
-    prompt = create_ai_prompt(bikes_to_compare)
+        all_bikes = load_all_bikes()
+        bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
+        
+        if len(bikes_to_compare) < 2:
+            return jsonify({"error": "לא נמצאו מספיק דגמים להשוואה. נסה לבחור דגמים אחרים."}), 400
+        
+        prompt = create_ai_prompt(bikes_to_compare)
+    except Exception as e:
+        return jsonify({"error": "שגיאה בטעינת נתוני האופניים", "details": str(e)}), 500
 
     try:
         response = client.chat.completions.create(
@@ -834,8 +801,6 @@ def compare_ai_from_session():
         )
 
         raw_text = response.choices[0].message.content.strip()
-        #print("✅ raw_text before cleaning:")
-        #print(raw_text)
 
         # Remove wrapping ```json ... ```
         if raw_text.startswith("```json"):
@@ -849,7 +814,6 @@ def compare_ai_from_session():
         # Parse JSON
         try:
             data = json.loads(raw_text)
-            print("✅ JSON parsed successfully")
 
             # ✅ Save comparison to database
             db_session = get_session()
@@ -864,7 +828,6 @@ def compare_ai_from_session():
 
                 db_session.add(comparison)
                 db_session.commit()
-                print(f"✅ Saved comparison to database with ID: {comparison.id}, Slug: {slug}")
 
                 # Create response data after successful save
                 response_data = {
@@ -874,7 +837,6 @@ def compare_ai_from_session():
                 }
 
             except Exception as e:
-                print(f"❌ Error saving to database: {e}")
                 db_session.rollback()
                 # Return error response
                 return jsonify({"error": "שגיאה בשמירת ההשוואה", "details": str(e)}), 500
@@ -883,7 +845,6 @@ def compare_ai_from_session():
 
             return jsonify(response_data)
         except json.JSONDecodeError as e:
-            print("❌ JSON decode error:", e)
             return jsonify({
                 "error": "ה-AI לא החזיר תשובת JSON תקינה.",
                 "raw": raw_text
@@ -904,7 +865,8 @@ def create_ai_prompt(bikes):
 
     simplified_bike_data = []
     for bike in bikes:
-        clean_bike = {"name": bike.get("Model", "דגם לא ידוע")}
+        # Use lowercase field names to match the actual bike data structure
+        clean_bike = {"name": bike.get("model", "דגם לא ידוע")}
         for field in important_fields:
             clean_bike[field] = bike.get(field, "לא ידוע")
         simplified_bike_data.append(clean_bike)
