@@ -38,7 +38,7 @@
                     <div class="hero-banner-container">
                         <div class="hero-banner-overlay"></div>
                         <div class="hero-banner-content">
-                            <h3 class="hero-banner-title">הטכנולוגיה החדשה נפגשתעם הטבע</h3>
+                            <h3 class="hero-banner-title">טכנולוגיה חדשה נפגשת עם הטבע</h3>
                             <p class="hero-banner-subtitle">חווה את העתיד של מציאת האופניים המושלמים</p>
                         </div>
                     </div>
@@ -138,30 +138,44 @@
 
     <!-- The popular Section -->
     <div class="w3-black" id="top_bikes">
-        <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+        <div class="w3-container w3-content w3-padding-64" style="max-width:1200px">
             <h2 class="w3-wide w3-center popular">הפופולריים ביותר</h2>
-            <p class="w3-opacity w3-center"><i>המחושמליים שרוכבים חיפשו הכי הרבה</i></p><br>
-
-            <div class="w3-row-padding w3-padding-32" style="margin:0">
-                {% for bike in top_bikes %}
-                <div class="w3-third w3-margin-bottom">
-                    <div class="card-img-container">
-                        <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
+            <p class="w3-opacity w3-center"><i>המחושמליים שרוכבים חיפשו הכי הרבה</i></p>
+            <div class="carousel-container">
+                <button class="carousel-button carousel-button-prev" onclick="moveCarousel(-1)">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-track">
+                    {% for bike in top_bikes[:10] %}
+                    <div class="carousel-item">
+                        <div class="card-img-container">
+                            <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
+                        </div>
+                        <div class="w3-container bike-card" style="display: flex; flex-direction: column; align-items: center;">
+                            <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
+                            <p class="model-text">{{ bike['model'] }}</p>
+                            <p class="price">
+                                {% if bike['price'] | format_number == 'צור קשר' %}
+                                    {{ bike['price'] | format_number }}
+                                {% else %}
+                                    ₪{{ bike['price'] | format_number }}
+                                {% endif %}
+                            </p>
+                            <a href="{{ bike['product_url'] }}" target="_blank" class="btn btn-primary mb-3">לרכישה</a>
+                        </div>
                     </div>
-                    <div class="w3-container w3-white" style="display: flex; flex-direction: column; align-items: center;">
-                        <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
-                        <p class="w3-opacity">{{ bike['model'] }}</p>
-                        <p class="price">
-                            {% if bike['price'] | format_number == 'צור קשר' %}
-                                {{ bike['price'] | format_number }}
-                            {% else %}
-                                ₪{{ bike['price'] | format_number }}
-                            {% endif %}
-                        </p>
-                        <a href="{{ bike['product_url'] }}" target="_blank" class="btn btn-primary mb-3">לרכישה</a>
-                    </div>
-
+                    {% endfor %}
                 </div>
+                
+                <button class="carousel-button carousel-button-next" onclick="moveCarousel(1)">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-dots">
+                {% for bike in top_bikes[:10] %}
+                <span class="carousel-dot" onclick="goToSlide({{ loop.index0 }})"></span>
                 {% endfor %}
             </div>
         </div>
@@ -198,6 +212,7 @@
 
     <!-- End Page Content -->
     <script src="{{ url_for('static', filename='js/bikes.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
 
 
 {% endblock %}

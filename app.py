@@ -387,13 +387,39 @@ def home():
         # Get total number of comparisons
         total_comparisons = db_session.query(Comparison).count()
         
-        top_compare_counts = db_session.query(CompareCount).order_by(CompareCount.count.desc()).limit(3).all()
+        top_compare_counts = db_session.query(CompareCount).order_by(CompareCount.count.desc()).limit(10).all()
         top_ids = [cc.bike_id for cc in top_compare_counts]
-        top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
+        
+        # Match bikes using partial ID matching since CompareCount IDs are shorter
+        top_bikes = []
+        for bike in all_bikes:
+            bike_id = bike.get("id", "")
+            for top_id in top_ids:
+                # Extract the model part (before the year) for better matching
+                top_model = top_id.split('_')[1] if '_' in top_id else top_id
+                bike_model_part = bike_id.split('_')[1] if '_' in bike_id else bike_id
+                
+                # Try different matching strategies
+                if (top_id in bike_id or 
+                    bike_id.startswith(top_id) or 
+                    top_model in bike_model_part or
+                    top_id.replace('_', '-') in bike_id or
+                    bike_id.replace('_', '-').startswith(top_id.replace('_', '-'))):
+                    top_bikes.append(bike)
+                    break
+        
+        # If we don't have enough popular bikes, add more bikes as fallback
+        if len(top_bikes) < 10 and all_bikes:
+            # Get bikes that aren't already in top_bikes
+            existing_ids = {bike.get("id") for bike in top_bikes}
+            additional_bikes = [bike for bike in all_bikes if bike.get("id") not in existing_ids]
+            # Add bikes until we have 10 total
+            top_bikes.extend(additional_bikes[:10 - len(top_bikes)])
+            
     except Exception as e:
         print(f"Error loading compare counts: {e}")
         total_comparisons = 0
-        top_bikes = []
+        top_bikes = all_bikes[:10] if all_bikes else []
     finally:
         db_session.close()
 
