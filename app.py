@@ -384,16 +384,20 @@ def home():
     # ✅ Load compare counts from database
     db_session = get_session()
     try:
+        # Get total number of comparisons
+        total_comparisons = db_session.query(Comparison).count()
+        
         top_compare_counts = db_session.query(CompareCount).order_by(CompareCount.count.desc()).limit(3).all()
         top_ids = [cc.bike_id for cc in top_compare_counts]
         top_bikes = [bike for bike in all_bikes if bike.get("id") in top_ids]
     except Exception as e:
         print(f"Error loading compare counts: {e}")
+        total_comparisons = 0
         top_bikes = []
     finally:
         db_session.close()
 
-    return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes)
+    return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes, total_comparisons=total_comparisons)
 
 
 

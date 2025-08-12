@@ -3,47 +3,138 @@
 <!-- Page content -->
 <div class="hero-container">
     <div class="hero-body">
-        <h1>Rideal</h1>
-        <span>רכישת אופניים חכמה</span>
-        <a href="{{ url_for('bikes') }}" class="btn btn-danger mb-3">השוואה</a>
+        <h1 data-typing-animation data-typing-duration="150" data-typing-delay="200">Rideal</h1>
+        <span data-text-animate="blurInUp" data-text-animate-by="word" data-text-animate-delay="0.5" data-text-animate-duration="0.6" dir="rtl">רכישת אופניים חכמה</span>
+        <div class="cta-buttons">
+            <a href="{{ url_for('bikes') }}" class="cta-button-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                חקור את האופניים שלנו
+                
+            </a>
+        </div>
     </div>
-</div><!-- end hero -->
+    </div><!-- end hero -->
 
-    <div class="w3-container w3-content w3-center w3-padding-34" style="max-width:800px" id="band">
-        <section>
-                <div dir="rtl" class="services-grid" >
-                    <div class="service service1 order-mobile-1 order-desktop-1">
-                    <i class="bi bi-search"></i>
-                    <h4>מסננים וממיינים</h4>
-                    <p>
-                        האתר שלנו מרכז את כל אופני ההרים החשמליים בישראל, ומאפשר לבחור רק מה שרלוונטי עבורכם. חסכו זמן והתלבטות – בחרו חכם מההתחלה.
-                        התחלו בלמיין את האופניים שמתאימים לכם באמת. סננו לפי מחיר, שנת ייצור, גודל סוללה, מותג ועוד – וכל זה בלחיצת כפתור.
+    <!-- Modern Vision Section -->
+    <section class="vision-section-modern">
+        <div class="vision-container">
+            <!-- Header Section -->
+            <div class="vision-header">
+                <div class="vision-badge">החזון שלנו</div>
+                <h2 class="vision-title">
+                    מגדירים מחדש<br>
+                    <span class="vision-title-gradient">איך מוצאים את הזוג המושלם</span>
+                </h2>
+                <p class="vision-description">
+                    אנחנו מאמינים שלכל רוכב מגיעה הזדמנות למצוא את זוג האופניים החשמליים שמתאימים לו בצורה מושלמת בלי פשרות, בלי בלבול, ובלי שעות של חיפושים.<br>
+                    ריידיל היא הפלטפורמה הראשונה בישראל שמאחדת את כל דגמי אופני ההרים החשמליים מכל היבואנים, ומאפשרת בחירה חכמה בעזרת טכנולוגיה מתקדמת ומידע מדויק.<br>
+                    החזון שלנו הוא להפוך את תהליך בחירת האופניים לחוויה פשוטה, שקופה ומהנה כדי שתוכל להתמקד בדבר האמיתי: הרכיבה.
+                </p>
+
+                <!-- Hero Banner Image -->
+                <div class="hero-banner">
+                    <div class="hero-banner-container">
+                        <div class="hero-banner-overlay"></div>
+                        <div class="hero-banner-content">
+                            <h3 class="hero-banner-title">הטכנולוגיה החדשה נפגשתעם הטבע</h3>
+                            <p class="hero-banner-subtitle">חווה את העתיד של מציאת האופניים המושלמים</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{{ bikes|length }}</div>
+                    <div class="stat-label">דגמי אופניים</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ total_comparisons|format_number }}+</div>
+                    <div class="stat-label">השוואות בוצעו</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30Y</div>
+                    <div class="stat-label">שנות ניסיון</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">שביעות רצון</div>
+                </div>
+            </div>
+
+            <!-- Vision Cards Grid -->
+            <div class="vision-cards-grid">
+                <div class="vision-card">
+                    <div class="vision-card-content" style="text-align: center;">
+                        <div class="vision-card-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h3 class="vision-card-title">מסננים וממיינים</h3>
+                        <p class="vision-card-description">
+                            חסכנו לכם את הסיבוב בכל החנויות. באתר שלנו תמצאו את כל הדגמים בישראל במקום אחד.
+                            לא צריך לשבור את הראש, פשוט מסננים לפי מה שבאמת חשוב לכם: מחיר, שנת ייצור, גודל סוללה, מותג ועוד.
+                            לחיצה אחת, וכל ההתלבטויות נשארות מאחור.                          </p>
+                        <div class="vision-card-link">
+                            קרא עוד
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                   
+                <div class="vision-card">
+                    <div class="vision-card-content">
+                        <div class="vision-card-icon">
+                            <i class="bi bi-bar-chart-line"></i>
+                        </div>
+                        <h3 class="vision-card-title">השוואה והמלצה</h3>
+                        <p class="vision-card-description">
+                            מצאתם כמה דגמים שמדליקים אתכם? אחלה. עכשיו תנו לנו לעבוד.
+                            מערכת ההשוואה שלנו תסדר לכם טבלה ברורה שתראה בדיוק מה ההבדלים, בתוספת ניתוח חכם במיוחד (כן, עם בינה מלאכותית) בשפה פשוטה ומדויקת.
+                            מי מתאים למי, איזה דגם שווה כל שקל ואיפה תקבלו את הכי הרבה תמורה על הפדלים שלכם.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="vision-card">
+                    <div class="vision-card-content" style="text-align: center;">
+                        <div class="vision-card-icon">
+                            <i class="bi bi-cart-check"></i>
+                        </div>
+                        <h3 class="vision-card-title">רכישה</h3>
+                        <p class="vision-card-description">
+                            נדלקתם על דגם? יאללה, קחו אותו לסיבוב קבוע.
+                            לחיצה אחת ואתם עוברים ישר לאתר היבואן. בלי עמלות, בלי שטיקים, בלי אותיות קטנות.
+                            מצאתם את האופניים שלכם? מעכשיו הדרך לשביל היא רק עניין של מסגרת אשראי וטעינת סוללה.</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="vision-cta">
+                <div class="cta-container">
+                    <h3 class="cta-title">מוכן לחוות את העתיד?</h3>
+                    <p class="cta-description">
+                        הצטרף לאלפי רוכבים שכבר גילו את האבולוציה הבאה במציאת האופניים המושלמים.
                     </p>
+                    <div class="cta-buttons">
+                        <a href="{{ url_for('bikes') }}" class="cta-button-primary">
+                            חקור את האופניים שלנו
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="cta-button-secondary">הזמן נסיעת מבחן</a>
+                    </div>
                 </div>
-
-                <div class="service service2 order-mobile-2 order-desktop-2">
-                    <i class="bi bi-bar-chart-line"></i>
-                    <h4>השוואה והמלצה</h4>
-                    <p>בחרתם כמה דגמים? מצוין. עכשיו תנו לנו לעשות את הקסם. מערכת ההשוואה שלנו מציגה טבלה ברורה של הבדלים – לצד ניתוח מקצועי מבוסס בינה מלאכותית, בעברית פשוטה ונגישה. מה מתאים למי, איזה דגם שווה יותר – ואיזו בחירה תעניק הכי הרבה תמורה.</p>
-                </div>
-
-                <div class="service service3 order-mobile-3 order-desktop-3">
-                    <i class="bi bi-cart-check"></i>
-                    <h4>רכישה</h4>
-                    <p>אהבתם דגם? אפשר לעבור לרכישה ישירות מהאתר. כל דגם מקושר לאתר החנות שמוכרת אותו – בלי עמלות, בלי התחייבות, פשוט קישור ישיר לרכישה. מצאת את האופניים שלך? הדרך לשביל מתחילה כאן.</p>
-                </div>
-
             </div>
-            <div class="row">
-                <a href="{{ url_for('bikes') }}" class="btn btn-danger mb-3">השוואה</a>
-            </div>
-
-
-        </section>
-
-
-
-    </div>
+        </div>
+    </section>
 
     <!-- The popular Section -->
     <div class="w3-black" id="top_bikes">
@@ -76,12 +167,10 @@
         </div>
     </div>
 
- 
-
     <!-- The Contact Section -->
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
         <h2 class="w3-wide w3-center">צור קשר</h2>
-        <p dir="rtl" class="w3-opacity w3-center"><i>רעיונות לפיתוח? דברו איתנו!</i></p>
+        <p dir="rtl" class="w3-opacity w3-center"><i>רעיונות לפיתוח? שאלות? בקשות? דברו איתנו!</i></p>
         <div class="w3-row w3-padding-32">
             <div dir="rtl" class="w3-col m6">
                 <form id="contactForm" action="/contact" method="POST" target="_blank">
@@ -108,6 +197,7 @@
     </div>
 
     <!-- End Page Content -->
+    <script src="{{ url_for('static', filename='js/bikes.js') }}"></script>
 
 
 {% endblock %}
