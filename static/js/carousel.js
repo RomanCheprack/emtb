@@ -58,6 +58,11 @@ function initializeCarousel() {
     currentSlide = 0; // Reset to first slide
     updateSlidesPerView();
     
+    // Add click event listeners to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+    });
+    
     // Wait a bit for styles to be applied before updating
     setTimeout(() => {
         updateCarousel();
