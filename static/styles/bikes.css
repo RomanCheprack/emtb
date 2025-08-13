@@ -137,6 +137,48 @@
     padding: 0;
 }
 
+/* Media query for screens below 400px - stack purchase and details buttons */
+@media (max-width: 399px) {
+    .top-buttons-container {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .details-btn-container,
+    .purchase-btn-container {
+        flex: none;
+        width: 100%;
+    }
+    
+    .compare-btn-container {
+        margin-top: 4px;
+    }
+}
+
+/* Media query for screens between 400px and 600px - fix button alignment */
+@media (min-width: 400px) and (max-width: 600px) {
+    .top-buttons-container {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .details-btn-container,
+    .purchase-btn-container {
+        flex: 1;
+        max-width: calc(50% - 2px);
+        display: flex;
+        justify-content: center;
+    }
+    
+    .details-btn-container .btn,
+    .purchase-btn-container .btn {
+        width: 100%;
+        max-width: 100%;
+        font-size: 0.65rem;
+        padding: 8px 12px;
+    }
+}
+
 /* Compare Button Styles - Bootstrap outline-danger */
 .btn-outline-danger.compare-btn {
     border-radius: 25px !important;
@@ -305,4 +347,3 @@ additional-filter-btn {
 .form-check {
     margin-bottom: 0.5rem;
 }
-
