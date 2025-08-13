@@ -221,7 +221,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 return res.json();
             })
-            .then((bikes) => {
+            .then((response) => {
+                const bikes = response.bikes || [];
                 const sortOrder = sortDropdown.value;
                 if (sortOrder === "asc") {
                     bikes.sort((a, b) => {

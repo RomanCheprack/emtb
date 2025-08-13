@@ -1,3 +1,10 @@
 .post-content {
     text-align: right;  
 }
+
+.post-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 20px 0 !important;
+    border-radius: 8px !important;
+}

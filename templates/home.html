@@ -6,7 +6,7 @@
         <h1 data-typing-animation data-typing-duration="150" data-typing-delay="200">Rideal</h1>
         <span data-text-animate="blurInUp" data-text-animate-by="word" data-text-animate-delay="0.5" data-text-animate-duration="0.6" dir="rtl">רכישת אופניים חכמה</span>
         <div class="cta-buttons">
-            <a href="{{ url_for('bikes') }}" class="cta-button-primary">
+            <a href="{{ url_for('bikes.bikes') }}" class="cta-button-primary">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -118,7 +118,7 @@
                         הצטרף לאלפי רוכבים שכבר גילו את האבולוציה הבאה במציאת האופניים המושלמים.
                     </p>
                     <div class="cta-buttons">
-                        <a href="{{ url_for('bikes') }}" class="cta-button-primary">
+                        <a href="{{ url_for('bikes.bikes') }}" class="cta-button-primary">
                             חקור את האופניים שלנו
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -183,6 +183,7 @@
         <div class="w3-row w3-padding-32">
             <div dir="rtl" class="w3-col m6">
                 <form id="contactForm" action="/contact" method="POST" target="_blank">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                     <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
                         <div class="w3-half" style="margin-bottom: 8px;">
                             <input class="w3-input w3-border" type="text" placeholder="שם" required name="Name">

@@ -4,8 +4,7 @@
     "title": "אופני הרים חשמליים זולים? בוא נדבר על זה באמת",
     "author": "רומן צ'פרק",
     "date": "2025-06-25",
-    "htmlPath": "templates/posts/cheap-e-mtb.html"
-
+    "content": "templates/posts/cheap-e-mtb.html"
   },
   {
     "slug": "recommended-EMTB",
@@ -15,10 +14,10 @@
     "content": "templates/posts/recommended-EMTB.html"
   },
   {
-  "slug": "what-makes-a-good-eMTB-motor",
-  "title": "איך מזהים מנוע חשמלי לאופני שטח שהוא באמת שוס",
-  "author": "רומן צ'פרק",
-  "date": "2025-07-03",
-  "content": "templates/posts/what_makes_a_good_eMTB_motor.html"
-}
+    "slug": "what-makes-a-good-eMTB-motor",
+    "title": "איך מזהים מנוע חשמלי לאופני שטח שהוא באמת שוס",
+    "author": "רומן צ'פרק",
+    "date": "2025-07-03",
+    "content": "templates/posts/what_makes_a_good_eMTB_motor.html"
+  }
 ]
