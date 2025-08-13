@@ -390,10 +390,15 @@ def home():
         # Get top 10 most compared bikes that actually exist in the bikes table
         top_compare_counts = db_session.query(CompareCount).join(Bike).order_by(CompareCount.count.desc()).limit(10).all()
         
+        # Debug output
+        print(f"DEBUG: Found {len(top_compare_counts)} bikes with compare counts")
+        
         # Convert to the same format as all_bikes
         top_bikes = []
         for cc in top_compare_counts:
             bike = cc.bike
+            print(f"DEBUG: Processing bike {bike.firm} {bike.model} ({bike.year}) - Count: {cc.count}")
+            
             bike_dict = {
                 'id': str(bike.id) if bike.id else None,
                 'firm': str(bike.firm) if bike.firm else None,
@@ -456,16 +461,22 @@ def home():
             cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
             top_bikes.append(cleaned_bike_dict)
         
+        print(f"DEBUG: Final top_bikes count: {len(top_bikes)}")
+        
         # If we don't have enough popular bikes, add more bikes as fallback
         if len(top_bikes) < 10 and all_bikes:
+            print(f"DEBUG: Adding fallback bikes. Need {10 - len(top_bikes)} more")
             # Get bikes that aren't already in top_bikes
             existing_ids = {bike.get("id") for bike in top_bikes}
             additional_bikes = [bike for bike in all_bikes if bike.get("id") not in existing_ids]
             # Add bikes until we have 10 total
             top_bikes.extend(additional_bikes[:10 - len(top_bikes)])
+            print(f"DEBUG: After fallback, total top_bikes: {len(top_bikes)}")
             
     except Exception as e:
         print(f"Error loading compare counts: {e}")
+        import traceback
+        traceback.print_exc()
         total_comparisons = 0
         top_bikes = all_bikes[:10] if all_bikes else []
     finally:
