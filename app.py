@@ -295,7 +295,7 @@ def get_all_sub_categories():
     db_session = get_session()
     try:
         sub_categories = db_session.query(Bike.sub_category).distinct().all()
-        return sorted([cat[0] for cat in sub_categories if cat[0]])
+        return sorted([cat[0] for cat in sub_categories if cat[0] and cat[0].lower() != 'unknown'])
     finally:
         db_session.close()
 
@@ -530,6 +530,7 @@ def filter_bikes():
         frame_material = request.args.get("frame_material", type=str)
         motor_brands = request.args.getlist("motor_brand", type=str)
         sub_categories = request.args.getlist("sub_category", type=str)
+        has_discount = request.args.get("has_discount", type=str)
 
         # Start with base query - only select needed columns for better performance
         db_query = db_session.query(
@@ -560,6 +561,9 @@ def filter_bikes():
 
         if sub_categories:
             db_query = db_query.filter(Bike.sub_category.in_(sub_categories))
+
+        if has_discount == "true":
+            db_query = db_query.filter(Bike.disc_price.isnot(None)).filter(Bike.disc_price != '')
 
         # Execute query and convert to list for faster iteration
         bikes = db_query.all()

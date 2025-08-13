@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const subCategories = Array.from(document.querySelectorAll('.sub-category-checkbox:checked')).map(cb => cb.value);
 
         const frameMaterial = document.querySelector('input[name="frame_material"]:checked')?.value;
+        const hasDiscount = document.querySelector('input[name="has_discount"]:checked')?.value;
 
         const params = new URLSearchParams();
         if (query) params.append("q", query);
@@ -208,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
         motorBrands.forEach(brand => params.append("motor_brand", brand));
         subCategories.forEach(cat => params.append("sub_category", cat));
         if (frameMaterial) params.append("frame_material", frameMaterial);
+        if (hasDiscount) params.append("has_discount", hasDiscount);
 
         const years = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => cb.value);
         years.forEach(y => params.append("year", y));
@@ -222,13 +224,29 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((bikes) => {
                 const sortOrder = sortDropdown.value;
                 if (sortOrder === "asc") {
-                    bikes.sort((a, b) =>
-                        parseInt(a.Price?.replace(/[^\d]/g, '')) - parseInt(b.Price?.replace(/[^\d]/g, ''))
-                    );
+                    bikes.sort((a, b) => {
+                        // Use disc_price if available, otherwise use price
+                        const aPrice = a.disc_price || a.price;
+                        const bPrice = b.disc_price || b.price;
+                        
+                        // Parse prices, handling "צור קשר" and other non-numeric values
+                        const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
+                        const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
+                        
+                        return aNum - bNum;
+                    });
                 } else if (sortOrder === "desc") {
-                    bikes.sort((a, b) =>
-                        parseInt(b.Price?.replace(/[^\d]/g, '')) - parseInt(a.Price?.replace(/[^\d]/g, ''))
-                    );
+                    bikes.sort((a, b) => {
+                        // Use disc_price if available, otherwise use price
+                        const aPrice = a.disc_price || a.price;
+                        const bPrice = b.disc_price || b.price;
+                        
+                        // Parse prices, handling "צור קשר" and other non-numeric values
+                        const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
+                        const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
+                        
+                        return bNum - aNum;
+                    });
                 }
 
                 // Clear and update bikes list efficiently
@@ -611,13 +629,29 @@ function showBikeDetailsModal(bike) {
             // Update bikes list
             const sortOrder = sortDropdown.value;
             if (sortOrder === "asc") {
-                bikes.sort((a, b) =>
-                    parseInt(a.Price?.replace(/[^\d]/g, '')) - parseInt(b.Price?.replace(/[^\d]/g, ''))
-                );
+                bikes.sort((a, b) => {
+                    // Use disc_price if available, otherwise use price
+                    const aPrice = a.disc_price || a.price;
+                    const bPrice = b.disc_price || b.price;
+                    
+                    // Parse prices, handling "צור קשר" and other non-numeric values
+                    const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
+                    const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
+                    
+                    return aNum - bNum;
+                });
             } else if (sortOrder === "desc") {
-                bikes.sort((a, b) =>
-                    parseInt(b.Price?.replace(/[^\d]/g, '')) - parseInt(a.Price?.replace(/[^\d]/g, ''))
-                );
+                bikes.sort((a, b) => {
+                    // Use disc_price if available, otherwise use price
+                    const aPrice = a.disc_price || a.price;
+                    const bPrice = b.disc_price || b.price;
+                    
+                    // Parse prices, handling "צור קשר" and other non-numeric values
+                    const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
+                    const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
+                    
+                    return bNum - aNum;
+                });
             }
 
             bikesList.innerHTML = "";
@@ -666,6 +700,11 @@ function showBikeDetailsModal(bike) {
 
     // Add listeners for sub-category checkboxes
     document.querySelectorAll('.sub-category-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', applyFilters);
+    });
+
+    // Add listener for discount checkbox
+    document.querySelectorAll('input[name="has_discount"]').forEach(checkbox => {
         checkbox.addEventListener('change', applyFilters);
     });
 
