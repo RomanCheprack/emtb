@@ -183,7 +183,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url('https://images.unsplash.com/photo-1558618047-3c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+    background: url('../images/blog/electric_bike_alps_man_riding.jpg') center/cover;
     z-index: 0;
 }
 
