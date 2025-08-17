@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1>Static File Debug</h1>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Image Test</h3>
+            <p>Testing direct image access:</p>
+            <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}" 
+                 alt="Test image" 
+                 style="max-width: 100%; height: auto; border: 2px solid #ccc;"
+                 onload="console.log('Image loaded successfully')"
+                 onerror="console.error('Image failed to load'); this.style.border='2px solid red';">
+            
+            <hr>
+            
+            <h3>CSS Background Test</h3>
+            <div style="width: 300px; height: 200px; background: url('{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}') center/cover; border: 2px solid #ccc;">
+                <p style="color: white; text-align: center; padding-top: 80px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                    CSS Background Test
+                </p>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <h3>Configuration Info</h3>
+            <div id="config-info">
+                <p>Loading configuration...</p>
+            </div>
+            
+            <h3>Direct URL Test</h3>
+            <p>Try these URLs directly in your browser:</p>
+            <ul>
+                <li><a href="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}" target="_blank">
+                    {{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}
+                </a></li>
+                <li><a href="/debug/static/images/blog/electric_bike_alps_man_riding.jpg" target="_blank">
+                    /debug/static/images/blog/electric_bike_alps_man_riding.jpg
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+// Fetch configuration info
+fetch('/debug/static-test')
+    .then(response => response.json())
+    .then(data => {
+        const configDiv = document.getElementById('config-info');
+        configDiv.innerHTML = `
+            <pre>${JSON.stringify(data, null, 2)}</pre>
+        `;
+    })
+    .catch(error => {
+        console.error('Error fetching config:', error);
+        document.getElementById('config-info').innerHTML = '<p style="color: red;">Error loading configuration</p>';
+    });
+</script>
+
+{% endblock %}

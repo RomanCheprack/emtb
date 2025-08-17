@@ -36,6 +36,10 @@
                 <!-- Hero Banner Image -->
                 <div class="hero-banner">
                     <div class="hero-banner-container">
+                        <!-- Fallback image for production -->
+                        <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}" 
+                             alt="Electric bike in alps" 
+                             class="hero-banner-fallback-image">
                         <div class="hero-banner-overlay"></div>
                         <div class="hero-banner-content">
                             <h3 class="hero-banner-title">טכנולוגיה חדשה נפגשת עם הטבע</h3>
@@ -207,7 +211,6 @@
     </div>
 
     <!-- End Page Content -->
-    <script src="{{ url_for('static', filename='js/bikes.js') }}"></script>
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
 
 

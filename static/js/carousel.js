@@ -219,12 +219,12 @@ function addTouchSupport(container) {
         startX = e.touches[0].clientX;
         isDragging = true;
         stopAutoPlay();
-    });
+    }, { passive: true });
     
     container.addEventListener('touchmove', function(e) {
         if (!isDragging) return;
         e.preventDefault();
-    });
+    }, { passive: false });
     
     container.addEventListener('touchend', function(e) {
         if (!isDragging) return;
