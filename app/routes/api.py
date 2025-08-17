@@ -1,8 +1,86 @@
 from flask import Blueprint, request, jsonify
 from app.models.bike import get_session, Bike
 from app.utils.helpers import clean_bike_data_for_json
+import hmac
+import hashlib
+import subprocess
+import os
 
 bp = Blueprint('api', __name__, url_prefix='/api')
+
+@bp.route('/webhook/github', methods=['POST'])
+def github_webhook():
+    """GitHub webhook to automatically pull changes"""
+    try:
+        # Verify webhook signature
+        signature = request.headers.get('X-Hub-Signature-256')
+        if not signature:
+            return jsonify({'error': 'No signature'}), 401
+        
+        # Get the webhook secret from config
+        from app import create_app
+        app = create_app()
+        webhook_secret = app.config.get('GITHUB_WEBHOOK_SECRET')
+        
+        if not webhook_secret:
+            return jsonify({'error': 'Webhook secret not configured'}), 500
+        
+        # Verify the signature
+        expected_signature = 'sha256=' + hmac.new(
+            webhook_secret.encode('utf-8'),
+            request.data,
+            hashlib.sha256
+        ).hexdigest()
+        
+        if not hmac.compare_digest(signature, expected_signature):
+            return jsonify({'error': 'Invalid signature'}), 401
+        
+        # Check if this is a push event
+        event_type = request.headers.get('X-GitHub-Event')
+        if event_type != 'push':
+            return jsonify({'message': 'Ignored non-push event'}), 200
+        
+        # Get the repository path (adjust this to your actual path on PythonAnywhere)
+        repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        
+        # Pull the latest changes
+        try:
+            result = subprocess.run(
+                ['git', 'pull', 'origin', 'main'],
+                cwd=repo_path,
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            
+            if result.returncode == 0:
+                print(f"Successfully pulled changes: {result.stdout}")
+                
+                # Touch the WSGI file to trigger a reload (PythonAnywhere specific)
+                wsgi_file = os.path.join(repo_path, 'wsgi.py')
+                if os.path.exists(wsgi_file):
+                    os.utime(wsgi_file, None)
+                    print("Touched wsgi.py to trigger reload")
+                
+                return jsonify({
+                    'message': 'Successfully pulled changes and triggered reload',
+                    'stdout': result.stdout
+                }), 200
+            else:
+                print(f"Error pulling changes: {result.stderr}")
+                return jsonify({
+                    'error': 'Failed to pull changes',
+                    'stderr': result.stderr
+                }), 500
+                
+        except subprocess.TimeoutExpired:
+            return jsonify({'error': 'Git pull timed out'}), 500
+        except Exception as e:
+            return jsonify({'error': f'Git pull failed: {str(e)}'}), 500
+            
+    except Exception as e:
+        print(f"Webhook error: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
 
 @bp.route('/bike/<path:bike_id>')
 def get_bike_details(bike_id):
