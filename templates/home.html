@@ -37,7 +37,7 @@
                 <div class="hero-banner">
                     <div class="hero-banner-container">
                         <!-- Fallback image for production -->
-                        <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}" 
+                        <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
                              alt="Electric bike in alps" 
                              class="hero-banner-fallback-image">
                         <div class="hero-banner-overlay"></div>

@@ -8,6 +8,9 @@ class Config:
     SECRET_KEY = os.getenv('FLASK_SECRET_KEY') or os.urandom(24)
     DEBUG = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
     
+    # Version for cache busting
+    VERSION = os.getenv('APP_VERSION', '1.0.0')
+    
     # Cache settings
     CACHE_TYPE = 'simple'
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
