@@ -37,6 +37,13 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
+    
+    # Production-specific settings
+    SEND_FILE_MAX_AGE_DEFAULT = 31536000  # 1 year cache for static files
+    
+    # Ensure static files are served correctly
+    STATIC_FOLDER = '../static'
+    STATIC_URL_PATH = '/static'
 
 class TestingConfig(Config):
     """Testing configuration"""

@@ -18,21 +18,30 @@ def create_app(config_name=None):
                 template_folder='../templates',
                 static_folder='../static')
     
-    # Configure app
-    app.config.from_object('app.config.Config')
+    # Configure app based on environment
+    if config_name is None:
+        config_name = os.getenv('FLASK_ENV', 'development')
+    
+    if config_name == 'production':
+        app.config.from_object('app.config.ProductionConfig')
+    elif config_name == 'testing':
+        app.config.from_object('app.config.TestingConfig')
+    else:
+        app.config.from_object('app.config.DevelopmentConfig')
     
     # Initialize extensions
     cache.init_app(app)
     csrf.init_app(app)
     
     # Register blueprints
-    from .routes import main, bikes, blog, compare, api
+    from .routes import main, bikes, blog, compare, api, debug
     
     app.register_blueprint(main.bp)
     app.register_blueprint(bikes.bp)
     app.register_blueprint(blog.bp)
     app.register_blueprint(compare.bp)
     app.register_blueprint(api.bp)
+    app.register_blueprint(debug.bp)
     
     # Register Jinja2 filters
     from .utils.helpers import format_number_with_commas

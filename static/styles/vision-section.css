@@ -161,6 +161,21 @@
     --hero-banner-image: url('/static/images/blog/electric_bike_alps_man_riding.jpg');
 }
 
+/* Fallback for when the image fails to load */
+.hero-banner-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--hero-banner-image) center/cover;
+    z-index: 0;
+}
+
+/* Fallback background if image fails to load */
+.hero-banner-container::after {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%), var(--hero-banner-image) center/cover;
+    background-blend-mode: overlay;
+}
+
 .hero-banner-container {
     position: relative;
     height: 400px;
