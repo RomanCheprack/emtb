@@ -15,6 +15,9 @@ bp = Blueprint('main', __name__)
 def home():
     all_bikes = load_all_bikes()
     firms = get_all_firms()
+    
+    # Calculate number of unique bike brands
+    brand_count = len(firms)
 
     # Load compare counts from database
     db_session = get_session()
@@ -105,7 +108,7 @@ def home():
     finally:
         db_session.close()
 
-    return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes, total_comparisons=total_comparisons)
+    return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes, total_comparisons=total_comparisons, brand_count=brand_count)
 
 @bp.route("/contact", methods=["POST"])
 def contact():
@@ -194,3 +197,17 @@ def sitemap():
     # Create XML string
     sitemap_xml = render_template('sitemap.xml', pages=pages)
     return Response(sitemap_xml, mimetype='application/xml')
+
+@bp.route('/privacy-policy')
+def privacy_policy():
+    return render_template("privacy_policy.html")
+
+
+@bp.route('/terms-of-use')
+def terms_of_use():
+    return render_template("terms_of_use.html")
+
+
+@bp.route('/cookie-preferences')
+def cookie_preferences():
+    return render_template("cookie_preferences.html")

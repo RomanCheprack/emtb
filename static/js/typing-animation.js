@@ -77,19 +77,19 @@ function showButtonAfterAnimations() {
     if (!compareButton) return;
     
     // Calculate total animation time
-    const typingDuration = 150; // ms per character
-    const typingDelay = 200; // ms delay
+    const typingDuration = 200; // ms per character
+    const typingDelay = 250; // ms delay
     const typingText = "Rideal";
     const typingTotalTime = typingDelay + (typingText.length * typingDuration);
     
-    const textAnimateDelay = 500; // ms delay
-    const textAnimateDuration = 600; // ms duration
-    const textAnimateStagger = 100; // ms between words
+    const textAnimateDelay = 600; // ms delay
+    const textAnimateDuration = 700; // ms duration
+    const textAnimateStagger = 200; // ms between words
     const hebrewWords = "רכישת אופניים חכמה".split(' ').length;
     const textAnimateTotalTime = textAnimateDelay + textAnimateDuration + (hebrewWords * textAnimateStagger);
     
     // Use the longer of the two animations plus some buffer
-    const totalAnimationTime = Math.max(typingTotalTime, textAnimateTotalTime) + 300; // 300ms buffer
+    const totalAnimationTime = Math.max(typingTotalTime, textAnimateTotalTime) + 400; // 300ms buffer
     
     // Show button after animations complete
     setTimeout(() => {

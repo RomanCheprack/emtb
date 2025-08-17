@@ -11,15 +11,36 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-W93XNT3WSV');
+        
+        // Initialize Google Analytics with consent mode
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied'
+        });
+        
+        // Only configure if user has given consent
+        if (localStorage.getItem('rideal_cookie_consent')) {
+            const consent = JSON.parse(localStorage.getItem('rideal_cookie_consent'));
+            if (consent.analytics) {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+                gtag('config', 'G-W93XNT3WSV');
+            }
+        }
     </script>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "sbvrn7iipm");
+        // Only load Clarity if user has given consent
+        if (localStorage.getItem('rideal_cookie_consent')) {
+            const consent = JSON.parse(localStorage.getItem('rideal_cookie_consent'));
+            if (consent.analytics) {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "sbvrn7iipm");
+            }
+        }
     </script>
     <title>{{ title or "Rideal" }}</title>
     <meta name="google-site-verification" content="AtYPxQY8ts7KFVMc0by0ctl4LPQSdYLgZlmRZ4k-zGY" />
@@ -33,6 +54,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/vision-section.css') }}">
     <!-- Font Awesome CDN (latest 6.x version) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/cookie-consent.css') }}">
 
     <!-- For .ico file -->
 
@@ -57,15 +79,74 @@
     {% include 'navbar.html' %}
     {% block content %}{% endblock %}
 
+    <!-- Cookie Consent Modal -->
+    <div id="cookieConsentModal" class="cookie-modal" style="display: none;">
+        <div class="cookie-modal-content">
+            <div class="cookie-header">
+                <h3>🍪 מדיניות עוגיות (Cookies)</h3>
+                <p>ברוכים הבאים ל-Rideal! אנו משתמשים בעוגיות כדי לשפר את חוויית השימוש שלכם</p>
+            </div>
+            
+            <div class="cookie-body">
+                <div class="cookie-section">
+                    <h4>עוגיות הכרחיות</h4>
+                    <p>נדרשות לפעולת האתר הבסיסית. לא ניתן לבטל אותן.</p>
+                    <div class="cookie-toggle">
+                        <input type="checkbox" id="essentialCookies" checked disabled>
+                        <label for="essentialCookies">פעיל תמיד</label>
+                    </div>
+                </div>
+                
+                                 <div class="cookie-section">
+                     <h4>עוגיות אנליטיקה</h4>
+                     <p>עוזרות לנו להבין איך משתמשים באתר ולשפר אותו (Google Analytics, Microsoft Clarity)</p>
+                     <div class="cookie-toggle">
+                         <input type="checkbox" id="analyticsCookies" checked>
+                         <label for="analyticsCookies">אפשר אנליטיקה</label>
+                     </div>
+                 </div>
+                 
+                 <div class="cookie-section">
+                     <h4>עוגיות העדפות</h4>
+                     <p>שומרות את ההעדפות שלכם לשימוש עתידי</p>
+                     <div class="cookie-toggle">
+                         <input type="checkbox" id="preferenceCookies" checked>
+                         <label for="preferenceCookies">שמור העדפות</label>
+                     </div>
+                 </div>
+            </div>
+            
+            <div class="cookie-footer">
+                <button id="acceptAll" class="cookie-btn cookie-btn-primary">קבל הכל</button>
+                <button id="acceptSelected" class="cookie-btn cookie-btn-secondary">קבל נבחר</button>
+                <button id="declineAll" class="cookie-btn cookie-btn-tertiary">דחה הכל</button>
+            </div>
+            
+            <div class="cookie-links">
+                <a href="{{ url_for('main.privacy_policy') }}" target="_blank">מדיניות פרטיות</a>
+                <span>|</span>
+                <a href="{{ url_for('main.terms_of_use') }}" target="_blank">תנאי שימוש</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="w3-container w3-padding-54 w3-center w3-opacity w3-light-grey w3-xlarge">
         <p class="w3-medium" style="margin-top:15px">© 2025 Rideal כל הזכויות שמורות לחברת</p>
+        <div class="w3-medium" style="margin-top:10px">
+            <a href="{{ url_for('main.privacy_policy') }}" style="color: #666; text-decoration: none; margin: 0 10px;">מדיניות פרטיות</a>
+            <span style="color: #666;">|</span>
+            <a href="{{ url_for('main.terms_of_use') }}" style="color: #666; text-decoration: none; margin: 0 10px;">תנאי שימוש</a>
+            <span style="color: #666;">|</span>
+            <a href="{{ url_for('main.cookie_preferences') }}" style="color: #666; text-decoration: none; margin: 0 10px;">הגדרות עוגיות</a>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/text-animate.js') }}"></script>
     <script src="{{ url_for('static', filename='js/typing-animation.js') }}"></script>
     <script src="{{ url_for('static', filename='js/vision-section.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cookie-consent.js') }}"></script>
 
 </body>
 </html>

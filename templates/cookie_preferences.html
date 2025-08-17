@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+    <div dir="rtl" class="cookie-preferences-content">
+        <h1 class="w3-wide w3-center">הגדרות עוגיות</h1>
+        
+        <div class="w3-margin-top">
+            <p>ניתן לנהל את ההגדרות שלך לגבי עוגיות (Cookies) באתר Rideal. הגדרות אלו ישמרו לשימוש עתידי.</p>
+        </div>
+
+        <div class="w3-margin-top">
+            <div class="cookie-section">
+                <h3>עוגיות הכרחיות</h3>
+                <p>נדרשות לפעולת האתר הבסיסית. לא ניתן לבטל אותן.</p>
+                <div class="cookie-toggle">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
+                    <label for="essentialCookies">פעיל תמיד</label>
+                </div>
+            </div>
+            
+                         <div class="cookie-section">
+                 <h3>עוגיות אנליטיקה</h3>
+                 <p>עוזרות לנו להבין איך משתמשים באתר ולשפר אותו (Google Analytics, Microsoft Clarity)</p>
+                 <div class="cookie-toggle">
+                     <input type="checkbox" id="analyticsCookies" checked>
+                     <label for="analyticsCookies">אפשר אנליטיקה</label>
+                 </div>
+             </div>
+             
+             <div class="cookie-section">
+                 <h3>עוגיות העדפות</h3>
+                 <p>שומרות את ההעדפות שלכם לשימוש עתידי</p>
+                 <div class="cookie-toggle">
+                     <input type="checkbox" id="preferenceCookies" checked>
+                     <label for="preferenceCookies">שמור העדפות</label>
+                 </div>
+             </div>
+        </div>
+
+        <div class="w3-margin-top w3-center">
+            <button id="savePreferences" class="w3-button w3-black w3-section">שמור הגדרות</button>
+            <button id="resetPreferences" class="w3-button w3-grey w3-section">אפס הגדרות</button>
+        </div>
+
+        <div class="w3-margin-top">
+            <h3>מידע נוסף</h3>
+            <p>למידע נוסף על השימוש בעוגיות באתר שלנו, עיין ב:</p>
+            <ul>
+                <li><a href="{{ url_for('main.privacy_policy') }}">מדיניות פרטיות</a></li>
+                <li><a href="{{ url_for('main.terms_of_use') }}">תנאי שימוש</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/cookie-preferences.js') }}"></script>
+
+{% endblock %}

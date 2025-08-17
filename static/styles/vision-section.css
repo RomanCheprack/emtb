@@ -322,14 +322,16 @@
     height: 100%;
     opacity: 0;
     transform: translateY(50px);
-    animation: fadeInUp 0.6s ease-out forwards;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.vision-card:nth-child(1) { animation-delay: 1.2s; }
-.vision-card:nth-child(2) { animation-delay: 1.4s; }
-.vision-card:nth-child(3) { animation-delay: 1.6s; }
-.vision-card:nth-child(4) { animation-delay: 1.8s; }
+/* Remove the automatic animation delays since we're using scroll-triggered animations */
+.vision-card:nth-child(1),
+.vision-card:nth-child(2),
+.vision-card:nth-child(3),
+.vision-card:nth-child(4) {
+    animation-delay: 0s;
+}
 
 .vision-card:hover {
     border-color: #f87171;
@@ -533,6 +535,53 @@
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* Slide animations for vision cards */
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Vision card animation classes */
+.vision-card.slide-right {
+    animation: slideRight 0.8s ease-out forwards;
+}
+
+.vision-card.slide-left {
+    animation: slideLeft 0.8s ease-out forwards;
+}
+
+.vision-card.slide-up {
+    animation: slideUp 0.8s ease-out forwards;
 }
 
 /* Responsive Design */

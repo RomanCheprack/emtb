@@ -42,7 +42,7 @@
                              class="hero-banner-fallback-image">
                         <div class="hero-banner-overlay"></div>
                         <div class="hero-banner-content">
-                            <h3 class="hero-banner-title">טכנולוגיה חדשה נפגשת עם הטבע ועד מלא מלא חרטא כזה או אחר </h3>
+                            <h3 class="hero-banner-title">טכנולוגיה חדשה נפגשת עם הטבע </h3>
                             <p class="hero-banner-subtitle">חווה את העתיד של מציאת האופניים המושלמים</p>
                         </div>
                     </div>
@@ -64,14 +64,14 @@
                     <div class="stat-label">שנות ניסיון</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">שביעות רצון</div>
+                    <div class="stat-number">{{ brand_count }}</div>
+                    <div class="stat-label">מותגים</div>
                 </div>
             </div>
 
             <!-- Vision Cards Grid -->
             <div class="vision-cards-grid">
-                <div class="vision-card">
+                <div class="vision-card" data-animation="slide-right">
                     <div class="vision-card-content" style="text-align: center;">
                         <div class="vision-card-icon">
                             <i class="bi bi-search"></i>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                    
-                <div class="vision-card">
+                <div class="vision-card" data-animation="slide-left">
                     <div class="vision-card-content">
                         <div class="vision-card-icon">
                             <i class="bi bi-bar-chart-line"></i>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 
-                <div class="vision-card">
+                <div class="vision-card" data-animation="slide-right">
                     <div class="vision-card-content" style="text-align: center;">
                         <div class="vision-card-icon">
                             <i class="bi bi-cart-check"></i>
@@ -212,6 +212,6 @@
 
     <!-- End Page Content -->
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
 
 {% endblock %}
