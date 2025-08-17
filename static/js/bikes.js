@@ -282,10 +282,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 console.log(`Sending ${isSelected ? 'remove' : 'add'} request for bike ID: ${bikeId}`);
                 console.log(`Full URL: ${url}`);
+                // Get CSRF token from meta tag
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                
                 fetch(url, { 
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
                     },
                     body: JSON.stringify({ bike_id: bikeId })
                 })
@@ -612,9 +616,17 @@ function showBikeDetailsModal(bike) {
         updateFirmDropdownText();
         updateMotorBrandDropdownText();
 
+        // Get CSRF token from meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        
         // Clear compare and apply filters in parallel
         Promise.all([
-            fetch("/clear_compare", { method: "POST" }),
+            fetch("/clear_compare", { 
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            }),
             fetch(`/api/filter_bikes`)
         ])
         .then(([clearRes, filterRes]) => {
