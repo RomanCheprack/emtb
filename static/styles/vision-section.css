@@ -156,6 +156,11 @@
     animation: fadeInScale 0.8s ease-out 0.4s forwards;
 }
 
+/* CSS Variable for hero banner image */
+:root {
+    --hero-banner-image: url('/static/images/blog/electric_bike_alps_man_riding.jpg');
+}
+
 .hero-banner-container {
     position: relative;
     height: 400px;
@@ -183,7 +188,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url('../images/blog/electric_bike_alps_man_riding.jpg') center/cover;
+    background: var(--hero-banner-image) center/cover;
     z-index: 0;
 }
 
