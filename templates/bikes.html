@@ -177,7 +177,7 @@
                 </button>
                 <ul class="dropdown-menu w-100" id="firmDropdownMenu">
                     {% for firm in firms %}
-                    <li style="margin-left: 15px;">
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input firm-checkbox" type="checkbox" value="{{ firm }}" id="firm-{{ loop.index }}">
                             <label class="form-check-label" for="firm-{{ loop.index }}">{{ firm }}</label>
@@ -195,55 +195,55 @@
                     בחר מותגי מנוע
                 </button>
                 <ul class="dropdown-menu w-100" id="motorBrandDropdownMenu">
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="shimano" id="motor-brand-shimano">
                             <label class="form-check-label" for="motor-brand-shimano">Shimano</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="bosch" id="motor-brand-bosch">
                             <label class="form-check-label" for="motor-brand-bosch">Bosch</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="tq" id="motor-brand-tq">
                             <label class="form-check-label" for="motor-brand-tq">TQ</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="specialized" id="motor-brand-specialized">
                             <label class="form-check-label" for="motor-brand-specialized">Specialized</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="giant" id="motor-brand-giant">
                             <label class="form-check-label" for="motor-brand-giant">Giant</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="fazua" id="motor-brand-fazua">
                             <label class="form-check-label" for="motor-brand-fazua">Fazua</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="dji" id="motor-brand-dji">
                             <label class="form-check-label" for="motor-brand-dji">DJI</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="yamaha" id="motor-brand-yamaha">
                             <label class="form-check-label" for="motor-brand-yamaha">Yamaha</label>
                         </div>
                     </li>
-                    <li>
+                    <li style="margin-left: 1.5rem;">
                         <div class="form-check">
                             <input class="form-check-input motor-brand-checkbox" type="checkbox" value="other" id="motor-brand-other">
                             <label class="form-check-label" for="motor-brand-other">אחר</label>
@@ -324,6 +324,10 @@
     המחירים המוצגים נאספו מהאתרים הרשמים של החנויות, ואינם מתעדכנים בזמן אמת. ייתכנו פערים בין המחיר המוצג לבין המחיר בפועל בחנות. – נשמח שתעדכנו אותנו אם התגלו פערים
 </p>
 
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top-btn" aria-label="חזור למעלה" title="חזור למעלה">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
 <!-- CSRF Token for AJAX requests -->
 <meta name="csrf-token" content="{{ csrf_token() }}">

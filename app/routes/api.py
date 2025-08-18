@@ -112,6 +112,29 @@ def get_bike_details(bike_id):
             'wh': str(bike.wh) if bike.wh else None,
             'fork_length': str(bike.fork_length) if bike.fork_length else None,
             'sub_category': str(bike.sub_category) if bike.sub_category else None,
+            'weight': str(bike.weight) if bike.weight else None,
+            'rear_derailleur': str(bike.rear_der) if bike.rear_der else None,
+            'shifter': str(bike.shifter) if bike.shifter else None,
+            'crank_set': str(bike.crank_set) if bike.crank_set else None,
+            'chain_guide': None,  # Field not in database model
+            'chain': str(bike.chain) if bike.chain else None,
+            'cassette': str(bike.cassette) if bike.cassette else None,
+            'brakes': str(bike.brakes) if bike.brakes else None,
+            'rotors': None,  # Field not in database model
+            'handlebar': str(bike.handelbar) if bike.handelbar else None,
+            'seat_post': str(bike.seat_post) if bike.seat_post else None,
+            'saddle': str(bike.saddle) if bike.saddle else None,
+            'headset': str(bike.headset) if bike.headset else None,
+            'front_hub': str(bike.front_axle) if bike.front_axle else None,
+            'rear_hub': str(bike.rear_axle) if bike.rear_axle else None,
+            'rims': str(bike.rims) if bike.rims else None,
+            'spokes': str(bike.spokes) if bike.spokes else None,
+            'front_tire': str(bike.front_tire) if bike.front_tire else None,
+            'rear_tire': str(bike.rear_tire) if bike.rear_tire else None,
+            'stem': str(bike.stem) if bike.stem else None,
+            'front_wheel': str(bike.front_wheel) if bike.front_wheel else None,
+            'rear_wheel': str(bike.rear_wheel) if bike.rear_wheel else None,
+            'tubes': str(bike.tubes) if bike.tubes else None,
         }
         
         # Clean the bike data to ensure it's safe for JSON serialization
@@ -121,6 +144,9 @@ def get_bike_details(bike_id):
         
     except Exception as e:
         print(f"Error getting bike details: {e}")
-        return jsonify({'error': 'Server error'}), 500
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Server error: {str(e)}'}), 500
     finally:
-        db_session.close()
+        if 'db_session' in locals():
+            db_session.close()

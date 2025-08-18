@@ -155,6 +155,59 @@
     }
 }
 
+/* Back to Top Button Styles */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    width: 50px;
+    height: 50px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.back-to-top-btn:hover {
+    background-color: #5a6268;
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+}
+
+.back-to-top-btn.show {
+    display: flex;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.back-to-top-btn i {
+    transition: transform 0.3s ease;
+}
+
+.back-to-top-btn:hover i {
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        bottom: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
 /* Media query for screens between 400px and 600px - fix button alignment */
 @media (min-width: 400px) and (max-width: 600px) {
     .top-buttons-container {

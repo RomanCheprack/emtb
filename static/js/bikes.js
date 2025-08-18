@@ -448,8 +448,8 @@ function showBikeDetailsModal(bike) {
             'sub_category': 'סוג אופניים',
             'size': 'מידה',
             'gear_count': 'מספר הילוכים',
-            'front_brake': 'בלם קדמי',
-            'rear_brake': 'בלם אחורי',
+            'front_brake': 'ברקס קידמי',
+            'rear_brake': 'ברקס אחורי',
             'front_tire': 'צמיג קדמי',
             'rear_tire': 'צמיג אחורי',
             'saddle': 'אוכף',
@@ -457,28 +457,29 @@ function showBikeDetailsModal(bike) {
             'charger': 'מטען',
             'screen': 'מסך',
             'extras': 'תוספות',
-            'rear_der': 'דיריילור אחורי',
-            'shifter': 'מחליף הילוכים',
-            'crank_set': 'ארכובה',
+            'rear_der': 'מעביר אחורי',
+            'shifter': 'שיפטר',
+            'crank_set': 'קראנק',
             'chain': 'שרשרת',
             'cassette': 'קסטה',
-            'rotors': 'דיסקים',
+            'rotors': 'רוטורים',
             'handlebar': 'כידון',
             'seat_post': 'מוט אוכף',
-            'stem': 'גבעול',
+            'stem': 'סטם',
             'lights': 'תאורה',
             'wheels': 'גלגלים',
             'rims': 'חישוקים',
             'spokes': 'חישורים',
             'front_hub': 'ציר קדמי',
             'rear_hub': 'ציר אחורי',
-            'headset': 'צוואר כידון',
-            'remote': 'שלט רחוק',
+            'headset': 'הד סט',
+            'remote': 'שלט',
             'fork_length': 'אורך בולמים',
             'chain_guide': 'מדריך שרשרת',
-            'tubes': 'צינורות',
+            'tubes': 'פנימיות',
             'front_wheel': 'גלגל קדמי',
-            'rear_wheel': 'גלגל אחורי'
+            'rear_wheel': 'גלגל אחורי',
+            'rear_derailleur': 'מעביר אחורי'
         };
         
         // Define the order of fields to display
@@ -539,7 +540,13 @@ function showBikeDetailsModal(bike) {
 
                 // Display fields in the specified order
         fieldOrder.forEach((key) => {
-            let value = bike[key] || 'undefined';
+            let value = bike[key];
+            
+            // Skip if value is undefined or null
+            if (value === undefined || value === null) {
+                return;
+            }
+            
             // Format price fields with commas and shekel symbol
             if (key === 'price' || key === 'disc_price') {
                 const formattedValue = formatNumberWithCommas(bike[key]);
@@ -831,5 +838,26 @@ function showBikeDetailsModal(bike) {
                 compareBtn.style.boxShadow = '';
             }
         }
+    });
+
+    // Back to Top Button Functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    // Show/hide back to top button based on scroll position
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 300) { // Show after scrolling 300px
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll to top when button is clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 });
