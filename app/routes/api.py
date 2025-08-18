@@ -5,16 +5,33 @@ import hmac
 import hashlib
 import subprocess
 import os
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 bp = Blueprint('api', __name__, url_prefix='/api')
+
+@bp.route('/test', methods=['GET'])
+def api_test():
+    """Simple test endpoint to verify API blueprint is working"""
+    return jsonify({'status': 'ok', 'message': 'API blueprint is working'}), 200
 
 @bp.route('/webhook/github', methods=['POST'])
 def github_webhook():
     """GitHub webhook to automatically pull changes"""
+    logger.info("GitHub webhook received")
+    
     try:
+        # Log request details for debugging
+        logger.info(f"Request headers: {dict(request.headers)}")
+        logger.info(f"Request method: {request.method}")
+        
         # Verify webhook signature
         signature = request.headers.get('X-Hub-Signature-256')
         if not signature:
+            logger.error("No signature found in request")
             return jsonify({'error': 'No signature'}), 401
         
         # Get the webhook secret from config
@@ -23,6 +40,7 @@ def github_webhook():
         webhook_secret = app.config.get('GITHUB_WEBHOOK_SECRET')
         
         if not webhook_secret:
+            logger.error("GITHUB_WEBHOOK_SECRET not configured")
             return jsonify({'error': 'Webhook secret not configured'}), 500
         
         # Verify the signature
@@ -33,54 +51,129 @@ def github_webhook():
         ).hexdigest()
         
         if not hmac.compare_digest(signature, expected_signature):
+            logger.error(f"Invalid signature. Expected: {expected_signature}, Got: {signature}")
             return jsonify({'error': 'Invalid signature'}), 401
         
         # Check if this is a push event
         event_type = request.headers.get('X-GitHub-Event')
+        logger.info(f"GitHub event type: {event_type}")
+        
         if event_type != 'push':
+            logger.info(f"Ignoring non-push event: {event_type}")
             return jsonify({'message': 'Ignored non-push event'}), 200
         
         # Get the repository path (adjust this to your actual path on PythonAnywhere)
         repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        logger.info(f"Repository path: {repo_path}")
+        
+        # Check if git is available
+        try:
+            git_version = subprocess.run(['git', '--version'], capture_output=True, text=True)
+            logger.info(f"Git version: {git_version.stdout.strip()}")
+        except Exception as e:
+            logger.error(f"Git not available: {e}")
+            return jsonify({'error': 'Git not available'}), 500
         
         # Pull the latest changes
         try:
+            logger.info("Starting git pull...")
             result = subprocess.run(
                 ['git', 'pull', 'origin', 'main'],
                 cwd=repo_path,
                 capture_output=True,
                 text=True,
-                timeout=30
+                timeout=60  # Increased timeout
             )
             
+            logger.info(f"Git pull return code: {result.returncode}")
+            logger.info(f"Git pull stdout: {result.stdout}")
+            logger.info(f"Git pull stderr: {result.stderr}")
+            
             if result.returncode == 0:
-                print(f"Successfully pulled changes: {result.stdout}")
+                logger.info("Successfully pulled changes")
                 
                 # Touch the WSGI file to trigger a reload (PythonAnywhere specific)
                 wsgi_file = os.path.join(repo_path, 'wsgi.py')
                 if os.path.exists(wsgi_file):
                     os.utime(wsgi_file, None)
-                    print("Touched wsgi.py to trigger reload")
+                    logger.info("Touched wsgi.py to trigger reload")
+                else:
+                    logger.warning(f"wsgi.py not found at {wsgi_file}")
+                
+                # Alternative: Create a reload trigger file
+                reload_file = os.path.join(repo_path, 'reload.txt')
+                try:
+                    with open(reload_file, 'w') as f:
+                        f.write(f"Reload triggered at {os.popen('date').read().strip()}")
+                    logger.info("Created reload trigger file")
+                except Exception as e:
+                    logger.warning(f"Could not create reload file: {e}")
                 
                 return jsonify({
                     'message': 'Successfully pulled changes and triggered reload',
-                    'stdout': result.stdout
+                    'stdout': result.stdout,
+                    'repo_path': repo_path
                 }), 200
             else:
-                print(f"Error pulling changes: {result.stderr}")
+                logger.error(f"Git pull failed with return code {result.returncode}")
                 return jsonify({
                     'error': 'Failed to pull changes',
-                    'stderr': result.stderr
+                    'stderr': result.stderr,
+                    'return_code': result.returncode
                 }), 500
                 
         except subprocess.TimeoutExpired:
+            logger.error("Git pull timed out")
             return jsonify({'error': 'Git pull timed out'}), 500
         except Exception as e:
+            logger.error(f"Git pull failed: {str(e)}")
             return jsonify({'error': f'Git pull failed: {str(e)}'}), 500
             
     except Exception as e:
-        print(f"Webhook error: {e}")
+        logger.error(f"Webhook error: {e}")
         return jsonify({'error': 'Internal server error'}), 500
+
+@bp.route('/webhook/test', methods=['GET'])
+def webhook_test():
+    """Test endpoint to verify webhook configuration"""
+    try:
+        from app import create_app
+        app = create_app()
+        webhook_secret = app.config.get('GITHUB_WEBHOOK_SECRET')
+        
+        # Get repository path
+        repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        
+        # Check if git is available
+        git_available = False
+        git_version = "Not available"
+        try:
+            git_result = subprocess.run(['git', '--version'], capture_output=True, text=True)
+            git_available = git_result.returncode == 0
+            git_version = git_result.stdout.strip() if git_available else "Error"
+        except Exception as e:
+            git_version = f"Error: {str(e)}"
+        
+        # Check if wsgi.py exists
+        wsgi_file = os.path.join(repo_path, 'wsgi.py')
+        wsgi_exists = os.path.exists(wsgi_file)
+        
+        return jsonify({
+            'status': 'ok',
+            'webhook_secret_configured': bool(webhook_secret),
+            'git_available': git_available,
+            'git_version': git_version,
+            'repo_path': repo_path,
+            'wsgi_file_exists': wsgi_exists,
+            'wsgi_file_path': wsgi_file,
+            'environment': os.getenv('FLASK_ENV', 'development')
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'error': str(e)
+        }), 500
 
 @bp.route('/bike/<path:bike_id>')
 def get_bike_details(bike_id):
