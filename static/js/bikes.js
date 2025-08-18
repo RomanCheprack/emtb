@@ -441,12 +441,12 @@ function showBikeDetailsModal(bike) {
             'fork': 'בולם קדמי',
             'rear_shock': 'בולם אחורי',
             'frame': 'שלדה',
-            'tires': 'גלגלים',
+            'tires': 'צמיגים',
             'brakes': 'בלמים',
             'weight': 'משקל',
             'wheel_size': 'גודל גלגלים',
             'sub_category': 'סוג אופניים',
-            'size': 'גודל',
+            'size': 'מידה',
             'gear_count': 'מספר הילוכים',
             'front_brake': 'בלם קדמי',
             'rear_brake': 'בלם אחורי',
@@ -456,13 +456,36 @@ function showBikeDetailsModal(bike) {
             'pedals': 'דוושות',
             'charger': 'מטען',
             'screen': 'מסך',
-            'extras': 'תוספות'
+            'extras': 'תוספות',
+            'rear_der': 'דיריילור אחורי',
+            'shifter': 'מחליף הילוכים',
+            'crank_set': 'ארכובה',
+            'chain': 'שרשרת',
+            'cassette': 'קסטה',
+            'rotors': 'דיסקים',
+            'handlebar': 'כידון',
+            'seat_post': 'מוט אוכף',
+            'stem': 'גבעול',
+            'lights': 'תאורה',
+            'wheels': 'גלגלים',
+            'rims': 'חישוקים',
+            'spokes': 'חישורים',
+            'front_hub': 'ציר קדמי',
+            'rear_hub': 'ציר אחורי',
+            'headset': 'צוואר כידון',
+            'remote': 'שלט רחוק',
+            'fork_length': 'אורך בולמים',
+            'chain_guide': 'מדריך שרשרת',
+            'tubes': 'צינורות',
+            'front_wheel': 'גלגל קדמי',
+            'rear_wheel': 'גלגל אחורי'
         };
         
         // Define the order of fields to display
         const fieldOrder = [
             'firm',
-            'model', 
+            'model',
+            'sub_category', 
             'year',
             'price',
             'disc_price',
@@ -471,18 +494,34 @@ function showBikeDetailsModal(bike) {
             'wh',
             'frame',
             'fork',
+            'fork_length',
             'rear_shock',
+            'remote',
             'weight',
-            'wheel_size',
-            'sub_category',
-            'size',
-            'gear_count',
-            'front_brake',
-            'rear_brake',
+            'rear_derailleur',
+            'shifter',
+            'crank_set',
+            'chain_guide',
+            'chain',
+            'cassette',
+            'brakes',
+            'rotors',
+            'handlebar',
+            'seat_post',
+            'saddle',
+            'stem',
             'front_tire',
             'rear_tire',
-            'saddle',
-            'pedals',
+            'front_hub',
+            'rear_hub',
+            'rims',
+            'spokes',
+            'headset',
+            'lights',
+            'wheels',
+            'front_wheel',
+            'rear_wheel',
+            'tubes',
             'charger',
             'screen',
             'extras'
@@ -498,29 +537,22 @@ function showBikeDetailsModal(bike) {
                         <tbody>
         `;
 
-        // Display fields in the specified order
+                // Display fields in the specified order
         fieldOrder.forEach((key) => {
-            if (
-                bike[key] &&
-                bike[key] !== "#N/A" &&
-                bike[key] !== "N/A" &&
-                String(bike[key]).trim() !== ""
-            ) {
-                let value = bike[key];
-                // Format price fields with commas and shekel symbol
-                if (key === 'price' || key === 'disc_price') {
-                    const formattedValue = formatNumberWithCommas(bike[key]);
-                    if (formattedValue === 'צור קשר') {
-                        value = formattedValue;
-                    } else {
-                        value = `₪ ${formattedValue}`;
-                    }
+            let value = bike[key] || 'undefined';
+            // Format price fields with commas and shekel symbol
+            if (key === 'price' || key === 'disc_price') {
+                const formattedValue = formatNumberWithCommas(bike[key]);
+                if (formattedValue === 'צור קשר') {
+                    value = formattedValue;
+                } else {
+                    value = `₪ ${formattedValue}`;
                 }
-                
-                // Translate the field name
-                const translatedKey = fieldTranslations[key] || key;
-                html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
             }
+            
+            // Translate the field name
+            const translatedKey = fieldTranslations[key] || key;
+            html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
         });
 
         html += `
