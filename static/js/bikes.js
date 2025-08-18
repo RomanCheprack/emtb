@@ -531,17 +531,30 @@ function showBikeDetailsModal(bike) {
         // Parse gallery images if available
         let galleryImages = [];
         
+        console.log('=== GALLERY DEBUG ===');
+        console.log('Bike ID:', bike.id);
+        console.log('Gallery field exists:', !!bike['gallery_images_urls']);
+        console.log('Gallery field value:', bike['gallery_images_urls']);
+        console.log('Gallery field type:', typeof bike['gallery_images_urls']);
+        
         if (bike['gallery_images_urls']) {
             try {
                 galleryImages = JSON.parse(bike['gallery_images_urls']);
+                console.log('Parsed gallery images:', galleryImages);
                 if (!Array.isArray(galleryImages)) {
+                    console.log('Gallery is not an array, resetting to empty');
                     galleryImages = [];
                 }
             } catch (e) {
                 console.warn('Failed to parse gallery_images_urls:', e);
                 galleryImages = [];
             }
+        } else {
+            console.log('No gallery_images_urls field found');
         }
+        
+        console.log('Final gallery images count:', galleryImages.length);
+        console.log('=== END GALLERY DEBUG ===');
         
         let html = `
             <div class="row">

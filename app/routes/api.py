@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models.bike import get_session, Bike
 from app.utils.helpers import clean_bike_data_for_json
-from app.extensions import csrf
+from app.extensions import csrf, cache
 import hmac
 import hashlib
 import subprocess
@@ -185,6 +185,13 @@ def get_bike_details(bike_id):
         # Clean the bike data to ensure it's safe for JSON serialization
         cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
         
+        # Debug logging
+        print(f"=== API DEBUG for bike {bike_id} ===")
+        print(f"Gallery field in DB: {bike.gallery_images_urls}")
+        print(f"Gallery field in dict: {bike_dict.get('gallery_images_urls')}")
+        print(f"Gallery field in cleaned: {cleaned_bike_dict.get('gallery_images_urls')}")
+        print("=== END API DEBUG ===")
+        
         return jsonify(cleaned_bike_dict)
         
     except Exception as e:
@@ -195,3 +202,12 @@ def get_bike_details(bike_id):
     finally:
         if 'db_session' in locals():
             db_session.close()
+
+@bp.route('/clear-cache')
+def clear_cache():
+    """Clear all caches for debugging"""
+    try:
+        cache.clear()
+        return jsonify({'message': 'Cache cleared successfully'})
+    except Exception as e:
+        return jsonify({'error': f'Failed to clear cache: {str(e)}'}), 500
