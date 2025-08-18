@@ -14,69 +14,13 @@ logger = logging.getLogger(__name__)
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
-@bp.route('/debug', methods=['GET'])
-def api_debug():
-    """Debug endpoint to test if API blueprint is loading properly"""
-    return jsonify({'status': 'ok', 'message': 'API debug endpoint working'}), 200
-
-@bp.route('/', methods=['GET'])
-def api_root():
-    """Root API endpoint to test if blueprint is working"""
-    return jsonify({'status': 'ok', 'message': 'API blueprint root endpoint working'}), 200
-
-@bp.route('/test', methods=['GET'])
-def api_test():
-    """Simple test endpoint to verify API blueprint is working"""
-    return jsonify({'status': 'ok', 'message': 'API blueprint is working'}), 200
-
-@bp.route('/webhook', methods=['GET'])
-def webhook_root():
-    """Webhook root endpoint to test webhook routing"""
-    return jsonify({'status': 'ok', 'message': 'Webhook routing is working'}), 200
-
-@bp.route('/webhook/simple', methods=['GET'])
-def webhook_simple():
-    """Simple webhook test endpoint"""
-    return jsonify({'status': 'ok', 'message': 'Simple webhook endpoint working'}), 200
-
-@bp.route('/webhook/debug', methods=['POST'])
-@csrf.exempt
-def webhook_debug():
-    """Debug endpoint to test webhook requests without signature verification"""
-    logger.info("Webhook debug endpoint called")
-    logger.info(f"Request headers: {dict(request.headers)}")
-    logger.info(f"Request method: {request.method}")
-    logger.info(f"Request content type: {request.content_type}")
-    logger.info(f"Request data length: {len(request.data) if request.data else 0}")
-    
-    return jsonify({
-        'status': 'ok',
-        'message': 'Webhook debug endpoint working',
-        'headers': dict(request.headers),
-        'method': request.method,
-        'content_type': request.content_type,
-        'data_length': len(request.data) if request.data else 0
-    }), 200
-
 @bp.route('/webhook/github', methods=['POST'])
 @csrf.exempt
 def github_webhook():
     """GitHub webhook to automatically pull changes"""
-    print("=== WEBHOOK CALLED ===")  # This will show in PythonAnywhere logs
     logger.info("GitHub webhook received")
     
     try:
-        # Log request details for debugging
-        logger.info(f"Request headers: {dict(request.headers)}")
-        logger.info(f"Request method: {request.method}")
-        logger.info(f"Request content type: {request.content_type}")
-        logger.info(f"Request data length: {len(request.data) if request.data else 0}")
-        
-        # Check if request has data
-        if not request.data:
-            logger.error("No request data received")
-            return jsonify({'error': 'No request data'}), 400
-        
         # Verify webhook signature
         signature = request.headers.get('X-Hub-Signature-256')
         if not signature:
@@ -115,7 +59,7 @@ def github_webhook():
             logger.info(f"Ignoring non-push event: {event_type}")
             return jsonify({'message': 'Ignored non-push event'}), 200
         
-        # Get the repository path (adjust this to your actual path on PythonAnywhere)
+        # Get the repository path
         repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         logger.info(f"Repository path: {repo_path}")
         
@@ -135,12 +79,10 @@ def github_webhook():
                 cwd=repo_path,
                 capture_output=True,
                 text=True,
-                timeout=60  # Increased timeout
+                timeout=60
             )
             
             logger.info(f"Git pull return code: {result.returncode}")
-            logger.info(f"Git pull stdout: {result.stdout}")
-            logger.info(f"Git pull stderr: {result.stderr}")
             
             if result.returncode == 0:
                 logger.info("Successfully pulled changes")
@@ -150,10 +92,8 @@ def github_webhook():
                 if os.path.exists(wsgi_file):
                     os.utime(wsgi_file, None)
                     logger.info("Touched wsgi.py to trigger reload")
-                else:
-                    logger.warning(f"wsgi.py not found at {wsgi_file}")
                 
-                # Alternative: Create a reload trigger file
+                # Create a reload trigger file as backup
                 reload_file = os.path.join(repo_path, 'reload.txt')
                 try:
                     with open(reload_file, 'w') as f:
@@ -184,51 +124,7 @@ def github_webhook():
             
     except Exception as e:
         logger.error(f"Webhook error: {e}")
-        import traceback
-        logger.error(f"Traceback: {traceback.format_exc()}")
         return jsonify({'error': 'Internal server error'}), 500
-
-@bp.route('/webhook/test', methods=['GET'])
-def webhook_test():
-    """Test endpoint to verify webhook configuration"""
-    try:
-        from app import create_app
-        app = create_app()
-        webhook_secret = app.config.get('GITHUB_WEBHOOK_SECRET')
-        
-        # Get repository path
-        repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        
-        # Check if git is available
-        git_available = False
-        git_version = "Not available"
-        try:
-            git_result = subprocess.run(['git', '--version'], capture_output=True, text=True)
-            git_available = git_result.returncode == 0
-            git_version = git_result.stdout.strip() if git_available else "Error"
-        except Exception as e:
-            git_version = f"Error: {str(e)}"
-        
-        # Check if wsgi.py exists
-        wsgi_file = os.path.join(repo_path, 'wsgi.py')
-        wsgi_exists = os.path.exists(wsgi_file)
-        
-        return jsonify({
-            'status': 'ok',
-            'webhook_secret_configured': bool(webhook_secret),
-            'git_available': git_available,
-            'git_version': git_version,
-            'repo_path': repo_path,
-            'wsgi_file_exists': wsgi_exists,
-            'wsgi_file_path': wsgi_file,
-            'environment': os.getenv('FLASK_ENV', 'development')
-        }), 200
-        
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'error': str(e)
-        }), 500
 
 @bp.route('/bike/<path:bike_id>')
 def get_bike_details(bike_id):
