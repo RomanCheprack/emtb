@@ -13,6 +13,11 @@ logger = logging.getLogger(__name__)
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
+@bp.route('/', methods=['GET'])
+def api_root():
+    """Root API endpoint to test if blueprint is working"""
+    return jsonify({'status': 'ok', 'message': 'API blueprint root endpoint working'}), 200
+
 @bp.route('/test', methods=['GET'])
 def api_test():
     """Simple test endpoint to verify API blueprint is working"""
