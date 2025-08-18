@@ -23,6 +23,11 @@ def api_test():
     """Simple test endpoint to verify API blueprint is working"""
     return jsonify({'status': 'ok', 'message': 'API blueprint is working'}), 200
 
+@bp.route('/webhook', methods=['GET'])
+def webhook_root():
+    """Webhook root endpoint to test webhook routing"""
+    return jsonify({'status': 'ok', 'message': 'Webhook routing is working'}), 200
+
 @bp.route('/webhook/github', methods=['POST'])
 def github_webhook():
     """GitHub webhook to automatically pull changes"""
