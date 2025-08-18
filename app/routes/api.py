@@ -62,6 +62,7 @@ def webhook_debug():
 @csrf.exempt
 def github_webhook():
     """GitHub webhook to automatically pull changes"""
+    print("=== WEBHOOK CALLED ===")  # This will show in PythonAnywhere logs
     logger.info("GitHub webhook received")
     
     try:
