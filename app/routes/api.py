@@ -38,6 +38,24 @@ def webhook_simple():
     """Simple webhook test endpoint"""
     return jsonify({'status': 'ok', 'message': 'Simple webhook endpoint working'}), 200
 
+@bp.route('/webhook/debug', methods=['POST'])
+def webhook_debug():
+    """Debug endpoint to test webhook requests without signature verification"""
+    logger.info("Webhook debug endpoint called")
+    logger.info(f"Request headers: {dict(request.headers)}")
+    logger.info(f"Request method: {request.method}")
+    logger.info(f"Request content type: {request.content_type}")
+    logger.info(f"Request data length: {len(request.data) if request.data else 0}")
+    
+    return jsonify({
+        'status': 'ok',
+        'message': 'Webhook debug endpoint working',
+        'headers': dict(request.headers),
+        'method': request.method,
+        'content_type': request.content_type,
+        'data_length': len(request.data) if request.data else 0
+    }), 200
+
 @bp.route('/webhook/github', methods=['POST'])
 def github_webhook():
     """GitHub webhook to automatically pull changes"""
@@ -47,6 +65,13 @@ def github_webhook():
         # Log request details for debugging
         logger.info(f"Request headers: {dict(request.headers)}")
         logger.info(f"Request method: {request.method}")
+        logger.info(f"Request content type: {request.content_type}")
+        logger.info(f"Request data length: {len(request.data) if request.data else 0}")
+        
+        # Check if request has data
+        if not request.data:
+            logger.error("No request data received")
+            return jsonify({'error': 'No request data'}), 400
         
         # Verify webhook signature
         signature = request.headers.get('X-Hub-Signature-256')
@@ -64,15 +89,19 @@ def github_webhook():
             return jsonify({'error': 'Webhook secret not configured'}), 500
         
         # Verify the signature
-        expected_signature = 'sha256=' + hmac.new(
-            webhook_secret.encode('utf-8'),
-            request.data,
-            hashlib.sha256
-        ).hexdigest()
-        
-        if not hmac.compare_digest(signature, expected_signature):
-            logger.error(f"Invalid signature. Expected: {expected_signature}, Got: {signature}")
-            return jsonify({'error': 'Invalid signature'}), 401
+        try:
+            expected_signature = 'sha256=' + hmac.new(
+                webhook_secret.encode('utf-8'),
+                request.data,
+                hashlib.sha256
+            ).hexdigest()
+            
+            if not hmac.compare_digest(signature, expected_signature):
+                logger.error(f"Invalid signature. Expected: {expected_signature}, Got: {signature}")
+                return jsonify({'error': 'Invalid signature'}), 401
+        except Exception as e:
+            logger.error(f"Error verifying signature: {e}")
+            return jsonify({'error': 'Signature verification failed'}), 400
         
         # Check if this is a push event
         event_type = request.headers.get('X-GitHub-Event')
@@ -151,6 +180,8 @@ def github_webhook():
             
     except Exception as e:
         logger.error(f"Webhook error: {e}")
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
         return jsonify({'error': 'Internal server error'}), 500
 
 @bp.route('/webhook/test', methods=['GET'])
