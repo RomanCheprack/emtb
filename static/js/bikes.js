@@ -528,10 +528,41 @@ function showBikeDetailsModal(bike) {
             'extras'
         ];
         
+        // Parse gallery images if available
+        let galleryImages = [];
+        
+        if (bike['gallery_images_urls']) {
+            try {
+                galleryImages = JSON.parse(bike['gallery_images_urls']);
+                if (!Array.isArray(galleryImages)) {
+                    galleryImages = [];
+                }
+            } catch (e) {
+                console.warn('Failed to parse gallery_images_urls:', e);
+                galleryImages = [];
+            }
+        }
+        
         let html = `
             <div class="row">
                 <div class="col-md-4">
-                    <img src="${bike['image_url'] || ''}" class="img-fluid" alt="${bike.model || 'Bike'}">
+                    <div class="main-image-container">
+                        <img src="${bike['image_url'] || ''}" class="img-fluid main-bike-image" alt="${bike.model || 'Bike'}" id="main-bike-image" onclick="openImageZoom('${bike['image_url'] || ''}', '${bike.model || 'Bike'}')">
+                        <div class="zoom-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    ${galleryImages.length > 1 ? `
+                    <div class="gallery-carousel mt-3">
+                        <div class="gallery-scroll">
+                            ${galleryImages.map((imgUrl, index) => `
+                                <div class="gallery-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
+                                    <img src="${imgUrl}" alt="${bike.model || 'Bike'} - תמונה ${index + 1}" class="img-fluid">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
                 </div>
                 <div class="col-md-8">
                     <table class="table table-striped">
@@ -559,7 +590,20 @@ function showBikeDetailsModal(bike) {
             
             // Translate the field name
             const translatedKey = fieldTranslations[key] || key;
-            html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+            
+            // Check if value is long and needs collapsible functionality
+            const isLongValue = value && value.length > 100;
+            
+            if (isLongValue) {
+                const shortValue = value.substring(0, 100) + '...';
+                html += `<tr><td style="text-align: left;">
+                    <span class="cell-short">${shortValue}</span>
+                    <span class="cell-full" style="display: none;">${value}</span>
+                    <button class="show-more-btn" onclick="toggleValue(this)">הצג עוד</button>
+                </td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+            } else {
+                html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+            }
         });
 
         html += `
@@ -861,3 +905,255 @@ function showBikeDetailsModal(bike) {
         });
     });
 });
+
+// Function to toggle collapsible values in bike details modal
+function toggleValue(button) {
+    const cell = button.parentElement;
+    const shortSpan = cell.querySelector('.cell-short');
+    const fullSpan = cell.querySelector('.cell-full');
+    
+    if (fullSpan.style.display === 'none') {
+        // Show full value
+        shortSpan.style.display = 'none';
+        fullSpan.style.display = 'inline';
+        button.textContent = 'הצג פחות';
+    } else {
+        // Show short value
+        shortSpan.style.display = 'inline';
+        fullSpan.style.display = 'none';
+        button.textContent = 'הצג עוד';
+    }
+}
+
+// Function to change main image in gallery
+function changeMainImage(imageUrl, thumbnailElement) {
+    // Update main image
+    const mainImage = document.getElementById('main-bike-image');
+    if (mainImage) {
+        mainImage.src = imageUrl;
+        // Update the onclick handler for the new image
+        mainImage.onclick = () => openImageZoom(imageUrl, mainImage.alt);
+    }
+    
+    // Update active thumbnail
+    const allThumbnails = document.querySelectorAll('.gallery-thumbnail');
+    allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+    thumbnailElement.classList.add('active');
+}
+
+// Function to open image zoom modal
+function openImageZoom(imageUrl, imageAlt) {
+    // Create zoom modal if it doesn't exist
+    let zoomModal = document.getElementById('imageZoomModal');
+    if (!zoomModal) {
+        zoomModal = document.createElement('div');
+        zoomModal.id = 'imageZoomModal';
+        zoomModal.className = 'image-zoom-modal';
+        zoomModal.innerHTML = `
+            <div class="zoom-modal-content">
+                <div class="zoom-modal-header">
+                    <button type="button" class="zoom-close-btn" onclick="closeImageZoom()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="zoom-modal-body">
+                    <img src="" alt="" class="zoomed-image" id="zoomedImage">
+                </div>
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomIn()">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="zoom-btn" onclick="zoomOut()">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="zoom-btn" onclick="resetZoom()">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(zoomModal);
+    }
+    
+    // Set the image
+    const zoomedImage = document.getElementById('zoomedImage');
+    zoomedImage.src = imageUrl;
+    zoomedImage.alt = imageAlt;
+    
+    // Reset zoom and pan
+    resetZoom();
+    
+    // Set up drag handlers
+    setupDragHandlers();
+    
+    // Show modal
+    zoomModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// Function to close image zoom modal
+function closeImageZoom() {
+    const zoomModal = document.getElementById('imageZoomModal');
+    if (zoomModal) {
+        // Clean up drag handlers
+        cleanupDragHandlers();
+        
+        zoomModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+// Zoom and pan variables
+let currentZoom = 1;
+let currentPanX = 0;
+let currentPanY = 0;
+const zoomStep = 0.3;
+const maxZoom = 5;
+const minZoom = 0.5;
+
+// Drag variables
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let lastX = 0;
+let lastY = 0;
+
+function zoomIn() {
+    if (currentZoom < maxZoom) {
+        currentZoom += zoomStep;
+        applyTransform();
+    }
+}
+
+function zoomOut() {
+    if (currentZoom > minZoom) {
+        currentZoom -= zoomStep;
+        applyTransform();
+    }
+}
+
+function resetZoom() {
+    currentZoom = 1;
+    currentPanX = 0;
+    currentPanY = 0;
+    applyTransform();
+}
+
+function applyTransform() {
+    const zoomedImage = document.getElementById('zoomedImage');
+    if (zoomedImage) {
+        zoomedImage.style.transform = `translate(${currentPanX}px, ${currentPanY}px) scale(${currentZoom})`;
+    }
+}
+
+// Mouse event handlers for dragging
+function setupDragHandlers() {
+    const zoomedImage = document.getElementById('zoomedImage');
+    if (!zoomedImage) return;
+
+    // Mouse events
+    zoomedImage.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', endDrag);
+
+    // Touch events for mobile
+    zoomedImage.addEventListener('touchstart', startDragTouch);
+    document.addEventListener('touchmove', dragTouch);
+    document.addEventListener('touchend', endDrag);
+
+    // Prevent context menu on right click
+    zoomedImage.addEventListener('contextmenu', (e) => e.preventDefault());
+}
+
+function startDrag(e) {
+    if (currentZoom > 1) {
+        isDragging = true;
+        startX = e.clientX - currentPanX;
+        startY = e.clientY - currentPanY;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        
+        // Add dragging class for visual feedback
+        const zoomedImage = document.getElementById('zoomedImage');
+        if (zoomedImage) {
+            zoomedImage.classList.add('dragging');
+        }
+        
+        e.preventDefault();
+    }
+}
+
+function startDragTouch(e) {
+    if (currentZoom > 1 && e.touches.length === 1) {
+        isDragging = true;
+        const touch = e.touches[0];
+        startX = touch.clientX - currentPanX;
+        startY = touch.clientY - currentPanY;
+        lastX = touch.clientX;
+        lastY = touch.clientY;
+        
+        // Add dragging class for visual feedback
+        const zoomedImage = document.getElementById('zoomedImage');
+        if (zoomedImage) {
+            zoomedImage.classList.add('dragging');
+        }
+        
+        e.preventDefault();
+    }
+}
+
+function drag(e) {
+    if (isDragging && currentZoom > 1) {
+        const deltaX = e.clientX - lastX;
+        const deltaY = e.clientY - lastY;
+        
+        currentPanX += deltaX;
+        currentPanY += deltaY;
+        
+        lastX = e.clientX;
+        lastY = e.clientY;
+        
+        applyTransform();
+        e.preventDefault();
+    }
+}
+
+function dragTouch(e) {
+    if (isDragging && currentZoom > 1 && e.touches.length === 1) {
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - lastX;
+        const deltaY = touch.clientY - lastY;
+        
+        currentPanX += deltaX;
+        currentPanY += deltaY;
+        
+        lastX = touch.clientX;
+        lastY = touch.clientY;
+        
+        applyTransform();
+        e.preventDefault();
+    }
+}
+
+function endDrag() {
+    isDragging = false;
+    
+    // Remove dragging class
+    const zoomedImage = document.getElementById('zoomedImage');
+    if (zoomedImage) {
+        zoomedImage.classList.remove('dragging');
+    }
+}
+
+// Clean up event listeners when modal closes
+function cleanupDragHandlers() {
+    const zoomedImage = document.getElementById('zoomedImage');
+    if (zoomedImage) {
+        zoomedImage.removeEventListener('mousedown', startDrag);
+        zoomedImage.removeEventListener('touchstart', startDragTouch);
+    }
+    document.removeEventListener('mousemove', drag);
+    document.removeEventListener('mouseup', endDrag);
+    document.removeEventListener('touchmove', dragTouch);
+    document.removeEventListener('touchend', endDrag);
+}

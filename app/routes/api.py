@@ -179,6 +179,7 @@ def get_bike_details(bike_id):
             'front_wheel': str(bike.front_wheel) if bike.front_wheel else None,
             'rear_wheel': str(bike.rear_wheel) if bike.rear_wheel else None,
             'tubes': str(bike.tubes) if bike.tubes else None,
+            'gallery_images_urls': str(bike.gallery_images_urls) if bike.gallery_images_urls else None,
         }
         
         # Clean the bike data to ensure it's safe for JSON serialization
