@@ -13,6 +13,11 @@ logger = logging.getLogger(__name__)
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
+@bp.route('/debug', methods=['GET'])
+def api_debug():
+    """Debug endpoint to test if API blueprint is loading properly"""
+    return jsonify({'status': 'ok', 'message': 'API debug endpoint working'}), 200
+
 @bp.route('/', methods=['GET'])
 def api_root():
     """Root API endpoint to test if blueprint is working"""
@@ -27,6 +32,11 @@ def api_test():
 def webhook_root():
     """Webhook root endpoint to test webhook routing"""
     return jsonify({'status': 'ok', 'message': 'Webhook routing is working'}), 200
+
+@bp.route('/webhook/simple', methods=['GET'])
+def webhook_simple():
+    """Simple webhook test endpoint"""
+    return jsonify({'status': 'ok', 'message': 'Simple webhook endpoint working'}), 200
 
 @bp.route('/webhook/github', methods=['POST'])
 def github_webhook():
