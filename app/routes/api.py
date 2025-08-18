@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models.bike import get_session, Bike
 from app.utils.helpers import clean_bike_data_for_json
+from app.extensions import csrf
 import hmac
 import hashlib
 import subprocess
@@ -39,6 +40,7 @@ def webhook_simple():
     return jsonify({'status': 'ok', 'message': 'Simple webhook endpoint working'}), 200
 
 @bp.route('/webhook/debug', methods=['POST'])
+@csrf.exempt
 def webhook_debug():
     """Debug endpoint to test webhook requests without signature verification"""
     logger.info("Webhook debug endpoint called")
@@ -57,6 +59,7 @@ def webhook_debug():
     }), 200
 
 @bp.route('/webhook/github', methods=['POST'])
+@csrf.exempt
 def github_webhook():
     """GitHub webhook to automatically pull changes"""
     logger.info("GitHub webhook received")
