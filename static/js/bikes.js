@@ -437,7 +437,7 @@ function showBikeDetailsModal(bike) {
             'disc_price': 'מחיר מבצע',
             'motor': 'מנוע',
             'battery': 'סוללה',
-            'wh': 'קיבולת סוללה',
+            'wh': '(WH) סוללה',
             'fork': 'בולם קדמי',
             'rear_shock': 'בולם אחורי',
             'frame': 'שלדה',

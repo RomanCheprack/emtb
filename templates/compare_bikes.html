@@ -56,7 +56,6 @@
          <table class="table table-bordered compare-table text-center align-middle">
          <thead>
              <tr>
-                 <th class="model-th" style="position:relative;"></th>
                  {% for bike in bikes %}
                  <th class="specs-th align-middle" style="min-width: 160px; max-width: 180px;">
      <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
@@ -70,12 +69,44 @@
      </div>
  </th>
                  {% endfor %}
+                 <th class="model-th" style="position:relative;"></th>
              </tr>
          </thead>
          <tbody>
-             <!-- 🟥 PRICE ROW -->
+            <!-- רכישה -->
+            <tr>
+                {% for bike in bikes %}
+                <td>
+                    {% if bike['product_url'] %}
+                        <a href="{{ bike['product_url'] }}" target="_blank" rel="noopener" class="btn btn-outline-primary">
+                            <i class="fas fa-shopping-cart me-1"></i>
+                            רכישה
+                        </a>
+                    {% else %}
+                        <span class="text-muted">לא זמין</span>
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <th style="min-width: 150px; background: #fff; text-align: right;"></th>
+            </tr>
+             <!-- דגם -->
              <tr>
-                 <th style="min-width: 150px; background: #fff;">Price</th>
+                 {% for bike in bikes %}
+                 <td>{{ bike['model'] }}</td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">דגם</th>
+             </tr>
+
+             <!-- שנה -->
+             <tr>
+                 {% for bike in bikes %}
+                 <td>{{ bike['year'] }}</td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שנה</th>
+             </tr>
+
+             <!-- מחיר -->
+             <tr>
                  {% for bike in bikes %}
                  <td>
                      {% if bike['disc_price'] and bike['disc_price'] != '#N/A' %}
@@ -98,15 +129,535 @@
                      {% endif %}
                  </td>
                  {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מחיר</th>
              </tr>
 
-             <!-- 🟩 ALL FIELDS FROM DB -->
-             {% for field in fields_to_show %}
+             <!-- סוג אופניים -->
+             {% if 'sub_category' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff;">{{ field }}</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
-                     {% set value = bike.get(field, '') %}
+                     {% set value = bike.get('sub_category', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:20] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">סוג אופניים</th>
+             </tr>
+             {% endif %}
+
+             <!-- קיבולת סוללה -->
+             {% if 'wh' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('wh', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:20] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">קיבולת סוללה</th>
+             </tr>
+             {% endif %}
+
+             <!-- מנוע -->
+             {% if 'motor' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('motor', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מנוע</th>
+             </tr>
+             {% endif %}
+
+             <!-- סוללה -->
+             {% if 'battery' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('battery', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">סוללה</th>
+             </tr>
+             {% endif %}
+
+             <!-- שלדה -->
+             {% if 'frame' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('frame', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שלדה</th>
+             </tr>
+             {% endif %}
+
+             <!-- בולם קדמי -->
+             {% if 'fork' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('fork', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם קדמי</th>
+             </tr>
+             {% endif %}
+
+             <!-- בולם אחורי -->
+             {% if 'rear_shock' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rear_shock', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם אחורי</th>
+             </tr>
+             {% endif %}
+
+             <!-- בלמים -->
+             {% if 'brakes' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('brakes', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">בלמים</th>
+             </tr>
+             {% endif %}
+
+             <!-- צמיגים -->
+             {% if 'tires' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('tires', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיגים</th>
+             </tr>
+             {% endif %}
+
+             <!-- משקל -->
+             {% if 'weight' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('weight', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">משקל</th>
+             </tr>
+             {% endif %}
+
+             <!-- גודל גלגלים -->
+             {% if 'wheel_size' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('wheel_size', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גודל גלגלים</th>
+             </tr>
+             {% endif %}
+
+             <!-- מידה -->
+             {% if 'size' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('size', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מידה</th>
+             </tr>
+             {% endif %}
+
+             <!-- מספר הילוכים -->
+             {% if 'gear_count' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('gear_count', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מספר הילוכים</th>
+             </tr>
+             {% endif %}
+
+             <!-- ברקס קידמי -->
+             {% if 'front_brake' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('front_brake', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:40] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס קידמי</th>
+             </tr>
+             {% endif %}
+
+             <!-- ברקס אחורי -->
+             {% if 'rear_brake' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rear_brake', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס אחורי</th>
+             </tr>
+             {% endif %}
+
+             <!-- צמיג קדמי -->
+             {% if 'front_tire' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('front_tire', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג קדמי</th>
+             </tr>
+             {% endif %}
+
+             <!-- צמיג אחורי -->
+             {% if 'rear_tire' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rear_tire', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג אחורי</th>
+             </tr>
+             {% endif %}
+
+             <!-- אוכף -->
+             {% if 'saddle' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('saddle', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">אוכף</th>
+             </tr>
+             {% endif %}
+
+             <!-- דוושות -->
+             {% if 'pedals' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('pedals', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">דוושות</th>
+             </tr>
+             {% endif %}
+
+             <!-- מטען -->
+             {% if 'charger' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('charger', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מטען</th>
+             </tr>
+             {% endif %}
+
+             <!-- מסך -->
+             {% if 'screen' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('screen', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מסך</th>
+             </tr>
+             {% endif %}
+
+             <!-- תוספות -->
+             {% if 'extras' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('extras', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">תוספות</th>
+             </tr>
+             {% endif %}
+
+             <!-- מעביר אחורי -->
+             {% if 'rear_der' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rear_der', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מעביר אחורי</th>
+             </tr>
+             {% endif %}
+
+             <!-- שיפטר -->
+             {% if 'shifter' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('shifter', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שיפטר</th>
+             </tr>
+             {% endif %}
+
+             <!-- קראנק -->
+             {% if 'crank_set' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('crank_set', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">קראנק</th>
+             </tr>
+             {% endif %}
+
+             <!-- מדריך שרשרת -->
+             {% if 'chain_guide' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('chain_guide', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מדריך שרשרת</th>
+             </tr>
+             {% endif %}
+
+             <!-- שרשרת -->
+             {% if 'chain' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('chain', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
                          <span class="cell-short">{{ value_str[:60] }}...</span>
@@ -117,22 +668,349 @@
                      {% endif %}
                  </td>
                  {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שרשרת</th>
              </tr>
-             {% endfor %}
+             {% endif %}
+
+             <!-- קסטה -->
+             {% if 'cassette' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff;">רכישה</th>
                  {% for bike in bikes %}
-                 <td>
-                     {% if bike['product_url'] %}
-                         <a href="{{ bike['product_url'] }}" target="_blank" rel="noopener" class="btn btn-success" style="font-weight:600;">
-                             רכישה
-                         </a>
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('cassette', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
                      {% else %}
-                         <span class="text-muted">לא זמין</span>
+                         {{ value_str }}
                      {% endif %}
                  </td>
                  {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">קסטה</th>
              </tr>
+             {% endif %}
+
+             <!-- רוטורים -->
+             {% if 'rotors' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rotors', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">רוטורים</th>
+             </tr>
+             {% endif %}
+
+             <!-- כידון -->
+             {% if 'handlebar' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('handlebar', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">כידון</th>
+             </tr>
+             {% endif %}
+
+             <!-- מוט אוכף -->
+             {% if 'seat_post' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('seat_post', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:40] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מוט אוכף</th>
+             </tr>
+             {% endif %}
+
+             <!-- סטם -->
+             {% if 'stem' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('stem', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:40] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">סטם</th>
+             </tr>
+             {% endif %}
+
+             <!-- תאורה -->
+             {% if 'lights' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('lights', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">תאורה</th>
+             </tr>
+             {% endif %}
+
+             <!-- גלגלים -->
+             {% if 'wheels' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('wheels', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:40] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגלים</th>
+             </tr>
+             {% endif %}
+
+             <!-- חישוקים -->
+             {% if 'rims' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rims', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:40] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">חישוקים</th>
+             </tr>
+             {% endif %}
+
+             <!-- חישורים -->
+             {% if 'spokes' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('spokes', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:60] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">חישורים</th>
+             </tr>
+             {% endif %}
+
+             <!-- ציר קדמי -->
+             {% if 'front_hub' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('front_hub', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר קדמי</th>
+             </tr>
+             {% endif %}
+
+             <!-- ציר אחורי -->
+             {% if 'rear_hub' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rear_hub', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר אחורי</th>
+             </tr>
+             {% endif %}
+
+             <!-- הד סט -->
+             {% if 'headset' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('headset', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">הד סט</th>
+             </tr>
+             {% endif %}
+
+             <!-- שלט -->
+             {% if 'remote' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('remote', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:40] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שלט</th>
+             </tr>
+             {% endif %}
+
+             <!-- אורך בולמים -->
+             {% if 'fork_length' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('fork_length', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">אורך בולמים</th>
+             </tr>
+             {% endif %}
+
+             <!-- פנימיות -->
+             {% if 'tubes' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('tubes', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">פנימיות</th>
+             </tr>
+             {% endif %}
+
+             <!-- גלגל קדמי -->
+             {% if 'front_wheel' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('front_wheel', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל קדמי</th>
+             </tr>
+             {% endif %}
+
+             <!-- גלגל אחורי -->
+             {% if 'rear_wheel' in fields_to_show %}
+             <tr>
+                 {% for bike in bikes %}
+                 <td class="collapsible-cell">
+                     {% set value = bike.get('rear_wheel', '') %}
+                     {% set value_str = value|string %}
+                     {% if value_str|length > 40 %}
+                         <span class="cell-short">{{ value_str[:25] }}...</span>
+                         <span class="cell-full" style="display:none;">{{ value_str }}</span>
+                         <button class="btn btn-link btn-sm show-more-btn" style="padding:0; font-size:0.85em;">הצג עוד</button>
+                     {% else %}
+                         {{ value_str }}
+                     {% endif %}
+                 </td>
+                 {% endfor %}
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל אחורי</th>
+             </tr>
+             {% endif %}
          </tbody>
 
      </table>

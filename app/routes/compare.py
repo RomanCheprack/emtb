@@ -47,7 +47,7 @@ def add_to_compare():
 
                 # ✅ Increment popularity count in database
                 try:
-                    from scripts.migrate_compare_counts import update_compare_count
+                    from scripts.data.migrate_compare_counts import update_compare_count
                     update_compare_count(normalized_bike_id)
                     print(f"Updated compare count for bike {normalized_bike_id}")
                 except Exception as e:
@@ -98,7 +98,7 @@ def compare_bikes():
             bikes_to_compare.append(bike)
 
     # Key fields to always show
-    always_show = ["model", "price", "year", "motor", "battery"]
+    always_show = ["firm", "model", "price", "year", "motor", "battery"]
 
     # Disc_price: show if at least one bike has it non-empty
     show_disc_price = any(

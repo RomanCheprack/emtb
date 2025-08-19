@@ -1,6 +1,15 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     runAiComparison();
     
+    // Auto-scroll to the right to show the keys column
+    const compareContainer = document.querySelector('.compare-container');
+    if (compareContainer) {
+        // Wait a bit for the page to fully load, then scroll to the right
+        setTimeout(() => {
+            compareContainer.scrollLeft = compareContainer.scrollWidth;
+        }, 100);
+    }
+    
     // WhatsApp floating share button logic
     var floatBtn = document.getElementById('whatsapp-share-float');
     if (floatBtn) {
@@ -95,9 +104,7 @@ document.addEventListener('click', function(e) {
 
 function runAiComparison() {
     const container = document.getElementById("ai-comparison-container");
-    container.style.display = "block";
-    //container.scrollIntoView({ behavior: "smooth" });
-
+    
     // Show loading message
     const loadingDiv = document.getElementById('ai-loading');
     if (loadingDiv) {
@@ -118,13 +125,10 @@ function runAiComparison() {
                 container.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
                 return;
             }
-
-            // Debug: Log the full response
-            console.log('Full API response:', data);
-            console.log('Response keys:', Object.keys(data));
-            console.log('Data.data exists:', !!data.data);
-            console.log('Data.share_url exists:', !!data.share_url);
-            console.log('Data.comparison_id exists:', !!data.comparison_id);
+            
+            // Show the container only after successful API response
+            container.style.display = "block";
+            container.scrollIntoView({ behavior: "smooth" });
             
             // Handle new response format with comparison_id and share_url
             let comparisonData = data;
@@ -132,29 +136,17 @@ function runAiComparison() {
             // Check if this is the new format with nested data
             if (data.data) {
                 comparisonData = data.data;
-                console.log('Using nested data:', comparisonData);
             } else if (data.comparison_data) {
                 // Handle old format with comparison_data
                 comparisonData = data.comparison_data;
-                console.log('Using comparison_data:', comparisonData);
-            } else {
-                console.log('Using direct data:', comparisonData);
             }
             
             // Show share button if we have comparison data
             const shareFloatBtn = document.getElementById('whatsapp-share-float');
             if (shareFloatBtn && data.comparison_id && data.share_url) {
-                console.log('Showing WhatsApp share button with:', data.comparison_id, data.share_url);
                 shareFloatBtn.style.display = 'flex';
                 shareFloatBtn.setAttribute('data-comparison-id', data.comparison_id);
                 shareFloatBtn.setAttribute('data-share-url', data.share_url);
-            } else {
-                console.log('Share button conditions not met:', {
-                    hasFloatBtn: !!shareFloatBtn,
-                    hasComparisonId: !!data.comparison_id,
-                    hasShareUrl: !!data.share_url,
-                    data: data
-                });
             }
 
             // Update the UI with ChatGPT response
@@ -164,15 +156,12 @@ function runAiComparison() {
             
             if (introElement) {
                 introElement.textContent = comparisonData.intro || '';
-                console.log('Set intro:', comparisonData.intro);
             }
             if (recommendationElement) {
                 recommendationElement.textContent = comparisonData.recommendation || '';
-                console.log('Set recommendation:', comparisonData.recommendation);
             }
             if (expertTipElement) {
                 expertTipElement.textContent = comparisonData.expert_tip || '';
-                console.log('Set expert tip:', comparisonData.expert_tip);
             }
 
             // --- AI Bike Analysis Cards ---
@@ -224,9 +213,8 @@ function shareComparison() {
             text: 'בדוק את ההשוואה המקצועית בין אופני הרים חשמליים',
             url: shareUrl
         }).then(() => {
-            console.log('Shared successfully');
+            // Shared successfully
         }).catch((error) => {
-            console.log('Error sharing:', error);
             // Fallback to copy URL
             copyShareUrl(shareUrl);
         });
@@ -252,7 +240,6 @@ function copyShareUrl(url) {
             button.classList.add('btn-primary');
         }, 2000);
     }).catch(function(err) {
-        console.error('Could not copy text: ', err);
         // Fallback for older browsers
         const textArea = document.createElement('textarea');
         textArea.value = url;
