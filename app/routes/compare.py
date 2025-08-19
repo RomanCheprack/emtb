@@ -222,16 +222,28 @@ def compare_ai_from_session():
             db_session.add(comparison)
             db_session.commit()
             
-            # Create share URL
-            share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', slug=comparison.slug)
+            # Create share URL - handle both development and production
+            try:
+                # Try to get the full URL
+                share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', slug=comparison.slug)
+                print(f"Method 1 - Generated share URL: {share_url}")
+            except Exception as e:
+                print(f"Error generating share URL: {e}")
+                # Fallback: use relative URL
+                share_url = url_for('compare.view_comparison', slug=comparison.slug, _external=True)
             
-            # Return the comparison data
-            return jsonify({
+            print(f"Generated share URL: {share_url}")
+            
+            # Create response data
+            response_data = {
                 "success": True,
                 "data": comparison_result,
                 "comparison_id": comparison.id,
                 "share_url": share_url
-            })
+            }
+            
+            # Return the comparison data
+            return jsonify(response_data)
             
         except Exception as e:
             db_session.rollback()
