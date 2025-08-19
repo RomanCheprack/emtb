@@ -121,6 +121,10 @@ function runAiComparison() {
 
             // Debug: Log the full response
             console.log('Full API response:', data);
+            console.log('Response keys:', Object.keys(data));
+            console.log('Data.data exists:', !!data.data);
+            console.log('Data.share_url exists:', !!data.share_url);
+            console.log('Data.comparison_id exists:', !!data.comparison_id);
             
             // Handle new response format with comparison_id and share_url
             let comparisonData = data;
@@ -129,20 +133,24 @@ function runAiComparison() {
             if (data.data) {
                 comparisonData = data.data;
                 console.log('Using nested data:', comparisonData);
+            } else if (data.comparison_data) {
+                // Handle old format with comparison_data
+                comparisonData = data.comparison_data;
+                console.log('Using comparison_data:', comparisonData);
             } else {
                 console.log('Using direct data:', comparisonData);
             }
             
             // Show share button if we have comparison data
-            const shareButton = document.getElementById('shareButton');
-            if (shareButton && data.comparison_id && data.share_url) {
-                console.log('Showing share button with:', data.comparison_id, data.share_url);
-                shareButton.style.display = 'block';
-                shareButton.setAttribute('data-comparison-id', data.comparison_id);
-                shareButton.setAttribute('data-share-url', data.share_url);
+            const shareFloatBtn = document.getElementById('whatsapp-share-float');
+            if (shareFloatBtn && data.comparison_id && data.share_url) {
+                console.log('Showing WhatsApp share button with:', data.comparison_id, data.share_url);
+                shareFloatBtn.style.display = 'flex';
+                shareFloatBtn.setAttribute('data-comparison-id', data.comparison_id);
+                shareFloatBtn.setAttribute('data-share-url', data.share_url);
             } else {
                 console.log('Share button conditions not met:', {
-                    hasShareButton: !!shareButton,
+                    hasFloatBtn: !!shareFloatBtn,
                     hasComparisonId: !!data.comparison_id,
                     hasShareUrl: !!data.share_url,
                     data: data
@@ -187,14 +195,7 @@ function runAiComparison() {
                 analysisContainer.appendChild(card);
             });
 
-            const floatBtn = document.getElementById('whatsapp-share-float');
-            if (floatBtn && data.comparison_id && data.share_url) {
-                floatBtn.style.display = 'flex';
-                floatBtn.setAttribute('data-comparison-id', data.comparison_id);
-                floatBtn.setAttribute('data-share-url', data.share_url);
-            } else if (floatBtn) {
-                floatBtn.style.display = 'none';
-            }
+            // Note: WhatsApp share button is already handled above
         })
         .catch(err => {
             if (loadingDiv) {
