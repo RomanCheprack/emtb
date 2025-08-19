@@ -715,25 +715,35 @@ function showBikeDetailsModal(bike) {
         // Get CSRF token from meta tag
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         
-        // Clear compare and apply filters in parallel
-        Promise.all([
-            fetch("/clear_compare", { 
-                method: "POST",
-                headers: {
-                    'X-CSRFToken': csrfToken
-                }
-            }),
-            fetch(`/api/filter_bikes`)
-        ])
-        .then(([clearRes, filterRes]) => {
-            return Promise.all([
-                clearRes.json(),
-                filterRes.json()
-            ]);
+        // First clear compare, then get all bikes
+        fetch("/clear_compare", { 
+            method: "POST",
+            headers: {
+                'X-CSRFToken': csrfToken
+            }
         })
-        .then(([clearData, bikes]) => {
+        .then(clearRes => {
+            if (!clearRes.ok) {
+                throw new Error(`Clear compare failed: ${clearRes.status}`);
+            }
+            return clearRes.json();
+        })
+        .then(clearData => {
             // Update compare UI
             updateCompareUI([]);
+            
+            // Now get all bikes
+            return fetch(`/api/filter_bikes`);
+        })
+        .then(filterRes => {
+            if (!filterRes.ok) {
+                throw new Error(`Filter bikes failed: ${filterRes.status}`);
+            }
+            return filterRes.json();
+        })
+        .then(filterData => {
+            // Extract bikes from the API response
+            const bikes = filterData.bikes || [];
             
             // Update bikes list
             const sortOrder = sortDropdown.value;

@@ -64,7 +64,12 @@ def create_ai_prompt(bikes_to_compare):
 def generate_comparison_with_ai(prompt):
     """Generate comparison using OpenAI API"""
     try:
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        # Check if API key is available
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            return {"error": "OpenAI API key not configured. Please set the OPENAI_API_KEY environment variable."}
+        
+        client = OpenAI(api_key=api_key)
         
         response = client.chat.completions.create(
             model="gpt-4",

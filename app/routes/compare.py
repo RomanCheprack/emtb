@@ -185,11 +185,6 @@ def clear_compare():
 @bp.route('/api/compare_ai_from_session', methods=['GET'])
 def compare_ai_from_session():
     try:
-        # Check if OpenAI API key is set
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            return jsonify({"error": "OpenAI API key not configured", "details": "OPENAI_API_KEY environment variable is missing"}), 500
-        
         compare_list = get_compare_list()
         
         if len(compare_list) < 2:
@@ -209,6 +204,10 @@ def compare_ai_from_session():
         # Generate comparison using AI
         comparison_result = generate_comparison_with_ai(prompt)
         
+        # Check if AI generation failed
+        if "error" in comparison_result:
+            return jsonify({"error": comparison_result["error"]}), 500
+        
         # Save to database
         db_session = get_session()
         try:
@@ -223,12 +222,15 @@ def compare_ai_from_session():
             db_session.add(comparison)
             db_session.commit()
             
+            # Create share URL
+            share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', slug=comparison.slug)
+            
             # Return the comparison data
             return jsonify({
                 "success": True,
-                "comparison_data": comparison_result,
+                "data": comparison_result,
                 "comparison_id": comparison.id,
-                "slug": comparison.slug
+                "share_url": share_url
             })
             
         except Exception as e:
