@@ -196,23 +196,27 @@ def extract_product_specifications(driver, product_url):
 
         # STEP 2: Ask GPT to parse
         prompt = f"""
-        You are given raw product specification text from a bike webpage.
-        Extract only the specifications that are explicitly present in the text.
-        Do NOT invent or guess missing values.
-        Do NOT include keys that are not mentioned.
-        Keep the values exactly as they appear.
+        You are given raw HTML product specification text from a bike webpage.
 
-        Output valid JSON with key-value pairs.
-        If the key is in Hebrew, try to map it to one of these English keys when possible:
+        Rules:
+        1. Treat each <p>, <h4>, or <a> element as a possible key (e.g., "FRAME", "FORK").
+        2. If the next sibling is a <ul> with <li> items, treat those <li> values as part of the same key.
+        - Join them with " | " if multiple.
+        - Example: 
+            <p>FORK SR Suntour</p><ul><li>100mm</li><li>Tapered</li></ul>
+            → "fork": "SR Suntour | 100mm | Tapered"
+        3. Keep values exactly as they appear (don’t translate or guess).
+        4. Output valid JSON with key-value pairs only.
+        5. If the key is in Hebrew, try to map it to one of these English keys when possible:
         frame, sizes, finish_color, fork, rear_shock, drive_system, battery, assist_modes, 
         gears, front_derailleur, rear_derailleur, shifters, crankset, brakes, rims, hubs, 
         stem, handlebar, seatpost, saddle, pedals, tires, charger, weight, range, speed, power.
+        6. If no mapping fits, keep the original key.
 
-        If no mapping fits, keep the Hebrew key as-is.
-
-        Text:
+        HTML:
         {raw_specs_html}
         """
+
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
@@ -347,15 +351,54 @@ def scrape_rosen_emtb(driver):
             price_text = "צור קשר"
         
         # Extract image URL from product-box-top__image-item
+        img_url = None
         img_tag = product_card.find("img", class_="product-box-top__image-item")
         if img_tag:
-            img_url = img_tag.get('src') or img_tag.get('data-src')
+            # Try data-src first (lazy loaded images), then src
+            img_url = img_tag.get('data-src') or img_tag.get('src')
             if img_url:
                 # Remove query parameters if present
                 if '?' in img_url:
                     img_url = img_url.split('?')[0]
                 if not img_url.startswith('http'):
                     img_url = urljoin(BASE_URL, img_url)
+                
+                # Check if this is a placeholder image and skip it
+                if img_url and ('anim.gif' in img_url or 'placeholder' in img_url.lower()):
+                    print(f"⚠️ Skipping placeholder image: {img_url}")
+                    img_url = None
+                elif img_url and 'files/catalog/item' in img_url:
+                    print(f"✅ Found valid product image: {img_url}")
+                else:
+                    print(f"⚠️ Found image but not from catalog: {img_url}")
+                    # Still keep it as it might be valid
+        
+        # If no valid image found, try alternative selectors
+        if not img_url:
+            # Try other common image selectors
+            alternative_selectors = [
+                ".product-box-top__image img",  # Direct child of image container
+                "img[data-src*='files/catalog']",  # Lazy loaded catalog images
+                "img[src*='files/catalog']",  # Direct catalog images
+                ".product-image img",  # Generic product image
+                ".product-box img"  # Product box images
+            ]
+            
+            for selector in alternative_selectors:
+                try:
+                    alt_img_tag = product_card.select_one(selector)
+                    if alt_img_tag:
+                        alt_img_url = alt_img_tag.get('data-src') or alt_img_tag.get('src')
+                        if alt_img_url and 'anim.gif' not in alt_img_url and 'placeholder' not in alt_img_url.lower():
+                            if '?' in alt_img_url:
+                                alt_img_url = alt_img_url.split('?')[0]
+                            if not alt_img_url.startswith('http'):
+                                alt_img_url = urljoin(BASE_URL, alt_img_url)
+                            img_url = alt_img_url
+                            print(f"✅ Found alternative image: {img_url}")
+                            break
+                except Exception as e:
+                    continue
         
         # Extract product URL from the main link
         link_tag = product_card.find('a', class_="product-box-2023")
@@ -414,6 +457,28 @@ def scrape_rosen_emtb(driver):
             gallery_images_urls = extract_gallery_images(driver, product["product_URL"])
             # Add gallery_images_urls after product_URL field
             product["gallery_images_urls"] = gallery_images_urls
+            
+            # If no valid main image was found, use the first gallery image as main image
+            if (not product.get("image_URL") or 
+                'anim.gif' in product.get("image_URL", "") or 
+                'placeholder' in product.get("image_URL", "").lower() or
+                'files/catalog/item' not in product.get("image_URL", "")) and gallery_images_urls:
+                # Find the best gallery image (prefer source images, then thumb images)
+                best_gallery_image = None
+                for gallery_img in gallery_images_urls:
+                    if '/source/' in gallery_img:
+                        best_gallery_image = gallery_img
+                        break
+                    elif '/thumb/' in gallery_img:
+                        best_gallery_image = gallery_img
+                
+                # If no source or thumb found, use the first one
+                if not best_gallery_image and gallery_images_urls:
+                    best_gallery_image = gallery_images_urls[0]
+                
+                if best_gallery_image:
+                    product["image_URL"] = best_gallery_image
+                    print(f"🖼️ Using gallery image as main image: {best_gallery_image}")
         
         # Extract WH from battery field
         battery_value = product.get("battery", "")
@@ -598,17 +663,33 @@ def extract_gallery_images(driver, product_url):
                 "menu" not in img_url.lower() and 
                 "banner" not in img_url.lower() and
                 "hermidabanner" not in img_url.lower() and
+                "anim.gif" not in img_url and
+                "placeholder" not in img_url.lower() and
                 img_url not in filtered_gallery_images):
                 filtered_gallery_images.append(img_url)
         
         print(f"✅ Extracted {len(filtered_gallery_images)} gallery images (filtered from {len(gallery_images_urls)} total)")
+        
+        # Prioritize larger/higher quality images by sorting them
+        # Look for images with 'source' in the URL (usually larger) first
+        sorted_gallery_images = []
+        
+        # First add source images (usually highest quality)
+        for img_url in filtered_gallery_images:
+            if '/source/' in img_url:
+                sorted_gallery_images.append(img_url)
+        
+        # Then add other images
+        for img_url in filtered_gallery_images:
+            if '/source/' not in img_url:
+                sorted_gallery_images.append(img_url)
         
         # Debug: Print the first few lines of the HTML to see the structure
         if not filtered_gallery_images:
             print("🔍 Debug: First 500 characters of HTML:")
             print(driver.page_source[:500])
         
-        return filtered_gallery_images
+        return sorted_gallery_images
         
     except Exception as e:
         print(f"❌ Error extracting gallery images: {e}")
