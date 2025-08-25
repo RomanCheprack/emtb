@@ -5,11 +5,20 @@ import os
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import undetected_chromedriver as uc
+from openai import OpenAI
+from dotenv import load_dotenv
 
+# -------------------------------
+# Setup
+# -------------------------------
 BASE_URL = "https://www.rosen-meents.co.il"
 TARGET_URL = f"{BASE_URL}/אופני-הרים-חשמליים-E-MTB"
 
-# Hebrew to English key mapping for specifications
+# Load API key
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Hebrew to English key mapping
 HEBREW_TO_ENGLISH_KEYS = {
     "צבע": "color",
     "שלדה": "frame",
@@ -26,77 +35,126 @@ HEBREW_TO_ENGLISH_KEYS = {
     "מעצורים": "brakes",
     "חישוקים": "rims",
     "צירי גלגל": "hubs",
-    "מרכיבים נוספים\nסטם": "stem",
+    "סטם": "stem",
     "כידון": "handlebar",
     "מוט אוכף": "seatpost",
     "אוכף": "saddle",
     "דוושות (פדלים)": "pedals",
-    "דוא\"ל": "email",
-    "חישוקים": "rims",
     "צמיגים": "tires",
     "סוללה": "battery",
     "מטען": "charger",
-    "מצפן": "compass",
-    "תאורה": "lighting",
-    "מנעול": "lock",
-    "תיק": "bag",
     "משקל": "weight",
-    "גובה": "height",
-    "רוחב": "width",
-    "אורך": "length",
-    "נפח": "volume",
-    "קיבולת": "capacity",
     "טווח": "range",
     "מהירות": "speed",
-    "כוח": "power",
-    "מתח": "voltage",
-    "זרם": "current",
-    "הספק": "power_output",
-    "טמפרטורה": "temperature",
-    "לחות": "humidity",
-    "לחץ": "pressure",
-    "זמן": "time",
-    "תאריך": "date",
-    "שנה": "year",
-    "חודש": "month",
-    "יום": "day",
-    "שעה": "hour",
-    "דקה": "minute",
-    "שנייה": "second"
+    "כוח": "power"
 }
 
 scraped_data = []
 
-def extract_number(price_str):
-    """Extract numeric value from price string"""
-    if not price_str:
-        return None
-    return re.sub(r'[^\d,]', '', str(price_str))
-
+# -------------------------------
+# Helpers
+# -------------------------------
 def translate_hebrew_keys(specs_dict):
-    """Translate Hebrew keys to English using the mapping dictionary"""
     translated_specs = {}
     for key, value in specs_dict.items():
-        # Check if the key is in Hebrew and has a translation
         if key in HEBREW_TO_ENGLISH_KEYS:
-            translated_key = HEBREW_TO_ENGLISH_KEYS[key]
-            translated_specs[translated_key] = value
+            translated_specs[HEBREW_TO_ENGLISH_KEYS[key]] = value
         else:
-            # Keep the original key if no translation found
             translated_specs[key] = value
     return translated_specs
 
-def safe_to_int(text):
-    """Safely convert text to integer, handling Hebrew 'צור קשר'"""
-    if not text or text == "צור קשר":
-        return "צור קשר"
-    try:
-        return int(text.replace(',', '').replace('₪', '').strip())
-    except (ValueError, AttributeError):
-        return "צור קשר"
+def clean_product_data(product_data):
+    """
+    Clean product data by removing unwanted keys and flattening nested objects
+    
+    Removes:
+    - _raw_specs_text: Raw text from GPT parsing (for debugging only)
+    - system_weight_limit: System weight limit information
+    
+    Flattens nested objects by joining values with commas:
+    - hubs: front/rear hub information
+    - tires/tyre: front/rear tire information  
+    - shifters: front/rear shifter information
+    - derailleur: derailleur information
+    - light: front/rear light information
+    - handlebar: handlebar specifications
+    - stem: stem specifications
+    - seatpost: seatpost specifications
+    - saddle: saddle specifications
+    - sizes: size information (flatten complex geometry objects)
+    
+    Removes geometry-related keys that contain detailed measurements
+    
+    Returns cleaned product data dictionary
+    """
+    # Keys to remove completely
+    keys_to_remove = ["_raw_specs_text", "system_weight_limit"]
+    
+    # Geometry-related keys to remove (detailed measurements)
+    geometry_keys_to_remove = [
+        "seat_tube", "top_tube", "chain_stay_length", "head_tube_angle", 
+        "seat_tube_angle", "bottom_bracket_drop", "head_tube", "fork_length",
+        "reach", "stack", "wheel_base", "stand_over_height", "tyre_sizes"
+    ]
+    
+    # Remove unwanted keys
+    cleaned_data = {}
+    for key, value in product_data.items():
+        if key not in keys_to_remove and key not in geometry_keys_to_remove:
+            cleaned_data[key] = value
+    
+    # Flatten nested objects by joining values with commas
+    keys_to_flatten = [
+        "hubs", "tires", "tyre", "shifters", "derailleur", "light",
+        "handlebar", "stem", "seatpost", "saddle"
+    ]
+    
+    for key in keys_to_flatten:
+        if key in cleaned_data and isinstance(cleaned_data[key], dict):
+            # Join all values with commas
+            values = []
+            for sub_key, sub_value in cleaned_data[key].items():
+                if isinstance(sub_value, str):
+                    values.append(f"{sub_key}: {sub_value}")
+                else:
+                    values.append(f"{sub_key}: {str(sub_value)}")
+            cleaned_data[key] = ", ".join(values)
+    
+    # Special handling for sizes - if it's a complex object with geometry, simplify it
+    if "sizes" in cleaned_data and isinstance(cleaned_data["sizes"], dict):
+        # Check if it's a complex geometry object (has nested objects with measurements)
+        size_values = []
+        for size_key, size_data in cleaned_data["sizes"].items():
+            if isinstance(size_data, dict):
+                # This is a complex geometry object, just keep the size name
+                size_values.append(size_key)
+            else:
+                # This is a simple size value
+                size_values.append(f"{size_key}: {size_data}")
+        cleaned_data["sizes"] = ", ".join(size_values)
+    
+    return cleaned_data
+
+
+# -------------------------------
+# Old Extractors (fallbacks)
+# -------------------------------
+def extract_specs_p_br(soup):
+    specs = {}
+    paragraphs = soup.find_all("p")
+    for p in paragraphs:
+        parts = [line.strip() for line in p.decode_contents().split("<br>") if line.strip()]
+        for part in parts:
+            clean = BeautifulSoup(part, "html.parser").get_text().strip()
+            if ":" in clean:
+                key, value = clean.split(":", 1)
+                specs[key.strip()] = value.strip()
+            elif specs:
+                last_key = list(specs.keys())[-1]
+                specs[last_key] += " " + clean
+    return specs
 
 def extract_specs_table(soup):
-    """Extract specifications from table format"""
     specs = {}
     spec_table = soup.find("table", class_="table")
     if spec_table:
@@ -105,384 +163,92 @@ def extract_specs_table(soup):
             rows = tbody.find_all('tr')
             for row in rows:
                 cells = row.find_all('td')
-                if len(cells) == 4:
-                    key1 = cells[0].get_text(strip=True)
-                    val1 = cells[1].get_text(strip=True)
-                    key2 = cells[2].get_text(strip=True)
-                    val2 = cells[3].get_text(strip=True)
-                    if key1 and val1:
-                        specs[key1] = val1
-                    if key2 and val2:
-                        specs[key2] = val2
-                elif len(cells) == 2:
+                if len(cells) == 2:
                     key = cells[0].get_text(strip=True)
                     val = cells[1].get_text(strip=True)
                     if key and val:
                         specs[key] = val
     return specs
 
-def extract_specs_list(soup):
-    """Extract specifications from list format"""
-    specs = {}
-    
-    # First, try to find ul elements within col-md-12 col-xs-12 divs (specific structure)
-    col_divs = soup.find_all("div", class_="col-md-12 col-xs-12")
-    for col_div in col_divs:
-        spec_lists = col_div.find_all("ul")
-        for spec_list in spec_lists:
-            # Skip the product-complex-ul which contains size/color variants, not specs
-            if spec_list.get('class') and 'product-complex-ul' in spec_list.get('class'):
-                continue
-                
-            items = spec_list.find_all("li")
-            for item in items:
-                # Look for two <p> elements in each <li>
-                p_elements = item.find_all("p")
-                if len(p_elements) >= 2:
-                    # First <p> is the key, second <p> is the value
-                    key = p_elements[0].get_text(strip=True)
-                    val = p_elements[1].get_text(strip=True)
-                    if key and val:
-                        specs[key] = val
-                else:
-                    # Fallback: try to split by colon if no <p> elements found
-                    text = item.get_text(strip=True)
-                    if ":" in text:
-                        key, val = text.split(":", 1)
-                        specs[key.strip()] = val.strip()
-                    else:
-                        # For simple li elements without colons, use the text as value
-                        # and try to infer a key from context or use a generic key
-                        text = item.get_text(strip=True)
-                        if text and len(text) > 3:  # Only add if meaningful content
-                            # Try to create a key based on the content
-                            if "material:" in text.lower():
-                                specs["Material"] = text.split(":", 1)[1].strip() if ":" in text else text
-                            elif "mm" in text or "inch" in text:
-                                specs["Size"] = text
-                            elif any(word in text.lower() for word in ["teeth", "speed", "gear"]):
-                                specs["Gearing"] = text
-                            elif any(word in text.lower() for word in ["hub", "wheel", "rim"]):
-                                specs["Wheels"] = text
-                            elif any(word in text.lower() for word in ["tire", "tyre"]):
-                                specs["Tires"] = text
-                            elif any(word in text.lower() for word in ["brake", "rotor"]):
-                                specs["Brakes"] = text
-                            elif any(word in text.lower() for word in ["stem", "handlebar", "bar"]):
-                                specs["Cockpit"] = text
-                            elif any(word in text.lower() for word in ["seat", "saddle", "post"]):
-                                specs["Seat"] = text
-                            elif any(word in text.lower() for word in ["battery", "wh", "voltage"]):
-                                specs["Battery"] = text
-                            else:
-                                specs[f"Spec_{len(specs)+1}"] = text
-    
-    # If no specs found in col-md-12 divs, try generic ul/ol search
-    if not specs:
-        spec_lists = soup.find_all(["ul", "ol"])
-        for spec_list in spec_lists:
-            # Skip the product-complex-ul which contains size/color variants, not specs
-            if spec_list.get('class') and 'product-complex-ul' in spec_list.get('class'):
-                continue
-                
-            items = spec_list.find_all("li")
-            for item in items:
-                # Look for two <p> elements in each <li>
-                p_elements = item.find_all("p")
-                if len(p_elements) >= 2:
-                    # First <p> is the key, second <p> is the value
-                    key = p_elements[0].get_text(strip=True)
-                    val = p_elements[1].get_text(strip=True)
-                    if key and val:
-                        specs[key] = val
-                else:
-                    # Fallback: try to split by colon if no <p> elements found
-                    text = item.get_text(strip=True)
-                    if ":" in text:
-                        key, val = text.split(":", 1)
-                        specs[key.strip()] = val.strip()
-    
-    return specs
-
-def extract_specs_divs(soup):
-    """Extract specifications from div format"""
-    specs = {}
-    spec_divs = soup.find_all("div", class_=lambda x: x and "spec" in x.lower())
-    for div in spec_divs:
-        # Look for key-value pairs in divs
-        key_elements = div.find_all(["strong", "b", "span"], class_=lambda x: x and "key" in x.lower())
-        for key_elem in key_elements:
-            key = key_elem.get_text(strip=True)
-            # Find the corresponding value (next sibling or parent's next sibling)
-            value_elem = key_elem.find_next_sibling()
-            if value_elem:
-                val = value_elem.get_text(strip=True)
-                if key and val:
-                    specs[key] = val
-    return specs
-
-def extract_specs_paragraphs(soup):
-    """Extract specifications from paragraph format with &nbsp; separator"""
-    specs = {}
-    
-    # Look for <p> elements that contain specifications
-    p_elements = soup.find_all("p", dir="ltr")
-    
-    for p_elem in p_elements:
-        text = p_elem.get_text(strip=True)
-        
-        # Check if the text contains &nbsp; (non-breaking space)
-        if "&nbsp;" in text or "\xa0" in text:
-            # Split by &nbsp; or \xa0 (non-breaking space)
-            if "&nbsp;" in text:
-                parts = text.split("&nbsp;")
-            else:
-                parts = text.split("\xa0")
-            
-            if len(parts) >= 2:
-                key = parts[0].strip()
-                value = " ".join(parts[1:]).strip()  # Join remaining parts as value
-                
-                if key and value:
-                    specs[key] = value
-                    
-                    # Look for additional details in the next <ul> element
-                    next_ul = p_elem.find_next_sibling("ul")
-                    if next_ul:
-                        ul_items = next_ul.find_all("li")
-                        if ul_items:
-                            details = []
-                            for item in ul_items:
-                                detail_text = item.get_text(strip=True)
-                                if detail_text:
-                                    details.append(detail_text)
-                            
-                            if details:
-                                # Add details to the specification
-                                specs[f"{key}_details"] = details
-    
-    return specs
-
-def extract_specs_strong_br(soup):
-    """Extract specifications from <p> elements with <strong> keys and <br> separated values"""
-    specs = {}
-    
-    # Look for <p> elements that contain <strong> tags
-    p_elements = soup.find_all("p", style="text-align:left")
-    
-    for p_elem in p_elements:
-        # Find <strong> element within the <p>
-        strong_elem = p_elem.find("strong")
-        if strong_elem:
-            key = strong_elem.get_text(strip=True)
-            if key:
-                # Remove the colon from the key if present
-                key = key.rstrip(':')
-                
-                # Get the text content after the <br> tag
-                # First, get all text content of the <p> element
-                full_text = p_elem.get_text(strip=True)
-                
-                # Remove the key part from the beginning
-                if key in full_text:
-                    value = full_text.replace(key, '').strip()
-                    # Remove leading colon and whitespace if present
-                    if value.startswith(':'):
-                        value = value[1:].strip()
-                    
-                    if value:
-                        specs[key] = value
-    
-    return specs
-
-def extract_specs_rosen_merida(soup):
-    """Extract specifications from Rosen Meents Merida bike structure"""
-    specs = {}
-    
-    # Find the specific div structure used by Rosen Meents for Merida bikes
-    col_divs = soup.find_all("div", class_="col-md-12 col-xs-12")
-    
-    for col_div in col_divs:
-        # Get all direct children (p and ul elements) in order
-        children = col_div.find_all(["p", "ul"], recursive=False)
-        
-        i = 0
-        while i < len(children):
-            current_elem = children[i]
-            
-            if current_elem.name == "p":
-                p_text = current_elem.get_text(strip=True)
-                
-                if not p_text:
-                    i += 1
-                    continue
-                
-                # Check if the next element is a ul (specification details)
-                if i + 1 < len(children) and children[i + 1].name == "ul":
-                    # Get the ul element and extract all li items
-                    ul_elem = children[i + 1]
-                    li_elements = ul_elem.find_all("li")
-                    spec_details = []
-                    
-                    for li_elem in li_elements:
-                        detail_text = li_elem.get_text(strip=True)
-                        if detail_text:
-                            spec_details.append(detail_text)
-                    
-                    # Join all details with comma separator (instead of semicolon to avoid JSON issues)
-                    if spec_details:
-                        specs[p_text] = ", ".join(spec_details)
-                    
-                    i += 2  # Skip both p and ul elements
-                else:
-                    # This is a simple key-value pair (no ul follows)
-                    # Handle cases where the text contains &nbsp; or other separators
-                    if "&nbsp;" in p_text:
-                        # Split by &nbsp; and take the first part as key, rest as value
-                        parts = p_text.split("&nbsp;")
-                        if len(parts) >= 2:
-                            key = parts[0].strip()
-                            value = " ".join(parts[1:]).strip()
-                            if key and value:
-                                specs[key] = value
-                    else:
-                        # Special handling for known patterns
-                        if "FRAME SIZE" in p_text:
-                            # Handle "FRAME SIZE S, M, L, XL" pattern
-                            key = "FRAME SIZE"
-                            value = p_text.replace("FRAME SIZE", "").strip()
-                            if value:
-                                specs[key] = value
-                        elif "SEAT CLAMP" in p_text:
-                            # Handle "SEAT CLAMP MERIDA EXPERT" pattern
-                            key = "SEAT CLAMP"
-                            value = p_text.replace("SEAT CLAMP", "").strip()
-                            if value:
-                                specs[key] = value
-                        elif "BATTERY LOCK" in p_text:
-                            # Handle "BATTERY LOCK Abus key" pattern
-                            key = "BATTERY LOCK"
-                            value = p_text.replace("BATTERY LOCK", "").strip()
-                            if value:
-                                specs[key] = value
-                        elif "MAX. WEIGHT" in p_text:
-                            # Handle "MAX. WEIGHT 140 kg" pattern
-                            key = "MAX. WEIGHT"
-                            value = p_text.replace("MAX. WEIGHT", "").strip()
-                            if value:
-                                specs[key] = value
-                        elif "SHIFTERS" in p_text:
-                            # Handle "SHIFTERS Shimano Deore M4100" pattern
-                            key = "SHIFTERS"
-                            value = p_text.replace("SHIFTERS", "").strip()
-                            if value:
-                                specs[key] = value
-                        elif "DISPLAY" in p_text:
-                            # Handle "DISPLAY Shimano SC-E5003A" pattern
-                            key = "DISPLAY"
-                            value = p_text.replace("DISPLAY", "").strip()
-                            if value:
-                                specs[key] = value
-                        elif "KICKSTAND" in p_text:
-                            # Handle "KICKSTAND Massload CL-KA98" pattern
-                            key = "KICKSTAND"
-                            value = p_text.replace("KICKSTAND", "").strip()
-                            if value:
-                                specs[key] = value
-                        else:
-                            # Try to find a natural separator
-                            # Look for patterns like "KEY VALUE" where VALUE might be in caps or contain numbers
-                            import re
-                            # Pattern to match: word(s) followed by space and then value (often in caps or with numbers, commas, etc.)
-                            # Use a more specific pattern that looks for the last word in the key
-                            match = re.match(r'^(.+?)\s+([A-Z0-9\s\-\.\/\(\)\,]+)$', p_text)
-                            if match:
-                                key = match.group(1).strip()
-                                value = match.group(2).strip()
-                                if key and value:
-                                    specs[key] = value
-                            else:
-                                # If no clear separator, store as is
-                                specs[p_text] = ""
-                    
-                    i += 1
-            else:
-                # Skip ul elements that don't follow a p element
-                i += 1
-    
-    return specs
-
-def extract_specs_generic(soup):
-    """Generic specification extraction - fallback method"""
-    specs = {}
-    # Look for common specification patterns
-    spec_patterns = [
-        r"([^:]+):\s*([^\n]+)",  # Key: Value pattern
-        r"([^=]+)=\s*([^\n]+)",  # Key=Value pattern
-    ]
-    
-    # Search in all text content
-    text_content = soup.get_text()
-    for pattern in spec_patterns:
-        matches = re.findall(pattern, text_content)
-        for key, val in matches:
-            key = key.strip()
-            val = val.strip()
-            if key and val and len(key) < 50:  # Avoid very long keys
-                specs[key] = val
-    
-    return specs
-
+# -------------------------------
+# GPT-powered extractor
+# -------------------------------
 def extract_product_specifications(driver, product_url):
-    """Main function to extract specifications from product page"""
     if not product_url:
         return {}
-    
+
     try:
         print(f"🔍 Extracting specs from: {product_url}")
         driver.get(product_url)
         time.sleep(3)
-        
+
         soup = BeautifulSoup(driver.page_source, "html.parser")
-        specs = {}
-        
-        # Try different extraction methods in order of preference
-        methods = [
-            ("rosen_merida", extract_specs_rosen_merida),
-            ("strong_br", extract_specs_strong_br),
-            ("table", extract_specs_table),
-            ("list", extract_specs_list),
-            ("divs", extract_specs_divs),
-            ("paragraphs", extract_specs_paragraphs),
-            ("generic", extract_specs_generic)
-        ]
-        
-        for method_name, method_func in methods:
-            try:
-                method_specs = method_func(soup)
-                if method_specs:
-                    print(f"✅ Found specs using {method_name} method: {len(method_specs)} items")
-                    specs.update(method_specs)
-                    break  # Use the first successful method
-            except Exception as e:
-                print(f"⚠️ Error with {method_name} method: {e}")
-                continue
-        
-        if not specs:
-            print("⚠️ No specifications found")
-        
-        # Translate Hebrew keys to English
+
+        # STEP 1: Find the main specs container
+        spec_container = soup.find("div", class_="tab-content tab-content-product-item")
+        if not spec_container:
+            print("⚠️ No spec container found")
+            return {}
+
+        # ✅ Preserve inner HTML instead of flattening
+        raw_specs_html = spec_container.decode_contents()
+
+
+        # STEP 2: Ask GPT to parse
+        prompt = f"""
+        You are given raw product specification text from a bike webpage.
+        Extract only the specifications that are explicitly present in the text.
+        Do NOT invent or guess missing values.
+        Do NOT include keys that are not mentioned.
+        Keep the values exactly as they appear.
+
+        Output valid JSON with key-value pairs.
+        If the key is in Hebrew, try to map it to one of these English keys when possible:
+        frame, sizes, finish_color, fork, rear_shock, drive_system, battery, assist_modes, 
+        gears, front_derailleur, rear_derailleur, shifters, crankset, brakes, rims, hubs, 
+        stem, handlebar, seatpost, saddle, pedals, tires, charger, weight, range, speed, power.
+
+        If no mapping fits, keep the Hebrew key as-is.
+
+        Text:
+        {raw_specs_html}
+        """
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a JSON extractor for bike specifications."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0,
+            response_format={"type": "json_object"}
+        )
+
+        gpt_json = response.choices[0].message.content
+        specs = json.loads(gpt_json)
+
+        # STEP 3: Add raw specs for debugging
+        specs["_raw_specs_text"] = raw_specs_html
+
+        # STEP 4: Translate Hebrew keys
         translated_specs = translate_hebrew_keys(specs)
-        if translated_specs != specs:
-            print(f"🔄 Translated {len(specs)} Hebrew keys to English")
-        
-        return translated_specs
-        
+
+        # STEP 5: Clean the data
+        cleaned_specs = clean_product_data(translated_specs)
+
+        print(f"✅ GPT parsed {len(cleaned_specs)} specs")
+        return cleaned_specs
+
     except Exception as e:
         print(f"❌ Error extracting specifications: {e}")
         return {}
 
+
+# -------------------------------
+# Phase 1: Scrape product cards
+# -------------------------------
 def scrape_rosen_emtb(driver):
+    basic_products = []
     """Scrape E-MTB bikes from Rosen Meents"""
     print(f"\n🌐 Scraping: {TARGET_URL}")
     driver.get(TARGET_URL)
@@ -627,48 +393,241 @@ def scrape_rosen_emtb(driver):
         
         # Only add if it's a bike and we have at least a model or image
         if is_bike and (model_text or img_url):
-            basic_products.append(product_data)
+            # Clean the product data before adding
+            cleaned_product_data = clean_product_data(product_data)
+            basic_products.append(cleaned_product_data)
             print(f"✅ Added basic info: {model_text} - Original: {original_price}, Discounted: {discounted_price}")
         elif not is_bike:
             pass  # Already printed skip message above
         else:
             print(f"⚠️ Skipped: No model or image found")
-    
-    # Second pass: Extract specifications for each bike
-    print(f"\n🔍 Extracting specifications for {len(basic_products)} bikes...")
-    
-    for i, product_data in enumerate(basic_products):
-        print(f"\n--- Extracting specs for bike {i+1}/{len(basic_products)}: {product_data.get('model', 'Unknown')} ---")
+
+    # Phase 2: Extract specs and gallery images
+    print(f"\n🔍 Extracting specs and gallery images for {len(basic_products)} bikes...")
+    for i, product in enumerate(basic_products):
+        print(f"\n--- Extracting specs for bike {i+1}/{len(basic_products)}: {product.get('model')} ---")
+        if product.get("product_URL"):
+            specs = extract_product_specifications(driver, product["product_URL"])
+            product.update(specs)
+            
+            # Extract gallery images from the product page
+            gallery_images_urls = extract_gallery_images(driver, product["product_URL"])
+            # Add gallery_images_urls after product_URL field
+            product["gallery_images_urls"] = gallery_images_urls
         
-        if product_data.get('product_URL'):
-            try:
-                specifications = extract_product_specifications(driver, product_data['product_URL'])
-                product_data.update(specifications)
-                print(f"✅ Specs extracted: {len(specifications)} items")
-            except Exception as e:
-                print(f"❌ Error extracting specs: {e}")
-                # Continue with other bikes even if one fails
+        # Extract WH from battery field
+        battery_value = product.get("battery", "")
+        if battery_value:
+            wh_match = re.search(r"(\d+)\s*Wh", battery_value, re.IGNORECASE)
+            if wh_match:
+                wh_value = int(wh_match.group(1))
+                product["wh"] = wh_value
+                print(f"🔋 Found Wh in battery field: {wh_value}Wh")
+            else:
+                # If no 'Wh' found, try to find a 3-digit number in battery field
+                fallback_match = re.search(r"\b(\d{3})\b", battery_value)
+                if fallback_match:
+                    product["wh"] = int(fallback_match.group(1))
+                    print(f"🔋 Found 3-digit number in battery field: {fallback_match.group(1)}Wh")
+        
+        # Extract fork length from fork field
+        fork_text = product.get("fork", "")
+        if fork_text:
+            print(f"DEBUG: fork_text = '{fork_text}'")
+            
+            # Try multiple patterns for fork travel
+            patterns = [
+                r'(\d{3})\s*mm\s*(?:travel|suspension)',  # Pattern with "travel" or "suspension"
+                r'(\d{3})\s*mm\s*[^0-9]*$',  # Pattern at end of string
+                r'(\d{3})\s*mm',  # Simple mm pattern
+                r'(?<!\d)(100|120|130|140|150|160|170|180)(?!\d)\s*(?:mm)?',  # Original pattern
+            ]
+            
+            found = False
+            for pattern in patterns:
+                match = re.search(pattern, fork_text.lower())
+                if match:
+                    fork_length = int(match.group(1))
+                    product["fork length"] = fork_length
+                    print(f"🔧 Found fork length: {fork_length}mm (pattern: {pattern})")
+                    
+                    # Determine sub-category based on fork length
+                    if fork_length in [100, 120]:
+                        product["sub-category"] = "cross-country"
+                    elif fork_length in [130, 140, 150, 160]:
+                        product["sub-category"] = "trail"
+                    elif fork_length in [160, 170, 180]:
+                        product["sub-category"] = "enduro"
+                    else:
+                        product["sub-category"] = "unknown"
+                    print(f"🏷️ Assigned sub-category: {product['sub-category']}")
+                    found = True
+                    break
+            
+            if not found:
+                print(f"⚠️ Could not extract fork length from: '{fork_text}'")
+                product["fork length"] = None
+                product["sub-category"] = "unknown"
+        
+        # Clean the final product data but preserve gallery_images_urls
+        final_cleaned_product = clean_product_data(product)
+        
+        # Ensure gallery_images_urls is preserved and placed after product_URL
+        if "gallery_images_urls" in product:
+            # Create a new dictionary with the correct order
+            ordered_product = {}
+            
+            # Add all fields from final_cleaned_product except gallery_images_urls
+            for key, value in final_cleaned_product.items():
+                if key != "gallery_images_urls":
+                    ordered_product[key] = value
+                    # If we just added product_URL, add gallery_images_urls right after it
+                    if key == "product_URL":
+                        ordered_product["gallery_images_urls"] = product["gallery_images_urls"]
+            
+            # If product_URL wasn't found, add gallery_images_urls at the end
+            if "product_URL" not in ordered_product:
+                ordered_product["gallery_images_urls"] = product["gallery_images_urls"]
+            
+            final_cleaned_product = ordered_product
+            print(f"🔍 DEBUG: Added gallery_images_urls with {len(product['gallery_images_urls'])} images")
         else:
-            print("⚠️ No product URL available for specs extraction")
+            print(f"🔍 DEBUG: No gallery_images_urls found in product data")
         
-        # Add to final scraped data
-        scraped_data.append(product_data)
-    
+        # Debug: Check if the field is in the final cleaned product
+        if "gallery_images_urls" in final_cleaned_product:
+            print(f"🔍 DEBUG: gallery_images_urls is in final_cleaned_product with {len(final_cleaned_product['gallery_images_urls'])} images")
+        else:
+            print(f"🔍 DEBUG: gallery_images_urls is NOT in final_cleaned_product")
+        
+        scraped_data.append(final_cleaned_product)
+
     return scraped_data
 
-# --- Main ---
+# -------------------------------
+# Gallery Images Extractor
+# -------------------------------
+def extract_gallery_images(driver, product_url):
+    """Extract gallery images from the slick-track element on product page"""
+    if not product_url:
+        return []
+    
+    try:
+        print(f"🖼️ Extracting gallery images from: {product_url}")
+        driver.get(product_url)
+        time.sleep(5)  # Increased wait time for JavaScript to load
+        
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        
+        # Try multiple selectors to find gallery images
+        gallery_images_urls = []
+        
+        # Method 1: Look for slick-track element
+        slick_track = soup.find("div", class_="slick-track")
+        if slick_track:
+            print("✅ Found slick-track element")
+            
+            # Find all product-item-slider-small-wrap elements
+            slider_wraps = slick_track.find_all("div", class_="product-item-slider-small-wrap")
+            print(f"Found {len(slider_wraps)} slider wraps")
+            
+            for wrap in slider_wraps:
+                # Find the image div with background-image
+                img_div = wrap.find("div", class_="product-item-slider-small__image-small")
+                if img_div:
+                    # Extract background-image URL from style attribute
+                    style_attr = img_div.get("style", "")
+                    print(f"Style attribute: {style_attr}")
+                    if "background-image:url(" in style_attr:
+                        # Extract URL from background-image:url('...')
+                        url_match = re.search(r"background-image:url\('([^']+)'\)", style_attr)
+                        if url_match:
+                            img_url = url_match.group(1)
+                            # Convert relative URL to absolute URL
+                            if not img_url.startswith('http'):
+                                img_url = urljoin(BASE_URL, img_url)
+                            gallery_images_urls.append(img_url)
+                            print(f"🖼️ Found gallery image: {img_url}")
+        else:
+            print("⚠️ No slick-track element found")
+        
+        # Method 2: Look for any elements with background-image containing image URLs
+        if not gallery_images_urls:
+            print("🔍 Trying alternative method: searching for background-image styles")
+            all_divs = soup.find_all("div")
+            for div in all_divs:
+                style_attr = div.get("style", "")
+                if "background-image:url(" in style_attr and ("files/catalog" in style_attr or ".png" in style_attr or ".jpg" in style_attr):
+                    url_match = re.search(r"background-image:url\('([^']+)'\)", style_attr)
+                    if url_match:
+                        img_url = url_match.group(1)
+                        if not img_url.startswith('http'):
+                            img_url = urljoin(BASE_URL, img_url)
+                        # Filter out menu images and only include product-specific images
+                        if ("files/catalog/item" in img_url and 
+                            "menu" not in img_url.lower() and 
+                            "banner" not in img_url.lower() and
+                            img_url not in gallery_images_urls):
+                            gallery_images_urls.append(img_url)
+                            print(f"🖼️ Found alternative gallery image: {img_url}")
+        
+        # Method 3: Look for img tags in any gallery-like containers
+        if not gallery_images_urls:
+            print("🔍 Trying method 3: searching for img tags in gallery containers")
+            gallery_containers = soup.find_all(["div", "ul"], class_=lambda x: x and any(word in x.lower() for word in ["gallery", "slider", "thumb", "image"]))
+            for container in gallery_containers:
+                img_tags = container.find_all("img")
+                for img in img_tags:
+                    src = img.get("src") or img.get("data-src")
+                    if src and ("files/catalog" in src or ".png" in src or ".jpg" in src):
+                        if not src.startswith('http'):
+                            src = urljoin(BASE_URL, src)
+                        # Filter out menu images and only include product-specific images
+                        if ("files/catalog/item" in src and 
+                            "menu" not in src.lower() and 
+                            "banner" not in src.lower() and
+                            src not in gallery_images_urls):
+                            gallery_images_urls.append(src)
+                            print(f"🖼️ Found img tag gallery image: {src}")
+        
+        # Remove duplicates and filter out menu/banner images
+        filtered_gallery_images = []
+        for img_url in gallery_images_urls:
+            # Only include images that are product-specific (not menu or banner images)
+            if ("files/catalog/item" in img_url and 
+                "menu" not in img_url.lower() and 
+                "banner" not in img_url.lower() and
+                "hermidabanner" not in img_url.lower() and
+                img_url not in filtered_gallery_images):
+                filtered_gallery_images.append(img_url)
+        
+        print(f"✅ Extracted {len(filtered_gallery_images)} gallery images (filtered from {len(gallery_images_urls)} total)")
+        
+        # Debug: Print the first few lines of the HTML to see the structure
+        if not filtered_gallery_images:
+            print("🔍 Debug: First 500 characters of HTML:")
+            print(driver.page_source[:500])
+        
+        return filtered_gallery_images
+        
+    except Exception as e:
+        print(f"❌ Error extracting gallery images: {e}")
+        return []
+
+# -------------------------------
+# Main
+# -------------------------------
 if __name__ == "__main__":
     driver = uc.Chrome()
     try:
-        scrape_rosen_emtb(driver)
-        output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'scraped_raw_data')
+        data = scrape_rosen_emtb(driver)
+        output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "scraped_raw_data")
         output_file = os.path.join(output_dir, "rosen.json")
-        
+
         with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(scraped_data, f, ensure_ascii=False, indent=4)
-        print(f"\n✅ All data saved to {output_file}")
-        print(f"📊 Total products scraped: {len(scraped_data)}")
-    except Exception as e:
-        print(f"❌ Error during scraping: {e}")
+            json.dump(data, f, ensure_ascii=False, indent=4)
+
+        print(f"\n✅ All final cleaned data saved to {output_file}")
+        print(f"📊 Total products scraped: {len(data)}")
     finally:
         driver.quit()
