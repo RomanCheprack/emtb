@@ -3,6 +3,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/bikes.css') }}">
 
+<!-- Hidden input to store the selected category for JavaScript -->
+<input type="hidden" id="selected-category" value="{{ selected_category if selected_category else '' }}">
+
+<!-- Category Badge -->
+{% if selected_category %}
+<div class="category-badge-container" style="text-align: center; padding: 20px 15px 10px; direction: rtl;">
+    <span class="category-badge" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 12px 24px; border-radius: 25px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; margin-left: 8px;">
+            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+        </svg>
+        {% if selected_category == 'electric' %}אופני הרים חשמליים
+        {% elif selected_category == 'mtb' %}אופני הרים
+        {% elif selected_category == 'hardtail_mtb' %}הארדטייל
+        {% elif selected_category == 'kids' %}אופני ילדים
+        {% elif selected_category == 'city' %}אופני עיר
+        {% elif selected_category == 'road' %}אופני כביש
+        {% elif selected_category == 'gravel' %}אופני גרוול
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+
 <div class="input-group my-3 mx-3">
     <input type="text" class="form-control" id="search-input" placeholder="...חפש לפי דגם, מפרט" aria-label="Search bikes" aria-describedby="basic-addon1" style="text-align: right;">
     <span class="input-group-text" id="basic-addon1">
@@ -44,7 +66,7 @@
 
 <div class="d-flex justify-content-between align-items-center" style="min-height: 50px;">
     <div id="bikes-count" class="mb-3" style="margin-left: 15px;">
-        נמצאו {{ bikes|length }} אופניים
+        נמצאו {{ bikes_count }} אופניים
     </div>
     <a href="{{ url_for('compare.compare_bikes') }}" class="btn btn-success mx-2" id="go-to-compare" style="display: none;">
     לחץ להשוואת <span id="compare-count"></span> האופניים
@@ -58,7 +80,7 @@
         {% for bike in bikes %}
         <div class="col-6 col-lg-2 mb-2 px-1">
             <div class="card h-100 position-relative bike-card" data-bike-id="{{ bike['id'] }}">
-                <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
+                <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
                 <div class="card-body">
                     <h2 class="card-firm">{{bike['firm']}}</h2>
                     <p class="card-title">{{ bike['model'] }}</p>
@@ -303,16 +325,57 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input sub-category-checkbox" type="checkbox" name="sub_category" value="{{ sub_category }}" id="sub-category-{{ loop.index }}">
                 <label class="form-check-label" for="sub-category-{{ loop.index }}">
-                    {% if sub_category == 'trail' %}שבילים                    
-                    {% elif sub_category == 'enduro' %}אנדורו
-                    {% elif sub_category == 'cross-country' %}קרוס קאנטרי
-                    {% elif sub_category == 'downhill' %}דאונהיל
-                    {% elif sub_category == 'all-mountain' %}אול מאונטיין
-                    {% elif sub_category == 'freeride' %}פרירייד
+                    {% if sub_category == 'aero' %}אירו
+                    {% elif sub_category == 'city' %}עיר
+                    {% elif sub_category == 'electric_ city' %}חשמלי עיר
+                    {% elif sub_category == 'electric_city' %}חשמלי עיר
+                    {% elif sub_category == 'electric_gravel' %}חשמלי גרוול
+                    {% elif sub_category == 'electric_mtb' %}חשמלי הרים
+                    {% elif sub_category == 'electric_road' %}חשמלי כביש
+                    {% elif sub_category == 'endurance' %}סיבולת
+                    {% elif sub_category == 'folding_bike' %}מתקפל
+                    {% elif sub_category == 'full_suspension_mtb' %}שיכוך מלא
+                    {% elif sub_category == 'gravel' %}גראבל
+                    {% elif sub_category == 'hardtail_mtb' %}זנב קשיח
+                    {% elif sub_category == 'kids' %}ילדים
+                    {% elif sub_category == 'lightweight' %}קל משקל
+                    {% elif sub_category == 'push_bike' %}אופני דחיפה
+                    {% elif sub_category == 'road' %}כביש
+                    {% elif sub_category == 'tandem_mtb' %}טנדם 
+                    {% elif sub_category == 'time_trial' %}טריאצלון ונגד השעון
+                    {% elif sub_category == 'timetrail' %}טריאתלון ונגד השעון
+                    {% elif sub_category == 'track' %}מסלול
                     {% else %}{{ sub_category }}{% endif %}
                 </label>
             </div>
             {% endfor %}
+        </div>
+        
+        <!-- Style Filter -->
+        {% if styles %}
+        <div class="mb-3">
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">סגנון</label>
+            {% for style in styles %}
+            <div class="form-check form-check-inline">
+                <input class="form-check-input style-checkbox" type="checkbox" name="style" value="{{ style }}" id="style-{{ loop.index }}">
+                <label class="form-check-label" for="style-{{ loop.index }}">{{ style }}</label>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Fork Length Slider (hide for road category) -->
+        <div class="col-12 col-md-6 mb-3 slider-padding-fork" id="fork-slider-container">
+            <div class="fork-label">
+                <label class="form-label" style="font-weight: bold;">אורך בולם (mm)</label>
+            </div>
+            <div id="fork-slider"></div>
+            <div class="d-flex justify-content-between mt-2">
+                <small id="min_fork_value">80</small>
+                <small id="max_fork_value">170</small>
+            </div>
+            <input type="hidden" id="min_fork" name="min_fork" value="80">
+            <input type="hidden" id="max_fork" name="max_fork" value="170">
         </div>
         
         <!-- Add more filter controls as needed -->
@@ -331,6 +394,11 @@
 
 <!-- CSRF Token for AJAX requests -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+<!-- Store all bikes data for client-side filtering (instant response!) -->
+<script id="bikes-data" type="application/json">
+{{ bikes|tojson|safe }}
+</script>
 
 <!-- noUiSlider CSS/JS (include once, ideally in layout.html) -->
 

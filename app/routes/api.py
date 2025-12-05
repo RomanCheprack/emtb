@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from app.models.bike import get_session, Bike
+from app.extensions import csrf, cache, db
+from app.models import Bike, BikeListing
 from app.utils.helpers import clean_bike_data_for_json
-from app.extensions import csrf, cache
 import hmac
 import hashlib
 import subprocess
@@ -128,68 +128,31 @@ def github_webhook():
 
 @bp.route('/bike/<path:bike_id>')
 def get_bike_details(bike_id):
-    """Get bike details by ID for AJAX requests"""
+    """Get bike details by UUID for AJAX requests"""
     try:
-        db_session = get_session()
-        
-        # Find the bike with the exact ID
-        bike = db_session.query(Bike).filter_by(id=bike_id).first()
+        # Find the bike by UUID (bike_id is actually UUID in new schema)
+        # Load with raw_specs relationship
+        bike = db.session.query(Bike).options(
+            db.joinedload(Bike.brand),
+            db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
+            db.joinedload(Bike.listings).joinedload(BikeListing.prices),
+            db.joinedload(Bike.images)
+        ).filter_by(uuid=bike_id).first()
         
         if not bike:
             return jsonify({'error': 'Bike not found'}), 404
         
-        # Convert bike to dictionary with only needed fields
-        bike_dict = {
-            'id': str(bike.id) if bike.id else None,
-            'firm': str(bike.firm) if bike.firm else None,
-            'model': str(bike.model) if bike.model else None,
-            'year': str(bike.year) if bike.year else None,
-            'price': str(bike.price) if bike.price else None,
-            'disc_price': str(bike.disc_price) if bike.disc_price else None,
-            'frame': str(bike.frame) if bike.frame else None,
-            'motor': str(bike.motor) if bike.motor else None,
-            'battery': str(bike.battery) if bike.battery else None,
-            'fork': str(bike.fork) if bike.fork else None,
-            'rear_shock': str(bike.rear_shock) if bike.rear_shock else None,
-            'image_url': str(bike.image_url) if bike.image_url else None,
-            'product_url': str(bike.product_url) if bike.product_url else None,
-            'wh': str(bike.wh) if bike.wh else None,
-            'fork_length': str(bike.fork_length) if bike.fork_length else None,
-            'sub_category': str(bike.sub_category) if bike.sub_category else None,
-            'weight': str(bike.weight) if bike.weight else None,
-            'rear_derailleur': str(bike.rear_der) if bike.rear_der else None,
-            'shifter': str(bike.shifter) if bike.shifter else None,
-            'crank_set': str(bike.crank_set) if bike.crank_set else None,
-            'chain_guide': None,  # Field not in database model
-            'chain': str(bike.chain) if bike.chain else None,
-            'cassette': str(bike.cassette) if bike.cassette else None,
-            'brakes': str(bike.brakes) if bike.brakes else None,
-            'rotors': None,  # Field not in database model
-            'handlebar': str(bike.handelbar) if bike.handelbar else None,
-            'seat_post': str(bike.seat_post) if bike.seat_post else None,
-            'saddle': str(bike.saddle) if bike.saddle else None,
-            'headset': str(bike.headset) if bike.headset else None,
-            'front_hub': str(bike.front_axle) if bike.front_axle else None,
-            'rear_hub': str(bike.rear_axle) if bike.rear_axle else None,
-            'rims': str(bike.rims) if bike.rims else None,
-            'spokes': str(bike.spokes) if bike.spokes else None,
-            'front_tire': str(bike.front_tire) if bike.front_tire else None,
-            'rear_tire': str(bike.rear_tire) if bike.rear_tire else None,
-            'stem': str(bike.stem) if bike.stem else None,
-            'front_wheel': str(bike.front_wheel) if bike.front_wheel else None,
-            'rear_wheel': str(bike.rear_wheel) if bike.rear_wheel else None,
-            'tubes': str(bike.tubes) if bike.tubes else None,
-            'gallery_images_urls': str(bike.gallery_images_urls) if bike.gallery_images_urls else None,
-        }
+        # Convert to template-compatible format
+        bike_dict = bike.to_dict()
         
         # Clean the bike data to ensure it's safe for JSON serialization
         cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
         
         # Debug logging
         print(f"=== API DEBUG for bike {bike_id} ===")
-        print(f"Gallery field in DB: {bike.gallery_images_urls}")
         print(f"Gallery field in dict: {bike_dict.get('gallery_images_urls')}")
         print(f"Gallery field in cleaned: {cleaned_bike_dict.get('gallery_images_urls')}")
+        print(f"Raw specs count: {len(bike.listings[0].raw_specs) if bike.listings and bike.listings[0].raw_specs else 0}")
         print("=== END API DEBUG ===")
         
         return jsonify(cleaned_bike_dict)
@@ -199,9 +162,30 @@ def get_bike_details(bike_id):
         import traceback
         traceback.print_exc()
         return jsonify({'error': f'Server error: {str(e)}'}), 500
-    finally:
-        if 'db_session' in locals():
-            db_session.close()
+
+@bp.route('/v2/bike/<path:bike_id>')
+def get_bike_details_v2(bike_id):
+    """Get bike details using NEW normalized format (for testing)"""
+    try:
+        # Find the bike by UUID
+        bike = db.session.query(Bike).filter_by(uuid=bike_id).first()
+        
+        if not bike:
+            return jsonify({'error': 'Bike not found'}), 404
+        
+        # Use to_dict() method
+        bike_dict = bike.to_dict()
+        
+        # Clean the bike data to ensure it's safe for JSON serialization
+        cleaned_bike_dict = clean_bike_data_for_json(bike_dict)
+        
+        return jsonify(cleaned_bike_dict)
+        
+    except Exception as e:
+        print(f"Error getting bike details (v2): {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Server error: {str(e)}'}), 500
 
 @bp.route('/clear-cache')
 def clear_cache():

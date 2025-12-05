@@ -3,25 +3,44 @@ import os
 from collections import defaultdict
 
 def clean_bike_field_value(value):
-    """Clean bike field values to ensure they're safe for JSON serialization and database storage"""
+    """Clean bike field values to ensure they're safe for JSON serialization and database storage
+    
+    IMPORTANT: Preserves data types!
+    - None/null stays as None
+    - Numbers (int, float) stay as numbers
+    - Strings get cleaned (remove problematic characters)
+    - Lists/arrays stay as lists
+    """
+    # Preserve None/null
     if value is None:
         return None
     
-    # Convert to string and clean any problematic characters
-    cleaned_value = str(value)
-    # Remove or replace problematic characters that could break JSON or database operations
-    cleaned_value = cleaned_value.replace('\n', ' ').replace('\r', ' ')
-    cleaned_value = cleaned_value.replace('\t', ' ')
-    # Handle semicolons and other special characters that might cause issues
-    cleaned_value = cleaned_value.replace(';', ', ')  # Replace semicolons with commas
-    cleaned_value = cleaned_value.replace('"', "'")   # Replace double quotes with single quotes
-    cleaned_value = cleaned_value.replace('\\', '/')  # Replace backslashes with forward slashes
-    # Remove any null bytes or other control characters
-    cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in '\n\r\t')
-    # Trim whitespace
-    cleaned_value = cleaned_value.strip()
+    # Preserve numbers (int and float) as-is
+    if isinstance(value, (int, float)):
+        return value
     
-    return cleaned_value if cleaned_value else None
+    # Preserve lists/arrays as-is (they'll be handled separately)
+    if isinstance(value, list):
+        return value
+    
+    # Only clean strings
+    if isinstance(value, str):
+        # Clean problematic characters
+        cleaned_value = value.replace('\n', ' ').replace('\r', ' ')
+        cleaned_value = cleaned_value.replace('\t', ' ')
+        # Handle semicolons and other special characters that might cause issues
+        cleaned_value = cleaned_value.replace(';', ', ')  # Replace semicolons with commas
+        cleaned_value = cleaned_value.replace('"', "'")   # Replace double quotes with single quotes
+        cleaned_value = cleaned_value.replace('\\', '/')  # Replace backslashes with forward slashes
+        # Remove any null bytes or other control characters
+        cleaned_value = ''.join(char for char in cleaned_value if ord(char) >= 32 or char in '\n\r\t')
+        # Trim whitespace
+        cleaned_value = cleaned_value.strip()
+        
+        return cleaned_value if cleaned_value else None
+    
+    # For any other type (bool, dict, etc.), return as-is
+    return value
 
 # Field mapping: various field names -> standardized names
 FIELD_MAPPING = {
@@ -443,38 +462,134 @@ FIELD_MAPPING = {
     'description': 'description',
     'specifications': 'specifications',
     'images': 'images',
+    
+    # NEW: Fields for new data structure
+    'category': 'category',
+    'rewritten_description': 'description',
+    'style': 'style',
+    'importer': 'importer',
+    'domain': 'domain',
 
 }
 
-def standardize_bike_data(bike_data):
-    """Standardize a single bike's data using the field mapping"""
+def standardize_nested_object(obj_data, keep_lists=False):
+    """Standardize fields within a nested object while preserving structure
+    
+    For new nested structure: Keep field names AS-IS, only clean values
+    The new scraped data is already well-structured, no need for field renaming
+    """
+    if not isinstance(obj_data, dict):
+        return obj_data
+    
     standardized = {}
-
-    for original_field, value in bike_data.items():
-        # --- MODIFIED LINE: Strip whitespace from the original_field ---
+    for original_field, value in obj_data.items():
         cleaned_original_field = original_field.strip()
-
-        if cleaned_original_field in FIELD_MAPPING:
-            standardized_field = FIELD_MAPPING[cleaned_original_field] # Use cleaned field here
-            # Clean the value to handle semicolons and other problematic characters
+        
+        # Keep lists as-is (for gallery_images_urls, etc.)
+        if keep_lists and isinstance(value, list):
+            standardized[cleaned_original_field] = value
+        else:
+            # Only clean the value, keep the field name as-is
             cleaned_value = clean_bike_field_value(value)
+            standardized[cleaned_original_field] = cleaned_value
+    
+    return standardized
+
+def standardize_bike_data(bike_data):
+    """Standardize a single bike's data while preserving nested structure
+    
+    New structure (preserved):
+    {
+        "source": { importer, domain, product_url },
+        "images": { image_url, gallery_images_urls },
+        "specs": { frame, motor, battery, ... },
+        "firm": "...",
+        "model": "...",
+        ...
+    }
+    
+    Old flat structure: will be standardized as before
+    """
+    standardized = {}
+    
+    # Check if this is the new nested structure
+    has_nested_structure = any(key in bike_data for key in ['source', 'images', 'specs'])
+    
+    if has_nested_structure:
+        # PRESERVE NESTED STRUCTURE AND ORDER - process fields in original order
+        # Iterate through original keys to maintain exact order
+        
+        for original_field, value in bike_data.items():
+            cleaned_original_field = original_field.strip()
             
-            # If field already exists, merge values (for cases like rims, wheels, etc.)
-            if standardized_field in standardized and cleaned_value:
-                if standardized[standardized_field]:
-                    standardized[standardized_field] += f" / {cleaned_value}"
-                else:
-                    standardized[standardized_field] = cleaned_value
+            # Handle nested objects specially
+            if original_field == 'source' and isinstance(value, dict):
+                standardized['source'] = standardize_nested_object(value)
+            elif original_field == 'images' and isinstance(value, dict):
+                standardized['images'] = standardize_nested_object(value, keep_lists=True)
+            elif original_field == 'specs' and isinstance(value, dict):
+                standardized['specs'] = standardize_nested_object(value)
             else:
-                standardized[standardized_field] = cleaned_value
-        # Remove unknown fields - they won't be included in standardized output
+                # Regular top-level fields - keep field name as-is, only clean value
+                standardized[cleaned_original_field] = clean_bike_field_value(value)
+    
+    else:
+        # OLD FLAT STRUCTURE - process as before
+        for original_field, value in bike_data.items():
+            cleaned_original_field = original_field.strip()
+
+            if cleaned_original_field in FIELD_MAPPING:
+                standardized_field = FIELD_MAPPING[cleaned_original_field]
+                
+                # Special handling for gallery_images_urls (keep as list)
+                if cleaned_original_field == 'gallery_images_urls' and isinstance(value, list):
+                    standardized[standardized_field] = value
+                else:
+                    cleaned_value = clean_bike_field_value(value)
+                    
+                    if standardized_field in standardized and cleaned_value:
+                        if standardized[standardized_field]:
+                            if not isinstance(standardized[standardized_field], list):
+                                standardized[standardized_field] += f" / {cleaned_value}"
+                        else:
+                            standardized[standardized_field] = cleaned_value
+                    else:
+                        standardized[standardized_field] = cleaned_value
+    
+    # Fix missing sub_category for mtb bikes (determined at firm level)
+    if standardized.get('category') == 'mtb' and not standardized.get('sub_category'):
+        firm = standardized.get('firm', '').strip() if standardized.get('firm') else None
+        
+        # Firm to sub_category mapping
+        firm_sub_category_map = {
+            "REID": "hardtail_mtb",
+            "Reid": "hardtail_mtb",
+            "PIVOT": "trail",
+            "Pivot": "trail",
+            "IBIS": "trail",
+            "Ibis": "trail",
+        }
+        
+        if firm and firm.upper() in [k.upper() for k in firm_sub_category_map.keys()]:
+            standardized['sub_category'] = firm_sub_category_map.get(firm, firm_sub_category_map.get(firm.upper(), "hardtail_mtb"))
+        else:
+            # Use style if available, otherwise default to hardtail_mtb
+            style = standardized.get('style', '')
+            style_to_subcat = {
+                'hardtail_mtb': 'hardtail_mtb',
+                'cross-country': 'hardtail_mtb',
+                'trail': 'trail',
+                'enduro': 'enduro',
+                'full_suspension_mtb': 'full_suspension'
+            }
+            standardized['sub_category'] = style_to_subcat.get(style, 'hardtail_mtb')
 
     return standardized
 
 def standardize_json_files():
     """Standardize all JSON files in the scraped_raw_data directory"""
-    raw_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'scraped_raw_data')
-    standardized_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'standardized_data')
+    raw_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'scraped_raw_data')
+    standardized_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'standardized_data')
     
     # Create standardized_data directory if it doesn't exist
     os.makedirs(standardized_data_dir, exist_ok=True)
@@ -527,7 +642,7 @@ def standardize_json_files():
 
 def show_field_statistics():
     """Show statistics about field usage across all JSON files"""
-    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'scraped_raw_data')
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'scraped_raw_data')
     json_files = [f for f in os.listdir(data_dir) if f.endswith('.json') and not f.startswith('standardized_') and f not in ['compare_counts.json', 'posts.json']] #
 
     field_counts = defaultdict(int)
@@ -567,8 +682,8 @@ def show_field_statistics():
 
 def create_combined_standardized_file():
     """Create one combined JSON file with all standardized bikes"""
-    raw_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'scraped_raw_data')
-    standardized_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'standardized_data')
+    raw_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'scraped_raw_data')
+    standardized_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'data', 'standardized_data')
     
     # Create standardized_data directory if it doesn't exist
     os.makedirs(standardized_data_dir, exist_ok=True)

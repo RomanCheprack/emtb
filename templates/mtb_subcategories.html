@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/mtb-subcategories.css') }}">
+
+<!-- Hero Section -->
+<div class="mtb-hero">
+    <h1>בחר את סוג אופני ההרים שלך</h1>
+    <p>שיכוך מלא או זנב קשיח? כל אחד עם היתרונות שלו</p>
+</div>
+
+<!-- Subcategories Container -->
+<div class="mtb-container">
+    <div class="mtb-grid">
+        {% for subcategory in subcategories %}
+        <a href="{% if subcategory.slug == 'full_suspension' %}{{ url_for('bikes.bikes') }}?category=mtb&sub_category=full_suspension{% elif subcategory.slug == 'hardtail' %}{{ url_for('bikes.bikes') }}?category=mtb&sub_category=hardtail{% else %}{{ url_for('bikes.bikes') }}?sub_category={{ subcategory.slug }}{% endif %}" 
+           class="mtb-card"
+           aria-label="{{ subcategory.name }}">
+            <div class="mtb-card-inner">
+                <h2 class="mtb-card-title">{{ subcategory.name }}</h2>
+                <div class="mtb-card-image-circle">
+                    <img src="{{ url_for('static', filename=subcategory.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
+                         alt="{{ subcategory.name }}"
+                         class="mtb-card-image"
+                         loading="lazy">
+                </div>
+                <p class="mtb-card-description">{{ subcategory.description }}</p>
+                <span class="mtb-card-count">{{ subcategory.count }} דגמים</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    
+    <!-- Back button -->
+    <div class="mtb-back">
+        <a href="{{ url_for('main.categories') }}" class="back-button">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            חזרה לקטגוריות
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+

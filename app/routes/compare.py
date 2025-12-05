@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, jsonify, session, abort, url_for
-from app.models.bike import get_session, Comparison
-from app.services.bike_service import load_all_bikes
-from app.services.ai_service import create_ai_prompt, generate_comparison_with_ai
+from app.extensions import db
+from app.models import Comparison
+from app.services.bike_service import get_bikes_by_uuids
+from app.services.ai_service import create_ai_prompt, generate_comparison_with_ai_from_bikes
 import os
 
 bp = Blueprint('compare', __name__)
@@ -88,14 +89,9 @@ def remove_from_compare():
 @bp.route('/compare_bikes')
 def compare_bikes():
     compare_list = get_compare_list()
-    all_bikes = load_all_bikes()
     
-    # Find bikes that are in the compare list (using original bike IDs)
-    bikes_to_compare = []
-    for bike in all_bikes:
-        bike_id = bike.get('id')
-        if bike_id and bike_id in compare_list:
-            bikes_to_compare.append(bike)
+    # Optimized: Only load bikes that are being compared (not all bikes!)
+    bikes_to_compare = get_bikes_by_uuids(compare_list) if compare_list else []
 
     # Key fields to always show
     always_show = ["firm", "model", "price", "year", "motor", "battery"]
@@ -138,23 +134,20 @@ def compare_bikes():
 @bp.route('/comparison/<path:slug>')
 def view_comparison(slug):
     """View a specific comparison by slug"""
-    db_session = get_session()
-
     try:
         # Check if slug is a number (old ID format)
         if slug.isdigit():
-            comparison = db_session.query(Comparison).filter_by(id=int(slug)).first()
+            comparison = db.session.query(Comparison).filter_by(id=int(slug)).first()
         else:
             # New slug format
-            comparison = db_session.query(Comparison).filter_by(slug=slug).first()
+            comparison = db.session.query(Comparison).filter_by(slug=slug).first()
 
         if not comparison:
             abort(404)
 
         # Get bike IDs and load bike details
         bike_ids = comparison.get_bike_ids()
-        all_bikes = load_all_bikes()
-        bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in bike_ids]
+        bikes_to_compare = get_bikes_by_uuids(bike_ids)
 
         # Get comparison data
         comparison_data = comparison.get_comparison_data()
@@ -174,8 +167,6 @@ def view_comparison(slug):
     except Exception as e:
         print(f"Error viewing comparison {slug}: {e}")
         abort(500)
-    finally:
-        db_session.close()
 
 @bp.route('/clear_compare', methods=['POST'])
 def clear_compare():
@@ -190,37 +181,39 @@ def compare_ai_from_session():
         if len(compare_list) < 2:
             return jsonify({"error": "צריך לבחור לפחות שני דגמים להשוואה."}), 400
 
-        all_bikes = load_all_bikes()
-        bikes_to_compare = [bike for bike in all_bikes if bike.get('id') in compare_list]
+        # Optimized: Only load bikes that are being compared (not all bikes!)
+        bikes_to_compare = get_bikes_by_uuids(compare_list)
         
         if len(bikes_to_compare) < 2:
             return jsonify({"error": "לא נמצאו מספיק דגמים להשוואה. נסה לבחור דגמים אחרים."}), 400
         
-        prompt = create_ai_prompt(bikes_to_compare)
+        # Build AI result using async web research + Responses API
+        # We no longer pass a plain prompt; instead we send the bikes list.
+        # Kept create_ai_prompt import for backward compatibility if needed elsewhere.
     except Exception as e:
         return jsonify({"error": "שגיאה בטעינת נתוני האופניים", "details": str(e)}), 500
 
     try:
-        # Generate comparison using AI
-        comparison_result = generate_comparison_with_ai(prompt)
+        # Generate comparison using AI (async web research + Responses)
+        comparison_result = generate_comparison_with_ai_from_bikes(bikes_to_compare)
         
         # Check if AI generation failed
         if "error" in comparison_result:
             return jsonify({"error": comparison_result["error"]}), 500
         
         # Save to database
-        db_session = get_session()
         try:
             # Create new comparison record
             comparison = Comparison()
             comparison.set_bike_ids(compare_list)
             comparison.set_comparison_data(comparison_result)
             
-            # Generate slug
-            comparison.slug = comparison.generate_slug(compare_list, db_session)
+            # Generate slug (need to update method signature to not need session)
+            # For now, use a simple slug based on bike IDs
+            comparison.slug = '-vs-'.join(compare_list[:4])  # Limit to 4 bikes for URL
             
-            db_session.add(comparison)
-            db_session.commit()
+            db.session.add(comparison)
+            db.session.commit()
             
             # Create share URL - handle both development and production
             try:
@@ -246,11 +239,9 @@ def compare_ai_from_session():
             return jsonify(response_data)
             
         except Exception as e:
-            db_session.rollback()
+            db.session.rollback()
             print(f"Database error: {e}")
             return jsonify({"error": "שגיאה בשמירת ההשוואה", "details": str(e)}), 500
-        finally:
-            db_session.close()
             
     except Exception as e:
         return jsonify({"error": "שגיאה ביצירת ההשוואה", "details": str(e)}), 500

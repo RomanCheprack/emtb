@@ -15,8 +15,19 @@ class Config:
     CACHE_TYPE = 'simple'
     CACHE_DEFAULT_TIMEOUT = 300  # 5 minutes
     
+    # Feature flags
+    USE_NEW_BIKE_FORMAT = os.getenv('USE_NEW_BIKE_FORMAT', 'false').lower() == 'true'
+    
     # Database settings
-    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///emtb.db')
+    # Support both DATABASE_URL and SQLALCHEMY_DATABASE_URI for compatibility
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI') or os.getenv('DATABASE_URL', 'sqlite:///emtb.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        'pool_size': 10,
+        'pool_recycle': 3600,
+        'pool_pre_ping': True,
+        'max_overflow': 20
+    }
     
     # OpenAI settings
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

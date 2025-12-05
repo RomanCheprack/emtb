@@ -72,33 +72,18 @@ class TextAnimate {
 
 // Initialize text animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Hero section sequential animation
-    const heroH1 = document.querySelector('.hero-body h1');
-    const heroSpan = document.querySelector('.hero-body span');
+    // Hero section animation - only animate button, let typing-animation.js handle h1 and span
     const heroButton = document.querySelector('.hero-body .cta-button-primary');
     
-    // Animate H1 first
-    if (heroH1) {
-        setTimeout(() => {
-            heroH1.style.opacity = '1';
-            heroH1.style.transform = 'translateY(0)';
-        }, 500);
-    }
-    
-    // Animate span second
-    if (heroSpan) {
-        setTimeout(() => {
-            heroSpan.style.opacity = '1';
-            heroSpan.style.transform = 'translateY(0)';
-        }, 1500);
-    }
-    
-    // Animate button last
+    // Animate button after typing animations complete
+    // Typing: 50ms delay + (6 chars * 80ms) = 530ms
+    // Span blur: 600ms delay + 400ms duration = 1000ms
+    // Total: ~1000ms, add buffer
     if (heroButton) {
         setTimeout(() => {
             heroButton.style.opacity = '1';
             heroButton.style.transform = 'translateY(0)';
-        }, 2500);
+        }, 1200); // 1.2 seconds after page load
     }
     
     // Vision description animation

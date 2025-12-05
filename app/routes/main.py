@@ -1,127 +1,105 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from app.extensions import csrf
+from app.extensions import csrf, db
 from app.utils.security import sanitize_html_content
 import json
 import os
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime, timedelta
-from app.models.bike import get_session, Bike, Comparison, CompareCount
-from app.services.bike_service import load_all_bikes, get_all_firms
+from app.models import Bike, Comparison, CompareCount, BikeListing, Source
+from app.services.bike_service import get_all_firms
 
 bp = Blueprint('main', __name__)
 
 @bp.route("/")
 def home():
-    all_bikes = load_all_bikes()
+    # Get only necessary data - don't load all bikes!
     firms = get_all_firms()
     
     # Calculate number of unique bike brands
     brand_count = len(firms)
+    
+    # Get total bike count efficiently without loading all bikes
+    total_bikes_count = db.session.query(Bike).count()
+    
+    # Get total number of sources (stores/importers)
+    sources_count = db.session.query(Source).count()
 
     # Load compare counts from database
-    db_session = get_session()
     try:
         # Get total number of comparisons
-        total_comparisons = db_session.query(Comparison).count()
+        total_comparisons = db.session.query(Comparison).count()
         
         # Get top 10 most compared bikes that actually exist in the bikes table
-        top_compare_counts = db_session.query(CompareCount).join(Bike).order_by(CompareCount.count.desc()).limit(10).all()
+        top_compare_counts = db.session.query(CompareCount).join(Bike).options(
+            db.joinedload(CompareCount.bike).joinedload(Bike.brand),
+            db.joinedload(CompareCount.bike).joinedload(Bike.listings).joinedload(BikeListing.prices),
+            db.joinedload(CompareCount.bike).joinedload(Bike.standardized_specs),
+            db.joinedload(CompareCount.bike).joinedload(Bike.images)
+        ).order_by(CompareCount.count.desc()).limit(10).all()
         
-        # Convert to the same format as all_bikes
+        # Convert to template-compatible format
         top_bikes = []
         for cc in top_compare_counts:
             bike = cc.bike
-            
-            bike_dict = {
-                'id': str(bike.id) if bike.id else None,
-                'firm': str(bike.firm) if bike.firm else None,
-                'model': str(bike.model) if bike.model else None,
-                'year': str(bike.year) if bike.year else None,
-                'price': str(bike.price) if bike.price else None,
-                'disc_price': str(bike.disc_price) if bike.disc_price else None,
-                'frame': str(bike.frame) if bike.frame else None,
-                'motor': str(bike.motor) if bike.motor else None,
-                'battery': str(bike.battery) if bike.battery else None,
-                'fork': str(bike.fork) if bike.fork else None,
-                'rear_shock': str(bike.rear_shock) if bike.rear_shock else None,
-                'image_url': str(bike.image_url) if bike.image_url else None,
-                'product_url': str(bike.product_url) if bike.product_url else None,
-                'stem': str(bike.stem) if bike.stem else None,
-                'handelbar': str(bike.handelbar) if bike.handelbar else None,
-                'front_brake': str(bike.front_brake) if bike.front_brake else None,
-                'rear_brake': str(bike.rear_brake) if bike.rear_brake else None,
-                'shifter': str(bike.shifter) if bike.shifter else None,
-                'rear_der': str(bike.rear_der) if bike.rear_der else None,
-                'cassette': str(bike.cassette) if bike.cassette else None,
-                'chain': str(bike.chain) if bike.chain else None,
-                'crank_set': str(bike.crank_set) if bike.crank_set else None,
-                'front_wheel': str(bike.front_wheel) if bike.front_wheel else None,
-                'rear_wheel': str(bike.rear_wheel) if bike.rear_wheel else None,
-                'rims': str(bike.rims) if bike.rims else None,
-                'front_axle': str(bike.front_axle) if bike.front_axle else None,
-                'rear_axle': str(bike.rear_axle) if bike.rear_axle else None,
-                'spokes': str(bike.spokes) if bike.spokes else None,
-                'tubes': str(bike.tubes) if bike.tubes else None,
-                'front_tire': str(bike.front_tire) if bike.front_tire else None,
-                'rear_tire': str(bike.rear_tire) if bike.rear_tire else None,
-                'saddle': str(bike.saddle) if bike.saddle else None,
-                'seat_post': str(bike.seat_post) if bike.seat_post else None,
-                'clamp': str(bike.clamp) if bike.clamp else None,
-                'charger': str(bike.charger) if bike.charger else None,
-                'wheel_size': str(bike.wheel_size) if bike.wheel_size else None,
-                'headset': str(bike.headset) if bike.headset else None,
-                'brake_lever': str(bike.brake_lever) if bike.brake_lever else None,
-                'screen': str(bike.screen) if bike.screen else None,
-                'extras': str(bike.extras) if bike.extras else None,
-                'pedals': str(bike.pedals) if bike.pedals else None,
-                'bb': str(bike.bb) if bike.bb else None,
-                'weight': str(bike.weight) if bike.weight else None,
-                'size': str(bike.size) if bike.size else None,
-                'hub': str(bike.hub) if bike.hub else None,
-                'brakes': str(bike.brakes) if bike.brakes else None,
-                'tires': str(bike.tires) if bike.tires else None,
-                'wh': str(bike.wh) if bike.wh else None,
-                'gallery_images_urls': str(bike.gallery_images_urls) if bike.gallery_images_urls else None,
-                'fork_length': str(bike.fork_length) if bike.fork_length else None,
-                'sub_category': str(bike.sub_category) if bike.sub_category else None,
-                'rear_wheel_maxtravel': str(bike.rear_wheel_maxtravel) if bike.rear_wheel_maxtravel else None,
-                'battery_capacity': str(bike.battery_capacity) if bike.battery_capacity else None,
-                'front_wheel_size': str(bike.front_wheel_size) if bike.front_wheel_size else None,
-                'rear_wheel_size': str(bike.rear_wheel_size) if bike.rear_wheel_size else None,
-                'battery_watts_per_hour': str(bike.battery_watts_per_hour) if bike.battery_watts_per_hour else None,
-            }
+            bike_dict = bike.to_dict()
             top_bikes.append(bike_dict)
 
-        # Add fallback bikes if we don't have enough
+        # Add fallback bikes if we don't have enough - load only what's needed
         if len(top_bikes) < 10:
             remaining_needed = 10 - len(top_bikes)
-            fallback_bikes = all_bikes[:remaining_needed]
-            top_bikes.extend(fallback_bikes)
+            fallback_bikes_query = Bike.query.options(
+                db.joinedload(Bike.brand),
+                db.joinedload(Bike.listings).joinedload(BikeListing.prices),
+                db.joinedload(Bike.standardized_specs),
+                db.joinedload(Bike.images)
+            ).limit(remaining_needed).all()
+            
+            for bike in fallback_bikes_query:
+                top_bikes.append(bike.to_dict())
 
     except Exception as e:
         print(f"Error loading compare counts: {e}")
         import traceback
         traceback.print_exc()
-        top_bikes = all_bikes[:10]  # Fallback to first 10 bikes
+        # Load only 10 bikes for fallback instead of all bikes
+        fallback_bikes_query = Bike.query.options(
+            db.joinedload(Bike.brand),
+            db.joinedload(Bike.listings).joinedload(BikeListing.prices),
+            db.joinedload(Bike.standardized_specs),
+            db.joinedload(Bike.images)
+        ).limit(10).all()
+        
+        top_bikes = [bike.to_dict() for bike in fallback_bikes_query]
         total_comparisons = 0
-    finally:
-        db_session.close()
 
-    return render_template("home.html", bikes=all_bikes, firms=firms, top_bikes=top_bikes, total_comparisons=total_comparisons, brand_count=brand_count)
+    return render_template("home.html", bikes_count=total_bikes_count, firms=firms, top_bikes=top_bikes, total_comparisons=total_comparisons, brand_count=brand_count, sources_count=sources_count)
 
 @bp.route("/contact", methods=["POST"])
 def contact():
     name = request.form["Name"]
-    email = request.form["Email"]
-    message = request.form["Message"]
-
-    # Construct the email
+    form_type = request.form.get("form_type", "contact")
+    
+    # Construct the email based on form type
     msg = EmailMessage()
-    msg["Subject"] = f"New Contact from {name}"
-    msg["From"] = email
     msg["To"] = "rideal.bikes@gmail.com"
-    msg.set_content(f"Name: {name}\nEmail: {email}\nMessage:\n{message}")
+    
+    if form_type == "test_ride":
+        # Test ride form
+        phone = request.form["Phone"]
+        model = request.form["Model"]
+        
+        msg["Subject"] = f"בקשה לנסיעת מבחן מ-{name}"
+        msg["From"] = "rideal.bikes@gmail.com"
+        msg.set_content(f"בקשה לנסיעת מבחן\n\nשם: {name}\nטלפון: {phone}\nדגם מעניין: {model}")
+    else:
+        # Regular contact form
+        email = request.form["Email"]
+        message = request.form["Message"]
+        
+        msg["Subject"] = f"New Contact from {name}"
+        msg["From"] = email
+        msg.set_content(f"Name: {name}\nEmail: {email}\nMessage:\n{message}")
 
     # Send the email (adjust SMTP settings)
     try:
@@ -171,19 +149,18 @@ def sitemap():
             'priority': '0.6'
         })
 
-    # Individual bike pages
-    bikes = load_all_bikes()
-    for bike in bikes:
+    # Individual bike pages - load only UUIDs, not all bike data
+    bike_uuids = db.session.query(Bike.uuid).all()
+    for (bike_uuid,) in bike_uuids:
         pages.append({
-            'loc': url_for('bikes.bikes', bike_id=bike['id'], _external=True),
+            'loc': url_for('bikes.bikes', bike_id=bike_uuid, _external=True),
             'lastmod': ten_days_ago,
             'priority': '0.5'
         })
 
     # Add persistent comparison pages
-    session = get_session()
     try:
-        comparisons = session.query(Comparison).all()
+        comparisons = db.session.query(Comparison).all()
         for comparison in comparisons:
             if comparison.slug:
                 pages.append({
@@ -191,8 +168,8 @@ def sitemap():
                     'lastmod': comparison.created_at.date().isoformat() if comparison.created_at else ten_days_ago,
                     'priority': '0.7'
                 })
-    finally:
-        session.close()
+    except:
+        pass
 
     # Create XML string
     sitemap_xml = render_template('sitemap.xml', pages=pages)
@@ -211,3 +188,163 @@ def terms_of_use():
 @bp.route('/cookie-preferences')
 def cookie_preferences():
     return render_template("cookie_preferences.html")
+
+
+@bp.route('/electric-subcategories')
+def electric_subcategories():
+    """Display Electric bike sub-category selection page"""
+    from app.extensions import db
+    from app.models import Bike
+    
+    # Electric MTB count
+    electric_mtb_count = db.session.query(Bike).filter(
+        Bike.category == 'electric',
+        Bike.sub_category == 'electric_mtb'
+    ).count()
+    
+    # Electric City count (including the one with space: "electric_ city")
+    electric_city_count = db.session.query(Bike).filter(
+        Bike.category == 'electric',
+        Bike.sub_category.in_(['electric_city', 'electric_ city'])
+    ).count()
+    
+    # Electric Gravel count
+    electric_gravel_count = db.session.query(Bike).filter(
+        Bike.category == 'electric',
+        Bike.sub_category == 'electric_gravel'
+    ).count()
+    
+    subcategories = [
+        {
+            'slug': 'electric_mtb',
+            'name': 'אופני הרים חשמליים',
+            'description': 'שילוב מושלם של כוח חשמלי ויכולות שטח',
+            'image': 'images/blog/electric_bike_alps_man_riding.jpg',
+            'count': electric_mtb_count
+        },
+        {
+            'slug': 'electric_city',
+            'name': 'אופני עיר חשמליים',
+            'description': 'נסיעה נוחה בעיר עם סיוע חשמלי',
+            'image': 'images/cool-bicycle-studio.jpg',
+            'count': electric_city_count
+        }
+    ]
+    
+    # Only add gravel if there are bikes
+    if electric_gravel_count > 0:
+        subcategories.append({
+            'slug': 'electric_gravel',
+            'name': 'אופני גרוול חשמליים',
+            'description': 'גמישות לכל שטח עם עזרה חשמלית',
+            'image': 'images/blog/alps_man_walks_with_bike.jpg',
+            'count': electric_gravel_count
+        })
+    
+    return render_template("electric_subcategories.html", subcategories=subcategories)
+
+@bp.route('/mtb-subcategories')
+def mtb_subcategories():
+    """Display MTB sub-category selection page (Full Suspension vs Hardtail)"""
+    from app.extensions import db
+    from app.models import Bike
+    
+    # Full suspension includes: full_suspension (the actual value in DB)
+    full_suspension_count = db.session.query(Bike).filter(
+        Bike.category == 'mtb',
+        Bike.sub_category == 'full_suspension'
+    ).count()
+    
+    # Hardtail - check what value exists in DB
+    hardtail_count = db.session.query(Bike).filter(
+        Bike.category == 'mtb',
+        Bike.sub_category == 'hardtail'
+    ).count()
+    
+    # If no hardtail, check for hardtail_mtb
+    if hardtail_count == 0:
+        hardtail_count = db.session.query(Bike).filter(
+            Bike.category == 'mtb',
+            Bike.sub_category.like('%hardtail%')
+        ).count()
+    
+    subcategories = [
+        {
+            'slug': 'full_suspension',
+            'name': 'שיכוך מלא',
+            'description': 'בולם קדמי ואחורי למירב נוחות ושליטה בשטח',
+            'image': 'images/categories/full_suspension_drawing.png',
+            'count': full_suspension_count
+        },
+        {
+            'slug': 'hardtail',
+            'name': 'זנב קשיח',
+            'description': 'בולם קדמי בלבד, קלים יותר ויעילים בעליות',
+            'image': 'images/categories/hardtail_drawing.png',
+            'count': hardtail_count
+        }
+    ]
+    
+    return render_template("mtb_subcategories.html", subcategories=subcategories)
+
+@bp.route('/categories')
+def categories():
+    """Display category selection page"""
+    from app.extensions import db
+    from app.models import Bike
+    
+    # Get all distinct categories with counts
+    category_data = db.session.query(
+        Bike.category,
+        db.func.count(Bike.id).label('count')
+    ).filter(
+        Bike.category.isnot(None)
+    ).group_by(Bike.category).all()
+    
+    # Map categories to Hebrew names and images
+    category_info = {
+        'electric': {
+            'name': 'חשמליים',
+            'description': 'עזרה למי שצריך',
+            'image': 'images/categories/electric.jpg'
+        },
+        'mtb': {
+            'name': 'אופני שטח',
+            'description': 'שטח, שבילים, קפיצות',
+            'image': 'images/categories/mtb_rider.jpg'
+        },
+        'kids': {
+            'name': 'אופני ילדים',
+            'description': 'בטיחות והנאה לקטנים',
+            'image': 'images/categories/kids_rider.jpg'
+        },
+        'city': {
+            'name': 'אופני עיר',
+            'description': 'נסיעה נוחה בעיר',
+            'image': 'images/categories/city_rider.jpg'
+        },
+        'road': {
+            'name': 'אופני כביש',
+            'description': 'מהירות על האספלט',
+            'image': 'images/categories/road_rider.jpg'
+        },
+        'gravel': {
+            'name': 'אופני גראבל',
+            'description': 'אופני "כביש" לשטח',
+            'image': 'images/categories/gravel_rider.jpg'
+        }
+    }
+    
+    # Build categories list with info and counts
+    categories_list = []
+    for cat, count in category_data:
+        if cat in category_info:
+            categories_list.append({
+                'slug': cat,
+                'name': category_info[cat]['name'],
+                'description': category_info[cat]['description'],
+                'image': category_info[cat]['image'],
+                'count': count
+            })
+    
+    return render_template("categories.html", categories=categories_list)

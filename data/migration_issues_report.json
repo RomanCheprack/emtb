@@ -1,0 +1,408 @@
+{
+  "total_bikes": 976,
+  "issues": {
+    "missing_model": [
+      {
+        "file": "standardized_motofan_data.json",
+        "brand": null,
+        "product_url": "https://www.moto-ofan.co.il/items/6415435-%D7%AA%D7%9C%D7%AA-%D7%90%D7%95%D7%A4%D7%9F-%D7%9C%D7%95%D7%A7%D7%95-%D7%9B%D7%A1%D7%95%D7%A3-20-%D7%9C%D7%9C%D7%90-%D7%94%D7%99%D7%9C%D7%95%D7%9B%D7%99%D7%9D-"
+      },
+      {
+        "file": "standardized_motofan_data.json",
+        "brand": null,
+        "product_url": "https://www.moto-ofan.co.il/items/6415437-%D7%AA%D7%9C%D7%AA-%D7%90%D7%95%D7%A4%D7%9F-%D7%9C%D7%95%D7%A7%D7%95-%D7%9B%D7%97%D7%95%D7%9C-24-%D7%A2%D7%9D-%D7%94%D7%99%D7%9C%D7%95%D7%9B%D7%99%D7%9D-%D7%95%D7%9E%D7%A2%D7%A6%D7%95%D7%A8%D7%99-%D7%93%D7%99%D7%A1%D7%A7-%D7%94%D7%99%D7%93%D7%A8%D7%90%D7%95%D7%9C%D7%99-"
+      },
+      {
+        "file": "standardized_motofan_data.json",
+        "brand": "Ruderberna",
+        "product_url": "https://www.moto-ofan.co.il/items/6351498-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%99%D7%A0%D7%92%D7%9C-%D7%A1%D7%A4%D7%99%D7%93-2022-RUDERBERNA-PURISTICO-RUDER-BERNA"
+      },
+      {
+        "file": "standardized_motofan_data.json",
+        "brand": null,
+        "product_url": "https://www.moto-ofan.co.il/items/6430938-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%99%D7%A0%D7%92%D7%9C-%D7%A1%D7%A4%D7%99%D7%93-%D7%92%D7%91%D7%A8%D7%99%D7%9D-2022-EIGHTPER-RUDER-BERNA"
+      }
+    ],
+    "missing_product_url": [],
+    "empty_slug": [],
+    "model_too_long": [],
+    "slug_too_long": [],
+    "duplicate_slugs": {
+      "scott-spark-rc-world-cup-2026": [
+        {
+          "file": "standardized_cobra_data.json",
+          "brand": "Scott",
+          "model": "Spark RC World Cup",
+          "year": 2026
+        },
+        {
+          "file": "standardized_cobra_data.json",
+          "brand": "Scott",
+          "model": "Spark RC World Cup",
+          "year": 2026
+        }
+      ],
+      "scott-spark-rc-team-issue-2026": [
+        {
+          "file": "standardized_cobra_data.json",
+          "brand": "Scott",
+          "model": "Spark RC Team Issue",
+          "year": 2026
+        },
+        {
+          "file": "standardized_cobra_data.json",
+          "brand": "Scott",
+          "model": "Spark RC Team Issue",
+          "year": 2026
+        }
+      ],
+      "scott-spark-rc-team-2026": [
+        {
+          "file": "standardized_cobra_data.json",
+          "brand": "Scott",
+          "model": "Spark RC Team",
+          "year": 2026
+        },
+        {
+          "file": "standardized_cobra_data.json",
+          "brand": "Scott",
+          "model": "Spark RC Team",
+          "year": 2026
+        }
+      ],
+      "cube-stereo-hybrid-140-hpc-pro-625-2024": [
+        {
+          "file": "standardized_cube_data.json",
+          "brand": "Cube",
+          "model": "STEREO HYBRID 140 HPC PRO 625",
+          "year": 2024
+        },
+        {
+          "file": "standardized_cube_data.json",
+          "brand": "Cube",
+          "model": "STEREO HYBRID 140 HPC PRO 625",
+          "year": 2024
+        }
+      ],
+      "giant-giant-talon-3-29-v": [
+        {
+          "file": "standardized_giant_data.json",
+          "brand": "Giant",
+          "model": "GIANT TALON 3 29 V",
+          "year": null
+        },
+        {
+          "file": "standardized_giant_data.json",
+          "brand": "Giant",
+          "model": "GIANT TALON 3 29 V",
+          "year": null
+        }
+      ],
+      "giant-escape-disc-2": [
+        {
+          "file": "standardized_giant_data.json",
+          "brand": "Giant",
+          "model": "ESCAPE DISC 2",
+          "year": null
+        },
+        {
+          "file": "standardized_giant_data.json",
+          "brand": "Giant",
+          "model": "ESCAPE DISC 2",
+          "year": null
+        }
+      ],
+      "giant-revolt-1": [
+        {
+          "file": "standardized_giant_data.json",
+          "brand": "Giant",
+          "model": "REVOLT 1",
+          "year": null
+        },
+        {
+          "file": "standardized_giant_data.json",
+          "brand": "Giant",
+          "model": "REVOLT 1",
+          "year": null
+        }
+      ],
+      "ocean-אופני-ילדים-ונוער-mercury-24": [
+        {
+          "file": "standardized_matzman_data.json",
+          "brand": "Ocean",
+          "model": "אופני ילדים ונוער 'MERCURY 24",
+          "year": null
+        },
+        {
+          "file": "standardized_matzman_data.json",
+          "brand": "Ocean",
+          "model": "אופני ילדים ונוער 'MERCURY 24",
+          "year": null
+        }
+      ],
+      "ocean-אופני-ילדים-ונוער-mercury-20": [
+        {
+          "file": "standardized_matzman_data.json",
+          "brand": "Ocean",
+          "model": "אופני ילדים ונוער 'MERCURY 20",
+          "year": null
+        },
+        {
+          "file": "standardized_matzman_data.json",
+          "brand": "Ocean",
+          "model": "אופני ילדים ונוער 'MERCURY 20",
+          "year": null
+        }
+      ],
+      "moustache-samedi5": [
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Moustache",
+          "model": "SAMEDI5",
+          "year": null
+        },
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Moustache",
+          "model": "SAMEDI5",
+          "year": null
+        }
+      ],
+      "reid-20": [
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Reid",
+          "model": "'20",
+          "year": null
+        },
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Reid",
+          "model": "20",
+          "year": null
+        }
+      ],
+      "reid-24": [
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Reid",
+          "model": "24",
+          "year": null
+        },
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Reid",
+          "model": "'24",
+          "year": null
+        }
+      ],
+      "reid-רייד": [
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Reid",
+          "model": "רייד",
+          "year": null
+        },
+        {
+          "file": "standardized_motofan_data.json",
+          "brand": "Reid",
+          "model": "רייד",
+          "year": null
+        }
+      ],
+      "polygon-siskiu-d5": [
+        {
+          "file": "standardized_pedalim_data.json",
+          "brand": "Polygon",
+          "model": "Siskiu D5",
+          "year": null
+        },
+        {
+          "file": "standardized_pedalim_data.json",
+          "brand": "Polygon",
+          "model": "Siskiu D5",
+          "year": null
+        }
+      ],
+      "rocky-mountain-altitude-carbon-c70-power-play": [
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "Rocky Mountain",
+          "model": "Altitude Carbon C70 Power Play",
+          "year": null
+        },
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "Rocky Mountain",
+          "model": "ALTITUDE Carbon C70 Power Play",
+          "year": null
+        }
+      ],
+      "merida-matts-760-2x": [
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "Merida",
+          "model": "MATTS 7.60-2X",
+          "year": null
+        },
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "Merida",
+          "model": "MATTS 7.60-2x",
+          "year": null
+        }
+      ],
+      "gt-sensor-sport": [
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "Gt",
+          "model": "Sensor Sport",
+          "year": null
+        },
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "Gt",
+          "model": "SENSOR SPORT",
+          "year": null
+        }
+      ],
+      "bmc-teammachine-slr-four": [
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "BMC",
+          "model": "TEAMMACHINE SLR Four",
+          "year": null
+        },
+        {
+          "file": "standardized_rosen_data.json",
+          "brand": "BMC",
+          "model": "Teammachine SLR FOUR",
+          "year": null
+        }
+      ]
+    },
+    "duplicate_brand_model_year": {
+      "('Scott', 'Spark RC World Cup', 2026)": [
+        {
+          "file": "standardized_cobra_data.json",
+          "product_url": "https://www.cobra-bordo.co.il/items/8530798-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-World-Cup-2026"
+        },
+        {
+          "file": "standardized_cobra_data.json",
+          "product_url": "https://www.cobra-bordo.co.il/items/8529849-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-World-Cup-2026"
+        }
+      ],
+      "('Scott', 'Spark RC Team Issue', 2026)": [
+        {
+          "file": "standardized_cobra_data.json",
+          "product_url": "https://www.cobra-bordo.co.il/items/8529939-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-Issue-2026"
+        },
+        {
+          "file": "standardized_cobra_data.json",
+          "product_url": "https://www.cobra-bordo.co.il/items/8530339-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-Issue-2026"
+        }
+      ],
+      "('Scott', 'Spark RC Team', 2026)": [
+        {
+          "file": "standardized_cobra_data.json",
+          "product_url": "https://www.cobra-bordo.co.il/items/8530352-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-2026"
+        },
+        {
+          "file": "standardized_cobra_data.json",
+          "product_url": "https://www.cobra-bordo.co.il/items/8530378-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-2026"
+        }
+      ],
+      "('Cube', 'STEREO HYBRID 140 HPC PRO 625', 2024)": [
+        {
+          "file": "standardized_cube_data.json",
+          "product_url": "https://rudy-extreme.co.il/product/cube-stereo-hybrid-140-hpc-pro-625/"
+        },
+        {
+          "file": "standardized_cube_data.json",
+          "product_url": "https://rudy-extreme.co.il/product/stereo-hybrid-140-hpc-pro-625/"
+        }
+      ],
+      "('Giant', 'GIANT TALON 3 29 V', None)": [
+        {
+          "file": "standardized_giant_data.json",
+          "product_url": "https://giant-bike.co.il/אופניים/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d/%d7%90%d7%95%d7%a4%d7%a0%d7%99-%d7%a9%d7%98%d7%97/talon-3-29-v/"
+        },
+        {
+          "file": "standardized_giant_data.json",
+          "product_url": "https://giant-bike.co.il/אופניים/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d/%d7%90%d7%95%d7%a4%d7%a0%d7%99-%d7%a9%d7%98%d7%97/giant-talon-3-29-v-%d7%94%d7%a2%d7%aa%d7%a7/"
+        }
+      ],
+      "('Giant', 'ESCAPE DISC 2', None)": [
+        {
+          "file": "standardized_giant_data.json",
+          "product_url": "https://giant-bike.co.il/אופניים/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d/%d7%90%d7%95%d7%a4%d7%a0%d7%99-%d7%a2%d7%99%d7%a8/escape-disc-2/"
+        },
+        {
+          "file": "standardized_giant_data.json",
+          "product_url": "https://giant-bike.co.il/אופניים/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d/%d7%90%d7%95%d7%a4%d7%a0%d7%99-%d7%a2%d7%99%d7%a8/escape-disc-2-2/"
+        }
+      ],
+      "('Giant', 'REVOLT 1', None)": [
+        {
+          "file": "standardized_giant_data.json",
+          "product_url": "https://giant-bike.co.il/אופניים/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d/%d7%92%d7%a8%d7%90%d7%91%d7%9c/2021-revolt-1/"
+        },
+        {
+          "file": "standardized_giant_data.json",
+          "product_url": "https://giant-bike.co.il/אופניים/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d/%d7%92%d7%a8%d7%90%d7%91%d7%9c/revolt-1/"
+        }
+      ],
+      "('Ocean', \"אופני ילדים ונוער 'MERCURY 24\", None)": [
+        {
+          "file": "standardized_matzman_data.json",
+          "product_url": "https://www.matzman-merutz.co.il/page_45366"
+        },
+        {
+          "file": "standardized_matzman_data.json",
+          "product_url": "https://www.matzman-merutz.co.il/אופני-ילדים-ונוער-mercury-24"
+        }
+      ],
+      "('Ocean', \"אופני ילדים ונוער 'MERCURY 20\", None)": [
+        {
+          "file": "standardized_matzman_data.json",
+          "product_url": "https://www.matzman-merutz.co.il/אופני-ילדים-ונוער-mercury-20"
+        },
+        {
+          "file": "standardized_matzman_data.json",
+          "product_url": "https://www.matzman-merutz.co.il/page_45367"
+        }
+      ],
+      "('Moustache', 'SAMEDI5', None)": [
+        {
+          "file": "standardized_motofan_data.json",
+          "product_url": "https://www.moto-ofan.co.il/items/6699595-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A9%D7%98%D7%97-%D7%97%D7%A9%D7%9E%D7%9C%D7%99%D7%99%D7%9D-%D7%9E%D7%95%D7%A1%D7%98%D7%A9-%D7%92%D7%99%D7%99%D7%9D-MOUSTACHE-SAMEDI-GAME-5-"
+        },
+        {
+          "file": "standardized_motofan_data.json",
+          "product_url": "https://www.moto-ofan.co.il/items/6699477-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A9%D7%98%D7%97-%D7%97%D7%A9%D7%9E%D7%9C%D7%99%D7%99%D7%9D-%D7%9E%D7%95%D7%A1%D7%98%D7%A9-%D7%98%D7%A8%D7%99%D7%99%D7%9C-MOUSTACHE-SAMEDI-TRAIL-5-"
+        }
+      ],
+      "('Reid', 'רייד', None)": [
+        {
+          "file": "standardized_motofan_data.json",
+          "product_url": "https://www.moto-ofan.co.il/items/6184304-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A2%D7%99%D7%A8-%D7%A8%D7%99%D7%99%D7%93-%D7%9C%D7%99%D7%99%D7%93%D7%99-%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7-REID-LADY-Classic-%D7%91%D7%9E%D7%92%D7%95%D7%95%D7%9F-%D7%A6%D7%91%D7%A2%D7%99%D7%9D"
+        },
+        {
+          "file": "standardized_motofan_data.json",
+          "product_url": "https://www.moto-ofan.co.il/items/6140367-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%99%D7%A0%D7%92%D7%9C-%D7%A1%D7%A4%D7%99%D7%93-%D7%A8%D7%99%D7%99%D7%93-%D7%94%D7%A8%D7%99%D7%99%D7%A8-REID-HARRIER-2-0-%D7%91%D7%9E%D7%92%D7%95%D7%95%D7%9F-%D7%A6%D7%91%D7%A2%D7%99%D7%9D"
+        }
+      ],
+      "('Polygon', 'Siskiu D5', None)": [
+        {
+          "file": "standardized_pedalim_data.json",
+          "product_url": "https://pedalim.co.il/polygon-siskiu-d5-2021"
+        },
+        {
+          "file": "standardized_pedalim_data.json",
+          "product_url": "https://pedalim.co.il/polygon-siskiu-d5-2026"
+        }
+      ]
+    }
+  },
+  "expected_migrated": 942
+}

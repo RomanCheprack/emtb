@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 # Import extensions
-from .extensions import cache, csrf
+from .extensions import cache, csrf, db
 
 def create_app(config_name=None):
     """Application factory function"""
@@ -32,6 +32,7 @@ def create_app(config_name=None):
     # Initialize extensions
     cache.init_app(app)
     csrf.init_app(app)
+    db.init_app(app)
     
     # Register blueprints
     from .routes import main, bikes, blog, compare, api, debug
@@ -47,9 +48,9 @@ def create_app(config_name=None):
     from .utils.helpers import format_number_with_commas
     app.jinja_env.filters['format_number'] = format_number_with_commas
     
-    # Initialize database
-    from .models.bike import init_db
-    init_db()
+    # Create database tables (if they don't exist)
+    with app.app_context():
+        db.create_all()
     
     # Register error handlers
     from .utils.error_handlers import register_error_handlers

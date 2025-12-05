@@ -1,0 +1,3318 @@
+[
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-e-vertic-fx-9-2"
+    },
+    "firm": "Bianchi",
+    "model": "E-Vertic FX-Type 9.2",
+    "year": "2026",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 22990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/E-VERTIC_FX_9.2_GREEN(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/E-VERTIC_FX_9.2_BLACK(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Bianchi e-Vertic FX, aluminium, 12x148 mm rear thru axle, Front travel 150 mm, Rear travel 140 mm, Internal cable routing, 800 Wh battery compatible",
+      "fork": "RockShox Psylo Silver RC 29', 150 mm travel, Steerer tube 1,5' tapered, 35 mm stanchions, Maxle Stealth 15x110 Boost axle",
+      "rear_shock": "RockShox Deluxe Select, 210/52.5mm (S/M), 210/55 mm (M/L/XL), Debonair Progressive, Damper Type R, Rebound tune R55, Compression tune C34",
+      "motor": "Bosch Performance Line CX BDU3840 - Intuvia 100",
+      "battery": "Bosch Powertube 800 Wh",
+      "shifters": "Sram SX Eagle, single click",
+      "rear_derailleur": "Sram SX Eagle, 12 sp",
+      "crankset": "FSA CK-745/IS, Aluminium forged - 165 mm Crank length: 165 mm",
+      "cassette": "Sram PG-1210 Eagle, for HG body, 11-13-15-17- 19-22-25-28-32-36-42-50T",
+      "chain": "Sram SX Eagle, 12 sp",
+      "brakes": "Sram DB4, 4 pistons calipers, mineral oil + Sram Centerline 200 mm",
+      "wheels": "Velomann Rim: V22M, 622x28, 32 hole, Tubeless ready,  Hubs: Shimano TC500 thru axle",
+      "tires": "Pirelli Scorpion 29x2.6 E-MTB M, 60TPI",
+      "saddle": "Velomann Velomann Gnd Full-fit Start Up, Carbon-steel rail, 262 mm x 145 mm",
+      "seatpost": "Velomann Diameter 31.6 mm, Internal cable routing length: 100 mm",
+      "handlebar": "Velomann Aluminum, Rise 18 mm, Barbore 35 mm, Size: 780 mm",
+      "stem": "Velomann 1' 1/8, 35 mm barbore Size: 50 mm",
+      "headset": "FSA 1.5' for tapered fork steerer, Dual side internal cable routing, Head Block system"
+    },
+    "rewritten_description": null,
+    "wh": 800,
+    "fork length": 150,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-e160-sphera"
+    },
+    "firm": "Whyte",
+    "model": "E-160 Sphera מהדורה מיוחדת!",
+    "year": "2026",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 18990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/WHYTE_SPHERA_SILVER(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/WHYTE_SPHERA_SILVER(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "6061 alloy, hydroformed T6 aluminium, multi-butted, custom drawn, tapered headtube, internal cable routing, Shape.it Link and 12mm x 148mm Boost dropo",
+      "fork": "Fox Float 38 Performance, 160mm travel, 44mm offset with Grip damper, three-position adjustable, tapered steerer, 110mm x 15mm Boost, E-thru-axle",
+      "rear_shock": "Fox Float Performance DPS, EVOL LV, custom tuned for Whyte, three position adjustable compression and rebound damping",
+      "motor": "Bosch Performance Line CX (Smart System) Drive Unit with 85Nm maximum torque, 600W",
+      "battery": "Bosch PowerTube 750Wh",
+      "shifters": "SRAM SX Eagle Mechanical, 12 speed",
+      "rear_derailleur": "SRAM SX Eagle Mechanical, 12 speed",
+      "crankset": "Whyte, forged alloy, 155mm, direct mount 36T chainring",
+      "cassette": "SRAM PG-1210 Eagle, 10-50T, 12 speed",
+      "chain": "SRAM SX Eagle, 12 speed",
+      "brakes": "SRAM Guide RE, four piston hydraulic, 220mm diameter disc rotor",
+      "wheels": "WTB HTZ i30 TCS 2.0 System 27.5', asymmetric, sleeved joint, super tough construction, tubeless ready, 32 hole",
+      "tires": "Maxxis Assigai WT, TR, 2.5in 120TPI, EXO+ casing, 3C Maxx Grip, Dual Compound, Front,  Maxxis Minion DHR II WT, TR, 2.4in 120TPI, Double Down, 3C Maxx",
+      "saddle": "Whyte Custom Saddle",
+      "seatpost": "Whyte Travel Adjust Post, 30.9mm, 150mm travel",
+      "handlebar": "Whyte Custom 6061 alloy, 30mm rise, 35mm bar bore, 780mm wide",
+      "stem": "Whyte Enduro, 35mm extension, 35mm bar bore",
+      "headset": "FSA No. 55/35 Orbit 1.5 ZS, 1.8in lower and 1 1/8in upper sealed cartridge bearings"
+    },
+    "rewritten_description": "E160 SPHERA - חשמליים שטח במחיר הכי שפוי בישראל! לימטד אדישן במיוחד לישראל עם מנוע בוש עוצמתי, סוללה AH750 ומפרט שמשאיר את המתחרים הרחק מאחור! אמינות ועוצמה לפני הכל! מנוע בוש CX עוצמתי NM85 עם 8 מצבי עזרה לבחירה וסוללה אדירה שמספיקה ליום שלם של רכיבה מהנה ומלאת הרפתקאות בכל דרך וסינגל שתבחרו שילדת אלומיניום מוקשח 6061 T6 בנויה גם לאנדורו הקשוח ביותר. ביקורות מטורפות מכל האתרים משבחים את תנוחת הרכיבה והיכולת להתמודד עם כל שטח בקלות ובביטחה בולמי זעזועים FOX 38 FERPORMENCE 160mm, גלגלי WTB עם צמיגי מקסיס, מערכת הילוכים ובלמי דיסק הידראוליים של SRAM משלימים את ה-SPHERA לאופני שטח מעולים!",
+    "wh": 750,
+    "fork length": 160,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-e180-rsx"
+    },
+    "firm": "Whyte",
+    "model": "E-180 RSX",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 25900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/E-180_RSX_main.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/E-180_RSX_main(1).webp",
+        "https://pedalim.co.il/Media/Uploads/E-180_RSX_side.webp",
+        "https://pedalim.co.il/Media/Uploads/E-180_RSX_back.webp",
+        "https://pedalim.co.il/Media/Uploads/E-180_RSX_action.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Hydro Formed T6 6061 Aluminium, Multi Butted, Custom Drawn, Tapered Headtube, Internal Cable Routing, Shape.it Link and 12mm X 148mm Boost Dropouts",
+      "fork": "Fox Float 38, Factory 29', 180mm Travel, 44mm Offset with Grip 2 Damper, Tapered Steerer, Kashima Coating, 110mm x 15mm Boost, E-Thru Axle",
+      "rear_shock": "Fox Float X2, Factory, independently adjustable Compression and Rebound damping, Kashima coating",
+      "motor": "Bosch Performance Line CX, 85Nm maximum torque, 250W nominal power. Features four power settings",
+      "battery": "Bosch PowerTube 750Wh internal, perfectly integrated into the frame with an intuitive lockable mechanism for easy removal",
+      "shifters": "SRAM AXS Pod, 2 Button MMX, 12 Speed",
+      "rear_derailleur": "SRAM GX AXS T-Type 12 Speed",
+      "crankset": "Race Face Affect E-Bike, 165mm, ISIS with T-Type Direct Mount 36T for Bosch Performance Line CX, Black",
+      "cassette": "SRAM XS-1275 T-Type Eagle, 10-52, 12 Speed",
+      "chain": "SRAM GX T-Type Eagle, 12 Speed",
+      "brakes": "SRAM Code RSC, 4 Piston with Sintered Metal Pads, 220mm Disc",
+      "wheels": "DT Swiss Hybrid HX1700",
+      "tires": "Maxxis Assigai WT, 29'x2.5' 120TPI, EXO + Sidewall Protection, 3C MaxxGrip (F)/Maxxis Assigai WT, 27.5' x 2.5' 120TPI, Double Casing, 3C MaxxGrip ®",
+      "saddle": "Fizik Terra Aidon, 145mm wide, Wingflex, S-Alloy Mobius rail",
+      "seatpost": "Crank Bro High-Line 3, 30.9mm, 150mm Travel, High-Line Ball Socket Remote Lever",
+      "handlebar": "Race Face Turbine R, 35mm Rise, 35mm Bar Bore, 800mm Wide",
+      "stem": "Race Face Atlas, 35mm Bar Bore, 35mm Extension",
+      "headset": "FSA No. 55/35 Orbit 1.5 ZS, 1.8' Lower and 1 1/8' Upper Sealed Cartridge Bearings"
+    },
+    "rewritten_description": null,
+    "wh": 750,
+    "fork length": 180,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-elyte-140-rsx"
+    },
+    "firm": "Whyte",
+    "model": "E-Lyte 140 RSX",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 34900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/ELYTE_140_RSX.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/ELYTE_140_RSX(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe, tapered head tube, ISCG 2 guide mounts, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "RockShox Pike Select+, 140mm travel, DebonAir+, Charger 3.1 Damper, Fast Black coating, tapered steerer, 110 x 15mm Boost",
+      "rear_shock": "RockShox SIDLuxe Select+, DebonAir, 2 position lever lockout, adjustable rebound, 210 x 47.5mm, custom tuned for Whyte",
+      "motor": "Bosch Performance Line SX drive unit, 60Nm maximum torque and 600W of peak power and 600W",
+      "battery": "Bosch Compact PowerTube 400Wh, integrated within the downtube of the frame at the lowest point for stability and control.",
+      "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+      "rear_derailleur": "SRAM GX T-Type AXS, 12 speed",
+      "crankset": "Whyte 155mm ISIS arms, GX 36T chainring, T-Type",
+      "cassette": "SRAM XS 1275, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM GX T-Type, 12 speed",
+      "brakes": "SRAM Level Bronze Stealth, four piston hydraulic, 180mm diameter disc rotor",
+      "wheels": "DT Swiss Hybrid HX1700",
+      "tires": "Good Year Escape tubeless ready tan wall 29in x 2.4in, 800g front and rear",
+      "saddle": "Whyte Custom",
+      "seatpost": "KS Lev Ci, 30.9mm, 175mm drop, with Southpaw remote lever",
+      "handlebar": "Race Face ERA Carbon, 20mm rise, 35mm bar bore, 800mm wide",
+      "stem": "Whyte Trail full CNC, 40mm extension, 35mm bar bore",
+      "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) cartridge bearings, with side entry internal routing",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": null,
+    "wh": 400,
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-kado-rsx"
+    },
+    "firm": "Whyte",
+    "model": "KADO RSX",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 32990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/kado_rsx_silver_main.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/kado_rsx_blue_main(1).webp",
+        "https://pedalim.co.il/Media/Uploads/kado_rsx_blue_side.webp",
+        "https://pedalim.co.il/Media/Uploads/kado_rsx_blue_front.webp",
+        "https://pedalim.co.il/Media/Uploads/kado_rsx_blue_gear.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe and rear triangle, tapered head tube, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "Fox Float 38 Performance Elite, 160mm travel, 44mm offset with Grip X2 damper, tapered steerer, 110mm x 15mm Boost, E-thru-axle",
+      "rear_shock": "Fox Float X Performance Elite DPS, EVOL LV, 230 x 57.5mm, custom tuned for Whyte",
+      "motor": "Bosch Performance Line CX Drive Unit, ready for the latest free software upgrade to unlock 100Nm torque + 750W peak power",
+      "battery": "Bosch PowerTube 800Wh, perfectly integrated into the frame with an intuitive lockable mechanism for easy removal. PowerMore compatible.",
+      "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+      "rear_derailleur": "SRAM S1000 AXS Eagle, 12 speed",
+      "crankset": "Whyte 155mm ISIS arms, SRAM Direct mount 36T chainring, T-Type",
+      "cassette": "SRAM XS 1275, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM GX T-Type, 12 speed",
+      "brakes": "Magura MT7, 1 finger lever, 203mm MDRC 6 bolt rotors",
+      "wheels": "DT Swiss Hybrid H1900",
+      "tires": "Maxxis Assegai WT, 29inx2.5in 120TPI, EXO+Side Protection, 3C MaxxGrip (F)/Maxxis Minion DHR 2 WT, 29inx2.4in 120TPI, Double Casing, 3C MaxxTerra (R)",
+      "saddle": "Whyte Custom",
+      "seatpost": "KS Vantage, 34.9mm, external 30mm adjustment, with Southpaw remote lever 170mm drop",
+      "handlebar": "Race Face Turbine Alloy Bar 35mm, 800mm, 35mm rise",
+      "stem": "Whyte, 35mm Extension, 35mm Bar Bore",
+      "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) cartridge bearings, with side entry internal routing",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": "אופני טרייל/אנדורו ברמה הגבוהה של Whyte – שילדת קרבון מלאה, מהלך מתלים 160/150 מ״מ וטווח סוללה 800Wh להנאה ללא גבולות. מנוע Bosch Performance Line CX דור 5 עם 100Nm מומנט ו-600W שיא עוצמה – ביצועים שיא שיישאו אותך לכל מסלול. גלגלי 29″ מלפנים ומאחור, מרכז כובד נמוך במיוחד וטיפול מתלים מותאם בקפידה – לשליטה מדויקת, זריזות ואחיזה בסיטואציות הקשות ביותר. דגם שמעניק הרבה יותר ממה שאתה מצפה במחיר נגיש – ביצועים, איכות ורכיבים מהשורה הראשונה ללא פשרות.",
+    "wh": 800,
+    "fork length": 160,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-kado-works"
+    },
+    "firm": "Whyte",
+    "model": "KADO WORKS",
+    "year": "2026",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 45990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/kado_works_main.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/kado_works_main(1).webp",
+        "https://pedalim.co.il/Media/Uploads/kado_works_side.webp",
+        "https://pedalim.co.il/Media/Uploads/kado_works_front.webp",
+        "https://pedalim.co.il/Media/Uploads/kado_works_gear.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe and rear triangle, tapered head tube, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "2026 Fox Podium Factory 29in, 170mm travel, 44mm offset, Grip X2 damper, tapered steerer, 110m x 20mm axle",
+      "rear_shock": "Fox Float X2 Factory Series, EVOL, lock out, 230mm x 57.5mm, custom tuned for Whyte",
+      "motor": "Bosch Performance Line CX Drive Unit, ready for the latest free software upgrade to unlock 100Nm torque + 750W peak power",
+      "battery": "Bosch PowerTube 800Wh, perfectly integrated into the frame with an intuitive lockable mechanism for easy removal. PowerMore compatible.",
+      "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+      "rear_derailleur": "SRAM XO T-Type AXS, 12 speed, powered off the Bosch CX motor system’s internal battery",
+      "crankset": "Hope E-Bike cranks, 155mm length, Bosch mounting, 36T chainring T-Type",
+      "cassette": "SRAM XS 1275, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM GX T-Type, 12 speed",
+      "brakes": "Hope EVO GR4, four piston hydraulic, 220mm(F)/200mm(R) diameter floating disc rotor",
+      "wheels": "DT HX531, 30mm internal",
+      "tires": "Maxxis Assigai WT, TR, 29in x 2.5in 120TPI, EXO+ sidewall protection, 3C MaxxGrip, dual compound, folding bead, front,  Maxxis Minion DHR 2 WT, TR, 29i",
+      "saddle": "Fi’zi:k Terra Aidon, 145mm wide, Wingflex, S-Alloy Mobius rail",
+      "seatpost": "One Up Components V3 Dropper Post, MMX Paddle remote lever, size-specific drop (size S: 150mm travel,  size M: 170mm travel,  size L and XL: 210mm trave",
+      "handlebar": "Race Face ERA Carbon, 20mm rise (sizes S/M) / 40mm rise (sizes L/XL), 35mm bar bore, 800mm wide",
+      "stem": "Whyte Trail full CNC, 32mm extension, 35mm bar bore",
+      "headset": "FSA No. 55R, 1-1/8in upper and 1.5in lower",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": "אופני הקצה של WHYTE,עטורי השבחים, עם המפרט הטוב ביותר במחיר הכי משתלם שתוכלו למצוא! מנוע Bosch Performance Line CX דור 5 עם מומנט 100Nm וסוללת 800Wh נשלפת – טווח עצום ועוצמה ששולטת בכל עלייה ובכל מסלול. מערכת מתלים FOX FACTORY PUDIUM וFox Float X2 מכוילות בדיוק לשליטה מלאה במהירות גבוהה, אחיזה מושלמת וביצועים ברמת תחרות. מערכת הילוכים אלחוטית SRAM X01 Eagle AXS, בלמי Hope EVO GR4 הידראוליים וחישוקי DT Swiss – שילוב של דיוק, אמינות ועוצמה ללא פשרות.",
+    "wh": 800,
+    "fork length": 170,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-kado-rs"
+    },
+    "firm": "Whyte",
+    "model": "KADO RS",
+    "year": "2026",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 27990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/Kado_RS_-_Gloss_Dune_-_Side_-_Ecom_Image.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/Kado_RS_-_Gloss_Dune_-_Side_-_Ecom_Image(1).webp",
+        "https://pedalim.co.il/Media/Uploads/Kado_RS_-_Gloss_Dune_-_Front_three_quarters_RH(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Kado_RS_-_Gloss_Dune_-_fork_crop(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Kado_RS_-_Lifestyle_1(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe, tapered head tube, internal cable routing, 6061 Alloy swing arm, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "RockShox ZEB Select, 160mm travel, 44mm offset, DebonAir, Charger RC damper, Fast Black coating, tapered steerer, 110mm x 15mm Boost, Maxle stealth",
+      "rear_shock": "RockShox Deluxe Select R, DebonAir, Fast Black coating, adjustable rebound, custom tuned for Whyte",
+      "motor": "Bosch Performance Line CX (Smart System) Drive Unit with 85Nm maximum torque, 600W of peak power and 250W of nominal power",
+      "battery": "Bosch PowerTube 800Wh, perfectly integrated into the frame with an intuitive lockable mechanism for easy removal. PowerMore compatible",
+      "shifters": "SRAM Eagle 70, 12 speed",
+      "rear_derailleur": "SRAM Eagle 90 T-Type mechanical, 12 speed",
+      "crankset": "Whyte 155mm ISIS arms, SRAM direct mount 36T chainring, T-Type",
+      "cassette": "SRAM XS 1270, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM Eagle 70",
+      "brakes": "SRAM DB8 Stealth, four piston with sintered metal pads, 220mm(F)/200mm(R) six bolt Centreline rotors",
+      "wheels": "WTB ST Tough front rim, WTB HTZ Trail rear rim, 30mm internal",
+      "tires": "Maxxis Assegai WT, TR, 29in x 2.5in 120TPI, EXO+ sidewall protection, 3C MaxxGrip(F),  Maxxis Minion DHR 2 WT, TR, 29in x 2.4in 120TPI, 3C MaxxTerra®",
+      "saddle": "Whyte Custom",
+      "seatpost": "TranzX +RAD 34.9mm, adjustable, size-specific drop size: 170mm trave",
+      "handlebar": "Whyte Custom 6061 alloy, 30mm rise, 35mm bar bore, 800mm wide",
+      "stem": "Whyte, 35mm Extension, 35mm Bar Bore",
+      "headset": "Token TK19506 1/8in upper and 1.5in lower with sealed bearings",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": "אופני ההרים החשמליים הכי מדוברים הגיעו לארץ !מצוידים במנוע בוש דור 5, עם 100ניוטון/מטר 750W וסוללה Ah800 על שילדת קרבון שמשאירה אבק למתחרים ! אמינות ועוצמה לפני הכל! מערכת BOSCH CX דור 5 עם 12 מצבי רכיבה לבחירה וסוללה 800AH שתספיק ליום שלם של רכיבה מהנה ומלאת הרפתקאות בכל דרך וסינגל שתבחר שילדת קרבון UD משובחת וזנב אלומיניום קשוחה ומפנקת.ביקורות מטורפות מכל האתרים משבחים את תנוחת הרכיבה והיכולת להתמודד עם כל שטח בקלות ושליטה מרבית מצוידים במערכת החדשה TRANSMITION SRAM ובולמי זעזועים ROCKSHOX 160MM גלגלי WTB עם צמיגי מקסיס ובלמי דיסק הידראוליים 8DB SRAM לרכיבה טכנית בלי פשרות",
+    "wh": 800,
+    "fork length": 160,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/e-vertic-pro-fx-sx"
+    },
+    "firm": "Bianchi",
+    "model": "E-Vertic Pro FX SX",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 24990,
+    "disc_price": 17990,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/1920Wx1920H_YSBD4IE3_result(36).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/1920Wx1920H_YSBD4IE3_result(40).webp",
+        "https://pedalim.co.il/Media/Uploads/IMG_0010_result(1).webp",
+        "https://pedalim.co.il/Media/Uploads/6A4A1142_result.webp",
+        "https://pedalim.co.il/Media/Uploads/6A4A1221_result.webp"
+      ]
+    },
+    "specs": {
+      "frame": "e-VERTIC FX-Type Pro FULL SUSPENDED CARBON/ALU sizes: 43-48-53 - 160 mm front travel - 65 mm rear travel - HT 1,5' tapered - Seatpost 31,6 mm - 12x148",
+      "fork": "Rock Shox FS 35S TK 29F SB SA 160 EDFB FB 44 A1",
+      "rear_shock": "Rock Shox Deluxe Select +, 230/65, DebonAir Linear, Damer Type RT, Compression Tune L1, Lockout Force 380, Shaft 25x8, external rebound adjustment, Vo",
+      "motor": "Bosch Performance CX BES3 motor unit",
+      "battery": "Bosch Powertube 750wh integrated battery, w/Kiox display",
+      "shifters": "Sram SX EAGLE 1x12",
+      "rear_derailleur": "Sram SX EAGLE 12sp",
+      "crankset": "FSA Direct Mount Steel Chainring - 34T / w/HT Steel / ED / C.L. 52mm CK-320 FSA E-Bike Diecast Crankset - ISIS / 165mm / w/o crank bolt",
+      "bottom_bracket": "included in the motor",
+      "cassette": "Sram, 12sp, 11-50T",
+      "chain": "Sram SX EAGLE, 12sp",
+      "brakes": "Shimano, BL-M4100, BR-MT420, BLACK, SM-MA-F203P/PM, RESIN PAD, 800MM HOSE / 1700 HOSE + Shimano, SM-RT30, L 203MM",
+      "wheels": "Velomann 2.0 29”, 30mm 29”, 489g, 32 hole drilling, Disc Only + Shimano, CENTER LOCK DISC",
+      "tires": "Vittoria e-Barzo 29x2.6 XC-Trail TNT",
+      "saddle": "Velomann, manganese rail, lenght 277mm x width 144mm",
+      "seatpost": "Alpha1 Series - 31.6 mm - Remote RM07 I-Spec EV - 1800 mm cable length - Velomann logo 125 mm",
+      "handlebar": "Velomann, width 780mm diam.35mm, rise 20mm, backsweep 9°",
+      "stem": "Velomann Ursa, 50 mm, 35 mm, 1'1/8",
+      "headset": "Acros 1'1/8 top / 1,5' bottom - bearings Starnut, Alloy Topcap"
+    },
+    "rewritten_description": "ביאנקי E-VERTIC PRO קרבון-אופני הרים חשמליים המשתלמים ביותר בישראל ! שילוב מנצח של עיצוב איטלקי מדהים, מנוע בוש גרמני עוצמתי וחלקים איכותיים מבית SARM שילדת קרבון קשיחה וקלה שבילים/אנדורו 160 מ'מ בעיצוב א-סימטרי עם זוית ראש 65 מעלות מצוידת בבולמי ROCKSHOX איכותיים מוכנים לכל הרפתקה וטיול שתרצו לעשות. מנוע Bosch CX דור 4 עם 85 ניוטון/מטר, מערכת SMART SYSTEM וצג צבעוני KIOX משולב סוללה אדירה בנפח 750AH מבטיחים טווח רכיבה עצום בכל שטח ושביל שתבחרו. מערכת SRAM 12 הילוכים מיוחדת לחשמלי, ברקסים SHIMANO עם 4 פיסטונים עוצמתיים, גלגלי וצמיגי טיובלס משלימים לכם אופניים חשמליים שלא תרצו לרדת מהם !",
+    "wh": 750,
+    "fork length": 160,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-elyte-140-works"
+    },
+    "firm": "Whyte",
+    "model": "E-Lyte 140 Works",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 48900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte-140-Works-with-powermore_1100x.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte-140-Works-with-powermore_1100x(4).webp",
+        "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-140-Works-Whyte-bc-3-2000pix_1100x.webp",
+        "https://pedalim.co.il/Media/Uploads/E-Lyte-140-Works-Whyte-3.webp",
+        "https://pedalim.co.il/Media/Uploads/E-Lyte-140-Works-Whyte-7.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe, tapered head tube, ISCG 2 guide mounts, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "Fox Float 34 Factory 29in, 140mm travel, 44mm offset, FIT4 damper, tapered steerer, 110mm x 15mm Boost Kabolt axle",
+      "rear_shock": "Fox Float Factory, Evol LV, adjustable rebound and two position compression adjustment",
+      "motor": "Bosch Performance Line SX drive unit, 60Nm maximum torque and 600W",
+      "battery": "Bosch Compact Powertube 400Wh + removable 250Wh PowerMore range extender to deliver a combined 650Wh of battery capacity",
+      "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+      "rear_derailleur": "SRAM XX SL T-Type AXS, 12 speed",
+      "crankset": "SRAM XX Isis Carbon, 165mm arms, XX Gen4 Direct Mount 32T chainring, T-Type Light eMTB",
+      "cassette": "SRAM XS 1297, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM XX T-Type, 12 speed",
+      "brakes": "SRAM Level Ultimate Stealth, four piston hydraulic, 180mm diameter disc rotor",
+      "wheels": "DT Swiss XRC 1501 Spline + DT Swiss 240",
+      "tires": "Good Year Escape tubeless ready tan wall 29in x 2.4in, 800g front and rear",
+      "saddle": "Terra Aidon X1, 145mm, fibre reinforced nylon with Wingflex, Carbon 7x7mm rail",
+      "seatpost": "KS Lev Ci, 30.9mm, 175mm drop, with Southpaw remote lever",
+      "handlebar": "Race Face NEXT R Carbon, 20mm rise, 35mm bar bore, 800mm wide",
+      "stem": "Whyte Trail full CNC, 40mm extension, 35mm bar bore",
+      "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) catridge bearings, with side entry internal routing",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": "החשמלי אולטרה לייט של WHYTE עם מערכת בוש SX החדשה ושילדת קרבון מדהימה ! משקל 17.4 ק'ג בלבד, מומנט של 60Nm ו-600W של כוח שיא לרכיבת XC/Trail מושלמת. מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים.קיבולת סוללה משולבת של 650Wh (400Wh פנימית + 250Wh חיצונית) תדאג שתגיעו לכל מקום ! אופנים בלי פשרות,לא בחלקים וכמובן לא במנוע הטוב בעולם !הביקורת מטורפות :'האופניים החשמליים הקלים הטובים ביותר עם המנוע הטוב ביותר' מערכות קצה אלחוטיות של SRAM עם בולמי זעזועים FOX FACTORY, גלגלי קרבון DT ובלמי דיסק הידראוליים SRAM Level Ultimate וגם סוללה 250W כוללה במחיר !",
+    "wh": 400,
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-elyte-150-works"
+    },
+    "firm": "Whyte",
+    "model": "E-Lyte 150 Works",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 45500,
+    "disc_price": 36990,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte150-Works-with-powermore_1100x.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte150-Works-with-powermore_1100x(7).webp",
+        "https://pedalim.co.il/Media/Uploads/CC_Whyte-Bikes-E-Lyte-150-Works-bc-3-2000pix_1f7c9a14-7ab6-4333-828d-6c8f768f89ec_1100x(2).webp",
+        "https://pedalim.co.il/Media/Uploads/E-Lyte-150-Works-Whyte-2(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-150-Works-sc-10-2000pix_1100x(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe, tapered head tube, ISCG 2 guide mounts, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "Fox Float 36 Factory 29in, 150mm travel, 44mm offset, Grip2 damper, tapered steerer, 110m x 15mm Kabolt axle",
+      "rear_shock": "Fox Float X Factory Series, EVOL, lock out, 210mm x 50mm",
+      "motor": "Bosch Performance Line SX drive unit, 60Nm maximum torque and 600W",
+      "battery": "Bosch Compact Powertube 400Wh + removable 250Wh PowerMore range extender to deliver a combined 650Wh of battery capacity",
+      "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+      "rear_derailleur": "SRAM XO T-Type AXS, 12 speed",
+      "crankset": "Hope E-Bike Cranks, 155mm length, Bosch mounting, 36T chainring T-type",
+      "cassette": "SRAM XS 1295, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM XO T-Type, 12 speed",
+      "brakes": "Hope Tech4 V4, four piston hydraulic, 200mm diameter floating disc rotor",
+      "wheels": "Whyte TeXtreme Innegra infused, carbon Trail rims, 28 hole front, 32 hole rear + Hope Pro 5, six bolt",
+      "tires": "Maxxis Minion DHF, EXO TR MaxxGripp 29in x 2.5in front,  Maxxis Dissector, EXO+ TR MaxxTerra 29in x 2.4in, rear",
+      "saddle": "Fizik Terra Aidon, 145mm wide, Wingflex, S-Alloy Mobius rail",
+      "seatpost": "Whyte drop.it II Adjust, 30.9mm (170-200mm travel), MMX Paddle remote lever",
+      "handlebar": "Race Face Next R Carbon, 20mm rise, 35mm bar bore, 800mm width",
+      "stem": "Whyte Trail full CNC, 32mm extension, 35mm bar bore",
+      "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) catridge bearings, with side entry internal routing",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": "אופני הרים חשמליים קלים של WHYTE עם מנוע הבוש החדשני במומנט של 60Nm ו-600W של כוח שיא לרכיבת אנדורו ושבילים ויכולת טיפוס מושלמת ב 19.2 ק'ג בלבד מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים.קיבולת סוללה משולבת של 650Wh (400Wh פנימית + 250Wh חיצונית) תדאג שתגיעו לכל מקום ! שילדת קרבון סופר חזקה מתאימה גם לטרייל/אנדורו והביקורות מכל האתרים משבחות ! אופני השנה לשנת 2024 בקטגוריית חשמליים קלים באנגליה ! מערכות קצה אלחוטיות של SRAM עם בולמי זעזועים FOX FACTORY, גלגלי קרבון ובלמי דיסק הידראוליים HOPE וגם סוללה 250W כוללה במחיר !",
+    "wh": 400,
+    "fork length": 150,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/whyte-elyte-150-rsx"
+    },
+    "firm": "Whyte",
+    "model": "E-Lyte 150 RSX",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 36500,
+    "disc_price": 28990,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-150-RSX-side-2000pix_LoamWolfEditorsChoice_1100x.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-150-RSX-side-2000pix_LoamWolfEditorsChoice_1100x(7).webp",
+        "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-150-RSX-bc-2-2000pix_1100x(2).webp",
+        "https://pedalim.co.il/Media/Uploads/E-Lyte-150-RSX-Whyte-4(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Uni-directional carbon mainframe, tapered head tube, ISCG 2 guide mounts, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+      "fork": "RockShox Lyrik Select+ 29in, 150mm travel, 44mm offset, DebonAir+, Charger 3 RC2 damper, Fast Black coating, tapered steerer, 110mm x 15mm Boost",
+      "rear_shock": "RockShox Deluxe Select + RT, DebonAir, Fast Black coating, adjustable rebound and two position compression adjustment",
+      "motor": "Bosch Performance Line SX drive unit, 60Nm maximum torque and 600W",
+      "battery": "Bosch Compact Powertube 400Wh",
+      "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+      "rear_derailleur": "SRAM GX T-Type AXS, 12 speed",
+      "crankset": "Whyte 155mm ISIS arms, GX Gen4 direct mount 36T chainring, T-Type",
+      "cassette": "SRAM XS 1275, T-Type, 10-52T, 12 speed",
+      "chain": "SRAM GX T-Type, 12 speed",
+      "brakes": "SRAM Code Bronze Stealth, four piston hydraulic, 200mm diameter disc rotor",
+      "wheels": "Whyte TeXtreme Innegra infused, carbon Trail rims, 28 hole front, 32 hole rear + Alloy, double sealed cartridge bearings",
+      "tires": "Maxxis Minion DHF, EXO TR MaxxGripp 29in x 2.5in front,  Maxxis Dissector, EXO+ TR MaxxTerra 29in x 2.4in, rear",
+      "saddle": "Fizik Terra Aidon, 145mm wide, Wingflex, S-Alloy Mobius rail",
+      "seatpost": "Whyte drop.it II Adjust, 30.9mm (140-170mm travel), MMX Paddle remote lever",
+      "handlebar": "Whyte Custom 6061 alloy, 20mm rise, 35mm bar bore, 800mm wide",
+      "stem": "Whyte Trail full CNC, 32mm extension, 35mm bar bore",
+      "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) catridge bearings, with side entry internal routing",
+      "pedals": "Fibre reinforced composite platform"
+    },
+    "rewritten_description": "אופני הרים חשמליים קלים של WHYTE עם מנוע הבוש החדשני במומנט של 60Nm ו-600W של כוח שיא לרכיבת אנדורו ושבילים ויכולת טיפוס מושלמת ב 18.9 ק'ג בלבד מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים.קיבולת סוללה 400Wh פנימית עם יכולת הרחבה של 250Wh חיצונית תדאג שתגיעו לכל מקום ! שילדת קרבון סופר חזקה מתאימה גם לטרייל/אנדורו והביקורות מכל האתרים משבחות ! בחירת העורכים בקטגוריית חשמליים קלים באנגליה ! מערכות קצה אלחוטיות של SRAM עם בולמי זעזועים ROCKSHOX, גלגלי קרבון ובלמי דיסק הידראוליים SRAM CODE BRONZE משלימים את האופניים לכיף טהור",
+    "wh": 400,
+    "fork length": 150,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/rift-zone-el-xr"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone EL XR",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 28990,
+    "disc_price": 19990,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_XR_side(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_XR_side(4).webp",
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_XR_front(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(92).png"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 Alloy Lightweight E, 140mm MultiTrac Suspension, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
+      "fork": "Fox 36 Performance Elite, 150mm Travel, 29', 110x15 Kabolt, 42mm Offset",
+      "rear_shock": "Fox Float X, Performance Elite, EVOL Air Spring, Climb Switch, Rebound Adjustment, Custom Tune, 210x55mm, 25xM8 Upper Mount, No Lower DU or Hardware",
+      "motor": "Bosch Performance Line SX, 600W, 60Nm",
+      "battery": "Bosch 400 Wh Internal",
+      "shifters": "SRAM AXS Pod",
+      "rear_derailleur": "SRAM GX AXS T-Type",
+      "crankset": "e*thirteen e*spec Plus Carbon, 160mm Length, 34T",
+      "cassette": "SRAM CS-XS-1275 T-Type, 10-52T",
+      "chain": "SRAM GX T-Type",
+      "brakes": "Magura MT7 with HC3 Lever, 4 Piston Hydraulic Disc, E-Specific Pads, 203mm MDR Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29' Diameter, 32mm Inner Rim Width, Welded Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Front: Maxxis Minion DHF, 29x2.5' MAXXGRIP, Tubeless ready, EXO+, Rear: Maxxis Forecaster 29x2.4', Tubeless Ready MAXX TERRA EXO+",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSI08 FL, 1x Remote, 5mm Micro Adjust up to 25mm, 170mm Travel, 34.9mm",
+      "handlebar": "Marin Trail, 35mm Clamp, 7000 Alloy Bar, 800mm Length, 20mm Rise, 5 Degree Up, 8 Degree Back",
+      "stem": "Marin CNC, 35mm Length, 35mm Bar Bore",
+      "headset": "FSA No 57, Sealed Cartridge Bearings, 1 1/8' x 1 1/2”",
+      "pedals": "Marin MTB Plastic"
+    },
+    "rewritten_description": "אופני הרים חשמליים קלים וזריזים עם מערכת בוש SX החדשה וגאומטריית TRAIL .מומנט של 60Nm ו-W600 של כוח שיא לרכיבת XC/Trail מושלמת! מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים .סוללה AH400 תעניק לכם טווח של 25-90 ק'מ שתוכלו לדווש בכיף לסינגל הבא שלכם. שילדת Lightweight E חדשה וקלה בזווית ראש 65 מעלות ומהלך בולמים 140 מ'מ אחורי ו 150 מ'מ קדמי של FOX תעיף אותכם קדימה בכל הסינגלים שתבחרו לעשות ! מערכת הילוכים SRAM AXS חשמלית,ברקסים Magura MT7, 4-Piston מטורפים, גלגלי טיובלס וצמיגי MAXXIS 2.4 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך ענק!",
+    "wh": 400,
+    "fork length": 150,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-alpine-trail-e2-25"
+    },
+    "firm": "Marin",
+    "model": "Alpine Trail E2",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 28990,
+    "disc_price": 20990,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/AT-E2-Bosch-2920.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/AT-E2-Bosch-2920(1).webp",
+        "https://pedalim.co.il/Media/Uploads/AT-E2-Bosch-front-3-4.webp",
+        "https://pedalim.co.il/Media/Uploads/CMP-Marin_AlpineTrailE_NZ-HighRe.webp",
+        "https://pedalim.co.il/Media/Uploads/24_ATE2_action-63.webp"
+      ]
+    },
+    "specs": {
+      "גלגליםFront": "Marin Aluminum Double Wall, 29'(F)/27.5'(R) Diameter, 32mm Inner Rim Width, Pinned Joint, Disc Specific, Tubeless Compatible"
+    },
+    "rewritten_description": "ALPINE TRAIL E2 אופני הרים חשמליים עם מנוע בוש עוצמתי וגאומטריית אנדורו אמיתית מוכנים לכל אתגר עם ביצועים ומחיר שמשאיר את המתחרים הרבה מאחור! אמינות ועוצמה לפני הכל !מנוע בוש CX עוצמתי 85NM עם 4 מצבי עזרה וסוללה 750AH שמספיקה ליום שלם של רכיבה קשוחה ומלאת אדרנלין שילדה LT2 חדשה עם כיוון גובה BB וזווית ראש מצוידת ב 38 FOX קדמי 170מ'מ ואחורי 160 מ'מ ,תשאיר אותכם דבוקים לקרקע גם באנדורו הכי מטורף שתבחרו לעשות מערכת הילוכים SHIMANO XT ,ברקסים TRP DH-R EVO 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי VEE ATTACK 2.6 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך",
+    "fork length": null
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/rift-zone-el-2"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone EL 2",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 24990,
+    "disc_price": 17490,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_2_side.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_2_side(1).webp",
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_2_front.webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(95).png"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 Alloy Lightweight E, 140mm MultiTrac Suspension, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
+      "fork": "Fox 36 Performance, 150mm Travel, 29', 110x15 Kabolt, 42mm Offset",
+      "rear_shock": "Fox Float X, Performance, EVOL Air Spring, Climb Switch, Rebound Adjustment, Custom Tune, 210x55mm, 25xM8 Upper Mount, No Lower DU or Hardware",
+      "motor": "Bosch Performance Line SX, 600W, 55Nm",
+      "battery": "Bosch 400Wh Internal",
+      "shifters": "SRAM GX Eagle Lunar MMX Mount",
+      "rear_derailleur": "SRAM GX Eagle Lunar",
+      "crankset": "e*thirteen e*spec Plus, 160mm Length, 34T",
+      "cassette": "SRAM XG 1275 Eagle Cassette 10-52T",
+      "chain": "SRAM NX Eagle",
+      "brakes": "SRAM Code Bronze, 4-Piston Hydraulic Disc, 200mm HS2 Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29' Diameter, 32mm Inner Rim Width, Pinned Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Front: Maxxis Minion DHF, 29x2.5' MAXXGRIP, Tubeless ready, EXO+, Rear: Maxxis Forecaster 29x2.4', Tubeless Ready MAXX TERRA EXO+",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, 150mm Travel",
+      "handlebar": "Marin Trail, 35mm Clamp, 7000 Alloy Bar, 800mm Length, 20mm Rise, 5 Degree Up, 8 Degree Back",
+      "stem": "Marin CNC , 35mm Length, 35mm Bar Bore",
+      "headset": "FSA No 57, Sealed Cartridge Bearings, 1 1/8' x 1 1/2”",
+      "pedals": "Marin MTB Plastic"
+    },
+    "rewritten_description": "אופני הרים חשמליים קלים וזריזים עם מערכת בוש SX החדשה וגאומטריית TRAIL .מומנט של 55Nm ו-W600 של כוח שיא לרכיבת XC/Trail מושלמת! מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים .סוללה AH400 תעניק לכם טווח של 25-90 ק'מ שתוכלו לדווש בכיף לסינגל הבא שלכם. שילדת Lightweight E חדשה וקלה בזווית ראש 65 מעלות ומהלך בולמים 140 מ'מ אחורי ו 150 מ'מ קדמי של FOX תעיף אותכם קדימה בכל הסינגלים שתבחרו לעשות ! מערכת הילוכים SRAM GX משובחת ,ברקסים SRAM Code Bronze, 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי MAXXIS 2.4 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך.",
+    "wh": 400,
+    "fork length": 150,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-alpine-trail-e1-25"
+    },
+    "firm": "Marin",
+    "model": "Alpine Trail E1",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 24990,
+    "disc_price": 17490,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/AT-E1-Bosch-profile.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/AT-E1-Bosch-profile(1).webp",
+        "https://pedalim.co.il/Media/Uploads/AT_E1_Bosch_front_3_4.webp",
+        "https://pedalim.co.il/Media/Uploads/E1_BIG.webp",
+        "https://pedalim.co.il/Media/Uploads/ATE-Bosch-adj-geo(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 Alloy, 160mm MultiTrac LT Suspension, Adjustable Headset & CS Length/Height, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
+      "fork": "Marzocchi Z1, 170mm, 29', 110x15 Kabolt Thru Axle, 44mm Offset",
+      "rear_shock": "Marzocchi CR Coil, 205x65mm, Trunnion Upper Mount, 30xM8 Lower Hardware, Custom Tune, Spring Rate S/M = 350 lbs/in M/L = 450 lbs/in",
+      "motor": "Bosch Performance CX, 600W, 85Nm",
+      "battery": "Bosch PowerTube 750Wh",
+      "shifters": "Shimano CUES SL-U6000-10R, 10-Speed",
+      "rear_derailleur": "Shimano CUES RD-U6000 GS, 10-Speed",
+      "crankset": "e*thirteen e*spec Plus, 160mm Length",
+      "cassette": "Shimano CS-LG300-10, 11-48T",
+      "chain": "Shimano LG500",
+      "brakes": "TRP Slate EVO, 4-Piston Hydraulic Disc, Resin Pads, 203mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29'(F)/27.5'(R), 32mm Inner Rim, Pinned Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Vee Tire Co Attack HPL, E-Control Compound, Front 29x2.5', Rear 27.5x2.5'",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, Travel S = 150mm, M/L = 170mm, XL = 200mm",
+      "handlebar": "Marin Mini Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA Custom Headset, Adjustable HTA Design"
+    },
+    "rewritten_description": "ALPINE TRAIL E1 אופני הרים חשמליים עם מנוע בוש עוצמתי וגאומטריית אנדורו אמיתית מוכנים לכל אתגר עם ביצועים ומחיר שמשאיר את המתחרים הרבה מאחור! אמינות ועוצמה לפני הכל !מנוע בוש CX עוצמתי 85NM עם 4 מצבי עזרה וסוללה 750AH שמספיקה ליום שלם של רכיבה קשוחה ומלאת אדרנלין שילדה LT2 חדשה עם כיוון גובה BB וזווית ראש מצוידת במרזוקי קדמי 170מ'מ ואחורי 160 מ'מ ,תשאיר אותכם דבוקים לקרקע גם באנדורו הכי מטורף שתבחרו לעשות מערכת הילוכים SHIMANO CUES ,ברקסים TRP Slate EVO, 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי VEE ATTACK 2.6 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך",
+    "wh": 750,
+    "fork length": 170,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/rift-zone-el-1"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone EL 1",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 19990,
+    "disc_price": 14990,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_side.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_side(1).webp",
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_front(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(100).png"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 Alloy Lightweight E, 140mm MultiTrac Suspension, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
+      "fork": "Marzocchi Bomber Z1 140mm Travel, 29, 110x15 Kabolt Thru Axle, 44mm Offset",
+      "rear_shock": "Marzocchi Bomber Air Shock, ALL NEW for 2025, Custom Tune, 210x55mm, 25xM8 Upper Mount, No Lower DU or Hardware",
+      "motor": "Bosch Performance Line SX, 600W, 55Nm",
+      "battery": "Bosch 400Wh Internal",
+      "shifters": "Shimano CUES SL-U6000-10R, 10-Speed",
+      "rear_derailleur": "Shimano CUES RD-U6000 GS, 10-Speed",
+      "crankset": "e*thirteen e*spec Plus, 160mm Length, 34T",
+      "cassette": "Shimano CS-LG300-10, 11-48T",
+      "chain": "Shimano LG500",
+      "brakes": "TRP Slate EVO, 4-Piston Hydraulic Disc, Resin Pads, 203mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29' Diameter, 32mm Inner Rim Width, Pinned Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Front: Maxxis Minion DHF, 29x2.5' MAXXGRIP, Tubeless ready, EXO+, Rear: Maxxis Forecaster 29x2.4', Tubeless Ready MAXX TERRA EXO+",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSI34 QL, Plastic 1x Remote, 170mm Travel, 34.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57, Sealed Cartridge Bearings, 1 1/8' x 1 1/2”",
+      "pedals": "Marin MTB Plastic"
+    },
+    "rewritten_description": "אופני הרים חשמליים קלים וזריזים עם מערכת בוש SX החדשה וגאומטריית TRAIL .מומנט של 55Nm ו-W600 של כוח שיא לרכיבת XC/Trail מושלמת! מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים .סוללה AH400 תעניק לכם טווח של 25-90 ק'מ שתוכלו לדווש בכיף לסינגל הבא שלכם. שילדת Lightweight E חדשה וקלה בזווית ראש 65 מעלות ומהלך בולמים 140 מ'מ אחורי ו 150 מ'מ קדמי של מרזוקי תעיף אותכם קדימה בכל הסינגלים שתבחרו לעשות ! מערכת הילוכים SHIMANO CUES ,ברקסים TRP Slate EVO, 4- Piston עוצמתיים, גלגלי טיובלס וצמיגי MAXXIS 2.4 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך.",
+    "wh": 400,
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/kalosi-v2"
+    },
+    "firm": "Polygon",
+    "model": "Kalosi V2",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 10500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MY25-KALOSI-LANES-EVO-GREEN-GENT-P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MY25-KALOSI-LANES-EVO-BLACK-GREY-GENT-P(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX TREKKING FRAME",
+      "fork": "SUNTOUR XCM32 HLO 100mm TRAVEL",
+      "motor": "SHIMANO DU-E5000 MID MOTOR, CONTINUOUS RATED POWER 250Watt, MAXIMUM TORQUE 40Nm",
+      "battery": "SHIMANO BT-E8010 FOR DOWN TUBE - 504Wh (36V, 14Ah)",
+      "shifters": "SHIMANO CUES SL-U6000 1x10-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO CUES RD-U6000-GS DIRECT ATTACH",
+      "crankset": "SHIMANO FC-E5010 W/ SM-CRE50 44T CL:46.5mm W/ DOUBLE CG",
+      "bottom_bracket": "SHIMANO DU-E5000 DRIVE UNIT",
+      "cassette": "SHIMANO CS-LG300-10 11-48T",
+      "chain": "SHIMANO CN-LG500",
+      "brakes": "SHIMANO BR-MT201 HYDRAULIC DISC BRAKE + 180mm CL Rotor",
+      "wheels": "ALLOY DOUBLE WALL 584x30C DEPTH:23mm 32H FOR TYRE 584-54/76",
+      "tires": "SCHWALBE SUPER MOTO-X 27.5'x2.40'",
+      "saddle": "LINC EASE, STEEL ø7mm",
+      "seatpost": "POLYGON EXPERT ALLOY, DxL: 30.9 x 300mm",
+      "handlebar": "POLYGON EXPERT ALLOY, W: 700mm, BB: 31.8mm, R/D: 25mm, B: 18degree",
+      "stem": "POLYGON XPERT ALLOY, EXT: 80mm, BB: 31.8mm, R/D: 7degree",
+      "headset": "ZERO STACK (ZS) SEMI INTEGRATED SEALED BEARING FOR TAPER H/T, ZS 44/28.6 | ZS 56/30",
+      "pedals": "PP PEDALS W/ REFLECTOR"
+    },
+    "rewritten_description": "העתיד של התחבורה הירוקה העירונית הגיע לישראל ! אופניים חשמליים היברדיים אמיתיים ,סופר איכותיים ומפנקים עם מנוע שימאנו עוצמתי ומפרט חלקים מעולה ! ה-KALOSI יהיו השותף שלכם בכל רכיבה בכביש או דרך עפר. מנוע SHIMANO עם מומנט של 40 ניוטון/מטר עם סוללה אדירה 504WH ייתן לכם טווח רכיבה 70-185 ק'מ ! מצוידים במערכת 10 הילוכים SHIMANO CEUS החדשה ובלמי שימאנו הידראוליים חזקים יחד עם בולם SUNTOUR XCM 100mm ציר 9 מ'מ. צמיגי SCHWALBE 27.5 בחתך '2.4, ושלל אביזרי נוחות יעצימו לכם את ההנאה והשימוש בKALOSI החדשים.",
+    "wh": 504,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/kalosi-st-v2"
+    },
+    "firm": "Polygon",
+    "model": "Kalosi V2 ST",
+    "year": "לא צויין",
+    "category": "electric",
+    "sub_category": "electric_mtb",
+    "original_price": 10500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MY25-KALOSI-LANES-EVO-BLACK-GREY-LADY-P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MY25-KALOSI-LANES-EVO-BLACK-GREY-LADY-P(4).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX TREKKING FRAME",
+      "fork": "SUNTOUR XCM32 HLO 100mm TRAVEL",
+      "motor": "SHIMANO DU-E5000 MID MOTOR, CONTINUOUS RATED POWER 250Watt, MAXIMUM TORQUE 40Nm",
+      "battery": "SHIMANO BT-E8010 FOR DOWN TUBE - 504Wh (36V, 14Ah)",
+      "shifters": "SHIMANO CUES SL-U6000 1x10-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO CUES RD-U6000-GS DIRECT ATTACH",
+      "crankset": "SHIMANO FC-E5010 W/ SM-CRE50 44T CL:46.5mm W/ DOUBLE CG",
+      "bottom_bracket": "SHIMANO DU-E5000 DRIVE UNIT",
+      "cassette": "SHIMANO CS-LG300-10 11-48T",
+      "chain": "SHIMANO CN-LG500",
+      "brakes": "SHIMANO BR-MT201 HYDRAULIC DISC BRAKE + 180mm CL Rotor",
+      "wheels": "ALLOY DOUBLE WALL 584x30C DEPTH:23mm 32H FOR TYRE 584-54/76",
+      "tires": "SCHWALBE SUPER MOTO-X 27.5'x2.40'",
+      "saddle": "LINC EASE, STEEL ø7mm",
+      "seatpost": "POLYGON EXPERT ALLOY, DxL: 30.9 x 300mm",
+      "handlebar": "POLYGON EXPERT ALLOY, W: 700mm",
+      "stem": "POLYGON XPERT ALLOY, EXT: 60mm, BB: 31.8mm, R/D: 7degree",
+      "headset": "ZERO STACK SEMI INTEGRATED SEALED BEARING FOR TAPER H/T, ZS 44/28.6 | ZS 56/30",
+      "pedals": "PP PEDALS W/ REFLECTOR"
+    },
+    "rewritten_description": "העתיד של התחבורה הירוקה העירונית הגיע לישראל ! אופניים חשמליים היברדיים אמיתיים ,סופר איכותיים ומפנקים עם מנוע שימאנו עוצמתי ומפרט חלקים מעולה ! ה-KALOSI יהיו השותף שלכם בכל רכיבה בכביש או דרך עפר. מנוע SHIMANO עם מומנט של 40 ניוטון/מטר עם סוללה אדירה 504WH ייתן לכם טווח רכיבה 70-185 ק'מ ! מצוידים במערכת 10 הילוכים SHIMANO CEUS החדשה ובלמי שימאנו הידראוליים חזקים יחד עם בולם SUNTOUR XCM 100mm ציר 9 מ'מ. צמיגי SCHWALBE 27.5 בחתך '2.4, ושלל אביזרי נוחות יעצימו לכם את ההנאה והשימוש בKALOSI החדשים.",
+    "wh": 504,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/אופני-הרים-polygon-xtrada-7-2022?bsp=55188"
+    },
+    "firm": "Polygon",
+    "model": "Xtrada 7",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 4990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/691067(6).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/691067(1).webp",
+        "https://pedalim.co.il/Media/Uploads/polygon_play(10)_png.webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL",
+      "fork": "RST AERIAL AIR LOCK, - 120 MM TRAVEL, 15X110 AXLE, TAPER 1-1/8' TO 1-1/2'",
+      "shifters": "SHIMANO DEORE SL-M6100-R, 1x12-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO DEORE RD-M6100-SGS DIRECT ATTACH",
+      "crankset": "SHIMANO MT-510-1 BOOST 32T, MAX CHAINRING: SINGLE 36T / DOUBLE 38/28T, CRANK ARM: 170mm",
+      "bottom_bracket": "SHIMANO 2-PIECE CRANKSET BSA THREADED 73mm",
+      "cassette": "SHIMANO DEORE CS-M6100 10-51T MICROSPLINE",
+      "chain": "KMC X-12",
+      "brakes": "SHIMANO MT-201 HYDRAULIC DISC BRAKES, ROTOR: 160mm",
+      "wheels": "ENTITY XL2 DISC",
+      "tires": "WTB TRAIL BOSS COMP 27.5'x2.25'",
+      "saddle": "ENTITY VOID, STEEL ø 7mm",
+      "seatpost": "ENTITY XPERT ALLOY, DXL: 27.2 x 350mm, SEAT CLAMP: 31.8mm W/ QR",
+      "handlebar": "ENTITY XPERT ALLOY, W: 760mm, BAR BORE: 31.8mm, RISE/DROP: 12mm, BEND: 6degree",
+      "stem": "ENTITY XPERT ALLOY, EXT: 40mm, BAR BORE: 31.8mm, RISE/DROP: 7degree",
+      "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40",
+      "pedals": "PP FLAT PEDAL W/ REFLECTOR"
+    },
+    "rewritten_description": "אופני זנב קשיח '27.5 החדשים והמדוברים של POLYGON שילדת אלומיניום קלילה ALX CX גאומטריית שטח , עם בולם זעזועים 120 מ'מ מערכות הילוכים שימאנו 1X12 ,בלמי דיסק שימאנו",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-xtrada-6-2025"
+    },
+    "firm": "Polygon",
+    "model": "XTRADA 6",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3800,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MY25-XTRADA-6-P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MY25-XTRADA-6-P(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL",
+      "fork": "SR SUNTOUR XCR32 LOR 120mm (27.5' & 29') TRAVEL",
+      "shifters": "SHIMANO 11 SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO 11 SPEED, DIRECT ATTACH",
+      "crankset": "32T 170mm",
+      "bottom_bracket": "SHIMANO 2-PIECE CRANKSET BSA THREADED 73mm",
+      "cassette": "SHIMANO 11 SPEED",
+      "chain": "KMC CHAIN",
+      "brakes": "SHIMANO BL-MT201+MT-201 HYDRAULIC DISC BRAKES 160mm CL",
+      "wheels": "ALLOY DOUBLE WALL H:19mm W: 23mm 584 32H FOR TYRE 584-68/622-68",
+      "tires": "PERFORMANCE TIRE 29'X2.25'",
+      "saddle": "POLYGON, STEEL ø 7mm",
+      "seatpost": "POLYGON XPERT ALLOY, DXL: 27.2 x 350mm, OFFSET: 15mm, SEAT CLAMP: 31.8mm W/ QR",
+      "handlebar": "POLYGON SPORT ALLOY, W: 760mm, BAR BORE: 31.8mm, RISE/DROP: 12mm, BEND: 6degree",
+      "stem": "POLYGON SPORT ALLOY, EXT: 45mm, BAR BORE: 31.8mm, RISE/DROP: 3degree",
+      "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40",
+      "pedals": "PP FLAT PEDAL W/ REFLECTOR"
+    },
+    "rewritten_description": "אופני זנב קשיח '29 החדשים והמדוברים של POLYGON שילדת אלומיניום קלילה ALX CX גאומטריית שטח, עם בולם זעזועים 120 מ'מ מערכות הילוכים שימאנו 1X11, בלמי דיסק הידראוליים שימאנו",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-xtrada5-2025"
+    },
+    "firm": "Polygon",
+    "model": "XTRADA 5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3300,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/XTRADA_5_MAIN.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/XTRADA_5_MAIN(1).webp",
+        "https://pedalim.co.il/Media/Uploads/XTRADA_5_FRONT_L.webp",
+        "https://pedalim.co.il/Media/Uploads/XTRADA_5_FRONT_R.webp",
+        "https://pedalim.co.il/Media/Uploads/XTRADA_5_BACK.webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL",
+      "fork": "SR SUNTOUR XCM-HLO 120mm TRAVEL",
+      "shifters": "SHIMANO 10 SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO 10 SPEED, DIRECT ATTACH",
+      "crankset": "PROWHEEL 32T 170mm",
+      "bottom_bracket": "SHIMANO 2-PIECE CRANKSET BSA THREADED 73mm",
+      "cassette": "SHIMANO 10 SPEED",
+      "chain": "KMC CHAIN",
+      "brakes": "HYDRAULIC DISC LEVER 160 mm",
+      "wheels": "ALLOY WHEELS",
+      "tires": "PERFORMANCE TIRE 29'X2.25'",
+      "saddle": "POLYGON, STEEL ø 7mm",
+      "seatpost": "POLYGON XPERT ALLOY, DXL: 27.2 x 350mm, OFFSET: 15mm, SEAT CLAMP: 31.8mm W/ QR",
+      "handlebar": "POLYGON SPORT ALLOY, W: 760mm, BAR BORE: 31.8mm, RISE/DROP: 12mm, BEND: 6degree",
+      "stem": "POLYGON SPORT ALLOY, EXT: 45mm, BAR BORE: 31.8mm, RISE/DROP: 3degree",
+      "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40",
+      "pedals": "PP FLAT PEDAL W/ REFLECTOR"
+    },
+    "rewritten_description": "אופני זנב קשיח '29 המדוברים של POLYGON שילדת אלומיניום קלילה ALX XC גאומטריית השטח העדכנית ביותר של POLYGON, עם בולם זעזועים 120 מ'מ מערכות הילוכים שימאנו 2X10 ,בלמי דיסק שימאנו",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-bobcat-5-25"
+    },
+    "firm": "Marin",
+    "model": "Bobcat 5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 4290,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/BOBCAT-TRAIL-5-29-MARIN24-P(10).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_5_27,5_-_SIDE(1).webp",
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_5_27,5_-FRONT.webp",
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_5_29_-_SIDE_outdoor.webp",
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_5_29_-_FRONT_outdoor.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 2 6061 Aluminum, 29” Wheels, Low Standover, 68mm BB shell, 135mm Forged Dropouts, IS Chainstay Disc Mount, Internal Housing & Dropper",
+      "fork": "SR Suntour XCR LOR-DS, Thru-Axle, 120mm Travel, Hydraulic Lockout, Damping Adjustment, 42mm (27.5') and 46mm (29') Offsets",
+      "shifters": "Shimano Deore SLM5100, 11-Speed",
+      "rear_derailleur": "Shimano Deore RDM5100, 11-speed, w/Clutch",
+      "crankset": "Alloy Crank, Steel Narrow-Wide Chainring, 32T",
+      "bottom_bracket": "Sealed Cartridge Bearings, Square Taper",
+      "cassette": "SunRace, 11-Speed, 11-51T",
+      "chain": "KMC X11",
+      "brakes": "Tektro M280 Hydraulic Disc, 180/160mm Rotor180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29mm Inner, Pinned Joint, Disc Specific, Tubeless Compatible + Forged Alloy, Disc, 32H",
+      "tires": "MTB, 27.5x2.25'",
+      "saddle": "Marin MTB",
+      "seatpost": "Marin Alloy, 30.9",
+      "handlebar": "Marin 31.8 Riser, 12mm Rise, 780mm Width",
+      "stem": "Marin Alloy, 31.8mm Clamp, 45mm",
+      "headset": "FSA No.10-P",
+      "pedals": "Nylon Platform"
+    },
+    "rewritten_description": "אופני השטח החדשים של MARIN לשנת 2025 ! סופר כיפיים,סופר יכולות,סופר משתלמים! מצוידים בחלקים מעולים ועמידים שיבטיחו לכם להמשיך לחייך כל הדרך שילדת אלומיניום חדשה SERIES 2,חזקה וקלה עם תעלות כבלים פנימיות וזוית ראש 66.5 מעלות מבטיחה רכיבה מדהימה גם בשבילים קשוחים ועצבניים מערכת הילוכים 1X11 שימאנו להעברה חלקה וטווח הילוכים גדול לטיפוס גם בעלייה הקשה ביותר בולם זעזועים 120 מ'מ SUNTOUR XCR BOOST עם נעילה הידראולית וברקסים הידראוליים חזקים של TEKTRO ידאגו להשאיר אותכם על המסלול גם בשטח משובש",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-syncline-c5-2024"
+    },
+    "firm": "Polygon",
+    "model": "Syncline C5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 8500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/Syncline_C5.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/Syncline_C5(10).webp",
+        "https://pedalim.co.il/Media/Uploads/SynclineC5_front.webp"
+      ]
+    },
+    "specs": {
+      "frame": "ACX XC PERFORMANCE",
+      "fork": "FOX 32 RHYTHM, 120mm",
+      "shifters": "SHIMANO SLX SL-M7100-R 12-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO SLX RD-M7100-SGS DIRECT ATTACH",
+      "crankset": "SHIMANO SLX FC-M7100-1 32T 2-PIECE-CRANK",
+      "bottom_bracket": "SHIMANO BB-MT500-PA",
+      "cassette": "12 SPEED 11-51T",
+      "chain": "KMC NEW X-12",
+      "brakes": "SHIMANO MT400 HYDRAULIC DISC BRAKE + FRONT:180mm REAR:160mm CENTER-LOCK",
+      "wheels": "ALLOY DOUBLE WALL",
+      "tires": "WTB TRAIL BOSS TIRE, 29x2.25",
+      "saddle": "ENTITY VOID SADDLE",
+      "seatpost": "ENTITY XPERT, 27.2x350mm",
+      "handlebar": "ENTITY XPERT, W: 740mm, BB: 31.8mm, R/D: 12mm, B: 9degree",
+      "stem": "ENTITY XPERT, EXT: 60mm, BB: 31.8mm, R/D: 7degree",
+      "headset": "INTEGRATED W/ SEALED BEARING FOR TAPER HEAD TUBE, IS 42/28.6 | IS 52/40"
+    },
+    "rewritten_description": "אופני ה-Syncline 5 הם אופני הרים מתקדמים לרכיבת קרוס-קאנטרי ושבילים. הם מתאימים גם לרכיבת פנאי וגם למרוצים, מה שהופך אותם לבחירה מושלמת! אופני קרבון במחיר שובר שוק! מצוידים בשלדת קרבון קלת משקל וחזקה, מערכת בלימה הידראולית של Shimano ובמערכת הילוכים של Shimano SLX בעלת 12 הילוכים בולם אוויר ננעל FOX 120mm ושלדה עם ספיגת זעזועים מצוינת מבטיחים רכיבה חלקה גם בשבילים הכי קשים. גלגלים בהכנה לטיובלס מאפשרים שדרוג בקנייה או אחריה עיצוב אלגנטי בצביעה מיוחדת כולל צבע כפול והובלת כבלים פנימית שומר על הכבלים והשלדה מפני נזקים לאורך זמן",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-cascade-2"
+    },
+    "firm": "Polygon",
+    "model": "Cascade 2",
+    "year": "2026",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 1690,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MY26_CASCADE_TWO_P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MY26_CASCADE_TWO_P(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC SPORT",
+      "fork": "SUNTOUR XCE 28 100MM TRAVEL",
+      "shifters": "SHIMANO TOURNEY ST-EF41, 3x7-SPEED TRIGGER",
+      "front_derailleur": "SHIMANO ALTUS FD-M313",
+      "rear_derailleur": "SHIMANO TOURNEY RD-TY300",
+      "crankset": "WHEELTOP TCSH4-CFPG(G4SH), 42X34X24T",
+      "bottom_bracket": "SQUARE BB, 68mm",
+      "cassette": "14-28T",
+      "chain": "MEILE M70",
+      "brakes": "SHIMANO TOURNEY + TEKTRO TR160 6 BOLT, 160mm",
+      "wheels": "ALLOY DOUBLE WALL H:20mm W: 21mm 584 32H FOR TYRE 584-57",
+      "tires": "DELI 27.5'x2.25'",
+      "saddle": "BLACK",
+      "seatpost": "STEEL, 31.8mm",
+      "handlebar": "STEEL RISE",
+      "stem": "ALLOY, ext. 45mm, bore 31.8mm",
+      "headset": "ZERO STACK W/ SEALED BEARING"
+    },
+    "rewritten_description": "אופני הכניסה למתחילים המשתלמים ביותר בישראל מתחדשים ומשתדרגים לכבוד 2026 במחיר ללא תחרות! שילדת אלומיניום חדשה ועדכנית עם גיאומטרייה סופר נוחה לרוכבים המתחילים בצבע חדש לחלוטין! בולם זעזועים אמיתי סנטור 100 מ'מ לשיכוך כל מהמורה בדרך ומערכת הילוכים שימאנו 3X7 סופר אמינה ברקסים דיסק חזקים ובטיחותיים של שימאנו וצמיגי דו שימושיים לשימוש בעיר וגם בשטח כורכר",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/cascade-3-2023"
+    },
+    "firm": "Polygon",
+    "model": "Cascade 3",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 1690,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/cascade_3_silver.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/cascade_3_black_silver-removebg-preview(7).webp",
+        "https://pedalim.co.il/Media/Uploads/cascade_3_black_silver_front(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "AL6 XC SPORT FRAME",
+      "fork": "SUNTOUR XCE28 100mm TRAVEL",
+      "shifters": "SHIMANO ST-EF41, 3x7 SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO RD-TY300 6/7-SPEED DIRECT ATTACH",
+      "crankset": "STEEL CRANK 42x34x24T",
+      "bottom_bracket": "CARTRIDGE BEARING W/ CAGED BEARING & 119mm SQUARE AXLE",
+      "cassette": "SHIMANO MF-TZ500 7-SPEED 14-28T FREEWHEEL",
+      "chain": "KMC HV-500",
+      "brakes": "SHIMANO ST-EF41 + TEKTRO TR160-24 160mm 6-BOLTS",
+      "wheels": "ALLOY DOUBLE WALL AV H: 20 584x20 32H + F: QR9x100mm 32H 6B / R: QR9x135mm 32H 6B",
+      "tires": "DELI 27.5'x2.1' 584x54",
+      "saddle": "MTB SADDLE, STEEL ø7mm",
+      "seatpost": "ENTITY, 27.2x350mm",
+      "handlebar": "STEEL, W: 680MM, B: 31.8MM, R/D: 40MM",
+      "stem": "ENTITY ALLOY, E: 45MM, B: 31.8MM, R/D: 0",
+      "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30"
+    },
+    "rewritten_description": "אופני הכניסה למתחילים המשתלמים ביותר בישראל מתחדשים ומשתדרגים לכבוד 2025 במחיר ללא תחרות! שילדת אלומיניום חדשה ועדכנית עם גיאומטרייה סופר נוחה לרוכבים המתחילים גם במידה XS לגובה 143 ס'מ ומעלה ב3 צבעים מרהיבים לבחירה ! בולם זעזועים אמיתי סנטור 100 מ'מ לשיכוך כל מהמורה בדרך ומערכת הילוכים שימאנו 3X7 סופר אמינה ברקסים דיסק חזקים ובטיחותיים של שימאנו וצמיגי דו שימושיים לשימוש בעיר וגם בשטח כורכר",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-premier-5-2025"
+    },
+    "firm": "Polygon",
+    "model": "PREMIER 5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 2800,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/PREMIER_5.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/PREMIER_5(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALUTECH XC SPORT FRAME",
+      "fork": "SUNTOUR XCM 120mm TRAVEL",
+      "shifters": "SHIMANO ALTUS SL-M2010, 2x9-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO ALIVIO RD-M3100 DIRECT ATTACH",
+      "crankset": "ALLOY CRANK 36/22T, 170MM",
+      "bottom_bracket": "CARTRIDGE BEARING 68x127mm",
+      "cassette": "SHIMANO CS-HG200 11-34T",
+      "chain": "KMC X9",
+      "brakes": "HYDRAULIC DISC BRAKE + 160mm 6-BOLTS",
+      "wheels": "ALLOY DOUBLE WALL",
+      "tires": "DELI 29' 'x2.25'",
+      "saddle": "ENTITY VOID SADDLE, ø7mm",
+      "seatpost": "ALLOY SEATPOST, 27.2x350mm",
+      "handlebar": "ENTITY SPORT ALLOY, W: 740mm, BB: 31.8mm, R/D: 20mm, B: 6degree",
+      "stem": "ENTITY SPORT ALLOY, EXT: 45mm, BB: 31.8mm, R/D: 0degree",
+      "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30",
+      "pedals": "CAGE PEDAL W/ REFLECTOR"
+    },
+    "rewritten_description": "אופני הרים '29 בעיצוב חדשני המתאימים לרכיבות שטח ועיר שילדת אלומיניום ALUTECH עם חיווט פנימי והכנה למוט אוכף הידראולי גיאומטריית שטח עדכנית לרכיבות מושלמות ובולם 120 מ'מ מערכות שימאנו מתקדמות, ומערכת הילוכים 2x9",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/premier-4-29-2024"
+    },
+    "firm": "Polygon",
+    "model": "Premier 4 29",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 2500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/side.png",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/side_result(187).webp",
+        "https://pedalim.co.il/Media/Uploads/front_result(16).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALUTECH XC SPORT FRAME",
+      "fork": "SUNTOUR XCM 120mm TRAVEL",
+      "shifters": "SHIMANO ALTUS SL-M315, 2x8-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO ACERA RD-M3020 DIRECT ATTACH",
+      "crankset": "ALLOY CRANK 36/22T, 170MM",
+      "bottom_bracket": "CARTRIDGE BEARING 68x127mm",
+      "cassette": "SHIMANO CS-HG200 12-32T",
+      "chain": "KMC Z-8.3",
+      "brakes": "HYDRAULIC DISC BRAKE + 160mm rotor",
+      "wheels": "ALLOY DOUBLE WALL",
+      "tires": "DELI 29' 'x2.25'",
+      "saddle": "ENTITY VOID SADDLE, STEEL ø7mm",
+      "seatpost": "ALLOY SEATPOST, 27.2x350mm",
+      "handlebar": "ENTITY SPORT ALLOY, EXT: 740mm, BB: 31.8mm, R/D: 20mm, B: 6degree",
+      "stem": "ENTITY SPORT ALLOY, EXT: 45mm, BB: 31.8mm, R/D: 0degree",
+      "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30"
+    },
+    "rewritten_description": "אופני הרים '29 בעיצוב חדשני המתאימים לרכיבות שטח ועיר שילדת אלומיניום ALUTECH עם חיווט פנימי והכנה למוט אוכף הידראולי בולם 120 מ'מ ומערכות הילוכים שימאנו מתקדמות 3 מידות לבחירה המתאימים לגובה 168 ס'מ ועד 192 ס'מ",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-wildcat-3-25"
+    },
+    "firm": "Marin",
+    "model": "Wildcat 3",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3150,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/WILDCAT-TRAIL-3-C2-MARIN24-P-cop(7).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/WILDCAT_TRAIL_3_-BLUE_-_SIDE(1).webp",
+        "https://pedalim.co.il/Media/Uploads/WILDCAT_TRAIL_3_-BLUE_-_FRONT.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 2 6061 Aluminum, Women's Specific Frame, 27.5' Wheels, Low Standover, 68mm BB shell, 135mm Forged Dropouts, IS Chainstay Disc Mount, Internal H",
+      "fork": "SR Suntour XCM HLO, 120mm Travel, Hydraulic Lockout, 46mm Offset",
+      "shifters": "microSHIFT Advent 9 Trail",
+      "rear_derailleur": "microSHIFT Advent 9, Clutch",
+      "crankset": "Alloy Crank, Steel Narrow-Wide Chainring, 32T",
+      "bottom_bracket": "Sealed Cartridge Bearings, Square Taper",
+      "cassette": "SunRace 9-Speed, 11-46T",
+      "chain": "KMC X9",
+      "brakes": "Shimano BR-MT200 Hydraulic Disc, 160mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 25mm Inner, Pinned Joint, Disc Specific + Forged Alloy, Disc, 32H",
+      "tires": "MTB, 27.5x2.25'",
+      "saddle": "Marin MTB",
+      "seatpost": "Marin Alloy, 30.9",
+      "handlebar": "Marin 31.8 Riser, 12mm Rise, 740mm Width",
+      "stem": "Marin Alloy, 31.8mm Clamp, 45mm",
+      "headset": "FSA No.10-P",
+      "pedals": "Nylon Platform"
+    },
+    "rewritten_description": "אופני ההרים החדשים והמקסימים של MARIN לשנת 2025 ! בנויים בתאמה מיוחדת לנשים וילדים במפרט טכני מותאם לסיבוב בשכונה או להרפתקאה שלך בשטח האמיתי . שילדת אלומיניום SERIES 2,בנויה בגאומטריית שטח המותאמת לנשים ,קלה וחזקה עם תעלות כבלים פנימיות מבטיחה רכיבה מדהימה בעיר וגם בשבילים קשוחים ועצבניים מערכת הילוכים 1X9 משובחת של MicroShift ADVENT מבטיחה העברת הילוכים מצוינת גם התנאי לחץ וכן טווח הילוכים רחב שמתאים גם לטיפוסים ארוכים בכביש ובשטח. בולם זעזועים 120 מ'מ ננעל הידראולית של SUNTOUR וברקסים הידראוליים חזקים של TEKTRO המותאמים לנשים מבטיחים לכן רכיבה נעימה ובטוחה גם בשטחים משובשים",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/cascade-4"
+    },
+    "firm": "Polygon",
+    "model": "CASCADE 4",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 1990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/cascade_4_black_side.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/cascade_4_black_side(4).webp",
+        "https://pedalim.co.il/Media/Uploads/cascade_4_black_front.webp",
+        "https://pedalim.co.il/Media/Uploads/cascade_4_black_back.webp",
+        "https://pedalim.co.il/Media/Uploads/cascade_4_black_left.webp"
+      ]
+    },
+    "specs": {
+      "frame": "AL6 XC SPORT FRAME",
+      "fork": "SUNTOUR XCE28 100mm TRAVEL",
+      "shifters": "SHIMANO ALTUS 2X8 SPEED",
+      "rear_derailleur": "SHIMANO ACERA 8 SPEED",
+      "crankset": "FORGED ALLOY 22X36T",
+      "bottom_bracket": "CARTRIDGE BEARING W/ CAGED BEARING & 122.5mm SQUARE AXLE",
+      "cassette": "SHIMANO CS-HG200 8-SPEED 12-32T CASSETTE SPROCKET",
+      "chain": "KMC Z-8.3",
+      "brakes": "TEKTRO 285, HYDRAULIC DISC BRAKE + 160mm 6-BOLTS",
+      "wheels": "ALLOY DOUBLE WALL + F: ALLOY DISC BRAKE QR9x100mm 32H 6B / R: ALLOY DISC BRAKE QR9x135mm 32H 6B FOR CASSETE SPROCKET",
+      "tires": "DELI 27.5'x2.1'",
+      "saddle": "MTB SADDLE, STEEL ø7mm",
+      "seatpost": "ENTITY, 27.2x350mm",
+      "handlebar": "STEEL, W: 680MM, B: 31.8MM, R/D: 40MM",
+      "stem": "ENTITY ALLOY, E: 45MM, B: 31.8MM, R/D: 0",
+      "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30",
+      "pedals": "PP CAGE W/ REFLECTOR"
+    },
+    "rewritten_description": "אופני ההרים המשתלמים ביותר בישראל מתחדשים ומשתדרגים לכבוד 2025 במחיר ללא תחרות! שילדת אלומיניום חדשה ועדכנית עם גיאומטרייה סופר נוחה לרוכבים המתחילים גם במידה XS ב3 צבעים מרהיבים לבחירה ! בולם 100 מ'מ של סנטור לשיכוך כל מהמורה בדרך ומערכת הילוכים שימאנו ACERA 2X8 סופר אמינה וידידותית ביותר לתפעול ברקסים הידראוליים עוצמתיים של טקטרו שיעצרו אותכם תמיד וצמיגי דו שימושיים לשימוש בעיר וגם בשטח כורכר",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-bobcat-3-25"
+    },
+    "firm": "Marin",
+    "model": "Bobcat 3",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3150,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/BOBCAT-TRAIL-3-29-P_2024-04-01-1.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_3_27,5_-BLUE_-_SIDE(4).webp",
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_3_27,5_-BLUE_-_FRONT.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 2 6061 Aluminum, 27.5' or 29” Wheels, Low Standover, 68mm BB shell, 135mm Forged Dropouts, IS Chainstay Disc Mount, Internal Housing & Dropper",
+      "fork": "SR Suntour XCM HLO, 120mm Travel, Hydraulic Lockout, 46mm Offset",
+      "shifters": "microSHIFT Advent 9 Trail",
+      "rear_derailleur": "microSHIFT Advent 9, Clutch",
+      "crankset": "Alloy Crank, Steel Narrow-Wide Chainring, 32T",
+      "bottom_bracket": "Sealed Cartridge Bearings, Square Taper",
+      "cassette": "SunRace 9-Speed, 11-46T",
+      "chain": "KMC X9",
+      "brakes": "Tektro M280 Hydraulic Disc, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 25mm Inner, Pinned Joint, Disc Specific + Forged Alloy, Disc, 32H",
+      "tires": "MTB, 29x2.25'",
+      "saddle": "Marin MTB",
+      "seatpost": "Marin Alloy, 30.9",
+      "handlebar": "Marin 31.8 Riser, 12mm Rise, 780mm Width",
+      "stem": "Marin Alloy, 31.8mm Clamp, 45mm",
+      "headset": "FSA No.10-P",
+      "pedals": "Nylon Platform"
+    },
+    "rewritten_description": "אופני השטח החדשים של MARIN לשנת 2025 ! אופני הרים אמיתיים שנועדו לכל סוגי הרכיבה:מכביש ועד סינגלים .מצוידים בחלקים מעולים ובמחיר הנמוך ביותר האפשרי. שילדת אלומיניום חדשה SERIES 2,חזקה וקלה עם תעלות כבלים פנימיות וזוית ראש 66.5 מעלות מבטיחה רכיבה מדהימה גם בשבילים קשוחים ועצבניים מערכת הילוכים 1X9 משובחת של MicroShift ADVENT מבטיחה העברת הילוכים מצוינת גם התנאי לחץ וכן טווח הילוכים רחב שמתאים גם לטיפוסים ארוכים בכביש ובשטח. בולם זעזועים 120 מ'מ ננעל הידראולית של SUNTOUR וברקסים הידראוליים של TEKTRO ידאגו להשאיר אותכם על המסלול גם בשטח משובש",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-bobcat-4-25"
+    },
+    "firm": "Marin",
+    "model": "Bobcat 4",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3450,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/BOBCAT-TRAIL-4-29-C1-MARIN24-P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/BOBCAT-TRAIL-4-29-C1-MARIN24-P(1).webp",
+        "https://pedalim.co.il/Media/Uploads/BOBCAT_TRAIL_4_27,5_-BLUE_-_FRONT.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 2 6061 Aluminum, 27.5' or 29” Wheels, Low Standover, 68mm BB shell, 135mm Forged Dropouts, IS Chainstay Disc Mount, Internal Housing & Dropper",
+      "fork": "SR Suntour XCM HLO-DS, 120mm Travel, Hydraulic Lockout, 46mm Offset",
+      "shifters": "Shimano SLM4100 10-Speed",
+      "rear_derailleur": "Shimano Deore RDM5120, w/Clutch",
+      "crankset": "Alloy Crank, Steel Narrow-Wide Chainring, 32T",
+      "bottom_bracket": "Sealed Cartridge Bearings, Square Taper",
+      "cassette": "Shimano CSLG300, 10-Speed, 11-48T",
+      "chain": "KMC X10",
+      "brakes": "Tektro M280 Hydraulic Disc, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 25mm Inner, Pinned Joint, Disc Specific + Forged Alloy, Disc, 32H",
+      "tires": "MTB, 27.5x2.25'",
+      "saddle": "Marin MTB",
+      "seatpost": "Marin Alloy, 30.9",
+      "handlebar": "Marin 31.8 Riser, 12mm Rise, 780mm Width",
+      "stem": "Marin Alloy, 31.8mm Clamp, 45mm",
+      "headset": "FSA No.10-P",
+      "pedals": "Nylon Platform"
+    },
+    "rewritten_description": "אופני השטח החדשים של MARIN לשנת 2025 ! מוכנים להרפתקאה הבאה שלכם ישר מהקופסא .מצוידים בחלקים איכותיים ועמידים שיבטיחו לכם הנאה עצומה וחיוך ענק שילדת אלומיניום חדשה SERIES 2,חזקה וקלה עם תעלות כבלים פנימיות וזוית ראש 66.5 מעלות מבטיחה רכיבה מדהימה גם בשבילים קשוחים ועצבניים מערכת הילוכים 1X10 חדשה ומדהימה של SHIMANO CUES מבטיחה העברת הילוכים מצוינת בתנאים קשים וטווח הילוכים רחב מאוד שמתאים גם לטיפוסים קשים. בולם זעזועים 120 מ'מ ננעל הידראולית של SUNTOUR וברקסים הידראוליים של TEKTRO ידאגו להשאיר אותכם על המסלול גם בשטח משובש",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-san-quentin-1-275-26"
+    },
+    "firm": "Marin",
+    "model": "San Quentin 1 27.5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3790,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/sq_1_black_main.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/sq_1_black_main(4).webp",
+        "https://pedalim.co.il/Media/Uploads/sq_1_black_side.webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(112).png"
+      ]
+    },
+    "specs": {
+      "frame": "Series 2 6061 Aluminum 27.5' Wheel, Double Butted, Internal Cable Routing, 141mm Open Dropout, 73mm Threaded BB",
+      "fork": "SR Suntour XCM34 Boost 15x110mm Spacing, 130mm Travel, Coil Spring, Bolt-On Thru-Axle",
+      "shifters": "microSHIFT SL-M9195-R, 1x9 with Bearings",
+      "rear_derailleur": "microSHIFT RD-M9195M, 9 Speed, With Clutch",
+      "crankset": "Marin Forged Alloy, Integrated Steel 32T Narrow Wide Chainring, Boost Spacing",
+      "bottom_bracket": "Sealed Cartridge Bearing, Square Taper",
+      "cassette": "SunRace, 9-Speed, 11-46T",
+      "chain": "KMC X-9",
+      "brakes": "Tektro M275 Hydraulic Disc, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, Disc Specific, 29mm Inner, Pinned Joint, 32H, Tubeless Compatible",
+      "tires": "Vee Tire Co., Flow Snap, 27.5x2.6', MPC Compound, Wire Bead",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "Marin Alloy, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin Alloy, 45mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”",
+      "pedals": "Nylon Platform"
+    },
+    "rewritten_description": "אופני הכיף הטהור של MARIN בעיצוב וגאומטרייה חדשה לרכיבה הכי מטורפת שלכם שילדת אלומיניום מוקשחת וזווית ראש 64 מעלות יעיפו אתכם בכל שביל שתבחרו בולם 130 מ'מ בעובי 34 מ'מ עם ציר 15 וצמיגי 27.5X2.6 לאחיזה ובטיחות מירבית גם בשטחים הקשוחים ביותר מערכת הילוכים 1X9 שתדאג שלא תיפול לכם השרשרת בקפיצות והכנה למוט אוכף הידראולי, בשביל שדרוג עתידי",
+    "fork length": 110,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-san-quentin-1-29-26"
+    },
+    "firm": "Marin",
+    "model": "San Quentin 1 29",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 3790,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/sq_1_yellow_main(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/sq_1_yellow_main(7).webp",
+        "https://pedalim.co.il/Media/Uploads/sq_1_yellow_side(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(111).png"
+      ]
+    },
+    "specs": {
+      "frame": "Series 2 6061 Aluminum 29' Wheel, Double Butted, Internal Cable Routing, 141mm Open Dropout, 73mm Threaded BB",
+      "fork": "SR Suntour XCM34 Boost 15x110mm Spacing, 130mm Travel, Coil Spring, Bolt-On Thru-Axle",
+      "shifters": "microSHIFT SL-M9195-R, 1x9 with Bearings",
+      "rear_derailleur": "microSHIFT RD-M9195M, 9 Speed, With Clutch",
+      "crankset": "Marin Forged Alloy, Integrated Steel 32T Narrow Wide Chainring, Boost Spacing",
+      "bottom_bracket": "Sealed Cartridge Bearing, Square Taper",
+      "cassette": "SunRace, 9-Speed, 11-46T",
+      "chain": "KMC X-9",
+      "brakes": "Tektro M275 Hydraulic Disc, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, Disc Specific, 29mm Inner, Pinned Joint, 32H, Tubeless Compatible",
+      "tires": "Vee Tire Co., Flow Snap, 29x2.6', MPC Compound, Wire Bead",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "Marin Alloy, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin Alloy, 45mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”",
+      "pedals": "Nylon Platform"
+    },
+    "rewritten_description": "אופני הכיף הטהור של MARIN בעיצוב וגאומטרייה חדשה לרכיבה הכי מטורפת שלכם שילדת אלומיניום מוקשחת וזווית ראש 64 מעלות יעיפו אתכם בכל שביל שתבחרו בולם 130 מ'מ בעובי 34 מ'מ עם ציר 15 וצמיגי 29X2.6 לאחיזה ובטיחות מירבית גם בשטחים הקשוחים ביותר מערכת הילוכים 1X9 שתדאג שלא תיפול לכם השרשרת בקפיצות והכנה למוט אוכף הידראולי, בשביל שדרוג עתידי",
+    "fork length": 110,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-ssan-quentin-2-29-26"
+    },
+    "firm": "Marin",
+    "model": "San Quentin 2 29",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 5990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/sq_2_main.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/sq_2_main(1).webp",
+        "https://pedalim.co.il/Media/Uploads/sq_2_side.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 3 6061 Aluminum, Double Butted Frame, Internal Cable Routing, 12x148mm Thru-Axle, 73mm Threaded BB",
+      "fork": "X-Fusion Slide Boost RC, 140mm Travel, Compression and Rebound Adjustment, 110x15mm Thru Axle, 44mm Offset",
+      "shifters": "Tektro, SL M5100-11R, 11-Speed",
+      "rear_derailleur": "Tektro RD-5100-L, Long Cage, Clutch",
+      "crankset": "Marin Forged Alloy w/ Hollow Spindle and Integrated Steel 32t Narrow Wide Chanring, Boost Spacing",
+      "bottom_bracket": "External Sealed Cartridge Bearing",
+      "cassette": "Tektro CS-M5100-11, 11-Speed, 11-50T",
+      "chain": "KMC X-11 Silver and Black",
+      "brakes": "Tektro M535 4-Piston Hydraulic, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, Disc Specific, 29mm Inner, Pinned Joint, 32H, Tubeless Compatible",
+      "tires": "Delium Vesatile, All-Around Construction, 2.5', Wire-Bead Tubeless",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP18, 1x Remote, All Sizes 170mm Travel, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”",
+      "pedals": "Marin MTB Plastic"
+    },
+    "rewritten_description": "האופניים היחידים שיודעים לעשות הכל! מרכיבת שבילים אגרסיבית ועד דירט ג'אמפ במחיר שלא יקרע לכם את הכיס שילדת אלומיניום מוקשחת וזווית ראש 64 מעלות לרכיבת שבילים ואנדורו בולם 140 מ'מ ציר 15 מערכת הילוכים 1X11 ומוט אוכף הידראולי גלגלי '29 וצמיגי 2.6 רחבים",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi_magma_9s"
+    },
+    "firm": "Bianchi",
+    "model": "Magma 9.S",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 5990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MAGMA_9.S_BLK-CHEL_result.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MAGMA_9.S_BLK-CHEL_result(10).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Magma 29 alu, 1.1/8' HT, BSA 68mm, seatpost diam. 27,2mm, HDM bottom pull or Side-Swing, PM 160mm, BOOST 9x141mm QR, internal cable routing",
+      "fork": "Rock Shox Judy Silver TK 29' Solo Air 100mm",
+      "shifters": "Shimano Deore SL-M6100-R 1x12sp",
+      "rear_derailleur": "Shimano Deore RD-M6100 12sp",
+      "crankset": "Shimano FC-MT511-1, 32T, crank length: 175mm",
+      "bottom_bracket": "included in the crankset",
+      "cassette": "Shimano CS-M6100-12, 12sp, 10-51T",
+      "chain": "Shimano CN-M6100 12sp",
+      "brakes": "Shimano BR-MT200, 160mm Rotors",
+      "wheels": "VelomannDP2.5, 622x25c + Shimano FH-MT410-B",
+      "tires": "Kenda Booster 29x2.20",
+      "saddle": "Velomann, steel rails, PVC soft touch cover, 140mm width",
+      "seatpost": "Velomann AL2014 shaft w/alloy head, diam. 27.2mm, 0mm seatback, length 350mm",
+      "handlebar": "Velomann Flat top DB Alloy 6061-T6, width 720mm, diam. 31,8mm, 9° backsweep",
+      "stem": "Velomann 3D forged Alloy 6061, +/-7°, 1.1/8mm, diam. 31.8mm, ext: 90mm",
+      "headset": "Fsa TH888"
+    },
+    "rewritten_description": "אופני ה XC המשובחים של BIANCHI בגירסת אלומיניום מהממת לרוכבים שרוצים לטוס בשבילים עם חיוך שילדת אלומיניום '29 בצביעה ועיצוב XC מדהימים עם חיווט פנימי ב4 מידות S-XL מערכת הילוכים SHIMANO DEORE 1X12 לקלות דיווש והעברה בכל שטח וברקסים SHIMANO חזקים ואמינים בולם קדמי ROCKSHOX JUDY אויר 100 מ'מ ננעל וצמיגי קנדה מהירים 2.2",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/team-marin-1-2024"
+    },
+    "firm": "Marin",
+    "model": "Team  1",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "hardtail",
+    "original_price": 6500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/side_result(210).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/side_result(214).webp",
+        "https://pedalim.co.il/Media/Uploads/front_result(30).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 4 6061 Aluminum, 29' Wheels, Superlight Aluminum, Post-Mount Rear Brake, Internal Shifter and Dropper Post Routing, 148x12mm Boost Thru-Axle",
+      "fork": "RockShox Judy Silver TK, 120mm Travel, Alloy Tapered Steerer, Solo Air Spring, 110x15mm Boost Spacing, Maxle Stealth, 51mm Offset",
+      "shifters": "Shimano Deore, SLM6100, 12-Speed",
+      "rear_derailleur": "Shimano Deore, RDM6100, 12-Speed",
+      "crankset": "Forged Alloy 1x12, Hollow Spindle, Steel Narrow Wide 32T Chainring",
+      "bottom_bracket": "External Sealed Cartridge Bearings",
+      "cassette": "SunRace, 12-Speed, 11-51T",
+      "chain": "KMC X12",
+      "brakes": "Tektro HDT280, Hydraulic, 180mm Rotor + Tektro HDR285 Flat-Mount Hydraulic, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29mm Inner, Tubeless Compatible + 148x12mm R + 110x15mm F",
+      "tires": "Vee Tire, Rail Rocco XC, 29x2.3', Dual Control Compound, Folding Bead, Tubeless Ready",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "Marin Alloy, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 4º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 42ACB, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני XC מצויינים שלא עוצרים גם בסינגלים קשוחים שילדת אלומיניום SERIES 4 קלה וחזקה בטכנולוגיית בוסט 148 מ'מ עדכנית מערכת הילוכים 1X12 ובולם אוויר 120 מ'מ גלגלי '29 וזוית ראש 67 מעלות שתטיס אתכם בשבילים",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-quake"
+    },
+    "firm": "Marin",
+    "model": "QUAKE",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 21990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/QUAKE-25-P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/QUAKE-25-P(1).webp",
+        "https://pedalim.co.il/Media/Uploads/QUAKE-25-PS.webp",
+        "https://pedalim.co.il/Media/Uploads/Quake-detail-9.webp",
+        "https://pedalim.co.il/Media/Uploads/Quake-detail-20.webp"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 Alloy, 180mm travel MultiTrac LT Suspension, Adjustable CS Length/BB Height, 148mm Rear Thru-Axle, & frame protection, UDH",
+      "fork": "RockShox Boxxer 3.0 RC, 200mm Travel, 29' , 110x20mm Maxle Stealth, 52mm Offset",
+      "rear_shock": "Rock Shox Vivid Coil Ultimate DH, 225x75mm Trunnion Upper Mount, 30xM8 Lower Mount, Custom Tune, 450 lb/in",
+      "shifters": "SRAM GX DH, 7-Speed",
+      "rear_derailleur": "SRAM GX DH",
+      "crankset": "SRAM Descendant Alloy 34T, 165mm",
+      "bottom_bracket": "SRAM DUB BSA",
+      "cassette": "SRAM GS DH, 11-25T",
+      "chain": "SRAM PC-1110",
+      "brakes": "SRAM Maven Bronze, 200mm HS2 Rotor",
+      "wheels": "Marin Double Wall Alloy, 29mm Inner, Sleeved Joint, Disc Specific, 32H, Tubeless Compatible",
+      "tires": "Maxxis Assegai, 29'(F)/27.5'(R) x 2.5', Tubeless Ready, 3C MaxxGrip, DH Casing",
+      "saddle": "Marin Short Nose",
+      "seatpost": "Marin Alloy, 34.9mm",
+      "handlebar": "SRAM Descendant DH, 31.8mm Clamp, 25mm Rise, 9 Degree Backsweep, 5 Degree Upsweep",
+      "stem": "SRAM Descendant DH Direct Mount, 31.8mm Clamp, 50mm Length",
+      "headset": "FSA No 74"
+    },
+    "rewritten_description": "מהפכת הגרוויטי של Marin – שלדת אלומיניום מתקדמת ומהלך מתלה אחורי של 180 מ'מ לרכיבת דאונהיל, פארקים אנדורו קיצונית. מערכת Flip Chip מאפשרת לשנות את גובה הציר המרכזי ולהתאים את הגאומטריה לסגנון הרכיבה שלך. תומך בשילובי גלגלים 29/27.5 או 29/29 – בחירה חופשית בין מהירות יציבה לשליטה חדה ומהנה במסלולים טכניים. שיכוך MultiTrac 2 LT ומבנה עמיד מעניקים אחיזה וביטחון גם כשאתה דוהר במורדות הקשוחים ביותר.",
+    "fork length": 110,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-alpine-trail-xr-axs-25"
+    },
+    "firm": "Marin",
+    "model": "Alpine Trail XR AXS",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 24900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/ALPINE-TRAIL-XR-AXS.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/ALPINE_TRAIL_AXS_SIDE(1).webp",
+        "https://pedalim.co.il/Media/Uploads/ALPINE_TRAIL_AXS_FRONT.webp",
+        "https://pedalim.co.il/Media/Uploads/ALPINE_TRAIL_AXS_SIDE_ACTION.webp",
+        "https://pedalim.co.il/Media/Uploads/ALPINE_TRAIL_AXS_ACTION.webp"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 6061 Aluminum, 29” Wheels, 160mm Travel MultiTrac LT Suspension Platform, Integrated Downtube Storage, Adjustable Headset & CS Length",
+      "fork": "RockShox Zeb Ultimate, 170mm Travel, 29', 110x15mm Maxle Stealth, 44mm Offset",
+      "rear_shock": "RockShox Super Deluxe Coil Ultimate, 205x65, 30xM8 Lower Hardware, Custom Tune, S/M = 350 lbs, L/XL = 450 lbs",
+      "shifters": "SRAM AXS POD MMX",
+      "rear_derailleur": "SRAM GX Eagle AXS T-Type",
+      "crankset": "SRAM GX Eagle, 32T, 55MM CL, 170MM Length",
+      "bottom_bracket": "SRAM DUB MTB 73",
+      "cassette": "SRAM GX 1275 T-Type 10-52T",
+      "chain": "SRAM GX Eagle T-Type",
+      "brakes": "SRAM Code Bronze 4-Piston Hydraulic Disc, HSC 200F/180R mm Rotor",
+      "wheels": "Marin, Double Wall Alloy, 29mm Inner, Sleeved Joint, Disc Specific, 32H, Tubeless Compatible",
+      "tires": "Maxxis Assegai MAXX GRIP, Front 29x2.5 EXO+, Rear 27.5x2.5' DoubleDown, Tubeless compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, Travel S = 150mm, M/L = 170mm, XL = 200mm",
+      "handlebar": "Marin Trail, 35mm Clamp, 7000 Alloy Bar, 800mm Length, 20mm Rise, 5 Degree Up, 8 Degree Back",
+      "stem": "Marin CNC, 35mm Length, 35mm Bar Bore",
+      "headset": "FSA Custom Headset, Adjustable HTA Design"
+    },
+    "rewritten_description": "אופני האנדורו המדוברים ביותר בעולם בצביעת ורוד MARIN משגע ממתינים לכם כדי לקרוע את השבילים ! ביקורות מטורפות בכל העולם,איבזור קצה ומחיר ללא תחרות ! שילדת אלומיניום חדשה לחלוטין LT2 סופר חזקה ומוגנת עם אפשרות שינוי גיאומטריה להתאמה מוחלטת לסגנון הרכיבה שלכם :DH מהיר,אנדורו טכני,סלעים או DIRT JUMP מערכת הילוכים אלחוטית ומעביר SRAM AXS ,ברקסים SRAM Code Bronze 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי מקסיס ASSEGAI יבטיחו שתסיימו כל מסלול עם חיוך בולמי זעזועים משובחים RockShox Zeb Ultimate קדמי 170מ'מ RockShox Super Deluxe Coil Ultimate אחורי 160 מ'מ ישאירו אותכם על השביל הכי משובש בלי בעייה",
+    "fork length": 170,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-riftzone-1-29-26"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone 1 29",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 7990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/rz_1_black_main(6).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/rz_1_black_main(7).webp",
+        "https://pedalim.co.il/Media/Uploads/rz_1_black_side(4).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 3 6061 Aluminum, 130mm Travel, MultiTrac Suspension Platform, 141 Boost Spacing, 73mm Threaded BB w/ ISCG05 Tabs",
+      "fork": "X-Fusion Slide Boost RC, 140mm Travel, Compression and Rebound Adjustment, 44mm Offset",
+      "rear_shock": "X-Fusion O2 Pro R, Custom Tune, 210x55mm, M8x25mm Hardware Top and Bottom",
+      "shifters": "Tektro, SL M5100-11R, 11-Speed",
+      "rear_derailleur": "Tektro RD-5100-L, Long Cage, Clutch",
+      "crankset": "Marin Forged Alloy, Integrated Steel 32T Narrow Wide Chainring, Boost Spacing",
+      "bottom_bracket": "External Sealed Cartridge Bearing",
+      "cassette": "Tektro CS-M5100-11, 11-Speed, 11-50T",
+      "chain": "KMC X-11 Silver and Black",
+      "brakes": "Tektro HD-M280 Hydraulic, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29mm Inner, Pinned Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Vee Tire Co. Snap WCE 29'X2.35', Top 40 Compound, GXE Core, 90 TPI, Tubeless Compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "X-Fusion Manic, 1x Composite Remote, 170mm Travel, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ'מ עם בולם 140 מ'מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל מערכת טקטרו 11 הילוכים עם קסטה 51 שיניים ובולמי אוויר לא יעצרו אותכם גם בעליות הטכניות ביותר שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-riftzone-1-275-26"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone 1 27.5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 7990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/rz_1_purple_main.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/rz_1_purple_main(4).webp",
+        "https://pedalim.co.il/Media/Uploads/rz_1_purple_side.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 3 6061 Aluminum, 130mm Travel, MultiTrac Suspension Platform, 141 Boost Spacing, 73mm Threaded BB w/ ISCG05 Tabs",
+      "fork": "X-Fusion Sweep Boost RC, 140mm Travel, Compression and Rebound Adjustment, 44mm Offset",
+      "rear_shock": "X-Fusion O2 Pro R, Custom Tune, 210x55mm, M8x25mm Hardware Top and Bottom",
+      "shifters": "Tektro, SL M5100-11R, 11-Speed",
+      "rear_derailleur": "Tektro RD-5100-L, Long Cage, Clutch",
+      "crankset": "Marin Forged Alloy, Integrated Steel 32T Narrow Wide Chainring, Boost Spacing",
+      "bottom_bracket": "External Sealed Cartridge Bearing",
+      "cassette": "Tektro CS-M5100-11, 11-Speed, 11-50T",
+      "chain": "KMC X-11 Silver and Black",
+      "brakes": "Tektro HD-M280 Hydraulic, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29mm Inner, Pinned Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Vee Tire Co. Snap WCE 27.5'X2.35', Top 40 Compound, GXE Core, 90 TPI, Tubeless Compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "X-Fusion Manic, 1x Composite Remote, 150mm Travel, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ'מ עם בולם 140 מ'מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל מערכת טקטרו 11 הילוכים עם קסטה 51 שיניים ובולמי אוויר לא יעצרו אותכם גם בעליות הטכניות ביותר שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-rift-zone-2-2025"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone 2",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 9990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_side.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_side(1).webp",
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_front(2).webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(34)_png.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 3 6061 Aluminum, 130mm Travel, MultiTrac Suspension Platform, 148x12mm Boost Thru-Axle, 73mm Threaded BB w/ ISCG05 Tabs",
+      "fork": "Marzocchi Bomber Z2, Rail Damper with Sweep Adjustment, 140mm Travel, Kabolt Bolt-On Axle, 44mm Offset",
+      "rear_shock": "RockShox Deluxe Select RT, Debonair Air Sleeve, Rebound Adjustment, Custom Tune, 210x55mm, M8x25mm Hardware",
+      "shifters": "Shimano Deore, 12-Speed, SL-M6100-R",
+      "rear_derailleur": "Shimano Deore, 12-Speed, SGS",
+      "crankset": "FSA Comet, Modular 1x, 32T Direct Mount Chainring, MegaTooth Technology, Boost Spacing",
+      "bottom_bracket": "External Sealed Cartridge Bearing",
+      "cassette": "SunRace, 12-Speed, 11-51T",
+      "chain": "KMC X-12 Silver and Black",
+      "brakes": "Tektro HD-M535 Hydraulic Disc, 180mm Rotor",
+      "wheels": "Marin, Double Wall Alloy, 29mm Inner, Pinned Joint, Disc Specific, 32H, Tubeless Compatible",
+      "tires": "Vee Tire Co. Snap WCE 2.35', Top 40 Compound, GXE Core, 90 TPI, Tubeless Compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "X-Fusion Manic, 1x Composite Remote, 170mm Travel, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ'מ עם בולם 140 מ'מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל גלגלי 29' רחבים ומערכת שימאנו 12 הילוכים יעיפו אותכם בעליות ויטיסו אותכם בביטחה בירידות שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-rift-zone-1-2025"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone 1",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 7990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE-1_pnk_side(12).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE-1_pnk_side(7).webp",
+        "https://pedalim.co.il/Media/Uploads/RIFTZONE-1_pnk_front(4).webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(107).png"
+      ]
+    },
+    "specs": {
+      "frame": "Series 3 6061 Aluminum, 130mm Travel, MultiTrac Suspension Platform, 141 Boost Spacing, 73mm Threaded BB w/ ISCG05 Tabs",
+      "fork": "X-Fusion Slide, 140mm Travel, Compression and Rebound Adjustment, 44mm Offset",
+      "rear_shock": "X-Fusion O2 Pro R, Custom Tune, 210x55mm, M8x25mm Hardware Top and Bottom",
+      "shifters": "Shimano Deore, 11-Speed, SL-5100R",
+      "rear_derailleur": "Shimano Deore, 11-Speed, SGS",
+      "crankset": "Marin Forged Alloy, Integrated Steel 32T Narrow Wide Chainring, Boost Spacing",
+      "bottom_bracket": "External Sealed Cartridge Bearing",
+      "cassette": "Sunrace, 11-Speed, 11-51T, ED Black",
+      "chain": "KMC X-11 Silver and Black",
+      "brakes": "Tektro HD-M280 Hydraulic, 180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29mm Inner, Pinned Joint, Disc Specific, Tubeless Compatible",
+      "tires": "Vee Tire Co. Snap WCE 2.35', Top 40 Compound, GXE Core, 90 TPI, Tubeless Compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "X-Fusion Manic, 1x Composite Remote, 170mm Travel, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ'מ עם בולם 140 מ'מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל מערכת שימאנו 11 הילוכים עם קסטה 51 שיניים ובולמי אוויר לא יעצרו אותכם גם בעליות הטכניות ביותר שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-alpine-trail-xr-25"
+    },
+    "firm": "Marin",
+    "model": "Alpine Trail XR",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 21900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/AT-XR-profile.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/AT-XR-profile(1).webp",
+        "https://pedalim.co.il/Media/Uploads/AT-XR-front-3-4.webp",
+        "https://pedalim.co.il/Media/Uploads/ALPINE_TRAIL_XR_SIDE_OUTDOOR_(2).webp",
+        "https://pedalim.co.il/Media/Uploads/ALPINE_TRAIL_XR_DETAIL(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 6061 Aluminum, 29” Wheels, 160mm Travel MultiTrac LT Suspension Platform, Integrated Downtube Storage, Adjustable Headset & CS Length",
+      "fork": "RockShox Zeb Ultimate, 170mm Travel, 29', 110x15mm Maxle Stealth, 44mm Offset",
+      "rear_shock": "RockShox Super Deluxe Coil Ultimate, 205x65, 30xM8 Lower Hardware, Custom Tune, S/M = 350 lbs, L/XL = 450 lbs",
+      "shifters": "SRAM GX Eagle Lunar MMX Mount",
+      "rear_derailleur": "SRAM GX Eagle Lunar",
+      "crankset": "SRAM GX Eagle, 32T, 55MM CL, 170MM Length",
+      "bottom_bracket": "SRAM DUB MTB 73",
+      "cassette": "SRAM XG 1275 Eagle Cassette 10-52T",
+      "chain": "SRAM NX Eagle",
+      "brakes": "SRAM DB8 4-Piston Hydraulic Disc , HSC 200F/180R mm Rotor",
+      "wheels": "Marin, Double Wall Alloy, 29mm Inner, Sleeved Joint, Disc Specific, 32H, Tubeless Compatible",
+      "tires": "Maxxis Assegai MAXX GRIP, Front 29x2.5 EXO+, Rear 27.5x2.5' DoubleDown, Tubeless compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, Travel S = 150mm, M/L = 170mm, XL = 200mm",
+      "handlebar": "Marin Trail, 35mm Clamp, 7000 Alloy Bar, 800mm Length, 20mm Rise, 5 Degree Up, 8 Degree Back",
+      "stem": "Marin CNC, 35mm Length, 35mm Bar Bore",
+      "headset": "FSA Custom Headset, Adjustable HTA Design"
+    },
+    "rewritten_description": "אופני האנדורו החדשים והכי ניתנים לכיוון גאומטרייה אישית ממתינים לכם כדי לקרוע את השבילים ! ביקורות מטורפות בכל העולם,איבזור קצה ומחיר ללא תחרות ! שילדת אלומיניום חדשה לחלוטין LT2 סופר חזקה ומוגנת עם אפשרות שינוי גיאומטריה להתאמה מוחלטת לסגנון הרכיבה שלכם :DH מהיר,אנדורו טכני,סלעים או DIRT JUMP מערכת הילוכים SRAM GX 12 ,ברקסים SRAM DB8 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי מקסיס ASSEGAI יבטיחו שתסיימו כל מסלול עם חיוך בולמי זעזועים משובחים RockShox Zeb Ultimate קדמי 170מ'מ RockShox Super Deluxe Coil Ultimate אחורי 160 מ'מ ישאירו אותכם על השביל הכי משובש בלי בעייה",
+    "fork length": 170,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-siskiu-d5-2021"
+    },
+    "firm": "Polygon",
+    "model": "Siskiu D5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 4790,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-P2_png.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SISKIU_D5(1).webp",
+        "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-RF_png.webp",
+        "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-RR_png.webp",
+        "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-LF-1122x748_png.webp",
+        "https://pedalim.co.il/Media/Uploads/polygon_play(1)_png.webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL FRAME",
+      "fork": "SUNTOUR XCM HLO, 120MM TRAVEL",
+      "rear_shock": "SUNTOUR RAIDON LO AIR, E2E: 190x51MM",
+      "shifters": "SHIMANO SL-M3100, 2x9 SPEED TRIGGER",
+      "front_derailleur": "SHIMANO M3100",
+      "rear_derailleur": "SHIMANO RD-M3100 DIRECT ATTACH 9-SPEED",
+      "crankset": "SHIMANO FC-MT210 36/22T TWO PIECE CRANK, 170MM",
+      "bottom_bracket": "BSA THREADED 68/73MM",
+      "cassette": "SHIMANO CS-HG200 11-36T 9-SPEED",
+      "chain": "KMC X9",
+      "brakes": "SHIMANO MT200 HYDRAULIC DISC BRAKE, ROTOR: FRONT:180MM REAR:160MM CENTER-LOCK",
+      "wheels": "ALLOY DOUBLE WALL, RIM: ALLOY DOUBLE WALL 584-15 32H FOR TYRE 584-35/68",
+      "tires": "DELI TIRE 27.5'x2.25'",
+      "saddle": "ENTITY VOID SADDLE",
+      "seatpost": "ENTITY SPORT ALLOY, DXL: 30.9x350MM",
+      "handlebar": "ENTITY SPORT ALLOY, W: 760MM, BB: 31.8MM, R/D: 12MM, B: 0DEGREE",
+      "stem": "ENTITY SPORT ALLOY, E: 45MM, B: 31.8MM, R/D: 0DEGREE",
+      "headset": "THREADLESS ZERO STACK HEADSET",
+      "pedals": "ALLOY CAGE PEDAL W/ REFLECTOR"
+    },
+    "rewritten_description": "אופני שבילים אמיתיים במחיר מצוין שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 120 מ'מ ומערכת הילוכים 2X9 גלגלי '27.5 לשליטה מצוינת בכל תנאי השטח",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/siskiu_d6_2022"
+    },
+    "firm": "Polygon",
+    "model": "Siskiu D6",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 6500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SISKIU_D6_1.png",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SISKIU_D6_1(16).png",
+        "https://pedalim.co.il/Media/Uploads/SISKIU_D6_2.png",
+        "https://pedalim.co.il/Media/Uploads/SISKIU_D6_3.png",
+        "https://pedalim.co.il/Media/Uploads/SISKIU_D6_4.png",
+        "https://pedalim.co.il/Media/Uploads/polygon_play_png.webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL FRAME",
+      "fork": "SUNTOUR XCM BOOST 120mm TRAVEL",
+      "rear_shock": "SUNTOUR RAIDON LO AIR, E2E: METRIC 190x45mm",
+      "shifters": "SHIMANO DEORE SL-M4100, 10-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO DEORE RD-M4120 DIRECT ATTACH 10-SPEED",
+      "crankset": "SHIMANO DEORE FC-M5100-1 32T TWO-PIECE-CRANK",
+      "bottom_bracket": "BSA THREADED 68/73mm",
+      "cassette": "SHIMANO DEORE CS-M4100 10-42T 10-SPEED",
+      "chain": "KMC X10-1",
+      "brakes": "SHIMANO MT201 HYDRAULIC DISC BRAKE",
+      "wheels": "X-15 TUBELESS READY W/ TUBELESS TAPE",
+      "tires": "DELI 27.5'x2.25' / 29'x2.25'",
+      "saddle": "ENTITY VOID SADDLE, ø 7mm",
+      "seatpost": "TRANZ-X DROPPER 150mm / 170mm travel, 30.9 x 442mm (S-M) / 495mm (L-XL)",
+      "handlebar": "ENTITY SPORT ALLOY, W: 760mm, BB: 31.8mm, R/D: 12mm, B: 6degree",
+      "stem": "ENTITY SPORT ALLOY, EXT: 45mm, BB: 31.8mm, R/D: 0Degree",
+      "headset": "THREADLESS ZERO STACK HEADSET, ZS 44/28.6 | ZS 56/30",
+      "pedals": "PP PEDAL"
+    },
+    "rewritten_description": "אופני שבילים אמיתיים במחיר מצוין שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 120 מ'מ ומערכת הילוכים 1X10 גלגלי '29 לשליטה מצוינת בכל תנאי השטח",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-riftzone-jr-26?bsp=55188"
+    },
+    "firm": "Marin",
+    "model": "Rift Zone JR",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 7990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MARIN_RIFT_ZONE_JR_HIGH_RES(4).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MARIN_RIFT_ZONE_JR_HIGH_RES(5).webp",
+        "https://pedalim.co.il/Media/Uploads/MARIN_RIFT_ZONE_JR_HIGH_RES_SIDE(2).webp",
+        "https://pedalim.co.il/Media/Uploads/RZ_JR_jump.webp",
+        "https://pedalim.co.il/Media/Uploads/RZ_JR_ride.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 3 6061 Aluminum, 24” Wheels, 130mm Travel, MultiTrac Suspension Platform, 148x12mm Boost Thru-Axle, 73mm Threaded BB w/ ISCG05 Tabs",
+      "fork": "X-Fusion Velvet RLC 26', 130mm Travel, Compression and Rebound Adjustment, 100x15mm Thru-Axle",
+      "rear_shock": "X-Fusion O2 Pro R, 190x45mm, Custom Tune, M8x25mm Hardware",
+      "shifters": "Tektro, SL M5100-11R, 11-Speed",
+      "rear_derailleur": "Tektro RD-5100-L, Long Cage, Clutch",
+      "crankset": "Marin Forged Alloy 1x11, Hollow Spindle, Steel Narrow Wide 32T Chainring, Direct Mount Type",
+      "bottom_bracket": "External Sealed Cartridge Bearings",
+      "cassette": "Tektro CS-M5100-11, 11-Speed, 11-50T",
+      "chain": "KMC X-11 Silver and Black",
+      "brakes": "Tektro HD-M280 Hydraulic, 180mm Rotor",
+      "wheels": "Marin, Double Wall Alloy, 27mm Inner, Pinned Joint, Disc Specific",
+      "tires": "Vee Tire Co., Flow Snap 24x2.4', Tackee Compound, Wire Bead",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "Marin Alloy, 30.9mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 15mm Rise, 720mm Width, 4º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני השיכוך מלא המושלמים לילדים - עכשיו במפרט 2026! שילדה חדשנית שממשיכה עם הילד עם גלגלי '24 ואופציה עתידית לגלגלי '26 בולמי אוויר 130 מ'מ ומערכת הילוכים 1x11 של טקטרו ברקסים הידראוליים וצמיגי שטח אמיתיים",
+    "fork length": 130,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-siskiu-t7-29-2024"
+    },
+    "firm": "Polygon",
+    "model": "Siskiu T7 29",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 9500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/siskiu_t7_grey.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/siskiu_t7_grey(4).webp",
+        "https://pedalim.co.il/Media/Uploads/siskiu_t7_grey_front_L.webp",
+        "https://pedalim.co.il/Media/Uploads/siskiu_t7_grey_front_R.webp",
+        "https://pedalim.co.il/Media/Uploads/siskiu_t7_grey_back.webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX TRAIL FRAME 135MM TRAVEL, TAPER H/T",
+      "fork": "ROCKSHOX RECON RL BOOST 15X110MM, 140MM TRAVEL",
+      "rear_shock": "ROCKSHOX DELUXE PLUS SELECT SPECIAL TUNING E2E:210X55MM, HARDWARE:8MMX25MM",
+      "shifters": "SHIMANO DEORE SL-M6100-R, 1x12-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO DEORE RD-M6100-SGS DIRECT ATTACH",
+      "crankset": "12 SPEED 11-51T",
+      "bottom_bracket": "SHIMANO 2-PIECE CRANKSET BSA THREADED",
+      "cassette": "Sunrace 11-51 HG",
+      "chain": "KMC X12 12SPEED",
+      "brakes": "TEKTRO LEVER + SHIMANO SM-RT54 180mm CENTER-LOCK",
+      "wheels": "ENTITY XL2 DISC",
+      "tires": "PERFORMANCE TIRE, 29”X2.40”",
+      "saddle": "ENTITY XTEND",
+      "seatpost": "TRANZ-X JD-YSP23JL 150mm",
+      "handlebar": "ENTITY XPERT, ALLOY W:780MM R:20MM BB:35MM",
+      "stem": "ENTITY XPERT, ALLOY E:35MM R:7DEG BB:35MM",
+      "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40"
+    },
+    "rewritten_description": "אופני שבילים ואינדורו מעולים של POLYGON שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 140 מ'מ ומערכת הילוכים 1X12 גלגלי '29 לשליטה מצוינת בכל תנאי השטח",
+    "fork length": 110,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/siskiu_t8_2023"
+    },
+    "firm": "Polygon",
+    "model": "Siskiu T8 29",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 11990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SIDE_result(78).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SIDE_result(181).webp",
+        "https://pedalim.co.il/Media/Uploads/FACE_FRONT_result(22).webp",
+        "https://pedalim.co.il/Media/Uploads/FACE_FRONT_2_result.webp",
+        "https://pedalim.co.il/Media/Uploads/FACE_BACK_result(12).webp",
+        "https://pedalim.co.il/Media/Uploads/polygon_play(20).png"
+      ]
+    },
+    "specs": {
+      "frame": "ALX TRAIL FRAME 135MM TRAVEL, TAPER H/T",
+      "fork": "FOX 34 RHYTHM 140mm TRAVEL",
+      "rear_shock": "FOX FLOAT DPS SPECIAL TUNING E2E:210X55MM, HARDWARE:8MMX25MM",
+      "shifters": "SHIMANO SLX SL-M7100-R, 1x12-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO SLX RD-M7100-SGS DIRECT ATTACH",
+      "crankset": "SHIMANO MT-510-1 BOOST 32T",
+      "bottom_bracket": "SHIMANO 2-PIECE CRANKSET BSA THREADED",
+      "cassette": "Sunrace 11-51 HG",
+      "chain": "KMC X12 12SPEED",
+      "brakes": "TEKTRO HD-M745 4-PISTONS HYDRAULIC DISC BRAKES + SHIMANO SM-RT54 180mm CENTER-LOCK",
+      "wheels": "ENTITY XL2 DISC 622-35",
+      "tires": "PERFORMANCE TIRE, 29”X2.40”",
+      "saddle": "ENTITY XTENT",
+      "seatpost": "TRANZ-X 150MM TRAVEL, ZERO OFFSET, 30.9MM",
+      "handlebar": "ENTITY XPERT, ALLOY W:780MM R:20MM BB:35MM",
+      "stem": "ENTITY XPERT ALLOY, EXT: 35mm, BB: 35mm, R/D: 7 Degree",
+      "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40"
+    },
+    "rewritten_description": "אופני שבילים ואינדורו החדשים של POLYGON שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 140 מ'מ ומערכת הילוכים 1X12 גלגלי '29 לשליטה מצוינת בכל תנאי השטח",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-alpine-trail-7-2021"
+    },
+    "firm": "Marin",
+    "model": "Alpine Trail 7",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 13990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/690260(10)_jpg.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/690260(20)_jpg.webp",
+        "https://pedalim.co.il/Media/Uploads/2021_Alpine_Trail_7_gallery_2(4)_jpg.webp",
+        "https://pedalim.co.il/Media/Uploads/Marin_Play(47)_png.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Series 4 6061 Aluminum Frame, 29” Wheels, 150mm Travel MultiTrac Suspension Platform, Internal Dropper Post and Rear Derailleur Routing, Chainstay Mou",
+      "fork": "RockShox Yari RC, 29”, 160mm of Travel, Air Sprung, Debonair, Compression and Rebound Adjustment, Fast Black Stanchions, 110x15mm Maxle Stealth, 42mm",
+      "rear_shock": "Rock Shox Deluxe Select + RT, Debonair Air Spring, 2 Position Compression and Rebound Adjustment, 205x65mm, Trunnion Upper Mount, 25mmxM8 Lower Mount",
+      "shifters": "Shimano Deore, 12-Speed, SL-7100R",
+      "rear_derailleur": "Shimano Deore SGS, Shadow Plus, Direct Attachment, 12-Speed",
+      "crankset": "FSA Comet Heavy Duty, Modular 1x, 32T Direct Mount Chainring, MegaTooth Technology, Boost Spacing",
+      "bottom_bracket": "External Sealed Cartridge Bearing",
+      "cassette": "Shimano, Deore 12-Speed, 10-51T",
+      "chain": "KMC X-12 Silver and Black",
+      "brakes": "Shimano MT420, 4-Piston Hydraulic Disc Brake, 203/180mm Rotors",
+      "wheels": "Marin, Double Wall Alloy, 29mm Inner, Pinned Joint, Disc Specific, 32H, Tubeless Compatible + Shimano HB-MT410B, 148x12mm, Centerlock, Microspline Fre",
+      "tires": "Vee Tire Flow Snap, 29x2.6”, Tackee Compound, 72 TPI, Tubeless Compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP23JL, 1x Remote, 150mm Travel 30.9",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": "אופני האנדורו החדשים והמגניבים של MARIN ! שילדת אלומיניום SERIES 4 חזקה עם גאומטריות עדכניות מתלה MULTI TRAC משובח למניעת נדנוד לא רצוי גלגלי '29 ובולמי 160/150 מ'מ עם מערכות הילוכים מעולות",
+    "fork length": 160,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/marin-alpine-trail-1-25"
+    },
+    "firm": "Marin",
+    "model": "Alpine Trail 1",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 14990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/1(326).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/1(327).webp",
+        "https://pedalim.co.il/Media/Uploads/4(275).webp",
+        "https://pedalim.co.il/Media/Uploads/24_AT_XR_AXS_detail-28(16).webp"
+      ]
+    },
+    "specs": {
+      "frame": "All New Series 4 6061 Aluminum Frame, 29” Wheels, 160mm Travel MultiTrac LT Suspension Platform, Integrated Downtube Storage, Adjustable Headset & CS",
+      "fork": "Fox 36 Rhythm, 170mm Travel, 29', Grip Damper, 110x10 Kabolt, 44mm Offset",
+      "rear_shock": "Fox Float Performance, 205x65, 30xM8 Lower Hardware, Custom Tune",
+      "shifters": "Shimano Deore, 12-Speed, SL-6100-IR",
+      "rear_derailleur": "Shimano Deore, 12-Speed, SGS",
+      "crankset": "FSA Comet Heavy Duty, Modular 1x, 32T Direct Mount Chainring, MegaTooth Technology, Boost Spacing",
+      "bottom_bracket": "Mego EXO 73mm BSA",
+      "cassette": "Shimano, Deore M6100 12-Speed, 10-51T",
+      "chain": "KMC X-12 Silver and Black",
+      "brakes": "TRP Slate EVO, 4-Piston Hydraulic Disc , Resin Pads, 203mm Rotor",
+      "wheels": "Marin, Double Wall Alloy, 29mm Inner, Pinned Joint, Disc Specific, 32H, Tubeless Compatible + Shimano HB-MT410B",
+      "tires": "Vee Tire Flow Snap, 29x2.6' Front 27.5x2.5' Rear, Top 40 Compound, Enduro Core, 90 TPI, Tubeless Compatible",
+      "saddle": "Marin Speed Concept",
+      "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, Travel S = 150mm, M/L = 170mm, XL = 200mm",
+      "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
+      "stem": "Marin 3D Forged Alloy, 35mm",
+      "headset": "FSA Custom Headset, Adjustable HTA Design"
+    },
+    "rewritten_description": "אופני האנדורו החדשים והכי ניתנים לכיוון גאומטרייה אישית ממתינים לכם כדי לקרוע את השבילים ! ביקורות מטורפות בכל העולם,איבזור קצה ומחיר ללא תחרות ! שילדת אלומיניום חדשה לחלוטין LT2 סופר חזקה ומוגנת עם אפשרות שינוי גיאומטריה להתאמה מוחלטת לסגנון הרכיבה שלכם :DH מהיר,אנדורו טכני,סלעים או DIRT JUMP מערכת הילוכים SHIMANO DEORE 12 ,ברקסים TRP Slate EVO, 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי VEE WCE SNAP 2.6 יבטיחו שתסיימו כל מסלול עם חיוך בולמי זעזועים מצוינים FOX 36 קדמי 170מ'מ FOX FLOAT אחורי 160 מ'מ ישאירו אותכם על השביל הכי משובש בלי בעייה",
+    "fork length": 170,
+    "style": "enduro"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/rift_zone_c2_2023"
+    },
+    "firm": "Marin",
+    "model": "RIFT ZONE C2",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 19990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SIDE_result(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/690249.JPG",
+        "https://pedalim.co.il/Media/Uploads/FACE_FRONT_result(8).webp",
+        "https://pedalim.co.il/Media/Uploads/FACE_BACK_result(8).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Unidirectional Carbon Fiber Front Triangle, Series 4 Alloy Rear End, 29” Wheels, 125mm Travel, MultiTrac Suspension Platform, 148x12mm Boost Thru-Axle",
+      "fork": "Fox Performance 34 Float, 130mm Travel, 3-Position Micro Adjust Compression Adjustment, Rebound Adjustment, 110x15mm Kabolt Axle, 44mm Offset",
+      "rear_shock": "Fox Float X, Performance Series, EVOL Air Spring, Climb Switch, Rebound Adjustment, Custom Tune, 210x50mm, M8x30mm Top, M8x25mm Bottom",
+      "shifters": "Shimano SLX 12-Speed, I-Spec EV",
+      "rear_derailleur": "Shimano XT, 12-Speed, SGS",
+      "crankset": "FSA Gradient, Modular 1x, 32T Direct Mount Chainring, MegaTooth Technology, Mego EXO Spindle, Boost Spacing",
+      "bottom_bracket": "MEGAEVO BB, 73mm BSA Threaded",
+      "cassette": "Shimano SLX M7100, 12-Speed, 10-51T",
+      "chain": "KMC X-12 Silver and Black",
+      "brakes": "Shimano SLX, 4-Piston Hydraulic Disc, Brake 203/180mm Rotor",
+      "wheels": "Marin Aluminum Double Wall, 29mm Inner, Welded Joint, Disc Specific, Tubeless Compatible + Shimano, Microspline 148x12mm, Disc, 32H + Shimano, 110x15m",
+      "tires": "Front: Maxxis Assegai 29x2.5”, 3C MaxxTerra, EXO, Tubeless Compatible Rear: Maxxis Aggressor 29x2.5”, 3C Maxx Terra, EXO, Tubeless Compatible",
+      "saddle": "Marin Trail Speed Concept Pro",
+      "seatpost": "TranzX, YSP23JL, 1x Remote, 150mm Travel,30.9mm",
+      "handlebar": "Marin 35mm 7000 Alloy Bar, 780mm Length, 5 Degree Up, 8 Degree Back",
+      "stem": "Marin CNC Stem, 35mm Length, 35mm Bar Bore",
+      "headset": "FSA No 42/47, Sealed Cartridge Bearings, 1 1/8' x 1 1/2”"
+    },
+    "rewritten_description": null,
+    "fork length": 130,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/אופני-הרים-bianchi-methanol-fs-93"
+    },
+    "firm": "Bianchi",
+    "model": "METHANOL FS 9.3",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 22000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/621213(1)_jpg.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/621213(5)_jpg.webp"
+      ]
+    },
+    "specs": {
+      "frame": "METHANOL CV FS 100MM 29' FULL CARBON HM MONOCOQUE W/BIANCHI CV, 1.5' TAPERED HT, BB92, ONLY 1X DRIVETRAIN, PM 160MM CARBON DROPOUT, 12X148MM BOOST",
+      "fork": "ROCK SHOX SID SL SELECT 29', CHARGER RL, SOLO AIR 100MM",
+      "rear_shock": "Sram Sid Luxe Select + RLR, 190/40mm, Debonair, w/eyelets 20mm x diam.8mm",
+      "shifters": "SHIMANO SLX 12SP",
+      "rear_derailleur": "SHIMANO XT RD-M8100-SGS SHADOW DESIGN + 12SP",
+      "crankset": "FC-MT511-1, 32T, 52MM CHAINLINE, CRANK LENGTH 170MM",
+      "bottom_bracket": "SHIMANO BB-MT500-PA PRESSFIT 41X92MM",
+      "cassette": "SHIMANO CS-M7100-12, 10-51T",
+      "chain": "SHIMANO CN-M7100, 12SP",
+      "brakes": "SHIMANO BR-M6100",
+      "wheels": "WTB KOM LIGHT I25 29 + SHIMANO FH-MT510-B + FORMULA CL-811",
+      "tires": "KENDA BOOSTER PRO 29X2.20",
+      "saddle": "FI'ZI:K TAIGA, S-ALLOY RAILS",
+      "seatpost": "Reparto Corse CARBON SB0, CARBON UD FIBER SHAFT W/FORGED HEAD, DIAM. 31.6MM, 0MM SEATBACK, LENGTH: 350MM",
+      "handlebar": "Reparto Corse FLAT, DOUBLE BUTTED AL2014-T6, WIDTH 740MM, DIAM. 31,8MM, 9° BACKSWEEP",
+      "stem": "Reparto Corse, 3D FORGED AL7050-T6 W/FORGED ALLOY FACEPLATE, +/-7º, 1.1/8', DIAM. 31.8MM, EXT: 60MM",
+      "headset": "FSA ORBIT C-40"
+    },
+    "rewritten_description": "מכונת המירוצים המושלמת והמתקדמת ביותר בעולם שילדת קרבון מלאה משולבת COUNTERVAIL המשכך 80% מהזעזועים בולמי 100 מ'מ בשילוב שילדת קרבון מתקדמת יוצרים חוויית רכיבה מהנה ובטוחה בנויה במיוחד לשבילי XC אבל תטיס אתכם בלי בעייה גם בסינגלים המהירים",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-siskiu-d7-2025"
+    },
+    "firm": "Polygon",
+    "model": "SISKIU D7",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 7990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SISKIU_D7_BLUE-WHITE.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SISKIU_D7_BLUE-WHITE(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL FRAME",
+      "fork": "ROCKSHOX RECON SILVER RL 120MM TRAVEL",
+      "rear_shock": "ROCKSHOX DELUXE SELECT PLUS E2E: 190x45MM",
+      "shifters": "SHIMANO 1x11-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO 11-SPEED",
+      "crankset": "170mm, 32T",
+      "bottom_bracket": "THREADED 68/73mm",
+      "cassette": "SHIMANO 11-50T",
+      "chain": "KMC CHAIN",
+      "brakes": "SHIMANO HYDRAULIC DISC + ROTOR: FRONT:180MM REAR:160MM CENTER-LOCK",
+      "wheels": "ALLOY DOUBLE WALL 584 / 622-30 32H FOR TYRE 584 / 622-54/76",
+      "tires": "PERFORMANCE TIRE 29'x2.25'",
+      "saddle": "LINC VOID SADDLE",
+      "seatpost": "TRANZ X DROPPER 150mm",
+      "handlebar": "POLYGON XPERT, ALLOY",
+      "stem": "POLYGON XPERT, ALLOY",
+      "headset": "THREADLESS ZERO STACK HEADSET, ZS 44/28.6 | ZS 56/40",
+      "pedals": "ALLOY CAGE PEDAL W/ REFLECTOR"
+    },
+    "rewritten_description": null,
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/polygon-siskiu-d5-2026"
+    },
+    "firm": "Polygon",
+    "model": "Siskiu D5",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 4790,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/MY25-SISKIU-D5-P-768x576.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/MY25-SISKIU-D5-P-768x576(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "ALX XC TRAIL FRAME",
+      "fork": "SUNTOUR XCM 32 120mm TRAVEL",
+      "rear_shock": "SUNTOUR RAIDON LO AIR",
+      "shifters": "SHIMANO CUES SL-U4000, 9-SPEED TRIGGER",
+      "rear_derailleur": "SHIMANO CUES RD-U4000 DIRECT ATTACH 9-SPEED",
+      "crankset": "PROWHEEL RMZ-MD25S-TT 32T",
+      "bottom_bracket": "BSA THREADED 68/73mm",
+      "cassette": "SHIMANO CUES CS-LG300 11-46T 9-SPEED",
+      "chain": "KMC X GLIDE",
+      "brakes": "SHIMANO MT200 HYDRAULIC DISC BRAKE",
+      "wheels": "POLYGON MT6 TUBELESS READY W/ TUBELESS TAPE",
+      "tires": "WTB TRAIL BOSS COMP 27.5'x2.25'",
+      "saddle": "LINC VOID SADDLE ø 7mm",
+      "seatpost": "POLYGON SPORT ALLOY, DxL: 30.9 x 350mm",
+      "handlebar": "POLYGON SPORT ALLOY, W: 760mm, BB: 31.8mm, R/D: 20mm, B: 9degree",
+      "stem": "POLYGON SPORT ALLOY, E: 45mm, BB: 31.8m, R/D:0degree",
+      "headset": "THREADLESS ZERO STACK HEADSET"
+    },
+    "rewritten_description": "גאומטריית שבילים מודרנית עם זווית ראש 67° ובסיס גלגלים יציב לשליטה מלאה בירידות ובשבילים מערכת הילוכים 1x9 שמעניקה פשטות לתפעול, אמינות מרבית ודיוק בשינויים לרכיבת שבילים יומיומית בלמי דיסק הידראוליים של שימאנו חזקים שמבטיחים עצירה נשלטת ובטוחה גם בתנאי שטח טכניים מערכת Faux Bar לספיגת מהמורות חלקה, אחיזה מעולה ויעילות גבוהה במעבר בין טיפוס, מישור וירידות",
+    "fork length": 120,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/טנדם-polygon-impression-ax-disc"
+    },
+    "firm": "Polygon",
+    "model": "IMPRESSION AX DISC",
+    "year": "לא צויין",
+    "category": "mtb",
+    "sub_category": "tandem",
+    "original_price": 5500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/691137(1)_jpg.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/691137_JPG(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "AL6 TANDEM, 10X135MM",
+      "fork": "HI-TEN STEEL RIGID FORK",
+      "shifters": "SHIMANO ST-TX800-8R",
+      "rear_derailleur": "SHIMANO RD-M310 ALTUS",
+      "crankset": "PROWHEEL MAA543 42/34/24 x 170MM",
+      "bottom_bracket": "FP-B908N",
+      "cassette": "SHIMANO CS-HG31 ALTUS",
+      "chain": "KMC HV-408",
+      "brakes": "TEKTRO MD-300",
+      "wheels": "ALLOY DOUBLE WALL RIMS W/ALLOY HUBS",
+      "tires": "PERFORMANCE TIRE 27.5'X2.10'",
+      "saddle": "ENTITY SADDLE",
+      "seatpost": "ENTITY OE ALLOY SEATPOT 27.2mm x 350mm",
+      "handlebar": "ENTITY OE ALLOY WIDTH 680MM, RISE 40MM, BARBORE 31.8MM",
+      "stem": "ENTITY OE ALLOY STEM 31.8MM",
+      "headset": "FP-H863 ALLOY CAGED BEARING",
+      "pedals": "PLASTIC PEDAL"
+    },
+    "rewritten_description": "אופני הטנדם הנמכרים בישראל שילדת אלומיניום קלה לרכיבה עירונית ושטח קל משקל כולל של 18 ק'ג בלבד! בלמי דיסק ומערכות היולוכים של שימאנו 3X8 גלגלי דיסק '27.5 עם צמיגי דו שימושיים",
+    "fork length": null
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-impulso-rc-grx825-di2"
+    },
+    "firm": "Bianchi",
+    "model": "IMPULSO RC GRX825 DI2",
+    "year": "לא צויין",
+    "category": "gravel",
+    "sub_category": "gravel",
+    "original_price": 29990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/IMPULSO_RC(6).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/IMPULSO_RC(7).webp"
+      ]
+    },
+    "specs": {
+      "frame": "IMPULSO RC Disc Brake,  Flat Mount 140/160,  BB PressFit 86.5 X Ø41 Rear Axle: thru12 OLD,  Rear Derailleur: SRAM UDH",
+      "fork": "Bianchi Impulso Integrated Fork Disc Brake,  Flat Mount 140/160,  Front Axle: thru12,  OLD: 100mm,  Tire Clearance: ETRTO 622-42mm,  Carbon Fiber Composite",
+      "shifters": "Shimano GRX, ST-RX825",
+      "front_derailleur": "Shimano GRX FD-RX825",
+      "rear_derailleur": "Shimano GRX RD-RX825",
+      "crankset": "Shimano GRX 820 FC-RX820 48-31T. 4iiii Precision 3, single side powermeter Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit",
+      "cassette": "Shimano CS-HG710-12 speed, 11-36T Driver body Interface: HG11",
+      "chain": "Shimano CN-M7100",
+      "brakes": "Shimano Hydraulic Brake, BR-RX820 + Shimano RT-CL800 IceTech Hub Interface: Centerlock Rotor Diameter: 160 mm (front&Rear)",
+      "wheels": "Shimano RT-CL800 IceTech Hub Interface: Centerlock Rotor Diameter: 160 mm (front&Rear)",
+      "tires": "Cinturato Gravel RC, 700 x 40c, 60TPI- TLR, Folding, Tan sidewall",
+      "saddle": "Bianchi RC139 carbon Cover: microfiber Inserts: PWR gel Shell: carbon fiber Rails: carbon fiber lenght: 250mm, wide: 139mm weight: 145g",
+      "seatpost": "Bianchi Custom D-Shape Offset: 20mm Back Seatpost lengths: 350mm Material: Epoxy - HM-HS Carbon Fiber Composite",
+      "handlebar": "included in the stem",
+      "stem": "Reparto Corse AeroFlare Flare: 16°,  Drop: 120mm,  Reach 80mm,  HandleBar Sizes: 100/400,  Material: Carbon Fiber Composite",
+      "headset": "Bianchi Custom Acros ICR,  Spacers:5mmx1, 10mmx3,  Ring: 1.125',  Top Bearing + Bottom Bearing: Angular contact Bearing 42x52x7 + seal"
+    },
+    "rewritten_description": null,
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-impulso-pro-grx820?bsp=55075"
+    },
+    "firm": "Bianchi",
+    "model": "IMPULSO PRO GRX 820",
+    "year": "לא צויין",
+    "category": "gravel",
+    "sub_category": "gravel",
+    "original_price": 20500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/grey_main(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/celeste_main(4).webp",
+        "https://pedalim.co.il/Media/Uploads/celeste_side.webp",
+        "https://pedalim.co.il/Media/Uploads/celeste_top(2).webp",
+        "https://pedalim.co.il/Media/Uploads/celeste_front(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Disc Brake Specification: Flat Mount 140/160 Bottom Braket Standard: PressFit 86.5 X diam.41 Rear Axle: thru12 OLD: 142 mm",
+      "fork": "Bianchi Impulso Integrated Fork Flat Mount 140/160 Front Axle: thru12 OLD: 100 mm Tire Clearance: ETRTO 622-42mm Steer tube Diameter: 1 1/8''",
+      "shifters": "Shimano GRX 820 ST-RX820",
+      "front_derailleur": "Shimano GRX 820 FD-RX820",
+      "rear_derailleur": "Shimano GRX 820 RD-RX820 Maximum Cassette Sprocket 36T",
+      "crankset": "Shimano GRX 820 FC-RX820 48-31T Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit",
+      "cassette": "Shimano CS-HG710-12 speed, 11-36T Driver body Interface: HG11",
+      "chain": "Shimano CN-M7100",
+      "brakes": "Shimano Hydraulic Brake, BR-RX820",
+      "wheels": "Velomann Terbium clincher and tubeless ready Rim Diameter: 700C Material: Carbon Rim Height: 30 mm Inner Width Channel: 25 mm",
+      "tires": "Pirelli Cinturato™ GRAVEL H Classic, 40-622 tan sidewall",
+      "saddle": "Velomann MITORA 149 Hyper, cover: hexagon, padding: foam, shell: nylon carbon, open shell, carbon rails, lenght: 250mm, width: 149mm, weight: 190g ± 2",
+      "seatpost": "Bianchi Custom D-Shape Offset: 20mm Back Seatpost lengths: 350mm Material: Epoxy - HM-HS Carbon Fiber Composite",
+      "handlebar": "Velomann Gravel ICR Alloy Flare: 16° Drop: 130mm Reach 70mm Interface Diameter: 1 1/4'' (31.8mm) HandleBar Widths: 400",
+      "stem": "Velomann AICR Alloy Rise: -2° Steerer Diameter: 1-1/8'' (28.6mm) HB interface Diameter: 1-1/4'' (31.8mm) Stem Lengths: 90mm",
+      "headset": "Bianchi Custom Acros ICR (Internal Cable Rounting)"
+    },
+    "rewritten_description": null,
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-impulso-comp-grx610?bsp=55075"
+    },
+    "firm": "Bianchi",
+    "model": "IMPULSO COMP GRX 610",
+    "year": "לא צויין",
+    "category": "gravel",
+    "sub_category": "gravel",
+    "original_price": 14600,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/IMPULSO_COMP_GRX_610_CELESTE.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/IMPULSO_COMP_GRX_610_CELESTE(4).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Disc Brake Specification: Flat Mount 140/160 Bottom Braket Standard: PressFit 86.5 X diam.41 Rear Axle: thru12 OLD: 142 mm",
+      "fork": "Bianchi Impulso Integrated Fork Flat Mount 140/160 Front Axle: thru12 OLD: 100 mm Tire Clearance: ETRTO 622-42mm Steer tube Diameter: 1 1/8''",
+      "shifters": "Shimano GRX 610 ST-RX610",
+      "front_derailleur": "Shimano GRX 820 FD-RX820",
+      "rear_derailleur": "Shimano GRX 820 RD-RX820 Maximum Cassette Sprocket 36T",
+      "crankset": "Shimano GRX 610 FC-RX610 46-30T Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit",
+      "cassette": "Shimano CS-HG710-12 speed, 11-36T Driver body Interface: HG11",
+      "chain": "Shimano CN-M7100",
+      "brakes": "Shimano Hydraulic Brake, BR-RX400",
+      "wheels": "Fulcrum RapidRed 900 2-Way Fit Ready clincher/tubeless ready Rim Diameter: 700C Material: Aluminum Alloy Rim Height: 24 mm Inner Wigth Channel: 22 mm",
+      "tires": "Pirelli Cinturato™ GRAVEL H Classic, 40-622 tan sidewall",
+      "saddle": "Velomann MITORA 149 H1, cover: soft touch, padding: foam, shell: nylon carbon, open shell, Aisi rails, lenght: 250mm, width: 149mm, weight: 230g ± 2",
+      "seatpost": "Bianchi Custom D-Shape Offset: 20mm Back Seatpost lengths: 350mm Material: Epoxy - HM-HS Carbon Fiber Composite",
+      "handlebar": "Velomann Gravel ICR Alloy Flare: 16° Drop: 130mm Reach 70mm Interface Diameter: 1 1/4'' (31.8mm) HandleBar Widths: 400",
+      "stem": "Velomann AICR Alloy Rise: -2° Steerer Diameter: 1-1/8'' (28.6mm) HB interface Diameter: 1-1/4'' (31.8mm) Stem Lengths: 90mm",
+      "headset": "Bianchi Custom Acros ICR (Internal Cable Rounting)"
+    },
+    "rewritten_description": null,
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-specialissima-pro-p"
+    },
+    "firm": "Bianchi",
+    "model": "SPECIALISSIMA PRO P",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 37700,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SPECIALISSIMA_PRO_P.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SPECIALISSIMA_PRO_P(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Specialissima PRO carbon HM with Bianchi CV System, only electronic groupsets, fully internal cable routing, headset Acros ICR",
+      "fork": "Specialissima PRO full Carbon HM with CV, aero, integrated head, disc, 1.5' head, 12x100mm thru axle",
+      "shifters": "Shimano Ultegra Di2 hydraulic disc brake for road, ST-R8170, BR-R8170, for 160mm rotor, resin pad",
+      "front_derailleur": "Shimano, FD-R8150, Ultegra Di2, brazed-on type, down swing, top gear 50-54T, for rear 12-speed",
+      "rear_derailleur": "Shimano Ultegra Di2 12sp, RD-R8150",
+      "crankset": "Shimano, Ultegra 12sp, FC-R8100, 4iiii precision 3+ power meter, for rear 12- speed, 52x36T, Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit for road",
+      "cassette": "Shimano Ultegra, CS-R8100,Ultegra 12sp, 11-12-13-14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Ultegra 12 sp CN-M8100",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake included in the shifter + Shimano RT-CL800 CL",
+      "wheels": "Velomann Palladium, 33mm profile, 700x21c, 24h, HG11, Spoke pattern 2 to 1, tubeless-ready, weight 1450 gr (±5%), Sealed cartridge bearings",
+      "tires": "Pirelli P ZERO™ Race SL TLR , 28-622, 120TPI",
+      "saddle": "Velomann Mitora 139 Hyper Carbon, nylon carbon shell, carbon rails, Lenght: 250mm, Width: 139mm, Weight: 180g ± 2",
+      "seatpost": "Specialissima Full Carbon Aero special dimension seatpost, 20mm offset, length: 300mm",
+      "handlebar": "included in the stem",
+      "stem": "Reparto Corse integrated handlebar, material Carbon, for Acros ICR system drop 125mm, reach 80mm Ext: 100/400",
+      "headset": "Acros IS52 ICR SS custom headtube cover Specialissima"
+    },
+    "rewritten_description": null,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-oltre-rc-140"
+    },
+    "firm": "Bianchi",
+    "model": "Oltre RC 140",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 55900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/oltre_rc_140.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/oltre_rc_140(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Bianchi Oltre RC carbon High Modulus, Aero shape, fully internal cable routing, headset 1'1/4 - 1'1/4, direct mount brakes, BB-PressFit 86.5x41",
+      "fork": "Bianchi Oltre RC full Carbon High Modulus, Aero shape, integrated head, disc, 1'1/4 head, 12x100 mm thru axle",
+      "shifters": "Shimano Dura-Ace Di2, shifter lever ST-R9270",
+      "front_derailleur": "Shimano Dura-Ace Di2, FD-R9250",
+      "rear_derailleur": "Shimano Dura-Ace Di2, RD-R9250, 12sp",
+      "crankset": "Shimano Dura-Ace, FC-R9200, 4iiii precision 3+ dual side power meter, 52x36T Crank length: 170 mm",
+      "bottom_bracket": "Shimano SM-BB92-41B, press fit type for road",
+      "cassette": "Shimano Dura-Ace, CS-R9200 11-30T, 11-12-13- 14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Dura-Ace, CN-M9100",
+      "brakes": "Shimano BR-R9270 Hydraulic disc brake",
+      "wheels": "Bianchi Reparto Corse RC50R/RC65R SPBTech, Carbon rim, 700x21c, 24h, 3K and UD carbon, HG11 body",
+      "tires": "Pirelli P ZERO Race TLR, 28-622, 127 TPI, SPEEDCore",
+      "saddle": "Bianchi Reparto Corse RC139 Carbon Air, 3D printed padding for adaptive stiffness, length 250 mm, width 139 mm",
+      "seatpost": "Bianchi Oltre, full carbon, aero shape, 20 mm offset length: 300 mm",
+      "handlebar": "Included in the stem",
+      "stem": "Bianchi Reparto Corse integrated handlebar, Aero bar, Carbon, for internal cable routing, drop 125 mm, reach 80 mm Size: 100/420 mm",
+      "headset": "FSA No. 54 - upper bearing MR137,  lower bearing MR082R"
+    },
+    "rewritten_description": null,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-specialissima-rc-dura-ace"
+    },
+    "firm": "Bianchi",
+    "model": "SPECIALISSIMA RC DURA ACE",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 54900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/Specialissima_RC_DA_DI2.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/Specialissima_RC_DA_DI2(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Specialissima RC carbon HM, only electronic groupsets, fully internal cable routing, headset Acros ICR, direct mount brakes, BB-PressFit 86,5x41",
+      "fork": "Specialissima RC full Carbon HM aero, integrated head, disc, 1.5' head, 12x100mm thru axle",
+      "shifters": "Shimano DURA-ACE Di2, ST-R9270(L), BR-R9270(F), for 160mm rotor, hydraulic disc brake for road",
+      "rear_derailleur": "Shiamno Durace Di2 12sp, RD-R9250",
+      "front_derailleur": "Shimano, FD-R9250, DURA-ACE Di2, brazed-on type, top gear 46-55T, for rear 12-speed",
+      "crankset": "Shimano, Dura-Ace 12sp, FC-R9200, 4iiii precision 3+ dual side power meter, 52x36T, Crank Length: 170mm-50/53cm, 172.5mm-55/57cm",
+      "bottom_bracket": "Shimano SM-BB92-41B , press fit type for road, right & left adapter, bearing, inner cover",
+      "cassette": "Shimano, CS-R9200 DURA-ACE 12sp, 11-12-13-14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Durace, CN-M9100, 12sp",
+      "brakes": "Shimano BR-R9270 Hydraulic disc brake included in the shifter + Shimano RT-CL900 center lock type w/Ice Tech, 160mm front, 140mm rear",
+      "wheels": "Reparto Corse RC Carbon 33mm profile, 700x21c, 24h, HG11, Spoke pattern 2 to 1, tubeless-ready, weight 1370 gr (±5%), Sealed cartridge bearings",
+      "tires": "Pirelli P ZERO™ Race SL TLR , 28-622, 120TPI",
+      "saddle": "Bianchi RC139 Carbon, Inserts PWR gel, carbon fiber shell, carbon rails, Lenght: 250mm, Wide: 139 mm, Weight: 145 g",
+      "seatpost": "Specialissima Full Carbon Aero special dimension seatpost, 20mm offset, length: 300mm-50/53, 350mm-55/57",
+      "handlebar": "included in the stem",
+      "stem": "Reparto Corse integrated handlebar, material Carbon, for Acros ICR system drop 125mm, reach 80mm Ext: 90/380 (50) ,  100/400 (53) ,  110/400 (55-57)",
+      "headset": "Acros IS52 ICR Ssbearings"
+    },
+    "rewritten_description": null,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-specialissima-pro"
+    },
+    "firm": "Bianchi",
+    "model": "SPECIALISSIMA Pro",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 36000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SPECIALISSIMA_PRO.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SPECIALISSIMA_PRO(4).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Specialissima PRO carbon HM with Bianchi CV System, only electronic groupsets, fully internal cable routing, headset Acros ICR, direct mount brakes, B",
+      "fork": "Specialissima PRO full Carbon HM with CV, aero, integrated head, disc, 1.5' head, 12x100mm thru axle",
+      "shifters": "Shimano Ultegra Di2 hydraulic disc brake for road, ST-R8170, BR-R8170, for 160mm rotor, resin pad",
+      "front_derailleur": "Shimano, FD-R8150, Ultegra Di2, brazed-on type, down swing, top gear 50-54T, for rear 12-speed",
+      "rear_derailleur": "Shimano Ultegra Di2 12sp, RD-R8150",
+      "crankset": "Shimano Ultegra 12sp, FC-R8100, 12- speed, 52x36T, Crank Length: 172.5mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit for road",
+      "cassette": "Shimano Ultegra, CS-R8100,Ultegra 12sp, 11-12-13-14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Ultegra 12 sp CN-M8100",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake included in the shifter + Shimano RT-CL800 center lock type w/Ice Tech, 160mm front rear",
+      "wheels": "Velomann Palladium, 33mm profile, 700x21c, 24h, HG11, Spoke pattern 2 to 1, tubeless-ready, weight 1450 gr (±5%), Sealed cartridge bearings",
+      "tires": "Pirelli P ZERO™ Race , 26-622, 127TPI",
+      "saddle": "Velomann Mitora 139 Hyper Carbon, nylon carbon shell, carbon rails, Lenght: 250mm, Width: 139mm, Weight: 180g ± 2",
+      "seatpost": "Specialissima Full Carbon Aero special dimension seatpost, 20mm offset, length:350mm",
+      "handlebar": "included in the stem",
+      "stem": "Reparto Corse integrated handlebar, material Carbon, for Acros ICR system drop 125mm, reach 80mm Ext: 110/400",
+      "headset": "Acros IS52 ICR SS custom headtube cover Specialissima"
+    },
+    "rewritten_description": "אופני האולטרה לייט החדשים של ביאנקי משולבים בשכבת הקאונטרוייל CV הפטנטי לנוחות מקסימלית עם קשיחות מרבית ומשקל מינימלי. מערכת הילוכים אלקטרונית משולבת בלמי דיסק הידראוליים של SHIMANO ULTEGRA המבטיחה ביצועים יוצאי דופן גם בתנאים קשים וגלגלי קרבון מעולים בפרופיל 33 מ'מ. יצירת אומנות איטלקית מעוצבת עם קווים נקיים,צבעים מרהיבים ותשומת לב לפרטים הקטנים שיטיסו אותכם בכבישים ויסובבו ראשים בכל מקום שתגיעו אליו. שכבת ה-COUNTERVAIL של BIANCHI המוטמעת בשילדה מפחיתה את רעידות הכביש ב80%,משפרת את נוחות הרכיבה ותורמת ליציבות גם בכבישים משובשים ומהירויות גבוהות.",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/אופני-כביש-bianchi-specialissima-ultegra-di2"
+    },
+    "firm": "Bianchi",
+    "model": "SPECIALISSIMA Ultegra DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 31990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SPECAILISSIMA_ULT_DI2_GREEN_result.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SPECAILISSIMA_ULT_DI2_GREEN_result(16).webp",
+        "https://pedalim.co.il/Media/Uploads/_ABZ3762_result(20).webp",
+        "https://pedalim.co.il/Media/Uploads/_ABZ3805_result(20).webp",
+        "https://pedalim.co.il/Media/Uploads/GABX2993_result(20).webp"
+      ]
+    },
+    "specs": {
+      "frame": "SPECIALISSIMA DISC CARBON W/BIANCHI CV, 1.5' - 1.5' HEADSET, 27,2MM SEATPOST, MECHANICAL/ELECTRONIC SHIFTING COMPATIBLE, PRESSFIT 86,5X41MM BB, INTERN",
+      "fork": "BIANCHI FULL CARBON W/BIANCHI CV, 1.5' INTEGRATED HEAD, INTERNAL CABLE ROUTING FOR DISC BRAKE, FLAT MOUNT CALIPER, THRU AXLE 12X100MM",
+      "shifters": "ULTEGRA DI2 HYDRAULIC DISC BRAKE FOR ROAD",
+      "front_derailleur": "SHIMANO ULTEGRA DI2",
+      "rear_derailleur": "SHIMANO ULTEGRA DI2",
+      "crankset": "SHIMANO ULTEGRA, HOLLOWTECH II, CRANK LENGTH: 172.5MM",
+      "bottom_bracket": "SHIMANO SM-BB72-41B PRESSFIT",
+      "cassette": "SHIMANO ULTEGRA, 11-30T",
+      "chain": "SHIMANO ULTEGRA",
+      "brakes": "SHIMANO HYDRAULIC DISC BRAKE",
+      "wheels": "FULCRUM RACING 400 DISC BRAKE, 622X19C, 2 WAY FIT TUBELESS READY",
+      "tires": "PIRELLI P ZERO™ RACE , 26-622, 127TPI, ARAMID BREAKER",
+      "saddle": "FI'ZI:K ANTARES R1, COVER MICROTEX THERMOWELDED, COMPOSITE CARBON CO-INJECTED NYLON WINGFLEX , RAIL CARBON BRAIDED 7X9COVER, INTEGRATED CLIP SYSTEM, 2",
+      "seatpost": "REPARTO CORSE BY FSA K-FORCE LIGHT SB25, UD CARBON MONOCOQUE, CLAMP TYPE 2-BOLT HEAD 'MTC', SETBACK 25 MM, LENGTH 350MM, 27.2MM, DI2 BATTERY COMPATIBL",
+      "handlebar": "REPARTO CORSE BY FSA COMPACT HB-RK-222S/CCH/DI2 , UD WEAVE CARBON, DIAM. 31.8MM, DROP 125MM, REACH 80MM, 4º OUTWARD BEND, SIZE: 420MM",
+      "stem": "REPARTO CORSE BY FSA NS ACR, ST-OS-160, 3D FORGED/CNC AL6061, 31.8MM, RISE -6°, DI2 COMPATIBLE, EXT: 90MM-47/50CM, 110MM",
+      "headset": "FSA NO.55R 1.5'/ACR/BIANCHI"
+    },
+    "rewritten_description": "אופני המרוצים החדשים של ביאנקי בגירסה עדכנית ל 2022 שילדת קרבון היי מודולוס בשילוב COUNTERVAIL המשכך 80% מהזעזועים מתאימה לכל סוגי הרכיבה ולכל הרוכבים אפשרות לצביעה מיוחדת -TAVOLOZZA",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-specialissima-comp"
+    },
+    "firm": "Bianchi",
+    "model": "SPECIALISSIMA comp",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 27500,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SPECIALISSIMA_COMP_CELESTE.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SPECIALISSIMA_COMP_GREY(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Specialissima COMP carbon, only electronic groupsets, fully internal cable routing, headset Acros ICR, direct mount brakes, BB-PressFit 86,5x41",
+      "fork": "Specialissima COMP full Carbon, aero, integrated head, disc, 1.5' head, 12x100mm thru axle",
+      "shifters": "Shimano Ultegra Di2 hydraulic disc brake for road, ST-R8170, BR-R8170, for 160mm rotor, resin pad",
+      "front_derailleur": "Shimano, FD-R8150, Ultegra Di2, brazed-on type, down swing, top gear 50-54T, for rear 12-speed",
+      "rear_derailleur": "Shimano Ultegra Di2 12sp, RD-R8150",
+      "crankset": "Shimano Ultegra 12sp, FC-R8100, 12- speed, 50x34T, Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit for road",
+      "cassette": "Shimano Ultegra, CS-R8100,Ultegra 12sp, 11-12-13-14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Ultegra 12sp CN-M8100",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake included in the shifter + Shimano RT-CL800 center lock type w/Ice Tech, 160mm front rear",
+      "wheels": "Velomann Palladium, 33mm profile, 700x21c, 24h, HG11, Spoke pattern 2 to 1, tubeless-ready, weight 1450 gr (±5%), Sealed cartridge bearings",
+      "tires": "Pirelli P ZERO™ Race , 26-622, 127TPI",
+      "saddle": "Velomann Mitora139, open flow, AISI rails, carbon-reinforced nylon Width: 139mm, Lenght: 250mm, Weight: 220 g ± 2",
+      "seatpost": "Specialissima Full Carbon Aero special dimension seatpost, 20mm offset, length: 300mm",
+      "handlebar": "Velomann Aero Compact handlebar, alloy diam. 31,8mm, reach 74mm, drop 116mm, Size: 400mm",
+      "stem": "Velomann, AL6061, fully internal cable routing stem, compatible with Acros AICR system, Ext: 100mm",
+      "headset": "Acros IS52 ICR"
+    },
+    "rewritten_description": "שילדת קרבון קלה במיוחד המציעה קשיחות מרבית ומשקל מינימלי מאפשרת לרוכבים להשיג ביצועים מרביים בכל תנאי הרכיבה, עם נוחות ללא פשרות. מערכת הילוכים אלקטרונית משולבת בלמי דיסק הידראוליים של SHIMANO ULTEGRA המבטיחה ביצועים יוצאי דופן גם בתנאים קשים וגלגלי קרבון מעולים בפרופיל 33 מ'מ. יצירת אומנות איטלקית מעוצבת עם קווים נקיים,צבעים מרהיבים ותשומת לב לפרטים הקטנים שיטיסו אותכם בכבישים ויסובבו ראשים בכל מקום שתגיעו אליו. אופני אולטרה לייט מושלמים לטיפוס ולרכיבות נפח. מגיעים עם כידון אלומיניום כדי לאפשר הרכבת אירובאר.",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-oltre-pro-p-ultegra-di2"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE PRO P Ultegra DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 39000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/oltre_pro_celeste.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/oltre_pro_celeste(12).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre PRO carbon w/Bianchi CV System aero shape, electronic drivetrain only, headset 1.1/4”-1.1/4”,BB-PressFit 86,5x41mm, integrated seat clamp, for f",
+      "fork": "Full Carbon aero w/Bianchi CV System, Disc brakes, integrated head 1.1/4', flat mount caliper, thru axle 12x100mm",
+      "shifters": "Shimano Ultegra Di2 12sp hydraulic disc brake",
+      "front_derailleur": "Shimano Ultegra Di2 12sp,FD-R8150, brazed-on type, top gear 50-54T, for rear 12-speed",
+      "rear_derailleur": "Shimano Ultegra Di2 12sp, RD-R8150, top normal shadow design, direct attachment,34T Max Low Sprocket",
+      "crankset": "Shimano Ultegra 12sp, FC-R8100, Ultegra hollowtech 2, for rear 12- speed, 50x34T, Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit for road",
+      "cassette": "Shimano Ultegra 12sp, CS-R8100, 11-12-13-14- 15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Ultegra 12sp, CN-M8100",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake included in the shifter' + Shimano RT-MT800 center lock 160mm",
+      "wheels": "Reparto Corse Carbon 50mm profile, 700x21c, HG body",
+      "tires": "Pirelli Pzero ™ Race SL TLR , 28-622, 120 tpi",
+      "saddle": "Bianchi RC139 carbon",
+      "seatpost": "Oltre Full Carbon Aero special dimension seatpost, 20mm offset, length:300mm",
+      "handlebar": "included in the stem",
+      "stem": "Integrated Aero handlebar, material Carbon, drop 125mm, reach 80mm, Di2 compatible Ext:100x420",
+      "headset": "Fsa No. 54 - MR137 - ACB 1-1/4'' diam.46.9xdiam.37x7 Fsa TH970R - MR082R - SL Alloy ACB 1-1/4'' diam.46.8xdiam.34x7"
+    },
+    "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים ששואפים תמיד להיות בראש שילדת AERO תחרותית מקרבון מודול גבוה קשיח במיוחד משולב בCV סופג זעזועים הפטנטי של ביאנקי מערכות חשמליות אלחוטיות 12 הילוכים חדשות מבית שימאנו ULTEGRA DI2 גלגלי קרבון REPRTO CORSE בפרופיל 50 מ'מ מוכנים לטיובלס וכידון מקשה אחת",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-oltre-rc-dura-ace"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE RC DURA ACE",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 59900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/OLTRE_RC_DA_DI2_BLACK.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/OLTRE_RC_DA_DI2_BLACK(1).webp",
+        "https://pedalim.co.il/Media/Uploads/OLTRE_RC_DA_DI2_CELESTE.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre RC carbon aero shape, electronic drivetrain only, headset 1.1/4, BB-PressFit 86.5x41mm, internal cable routing, thru axle 12x142mm",
+      "fork": "Full Carbon aero, Disc brakes, integrated head 1.1/4, flat mount caliper, thru axle 12x100mm",
+      "shifters": "Shimano Durace Di2 hydraulic disc brake for road, ST-R9270, BR-R9270, for 160mm rotor",
+      "rear_derailleur": "Shimano Durace Di2 12sp, RD-R9250",
+      "front_derailleur": "Shimano Durace Di2 12sp,FD-R9250",
+      "crankset": "Shimano, Durace 12sp, FC-R9200, 4iiii precision 3+ dual side power meter, 52x36T, Crank Length: 170mm-50/54cm, 172.5mm-55/57cm",
+      "bottom_bracket": "Shimano, SM-BB92-41B, press fit for road",
+      "cassette": "Shimano Durace 12sp, CS-R9200, 11-12-13-14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Durace 12sp, CN-M9100",
+      "brakes": "Shimano BR-R9270 Hydraulic disc brake + Shimano CL900, centerlock 160mm",
+      "wheels": "Reparto Corse Carbon SPB 50mm profile(front), Reparto Corse Carbon SPB 65mm profile, XDR body (rear), carbon fiber, tubeless ready, 700x21c",
+      "tires": "Pirelli P ZERO™ Race SL TLR , 28-622, 120 tpi",
+      "saddle": "Bianchi RC139 Carbon Air, weight 168g, Lenght: 250mm, Wide: 139mm, Rails: 7x9,3mm",
+      "seatpost": "Oltre Full Carbon Aero special dimension seatpost, 20mm offset, length: 300mm-50~55cm, 350mm-57",
+      "handlebar": "Included in the stem",
+      "stem": "Integrated handlebar Integrated Aero bar, material carbon, drop 125mm, reach 80mm, Di2 compatible Ext: 90x400-50cm ,  100x420-53cm,  110x420-55/57cm",
+      "headset": "Fsa No. 54 - MR137 - ACB 1-1/4diam.46.9x diam.37x7"
+    },
+    "rewritten_description": null,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-oltre-pro-dura-ace"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE PRO DURA ACE",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 48900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/OLTRE_PRO_DA_DI2_BLK-WHT.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/OLTRE_PRO_DA_DI2_BLK-WHT(1).webp",
+        "https://pedalim.co.il/Media/Uploads/OLTRE_PRO_DA_DI2_BLK-CEL.webp",
+        "https://pedalim.co.il/Media/Uploads/OLTRE_PRO_DA_DI2_BLK.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre PRO carbon w/Bianchi CV System aero shape, electronic drivetrain only, BB-PressFit 86,5x41mm, internal cable routing, thru axle 12x142mm",
+      "fork": "Full Carbon aero w/Bianchi CV System, Disc brakes, integrated head 1.1/4', flat mount caliper, thru axle 12x100mm",
+      "shifters": "Shimano Durace Di2 12sp hydraulic disc brake",
+      "rear_derailleur": "Shimano Durace Di2 12sp, RD-R9250, top normal shadow design, direct attachment, 34T Max Low Sprocket",
+      "front_derailleur": "Shimano Durace Di2 12sp, FD-R9250, DURA-ACE Di2, brazed-on type, top gear 46-55T, for rear 12-speed",
+      "crankset": "Shimano Durace 12sp, FC-R9200, DURA-ACE hollowtech 2, for rear 12- speed, 50x34T, Crank Length: 170mm-50/53, 172.5mm-55/57",
+      "bottom_bracket": "Shimano SM-BB92-41B , press fit type for road, right & left adapter, bearing, inner cover",
+      "cassette": "Shimano Durace 12sp, CS-R9200, 11-12-13-14-15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Durace 12sp, CN-M9100",
+      "brakes": "Shimano BR-R9270 Hydraulic disc brake included in the shifter + Shimano RT-MT900 center lock type w/Ice Tech, 160mm",
+      "wheels": "Reparto Corse Carbon 50mm profile, 700x21c, HG body",
+      "tires": "Pirelli Pzero ™ Race SL TLR , 28-622, 120 tpi",
+      "saddle": "Bianchi RC139 carbon",
+      "seatpost": "Oltre Full Carbon Aero special dimension seatpost, 20mm offset, length: 300mm-50~55cm, 350mm-57",
+      "handlebar": "included in the stem",
+      "stem": "Integrated Aero handlebar, material Carbon, drop 125mm, reach 80mm, Di2 compatible Ext: 90x400-50cm,  100x420-53cm,  110x420-55/57cm",
+      "headset": "Fsa No. 54 - MR137 - ACB 1-1/4'' diam.46.9xdiam.37x7 Fsa TH970R - MR082R - SL Alloy ACB 1-1/4'' diam.46.8xdiam.34x7"
+    },
+    "rewritten_description": null,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/oltre-pro-ult-di2"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE PRO Ultegra DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 35600,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/OLTRE_PRO_CELESTE_result.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/OLTRE_PRO_WHITE_result(1).webp",
+        "https://pedalim.co.il/Media/Uploads/OltrePro_2_result.webp",
+        "https://pedalim.co.il/Media/Uploads/OltrePro_4_result.webp",
+        "https://pedalim.co.il/Media/Uploads/OltrePro_5_result.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre PRO carbon w/Bianchi CV System aero shape, electronic drivetrain only, headset 1.1/4”-1.1/4”,BB-PressFit 86,5x41mm, integrated seat clamp, for f",
+      "fork": "Full Carbon aero w/Bianchi CV System, Disc brakes, integrated head 1.1/4', flat mount caliper, thru axle 12x100mm",
+      "shifters": "Shimano Ultegra Di2 12sp hydraulic disc brake",
+      "front_derailleur": "Shimano Ultegra Di2 12sp,FD-R8150, brazed-on type, top gear 50-54T, for rear 12-speed",
+      "rear_derailleur": "Shimano Ultegra Di2 12sp, RD-R8150, top normal shadow design, direct attachment,34T Max Low Sprocket",
+      "crankset": "Shimano Ultegra 12sp, FC-R8100, Ultegra hollowtech 2, for rear 12- speed, 50x34T, Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit for road",
+      "cassette": "Shimano Ultegra 12sp, CS-R8100, 11-12-13-14- 15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Ultegra 12sp, CN-M8100",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake included in the shifter' + Shimano RT-MT800 center lock 160mm",
+      "wheels": "Reparto Corse Carbon 50mm profile, 700x21c, HG body",
+      "tires": "Pirelli Pzero ™ Race SL TLR , 28-622, 120 tpi",
+      "saddle": "Bianchi RC139 carbon",
+      "seatpost": "Oltre Full Carbon Aero special dimension seatpost, 20mm offset, length:280mm",
+      "handlebar": "included in the stem",
+      "stem": "Integrated Aero handlebar, material Carbon, drop 125mm, reach 80mm, Di2 compatible Ext:90x400",
+      "headset": "Fsa No. 54 - MR137 - ACB 1-1/4'' diam.46.9xdiam.37x7 Fsa TH970R - MR082R - SL Alloy ACB 1-1/4'' diam.46.8xdiam.34x7"
+    },
+    "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים ששואפים תמיד להיות בראש שילדת AERO תחרותית מקרבון מודול גבוה קשיח במיוחד משולב בCV סופג זעזועים הפטנטי של ביאנקי מערכות חשמליות אלחוטיות 12 הילוכים חדשות מבית שימאנו ULTEGRA DI2 גלגלי קרבון REPRTO CORSE בפרופיל 50 מ'מ מוכנים לטיובלס וכידון מקשה אחת",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/אופני-כביש-שילדה-bianchi-oltre-xr4"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE XR4",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 15000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/620303(1)_jpg.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/620303_JPG(2).webp"
+      ]
+    },
+    "specs": {
+      "frame": "OLTRE XR4 CARBON W/COUNTERVAIL, MECHANICAL/ELECTRONIC SHIFTING COMPATIBLE, HEAD TUBE 1.4' - 1.1/8', DIRECT MOUNT BRAKES, PRESSFIT 86,5X41MM BB",
+      "fork": "BIANCHI FULL CARBON AERO W/COUNTERVAIL, 1.1/8>1.4'",
+      "seatpost": "OLTRE FULL CARBON AERO,  CLAMP WITH ALLOY HEAD ADJUSTABLE AND REVERSIBLE +/- 35MM, LENGTH: 300MM SETBACK: 25MM/-10MM",
+      "headset": "FSA ORBIT C-33, 1.1/8'-1.4'"
+    },
+    "rewritten_description": "עיצוב אוירודינמי שפותח עבור הקבוצה המקצוענית במנהרות הרוח של ביאנקי שילדת קרבון היי מודולוס בשילוב COUNTERVAIL המשכך 80% מהזעזועים אפשרות לצביעה מיוחדת -TAVOLOZZA",
+    "fork length": null
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/oltre-race-105-di2-12sp"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE RACE 105 Di2 12sp",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 19000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/race_105_di2_black_result.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/race_105_di2_celeste(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre Race aero carbon, compatible with internal cable routing, BB-PressFit 86,5x41, integrated seat clamp, disc brake flat mount, thru axle 12x142",
+      "fork": "Full Carbon Aero Road, integrated head , disc brake flat mount, thru axle 12x100",
+      "shifters": "Shimano 105 Di2 hydraulic disc brake for road, ST-R7170, BR-R7170, for 160mm rotor",
+      "front_derailleur": "Shimano 105 Di2 12sp, FD-R7150, top gear 50-52T, for rear 12-speed",
+      "rear_derailleur": "Shimano, RD-R7150, 105 Di2 12-speed",
+      "crankset": "Shimano 105 12sp, FC-R7100, hollowtech 2, for rear 12- speed, 50x34T Crank Length: 170mm",
+      "bottom_bracket": "Shimano, SM-BB72-41B, press fit for road",
+      "cassette": "Shimano 105 12 sp 11-32",
+      "chain": "Shimano, 105 12sp, CN-M7100",
+      "brakes": "Shimano BR-R7170 Hydraulic disc brake + 160mm rotor",
+      "wheels": "Fulcrum Racing 818 disc brake, Aluminium C19 2WF-R Tubeless ready 622x19c, profile height 34mm, HG11",
+      "tires": "Vittoria Rubino IV G2.0 graphene, 700x28, 60TPI",
+      "saddle": "Velomann Seta",
+      "seatpost": "Velomann Full Carbon Aeroshape, special Clamp type with alloy head adjustable and reversible +/- 35mm,  lenght: 300mm",
+      "handlebar": "Velomann Aero Compact, alloy 6061 diam. 31,8mm, reach 74mm, drop 116mm Size: 400mm",
+      "stem": "Velomann, Alloy 6061, raise - 7° Ext: 90mm",
+      "headset": "ACROS & FSA, for internal cable routing"
+    },
+    "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים ששואפים תמיד להיות בראש שילדת AERO תחרותית מקרבון בעיצוב אוירודינמי במיוחד בהתאמה מוחלטת למערכות אלחוטיות מערכות 12 הילוכים אלחוטיות שימאנו 105 Di2 להעברת הילוכים מדויקת איכותית וללא תחזוקה גלגלי אלומיניום FULCRUM C 19 בפרופיל 34 מ'מ מוכנים לטיובלס",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/oltre-comp-105-di2-12sp"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE COMP 105 Di2 12sp",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 24000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/comp_105_di2_celeste_result(3).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/comp_105_di2_celeste_result(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre Comp, carbon, disc brakes, internal cable routing 1.5-1.5 headset, BB-PressFit 86,5x41, flat mount brakes, thru axle 12x142mm",
+      "fork": "Full Carbon aero, disc brakes, integrated head 1,5', thru axle 12x100mm, compatible with 700x30 tire",
+      "shifters": "Shimano 105 Di2 hydraulic disc brake for road, ST-R7170, BR-R7170, for 160mm rotor",
+      "front_derailleur": "Shimano 105 Di2, FD-R7150 12-speed",
+      "rear_derailleur": "Shimano, 105 Di2 RD-R7150, 12-speed",
+      "crankset": "Shimano 105 12sp, FC-R7100, Ultegra hollowtech 2, for rear 12- speed, 50x34T, Crank Length: 170mm",
+      "bottom_bracket": "Shimano, SM-BB72-41B, press fit for road, bearing, inner cover",
+      "cassette": "Shimano 105 12 sp 11-32",
+      "chain": "Shimano, 105 12sp, CN-M7100",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake + 160mm rotor",
+      "wheels": "Velomann Carbon V50R 50mm profile, 700x21c, HG body, UD carbon fiber, tubeless ready and clincher, Internal width: 21 mm, weight per set: 1.630g",
+      "tires": "Pirelli P7, 700 x 28c, 60TPI",
+      "saddle": "Velomann Mitora139 Hyper, open flow, carbon rails, carbon-reinforced nylon, Large 139mm Lenght 250mm",
+      "seatpost": "Oltre Full Carbon Aero special dimension seatpost, 20mm offset, length: 300mm",
+      "handlebar": "Velomann Aero Compact handlebar, alloy diam. 31,8mm, reach 74mm, drop 116mm, for fully internal cable routing Size: 400mm",
+      "stem": "Velomann Aero stem, material alloy, Oversize, 1.1/8', size: 90mm",
+      "headset": "Fsa TH-073E ACB 1.5' 51.8x40x9"
+    },
+    "rewritten_description": "אופני המרוצים המדהימים של ביאנקי, שזכו בפרס העיצוב לשנת 2023 שלדת קרבון אוירודינמית תחרותית קשיחה וחזקה בעיצוב עוצר נשימה מערכות 12 הילוכים אלחוטיות שימאנו 105 Di2 להעברת הילוכים מדויקת איכותית וללא תחזוקה גלגלי קרבון תחרותיים VELOMANN בפרופיל 55 מ'מ מוכנים לטיובלס ברוחב 21 מ'מ",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/oltre-comp-ultegra-di2"
+    },
+    "firm": "Bianchi",
+    "model": "OLTRE Comp Ultegra DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 27000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/OLTRE_WHITE_result2.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/OLTRE_CELESTE_result(4).webp",
+        "https://pedalim.co.il/Media/Uploads/Oltre_1_result.webp",
+        "https://pedalim.co.il/Media/Uploads/Oltre_4_result.webp",
+        "https://pedalim.co.il/Media/Uploads/Oltre_5_result.webp"
+      ]
+    },
+    "specs": {
+      "frame": "Oltre, carbon, disc brakes, electronic and mechanical shifting compatible, internal cable routing 1.5-1.5 headset, BB-PressFit 86,5x41, flat mount bra",
+      "fork": "Full Carbon aero, disc brakes integrated head",
+      "shifters": "Shimano Ultegra Di2 hydraulic disc brake for road",
+      "front_derailleur": "Shimano Ultegra Di2 12sp, FD-R8150, brazed-on type, down swing, top gear 50-54T",
+      "rear_derailleur": "Shimano Ultegra Di2 12sp, RD-R8150, top normal shadow design, direct attachment, W/ TL-EW300, 34T Max Low Sprocket",
+      "crankset": "Shimano Ultegra 12sp, FC-R8100, Ultegra hollowtech 2, for rear 12- speed, 170-172mm, 50x34T w/o BB parts, Crank Length: 170mm",
+      "bottom_bracket": "Shimano, press fit for road, right & left adapter, bearing, inner cover",
+      "cassette": "Shimano Ultegra 12sp, CS-R8100, 11-12-13-14- 15-16-17-19-21-24-27-30T",
+      "chain": "Shimano Ultegra 12sp",
+      "brakes": "'Shimano BR-R8170 Hydraulic disc brake included in the shifter'",
+      "wheels": "Velomann Carbon 55mm profile, 700x21c, HG body",
+      "tires": "Pirelli P7, 700 x 28c, 60TPI, Nylon breaker, Folding",
+      "saddle": "Velomann Mitora saddle",
+      "seatpost": "Velomann Oltre Full Carbon Aero special dimension, 20mm offset, length: 300mm",
+      "handlebar": "Velomann Aero Compact handlebar, alloy diam. 31,8mm, reach 70mm, drop 120mm, Size: 400mm",
+      "stem": "Velomann Aero stem, material alloy, Oversize, 1.1/8', size: 90, w/Oltre custom top cap stem cover w/magnet",
+      "headset": "Fsa ACB 1.5'' 51.8x40x8"
+    },
+    "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים מנוסים שאוהבים לרכוב מהר שילדת AERO תחרותית מקרבון מודול גבוה קשיח במיוחד בתבנית ייעודית לנוחות מירבית מערכות חשמליות אלחוטיות 12 הילוכים חדשות מבית שימאנו ULTEGRA DI2 גלגלי קרבון VELOMANN בפרופיל 55 מ'מ מוכנים לטיובלס",
+    "fork length": null
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/sprint-icr-105-12sp"
+    },
+    "firm": "Bianchi",
+    "model": "SPRINT ICR 105 12sp",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 11990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/SPRINT_ICR_105_SI_CELESTE(9).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/SPRINT_ICR_105_CELESTE(19).webp"
+      ]
+    },
+    "specs": {
+      "frame": "Sprint carbon monocoque, BB-PressFit 86,5x41, head tube 1.4'-1.5', full carbon dropout, Disc brake flat mount, thru axle 12x142",
+      "fork": "Full Carbon Aero Road 1.4'>1.5' integrated head , Disc brake flat mount, thru axle 12x100",
+      "shifters": "Shimano 105 ST-R7120, BR-R7170, hydraulic disc brake for road for 160mm rotor",
+      "front_derailleur": "Shimano 105 12sp, FD-R7100, top gear 50-54T, 16T capacity, for rear 12-speed",
+      "rear_derailleur": "Shimano 105, RD-R7100, direct attachment, max 36T",
+      "crankset": "Shimano 105 12sp,12- speed, Crank Length: 170mm",
+      "bottom_bracket": "Shimano, SM-BB72-41B, press fit for road, bearing, inner cover",
+      "cassette": "Shimano, 105 12sp, CS-R7100, 11-12-13-14-15-17-19-21-24-27-30-34T",
+      "chain": "Shimano CN-M6100, 12sp",
+      "brakes": "Shimano, Hydraulic disc brake, included in the shifter",
+      "wheels": "Velomann alloy, disc brake, 30mm rim profile, hub team TC j-bend, clincher 622x19C, w/rim tape, front HH12 - rear HH12/142",
+      "tires": "Vittoria Rubino IV G2.0 graphene, 700x25, 60TPI",
+      "saddle": "Velomann Seta",
+      "seatpost": "Velomann alloy 6061, 15mm offset, 27,2mm,  Length: 300mm-47cm ,  350mm-47/61cm",
+      "handlebar": "Velomann Compact, alloy 6061, diam. 31,8mm, reach 80mm, drop 130mm Size: 400mm",
+      "stem": "Velomann, Alloy 6061, raise - 7° Ext: 90mm",
+      "headset": "ACROS & FSA, for internal cable routing"
+    },
+    "rewritten_description": "אופני ה-Sprint מתאפיינים בשילדת קרבון איכותית כמיטב המסורת של ביאנקי, מתאימים לרוכבים המחפשים אופני כביש אמינים וחזקים. מצויידים במערכת הילוכים Shimano 105 בעלת 12 הילוכים, שמבטיחה החלפת הילוכים חלקה ואמינה המתאימה לרכיבות תחרותיות ופנאי. מעצורי דיסק הידראוליים של שימאנו וגלגלי דיסק Fulcrum Racing 818 עם כוח עצירה מעולה, לבטיחות ושליטה מוגברת באופניים. עיצוב ארגונומי המשלב מוט אוכף וכידון אלומיניום, שמספקים נוחות וחווית רכיבה נעימה, מתאימים לרכיבות ארוכות וספרינטים מהירים.",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/אופני-כביש-bianchi-infinito-disc-ultegra-di2"
+    },
+    "firm": "Bianchi",
+    "model": "INFINITO Disc Ultegra DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 27990,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_DI2_result.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_DI2_result(10).webp"
+      ]
+    },
+    "specs": {
+      "frame": "INFINITO CV DISC CARBON W/COUNTERVAIL, MECHANICAL/ELECTRONIC DI2/EPS SHIFTING COMPATIBLE, COMPATIBLE WITH 32' TIRE, PRESSFIT 86,5X41MM, THRU AXLE 12X1",
+      "fork": "BIANCHI FULL CARBON W/COUNTERVAIL DISC, 1.5' HEAD, FLAT MOUNT, THRU AXLE 12X100MM, COMPATIBLE WITH 32' TIRE",
+      "shifters": "SHIMANO ULTEGRA DI2 ST-R8070 2X11SP",
+      "front_derailleur": "SHIMANO ULTEGRA DI2 FD-R8050",
+      "rear_derailleur": "SHIMANO ULTEGRA DI2 RD-R8050 SS 11SP",
+      "crankset": "SHIMANO ULTEGRA FC-R8000, 50X34T, HOLLOWTECH II, CRANK LENGTH: 172.5MM",
+      "bottom_bracket": "SHIMANO SM-BB72-41B",
+      "cassette": "SHIMANO ULTEGRA CS-R8000, 11-12-13-14-15-17-19-21-24-27-30T",
+      "chain": "SHIMANO ULTEGRA CN-HG701-11, 11SP",
+      "brakes": "SHIMANO BR-R8070",
+      "wheels": "FULCRUM RACING 418 DISC BRAKE",
+      "tires": "VITTORIA RUBINO PRO G2.0 GRAPHENE 700X28",
+      "saddle": "FI'ZI:K ALIANTE R5 OPEN LARGE",
+      "seatpost": "INFINITO FULL CARBON, CLAMP WITH ALLOY HEAD ADJUSTABLE AND REVERSIBLE +/- 35MM, LENGTH: 350MM",
+      "handlebar": "REPARTO CORSE FULL CARBON, DIAM. 31,8MM, REACH 76MM, DROP 120MM, 4º OUTWARD BEND, SIZE: 420MM",
+      "stem": "REPARTO CORSE 3D FORGED ALLOY 7050, RISE +/-7°, 1.1/8', EXT: 70MM-47, 110MM",
+      "headset": "FSA ORBIT C-40-ACB"
+    },
+    "rewritten_description": "השילדה המושלמת לרכיבות ארוכות ונוחות במיוחד שילדת קרבון בשילוב COUNTERVAIL המשכך 80% מהזעזועים עיצוב וגיאומטריה המפחיתה משמעותית את העייפות המצטברת מבלי לפגוע בביצועים בלמי דיסק לעצירה מוחלטת בכל שטח,מצב ומזג אויר",
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/infinito-ultegra-di2"
+    },
+    "firm": "Bianchi",
+    "model": "INFINITO ULTEGRA DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 25000,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/INFINITO_ULT_DI2.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/INFINITO_ULT_DI2_BLK(1).webp"
+      ]
+    },
+    "specs": {
+      "frame": "INFINITO carbon-1.5'- 1.5', Disc Brake, Mechanical/Electronic Di2, compatible with 32' tire, BBset pressfit 86,5x41, rear dropout 12 x 142mm thru axle",
+      "fork": "Full Carbon - 28'- 300mm - 1.5' , dropout 12 x 100mm thru axle",
+      "shifters": "Ultegra Di2 hydraulic disc brake for road ST-R8170(L), ST-R8170 ®",
+      "front_derailleur": "Ultegra Di2 12sp FD-R8150, Ultegra Di2, brazed-on type",
+      "rear_derailleur": "Ultegra Di2 12sp RD-R8150, 12-speed, max 34T",
+      "crankset": "Ultegra 12sp FC-R8100, hollowtech 2, for rear 12- speed, 170-172,5-175mm, 50x34T Crank Length:170mm",
+      "bottom_bracket": "Shimano KSMBB7241B pressfit",
+      "cassette": "Ultegra 12sp 11-34T CS-R8100,Ultegra 12sp, 11-12-13-14-15-17-19-21-24-27-30-34T",
+      "chain": "Shimano CN-M8100, 12- speed",
+      "brakes": "Shimano BR-R8170 Hydraulic disc brake included in the shifter",
+      "wheels": "Velomann Palladium, 33mm profile, 700x21c, 24h, HG11 body, spoke pattern 2 to 1, tubeless-ready, set 1450 gr, sealed cartridge bearings",
+      "tires": "Pirelli Cinturato™ Velo TLR 32mm (622-32), ArmourTech",
+      "saddle": "Velomann Aero Compact handlebar full , alloy diam. 31,8mm, reach 74mm, drop 116mm Size: 420mm",
+      "seatpost": "Velomann, custom D-shape, alloy shaft 2014, head alloy 6061, Setback 25mm L350mm",
+      "handlebar": "Velomann Aero Compact handlebar full , alloy diam. 31,8mm, reach 74mm, drop 116mm Size: 400mm",
+      "stem": "Velomann, AL6061, fully internal cable routing stem, compatible with Acros A system Ext: 100mm",
+      "headset": "Acros/FSA for cable routing"
+    },
+    "rewritten_description": null,
+    "fork length": 100,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/אופני-כביש-bianchi-infinito-disc-ultegra"
+    },
+    "firm": "Bianchi",
+    "model": "INFINITO Disc Ultegra",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 19900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_celeste_result.webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_celeste_result(7).webp"
+      ]
+    },
+    "specs": {
+      "frame": "INFINITO CV DISC CARBON W/COUNTERVAIL, MECHANICAL/ELECTRONIC DI2/EPS SHIFTING COMPATIBLE, COMPATIBLE WITH 32' TIRE, PRESSFIT 86,5X41MM, THRU AXLE 12X1",
+      "fork": "BIANCHI FULL CARBON W/COUNTERVAIL DISC, 1.5' HEAD, FLAT MOUNT, THRU AXLE 12X100MM, COMPATIBLE WITH 32' TIRE",
+      "shifters": "SHIMANO ULTEGRA ST-R8020 2X11SP HYDRAULIC DISC BRAKE",
+      "front_derailleur": "SHIMANO ULTEGRA FD-R8000",
+      "rear_derailleur": "SHIMANO ULTEGRA RD-R8000 SS 11SP",
+      "crankset": "SHIMANO ULTEGRA FC-R8000 52X36T, CRANK LENGTH: 172.5MM",
+      "bottom_bracket": "SHIMANO SM-BB72-41B",
+      "cassette": "SHIMANO ULTEGRA CS-R8000, 11-12-13-14-15-17-19-21-23-25-28T",
+      "chain": "SHIMANO ULTEGRA CN-HG701-11, 11SP",
+      "brakes": "SHIMANO BR-R8070",
+      "wheels": "FULCRUM RACING 518 DISC BRAKE (STANDARD)",
+      "tires": "VITTORIA RUBINO PRO G+ ISOTECH GRAPHENE 700X28",
+      "saddle": "FI'ZI:K ALIANTE R7",
+      "seatpost": "INFINITO FULL CARBON, CLAMP WITH ALLOY HEAD ADJUSTABLE AND REVERSIBLE +/- 35MM, LENGTH: 350MM",
+      "handlebar": "EPARTO CORSE COMPACT FLAT TOP, ALLOY 2014 DIAM. 31,8MM, REACH 80MM, DROP 130MM, SIZE: 420MM",
+      "stem": "REPARTO CORSE 3D FORGED ALLOY 7050, RISE +/-7°, 1.1/8', EXT: 70MM-47, 110MM",
+      "headset": "FSA ORBIT C-40-ACB"
+    },
+    "rewritten_description": "השילדה המושלמת לרכיבות ארוכות ונוחות במיוחד שילדת קרבון בשילוב COUNTERVAIL המשכך 80% מהזעזועים עיצוב וגיאומטריה המפחיתה משמעותית את העייפות המצטברת מבלי לפגוע בביצועים בלמי דיסק לעצירה מוחלטת בכל שטח,מצב ומזג אויר",
+    "fork length": 100,
+    "style": "cross-country"
+  }
+]

@@ -1,0 +1,218 @@
+.mtb-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    padding: 60px 20px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.mtb-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.mtb-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.mtb-hero p {
+    font-size: 1.15rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.mtb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.mtb-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.mtb-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.mtb-card:hover {
+    transform: translateY(-8px);
+}
+
+.mtb-card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.mtb-card:hover .mtb-card-inner {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mtb-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: center;
+    margin: 0;
+}
+
+.mtb-card-image-circle {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.mtb-card:hover .mtb-card-image-circle {
+    transform: scale(1.05);
+}
+
+.mtb-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.mtb-card-description {
+    font-size: 1.1rem;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0;
+}
+
+.mtb-card-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.mtb-back {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: white;
+    color: #3b82f6;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid #3b82f6;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateX(5px);
+}
+
+.back-button svg {
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+    transform: translateX(-3px);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .mtb-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .mtb-hero p {
+        font-size: 1rem;
+    }
+    
+    .mtb-container {
+        padding: 40px 16px;
+    }
+    
+    .mtb-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .mtb-card-title {
+        font-size: 1.75rem;
+    }
+    
+    .mtb-card-image-circle {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .mtb-card-description {
+        font-size: 1rem;
+    }
+    
+    .mtb-card-inner {
+        padding: 30px 20px;
+    }
+}
+
+/* Animation on load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mtb-card {
+    animation: fadeInUp 0.5s ease-out backwards;
+}
+
+.mtb-card:nth-child(1) { animation-delay: 0.1s; }
+.mtb-card:nth-child(2) { animation-delay: 0.2s; }
+

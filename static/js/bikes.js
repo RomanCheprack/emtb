@@ -21,7 +21,77 @@ function formatNumberWithCommas(value) {
     }
 }
 
+/**
+ * Adapter to normalize bike data format.
+ * During migration, can handle both old flat format and new nested format.
+ * This allows the frontend to work with both formats during the transition.
+ */
+function adaptBikeData(bike) {
+    // Check if already in new format (has 'brand' instead of 'firm')
+    if (bike.brand !== undefined && bike.listing !== undefined) {
+        // New format - already normalized
+        return bike;
+    }
+    
+    // Old format - convert to new format structure for internal use
+    const specs = {};
+    
+    // Core fields that are NOT specs (these belong at the root level)
+    const coreFields = new Set([
+        'id', 'firm', 'model', 'year', 'image_url', 'sub_category', 'category',
+        'style', 'product_url', 'price', 'disc_price', 'gallery_images_urls',
+        'fork_length' // fork_length is at root level in bikes table
+    ]);
+    
+    // Automatically capture ALL other fields as specs
+    for (const [key, value] of Object.entries(bike)) {
+        if (!coreFields.has(key) && value !== null && value !== undefined && value !== '') {
+            specs[key] = value;
+        }
+    }
+    
+    return {
+        id: bike.id,
+        brand: bike.firm,
+        model: bike.model,
+        year: bike.year,
+        image_url: bike.image_url,
+        sub_category: bike.sub_category,
+        listing: {
+            product_url: bike.product_url,
+            price: bike.disc_price || bike.price,
+            original_price: bike.price
+        },
+        specs: specs,
+        images: bike.gallery_images_urls ? JSON.parse(bike.gallery_images_urls) : []
+    };
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    // ========== LOAD ALL BIKES DATA FOR CLIENT-SIDE FILTERING ==========
+    let allBikes = []; // All bikes for current category
+    let filteredBikes = []; // Currently displayed bikes after filtering
+    
+    // Load bikes from inline JSON
+    const bikesDataElement = document.getElementById('bikes-data');
+    if (bikesDataElement) {
+        try {
+            allBikes = JSON.parse(bikesDataElement.textContent);
+            filteredBikes = [...allBikes]; // Start with all bikes
+            console.log(`Loaded ${allBikes.length} bikes for client-side filtering`);
+            
+            // Success!
+            if (allBikes.length > 0) {
+                console.log(`✅ Client-side filtering ready with ${allBikes.length} bikes`);
+            }
+        } catch (e) {
+            console.error('Failed to parse bikes data:', e);
+            allBikes = [];
+            filteredBikes = [];
+        }
+    }
+    
+    // ========== DOM ELEMENTS ==========
     const priceSlider = document.getElementById("price-slider");
     const batterySlider = document.getElementById("battery-slider");
     const searchInput = document.getElementById("search-input");
@@ -36,6 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const minBatteryValue = document.getElementById("min_battery_value");
     const maxBatteryValue = document.getElementById("max_battery_value");
 
+    const minForkInput = document.getElementById("min_fork");
+    const maxForkInput = document.getElementById("max_fork");
+    const minForkValue = document.getElementById("min_fork_value");
+    const maxForkValue = document.getElementById("max_fork_value");
+
     const sortDropdown = document.getElementById("sort-price");
 
     // Cache DOM elements for better performance
@@ -44,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const firmDropdown = document.getElementById('firmDropdown');
     const motorBrandDropdown = document.getElementById('motorBrandDropdown');
 
-    // Debounce function for search input
+    // Debounce function for search input (less aggressive since filtering is instant)
     let searchTimeout;
     function debounce(func, wait) {
         return function executedFunction(...args) {
@@ -57,11 +132,45 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
+    // Get category first to determine price range and other settings
+    const categoryInput = document.getElementById('selected-category');
+    const selectedCategory = categoryInput ? categoryInput.value : null;
+    
+    // Set price range based on category
+    let maxPrice = 80000; // Default max price
+    let defaultMaxPrice = 100000; // Default slider end position
+    
+    switch(selectedCategory) {
+        case 'kids':
+            maxPrice = 10000;
+            defaultMaxPrice = 10000;
+            break;
+        case 'city':
+            maxPrice = 20000;
+            defaultMaxPrice = 20000;
+            break;
+        case 'electric':
+            maxPrice = 80000;
+            defaultMaxPrice = 80000;
+            break;
+        case 'road':
+            maxPrice = 60000;
+            defaultMaxPrice = 60000;
+            break;
+        case 'mtb':
+            maxPrice = 70000;
+            defaultMaxPrice = 70000;
+            break;
+        default:
+            maxPrice = 80000;
+            defaultMaxPrice = 80000;
+    }
+    
     noUiSlider.create(priceSlider, {
-        start: [0, 100000],
+        start: [0, defaultMaxPrice],
         connect: true,
-        step: 100,
-        range: { min: 0, max: 100000 },
+        step: 1000,
+        range: { min: 0, max: maxPrice },
         format: {
             to: (val) => Math.round(val),
             from: (val) => Number(val),
@@ -74,24 +183,76 @@ document.addEventListener("DOMContentLoaded", () => {
         minPriceValue.textContent = values[0];
         maxPriceValue.textContent = values[1];
     });
+    
+    // Only create battery slider if category is electric
+    if (selectedCategory === 'electric') {
+        noUiSlider.create(batterySlider, {
+            start: [200, 1000],
+            connect: true,
+            step: 10,
+            range: { min: 200, max: 1000 },
+            format: {
+                to: (val) => Math.round(val),
+                from: (val) => Number(val),
+            },
+        });
 
-    noUiSlider.create(batterySlider, {
-        start: [200, 1000],
-        connect: true,
-        step: 10,
-        range: { min: 200, max: 1000 },
-        format: {
-            to: (val) => Math.round(val),
-            from: (val) => Number(val),
-        },
-    });
+        batterySlider.noUiSlider.on("update", (values) => {
+            minBatteryInput.value = values[0];
+            maxBatteryInput.value = values[1];
+            minBatteryValue.textContent = values[0];
+            maxBatteryValue.textContent = values[1];
+        });
+    } else {
+        // Hide battery slider container if not electric category
+        const batterySliderContainer = batterySlider.closest('.slider-padding-wh');
+        if (batterySliderContainer) {
+            batterySliderContainer.style.display = 'none';
+        }
+    }
 
-    batterySlider.noUiSlider.on("update", (values) => {
-        minBatteryInput.value = values[0];
-        maxBatteryInput.value = values[1];
-        minBatteryValue.textContent = values[0];
-        maxBatteryValue.textContent = values[1];
-    });
+    // Firms and sub-categories are now filtered server-side
+    // No need for client-side filtering anymore
+
+    // Hide motor dropdown if category is not electric
+    if (selectedCategory !== 'electric') {
+        const motorDropdownContainer = document.getElementById('motorBrandDropdown')?.closest('.mb-3');
+        if (motorDropdownContainer) {
+            motorDropdownContainer.style.display = 'none';
+        }
+    }
+
+    // Initialize and manage fork length slider
+    const forkSlider = document.getElementById("fork-slider");
+    const forkSliderContainer = document.getElementById("fork-slider-container");
+    
+    // Hide fork slider for road category
+    if (selectedCategory === 'road') {
+        if (forkSliderContainer) {
+            forkSliderContainer.style.display = 'none';
+        }
+    } else {
+        // Create fork slider for non-road categories
+        if (forkSlider) {
+            noUiSlider.create(forkSlider, {
+                start: [80, 170],
+                connect: true,
+                step: 5,
+                range: { min: 80, max: 170 },
+                format: {
+                    to: (val) => Math.round(val),
+                    from: (val) => Number(val),
+                },
+            });
+
+            forkSlider.noUiSlider.on("update", (values) => {
+                minForkInput.value = values[0];
+                maxForkInput.value = values[1];
+                minForkValue.textContent = values[0];
+                maxForkValue.textContent = values[1];
+            });
+        }
+    }
 
     function updateFirmDropdownText() {
         const selectedFirms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
@@ -128,48 +289,51 @@ document.addEventListener("DOMContentLoaded", () => {
             fragment.appendChild(noResultsDiv);
         } else {
             bikes.forEach((bike) => {
+                // Adapt bike data to work with both old and new formats
+                const adaptedBike = adaptBikeData(bike);
+                
                 const bikeDiv = document.createElement('div');
                 bikeDiv.className = 'col-6 col-lg-2 mb-2 px-1';
                 bikeDiv.innerHTML = `
-                    <div class="card h-100 position-relative bike-card" data-bike-id="${bike.id}">
-                        <img src="${bike["image_url"]}" class="card-img-top" alt="${bike.model}">
+                    <div class="card h-100 position-relative bike-card" data-bike-id="${adaptedBike.id}">
+                        <img src="${adaptedBike.image_url}" class="card-img-top" alt="${adaptedBike.model}" loading="lazy">
                         <div class="card-body">
-                            <h2 class="card-firm">${bike.firm}</h2>
-                            <p class="card-title">${bike.model}</p>
+                            <h2 class="card-firm">${adaptedBike.brand}</h2>
+                            <p class="card-title">${adaptedBike.model}</p>
                             <p class="card-text-price">
-                               ${bike.disc_price && bike.disc_price !== "#N/A"
-                                    ? `${formatNumberWithCommas(bike.price) === 'צור קשר' 
-                                        ? `<span style="text-decoration: line-through; color: #888;">${formatNumberWithCommas(bike.price)}</span>`
-                                        : `<span style="text-decoration: line-through; color: #888;">₪ ${formatNumberWithCommas(bike.price)}</span>`
+                               ${adaptedBike.listing.price && adaptedBike.listing.original_price && adaptedBike.listing.price !== adaptedBike.listing.original_price && adaptedBike.listing.price !== "#N/A"
+                                    ? `${formatNumberWithCommas(adaptedBike.listing.original_price) === 'צור קשר' 
+                                        ? `<span style="text-decoration: line-through; color: #888;">${formatNumberWithCommas(adaptedBike.listing.original_price)}</span>`
+                                        : `<span style="text-decoration: line-through; color: #888;">₪ ${formatNumberWithCommas(adaptedBike.listing.original_price)}</span>`
                                     }
                                     <br>
-                                    ${formatNumberWithCommas(bike.disc_price) === 'צור קשר'
-                                        ? `<span class="text-danger fw-bold ms-2">${formatNumberWithCommas(bike.disc_price)}</span>`
-                                        : `<span class="text-danger fw-bold ms-2">₪ ${formatNumberWithCommas(bike.disc_price)}</span>`
+                                    ${formatNumberWithCommas(adaptedBike.listing.price) === 'צור קשר'
+                                        ? `<span class="text-danger fw-bold ms-2">${formatNumberWithCommas(adaptedBike.listing.price)}</span>`
+                                        : `<span class="text-danger fw-bold ms-2">₪ ${formatNumberWithCommas(adaptedBike.listing.price)}</span>`
                                     }`
-                                   : `${formatNumberWithCommas(bike.price) === 'צור קשר'
-                                        ? formatNumberWithCommas(bike.price)
-                                        : `₪ ${formatNumberWithCommas(bike.price)}`
+                                   : `${formatNumberWithCommas(adaptedBike.listing.price) === 'צור קשר'
+                                        ? formatNumberWithCommas(adaptedBike.listing.price)
+                                        : `₪ ${formatNumberWithCommas(adaptedBike.listing.price)}`
                                     }`}
                             </p>
-                            <p class="card-text-year">${bike.year}</p>
+                            <p class="card-text-year">${adaptedBike.year}</p>
                             <div class="button-container">
                                 <div class="top-buttons-container">
                                     <div class="details-btn-container">
-                                        <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${bike.id}">
+                                        <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${adaptedBike.id}">
                                             <i class="fas fa-info-circle me-1"></i>
                                             מפרט
                                         </button>
                                     </div>
                                     <div class="purchase-btn-container">
-                                        <button class="btn btn-outline-primary purchase-btn" data-bike-id="${bike.id}" data-product-url="${bike.product_url || ''}">
+                                        <button class="btn btn-outline-primary purchase-btn" data-bike-id="${adaptedBike.id}" data-product-url="${adaptedBike.listing.product_url || ''}">
                                             <i class="fas fa-shopping-cart me-1"></i>
                                             רכישה
                                         </button>
                                     </div>
                                 </div>
                                 <div class="compare-btn-container">
-                                    <button class="btn btn-outline-danger compare-btn" data-bike-id="${bike.id}">
+                                    <button class="btn btn-outline-danger compare-btn" data-bike-id="${adaptedBike.id}">
                                         <i class="fas fa-balance-scale me-1"></i>
                                         הוסף להשוואה
                                     </button>
@@ -185,89 +349,154 @@ document.addEventListener("DOMContentLoaded", () => {
         return fragment;
     }
 
+    // ========== CLIENT-SIDE FILTERING (INSTANT!) ==========
     function applyFilters() {
-        const query = searchInput.value.trim();
-        const min_price = minPriceInput.value;
-        const max_price = maxPriceInput.value;
-        const min_battery = minBatteryInput.value;
-        const max_battery = maxBatteryInput.value;
+        const startTime = performance.now();
+        
+        // Get all filter values
+        const query = searchInput.value.trim().toLowerCase();
+        const min_price = parseInt(minPriceInput.value) || 0;
+        const max_price = parseInt(maxPriceInput.value) || defaultMaxPrice;
+        const min_battery = parseInt(minBatteryInput.value) || 0;
+        const max_battery = parseInt(maxBatteryInput.value) || 1000;
+        const min_fork = minForkInput ? parseInt(minForkInput.value) || 0 : 0;
+        const max_fork = maxForkInput ? parseInt(maxForkInput.value) || 1000 : 1000;
 
-        const firms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
-        const motorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
-        const subCategories = Array.from(document.querySelectorAll('.sub-category-checkbox:checked')).map(cb => cb.value);
-
+        const selectedFirms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
+        const selectedMotorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
+        const selectedSubCategories = Array.from(document.querySelectorAll('.sub-category-checkbox:checked')).map(cb => cb.value);
+        const selectedStyles = Array.from(document.querySelectorAll('.style-checkbox:checked')).map(cb => cb.value);
+        const selectedYears = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => parseInt(cb.value));
+        
         const frameMaterial = document.querySelector('input[name="frame_material"]:checked')?.value;
         const hasDiscount = document.querySelector('input[name="has_discount"]:checked')?.value;
-
-        const params = new URLSearchParams();
-        if (query) params.append("q", query);
-        if (min_price) params.append("min_price", min_price);
-        if (max_price) params.append("max_price", max_price);
-        if (min_battery) params.append("min_battery", min_battery);
-        if (max_battery) params.append("max_battery", max_battery);
-        firms.forEach(f => params.append("firm", f));
-        motorBrands.forEach(brand => params.append("motor_brand", brand));
-        subCategories.forEach(cat => params.append("sub_category", cat));
-        if (frameMaterial) params.append("frame_material", frameMaterial);
-        if (hasDiscount) params.append("has_discount", hasDiscount);
-
-        const years = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => cb.value);
-        years.forEach(y => params.append("year", y));
-
-        fetch(`/api/filter_bikes?${params.toString()}`)
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`);
+        
+        // Filter bikes in memory - FAST!
+        filteredBikes = allBikes.filter((bike) => {
+            
+            // Search filter (model or firm)
+            if (query) {
+                const modelMatch = bike.model?.toLowerCase().includes(query);
+                const firmMatch = bike.firm?.toLowerCase().includes(query);
+                if (!modelMatch && !firmMatch) return false;
+            }
+            
+            // Price filter
+            const price = bike.disc_price || bike.price;
+            if (price && price !== "צור קשר") {
+                // Parse price correctly - handle decimals (27990.00 should be 27990, not 2799000)
+                const priceNum = Math.round(parseFloat(String(price))) || 0;
+                if (priceNum < min_price || priceNum > max_price) {
+                    return false;
                 }
-                return res.json();
-            })
-            .then((response) => {
-                const bikes = response.bikes || [];
-                const sortOrder = sortDropdown.value;
-                if (sortOrder === "asc") {
-                    bikes.sort((a, b) => {
-                        // Use disc_price if available, otherwise use price
-                        const aPrice = a.disc_price || a.price;
-                        const bPrice = b.disc_price || b.price;
-                        
-                        // Parse prices, handling "צור קשר" and other non-numeric values
-                        const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
-                        const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
-                        
-                        return aNum - bNum;
-                    });
-                } else if (sortOrder === "desc") {
-                    bikes.sort((a, b) => {
-                        // Use disc_price if available, otherwise use price
-                        const aPrice = a.disc_price || a.price;
-                        const bPrice = b.disc_price || b.price;
-                        
-                        // Parse prices, handling "צור קשר" and other non-numeric values
-                        const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
-                        const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
-                        
-                        return bNum - aNum;
-                    });
+            }
+            
+            // Year filter
+            if (selectedYears.length > 0) {
+                // Convert bike.year to number for comparison
+                const bikeYear = parseInt(bike.year);
+                if (!selectedYears.includes(bikeYear)) {
+                    return false;
                 }
-
-                // Clear and update bikes list efficiently
-                bikesList.innerHTML = "";
-                const bikesFragment = generateBikesHTML(bikes);
-                bikesList.appendChild(bikesFragment);
-
-                // Update count
-                bikesCount.textContent = `נמצאו ${bikes.length} אופניים`;
-
-                attachCompareButtonListeners();
-                attachPurchaseButtonListeners();
-                // Restore compare UI state after regenerating HTML
-                fetch("/api/compare_list")
-                    .then((res) => res.json())
-                    .then((data) => updateCompareUI(data.compare_list || []));
-            })
-            .catch((err) => {
-                console.error("❌ Error in fetch or JSON:", err);
+            }
+            
+            // Firm/Brand filter
+            if (selectedFirms.length > 0) {
+                if (!bike.firm || !selectedFirms.includes(bike.firm)) {
+                    return false;
+                }
+            }
+            
+            // Sub-category filter
+            if (selectedSubCategories.length > 0) {
+                // Handle special case for electric_city (some have space)
+                const bikeSubCat = bike.sub_category?.trim();
+                const normalizedSubCat = bikeSubCat === 'electric_ city' ? 'electric_city' : bikeSubCat;
+                if (!selectedSubCategories.includes(normalizedSubCat)) {
+                    return false;
+                }
+            }
+            
+            // Style filter
+            if (selectedStyles.length > 0 && bike.style && !selectedStyles.includes(bike.style)) {
+                return false;
+            }
+            
+            // Battery filter (for electric bikes)
+            if (bike.wh) {
+                const wh = parseInt(bike.wh) || 0;
+                if (wh < min_battery || wh > max_battery) {
+                    return false;
+                }
+            }
+            
+            // Fork length filter
+            if (bike.fork_length) {
+                const forkMatch = String(bike.fork_length).match(/\d+/);
+                const forkNum = forkMatch ? parseInt(forkMatch[0]) : 0;
+                if (forkNum && (forkNum < min_fork || forkNum > max_fork)) {
+                    return false;
+                }
+            }
+            
+            // Frame material filter
+            if (frameMaterial) {
+                const bikeMaterial = bike.frame_material || bike.frame || '';
+                if (!bikeMaterial.toLowerCase().includes(frameMaterial.toLowerCase())) {
+                    return false;
+                }
+            }
+            
+            // Motor brand filter
+            if (selectedMotorBrands.length > 0) {
+                const bikeMotor = bike.motor_brand || bike.motor || '';
+                const motorMatch = selectedMotorBrands.some(brand => 
+                    bikeMotor.toLowerCase().includes(brand.toLowerCase())
+                );
+                if (!motorMatch) return false;
+            }
+            
+            // Discount filter
+            if (hasDiscount === "true" && !bike.disc_price) {
+                return false;
+            }
+            
+            return true;
+        });
+        
+        // Sort if needed
+        const sortOrder = sortDropdown.value;
+        if (sortOrder === "asc" || sortOrder === "desc") {
+            filteredBikes.sort((a, b) => {
+                const aPrice = a.disc_price || a.price;
+                const bPrice = b.disc_price || b.price;
+                
+                // Parse price correctly - handle decimals
+                const aNum = aPrice && aPrice !== "צור קשר" ? Math.round(parseFloat(String(aPrice))) : 0;
+                const bNum = bPrice && bPrice !== "צור קשר" ? Math.round(parseFloat(String(bPrice))) : 0;
+                
+                return sortOrder === "asc" ? aNum - bNum : bNum - aNum;
             });
+        }
+        
+        // Render filtered bikes
+        bikesList.innerHTML = "";
+        const bikesFragment = generateBikesHTML(filteredBikes);
+        bikesList.appendChild(bikesFragment);
+        bikesCount.textContent = `נמצאו ${filteredBikes.length} אופניים`;
+
+        // Re-attach event listeners
+        attachCompareButtonListeners();
+        attachPurchaseButtonListeners();
+        
+        // Restore compare UI state
+        fetch("/api/compare_list")
+            .then((res) => res.json())
+            .then((data) => updateCompareUI(data.compare_list || []))
+            .catch(err => console.error('Error fetching compare list:', err));
+        
+        const endTime = performance.now();
+        console.log(`⚡ Filtering completed in ${(endTime - startTime).toFixed(2)}ms - showing ${filteredBikes.length} bikes`);
     }
 
     function attachCompareButtonListeners() {
@@ -280,8 +509,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? `/remove_from_compare`
                     : `/add_to_compare`;
 
-                console.log(`Sending ${isSelected ? 'remove' : 'add'} request for bike ID: ${bikeId}`);
-                console.log(`Full URL: ${url}`);
                 // Get CSRF token from meta tag
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 
@@ -294,9 +521,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify({ bike_id: bikeId })
                 })
                     .then((res) => {
-                        console.log(`Response status: ${res.status}`);
-                        console.log(`Response headers:`, res.headers);
-                        
                         // Check if response is JSON
                         const contentType = res.headers.get('content-type');
                         if (!contentType || !contentType.includes('application/json')) {
@@ -310,7 +534,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         return res.json();
                     })
                     .then((data) => {
-                        console.log("Response data:", data);
                         if (data.success) {
                             updateCompareUI(data.compare_list || []);
                         } else {
@@ -343,23 +566,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateCompareUI(compareList) {
-        console.log("Updating compare UI with list:", compareList);
         document.querySelectorAll(".compare-btn").forEach((btn) => {
             const bikeId = btn.getAttribute("data-bike-id");
             const card = btn.closest(".card");
-            
-            console.log(`Checking bike ${bikeId} - in list: ${compareList.includes(bikeId)}`);
             
             if (compareList.includes(bikeId)) {
                 btn.classList.add("selected");
                 btn.innerHTML = '<i class="fas fa-check me-1"></i>הסר השוואה';
                 card.classList.add("compare-selected");
-                console.log(`✅ Bike ${bikeId} is now SELECTED`);
             } else {
                 btn.classList.remove("selected");
                 btn.innerHTML = '<i class="fas fa-balance-scale me-1"></i>הוסף להשוואה';
                 card.classList.remove("compare-selected");
-                console.log(`❌ Bike ${bikeId} is now DESELECTED`);
             }
         });
 
@@ -418,9 +636,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 }
 
+/**
+ * Format field names for display when no Hebrew translation exists
+ * Converts snake_case or camelCase to readable format
+ */
+function formatFieldName(fieldName) {
+    if (!fieldName) return '';
+    
+    // Convert to string and handle common patterns
+    let formatted = String(fieldName)
+        .replace(/_/g, ' ')  // Replace underscores with spaces
+        .replace(/([a-z])([A-Z])/g, '$1 $2')  // Add space between camelCase
+        .trim();
+    
+    // Capitalize first letter of each word
+    formatted = formatted.split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+    
+    return formatted;
+}
+
 function showBikeDetailsModal(bike) {
-        console.log('Showing bike details modal for:', bike);
-        
         // Validate bike object
         if (!bike || typeof bike !== 'object') {
             console.error('Invalid bike object:', bike);
@@ -428,11 +665,16 @@ function showBikeDetailsModal(bike) {
             return;
         }
         
-        // Field translations and organization
+        // Adapt bike data to work with both old and new formats
+        const adaptedBike = adaptBikeData(bike);
+        
+        // Field translations and organization (includes common raw spec keys)
         const fieldTranslations = {
-            'firm': 'מותג',
+            'brand': 'מותג',
             'model': 'דגם',
             'year': 'שנה',
+            'bike_type': 'סוג אופניים',
+            'bike_series': 'סדרה',
             'price': 'מחיר',
             'disc_price': 'מחיר מבצע',
             'motor': 'מנוע',
@@ -440,6 +682,7 @@ function showBikeDetailsModal(bike) {
             'wh': '(WH) סוללה',
             'fork': 'בולם קדמי',
             'rear_shock': 'בולם אחורי',
+            'shock': 'בולם',
             'frame': 'שלדה',
             'tires': 'צמיגים',
             'brakes': 'בלמים',
@@ -447,7 +690,10 @@ function showBikeDetailsModal(bike) {
             'wheel_size': 'גודל גלגלים',
             'sub_category': 'סוג אופניים',
             'size': 'מידה',
+            'sizes': 'מידות',
+            'sku': 'מק"ט',
             'gear_count': 'מספר הילוכים',
+            'number_of_gears': 'מספר הילוכים',
             'front_brake': 'ברקס קידמי',
             'rear_brake': 'ברקס אחורי',
             'front_tire': 'צמיג קדמי',
@@ -457,34 +703,117 @@ function showBikeDetailsModal(bike) {
             'charger': 'מטען',
             'screen': 'מסך',
             'extras': 'תוספות',
+            'additionals': 'תוספות',
             'rear_der': 'מעביר אחורי',
             'shifter': 'שיפטר',
+            'shifters': 'שיפטרים',
             'crank_set': 'קראנק',
+            'crankset': 'קראנק',
+            'crank': 'קראנק',
             'chain': 'שרשרת',
+            'chainring': 'גלגל שיניים',
+            'chainset': 'קראנק',
+            'chainstay': 'זרוע אחורית',
             'cassette': 'קסטה',
             'rotors': 'רוטורים',
+            'rotor': 'רוטור',
             'handlebar': 'כידון',
+            'handelbar': 'כידון',
+            'bar': 'כידון',
             'seat_post': 'מוט אוכף',
+            'seatpost': 'מוט אוכף',
+            'seatpost_clamp': 'מהדק מוט אוכף',
             'stem': 'סטם',
             'lights': 'תאורה',
+            'lighting': 'תאורה',
             'wheels': 'גלגלים',
+            'wheelset': 'סט גלגלים',
+            'wheelbase': 'בסיס גלגלים',
             'rims': 'חישוקים',
             'spokes': 'חישורים',
             'front_hub': 'ציר קדמי',
             'rear_hub': 'ציר אחורי',
+            'hub': 'רכזת',
+            'hubs': 'רכזות',
             'headset': 'הד סט',
+            'head tube': 'צינור היגוי',
             'remote': 'שלט',
             'fork_length': 'אורך בולמים',
             'chain_guide': 'מדריך שרשרת',
+            'chainguide': 'מדריך שרשרת',
             'tubes': 'פנימיות',
             'front_wheel': 'גלגל קדמי',
             'rear_wheel': 'גלגל אחורי',
-            'rear_derailleur': 'מעביר אחורי'
+            'rear_derailleur': 'מעביר אחורי',
+            'rear derailleur': 'מעביר אחורי',
+            'front_derailleur': 'מעביר קדמי',
+            'front derailleur': 'מעביר קדמי',
+            'derailleur': 'מעביר',
+            'mech': 'מעביר',
+            'bb': 'בראקט תחתון',
+            'bottom_bracket': 'בראקט תחתון',
+            'battery_capacity': 'קיבולת סוללה',
+            'front_wheel_size': 'גודל גלגל קדמי',
+            'rear_wheel_size': 'גודל גלגל אחורי',
+            'battery_watts_per_hour': 'סוללה (WH)',
+            'rear_wheel_maxtravel': 'מהלך מקסימלי אחורי',
+            'brake_lever': 'ידית בלם',
+            'brake_levers': 'ידיות בלם',
+            'brake levers': 'ידיות בלם',
+            'clamp': 'מהדק',
+            'seat_clamp': 'מהדק אוכף',
+            'front_axle': 'ציר קדמי',
+            'rear_axle': 'ציר אחורי',
+            'axle': 'ציר',
+            'category': 'קטגוריה',
+            'style': 'סגנון',
+            'suspension': 'מתלה',
+            'groupset': 'קבוצת העברה',
+            'drivetrain': 'מערכת הינע',
+            'display': 'תצוגה',
+            'controller': 'בקר',
+            'control_system': 'מערכת בקרה',
+            'accessories': 'אביזרים',
+            'grips': 'גריפים',
+            'grip': 'גריפ',
+            'seat': 'אוכף',
+            'tire': 'צמיג',
+            'tyres': 'צמיגים',
+            'valve': 'ונטיל',
+            'speed': 'מהירות',
+            'speeds': 'הילוכים',
+            'gears': 'הילוכים',
+            'color': 'צבע',
+            'colours': 'צבעים',
+            'colors': 'צבעים',
+            'material': 'חומר',
+            'travel': 'מהלך',
+            'trail': 'טרייל',
+            'seat angle': 'זווית אוכף',
+            'bottom bracket drop': 'ירידת בראקט',
+            'front guide': 'מדריך קדמי',
+            'diameter': 'קוטר',
+            'width': 'רוחב',
+            'length': 'אורך',
+            'height': 'גובה',
+            'angle': 'זווית',
+            'reach': 'ריץ\'',
+            'stack': 'סטאק',
+            'range': 'טווח',
+            'torque': 'מומנט',
+            'power': 'עוצמה',
+            'voltage': 'מתח',
+            'amperage': 'עוצמת זרם',
+            'charge_time': 'זמן טעינה',
+            'charging_time': 'זמן טעינה',
+            'rim_tape': 'סרט חישוק',
+            'handlebar_tape': 'סרט כידון',
+            'additionals': 'תוספות'
         };
         
         // Define the order of fields to display
         const fieldOrder = [
-            'firm',
+            'brand',
             'model',
             'sub_category', 
             'year',
@@ -528,39 +857,16 @@ function showBikeDetailsModal(bike) {
             'extras'
         ];
         
-        // Parse gallery images if available
-        let galleryImages = [];
+        // Get gallery images from adapted bike (already an array)
+        let galleryImages = adaptedBike.images || [];
         
-        console.log('=== GALLERY DEBUG ===');
-        console.log('Bike ID:', bike.id);
-        console.log('Gallery field exists:', !!bike['gallery_images_urls']);
-        console.log('Gallery field value:', bike['gallery_images_urls']);
-        console.log('Gallery field type:', typeof bike['gallery_images_urls']);
-        
-        if (bike['gallery_images_urls']) {
-            try {
-                galleryImages = JSON.parse(bike['gallery_images_urls']);
-                console.log('Parsed gallery images:', galleryImages);
-                if (!Array.isArray(galleryImages)) {
-                    console.log('Gallery is not an array, resetting to empty');
-                    galleryImages = [];
-                }
-            } catch (e) {
-                console.warn('Failed to parse gallery_images_urls:', e);
-                galleryImages = [];
-            }
-        } else {
-            console.log('No gallery_images_urls field found');
-        }
-        
-        console.log('Final gallery images count:', galleryImages.length);
-        console.log('=== END GALLERY DEBUG ===');
+        // Gallery images ready
         
         let html = `
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-image-container">
-                        <img src="${bike['image_url'] || ''}" class="img-fluid main-bike-image" alt="${bike.model || 'Bike'}" id="main-bike-image" onclick="openImageZoom('${bike['image_url'] || ''}', '${bike.model || 'Bike'}')">
+                        <img src="${adaptedBike.image_url || ''}" class="img-fluid main-bike-image" alt="${adaptedBike.model || 'Bike'}" id="main-bike-image" onclick="openImageZoom('${adaptedBike.image_url || ''}', '${adaptedBike.model || 'Bike'}')" loading="lazy" referrerpolicy="no-referrer">
                         <div class="zoom-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -570,7 +876,7 @@ function showBikeDetailsModal(bike) {
                         <div class="gallery-scroll">
                             ${galleryImages.map((imgUrl, index) => `
                                 <div class="gallery-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
-                                    <img src="${imgUrl}" alt="${bike.model || 'Bike'} - תמונה ${index + 1}" class="img-fluid">
+                                    <img src="${imgUrl}" alt="${adaptedBike.model || 'Bike'} - תמונה ${index + 1}" class="img-fluid" loading="lazy">
                                 </div>
                             `).join('')}
                         </div>
@@ -583,17 +889,46 @@ function showBikeDetailsModal(bike) {
         `;
 
                 // Display fields in the specified order
+        const displayedFields = new Set(); // Track which fields we've already displayed
+        
         fieldOrder.forEach((key) => {
-            let value = bike[key];
+            // Get value from appropriate location in adapted bike
+            let value;
+            if (key === 'brand' || key === 'model' || key === 'year' || key === 'sub_category') {
+                // Basic fields at root level
+                value = adaptedBike[key];
+            } else if (key === 'price') {
+                // Price from listing
+                value = adaptedBike.listing.original_price;
+            } else if (key === 'disc_price') {
+                // Discounted price from listing
+                value = adaptedBike.listing.price;
+            } else {
+                // Everything else is in specs
+                value = adaptedBike.specs[key];
+            }
+            
+            // Check if there's a discount
+            const hasDiscount = adaptedBike.listing.price !== adaptedBike.listing.original_price && 
+                               adaptedBike.listing.price !== null && 
+                               adaptedBike.listing.price !== undefined &&
+                               adaptedBike.listing.price !== '';
+            
+            // Skip disc_price row if there's no discount
+            if (key === 'disc_price' && !hasDiscount) {
+                return;
+            }
             
             // Skip if value is undefined or null
             if (value === undefined || value === null) {
                 return;
             }
             
+            displayedFields.add(key); // Mark this field as displayed
+            
             // Format price fields with commas and shekel symbol
             if (key === 'price' || key === 'disc_price') {
-                const formattedValue = formatNumberWithCommas(bike[key]);
+                const formattedValue = formatNumberWithCommas(value);
                 if (formattedValue === 'צור קשר') {
                     value = formattedValue;
                 } else {
@@ -601,30 +936,74 @@ function showBikeDetailsModal(bike) {
                 }
             }
             
-            // Translate the field name
-            const translatedKey = fieldTranslations[key] || key;
+            // Translate the field name, or format it nicely if no translation exists
+            const translatedKey = fieldTranslations[key] || formatFieldName(key);
             
             // Check if value is long and needs collapsible functionality
             const isLongValue = value && value.length > 100;
             
+            // Apply styling based on field type and discount status
+            let cellStyle = 'text-align: left;';
+            if (key === 'price' && hasDiscount) {
+                // Original price with strikethrough when there's a discount
+                cellStyle += ' text-decoration: line-through; color: #888;';
+            } else if (key === 'disc_price') {
+                // Discounted price in red
+                cellStyle += ' color: #d32f2f; font-weight: bold;';
+            }
+            
             if (isLongValue) {
                 const shortValue = value.substring(0, 100) + '...';
-                html += `<tr><td style="text-align: left;">
+                html += `<tr><td style="${cellStyle}">
                     <span class="cell-short">${shortValue}</span>
                     <span class="cell-full" style="display: none;">${value}</span>
                     <button class="show-more-btn" onclick="toggleValue(this)">הצג עוד</button>
                 </td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
             } else {
-                html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                html += `<tr><td style="${cellStyle}">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
             }
         });
+        
+        // Display any remaining specs that weren't in fieldOrder
+        if (adaptedBike.specs && typeof adaptedBike.specs === 'object') {
+            Object.keys(adaptedBike.specs).forEach((key) => {
+                // Skip if already displayed
+                if (displayedFields.has(key)) {
+                    return;
+                }
+                
+                const value = adaptedBike.specs[key];
+                
+                // Skip if value is undefined, null, or empty
+                if (value === undefined || value === null || value === '') {
+                    return;
+                }
+                
+                // Translate the field name if translation exists, otherwise format it nicely
+                const translatedKey = fieldTranslations[key] || formatFieldName(key);
+                
+                // Check if value is long and needs collapsible functionality
+                const isLongValue = value && value.length > 100;
+                
+                if (isLongValue) {
+                    const shortValue = value.substring(0, 100) + '...';
+                    html += `<tr><td style="text-align: left;">
+                        <span class="cell-short">${shortValue}</span>
+                        <span class="cell-full" style="display: none;">${value}</span>
+                        <button class="show-more-btn" onclick="toggleValue(this)">הצג עוד</button>
+                    </td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                } else {
+                    html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                }
+            });
+        }
 
         html += `
                         </tbody>
                     </table>
                 </div>
                 <div class="mt-3">
-                    ${bike['product_url'] ? `<a href="${bike['product_url']}" class="btn btn-info" target="_blank">לרכישה</a>` : ''}
+                    ${adaptedBike.listing.product_url ? `<a href="${adaptedBike.listing.product_url}" class="btn btn-info" target="_blank">לרכישה</a>` : ''}
                 </div>
             </div>
         </div>
@@ -679,127 +1058,71 @@ function showBikeDetailsModal(bike) {
         applyFilters();
     });
 
-    // Optimized reset filters function
+    // ========== INSTANT RESET BUTTON ==========
     document.getElementById("reset-filters").addEventListener("click", () => {
-        // Show loading state
-        const resetBtn = document.getElementById("reset-filters");
-        const originalText = resetBtn.textContent;
-        resetBtn.textContent = "מאפס...";
-        resetBtn.disabled = true;
-
-        // Reset sliders
-        priceSlider.noUiSlider.set([0, 100000]);
-        batterySlider.noUiSlider.set([200, 1000]);
+        // Reset sliders - use the category-specific max price
+        priceSlider.noUiSlider.set([0, defaultMaxPrice]);
+        if (batterySlider && batterySlider.noUiSlider) {
+            batterySlider.noUiSlider.set([200, 1000]);
+        }
+        if (forkSlider && forkSlider.noUiSlider) {
+            forkSlider.noUiSlider.set([80, 170]);
+        }
         
         // Reset inputs
         searchInput.value = "";
         sortDropdown.value = "none";
 
-        // Batch DOM operations for better performance
-        const allCheckboxes = [
-            ...document.querySelectorAll('input[name="year"]'),
-            ...document.querySelectorAll('input[name="frame_material"]'),
-            ...document.querySelectorAll('.firm-checkbox'),
-            ...document.querySelectorAll('.motor-brand-checkbox'),
-            ...document.querySelectorAll('.sub-category-checkbox')
-        ];
-        
-        allCheckboxes.forEach(cb => {
+        // Reset all checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
             cb.checked = false;
+        });
+        
+        // Reset radio buttons
+        document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+            radio.checked = false;
         });
 
         // Update dropdown texts
         updateFirmDropdownText();
         updateMotorBrandDropdownText();
 
-        // Get CSRF token from meta tag
+        // Clear compare list asynchronously (don't wait for it)
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        
-        // First clear compare, then get all bikes
         fetch("/clear_compare", { 
             method: "POST",
-            headers: {
-                'X-CSRFToken': csrfToken
-            }
-        })
-        .then(clearRes => {
-            if (!clearRes.ok) {
-                throw new Error(`Clear compare failed: ${clearRes.status}`);
-            }
-            return clearRes.json();
-        })
-        .then(clearData => {
-            // Update compare UI
-            updateCompareUI([]);
-            
-            // Now get all bikes
-            return fetch(`/api/filter_bikes`);
-        })
-        .then(filterRes => {
-            if (!filterRes.ok) {
-                throw new Error(`Filter bikes failed: ${filterRes.status}`);
-            }
-            return filterRes.json();
-        })
-        .then(filterData => {
-            // Extract bikes from the API response
-            const bikes = filterData.bikes || [];
-            
-            // Update bikes list
-            const sortOrder = sortDropdown.value;
-            if (sortOrder === "asc") {
-                bikes.sort((a, b) => {
-                    // Use disc_price if available, otherwise use price
-                    const aPrice = a.disc_price || a.price;
-                    const bPrice = b.disc_price || b.price;
-                    
-                    // Parse prices, handling "צור קשר" and other non-numeric values
-                    const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
-                    const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
-                    
-                    return aNum - bNum;
-                });
-            } else if (sortOrder === "desc") {
-                bikes.sort((a, b) => {
-                    // Use disc_price if available, otherwise use price
-                    const aPrice = a.disc_price || a.price;
-                    const bPrice = b.disc_price || b.price;
-                    
-                    // Parse prices, handling "צור קשר" and other non-numeric values
-                    const aNum = aPrice && aPrice !== "צור קשר" ? parseInt(aPrice.replace(/[^\d]/g, '')) : 0;
-                    const bNum = bPrice && bPrice !== "צור קשר" ? parseInt(bPrice.replace(/[^\d]/g, '')) : 0;
-                    
-                    return bNum - aNum;
-                });
-            }
+            headers: { 'X-CSRFToken': csrfToken }
+        }).then(res => res.json())
+          .then(() => updateCompareUI([]))
+          .catch(err => console.error('Error clearing compare:', err));
+        
+        // Show all bikes INSTANTLY (no API call needed!)
+        filteredBikes = [...allBikes];
+        bikesList.innerHTML = "";
+        const bikesFragment = generateBikesHTML(filteredBikes);
+        bikesList.appendChild(bikesFragment);
+        bikesCount.textContent = `נמצאו ${filteredBikes.length} אופניים`;
 
-            bikesList.innerHTML = "";
-            const bikesFragment = generateBikesHTML(bikes);
-            bikesList.appendChild(bikesFragment);
-            bikesCount.textContent = `נמצאו ${bikes.length} אופניים`;
-
-            attachCompareButtonListeners();
-            attachPurchaseButtonListeners();
-        })
-        .catch((err) => {
-            console.error("Error in reset:", err);
-        })
-        .finally(() => {
-            // Restore button state
-            resetBtn.textContent = originalText;
-            resetBtn.disabled = false;
-        });
+        attachCompareButtonListeners();
+        attachPurchaseButtonListeners();
+        
+        console.log('Reset completed instantly!');
     });
 
     sortDropdown.addEventListener("change", applyFilters);
     
     // Debounced search input
-    const debouncedApplyFilters = debounce(applyFilters, 300);
-    searchInput.addEventListener("input", debouncedApplyFilters);
+    const debouncedApplyFilters = debounce(() => {
+        applyFilters();
+    }, 300);
     
-    document.querySelectorAll('input[name="year"], input[name="firm"]').forEach((cb) =>
-        cb.addEventListener("change", applyFilters)
-    );
+    if (searchInput) {
+        searchInput.addEventListener("input", debouncedApplyFilters);
+    }
+    
+    document.querySelectorAll('input[name="year"], input[name="firm"]').forEach((cb) => {
+        cb.addEventListener("change", applyFilters);
+    });
 
     // Add listeners for firm checkboxes
     document.querySelectorAll('.firm-checkbox').forEach(checkbox => {
@@ -822,6 +1145,11 @@ function showBikeDetailsModal(bike) {
         checkbox.addEventListener('change', applyFilters);
     });
 
+    // Add listeners for style checkboxes
+    document.querySelectorAll('.style-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', applyFilters);
+    });
+
     // Add listener for discount checkbox
     document.querySelectorAll('input[name="has_discount"]').forEach(checkbox => {
         checkbox.addEventListener('change', applyFilters);
@@ -835,14 +1163,36 @@ function showBikeDetailsModal(bike) {
     attachCompareButtonListeners();
     attachPurchaseButtonListeners();
 
-    // Debug: Check initial bike data structure
-    console.log('Initial bikes count:', document.querySelectorAll('.bike-card').length);
-    document.querySelectorAll('.bike-card').forEach((card, index) => {
-        const bikeId = card.getAttribute('data-bike-id');
-        console.log(`Bike ${index + 1} ID:`, bikeId);
-    });
+    // Check if there are sub_category filters in URL and check the corresponding checkboxes
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlSubCategories = urlParams.getAll('sub_category');
     
-    applyFilters();  // initial load
+    if (urlSubCategories.length > 0) {
+        urlSubCategories.forEach(subCat => {
+            // Escape special characters in the value to prevent invalid selectors
+            if (subCat && subCat.trim() !== '') {
+                const escapedSubCat = CSS.escape(subCat);
+                const checkbox = document.querySelector(`.sub-category-checkbox[value="${escapedSubCat}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            }
+        });
+    }
+    
+    // Only load bikes via AJAX if they're not already rendered server-side
+    const initialBikesCount = document.querySelectorAll('.bike-card').length;
+    if (initialBikesCount === 0) {
+        applyFilters();  // initial load
+    } else {
+        // Bikes are pre-rendered server-side, set up initial state for infinite scroll
+        currentOffset = initialBikesCount;
+        
+        // Still need to set up compare UI for pre-rendered bikes
+        fetch("/api/compare_list")
+            .then((res) => res.json())
+            .then((data) => updateCompareUI(data.compare_list || []));
+    }
 
     // Add global modal cleanup event listener
     document.addEventListener('hidden.bs.modal', function (event) {
@@ -868,7 +1218,6 @@ function showBikeDetailsModal(bike) {
         // Handle details button clicks
         if (e.target.closest('.details-btn')) {
             const bikeId = card.getAttribute('data-bike-id');
-            console.log('Details button clicked, bike ID:', bikeId);
             fetchBikeDetailsAndShowModal(bikeId);
             return;
         }
@@ -878,7 +1227,6 @@ function showBikeDetailsModal(bike) {
         
         // Handle card clicks (excluding buttons)
         const bikeId = card.getAttribute('data-bike-id');
-        console.log('Card clicked, bike ID:', bikeId);
         fetchBikeDetailsAndShowModal(bikeId);
     });
 
@@ -907,12 +1255,14 @@ function showBikeDetailsModal(bike) {
         }
     });
 
-    // Back to Top Button Functionality
+    // ========== BACK TO TOP BUTTON ==========
+    // (Infinite scroll removed - all bikes load at once for instant filtering)
     const backToTopBtn = document.getElementById('back-to-top');
     
-    // Show/hide back to top button based on scroll position
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Back to top button visibility
         if (scrollTop > 300) { // Show after scrolling 300px
             backToTopBtn.classList.add('show');
         } else {
@@ -954,6 +1304,7 @@ function changeMainImage(imageUrl, thumbnailElement) {
     const mainImage = document.getElementById('main-bike-image');
     if (mainImage) {
         mainImage.src = imageUrl;
+        mainImage.referrerPolicy = "no-referrer";
         // Update the onclick handler for the new image
         mainImage.onclick = () => openImageZoom(imageUrl, mainImage.alt);
     }
@@ -980,7 +1331,7 @@ function openImageZoom(imageUrl, imageAlt) {
                     </button>
                 </div>
                 <div class="zoom-modal-body">
-                    <img src="" alt="" class="zoomed-image" id="zoomedImage">
+                    <img src="" alt="" class="zoomed-image" id="zoomedImage" referrerpolicy="no-referrer">
                 </div>
                 <div class="zoom-controls">
                     <button class="zoom-btn" onclick="zoomIn()">
@@ -1002,6 +1353,7 @@ function openImageZoom(imageUrl, imageAlt) {
     const zoomedImage = document.getElementById('zoomedImage');
     zoomedImage.src = imageUrl;
     zoomedImage.alt = imageAlt;
+    zoomedImage.referrerPolicy = "no-referrer";
     
     // Reset zoom and pan
     resetZoom();

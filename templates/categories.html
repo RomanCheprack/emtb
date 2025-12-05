@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Hero Section -->
+<div class="categories-hero">
+    <h1>?מה רוכבים</h1>
+</div>
+
+<!-- Categories Grid -->
+<div class="categories-container">
+    <div class="categories-grid">
+        {% for category in categories %}
+        <a href="{% if category.slug == 'mtb' %}{{ url_for('main.mtb_subcategories') }}{% elif category.slug == 'electric' %}{{ url_for('main.electric_subcategories') }}{% else %}{{ url_for('bikes.category_bikes', category=category.slug) }}{% endif %}" 
+           class="category-card"
+           aria-label="{{ category.name }} - {{ category.description }}">
+            <div class="category-card-image-wrapper">
+                <img src="{{ url_for('static', filename=category.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
+                     alt="{{ category.name }}"
+                     class="category-card-image"
+                     loading="lazy">
+            </div>
+            <div class="category-card-content">
+                <div class="category-card-header">
+                    <h2 class="category-card-title">{{ category.name }}</h2>
+                    <p class="category-card-description">{{ category.description }}</p>
+                </div>
+                <span class="category-card-count">{{ category.count }} דגמים</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Image loading with fade-in effect
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.category-card-image');
+        
+        images.forEach(img => {
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', function() {
+                    img.classList.add('loaded');
+                });
+            }
+        });
+        
+        // Add ripple effect on touch (mobile)
+        if ('ontouchstart' in window) {
+            const cards = document.querySelectorAll('.category-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('touchstart', function(e) {
+                    this.style.transition = 'transform 0.1s ease';
+                }, { passive: true });
+                
+                card.addEventListener('touchend', function(e) {
+                    this.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, { passive: true });
+            });
+        }
+    });
+</script>
+
+{% endblock %}
+

@@ -3,10 +3,10 @@
 <!-- Page content -->
 <div class="hero-container">
     <div class="hero-body">
-        <h1 data-typing-animation data-typing-duration="150" data-typing-delay="200">Rideal</h1>
-        <span data-text-animate="blurInUp" data-text-animate-by="word" data-text-animate-delay="0.5" data-text-animate-duration="0.6" dir="rtl">רכישת אופניים חכמה</span>
+        <h1 data-typing-animation data-typing-duration="80" data-typing-delay="50">Rideal</h1>
+        <span data-text-animate="blurInUp" data-text-animate-by="word" data-text-animate-delay="0.6" data-text-animate-duration="0.4" dir="rtl">רכישת אופניים חכמה</span>
         <div class="cta-buttons">
-            <a href="{{ url_for('bikes.bikes') }}" class="cta-button-primary">
+            <a href="{{ url_for('main.categories') }}" class="cta-button-primary">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -29,7 +29,7 @@
                 </h2>
                 <p class="vision-description">
                     אנחנו מאמינים שלכל רוכב מגיעה הזדמנות למצוא את זוג האופניים החשמליים שמתאימים לו בצורה מושלמת בלי פשרות, בלי בלבול, ובלי שעות של חיפושים.<br>
-                    ריידיל היא הפלטפורמה הראשונה בישראל שמאחדת את כל דגמי אופני ההרים החשמליים מכל היבואנים, ומאפשרת בחירה חכמה בעזרת טכנולוגיה מתקדמת ומידע מדויק.<br>
+                    ריידיל היא הפלטפורמה הראשונה בישראל שמאחדת את כל דגמי האופניים מכלל היבואנים, ומאפשרת בחירה חכמה בעזרת טכנולוגיה מתקדמת ומידע מדויק.<br>
                     החזון שלנו הוא להפוך את תהליך בחירת האופניים לחוויה פשוטה, שקופה ומהנה כדי שנוכל להתמקד בדבר האמיתי: הרכיבה.
                 </p>
 
@@ -52,7 +52,7 @@
             <!-- Stats Section -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">{{ bikes|length }}</div>
+                    <div class="stat-number">{{ bikes_count }}</div>
                     <div class="stat-label">דגמי אופניים</div>
                 </div>
                 <div class="stat-card">
@@ -60,8 +60,8 @@
                     <div class="stat-label">השוואות בוצעו</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">30Y</div>
-                    <div class="stat-label">שנות ניסיון</div>
+                    <div class="stat-number">{{ sources_count }}</div>
+                    <div class="stat-label">יבואנים</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">{{ brand_count }}</div>
@@ -79,7 +79,7 @@
                         <h3 class="vision-card-title">מסננים וממיינים</h3>
                         <p class="vision-card-description">
                             חסכנו לכם את הסיבוב בכל החנויות. באתר שלנו תמצאו את כל הדגמים בישראל במקום אחד.
-                            לא צריך לשבור את הראש, פשוט מסננים לפי מה שבאמת חשוב לכם: מחיר, שנת ייצור, גודל סוללה, מותג ועוד.
+                            לא צריך לשבור את הראש, פשוט מסננים לפי מה שבאמת חשוב לכם: קטגוריה, שימוש, מחיר, שנת ייצור, גודל סוללה, מותג ועוד.
                             לחיצה אחת, וכל ההתלבטויות נשארות מאחור.                          
                         </p>
                     </div>
@@ -108,7 +108,7 @@
                         <p class="vision-card-description">
                             נדלקתם על דגם? יאללה, קחו אותו לסיבוב קבוע.
                             לחיצה אחת ואתם עוברים ישר לאתר היבואן. בלי עמלות, בלי שטיקים, בלי אותיות קטנות.
-                            מצאתם את האופניים שלכם? מעכשיו הדרך לשביל היא רק עניין של מסגרת אשראי וטעינת סוללה.</p>
+                            מצאתם את האופניים שלכם? מעכשיו הדרך לשביל היא רק עניין של מסגרת אשראי וקסדה.</p>
                         </p>
                     </div>
                 </div>
@@ -122,13 +122,13 @@
                         הצטרף לאלפי רוכבים שכבר גילו את האבולוציה הבאה במציאת האופניים המושלמים.
                     </p>
                     <div class="cta-buttons">
-                        <a href="{{ url_for('bikes.bikes') }}" class="cta-button-primary">
+                        <a href="{{ url_for('main.categories') }}" class="cta-button-primary">
                             חקור את האופניים שלנו
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </a>
-                        <a href="#contact" class="cta-button-secondary">הזמן נסיעת מבחן</a>
+                        <a href="#" class="cta-button-secondary" id="testRideBtn">הזמן נסיעת מבחן</a>
                     </div>
                 </div>
             </div>
@@ -139,7 +139,7 @@
     <div class="w3-black" id="top_bikes">
         <div class="w3-container w3-content w3-padding-64" style="max-width:1200px">
             <h2 class="w3-wide w3-center popular">הפופולריים ביותר</h2>
-            <p class="w3-opacity w3-center"><i>המחושמליים שרוכבים השוו הכי הרבה</i></p>
+            <p class="w3-opacity w3-center"><i>האופניים שרוכבים השוו הכי הרבה</i></p>
             <div class="carousel-container">
                 <button class="carousel-button carousel-button-prev" onclick="moveCarousel(-1)">
                     <i class="bi bi-chevron-left"></i>
@@ -149,7 +149,7 @@
                     {% for bike in top_bikes[:10] %}
                     <div class="carousel-item">
                         <div class="card-img-container">
-                            <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}">
+                            <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" referrerpolicy="no-referrer">
                         </div>
                         <div class="w3-container bike-card" style="display: flex; flex-direction: column; align-items: center;">
                             <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
@@ -210,8 +210,247 @@
         </div>
     </div>
 
+    <!-- Test Ride Modal -->
+    <div id="testRideModal" class="test-ride-modal">
+        <div class="test-ride-modal-content">
+            <div class="test-ride-modal-header">
+                <h2 class="test-ride-modal-title">הזמן נסיעת מבחן</h2>
+                <span class="test-ride-modal-close">&times;</span>
+            </div>
+            <p class="test-ride-modal-subtitle">מלא את הפרטים ונחזור אליך בהקדם</p>
+            
+            <form id="testRideForm" action="/contact" method="POST" target="_blank">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <input type="hidden" name="form_type" value="test_ride"/>
+                
+                <div class="test-ride-form-group">
+                    <input type="text" id="testRideName" name="Name" class="test-ride-input" placeholder="הכנס את שמך המלא" required>
+                </div>
+                
+                <div class="test-ride-form-group">
+                    <input type="tel" id="testRidePhone" name="Phone" class="test-ride-input" placeholder="050-1234567" required>
+                </div>
+                
+                <div class="test-ride-form-group">
+                    <input type="text" id="testRideModel" name="Model" class="test-ride-input" placeholder="שם הדגם שמעניין אותך" required>
+                </div>
+                
+                <div class="test-ride-form-actions">
+                    <button type="submit" class="test-ride-submit-btn">שלח בקשה</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- End Page Content -->
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/test-ride-modal.js') }}"></script>
+
+    <style>
+    /* Test Ride Modal Styles */
+    .test-ride-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .test-ride-modal-content {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+        margin: 5% auto;
+        padding: 0;
+        border: none;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.4s ease;
+        overflow: hidden;
+    }
+
+    .test-ride-modal-header {
+        background: linear-gradient(135deg, #dc143c 0%, #a00000 100%);
+        color: white;
+        padding: 30px;
+        position: relative;
+        text-align: center;
+    }
+
+    .test-ride-modal-title {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .test-ride-modal-close {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 32px;
+        font-weight: 300;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .test-ride-modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) rotate(90deg);
+    }
+
+    .test-ride-modal-subtitle {
+        text-align: center;
+        color: #666;
+        margin: 25px 0 30px 0;
+        font-size: 16px;
+        padding: 0 30px;
+    }
+
+    #testRideForm {
+        padding: 0 30px 30px 30px;
+    }
+
+    .test-ride-form-group {
+        margin-bottom: 24px;
+    }
+
+    .test-ride-form-group label {
+        display: block;
+        text-align: right;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .test-ride-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: white;
+        box-sizing: border-box;
+        direction: rtl;
+        text-align: right;
+    }
+
+    .test-ride-input:focus {
+        outline: none;
+        border-color: #dc143c;
+        box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+    }
+
+    .test-ride-input::placeholder {
+        color: #999;
+    }
+
+    .test-ride-form-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .test-ride-submit-btn,
+    .test-ride-cancel-btn {
+        flex: 1;
+        padding: 14px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .test-ride-submit-btn {
+        background: linear-gradient(135deg, #dc143c 0%, #a00000 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
+    }
+
+    .test-ride-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+    }
+
+    .test-ride-submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .test-ride-cancel-btn {
+        background: white;
+        color: #333;
+        border: 2px solid #e0e0e0;
+    }
+
+    .test-ride-cancel-btn:hover {
+        background: #f5f5f5;
+        border-color: #999;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .test-ride-modal-content {
+            margin: 10% auto;
+            width: 95%;
+        }
+
+        .test-ride-modal-header {
+            padding: 25px 20px;
+        }
+
+        .test-ride-modal-title {
+            font-size: 24px;
+        }
+
+        #testRideForm {
+            padding: 0 20px 20px 20px;
+        }
+
+        .test-ride-form-actions {
+            flex-direction: column;
+        }
+
+        .test-ride-submit-btn,
+        .test-ride-cancel-btn {
+            width: 100%;
+        }
+    }
+    </style>
 
 {% endblock %}
