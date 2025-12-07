@@ -81,7 +81,7 @@ CTC_TARGET_URLS = [
     {"url": "https://ctc.co.il/product-tag/lightweight/", "category": "road", "sub_category": "lightweight"},
     {"url": "https://ctc.co.il/product-tag/endurance/", "category": "road", "sub_category": "endurance"},
     {"url": "https://ctc.co.il/product-tag/גראבל/", "category": "gravel", "sub_category": "gravel"},
-    {"url": "https://ctc.co.il/product-category/bikes/city-bikes/page/", "category": "city", "sub_category": "city"},
+    {"url": "https://ctc.co.il/product-category/bikes/city-bikes", "category": "city", "sub_category": "city"},
     {"url": "https://ctc.co.il/product-category/bikes/city-bikes/page/2", "category": "city", "sub_category": "city"},
     {"url": "https://ctc.co.il/product-category/bikes/kids-bikes/", "category": "kids", "sub_category": "kids"},
     {"url": "https://ctc.co.il/product-category/bikes/kids-bikes/page/2", "category": "kids", "sub_category": "kids"},
@@ -347,46 +347,47 @@ def ctc_bikes(driver, output_file):
     return scraped_data
 
 # ----------------- Setup Output -----------------
-try:
-    project_root = Path(__file__).resolve().parents[2]
-    output_dir = project_root / "data" / "scraped_raw_data"
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = output_dir / "ctc_data.json"
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump([], f, ensure_ascii=False, indent=4)
-    logging.info(f"Output file ready: {output_file}")
-except Exception as e:
-    logging.error(f"Error setting up output directory: {e}")
-    exit(1)
+if __name__ == '__main__':
+    try:
+        project_root = Path(__file__).resolve().parents[2]
+        output_dir = project_root / "data" / "scraped_raw_data"
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = output_dir / "ctc_data.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump([], f, ensure_ascii=False, indent=4)
+        logging.info(f"Output file ready: {output_file}")
+    except Exception as e:
+        logging.error(f"Error setting up output directory: {e}")
+        exit(1)
 
-# ----------------- Run Scraper -----------------
-products = []
-driver = None
-try:
-    logging.info("Starting Chrome driver...")
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--headless=new')
-    options.add_argument('--window-size=1920,1080')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-logging')
-    options.add_argument('--log-level=3')  # Suppress Chrome logging
-    driver = uc.Chrome(options=options)
-    # Set explicit timeouts for better reliability
-    driver.set_page_load_timeout(180)  # 3 minutes for page load
-    driver.implicitly_wait(10)  # 10 seconds for element finding
-    logging.info("Chrome driver started successfully!")
-    products = ctc_bikes(driver, output_file)
-except Exception as e:
-    logging.error(f"Error during scraping: {e}")
-finally:
-    if driver:
-        try:
-            driver.quit()
-            logging.info("Chrome driver closed")
-        except:
-            pass
+    # ----------------- Run Scraper -----------------
+    products = []
+    driver = None
+    try:
+        logging.info("Starting Chrome driver...")
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--headless=new')
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        options.add_argument('--log-level=3')  # Suppress Chrome logging
+        driver = uc.Chrome(options=options)
+        # Set explicit timeouts for better reliability
+        driver.set_page_load_timeout(180)  # 3 minutes for page load
+        driver.implicitly_wait(10)  # 10 seconds for element finding
+        logging.info("Chrome driver started successfully!")
+        products = ctc_bikes(driver, output_file)
+    except Exception as e:
+        logging.error(f"Error during scraping: {e}")
+    finally:
+        if driver:
+            try:
+                driver.quit()
+                logging.info("Chrome driver closed")
+            except:
+                pass
 
-logging.info(f"Scraping completed! Total products: {len(products)}. Data saved to {output_file}")
+    logging.info(f"Scraping completed! Total products: {len(products)}. Data saved to {output_file}")

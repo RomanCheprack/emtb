@@ -1,4 +1,4 @@
-﻿// Function to format numbers with commas
+// Function to format numbers with commas
 function formatNumberWithCommas(value) {
     if (value === null || value === undefined || value === '') {
         return '';
@@ -284,60 +284,84 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (bikes.length === 0) {
             const noResultsDiv = document.createElement('div');
-            noResultsDiv.className = 'col-12';
-            noResultsDiv.innerHTML = '<p>לא נמצאו תוצאות.</p>';
+            noResultsDiv.className = 'bike-row-item';
+            noResultsDiv.innerHTML = '<p style="text-align: center; padding: 20px;">לא נמצאו תוצאות.</p>';
             fragment.appendChild(noResultsDiv);
         } else {
             bikes.forEach((bike) => {
                 // Adapt bike data to work with both old and new formats
                 const adaptedBike = adaptBikeData(bike);
                 
+                // Check if there's a discount
+                const hasDiscount = adaptedBike.listing.price && adaptedBike.listing.original_price && 
+                                   adaptedBike.listing.price !== adaptedBike.listing.original_price && 
+                                   adaptedBike.listing.price !== "#N/A";
+                
+                // Generate price HTML
+                let priceHTML = '';
+                if (hasDiscount) {
+                    const originalPrice = formatNumberWithCommas(adaptedBike.listing.original_price);
+                    const discountPrice = formatNumberWithCommas(adaptedBike.listing.price);
+                    priceHTML = `
+                        <div class="bike-price-wrapper">
+                            ${originalPrice === 'צור קשר' 
+                                ? `<span class="bike-price-original">${originalPrice}</span>`
+                                : `<span class="bike-price-original">₪ ${originalPrice}</span>`
+                            }
+                            <br>
+                            ${discountPrice === 'צור קשר'
+                                ? `<span class="bike-price-discount">${discountPrice}</span>`
+                                : `<span class="bike-price-discount">₪ ${discountPrice}</span>`
+                            }
+                        </div>
+                    `;
+                } else {
+                    const currentPrice = formatNumberWithCommas(adaptedBike.listing.price);
+                    priceHTML = `
+                        <div class="bike-price-wrapper">
+                            ${currentPrice === 'צור קשר'
+                                ? `<span class="bike-price-current">${currentPrice}</span>`
+                                : `<span class="bike-price-current">₪ ${currentPrice}</span>`
+                            }
+                        </div>
+                    `;
+                }
+                
                 const bikeDiv = document.createElement('div');
-                bikeDiv.className = 'col-6 col-lg-2 mb-2 px-1';
+                bikeDiv.className = 'bike-row-item position-relative bike-card';
+                bikeDiv.setAttribute('data-bike-id', adaptedBike.id);
                 bikeDiv.innerHTML = `
-                    <div class="card h-100 position-relative bike-card" data-bike-id="${adaptedBike.id}">
-                        <img src="${adaptedBike.image_url}" class="card-img-top" alt="${adaptedBike.model}" loading="lazy">
-                        <div class="card-body">
-                            <h2 class="card-firm">${adaptedBike.brand}</h2>
-                            <p class="card-title">${adaptedBike.model}</p>
-                            <p class="card-text-price">
-                               ${adaptedBike.listing.price && adaptedBike.listing.original_price && adaptedBike.listing.price !== adaptedBike.listing.original_price && adaptedBike.listing.price !== "#N/A"
-                                    ? `${formatNumberWithCommas(adaptedBike.listing.original_price) === 'צור קשר' 
-                                        ? `<span style="text-decoration: line-through; color: #888;">${formatNumberWithCommas(adaptedBike.listing.original_price)}</span>`
-                                        : `<span style="text-decoration: line-through; color: #888;">₪ ${formatNumberWithCommas(adaptedBike.listing.original_price)}</span>`
-                                    }
-                                    <br>
-                                    ${formatNumberWithCommas(adaptedBike.listing.price) === 'צור קשר'
-                                        ? `<span class="text-danger fw-bold ms-2">${formatNumberWithCommas(adaptedBike.listing.price)}</span>`
-                                        : `<span class="text-danger fw-bold ms-2">₪ ${formatNumberWithCommas(adaptedBike.listing.price)}</span>`
-                                    }`
-                                   : `${formatNumberWithCommas(adaptedBike.listing.price) === 'צור קשר'
-                                        ? formatNumberWithCommas(adaptedBike.listing.price)
-                                        : `₪ ${formatNumberWithCommas(adaptedBike.listing.price)}`
-                                    }`}
-                            </p>
-                            <p class="card-text-year">${adaptedBike.year}</p>
-                            <div class="button-container">
-                                <div class="top-buttons-container">
-                                    <div class="details-btn-container">
-                                        <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${adaptedBike.id}">
-                                            <i class="fas fa-info-circle me-1"></i>
-                                            מפרט
-                                        </button>
-                                    </div>
-                                    <div class="purchase-btn-container">
-                                        <button class="btn btn-outline-primary purchase-btn" data-bike-id="${adaptedBike.id}" data-product-url="${adaptedBike.listing.product_url || ''}">
-                                            <i class="fas fa-shopping-cart me-1"></i>
-                                            רכישה
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="compare-btn-container">
-                                    <button class="btn btn-outline-danger compare-btn" data-bike-id="${adaptedBike.id}">
-                                        <i class="fas fa-balance-scale me-1"></i>
-                                        הוסף להשוואה
-                                    </button>
-                                </div>
+                    <button class="bike-menu-dots" aria-label="תפריט אפשרויות">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="5" r="2"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <circle cx="12" cy="19" r="2"/>
+                        </svg>
+                    </button>
+                    <div class="bike-header-info">
+                        <span class="bike-model">${adaptedBike.model}</span> | <a href="#" class="bike-brand-link">${adaptedBike.brand}</a>
+                    </div>
+                    <div class="bike-row-content">
+                        <div class="bike-image-container">
+                            <img src="${adaptedBike.image_url}" class="bike-row-image" alt="${adaptedBike.model}" loading="lazy" referrerpolicy="no-referrer">
+                            <a href="#" class="bike-compare-link" data-bike-id="${adaptedBike.id}">
+                               הוסף להשוואה
+                            </a>
+                        </div>
+                        <div class="bike-price-container">
+                            ${priceHTML}
+                            ${adaptedBike.year ? `<p class="bike-year">${adaptedBike.year}</p>` : ''}
+                        </div>
+                        <div class="bike-actions-container">
+                            <div class="bike-actions-top">
+                                <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${adaptedBike.id}">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    מפרט
+                                </button>
+                                <button class="btn btn-outline-primary purchase-btn" data-bike-id="${adaptedBike.id}" data-product-url="${adaptedBike.listing.product_url || ''}">
+                                    <i class="fas fa-shopping-cart me-1"></i>
+                                    רכישה
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -500,10 +524,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function attachCompareButtonListeners() {
-        document.querySelectorAll(".compare-btn").forEach((btn) => {
-            btn.onclick = () => {
-                const bikeId = btn.getAttribute("data-bike-id");
-                const isSelected = btn.classList.contains("selected");
+        document.querySelectorAll(".bike-compare-link").forEach((link) => {
+            link.onclick = (e) => {
+                e.preventDefault();
+                const bikeId = link.getAttribute("data-bike-id");
+                const isSelected = link.classList.contains("selected");
                 
                 const url = isSelected
                     ? `/remove_from_compare`
@@ -566,18 +591,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateCompareUI(compareList) {
-        document.querySelectorAll(".compare-btn").forEach((btn) => {
-            const bikeId = btn.getAttribute("data-bike-id");
-            const card = btn.closest(".card");
+        document.querySelectorAll(".bike-compare-link").forEach((link) => {
+            const bikeId = link.getAttribute("data-bike-id");
+            const card = link.closest(".bike-card") || link.closest(".card");
             
             if (compareList.includes(bikeId)) {
-                btn.classList.add("selected");
-                btn.innerHTML = '<i class="fas fa-check me-1"></i>הסר השוואה';
-                card.classList.add("compare-selected");
+                link.classList.add("selected");
+                if (card) card.classList.add("compare-selected");
             } else {
-                btn.classList.remove("selected");
-                btn.innerHTML = '<i class="fas fa-balance-scale me-1"></i>הוסף להשוואה';
-                card.classList.remove("compare-selected");
+                link.classList.remove("selected");
+                if (card) card.classList.remove("compare-selected");
             }
         });
 
@@ -1222,8 +1245,8 @@ function showBikeDetailsModal(bike) {
             return;
         }
         
-        // Prevent click if compare button, purchase button, or details button is clicked
-        if (e.target.closest('.compare-btn') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn')) return;
+        // Prevent click if compare link, purchase button, or details button is clicked
+        if (e.target.closest('.bike-compare-link') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn')) return;
         
         // Handle card clicks (excluding buttons)
         const bikeId = card.getAttribute('data-bike-id');

@@ -76,62 +76,68 @@
 
 
 <div class="container">
-    <div class="row" id="bikes-list">
+    <div id="bikes-list" class="bikes-row-list">
         {% for bike in bikes %}
-        <div class="col-6 col-lg-2 mb-2 px-1">
-            <div class="card h-100 position-relative bike-card" data-bike-id="{{ bike['id'] }}">
-                <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
-                <div class="card-body">
-                    <h2 class="card-firm">{{bike['firm']}}</h2>
-                    <p class="card-title">{{ bike['model'] }}</p>
+        <div class="bike-row-item position-relative bike-card" data-bike-id="{{ bike['id'] }}">
+            <!-- Three dots menu in top-left -->
+            <button class="bike-menu-dots" aria-label="תפריט אפשרויות">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="5" r="2"/>
+                    <circle cx="12" cy="12" r="2"/>
+                    <circle cx="12" cy="19" r="2"/>
+                </svg>
+            </button>
+            <!-- Brand and model in top-right -->
+            <div class="bike-header-info">
+                <span class="bike-model">{{ bike['model'] }}</span> | <a href="#" class="bike-brand-link">{{bike['firm']}}</a>
+            </div>
+            <div class="bike-row-content">
+                <div class="bike-image-container">
+                    <img src="{{ bike['image_url'] }}" class="bike-row-image" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
+                    <!-- Comparison link below image -->
+                    <a href="#" class="bike-compare-link" data-bike-id="{{ bike['id'] }}">
+                       הוסף להשוואה
+                    </a>
+                </div>
+                <div class="bike-price-container">
                     {% if bike['disc_price'] %}
-                    <p class="card-text-price">
+                    <div class="bike-price-wrapper">
                         {% if bike['price'] | format_number == 'צור קשר' %}
-                            <span style="text-decoration: line-through; color: #888;">{{ bike['price'] | format_number }}</span>
+                            <span class="bike-price-original">{{ bike['price'] | format_number }}</span>
                         {% else %}
-                            <span style="text-decoration: line-through; color: #888;">₪ {{ bike['price'] | format_number }}</span>
+                            <span class="bike-price-original">₪ {{ bike['price'] | format_number }}</span>
                         {% endif %}
-                        <br>
                         {% if bike['disc_price'] | format_number == 'צור קשר' %}
-                            <span class="text-danger fw-bold ms-2">{{ bike['disc_price'] | format_number }}</span>
+                            <span class="bike-price-discount">{{ bike['disc_price'] | format_number }}</span>
                         {% else %}
-                            <span class="text-danger fw-bold ms-2">₪ {{ bike['disc_price'] | format_number }}</span>
+                            <span class="bike-price-discount">₪ {{ bike['disc_price'] | format_number }}</span>
                         {% endif %}
-                    </p>
+                    </div>
                     {% else %}
-                    <h6 class="card-text-price">
+                    <div class="bike-price-wrapper">
                         {% if bike['price'] | format_number == 'צור קשר' %}
-                            {{ bike['price'] | format_number }}
+                            <span class="bike-price-current">{{ bike['price'] | format_number }}</span>
                         {% else %}
-                            ₪ {{ bike['price'] | format_number }}
+                            <span class="bike-price-current">₪ {{ bike['price'] | format_number }}</span>
                         {% endif %}
-                    </h6>
+                    </div>
                     {% endif %}
-
-                    <p class="card-text-year">{{ bike['year'] }}</p>
-                    <div class="button-container">
-                        <div class="top-buttons-container">
-                            <div class="details-btn-container">
-                                <button type="button"
-                                        class="btn btn-outline-secondary details-btn"
-                                        data-bike-id="{{ bike['id'] }}">
-                                    <i class="fas fa-info-circle me-1"></i>
-                                    מפרט
-                                </button>
-                            </div>
-                            <div class="purchase-btn-container">
-                                <button class="btn btn-outline-primary purchase-btn" data-bike-id="{{ bike['id'] }}" data-product-url="{{ bike.get('product_url', '') }}">
-                                    <i class="fas fa-shopping-cart me-1"></i>
-                                    רכישה
-                                </button>
-                            </div>
-                        </div>
-                        <div class="compare-btn-container">
-                            <button class="btn btn-outline-danger compare-btn" data-bike-id="{{ bike['id'] }}">
-                                <i class="fas fa-balance-scale me-1"></i>
-                                הוסף להשוואה
-                            </button>
-                        </div>
+                    {% if bike['year'] %}
+                    <p class="bike-year">{{ bike['year'] }}</p>
+                    {% endif %}
+                </div>
+                <div class="bike-actions-container">
+                    <div class="bike-actions-top">
+                        <button type="button"
+                                class="btn btn-outline-secondary details-btn"
+                                data-bike-id="{{ bike['id'] }}">
+                            <i class="fas fa-info-circle me-1"></i>
+                            מפרט
+                        </button>
+                        <button class="btn btn-outline-primary purchase-btn" data-bike-id="{{ bike['id'] }}" data-product-url="{{ bike.get('product_url', '') }}">
+                            <i class="fas fa-shopping-cart me-1"></i>
+                            רכישה
+                        </button>
                     </div>
                 </div>
             </div>

@@ -310,46 +310,47 @@ def scrape_cobra(driver, output_file):
 # ----------------------------
 # SETUP OUTPUT FILE
 # ----------------------------
-try:
-    project_root = Path(__file__).resolve().parents[2]
-    output_dir = project_root / "data" / "scraped_raw_data"
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = output_dir / "cobra_data.json"
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump([], f, ensure_ascii=False, indent=4)
-    print(f"📁 Output file ready: {output_file}")
-except Exception as e:
-    print(f"❌ Error setting up output directory: {e}")
-    exit(1)
+if __name__ == '__main__':
+    try:
+        project_root = Path(__file__).resolve().parents[2]
+        output_dir = project_root / "data" / "scraped_raw_data"
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = output_dir / "cobra_data.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump([], f, ensure_ascii=False, indent=4)
+        print(f"📁 Output file ready: {output_file}")
+    except Exception as e:
+        print(f"❌ Error setting up output directory: {e}")
+        exit(1)
 
-# ----------------------------
-# RUN SCRAPER
-# ----------------------------
-products = []
-driver = None
-try:
-    print("🚀 Starting Chrome driver...")
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--headless=new')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-logging')
-    options.add_argument('--disable-web-security')
-    options.add_argument('--allow-running-insecure-content')
-    driver = uc.Chrome(options=options)
-    print("✅ Chrome driver started")
-    products, driver = scrape_cobra(driver, output_file)
-except Exception as e:
-    print(f"❌ Chrome driver init error: {e}")
-finally:
-    if driver:
-        try:
-            driver.quit()
-            print("🔒 Chrome driver closed")
-        except:
-            pass
+    # ----------------------------
+    # RUN SCRAPER
+    # ----------------------------
+    products = []
+    driver = None
+    try:
+        print("🚀 Starting Chrome driver...")
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless=new')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        options.add_argument('--disable-web-security')
+        options.add_argument('--allow-running-insecure-content')
+        driver = uc.Chrome(options=options)
+        print("✅ Chrome driver started")
+        products, driver = scrape_cobra(driver, output_file)
+    except Exception as e:
+        print(f"❌ Chrome driver init error: {e}")
+    finally:
+        if driver:
+            try:
+                driver.quit()
+                print("🔒 Chrome driver closed")
+            except:
+                pass
 
-print(f"\n✅ Scraping completed: {len(products)} products")
-save_json(products, output_file)
+    print(f"\n✅ Scraping completed: {len(products)} products")
+    save_json(products, output_file)

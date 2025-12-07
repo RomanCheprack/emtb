@@ -38,6 +38,16 @@ HEBREW_TO_ENGLISH_KEYS = {
 
 BASE_URL = "https://rudy-extreme.co.il/"
 
+# --- Main Scraper ---
+CUBE_TARGET_URLS = [
+    {"url": f"{BASE_URL}/product-category/אופניים/חשמליים/", "category": "electric", "sub_category": "electric_mtb"},
+    {"url": f"{BASE_URL}/product-category/אופניים/שיכוך-מלא/", "category": "mtb", "sub_category": "full_suspension"},
+    {"url": f"{BASE_URL}/product-category/אופניים/זנב-קשיח/", "category": "mtb", "sub_category": "hardtail"},
+    {"url": f"{BASE_URL}/product-category/אופניים/אופני-כביש/", "category": "road", "sub_category": "road"},
+    {"url": f"{BASE_URL}/product-category/אופניים/ילדים/", "category": "kids", "sub_category": "kids"}
+]
+
+
 # ChatGPT API Configuration
 CHATGPT_API_KEY = os.getenv('SCRAPER_OPENAI_API_KEY', '')
 
@@ -100,14 +110,6 @@ def rewrite_description_with_chatgpt(original_text, api_key):
         print(f"⚠️ Error rewriting description: {e}")
         return original_text
 
-# --- Main Scraper ---
-CUBE_TARGET_URLS = [
-    {"url": f"{BASE_URL}/product-category/אופניים/חשמליים/", "category": "electric", "sub_category": "electric_mtb"},
-    {"url": f"{BASE_URL}/product-category/אופניים/שיכוך-מלא/", "category": "mtb", "sub_category": "full_suspension"},
-    {"url": f"{BASE_URL}/product-category/אופניים/זנב-קשיח/", "category": "mtb", "sub_category": "hardtail"},
-    {"url": f"{BASE_URL}/product-category/אופניים/אופני-כביש/", "category": "road", "sub_category": "road"},
-    {"url": f"{BASE_URL}/product-category/אופניים/ילדים/", "category": "kids", "sub_category": "kids"}
-]
 
 scraped_data = []
 
@@ -275,28 +277,29 @@ def cube_bikes(driver, output_file):
     return scraped_data
 
 # --- Setup Output File ---
-project_root = Path(__file__).resolve().parents[2]
-output_dir = project_root / "data" / "scraped_raw_data"
-os.makedirs(output_dir, exist_ok=True)
-output_file = output_dir / "cube_data.json"
+if __name__ == '__main__':
+    project_root = Path(__file__).resolve().parents[2]
+    output_dir = project_root / "data" / "scraped_raw_data"
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = output_dir / "cube_data.json"
 
-with open(output_file, "w", encoding="utf-8") as f:
-    json.dump([], f, ensure_ascii=False, indent=4)
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump([], f, ensure_ascii=False, indent=4)
 
-# --- Run the Scraper ---
-products = []
-driver = None
-try:
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--headless=new')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-extensions')
-    driver = uc.Chrome(options=options)
-    products = cube_bikes(driver, output_file)
-finally:
-    if driver:
-        driver.quit()
+    # --- Run the Scraper ---
+    products = []
+    driver = None
+    try:
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless=new')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-extensions')
+        driver = uc.Chrome(options=options)
+        products = cube_bikes(driver, output_file)
+    finally:
+        if driver:
+            driver.quit()
 
-print(f"\n✅ Scraping completed! Total products: {len(products)}")
+    print(f"\n✅ Scraping completed! Total products: {len(products)}")

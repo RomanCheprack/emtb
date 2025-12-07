@@ -311,31 +311,32 @@ def pedalim_bikes(driver, output_file):
     return scraped_data
 
 # --- Setup Output File ---
-try:
-    project_root = Path(__file__).resolve().parents[2]
-    output_dir = project_root / "data" / "scraped_raw_data"
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = output_dir / "pedalim_data.json"
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump([], f, ensure_ascii=False, indent=4)
-except Exception as e:
-    print(f"❌ Error setting up output directory: {e}")
-    exit(1)
+if __name__ == '__main__':
+    try:
+        project_root = Path(__file__).resolve().parents[2]
+        output_dir = project_root / "data" / "scraped_raw_data"
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = output_dir / "pedalim_data.json"
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump([], f, ensure_ascii=False, indent=4)
+    except Exception as e:
+        print(f"❌ Error setting up output directory: {e}")
+        exit(1)
 
-# --- Run Scraper ---
-products = []
-driver = None
-try:
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--headless=new')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    driver = uc.Chrome(options=options)
-    products = pedalim_bikes(driver, output_file)
-except Exception as e:
-    print(f"❌ Chrome driver error: {e}")
-finally:
-    if driver: driver.quit()
+    # --- Run Scraper ---
+    products = []
+    driver = None
+    try:
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless=new')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        driver = uc.Chrome(options=options)
+        products = pedalim_bikes(driver, output_file)
+    except Exception as e:
+        print(f"❌ Chrome driver error: {e}")
+    finally:
+        if driver: driver.quit()
 
-print(f"\n✅ Scraping completed! Total products: {len(products)}. Saved to {output_file}")
+    print(f"\n✅ Scraping completed! Total products: {len(products)}. Saved to {output_file}")

@@ -46,7 +46,7 @@ RECYCLES_TARGET_URLS = [
     {"url": f"{BASE_URL}/אופני_כביש?סוג%20אופניים=261376&bsfilter-11634=261376", "category": "road", "sub_category": "timetrail"},
     {"url": f"{BASE_URL}/אופני_גראבל?סוג%20אופניים=261374&bsfilter-11634=261374", "category": "gravel", "sub_category": "gravel"},
     {"url": f"{BASE_URL}/אופני_גראבל?סוג%20אופניים=504381&bsfilter-11634=504381", "category": "gravel", "sub_category": "electric_gravel"},
-    {"url": f"{BASE_URL}/עירוני_חשמלי", "category": "city", "sub_category": "electric_ city"},
+    {"url": f"{BASE_URL}/עירוני_חשמלי", "category": "electric", "sub_category": "electric_ city"},
     {"url": f"{BASE_URL}/אופני_עיר", "category": "city", "sub_category": "city"},
     {"url": f"{BASE_URL}/אופני_ילדים", "category": "kids", "sub_category": "kids"},
     {"url": f"{BASE_URL}/כביש", "category": "road", "sub_category": "road"},
@@ -170,13 +170,16 @@ def recycles_bikes(driver, output_file):
                     year_text = "לא צויין"
                 
                 # Extract firm name FIRST, before removing terms from title
-                # Recycles carries Orbea and Factor bikes
+                # Recycles carries Orbea, Factor and Niner bikes
                 if "Orbea" in title_text or "ORBEA" in title_text:
                     firm = "Orbea"
                     model = title_text.replace("Orbea", "").replace("ORBEA", "").strip()
                 elif "Factor" in title_text or "FACTOR" in title_text:
                     firm = "Factor"
                     model = title_text.replace("Factor", "").replace("FACTOR", "").strip()
+                elif "Niner" in title_text or "NINER" in title_text:
+                    firm = "Niner"
+                    model = title_text.replace("Niner", "").replace("NINER", "").strip()
                 else:
                     # Check URL as fallback for both brands
                     url_lower = product_url.lower()
@@ -185,14 +188,18 @@ def recycles_bikes(driver, output_file):
                         firm = "Orbea"
                     elif "factor" in url_lower or "factor" in title_lower:
                         firm = "Factor"
+                    elif "niner" in url_lower or "niner" in title_lower:
+                        firm = "Niner"
                     else:
                         # Additional fallback: check if it's an Orbea model by common patterns
                         # Check both URL and title for model patterns
                         combined_text = f"{url_lower} {title_lower}"
-                        if any(pattern in combined_text for pattern in ["oiz", "ltd", "rise", "wild", "occam", "alma"]):
+                        if any(pattern in combined_text for pattern in ["oiz", "ltd", "rise", "wild", "occam", "alma", "orca","ordu", "avant", "carpe"]):
                             firm = "Orbea"
                         elif any(pattern in combined_text for pattern in ["ostro", "one", "vam"]):
                             firm = "Factor"
+                        elif any(pattern in combined_text for pattern in ["niner", "ninja"]):
+                            firm = "Niner"
                         else:
                             firm = "Unknown"
                     
@@ -213,6 +220,8 @@ def recycles_bikes(driver, output_file):
                     "ORBEA",
                     "FACTOR",
                     "Factor",
+                    "NINER",
+                    "Niner",
                 ]
                 
                 for term in terms_to_remove:
@@ -355,22 +364,45 @@ def recycles_bikes(driver, output_file):
 
             #---fork length----
             fork_text = product_data.get("specs", {}).get("fork", "")
+            fork_length = None
+            
             if fork_text:  # Only try to extract if fork data exists
-                match = re.search(r'(?<!\d)(40|50|60|70|80|90|100|110|120|130|140|150|160|170|180)(?!\d)\s*(?:mm)?', fork_text.lower())
-                if match:
-                    fork_length = match.group(1)
-                    product_data["fork length"] = int(fork_length)
-                else:
-                    product_data["fork length"] = None
-            else:
-                product_data["fork length"] = None
+                # Look for travel-specific patterns (avoid hub widths like 15x110, 12x110)
+                # Patterns: "150mm", "160mm travel", "travel: 150", "150 mm", etc.
+                travel_patterns = [
+                    r'(?:travel|טווח)[\s:]*(\d{2,3})\s*mm',  # "travel: 150mm" or "טווח: 150mm"
+                    r'(\d{2,3})\s*mm\s*(?:travel|טווח)',      # "150mm travel"
+                    r'(\d{2,3})\s*mm(?!\s*[x×])',             # "150mm" but not "15x110" or "12×110"
+                ]
+                
+                for pattern in travel_patterns:
+                    match = re.search(pattern, fork_text.lower())
+                    if match:
+                        potential_length = int(match.group(1))
+                        # Validate it's a reasonable fork travel length (40-180mm)
+                        if 40 <= potential_length <= 180:
+                            fork_length = potential_length
+                            break
+                
+                # If no travel pattern found, try to find standalone numbers but exclude hub widths
+                if fork_length is None:
+                    # Look for numbers that are NOT part of hub width patterns (like 15x110, 12x110)
+                    # Exclude patterns like: \d+x\d+ (hub width), or numbers followed by Boost/Qr/etc
+                    match = re.search(r'(?<![\dx])(40|50|60|70|80|90|100|120|130|140|150|160|170|180)(?![\dx]|boost|qr|thru)', fork_text.lower())
+                    if match:
+                        potential_length = int(match.group(1))
+                        # Double check it's not a hub width by ensuring it's not near "x" or "×"
+                        # Check 5 chars before and after
+                        match_pos = match.start()
+                        context = fork_text.lower()[max(0, match_pos-5):match_pos+10]
+                        if 'x' not in context and '×' not in context:
+                            fork_length = potential_length
+            
+            product_data["fork length"] = fork_length
 
             #----sub-category----
-            fork_length_str = product_data.get("fork length")
-
-            if fork_length_str is not None:
+            if fork_length is not None:
                 try:
-                    fork_length = int(fork_length_str)
                     if fork_length in [40, 50, 60, 70, 80, 90, 100, 110, 120]:
                         product_data["style"] = "cross-country"
                     elif fork_length in [130, 140, 150]:
@@ -382,7 +414,25 @@ def recycles_bikes(driver, output_file):
                 except ValueError:
                     product_data["style"] = "unknown"
             else:
-                product_data["style"] = "unknown"
+                # Fallback: Check model name for known bike types
+                model_lower = product_data.get("model", "").lower()
+                url_lower = product_data.get("source", {}).get("product_url", "").lower()
+                combined_text = f"{model_lower} {url_lower}"
+                
+                # Wild models are enduro bikes
+                if "wild" in combined_text:
+                    product_data["style"] = "enduro"
+                # Rise models are typically trail/cross-country
+                elif "rise" in combined_text:
+                    product_data["style"] = "trail"
+                # Oiz models are cross-country
+                elif "oiz" in combined_text:
+                    product_data["style"] = "cross-country"
+                # Occam models are trail
+                elif "occam" in combined_text:
+                    product_data["style"] = "trail"
+                else:
+                    product_data["style"] = "unknown"
                 
             scraped_data.append(product_data)
             
@@ -400,65 +450,64 @@ def recycles_bikes(driver, output_file):
     return scraped_data
 
 # --- Setup Output Directory ---
-try:
-    # Get project root (go up from data/scrapers/ to data/ to project root)
-    project_root = Path(__file__).resolve().parents[2]
-    output_dir = project_root / "data" / "scraped_raw_data"
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = output_dir / "recycles_data.json"
-    print(f"📁 Output file: {output_file}")
-    
-    # Create empty JSON file to start with
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump([], f, ensure_ascii=False, indent=4)
-    print("📄 Created empty JSON file - ready for data!")
-    
-except Exception as e:
-    print(f"❌ Error setting up output directory: {e}")
-    exit(1)
-
-# --- Run the Scraper ---
-products = []
-driver = None
-try:
-    print("🚀 Starting Chrome driver...")
-    # Add stable Chrome options
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--headless=new')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-logging')
-    options.add_argument('--disable-web-security')
-    options.add_argument('--allow-running-insecure-content')
-    
-    driver = uc.Chrome(options=options)
-    print("✅ Chrome driver started successfully!")
-    products = recycles_bikes(driver, output_file)
-except Exception as e:
-    print(f"❌ Error initializing Chrome driver: {e}")
-    print("💡 Make sure Chrome browser is installed and accessible")
-    products = []
-finally:
-    if driver:
-        try:
-            driver.quit()
-            print("🔒 Chrome driver closed")
-        except:
-            pass
-
-# Final summary
-print(f"\n✅ Scraping completed!")
-print(f"📊 Total products scraped: {len(products)}")
-print(f"💾 Final data saved to: {output_file}")
-
-# Ensure final data is saved even if scraping failed
-if len(products) == 0:
+if __name__ == '__main__':
     try:
+        # Get project root (go up from data/scrapers/ to data/ to project root)
+        project_root = Path(__file__).resolve().parents[2]
+        output_dir = project_root / "data" / "scraped_raw_data"
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = output_dir / "recycles_data.json"
+        print(f"📁 Output file: {output_file}")
+        
+        # Create empty JSON file to start with
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump([], f, ensure_ascii=False, indent=4)
-        print("📄 Updated JSON file with empty results")
+        print("📄 Created empty JSON file - ready for data!")
+        
     except Exception as e:
-        print(f"⚠️ Warning: Could not update final JSON file: {e}")
+        print(f"❌ Error setting up output directory: {e}")
+        exit(1)
 
+    # --- Run the Scraper ---
+    products = []
+    driver = None
+    try:
+        print("🚀 Starting Chrome driver...")
+        # Add stable Chrome options
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        options.add_argument('--disable-web-security')
+        options.add_argument('--allow-running-insecure-content')
+        
+        driver = uc.Chrome(options=options)
+        print("✅ Chrome driver started successfully!")
+        products = recycles_bikes(driver, output_file)
+    except Exception as e:
+        print(f"❌ Error initializing Chrome driver: {e}")
+        print("💡 Make sure Chrome browser is installed and accessible")
+        products = []
+    finally:
+        if driver:
+            try:
+                driver.quit()
+                print("🔒 Chrome driver closed")
+            except:
+                pass
+
+    # Final summary
+    print(f"\n✅ Scraping completed!")
+    print(f"📊 Total products scraped: {len(products)}")
+    print(f"💾 Final data saved to: {output_file}")
+
+    # Ensure final data is saved even if scraping failed
+    if len(products) == 0:
+        try:
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump([], f, ensure_ascii=False, indent=4)
+            print("📄 Updated JSON file with empty results")
+        except Exception as e:
+            print(f"⚠️ Warning: Could not update final JSON file: {e}")

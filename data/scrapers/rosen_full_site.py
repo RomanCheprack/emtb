@@ -19,8 +19,7 @@ ROSEN_TARGET_URLS = [
     {"url": f"{BASE_URL}/אופני-הרים-חשמליים-E-MTB", "category": "electric", "sub_category": "electric_mtb"},
     {"url": f"{BASE_URL}/index.php?dir=site&page=catalog&op=category&cs=10001&range=0%2C48442&filter%5B10005%5D%5B%5D=12673&filter%5B10271%5D%5B%5D=19115&filter%5B10271%5D%5B%5D=15275&filter%5B10271%5D%5B%5D=14858", "category": "mtb", "sub_category": "hardtail"},
     {"url": f"{BASE_URL}/אופני-הרים-שיכוך-מלא", "category": "mtb", "sub_category": "full_suspension"},
-    {"url": f"{BASE_URL}/index.php?dir=site&page=catalog&op=category&cs=10002&range=0%2C68159&filter%5B10038%5D%5B%5D=19747", "category": "gravel", "sub_category": "gravel"},
-    {"url": f"{BASE_URL}/index.php?dir=site&page=catalog&op=category&cs=10003&range=0%2C41608&filter%5B10038%5D%5B%5D=19747", "category": "gravel", "sub_category": "gravel"},
+    {"url": f"{BASE_URL}/index.php?dir=site&page=catalog&op=category&cs=10002&range=0%2C73990&filter%5B10038%5D%5B%5D=22064", "category": "gravel", "sub_category": "gravel"},
     {"url": f"{BASE_URL}/אופני-כביש", "category": "road", "sub_category": "road"},
     {"url": f"{BASE_URL}/אופני-כביש-EROAD", "category": "electric", "sub_category": "electric_road"},
     {"url": f"{BASE_URL}/index.php?dir=site&page=catalog&op=category&cs=10002&range=0%2C68159&filter%5B10038%5D%5B%5D=26702", "category": "electric", "sub_category": "electric_gravel"},
@@ -1152,65 +1151,66 @@ def extract_gallery_images_from_soup(soup, product_url):
 # -------------------------------
 # Main
 # -------------------------------
-# --- Setup Output Directory ---
-try:
-    # Get project root (go up from data/scrapers/ to data/ to project root)
-    project_root = Path(__file__).resolve().parents[2]
-    output_dir = project_root / "data" / "scraped_raw_data"
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = output_dir / "rosen_data.json"
-    print(f"📁 Output file: {output_file}")
-    
-    # Create empty JSON file to start with
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump([], f, ensure_ascii=False, indent=4)
-    print("📄 Created empty JSON file - ready for data!")
-    
-except Exception as e:
-    print(f"❌ Error setting up output directory: {e}")
-    exit(1)
-
-# --- Run the Scraper ---
-products = []
-driver = None
-try:
-    print("🚀 Starting Chrome driver...")
-    # Add stable Chrome options
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--headless=new')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-logging')
-    options.add_argument('--disable-web-security')
-    options.add_argument('--allow-running-insecure-content')
-    
-    driver = uc.Chrome(options=options)
-    print("✅ Chrome driver started successfully!")
-    products = rosen_bikes(driver, output_file)
-except Exception as e:
-    print(f"❌ Error initializing Chrome driver: {e}")
-    print("💡 Make sure Chrome browser is installed and accessible")
-    products = []
-finally:
-    if driver:
-        try:
-            driver.quit()
-            print("🔒 Chrome driver closed")
-        except:
-            pass
-
-# Final summary
-print(f"\n✅ Scraping completed!")
-print(f"📊 Total products scraped: {len(products)}")
-print(f"💾 Final data saved to: {output_file}")
-
-# Ensure final data is saved even if scraping failed
-if len(products) == 0:
+if __name__ == '__main__':
+    # --- Setup Output Directory ---
     try:
+        # Get project root (go up from data/scrapers/ to data/ to project root)
+        project_root = Path(__file__).resolve().parents[2]
+        output_dir = project_root / "data" / "scraped_raw_data"
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = output_dir / "rosen_data.json"
+        print(f"📁 Output file: {output_file}")
+        
+        # Create empty JSON file to start with
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump([], f, ensure_ascii=False, indent=4)
-        print("📄 Updated JSON file with empty results")
+        print("📄 Created empty JSON file - ready for data!")
+        
     except Exception as e:
-        print(f"⚠️ Warning: Could not update final JSON file: {e}")
+        print(f"❌ Error setting up output directory: {e}")
+        exit(1)
+
+    # --- Run the Scraper ---
+    products = []
+    driver = None
+    try:
+        print("🚀 Starting Chrome driver...")
+        # Add stable Chrome options
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--headless=new')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        options.add_argument('--disable-web-security')
+        options.add_argument('--allow-running-insecure-content')
+        
+        driver = uc.Chrome(options=options)
+        print("✅ Chrome driver started successfully!")
+        products = rosen_bikes(driver, output_file)
+    except Exception as e:
+        print(f"❌ Error initializing Chrome driver: {e}")
+        print("💡 Make sure Chrome browser is installed and accessible")
+        products = []
+    finally:
+        if driver:
+            try:
+                driver.quit()
+                print("🔒 Chrome driver closed")
+            except:
+                pass
+
+    # Final summary
+    print(f"\n✅ Scraping completed!")
+    print(f"📊 Total products scraped: {len(products)}")
+    print(f"💾 Final data saved to: {output_file}")
+
+    # Ensure final data is saved even if scraping failed
+    if len(products) == 0:
+        try:
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump([], f, ensure_ascii=False, indent=4)
+            print("📄 Updated JSON file with empty results")
+        except Exception as e:
+            print(f"⚠️ Warning: Could not update final JSON file: {e}")

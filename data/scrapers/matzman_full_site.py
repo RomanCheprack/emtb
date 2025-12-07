@@ -50,6 +50,17 @@ MATZMAN_TARGET_URLS = [
 
 CHATGPT_API_KEY = os.getenv('SCRAPER_OPENAI_API_KEY', '')
 
+# --- Hebrew phrases to filter out ---
+HEBREW_FILTER_PHRASES = [
+    "אופני עיר",
+    "אופני הרים חשמליים",
+    "אופני הרים שיכוך מלא",
+    "אופני הרים זנב קשיח",
+    "אופני עיר חשמליים",
+    "שילדת אופני הרים חשמליים",
+    "שילדת אופני הרים שיכוך מלא",
+]
+
 # --- Helper Functions ---
 def parse_price(text):
     if not text:
@@ -106,6 +117,29 @@ def determine_bike_style(fork_length):
     elif fork_length in [160,170,180]:
         return "enduro"
     return None
+
+def clean_hebrew_phrases(text):
+    """
+    Remove Hebrew filter phrases from text.
+    
+    Args:
+        text: The text to clean (string)
+    
+    Returns:
+        str: The cleaned text with Hebrew phrases removed
+    """
+    if not text or not isinstance(text, str):
+        return text
+    
+    cleaned_text = text
+    for phrase in HEBREW_FILTER_PHRASES:
+        # Remove the phrase and any surrounding whitespace
+        cleaned_text = cleaned_text.replace(phrase, "")
+    
+    # Clean up multiple spaces and trim
+    cleaned_text = re.sub(r'\s+', ' ', cleaned_text).strip()
+    
+    return cleaned_text
 
 def rewrite_description_with_chatgpt(original_text, api_key):
     if not original_text or not api_key:
@@ -568,6 +602,22 @@ def scrape_matzman(output_file):
             if isinstance(product_data.get("specs"), dict):
                 product_data["specs"] = {k.lower(): v for k, v in product_data["specs"].items()}
             
+            # Clean Hebrew phrases from model name
+            original_model = product_data.get("model", "")
+            cleaned_model = clean_hebrew_phrases(original_model)
+            if original_model != cleaned_model:
+                print(f"  🧹 [Product #{product_counter}] Cleaned model: '{original_model}' -> '{cleaned_model}'")
+                product_data["model"] = cleaned_model
+            
+            # Clean Hebrew phrases from bike_type in specs
+            if product_data.get("specs") and isinstance(product_data["specs"], dict):
+                original_bike_type = product_data["specs"].get("bike_type", "")
+                if original_bike_type:
+                    cleaned_bike_type = clean_hebrew_phrases(original_bike_type)
+                    if original_bike_type != cleaned_bike_type:
+                        print(f"  🧹 [Product #{product_counter}] Cleaned bike_type: '{original_bike_type}' -> '{cleaned_bike_type}'")
+                        product_data["specs"]["bike_type"] = cleaned_bike_type
+            
             scraped_data.append(product_data)
 
         # Summary for this category
@@ -597,12 +647,13 @@ def scrape_matzman(output_file):
     return scraped_data
 
 # --- Setup Output ---
-project_root = Path(__file__).resolve().parents[2]
-output_dir = project_root / "data" / "scraped_raw_data"
-os.makedirs(output_dir, exist_ok=True)
-output_file = output_dir / "matzman_data.json"
+if __name__ == '__main__':
+    project_root = Path(__file__).resolve().parents[2]
+    output_dir = project_root / "data" / "scraped_raw_data"
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = output_dir / "matzman_data.json"
 
-# --- Run Scraper ---
-products = scrape_matzman(output_file)
-print(f"\n✅ Scraping completed. Total products scraped: {len(products)}")
-print(f"💾 Final data saved to: {output_file}")
+    # --- Run Scraper ---
+    products = scrape_matzman(output_file)
+    print(f"\n✅ Scraping completed. Total products scraped: {len(products)}")
+    print(f"💾 Final data saved to: {output_file}")

@@ -38,6 +38,494 @@
     100% { transform: rotate(360deg); }
 }
 
+/* Row-style product list layout */
+.bikes-row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bike-row-item {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    position: relative;
+}
+
+.bike-row-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Three dots menu in top-left */
+.bike-menu-dots {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #666;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.bike-menu-dots:hover {
+    color: #333;
+}
+
+/* Brand and model in top-right */
+.bike-header-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: right;
+    z-index: 10;
+    max-width: calc(100% - 60px);
+    direction: rtl;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.bike-header-info .bike-model {
+    display: inline;
+    color: #555;
+    margin: 0;
+}
+
+.bike-header-info .bike-brand-link {
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.bike-header-info .bike-brand-link:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.bike-row-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+    direction: rtl;
+    margin-top: 50px;
+}
+
+.bike-image-container {
+    flex-shrink: 0;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 8px;
+    order: 1;
+}
+
+.bike-image-container .bike-row-image {
+    flex-shrink: 0;
+    max-height: 140px;
+    width: auto;
+}
+
+.bike-row-image {
+    max-width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.bike-details-container {
+    flex: 1;
+    min-width: 180px;
+    text-align: right;
+    direction: rtl;
+    order: 3;
+}
+
+.bike-year {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* Comparison link - grey text with underline, below image */
+.bike-image-container .bike-compare-link {
+    color: #6c757d;
+    text-decoration: underline;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    transition: color 0.2s ease;
+    width: 100%;
+}
+
+.bike-compare-link {
+    color: #6c757d;
+    text-decoration: underline;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+}
+
+.bike-compare-link:hover {
+    color: #495057;
+    text-decoration: underline;
+}
+
+.bike-compare-link.selected {
+    color: #28a745;
+}
+
+.bike-price-container {
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 100px;
+    direction: ltr;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bike-price-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.bike-price-original {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    direction: ltr;
+    display: inline-block;
+}
+
+.bike-price-discount {
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1.1rem;
+    direction: ltr;
+    display: inline-block;
+}
+
+.bike-price-current {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1rem;
+    direction: ltr;
+    display: inline-block;
+}
+
+.bike-actions-container {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 140px;
+    max-width: 140px;
+    order: 1;
+    align-items: flex-end;
+    margin-right: auto;
+}
+
+.bike-actions-top {
+    display: flex;
+    gap: 4px;
+    justify-content: flex-start;
+    align-self: flex-start;
+    direction: ltr;
+}
+
+/* Stack buttons vertically on mobile */
+@media (max-width: 768px) {
+    .bike-actions-top {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .bike-actions-top .btn {
+        width: 100%;
+    }
+}
+
+.bike-actions-top .btn {
+    flex: 0 1 auto;
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    white-space: nowrap;
+}
+
+/* Remove old compare button styles - now using link */
+
+/* Desktop layout - keep price next to image on the right */
+@media (min-width: 993px) {
+    .bike-row-item {
+        overflow: hidden;
+    }
+    
+    .bike-row-content {
+        flex-wrap: nowrap;
+    }
+    
+    .bike-image-container {
+        order: 1;
+    }
+    
+    .bike-price-container {
+        order: 2;
+        flex-shrink: 0;
+    }
+    
+    .bike-details-container {
+        order: 3;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+    }
+    
+    .bike-actions-container {
+        order: 4;
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+}
+
+/* Responsive adjustments for row layout */
+@media (max-width: 992px) {
+    .bike-row-content {
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+    
+    .bike-image-container {
+        width: 120px;
+        min-height: 120px;
+    }
+    
+    .bike-details-container {
+        min-width: 150px;
+    }
+    
+    .bike-actions-container {
+        min-width: 120px;
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bike-row-content {
+        gap: 8px;
+        flex-wrap: nowrap;
+        direction: rtl;
+        margin-top: 40px;
+    }
+    
+    .bike-header-info {
+        top: 8px;
+        right: 8px;
+        max-width: calc(100% - 50px);
+        font-size: 0.85rem;
+    }
+    
+    .bike-header-info .bike-model {
+        font-size: 0.8rem;
+    }
+    
+    .bike-header-info .bike-brand-link {
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    
+    .bike-menu-dots {
+        top: 8px;
+        left: 8px;
+    }
+    
+    .bike-image-container {
+        width: 100px;
+        min-height: 100px;
+        padding: 5px;
+        order: 1;
+    }
+    
+    .bike-image-container .bike-compare-link {
+        font-size: 0.7rem;
+        margin-top: 6px;
+    }
+    
+    .bike-details-container {
+        flex: 1;
+        min-width: 0;
+        text-align: right;
+        order: 3;
+    }
+    
+    .bike-year {
+        font-size: 0.75rem;
+    }
+    
+    .bike-price-container {
+        flex-shrink: 0;
+        min-width: 80px;
+        order: 2;
+    }
+    
+    .bike-price-original {
+        font-size: 0.75rem;
+    }
+    
+    .bike-price-discount,
+    .bike-price-current {
+        font-size: 0.95rem;
+    }
+    
+    .bike-actions-container {
+        flex-shrink: 0;
+        min-width: 100px;
+        max-width: 100px;
+        gap: 3px;
+        order: 4;
+    }
+    
+    .bike-actions-top {
+        gap: 3px;
+        flex-direction: column;
+    }
+    
+    .bike-actions-top .btn {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+        line-height: 1.2;
+        width: 100%;
+    }
+    
+    .bike-actions-top .btn i {
+        font-size: 0.7rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .bike-row-item {
+        padding: 8px;
+    }
+    
+    .bike-row-content {
+        gap: 6px;
+        margin-top: 55px;
+    }
+    
+    .bike-header-info {
+        top: 6px;
+        right: 6px;
+        max-width: calc(100% - 45px);
+        font-size: 0.75rem;
+    }
+    
+    .bike-header-info .bike-model {
+        font-size: 0.75rem;
+    }
+    
+    .bike-header-info .bike-brand-link {
+        font-size: 0.75rem;
+    }
+    
+    .bike-menu-dots {
+        top: 6px;
+        left: 6px;
+    }
+    
+    .bike-image-container {
+        width: 80px;
+        min-height: 80px;
+        padding: 4px;
+    }
+    
+    .bike-image-container .bike-compare-link {
+        font-size: 0.65rem;
+        margin-top: 4px;
+    }
+    
+    .bike-details-container {
+        min-width: 0;
+    }
+    
+    .bike-year {
+        font-size: 0.7rem;
+    }
+    
+    .bike-price-container {
+        min-width: 70px;
+    }
+    
+    .bike-price-original {
+        font-size: 0.7rem;
+    }
+    
+    .bike-price-discount,
+    .bike-price-current {
+        font-size: 0.85rem;
+    }
+    
+    .bike-actions-container {
+        min-width: 90px;
+        max-width: 90px;
+        gap: 2px;
+    }
+    
+    .bike-actions-top {
+        gap: 2px;
+        flex-direction: column;
+    }
+    
+    .bike-actions-top .btn {
+        font-size: 0.6rem;
+        padding: 2px 4px;
+        line-height: 1.1;
+        width: 100%;
+    }
+    
+    .bike-actions-top .btn i {
+        font-size: 0.65rem;
+    }
+    
+    /* Compact buttons - prevent text wrapping */
+    .bike-actions-top .btn {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* Legacy card styles (kept for compatibility) */
 .card.h-100 {
     display: flex;
     flex-direction: column;
@@ -232,45 +720,9 @@
     }
 }
 
-/* Compare Button Styles - Bootstrap outline-danger */
-.btn-outline-danger.compare-btn {
-    border-radius: 25px !important;
-    padding: 8px 16px !important;
-    font-weight: 600 !important;
-    font-size: 0.7rem !important;
-    transition: all 0.3s ease !important;
-    width: 100% !important;
-    position: relative !important;
-    overflow: hidden !important;
-    background-color: transparent !important;
-    border-color: #dc3545 !important;
-    color: #dc3545 !important;
-    margin: 0 !important;
-}
-
-.btn-outline-danger.compare-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3) !important;
-    background-color: #dc3545 !important;
-    border-color: #dc3545 !important;
-    color: white !important;
-}
-
-.btn-outline-danger.compare-btn:active {
-    transform: translateY(0) !important;
-}
-
-.btn-outline-danger.compare-btn.selected {
-    background-color: #28a745 !important;
-    border-color: #28a745 !important;
-    color: white !important;
-    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3) !important;
-}
-
-.btn-outline-danger.compare-btn.selected:hover {
-    background-color: #218838 !important;
-    border-color: #1e7e34 !important;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4) !important;
+/* Compare link styles - grey text with underline */
+.bike-compare-link.selected {
+    color: #28a745 !important;
 }
 
 
@@ -278,11 +730,10 @@
 /* Details Button Styles - Bootstrap outline-secondary */
 .btn-outline-secondary.details-btn {
     border-radius: 25px;
-    padding: 8px 16px;
+    padding: 4px 16px;
     font-weight: 600;
     font-size: 0.7rem;
     transition: all 0.3s ease;
-    width: 100%;
     position: relative;
     overflow: hidden;
     margin: 0;
@@ -300,11 +751,10 @@
 /* Purchase Button Styles - Bootstrap outline-primary */
 .btn-outline-primary.purchase-btn {
     border-radius: 25px;
-    padding: 8px 16px;
+    padding: 4px 16px;
     font-weight: 600;
     font-size: 0.7rem;
     transition: all 0.3s ease;
-    width: 100%;
     position: relative;
     overflow: hidden;
     margin: 0;
@@ -345,7 +795,8 @@
     margin-bottom: 0.5rem;
 }
 
-.card.compare-selected {
+.card.compare-selected,
+.bike-row-item.compare-selected {
     border: 2px solid #28a745;
     box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
 }

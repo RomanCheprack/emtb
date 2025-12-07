@@ -196,62 +196,63 @@ def scrape_brand(driver, brand_name, target_urls, output_file):
     return brand_data
 
 # --- Setup output file ---
-project_root = Path(__file__).resolve().parents[2]
-output_dir = project_root / "data" / "scraped_raw_data"
-os.makedirs(output_dir, exist_ok=True)
-output_file = output_dir / "motosport_data.json"
-print(f"📁 Output file: {output_file}")
+if __name__ == '__main__':
+    project_root = Path(__file__).resolve().parents[2]
+    output_dir = project_root / "data" / "scraped_raw_data"
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = output_dir / "motosport_data.json"
+    print(f"📁 Output file: {output_file}")
 
-# Create empty JSON file to start with
-with open(output_file, "w", encoding="utf-8") as f:
-    json.dump([], f, ensure_ascii=False, indent=4)
-print("📄 Created empty JSON file - ready for data!")
+    # Create empty JSON file to start with
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump([], f, ensure_ascii=False, indent=4)
+    print("📄 Created empty JSON file - ready for data!")
 
-# --- Run scraper ---
-driver = None
-scraped_products = []
-try:
-    print("🚀 Starting Chrome driver...")
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument("--headless=new")
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-logging')
-    driver = uc.Chrome(options=options)
-    print("✅ Chrome driver started successfully!")
-
-    KTM_URLS = [
-        {"url": f"{BASE_URL}/c/אופני-הרים-חשמלים-קלים", "category":"electric","sub_category":"electric_mtb"},
-        {"url": f"{BASE_URL}/c/אופני-הרים", "category":"mtb","sub_category":"full_suspension"}
-    ]
-    BH_URLS = [{"url": f"{BASE_URL}/c/אופני-BH","category":"electric","sub_category":"electric_mtb"}]
-    WHISTLE_URLS = [{"url": f"{BASE_URL}/c/אופני-Whistle","category":"electric","sub_category":"electric_mtb"}]
-
-    scraped_products.extend(scrape_brand(driver, "KTM", KTM_URLS, output_file))
-    scraped_products.extend(scrape_brand(driver, "BH", BH_URLS, output_file))
-    scraped_products.extend(scrape_brand(driver, "Whistle", WHISTLE_URLS, output_file))
-
-except Exception as e:
-    print(f"❌ Error initializing Chrome driver: {e}")
-    print("💡 Make sure Chrome browser is installed and accessible")
+    # --- Run scraper ---
+    driver = None
     scraped_products = []
-finally:
-    if driver:
-        try:
-            driver.quit()
-            print("🔒 Chrome driver closed")
-        except:
-            pass
+    try:
+        print("🚀 Starting Chrome driver...")
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument("--headless=new")
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        driver = uc.Chrome(options=options)
+        print("✅ Chrome driver started successfully!")
 
-# Final summary
-print(f"\n✅ Scraping completed!")
-print(f"📊 Total products scraped: {len(scraped_products)}")
+        KTM_URLS = [
+            {"url": f"{BASE_URL}/c/אופני-הרים-חשמלים-קלים", "category":"electric","sub_category":"electric_mtb"},
+            {"url": f"{BASE_URL}/c/אופני-הרים", "category":"mtb","sub_category":"full_suspension"}
+        ]
+        BH_URLS = [{"url": f"{BASE_URL}/c/אופני-BH","category":"electric","sub_category":"electric_mtb"}]
+        WHISTLE_URLS = [{"url": f"{BASE_URL}/c/אופני-Whistle","category":"electric","sub_category":"electric_mtb"}]
 
-# Save all accumulated products to the output file
-try:
-    save_json(scraped_products, output_file)
-    print(f"💾 Final data saved to: {output_file}")
-except Exception as e:
-    print(f"⚠️ Warning: Could not save final JSON file: {e}")
+        scraped_products.extend(scrape_brand(driver, "KTM", KTM_URLS, output_file))
+        scraped_products.extend(scrape_brand(driver, "BH", BH_URLS, output_file))
+        scraped_products.extend(scrape_brand(driver, "Whistle", WHISTLE_URLS, output_file))
+
+    except Exception as e:
+        print(f"❌ Error initializing Chrome driver: {e}")
+        print("💡 Make sure Chrome browser is installed and accessible")
+        scraped_products = []
+    finally:
+        if driver:
+            try:
+                driver.quit()
+                print("🔒 Chrome driver closed")
+            except:
+                pass
+
+    # Final summary
+    print(f"\n✅ Scraping completed!")
+    print(f"📊 Total products scraped: {len(scraped_products)}")
+
+    # Save all accumulated products to the output file
+    try:
+        save_json(scraped_products, output_file)
+        print(f"💾 Final data saved to: {output_file}")
+    except Exception as e:
+        print(f"⚠️ Warning: Could not save final JSON file: {e}")

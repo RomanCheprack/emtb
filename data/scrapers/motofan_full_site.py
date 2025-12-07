@@ -591,63 +591,64 @@ def motofan_bikes(driver, output_file):
 
 
 # --- Setup Output File ---
-try:
-    # Get project root (go up from data/scrapers/ to data/ to project root)
-    project_root = Path(__file__).resolve().parents[2]
-    output_dir = project_root / "data" / "scraped_raw_data"
-    os.makedirs(output_dir, exist_ok=True)  # Create directory if it doesn't exist
-    output_file = output_dir / "motofan_data.json"
-    print(f"📁 Output file: {output_file}")
-    
-    # Create empty JSON file to start with
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump([], f, ensure_ascii=False, indent=4)
-    print("📄 Created empty JSON file - ready for data!")
-    
-except Exception as e:
-    print(f"❌ Error setting up output directory: {e}")
-    exit(1)
-
-# --- Run the Scraper ---
-products = []
-driver = None
-try:
-    print("🚀 Starting Chrome driver...")
-    # Add stable Chrome options
-    options = uc.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-extensions')
-    options.add_argument('--disable-logging')
-    options.add_argument('--disable-web-security')
-    options.add_argument('--allow-running-insecure-content')
-    
-    driver = uc.Chrome(options=options)
-    print("✅ Chrome driver started successfully!")
-    products, driver = motofan_bikes(driver, output_file)
-except Exception as e:
-    print(f"❌ Error initializing Chrome driver: {e}")
-    print("💡 Make sure Chrome browser is installed and accessible")
-    products = []
-finally:
-    if driver:
-        try:
-            driver.quit()
-            print("🔒 Chrome driver closed")
-        except:
-            pass
-
-# Final summary
-print(f"\n✅ Scraping completed!")
-print(f"📊 Total products scraped: {len(products)}")
-print(f"💾 Final data saved to: {output_file}")
-
-# Ensure final data is saved even if scraping failed
-if len(products) == 0:
+if __name__ == '__main__':
     try:
+        # Get project root (go up from data/scrapers/ to data/ to project root)
+        project_root = Path(__file__).resolve().parents[2]
+        output_dir = project_root / "data" / "scraped_raw_data"
+        os.makedirs(output_dir, exist_ok=True)  # Create directory if it doesn't exist
+        output_file = output_dir / "motofan_data.json"
+        print(f"📁 Output file: {output_file}")
+        
+        # Create empty JSON file to start with
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump([], f, ensure_ascii=False, indent=4)
-        print("📄 Updated JSON file with empty results")
+        print("📄 Created empty JSON file - ready for data!")
+        
     except Exception as e:
-        print(f"⚠️ Warning: Could not update final JSON file: {e}")
+        print(f"❌ Error setting up output directory: {e}")
+        exit(1)
+
+    # --- Run the Scraper ---
+    products = []
+    driver = None
+    try:
+        print("🚀 Starting Chrome driver...")
+        # Add stable Chrome options
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        options.add_argument('--disable-web-security')
+        options.add_argument('--allow-running-insecure-content')
+        
+        driver = uc.Chrome(options=options)
+        print("✅ Chrome driver started successfully!")
+        products, driver = motofan_bikes(driver, output_file)
+    except Exception as e:
+        print(f"❌ Error initializing Chrome driver: {e}")
+        print("💡 Make sure Chrome browser is installed and accessible")
+        products = []
+    finally:
+        if driver:
+            try:
+                driver.quit()
+                print("🔒 Chrome driver closed")
+            except:
+                pass
+
+    # Final summary
+    print(f"\n✅ Scraping completed!")
+    print(f"📊 Total products scraped: {len(products)}")
+    print(f"💾 Final data saved to: {output_file}")
+
+    # Ensure final data is saved even if scraping failed
+    if len(products) == 0:
+        try:
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump([], f, ensure_ascii=False, indent=4)
+            print("📄 Updated JSON file with empty results")
+        except Exception as e:
+            print(f"⚠️ Warning: Could not update final JSON file: {e}")
