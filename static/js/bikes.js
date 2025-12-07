@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </svg>
                     </button>
                     <div class="bike-header-info">
-                        <span class="bike-model">${adaptedBike.model}</span> | <a href="#" class="bike-brand-link">${adaptedBike.brand}</a>
+                        ${adaptedBike.year ? `<span class="bike-year-header">${adaptedBike.year}</span> | ` : ''}<span class="bike-model">${adaptedBike.model}</span> | <a href="#" class="bike-brand-link">${adaptedBike.brand}</a>
                     </div>
                     <div class="bike-row-content">
                         <div class="bike-image-container">
@@ -350,17 +350,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="bike-price-container">
                             ${priceHTML}
-                            ${adaptedBike.year ? `<p class="bike-year">${adaptedBike.year}</p>` : ''}
+                            <button class="btn btn-outline-primary purchase-btn" data-bike-id="${adaptedBike.id}" data-product-url="${adaptedBike.listing.product_url || ''}">
+                                <i class="fas fa-shopping-cart me-1"></i>
+                                רכישה
+                            </button>
                         </div>
                         <div class="bike-actions-container">
                             <div class="bike-actions-top">
                                 <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${adaptedBike.id}">
                                     <i class="fas fa-info-circle me-1"></i>
                                     מפרט
-                                </button>
-                                <button class="btn btn-outline-primary purchase-btn" data-bike-id="${adaptedBike.id}" data-product-url="${adaptedBike.listing.product_url || ''}">
-                                    <i class="fas fa-shopping-cart me-1"></i>
-                                    רכישה
                                 </button>
                             </div>
                         </div>

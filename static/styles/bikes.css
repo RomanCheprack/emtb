@@ -93,7 +93,7 @@
     text-align: right;
     z-index: 10;
     max-width: calc(100% - 60px);
-    direction: rtl;
+    direction: ltr;
     font-size: 0.95rem;
     line-height: 1.4;
 }
@@ -117,6 +117,12 @@
     text-decoration: underline;
 }
 
+.bike-header-info .bike-year-header {
+    display: inline;
+    color: #666;
+    margin: 0;
+}
+
 .bike-row-content {
     display: flex;
     align-items: center;
@@ -138,6 +144,7 @@
     border-radius: 6px;
     padding: 8px;
     order: 1;
+    margin-left: 1.875rem;
 }
 
 .bike-image-container .bike-row-image {
@@ -244,6 +251,15 @@
     display: inline-block;
 }
 
+.bike-price-container .purchase-btn {
+    margin-top: 8px;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 120px;
+}
+
 .bike-actions-container {
     flex-shrink: 0;
     display: flex;
@@ -328,6 +344,7 @@
     .bike-image-container {
         width: 120px;
         min-height: 120px;
+        margin-left: 1.875rem;
     }
     
     .bike-details-container {
@@ -374,6 +391,7 @@
         min-height: 100px;
         padding: 5px;
         order: 1;
+        margin-left: 1.875rem;
     }
     
     .bike-image-container .bike-compare-link {
@@ -398,6 +416,12 @@
         order: 2;
     }
     
+    .bike-price-container .purchase-btn {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        max-width: 100px;
+    }
+    
     .bike-price-original {
         font-size: 0.75rem;
     }
@@ -405,6 +429,7 @@
     .bike-price-discount,
     .bike-price-current {
         font-size: 0.95rem;
+        margin-bottom: 0.5rem;
     }
     
     .bike-actions-container {
@@ -440,7 +465,7 @@
     
     .bike-row-content {
         gap: 6px;
-        margin-top: 55px;
+        margin-top: 35px;
     }
     
     .bike-header-info {
@@ -467,6 +492,7 @@
         width: 80px;
         min-height: 80px;
         padding: 4px;
+        margin-left: 1.875rem;
     }
     
     .bike-image-container .bike-compare-link {
@@ -486,6 +512,12 @@
         min-width: 70px;
     }
     
+    .bike-price-container .purchase-btn {
+        font-size: 0.6rem;
+        padding: 3px 6px;
+        max-width: 90px;
+    }
+    
     .bike-price-original {
         font-size: 0.7rem;
     }
@@ -493,6 +525,7 @@
     .bike-price-discount,
     .bike-price-current {
         font-size: 0.85rem;
+        margin-bottom: 0.5rem;
     }
     
     .bike-actions-container {
