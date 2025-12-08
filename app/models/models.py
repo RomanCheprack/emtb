@@ -346,3 +346,56 @@ class Comparison(Base):
             "user": self.user.email if self.user else None
         }
 
+
+# ---------------------------
+# Lead Tables
+# ---------------------------
+class AvailabilityLead(Base):
+    __tablename__ = "availability_leads"
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    name = Column(String(255), nullable=False)
+    phone = Column(String(50), nullable=False)
+    city = Column(String(255), nullable=False)
+    bike_model = Column(String(500))
+    bike_id = Column(String(36))  # UUID of the bike
+    importer = Column(String(500))  # Importer information
+    preferred_size = Column(String(50))  # Height in cm
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "phone": self.phone,
+            "city": self.city,
+            "bike_model": self.bike_model,
+            "bike_id": self.bike_id,
+            "importer": self.importer,
+            "preferred_size": self.preferred_size,
+            "created_at": self.created_at.isoformat() if self.created_at else None
+        }
+
+
+class ContactLead(Base):
+    __tablename__ = "contact_leads"
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    name = Column(String(255), nullable=False)
+    email = Column(String(255))
+    phone = Column(String(50))  # For test ride form
+    message = Column(Text)
+    form_type = Column(String(50), default="contact")  # "contact" or "test_ride"
+    model = Column(String(500))  # For test ride form
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "phone": self.phone,
+            "message": self.message,
+            "form_type": self.form_type,
+            "model": self.model,
+            "created_at": self.created_at.isoformat() if self.created_at else None
+        }
+

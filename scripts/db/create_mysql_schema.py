@@ -84,7 +84,8 @@ def create_schema(force=False):
         # Import all models to ensure they're registered
         from app.models import (
             User, Brand, Source, Bike, BikeListing, BikePrice,
-            BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison
+            BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison,
+            AvailabilityLead, ContactLead
         )
         
         print(f"📊 Database URI: {app.config['SQLALCHEMY_DATABASE_URI'][:50]}...")
@@ -116,6 +117,8 @@ def create_schema(force=False):
         print("   - bike_images")
         print("   - compare_counts")
         print("   - comparisons")
+        print("   - availability_leads")
+        print("   - contact_leads")
         
         # Add performance indexes
         print("\n🚀 Creating performance indexes...")

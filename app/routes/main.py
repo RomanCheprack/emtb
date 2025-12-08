@@ -6,7 +6,7 @@ import os
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime, timedelta
-from app.models import Bike, Comparison, CompareCount, BikeListing, Source
+from app.models import Bike, Comparison, CompareCount, BikeListing, Source, AvailabilityLead, ContactLead
 from app.services.bike_service import get_all_firms
 
 bp = Blueprint('main', __name__)
@@ -80,6 +80,33 @@ def contact():
     name = request.form["Name"]
     form_type = request.form.get("form_type", "contact")
     
+    # Save lead to database
+    try:
+        if form_type == "test_ride":
+            phone = request.form.get("Phone", "")
+            model = request.form.get("Model", "")
+            lead = ContactLead(
+                name=name,
+                phone=phone,
+                form_type="test_ride",
+                model=model
+            )
+        else:
+            email = request.form.get("Email", "")
+            message = request.form.get("Message", "")
+            lead = ContactLead(
+                name=name,
+                email=email,
+                message=message,
+                form_type="contact"
+            )
+        db.session.add(lead)
+        db.session.commit()
+    except Exception as e:
+        print(f"Error saving contact lead: {e}")
+        db.session.rollback()
+        # Continue even if database save fails
+    
     # Construct the email based on form type
     msg = EmailMessage()
     msg["To"] = "rideal.bikes@gmail.com"
@@ -114,6 +141,90 @@ def contact():
     except Exception as e:
         print("Email failed:", e)
         return "אירעה שגיאה בשליחת ההודעה", 500
+
+@bp.route("/check-availability", methods=["POST"])
+def check_availability():
+    """Handle availability check form submission"""
+    try:
+        name = request.form.get("name", "").strip()
+        phone = request.form.get("phone", "").strip()
+        city = request.form.get("city", "").strip()
+        bike_model = request.form.get("bike_model", "").strip()
+        bike_id = request.form.get("bike_id", "").strip()
+        preferred_size = request.form.get("preferred_size", "").strip()
+        
+        # Validate required fields
+        if not name or not phone or not city:
+            return "שדות חובה חסרים", 400
+        
+        # Get importer information from bike
+        importer_info = ""
+        if bike_id:
+            try:
+                from app.models import Bike, BikeListing, Source
+                bike = db.session.query(Bike).filter(Bike.uuid == bike_id).first()
+                if bike and bike.listings:
+                    # Get all unique importers from the bike's listings
+                    importers = set()
+                    for listing in bike.listings:
+                        if listing.source and listing.source.importer:
+                            importers.add(listing.source.importer)
+                    if importers:
+                        importer_info = ", ".join(sorted(importers))
+            except Exception as e:
+                print(f"Error fetching importer info: {e}")
+                # Continue without importer info if there's an error
+        
+        # Save lead to database
+        try:
+            lead = AvailabilityLead(
+                name=name,
+                phone=phone,
+                city=city,
+                bike_model=bike_model,
+                bike_id=bike_id,
+                importer=importer_info,
+                preferred_size=preferred_size if preferred_size else None
+            )
+            db.session.add(lead)
+            db.session.commit()
+        except Exception as e:
+            print(f"Error saving availability lead: {e}")
+            db.session.rollback()
+            # Continue even if database save fails
+        
+        # Construct the email
+        msg = EmailMessage()
+        msg["To"] = "rideal.bikes@gmail.com"
+        msg["Subject"] = f"בקשה לבדיקת זמינות מ-{name}"
+        msg["From"] = os.getenv("EMAIL_USER") or "rideal.bikes@gmail.com"
+        
+        # Build email body
+        body = f"בקשה לבדיקת זמינות\n\n"
+        body += f"שם: {name}\n"
+        body += f"טלפון: {phone}\n"
+        body += f"עיר: {city}\n"
+        body += f"דגם אופניים: {bike_model}\n"
+        if importer_info:
+            body += f"יבואן: {importer_info}\n"
+        if preferred_size:
+            body += f"גובה מועדף: {preferred_size} ס\"מ\n"
+        body += f"\nתאריך: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        
+        msg.set_content(body)
+        
+        # Send the email
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
+            smtp.send_message(msg)
+        
+        return "הבקשה נשלחה בהצלחה", 200
+        
+    except Exception as e:
+        print(f"Error sending availability check email: {e}")
+        import traceback
+        traceback.print_exc()
+        return "אירעה שגיאה בשליחת הבקשה", 500
 
 @bp.route('/sitemap.xml', methods=['GET'])
 def sitemap():
@@ -219,14 +330,14 @@ def electric_subcategories():
             'slug': 'electric_mtb',
             'name': 'אופני הרים חשמליים',
             'description': 'שילוב מושלם של כוח חשמלי ויכולות שטח',
-            'image': 'images/blog/electric_bike_alps_man_riding.jpg',
+            'image': 'images/categories/electric_mtb.jpg',
             'count': electric_mtb_count
         },
         {
             'slug': 'electric_city',
             'name': 'אופני עיר חשמליים',
             'description': 'נסיעה נוחה בעיר עם סיוע חשמלי',
-            'image': 'images/cool-bicycle-studio.jpg',
+            'image': 'images/categories/electric_city_bike.jpg',
             'count': electric_city_count
         }
     ]

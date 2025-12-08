@@ -7,6 +7,7 @@ class Config:
     # Flask settings
     SECRET_KEY = os.getenv('FLASK_SECRET_KEY') or os.urandom(24)
     DEBUG = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    PERMANENT_SESSION_LIFETIME = timedelta(hours=24)  # Admin session expires after 24 hours
     
     # Version for cache busting
     VERSION = os.getenv('APP_VERSION', '1.0.0')

@@ -1244,8 +1244,8 @@ function showBikeDetailsModal(bike) {
             return;
         }
         
-        // Prevent click if compare link, purchase button, or details button is clicked
-        if (e.target.closest('.bike-compare-link') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn')) return;
+        // Prevent click if compare link, purchase button, details button, or availability button is clicked
+        if (e.target.closest('.bike-compare-link') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn') || e.target.closest('.availability-btn')) return;
         
         // Handle card clicks (excluding buttons)
         const bikeId = card.getAttribute('data-bike-id');
@@ -1299,6 +1299,87 @@ function showBikeDetailsModal(bike) {
             behavior: 'smooth'
         });
     });
+
+    // ========== AVAILABILITY CHECK MODAL ==========
+    // Handle availability modal show event to populate bike model
+    const availabilityModal = document.getElementById('availabilityModal');
+    if (availabilityModal) {
+        availabilityModal.addEventListener('show.bs.modal', function(event) {
+            // Get the button that triggered the modal
+            const button = event.relatedTarget;
+            if (button && button.classList.contains('availability-btn')) {
+                const bikeModel = button.getAttribute('data-bike-model');
+                const bikeId = button.getAttribute('data-bike-id');
+                
+                // Populate the bike model and ID in the form
+                const modelInput = document.getElementById('availability-bike-model');
+                const modelDisplay = document.getElementById('availability-bike-display');
+                const bikeIdInput = document.getElementById('availability-bike-id');
+                if (modelInput) modelInput.value = bikeModel || '';
+                if (modelDisplay) modelDisplay.value = bikeModel || '';
+                if (bikeIdInput) bikeIdInput.value = bikeId || '';
+            }
+        });
+    }
+
+    // Handle form submission
+    const availabilityForm = document.getElementById('availabilityForm');
+    if (availabilityForm) {
+        availabilityForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if agreement checkbox is checked
+            const agreementCheckbox = document.getElementById('availability-agreement');
+            if (!agreementCheckbox.checked) {
+                alert('אנא אשר/י את הסכמתך למדיניות הפרטיות ותנאי השימוש');
+                agreementCheckbox.focus();
+                return;
+            }
+            
+            const formData = new FormData(availabilityForm);
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || formData.get('csrf_token');
+            
+            // Show loading state
+            const submitBtn = availabilityForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'שולח...';
+            
+            // Submit via fetch
+            fetch(availabilityForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('Network response was not ok');
+            })
+            .then(data => {
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('availabilityModal'));
+                modal.hide();
+                
+                // Show success message (you can customize this)
+                alert('הבקשה נשלחה בהצלחה! נחזור אליך בהקדם.');
+                
+                // Reset form
+                availabilityForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('אירעה שגיאה בשליחת הבקשה. אנא נסה שוב.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        });
+    }
 });
 
 // Function to toggle collapsible values in bike details modal

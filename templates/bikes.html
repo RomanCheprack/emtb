@@ -128,12 +128,22 @@
                     </button>
                 </div>
                 <div class="bike-actions-container">
-                    <div class="bike-actions-top">
+                    <div class="bike-actions-top" style="flex-direction: column;">
                         <button type="button"
                                 class="btn btn-outline-secondary details-btn"
                                 data-bike-id="{{ bike['id'] }}">
                             <i class="fas fa-info-circle me-1"></i>
                             מפרט
+                        </button>
+                        <button type="button"
+                                class="btn btn-outline-primary availability-btn"
+                                data-bike-id="{{ bike['id'] }}"
+                                data-bike-model="{{ bike['firm'] }} {{ bike['model'] }}{% if bike['year'] %} {{ bike['year'] }}{% endif %}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#availabilityModal"
+                                style="margin-top: 4px;">
+                            <i class="fas fa-check-circle me-1"></i>
+                            בדוק זמינות
                         </button>
                     </div>
                 </div>
@@ -158,6 +168,62 @@
     </div>
 </div>
 
+<!-- Availability Check Modal -->
+<div class="modal fade" id="availabilityModal" tabindex="-1" aria-labelledby="availabilityModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="availabilityModalLabel">בדוק זמינות</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגור"></button>
+            </div>
+            <div class="modal-body" style="direction: rtl;">
+                <form id="availabilityForm" method="POST" action="{{ url_for('main.check_availability') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="bike_model" id="availability-bike-model" value="">
+                    <input type="hidden" name="bike_id" id="availability-bike-id" value="">
+                    
+                    <div class="mb-3">
+                        <label for="availability-name" class="form-label" style="text-align: right;">שם *</label>
+                        <input type="text" class="form-control" id="availability-name" name="name" required style="text-align: right;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="availability-phone" class="form-label" style="text-align: right;">טלפון *</label>
+                        <input type="tel" class="form-control" id="availability-phone" name="phone" required style="text-align: right;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="availability-city" class="form-label" style="text-align: right;">עיר *</label>
+                        <input type="text" class="form-control" id="availability-city" name="city" required style="text-align: right;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="availability-bike-display" class="form-label" style="text-align: right;">דגם אופניים</label>
+                        <input type="text" class="form-control" id="availability-bike-display" readonly style="text-align: right; background-color: #e9ecef;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="availability-size" class="form-label" style="text-align: right;">גובה מועדף (ס"מ)</label>
+                        <input type="number" class="form-control" id="availability-size" name="preferred_size" min="100" max="250" style="text-align: right;" placeholder="לדוגמה: 175">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check" style="direction: rtl; display: flex; align-items: center; justify-content: flex-start;">
+                            <input class="form-check-input" type="checkbox" id="availability-agreement" name="agreement" required style="margin-left: 8px; margin-right: 0;">
+                            <label class="form-check-label" for="availability-agreement" style="text-align: right; margin-right: 0;">
+                                אני מסכים/ה ל<a href="{{ url_for('main.privacy_policy') }}" target="_blank">מדיניות הפרטיות</a> ול<a href="{{ url_for('main.terms_of_use') }}" target="_blank">תנאי השימוש</a> *
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">שלח בקשה</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Offcanvas Sidebar for Additional Filters -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasFilters" aria-labelledby="offcanvasFiltersLabel">
