@@ -43,7 +43,7 @@
     margin-bottom: 20px;
     /* Text animation styles */
     overflow: hidden;
-    opacity: 1; /* Changed from 0 to 1 to allow blur animation to be visible */
+    opacity: 1;
     transform: translateY(0);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -51,15 +51,22 @@
     /* Text animation specific styles */
     .hero-body span[data-text-animate] {
         will-change: transform, opacity, filter;
+        /* Hide initially to prevent flash of content */
+        visibility: hidden;
     }
     
-    .hero-body span[data-text-animate] span {
+    /* Show container when it's ready to animate */
+    .hero-body span[data-text-animate].animation-ready {
+        visibility: visible;
+    }
+    
+    .hero-body span[data-text-animate] > span {
         display: inline-block;
         margin-right: 0.2em;
     }
     
     /* RTL text animation styles */
-    .hero-body span[data-text-animate][dir="rtl"] span {
+    .hero-body span[data-text-animate][dir="rtl"] > span {
         margin-right: 0;
         margin-left: 0.2em;
     }

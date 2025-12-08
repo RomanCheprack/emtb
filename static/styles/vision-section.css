@@ -493,6 +493,7 @@
 .hero-body .cta-button-primary {
     opacity: 0;
     transform: translateY(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .cta-button-primary:hover {

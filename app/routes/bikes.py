@@ -59,7 +59,7 @@ def bikes():
     bikes_for_template = [bike.to_dict() for bike in initial_bikes]
     bikes_count = len(bikes_for_template)
     
-    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=selected_category)
+    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=selected_category, selected_sub_categories=selected_sub_categories)
 
 
 @bp.route("/<category>")
@@ -91,7 +91,7 @@ def category_bikes(category):
     styles = get_styles_by_category(category)
     
     # Pass all bikes for client-side filtering (instant response!)
-    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=category)
+    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=category, selected_sub_categories=[])
 
 @bp.route("/api/filter_bikes")
 def filter_bikes():

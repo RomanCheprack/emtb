@@ -10,16 +10,20 @@
 {% if selected_category %}
 <div class="category-badge-container" style="text-align: center; padding: 20px 15px 10px; direction: rtl;">
     <span class="category-badge" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 12px 24px; border-radius: 25px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; margin-left: 8px;">
-            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-        </svg>
-        {% if selected_category == 'electric' %}אופני הרים חשמליים
-        {% elif selected_category == 'mtb' %}אופני הרים
-        {% elif selected_category == 'hardtail_mtb' %}הארדטייל
-        {% elif selected_category == 'kids' %}אופני ילדים
-        {% elif selected_category == 'city' %}אופני עיר
-        {% elif selected_category == 'road' %}אופני כביש
-        {% elif selected_category == 'gravel' %}אופני גרוול
+        {% if selected_sub_categories and 'electric_city' in selected_sub_categories %}
+            אופני עיר חשמליים
+        {% else %}
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px; margin-left: 8px;">
+                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+            </svg>
+            {% if selected_category == 'electric' %}אופני הרים חשמליים
+            {% elif selected_category == 'mtb' %}אופני הרים
+            {% elif selected_category == 'hardtail_mtb' %}הארדטייל
+            {% elif selected_category == 'kids' %}אופני ילדים
+            {% elif selected_category == 'city' %}אופני עיר
+            {% elif selected_category == 'road' %}אופני כביש
+            {% elif selected_category == 'gravel' %}אופני גרוול
+            {% endif %}
         {% endif %}
     </span>
 </div>
@@ -142,7 +146,6 @@
                                 data-bs-toggle="modal"
                                 data-bs-target="#availabilityModal"
                                 style="margin-top: 4px;">
-                            <i class="fas fa-check-circle me-1"></i>
                             בדוק זמינות
                         </button>
                     </div>
@@ -172,9 +175,9 @@
 <div class="modal fade" id="availabilityModal" tabindex="-1" aria-labelledby="availabilityModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="availabilityModalLabel">בדוק זמינות</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגור"></button>
+            <div class="modal-header" style="justify-content: center;">
+                <h5 class="modal-title" id="availabilityModalLabel" style="text-align: center; width: 100%; font-weight: bold;">השאירו פרטים ונציגינו יחזור אליכם בהקדם</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגור" style="position: absolute; right: 1rem;"></button>
             </div>
             <div class="modal-body" style="direction: rtl;">
                 <form id="availabilityForm" method="POST" action="{{ url_for('main.check_availability') }}">
