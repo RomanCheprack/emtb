@@ -1,6 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Prefetch bikes pages for faster navigation -->
+{% for subcategory in subcategories %}
+    {% if subcategory.slug == 'full_suspension' %}
+        <link rel="prefetch" href="{{ url_for('bikes.bikes') }}?category=mtb&sub_category=full_suspension">
+    {% elif subcategory.slug == 'hardtail' %}
+        <link rel="prefetch" href="{{ url_for('bikes.bikes') }}?category=mtb&sub_category=hardtail">
+    {% else %}
+        <link rel="prefetch" href="{{ url_for('bikes.bikes') }}?sub_category={{ subcategory.slug }}">
+    {% endif %}
+{% endfor %}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/mtb-subcategories.css') }}">
 
 <!-- Subcategories Container -->

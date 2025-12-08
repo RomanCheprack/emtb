@@ -90,7 +90,7 @@ class Bike(Base):
     images = relationship("BikeImage", back_populates="bike", cascade="all, delete-orphan")
     compare_count = relationship("CompareCount", uselist=False, back_populates="bike")
 
-    def to_dict(self, include_specs=True, include_prices=True, include_images=True, flat_format=True):
+    def to_dict(self, include_specs=True, include_prices=True, include_images=True, flat_format=True, list_view=False):
         """
         Convert bike to dictionary format
         
@@ -100,9 +100,11 @@ class Bike(Base):
             include_images: Include image data
             flat_format: If True, returns template-compatible flat format.
                         If False, returns clean nested format.
+            list_view: If True, only include essential specs for filtering (wh, frame_material, motor_brand).
+                      Significantly reduces payload size for list views.
         """
         if flat_format:
-            return self._to_dict_flat(include_specs, include_prices, include_images)
+            return self._to_dict_flat(include_specs, include_prices, include_images, list_view)
         else:
             return self._to_dict_nested(include_specs, include_prices, include_images)
     
@@ -133,7 +135,7 @@ class Bike(Base):
 
         return data
     
-    def _to_dict_flat(self, include_specs, include_prices, include_images):
+    def _to_dict_flat(self, include_specs, include_prices, include_images, list_view=False):
         """Flat format for template compatibility (mimics old SQLite structure)"""
         # Basic fields with template-compatible names
         data = {
@@ -169,13 +171,20 @@ class Bike(Base):
         if include_specs and self.listings:
             # Get raw specs from the first listing
             if self.listings[0].raw_specs:
+                # Essential specs for filtering (used in list view)
+                essential_specs = {'wh', 'frame_material', 'frame', 'motor_brand', 'motor'}
+                
                 for raw_spec in self.listings[0].raw_specs:
                     # Use the raw spec key and value directly
                     if raw_spec.spec_value_raw:
-                        data[raw_spec.spec_key_raw] = raw_spec.spec_value_raw
+                        spec_key = raw_spec.spec_key_raw
+                        # In list_view mode, only include essential specs for filtering
+                        if not list_view or spec_key in essential_specs:
+                            data[spec_key] = raw_spec.spec_value_raw
         
         # Gallery images as JSON string (template compatible)
-        if include_images and self.images:
+        # Skip gallery images in list_view mode to reduce payload
+        if include_images and not list_view and self.images:
             import json
             gallery_urls = [img.image_url for img in sorted(self.images, key=lambda x: (not x.is_main, x.position))]
             data['gallery_images_urls'] = json.dumps(gallery_urls) if gallery_urls else None

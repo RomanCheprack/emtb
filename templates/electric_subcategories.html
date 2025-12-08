@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Prefetch bikes pages for faster navigation -->
+{% for subcategory in subcategories %}
+    <link rel="prefetch" href="{{ url_for('bikes.bikes') }}?category=electric&sub_category={{ subcategory.slug }}">
+{% endfor %}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/mtb-subcategories.css') }}">
 
 <!-- Subcategories Container -->

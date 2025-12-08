@@ -31,11 +31,12 @@ def bikes():
         styles = get_all_styles()
     
     # Load ALL bikes (with filters if specified) for client-side filtering
+    # Optimized: Skip images loading for list view (not needed for initial render)
     initial_query = db.session.query(Bike).options(
         db.joinedload(Bike.brand),
         db.joinedload(Bike.listings).joinedload(BikeListing.prices),
-        db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
-        db.joinedload(Bike.images)
+        db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs)
+        # Note: Images not loaded here - not needed for list view, reduces query time
     )
     
     # Apply category filter
@@ -55,8 +56,10 @@ def bikes():
     # Get ALL bikes (no limit for client-side filtering)
     initial_bikes = initial_query.all()
     
-    # Convert to template-compatible format
-    bikes_for_template = [bike.to_dict() for bike in initial_bikes]
+    # Convert to template-compatible format using lightweight list_view mode
+    # This only includes essential specs (wh, frame_material, motor_brand) for filtering
+    # and skips gallery images, significantly reducing payload size
+    bikes_for_template = [bike.to_dict(list_view=True, include_images=False) for bike in initial_bikes]
     bikes_count = len(bikes_for_template)
     
     return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=selected_category, selected_sub_categories=selected_sub_categories)
@@ -74,15 +77,18 @@ def category_bikes(category):
     
     # Load ALL bikes for this category for client-side filtering
     # With max 300 bikes per category, this is faster than AJAX calls
+    # Optimized: Skip images loading for list view (not needed for initial render)
     category_bikes_query = db.session.query(Bike).options(
         db.joinedload(Bike.brand),
         db.joinedload(Bike.listings).joinedload(BikeListing.prices),
-        db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
-        db.joinedload(Bike.images)
+        db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs)
+        # Note: Images not loaded here - not needed for list view, reduces query time
     ).filter(Bike.category == category).all()  # Load ALL bikes
     
-    # Convert to template-compatible format
-    bikes_for_template = [bike.to_dict() for bike in category_bikes_query]
+    # Convert to template-compatible format using lightweight list_view mode
+    # This only includes essential specs (wh, frame_material, motor_brand) for filtering
+    # and skips gallery images, significantly reducing payload size
+    bikes_for_template = [bike.to_dict(list_view=True, include_images=False) for bike in category_bikes_query]
     bikes_count = len(bikes_for_template)
     
     # Get firms, sub_categories, and styles filtered by this specific category
