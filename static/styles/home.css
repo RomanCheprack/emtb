@@ -31,10 +31,20 @@
     .hero-body h1 {
     font-size: 5rem;
     line-height: 1.2;
-    opacity: 1; /* Changed from 0 to 1 to allow typing animation to be visible */
+    opacity: 1;
     transform: translateY(0);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
+    /* Hide H1 with typing animation initially to prevent flash of content */
+    .hero-body h1[data-typing-animation] {
+        visibility: hidden;
+    }
+
+    /* Show H1 when animation is ready to start */
+    .hero-body h1[data-typing-animation].animation-ready {
+        visibility: visible;
+    }
 
     .hero-body span {
     font-size: 1.5rem;

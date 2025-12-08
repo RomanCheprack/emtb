@@ -35,6 +35,9 @@ class TypingAnimation {
     
     animate() {
         const text = this.element.textContent;
+        
+        // Make element visible and clear text immediately to prevent flash
+        this.element.classList.add('animation-ready');
         this.element.textContent = '';
         
         let index = 0;
@@ -73,10 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const duration = parseInt(heroH1.getAttribute('data-typing-duration')) || 100;
         const delay = parseInt(heroH1.getAttribute('data-typing-delay')) || 0;
         const startOnView = heroH1.getAttribute('data-typing-start-on-view') === 'true';
-        
-        // Calculate when typing completes
-        const text = heroH1.textContent;
-        const typingCompleteTime = delay + (text.length * duration);
         
         new TypingAnimation(heroH1, {
             duration,
