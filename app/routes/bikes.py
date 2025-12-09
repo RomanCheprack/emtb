@@ -149,7 +149,8 @@ def filter_bikes():
             db_query = db_query.filter(or_(*search_conditions))
 
         if years:
-            db_query = db_query.filter(Bike.year.in_(years))
+            # Include bikes matching selected years OR bikes with null year
+            db_query = db_query.filter(or_(Bike.year.in_(years), Bike.year.is_(None)))
 
         if firms:
             # Firms = brands in MySQL model
@@ -233,7 +234,8 @@ def filter_bikes():
             # Frame material filtering
             if frame_material:
                 bike_frame_material = get_frame_material(bike_dict)
-                if bike_frame_material != frame_material:
+                # Include bikes with null/unknown frame material OR bikes matching selected material
+                if bike_frame_material is not None and bike_frame_material != frame_material:
                     continue
 
             # Motor brand filtering

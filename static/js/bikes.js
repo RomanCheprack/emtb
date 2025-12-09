@@ -226,8 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const forkSlider = document.getElementById("fork-slider");
     const forkSliderContainer = document.getElementById("fork-slider-container");
     
-    // Hide fork slider for road category
-    if (selectedCategory === 'road') {
+    // Hide fork slider for road, city, kids, and gravel categories
+    // Only show for MTB and electric categories
+    if (selectedCategory === 'road' || selectedCategory === 'city' || selectedCategory === 'kids' || selectedCategory === 'gravel') {
         if (forkSliderContainer) {
             forkSliderContainer.style.display = 'none';
         }
@@ -356,10 +357,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             </button>
                         </div>
                         <div class="bike-actions-container">
-                            <div class="bike-actions-top">
+                            <div class="bike-actions-top" style="flex-direction: column;">
                                 <button type="button" class="btn btn-outline-secondary details-btn" data-bike-id="${adaptedBike.id}">
                                     <i class="fas fa-info-circle me-1"></i>
                                     מפרט
+                                </button>
+                                <button type="button"
+                                        class="btn btn-outline-primary availability-btn"
+                                        data-bike-id="${adaptedBike.id}"
+                                        data-bike-model="${adaptedBike.brand} ${adaptedBike.model}${adaptedBike.year ? ' ' + adaptedBike.year : ''}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#availabilityModal"
+                                        style="margin-top: 4px;">
+                                    בדוק זמינות
                                 </button>
                             </div>
                         </div>
@@ -370,6 +380,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         return fragment;
+    }
+
+    // ========== HELPER FUNCTIONS ==========
+    // Helper function to determine frame material (matches server-side logic)
+    function getBikeFrameMaterial(bike) {
+        // Check frame_material field first
+        const frameMaterialField = (bike.frame_material || '').trim();
+        if (frameMaterialField) {
+            const frameMaterialLower = frameMaterialField.toLowerCase();
+            if (frameMaterialLower.includes('carbon')) {
+                return 'carbon';
+            } else if (frameMaterialLower.includes('aluminium') || frameMaterialLower.includes('aluminum')) {
+                return 'aluminium';
+            }
+        }
+        
+        // Check frame description and model
+        const frameVal = (bike.frame || '').trim();
+        const modelVal = (bike.model || '').trim();
+        
+        // If both are empty, frame material is unknown
+        if (!frameVal && !modelVal) {
+            return null;
+        }
+        
+        // Search for material indicators
+        const combined = `${frameVal} ${modelVal}`.toLowerCase();
+        
+        if (combined.includes('carbon')) {
+            return 'carbon';
+        } else if (combined.includes('aluminium') || combined.includes('aluminum')) {
+            return 'aluminium';
+        }
+        
+        // If we have frame/model info but no material indicator, return null (unknown)
+        return null;
     }
 
     // ========== CLIENT-SIDE FILTERING (INSTANT!) ==========
@@ -387,40 +433,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const selectedFirms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
         const selectedMotorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
-        const selectedSubCategories = Array.from(document.querySelectorAll('.sub-category-checkbox:checked')).map(cb => cb.value);
         const selectedStyles = Array.from(document.querySelectorAll('.style-checkbox:checked')).map(cb => cb.value);
         const selectedYears = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => parseInt(cb.value));
         
-        const frameMaterial = document.querySelector('input[name="frame_material"]:checked')?.value;
+        const frameMaterialRadio = document.querySelector('input[name="frame_material"]:checked');
+        const frameMaterial = frameMaterialRadio ? frameMaterialRadio.value : undefined;
         const hasDiscount = document.querySelector('input[name="has_discount"]:checked')?.value;
         
         // Filter bikes in memory - FAST!
+        // Ensure we're starting with the full allBikes array
+        if (allBikes.length === 0) {
+            console.warn('allBikes is empty!');
+        }
+        
+        // Debug: Track which filters are excluding bikes
+        const filterStats = {
+            total: allBikes.length,
+            excludedBy: {}
+        };
+        
         filteredBikes = allBikes.filter((bike) => {
             
             // Search filter (model or firm)
             if (query) {
                 const modelMatch = bike.model?.toLowerCase().includes(query);
                 const firmMatch = bike.firm?.toLowerCase().includes(query);
-                if (!modelMatch && !firmMatch) return false;
+                if (!modelMatch && !firmMatch) {
+                    filterStats.excludedBy.search = (filterStats.excludedBy.search || 0) + 1;
+                    return false;
+                }
             }
             
             // Price filter
+            // Only filter if user has actually changed the price range from default
+            // If max_price equals defaultMaxPrice, don't filter by max (show all bikes regardless of price)
             const price = bike.disc_price || bike.price;
             if (price && price !== "צור קשר") {
                 // Parse price correctly - handle decimals (27990.00 should be 27990, not 2799000)
                 const priceNum = Math.round(parseFloat(String(price))) || 0;
-                if (priceNum < min_price || priceNum > max_price) {
+                // Filter by min_price if user has increased it from 0
+                if (priceNum < min_price) {
+                    filterStats.excludedBy.price = (filterStats.excludedBy.price || 0) + 1;
+                    return false;
+                }
+                // Only filter by max_price if user has reduced it from default (max_price < defaultMaxPrice)
+                if (max_price < defaultMaxPrice && priceNum > max_price) {
+                    filterStats.excludedBy.price = (filterStats.excludedBy.price || 0) + 1;
                     return false;
                 }
             }
             
             // Year filter
             if (selectedYears.length > 0) {
-                // Convert bike.year to number for comparison
-                const bikeYear = parseInt(bike.year);
-                if (!selectedYears.includes(bikeYear)) {
-                    return false;
+                // Include bikes with null/undefined/empty year OR bikes matching selected years
+                if (bike.year != null && bike.year !== undefined && bike.year !== '') {
+                    // Convert bike.year to number for comparison
+                    const bikeYear = parseInt(bike.year);
+                    if (!selectedYears.includes(bikeYear)) {
+                        return false;
+                    }
                 }
+                // If bike.year is null/undefined/empty, include it (don't return false)
             }
             
             // Firm/Brand filter
@@ -430,45 +503,54 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
             
-            // Sub-category filter
-            if (selectedSubCategories.length > 0) {
-                // Handle special case for electric_city (some have space)
-                const bikeSubCat = bike.sub_category?.trim();
-                const normalizedSubCat = bikeSubCat === 'electric_ city' ? 'electric_city' : bikeSubCat;
-                if (!selectedSubCategories.includes(normalizedSubCat)) {
-                    return false;
-                }
-            }
-            
             // Style filter
             if (selectedStyles.length > 0 && bike.style && !selectedStyles.includes(bike.style)) {
                 return false;
             }
             
-            // Battery filter (for electric bikes)
-            if (bike.wh) {
+            // Battery filter (for electric bikes only)
+            // Only apply if category is electric AND bike has battery data
+            // Bikes without battery data should be included
+            if (selectedCategory === 'electric' && bike.wh) {
                 const wh = parseInt(bike.wh) || 0;
                 if (wh < min_battery || wh > max_battery) {
+                    filterStats.excludedBy.battery = (filterStats.excludedBy.battery || 0) + 1;
                     return false;
                 }
             }
             
-            // Fork length filter
-            if (bike.fork_length) {
+            // Fork length filter (only for MTB and electric categories)
+            // Don't apply for road, city, kids, or gravel categories
+            // Only apply if category is MTB or electric AND bike has fork_length data
+            // Bikes without fork_length data should be included
+            const shouldApplyForkFilter = (selectedCategory === 'mtb' || selectedCategory === 'electric') && bike.fork_length;
+            if (shouldApplyForkFilter) {
                 const forkMatch = String(bike.fork_length).match(/\d+/);
                 const forkNum = forkMatch ? parseInt(forkMatch[0]) : 0;
                 if (forkNum && (forkNum < min_fork || forkNum > max_fork)) {
+                    filterStats.excludedBy.fork = (filterStats.excludedBy.fork || 0) + 1;
                     return false;
                 }
             }
             
             // Frame material filter
-            if (frameMaterial) {
-                const bikeMaterial = bike.frame_material || bike.frame || '';
-                if (!bikeMaterial.toLowerCase().includes(frameMaterial.toLowerCase())) {
+            // Empty string or undefined means "All" - show all bikes
+            // Only apply filter if a specific material is selected
+            const shouldApplyFrameFilter = frameMaterial !== undefined && 
+                                         frameMaterial !== null && 
+                                         frameMaterial !== '' && 
+                                         String(frameMaterial).trim() !== '';
+            
+            if (shouldApplyFrameFilter) {
+                const bikeFrameMaterial = getBikeFrameMaterial(bike);
+                
+                // Include bikes with null/unknown frame material OR bikes matching selected material
+                if (bikeFrameMaterial !== null && bikeFrameMaterial !== frameMaterial) {
                     return false;
                 }
+                // If bikeFrameMaterial is null (unknown), include it (don't return false)
             }
+            // If frameMaterial is empty/undefined/null, skip filter (show all bikes)
             
             // Motor brand filter
             if (selectedMotorBrands.length > 0) {
@@ -507,6 +589,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const bikesFragment = generateBikesHTML(filteredBikes);
         bikesList.appendChild(bikesFragment);
         bikesCount.textContent = `נמצאו ${filteredBikes.length} אופניים`;
+        
+        // Debug: Log filter statistics when bikes are missing
+        if (filteredBikes.length !== allBikes.length) {
+            console.warn(`⚠️ Filtering issue: allBikes=${allBikes.length}, filteredBikes=${filteredBikes.length}`);
+            console.warn('Excluded by:', filterStats.excludedBy);
+            console.warn('Filter values:', {
+                query,
+                min_price, max_price,
+                min_battery, max_battery,
+                min_fork, max_fork,
+                selectedYears,
+                selectedFirms,
+                selectedStyles,
+                selectedMotorBrands,
+                frameMaterial,
+                hasDiscount
+            });
+        }
 
         // Re-attach event listeners
         attachCompareButtonListeners();
@@ -1162,14 +1262,62 @@ function showBikeDetailsModal(bike) {
         });
     });
 
-    // Add listeners for sub-category checkboxes
-    document.querySelectorAll('.sub-category-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', applyFilters);
-    });
 
     // Add listeners for style checkboxes
     document.querySelectorAll('.style-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', applyFilters);
+    });
+
+    // Frame material filter - handle radio button changes
+    // The "All" option (value="") will show all bikes
+    // Also allow unchecking by clicking a checked radio (except "All")
+    
+    // Set "All" as default selection on page load
+    const allFrameMaterialOption = document.getElementById('frame-material-all');
+    if (allFrameMaterialOption && !document.querySelector('input[name="frame_material"]:checked')) {
+        allFrameMaterialOption.checked = true;
+    }
+    
+    document.querySelectorAll('input[name="frame_material"]').forEach(radio => {
+        let wasCheckedBefore = false;
+        
+        // Track state before click
+        radio.addEventListener('mousedown', function() {
+            wasCheckedBefore = this.checked;
+        });
+        
+        // Handle clicks - if clicking a checked radio (except "All"), uncheck it
+        radio.addEventListener('click', function(e) {
+            // If clicking a checked radio that's not "All", uncheck it and select "All"
+            if (wasCheckedBefore && this.value !== '') {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                // Select the "All" option instead
+                const allOption = document.getElementById('frame-material-all');
+                if (allOption) {
+                    // Uncheck the current radio first
+                    this.checked = false;
+                    // Check "All" option
+                    allOption.checked = true;
+                    // Trigger change event to ensure filters apply
+                    allOption.dispatchEvent(new Event('change', { bubbles: true }));
+                } else {
+                    // Fallback: uncheck all if "All" option doesn't exist
+                    document.querySelectorAll('input[name="frame_material"]').forEach(r => {
+                        r.checked = false;
+                    });
+                    // Apply filters
+                    applyFilters();
+                }
+            }
+        });
+        
+        // Handle normal selection changes
+        radio.addEventListener('change', function() {
+            applyFilters();
+        });
     });
 
     // Add listener for discount checkbox
@@ -1185,22 +1333,6 @@ function showBikeDetailsModal(bike) {
     attachCompareButtonListeners();
     attachPurchaseButtonListeners();
 
-    // Check if there are sub_category filters in URL and check the corresponding checkboxes
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlSubCategories = urlParams.getAll('sub_category');
-    
-    if (urlSubCategories.length > 0) {
-        urlSubCategories.forEach(subCat => {
-            // Escape special characters in the value to prevent invalid selectors
-            if (subCat && subCat.trim() !== '') {
-                const escapedSubCat = CSS.escape(subCat);
-                const checkbox = document.querySelector(`.sub-category-checkbox[value="${escapedSubCat}"]`);
-                if (checkbox) {
-                    checkbox.checked = true;
-                }
-            }
-        });
-    }
     
     // Only load bikes via AJAX if they're not already rendered server-side
     const initialBikesCount = document.querySelectorAll('.bike-card').length;

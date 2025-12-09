@@ -48,13 +48,37 @@ def parse_price(price_str):
         return None
 
 def get_frame_material(bike):
-    """Determine frame material from bike data"""
-    frame_val = bike.get('frame', '')
-    model_val = bike.get('model', '')
+    """
+    Determine frame material from bike data.
+    Returns 'carbon', 'aluminium', or None if unknown.
+    """
+    # Check if frame_material field exists and has a value
+    frame_material = bike.get('frame_material', '').strip()
+    if frame_material:
+        frame_material_lower = frame_material.lower()
+        if 'carbon' in frame_material_lower:
+            return 'carbon'
+        elif 'aluminium' in frame_material_lower or 'aluminum' in frame_material_lower:
+            return 'aluminium'
+    
+    # Check frame field description
+    frame_val = bike.get('frame', '').strip()
+    model_val = bike.get('model', '').strip()
+    
+    # If both are empty, frame material is unknown
+    if not frame_val and not model_val:
+        return None
+    
+    # Search for material indicators in frame description and model
     combined = f"{frame_val} {model_val}".lower()
+    
     if 'carbon' in combined:
         return 'carbon'
-    return 'aluminium'
+    elif 'aluminium' in combined or 'aluminum' in combined:
+        return 'aluminium'
+    
+    # If we have frame/model info but no material indicator, return None (unknown)
+    return None
 
 def get_motor_brand(bike):
     """Determine motor brand from bike data"""

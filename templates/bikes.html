@@ -372,6 +372,10 @@
         <div class="mb-3">
             <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">חומר שלדה</label>
             <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="frame_material" id="frame-material-all" value="">
+                <label class="form-check-label" for="frame-material-all">הכל</label>
+            </div>
+            <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frame_material" id="frame-material-carbon" value="carbon">
                 <label class="form-check-label" for="frame-material-carbon">קרבון</label>
             </div>
@@ -388,39 +392,6 @@
                 <input class="form-check-input" type="checkbox" name="has_discount" id="has-discount" value="true">
                 <label class="form-check-label" for="has-discount">הצג רק מבצעים</label>
             </div>
-        </div>
-        
-        <!-- Sub Category Filter -->
-        <div class="mb-3">
-            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">סוג אופניים</label>
-            {% for sub_category in sub_categories %}
-            <div class="form-check form-check-inline">
-                <input class="form-check-input sub-category-checkbox" type="checkbox" name="sub_category" value="{{ sub_category }}" id="sub-category-{{ loop.index }}">
-                <label class="form-check-label" for="sub-category-{{ loop.index }}">
-                    {% if sub_category == 'aero' %}אירו
-                    {% elif sub_category == 'city' %}עיר
-                    {% elif sub_category == 'electric_ city' %}חשמלי עיר
-                    {% elif sub_category == 'electric_city' %}חשמלי עיר
-                    {% elif sub_category == 'electric_gravel' %}חשמלי גרוול
-                    {% elif sub_category == 'electric_mtb' %}חשמלי הרים
-                    {% elif sub_category == 'electric_road' %}חשמלי כביש
-                    {% elif sub_category == 'endurance' %}סיבולת
-                    {% elif sub_category == 'folding_bike' %}מתקפל
-                    {% elif sub_category == 'full_suspension_mtb' %}שיכוך מלא
-                    {% elif sub_category == 'gravel' %}גראבל
-                    {% elif sub_category == 'hardtail_mtb' %}זנב קשיח
-                    {% elif sub_category == 'kids' %}ילדים
-                    {% elif sub_category == 'lightweight' %}קל משקל
-                    {% elif sub_category == 'push_bike' %}אופני דחיפה
-                    {% elif sub_category == 'road' %}כביש
-                    {% elif sub_category == 'tandem_mtb' %}טנדם 
-                    {% elif sub_category == 'time_trial' %}טריאצלון ונגד השעון
-                    {% elif sub_category == 'timetrail' %}טריאתלון ונגד השעון
-                    {% elif sub_category == 'track' %}מסלול
-                    {% else %}{{ sub_category }}{% endif %}
-                </label>
-            </div>
-            {% endfor %}
         </div>
         
         <!-- Style Filter -->
