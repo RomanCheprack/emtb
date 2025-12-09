@@ -262,6 +262,19 @@
             <input type="hidden" id="min_battery" name="min_battery" value="200">
             <input type="hidden" id="max_battery" name="max_battery" value="1000">
         </div>
+        <!-- Fork Length Slider (hide for road, city, kids, gravel categories) -->
+        <div class="col-12 col-md-6 mb-3 slider-padding-fork" id="fork-slider-container">
+            <div class="fork-label">
+                <label class="form-label" style="font-weight: bold;">אורך בולם (mm)</label>
+            </div>
+            <div id="fork-slider"></div>
+            <div class="d-flex justify-content-between mt-2">
+                <small id="min_fork_value">80</small>
+                <small id="max_fork_value">170</small>
+            </div>
+            <input type="hidden" id="min_fork" name="min_fork" value="80">
+            <input type="hidden" id="max_fork" name="max_fork" value="170">
+        </div>
         <!-- Custom Firm Dropdown Filter -->
         <div class="mb-3">
             <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">מותג</label>
@@ -406,20 +419,6 @@
             {% endfor %}
         </div>
         {% endif %}
-        
-        <!-- Fork Length Slider (hide for road category) -->
-        <div class="col-12 col-md-6 mb-3 slider-padding-fork" id="fork-slider-container">
-            <div class="fork-label">
-                <label class="form-label" style="font-weight: bold;">אורך בולם (mm)</label>
-            </div>
-            <div id="fork-slider"></div>
-            <div class="d-flex justify-content-between mt-2">
-                <small id="min_fork_value">80</small>
-                <small id="max_fork_value">170</small>
-            </div>
-            <input type="hidden" id="min_fork" name="min_fork" value="80">
-            <input type="hidden" id="max_fork" name="max_fork" value="170">
-        </div>
         
         <!-- Add more filter controls as needed -->
         <button type="button" class="btn btn-primary w-100" id="apply-offcanvas-filters">החל סינון</button>

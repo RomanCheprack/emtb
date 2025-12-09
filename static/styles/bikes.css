@@ -1,12 +1,14 @@
 .slider-padding-price,
-.slider-padding-wh {
+.slider-padding-wh,
+.slider-padding-fork {
     padding-left: 30px;
     padding-right: 30px;
 }
 
 @media (min-width: 768px) {
     .slider-padding-price,
-    .slider-padding-wh {
+    .slider-padding-wh,
+    .slider-padding-fork {
         padding-left: 30px;
         padding-right: 30px;
     }
