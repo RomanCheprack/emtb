@@ -414,6 +414,9 @@ def migrate_json_data(app):
                         main_image_url = images_data.get('image_url', '')
                         gallery_urls = images_data.get('gallery_images_urls', [])
                         
+                        # Get rewritten_description for bike.description field
+                        rewritten_description = bike_data.get('rewritten_description', '').strip() if bike_data.get('rewritten_description') else None
+                        
                         # Create bike
                         bike = Bike(
                             brand_id=brand.id if brand else None,
@@ -423,6 +426,7 @@ def migrate_json_data(app):
                             sub_category=bike_data.get('sub_category') or bike_data.get('sub-category'),
                             style=bike_data.get('style'),
                             fork_length=bike_data.get('fork length'),
+                            description=rewritten_description,  # Store rewritten_description in description field
                             slug=slug,
                             main_image_url=main_image_url,
                             created_at=datetime.now(timezone.utc)
@@ -486,9 +490,10 @@ def migrate_json_data(app):
                         
                         for json_key, value in spec_items:
                             # Skip non-spec fields
+                            # Note: rewritten_description is now stored in bike.description, but we also store it in raw_specs for completeness
                             if json_key in ['id', 'firm', 'model', 'year', 'price', 'disc_price', 'original_price',
                                            'image_url', 'product_url', 'gallery_images_urls', 'category',
-                                           'source', 'images', 'specs', 'rewritten_description', 'wh', 'fork length', 'style',
+                                           'source', 'images', 'specs', 'wh', 'fork length', 'style',
                                            'sub_category', 'sub-category']:
                                 continue
                             

@@ -1,11 +1,11 @@
 from flask import Blueprint, render_template, request, jsonify, abort
 from app.extensions import db
-from app.models import Bike, Brand, BikeListing, BikePrice
+from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw
 from app.services.bike_service import (
     get_all_firms, get_all_sub_categories, get_firms_by_category, 
     get_sub_categories_by_category, get_all_styles, get_styles_by_category
 )
-from app.utils.helpers import parse_price, get_frame_material, get_motor_brand
+from app.utils.helpers import parse_price, get_frame_material, get_motor_brand, translate_spec_key_to_hebrew
 from sqlalchemy import or_
 
 bp = Blueprint('bikes', __name__)
@@ -299,3 +299,128 @@ def filter_bikes():
             'bikes': [],
             'count': 0
         }), 500
+
+@bp.route("/bike/<bike_id>")
+def bike_detail(bike_id):
+    """Bike detail page - similar to recycles.co.il design"""
+    try:
+        # Try to find bike by UUID first, then by slug
+        bike = db.session.query(Bike).options(
+            db.joinedload(Bike.brand),
+            db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
+            db.joinedload(Bike.listings).joinedload(BikeListing.prices),
+            db.joinedload(Bike.images)
+        ).filter(
+            (Bike.uuid == bike_id) | (Bike.slug == bike_id)
+        ).first()
+        
+        if not bike:
+            abort(404)
+        
+        # Convert to template-compatible format with all data
+        bike_dict = bike.to_dict(include_specs=True, include_prices=True, include_images=True, flat_format=True, list_view=False)
+        
+        # Get rewritten_description from multiple sources
+        rewritten_description = None
+        
+        # First, try to get from raw_specs (check all listings)
+        if bike.listings:
+            for listing in bike.listings:
+                if listing.raw_specs:
+                    for raw_spec in listing.raw_specs:
+                        # Check case-insensitively and also check for variations
+                        spec_key_lower = raw_spec.spec_key_raw.lower().strip()
+                        if spec_key_lower == 'rewritten_description' or spec_key_lower == 'rewritten description':
+                            rewritten_description = raw_spec.spec_value_raw
+                            break
+                if rewritten_description:
+                    break
+        
+        # If not found in raw_specs, try from bike.description
+        if not rewritten_description or not rewritten_description.strip():
+            rewritten_description = bike.description
+        
+        # If still not found, try from bike_dict (in case it's stored there)
+        if (not rewritten_description or not rewritten_description.strip()) and bike_dict:
+            rewritten_description = bike_dict.get('rewritten_description') or bike_dict.get('description')
+        
+        # Get gallery images
+        gallery_images = []
+        if bike.images:
+            # Sort images: main image first, then by position
+            sorted_images = sorted(bike.images, key=lambda x: (not x.is_main, x.position))
+            gallery_images = [img.image_url for img in sorted_images]
+        
+        # Get raw specs for display and translate keys to Hebrew
+        raw_specs = {}
+        if bike.listings and bike.listings[0].raw_specs:
+            for raw_spec in bike.listings[0].raw_specs:
+                # Skip rewritten_description as it's displayed separately
+                if raw_spec.spec_key_raw != 'rewritten_description':
+                    # Translate the key to Hebrew for display
+                    hebrew_key = translate_spec_key_to_hebrew(raw_spec.spec_key_raw)
+                    raw_specs[hebrew_key] = raw_spec.spec_value_raw
+        
+        # Get product URL from latest listing
+        product_url = None
+        if bike.listings:
+            product_url = bike.listings[0].product_url
+        
+        # Get prices from bike_dict (to_dict returns 'price' as original_price and 'disc_price' as disc_price)
+        original_price = bike_dict.get('price')
+        disc_price = bike_dict.get('disc_price')
+        
+        # If disc_price exists, original_price is the original, otherwise price is the current price
+        # The to_dict method already handles this correctly
+        
+        # Category and sub_category Hebrew translations
+        category_translations = {
+            'electric': 'חשמליים',
+            'mtb': 'אופני הרים',
+            'kids': 'אופני ילדים',
+            'city': 'אופני עיר',
+            'road': 'אופני כביש',
+            'gravel': 'אופני גראבל'
+        }
+        
+        sub_category_translations = {
+            'electric_mtb': 'אופני הרים חשמליים',
+            'electric_city': 'אופני עיר חשמליים',
+            'hardtail': 'הארדטייל',
+            'full_suspension': 'שיכוך מלא',
+            'city': 'אופני עיר',
+            'folding_city': 'אופני עיר מתקפלים',
+            'gravel': 'אופני גראבל',
+            'road': 'אופני כביש',
+            'time_trial': 'נגד השעון',
+            'kids': 'אופני ילדים',
+            'kids_mtb': 'אופני הרים לילדים',
+            'pushbike': 'אופני איזון'
+        }
+        
+        category_hebrew = category_translations.get(bike.category, bike.category) if bike.category else None
+        sub_category_hebrew = sub_category_translations.get(bike.sub_category, bike.sub_category) if bike.sub_category else None
+        
+        return render_template(
+            "bike_detail.html",
+            bike=bike_dict,
+            brand=bike.brand.name if bike.brand else None,
+            model=bike.model,
+            year=bike.year,
+            category=bike.category,
+            category_hebrew=category_hebrew,
+            sub_category=bike.sub_category,
+            sub_category_hebrew=sub_category_hebrew,
+            original_price=original_price,
+            disc_price=disc_price,
+            main_image=bike_dict.get('image_url'),
+            gallery_images=gallery_images,
+            product_url=product_url,
+            rewritten_description=rewritten_description,
+            raw_specs=raw_specs
+        )
+    except Exception as e:
+        print(f"Error in bike_detail: {e}")
+        import traceback
+        traceback.print_exc()
+        abort(500)

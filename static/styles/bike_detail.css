@@ -1,0 +1,319 @@
+/* Bike Detail Page Styles */
+
+.bike-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.bike-brand {
+    color: #2563eb;
+    margin-left: 0.5rem;
+}
+
+.bike-model {
+    color: #1f2937;
+}
+
+.bike-year {
+    color: #6b7280;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Price Section */
+.price-section {
+    padding: 1.5rem 0;
+    background: transparent;
+}
+
+.price-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.original-price {
+    font-size: 1.25rem;
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+
+.discount-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #d32f2f;
+}
+
+.current-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Purchase Button */
+.purchase-button {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+.purchase-button:hover {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+}
+
+/* Main Image Container */
+.main-image-container {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+}
+
+.main-bike-image {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main-bike-image:hover {
+    transform: scale(1.02);
+}
+
+/* Zoom Icon */
+.zoom-icon-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.zoom-icon {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-size: 18px;
+}
+
+.zoom-icon:hover {
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Gallery Thumbnails - Below Main Image */
+.gallery-thumbnails {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.gallery-scroll {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    justify-content: flex-start;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.gallery-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.gallery-thumbnail {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.gallery-thumbnail:hover {
+    border-color: #2563eb;
+    transform: scale(1.05);
+}
+
+.gallery-thumbnail.active {
+    border-color: #2563eb;
+    border-width: 3px;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.gallery-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Description Section */
+.description-section {
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.description-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    white-space: pre-wrap;
+}
+
+/* Specs Table */
+.specs-table-container {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.specs-table {
+    margin: 0;
+}
+
+.specs-table th {
+    width: 30%;
+    font-weight: 600;
+    color: #1f2937;
+    background: #f9fafb;
+    text-align: right;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.specs-table td {
+    padding: 1rem;
+    color: #4b5563;
+    text-align: right;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.specs-table tr:last-child th,
+.specs-table tr:last-child td {
+    border-bottom: none;
+}
+
+.spec-key {
+    text-transform: capitalize;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "/";
+    display: inline-block;
+    padding: 0 0.5rem;
+    color: #6c757d;
+    float: none;
+}
+
+.breadcrumb-item a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bike-title {
+        font-size: 1.5rem;
+    }
+    
+    .bike-year {
+        font-size: 1.25rem;
+    }
+    
+    .discount-price,
+    .current-price {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .specs-table th {
+        width: 40%;
+        font-size: 0.9rem;
+    }
+    
+    .specs-table td {
+        font-size: 0.9rem;
+    }
+}
+

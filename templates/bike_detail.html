@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/bike_detail.css') }}">
+
+<div class="container my-4" dir="rtl">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.home') }}">בית</a></li>
+            {% if category_hebrew %}
+            <li class="breadcrumb-item">
+                <a href="{% if category %}{{ url_for('bikes.category_bikes', category=category) }}{% else %}{{ url_for('bikes.bikes') }}{% endif %}">
+                    {{ category_hebrew }}
+                </a>
+            </li>
+            {% endif %}
+            {% if sub_category_hebrew %}
+            <li class="breadcrumb-item">
+                <a href="{% if category %}{{ url_for('bikes.bikes', category=category, sub_category=sub_category) }}{% else %}{{ url_for('bikes.bikes') }}{% endif %}">
+                    {{ sub_category_hebrew }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">{{ brand }} {{ model }}{% if year %} {{ year }}{% endif %}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Left Column: Product Details -->
+        <div class="col-lg-6 mb-4">
+            <!-- Brand and Model -->
+            <h1 class="bike-title mb-2">
+                <span class="bike-brand">{{ brand }}</span>
+                <span class="bike-model">{{ model }}</span>
+                {% if year %}
+                <span class="bike-year">{{ year }}</span>
+                {% endif %}
+            </h1>
+        </div>
+
+        <!-- Right Column: Images -->
+        <div class="col-lg-6 mb-4">
+            <!-- Main Image -->
+            {% if main_image %}
+            <div class="main-image-container mb-3">
+                <div class="zoom-icon-container">
+                    <i class="fas fa-search-plus zoom-icon" onclick="zoomImage()"></i>
+                </div>
+                <img id="main-bike-image" 
+                     src="{{ main_image }}" 
+                     alt="{{ brand }} {{ model }}" 
+                     class="img-fluid main-bike-image"
+                     loading="lazy"
+                     referrerpolicy="no-referrer">
+            </div>
+            {% elif gallery_images and gallery_images|length > 0 %}
+            <div class="main-image-container mb-3">
+                <div class="zoom-icon-container">
+                    <i class="fas fa-search-plus zoom-icon" onclick="zoomImage()"></i>
+                </div>
+                <img id="main-bike-image" 
+                     src="{{ gallery_images[0] }}" 
+                     alt="{{ brand }} {{ model }}" 
+                     class="img-fluid main-bike-image"
+                     loading="lazy"
+                     referrerpolicy="no-referrer">
+            </div>
+            {% endif %}
+            
+            <!-- Gallery Thumbnails - Below Main Image -->
+            {% if gallery_images and gallery_images|length > 1 %}
+            <div class="gallery-thumbnails">
+                <div class="gallery-scroll">
+                    {% for img_url in gallery_images %}
+                    <div class="gallery-thumbnail {% if loop.first %}active{% endif %}" 
+                         onclick="changeMainImage('{{ img_url }}', this)">
+                        <img src="{{ img_url }}" 
+                             alt="{{ brand }} {{ model }} - תמונה {{ loop.index }}" 
+                             class="img-fluid"
+                             loading="lazy"
+                             referrerpolicy="no-referrer">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Prices - Below Gallery -->
+            <div class="price-section mb-4 mt-4">
+                {% if disc_price and disc_price != 'None' and disc_price != '' %}
+                <div class="price-wrapper">
+                    {% if original_price and original_price != 'None' and original_price != '' %}
+                    {% set formatted_original = original_price | format_number %}
+                    {% if formatted_original == 'צור קשר' %}
+                    <span class="original-price">{{ formatted_original }}</span>
+                    {% else %}
+                    <span class="original-price">₪ {{ formatted_original }}</span>
+                    {% endif %}
+                    {% endif %}
+                    {% set formatted_disc = disc_price | format_number %}
+                    {% if formatted_disc == 'צור קשר' %}
+                    <span class="discount-price">{{ formatted_disc }}</span>
+                    {% else %}
+                    <span class="discount-price">₪ {{ formatted_disc }}</span>
+                    {% endif %}
+                </div>
+                {% elif original_price and original_price != 'None' and original_price != '' %}
+                <div class="price-wrapper">
+                    {% set formatted_price = original_price | format_number %}
+                    {% if formatted_price == 'צור קשר' %}
+                    <span class="current-price">{{ formatted_price }}</span>
+                    {% else %}
+                    <span class="current-price">₪ {{ formatted_price }}</span>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="price-wrapper">
+                    <span class="current-price">צור קשר</span>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Purchase Button - Below Price -->
+            {% if product_url %}
+            <div class="purchase-section mb-4">
+                <a href="{{ product_url }}" 
+                   target="_blank" 
+                   class="btn btn-primary btn-lg purchase-button w-100">
+                    <i class="fas fa-shopping-cart me-2"></i>
+                    רכישה
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Rewritten Description - Below Purchase Button, Before Specs -->
+    {% if rewritten_description and rewritten_description.strip() %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="description-section mb-4">
+                <h3 class="section-title">תיאור</h3>
+                <div class="description-content">
+                    {{ rewritten_description | replace('\n', '<br>') | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Raw Specs Section -->
+    {% if raw_specs %}
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="section-title mb-4">מפרט טכני</h2>
+            <div class="specs-table-container">
+                <table class="table table-striped specs-table">
+                    <tbody>
+                        {% for key, value in raw_specs.items() %}
+                        <tr>
+                            <th class="spec-key">{{ key }}</th>
+                            <td class="spec-value">{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Function to change main image when clicking thumbnail
+function changeMainImage(imageUrl, thumbnailElement) {
+    // Update main image
+    const mainImage = document.getElementById('main-bike-image');
+    if (mainImage) {
+        mainImage.src = imageUrl;
+        mainImage.referrerPolicy = "no-referrer";
+    }
+    
+    // Update active thumbnail
+    const allThumbnails = document.querySelectorAll('.gallery-thumbnail');
+    allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+    thumbnailElement.classList.add('active');
+}
+
+// Function to zoom image (opens in modal or new window)
+function zoomImage() {
+    const mainImage = document.getElementById('main-bike-image');
+    if (mainImage && mainImage.src) {
+        // Open image in new window for zoom
+        window.open(mainImage.src, '_blank');
+    }
+}
+</script>
+
+{% endblock %}
+

@@ -101,7 +101,7 @@
             </button>
             <!-- Brand and model in top-right -->
             <div class="bike-header-info">
-                {% if bike['year'] %}<span class="bike-year-header">{{ bike['year'] }}</span> | {% endif %}<span class="bike-model">{{ bike['model'] }}</span> | <a href="#" class="bike-brand-link">{{bike['firm']}}</a>
+                {% if bike['year'] %}<span class="bike-year-header">{{ bike['year'] }}</span> | {% endif %}<span class="bike-model">{{ bike['model'] }}</span> | <a href="#" class="bike-brand-link" data-brand="{{ bike['firm'] }}">{{bike['firm']}}</a>
             </div>
             <div class="bike-row-content">
                 <div class="bike-image-container">

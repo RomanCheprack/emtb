@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </svg>
                     </button>
                     <div class="bike-header-info">
-                        ${adaptedBike.year ? `<span class="bike-year-header">${adaptedBike.year}</span> | ` : ''}<span class="bike-model">${adaptedBike.model}</span> | <a href="#" class="bike-brand-link">${adaptedBike.brand}</a>
+                        ${adaptedBike.year ? `<span class="bike-year-header">${adaptedBike.year}</span> | ` : ''}<span class="bike-model">${adaptedBike.model}</span> | <a href="#" class="bike-brand-link" data-brand="${(adaptedBike.brand || '').replace(/"/g, '&quot;')}">${adaptedBike.brand}</a>
                     </div>
                     <div class="bike-row-content">
                         <div class="bike-image-container">
@@ -1408,7 +1408,58 @@ function showBikeDetailsModal(bike) {
         const card = e.target.closest('.bike-card');
         if (!card) return;
         
-        // Handle details button clicks
+        // Handle brand link clicks - filter by brand
+        if (e.target.closest('.bike-brand-link')) {
+            e.preventDefault();
+            e.stopPropagation();
+            const brandLink = e.target.closest('.bike-brand-link');
+            // Get brand name from data attribute first, fallback to text content
+            const brandName = brandLink.getAttribute('data-brand') || brandLink.textContent.trim();
+            
+            // Find the corresponding firm checkbox
+            const firmCheckboxes = document.querySelectorAll('.firm-checkbox');
+            let foundCheckbox = null;
+            
+            firmCheckboxes.forEach(checkbox => {
+                if (checkbox.value === brandName || checkbox.value.trim() === brandName.trim()) {
+                    foundCheckbox = checkbox;
+                }
+            });
+            
+            if (foundCheckbox) {
+                // Uncheck all other firm checkboxes first (single brand selection)
+                firmCheckboxes.forEach(cb => {
+                    if (cb !== foundCheckbox) {
+                        cb.checked = false;
+                    }
+                });
+                
+                // Check the selected brand checkbox
+                foundCheckbox.checked = true;
+                
+                // Update dropdown button text to show selected brand
+                if (typeof updateFirmDropdownText === 'function') {
+                    updateFirmDropdownText();
+                }
+                
+                // Apply filters
+                applyFilters();
+                
+                // Scroll to top of bikes list to show filtered results
+                const bikesList = document.getElementById('bikes-list');
+                if (bikesList) {
+                    bikesList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                console.warn('Brand checkbox not found for:', brandName);
+                // Try to apply filter anyway with the brand name directly
+                // This handles cases where the brand might not be in the filter list
+            }
+            
+            return;
+        }
+        
+        // Handle details button clicks - open modal (keep existing behavior)
         if (e.target.closest('.details-btn')) {
             const bikeId = card.getAttribute('data-bike-id');
             fetchBikeDetailsAndShowModal(bikeId);
@@ -1418,9 +1469,9 @@ function showBikeDetailsModal(bike) {
         // Prevent click if compare link, purchase button, details button, or availability button is clicked
         if (e.target.closest('.bike-compare-link') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn') || e.target.closest('.availability-btn') || e.target.closest('.find-store-btn')) return;
         
-        // Handle card clicks (excluding buttons)
+        // Handle card clicks (excluding buttons) - redirect to detail page
         const bikeId = card.getAttribute('data-bike-id');
-        fetchBikeDetailsAndShowModal(bikeId);
+        window.location.href = `/bike/${bikeId}`;
     });
 
     // Sticky compare button functionality

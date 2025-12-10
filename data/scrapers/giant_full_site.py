@@ -221,7 +221,7 @@ def giant_bikes(driver):
             img_url = img_tag["src"] if img_tag else None
 
             product = {
-                "source": {"importer": "Giant", "domain": BASE_URL, "product_url": product_url},
+                "source": {"importer": "Rosen & Meentz", "domain": BASE_URL, "product_url": product_url},
                 "firm": "Giant",
                 "model": model,
                 "year": None,
