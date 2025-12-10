@@ -409,3 +409,26 @@ class ContactLead(Base):
             "created_at": self.created_at.isoformat() if self.created_at else None
         }
 
+
+class StoreRequestLead(Base):
+    __tablename__ = "store_request_leads"
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    name = Column(String(255), nullable=False)
+    phone = Column(String(50), nullable=False)
+    city = Column(String(255), nullable=False)
+    bike_model = Column(String(500))
+    bike_id = Column(String(36))  # UUID of the bike
+    remarks = Column(Text)  # Remarks/questions
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "phone": self.phone,
+            "city": self.city,
+            "bike_model": self.bike_model,
+            "bike_id": self.bike_id,
+            "remarks": self.remarks,
+            "created_at": self.created_at.isoformat() if self.created_at else None
+        }

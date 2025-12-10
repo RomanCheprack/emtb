@@ -156,6 +156,15 @@
                                 style="margin-top: 4px;">
                             בדוק זמינות
                         </button>
+                        <button type="button"
+                                class="btn btn-outline-primary find-store-btn"
+                                data-bike-id="{{ bike['id'] }}"
+                                data-bike-model="{{ bike['firm'] }} {{ bike['model'] }}{% if bike['year'] %} {{ bike['year'] }}{% endif %}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#findStoreModal"
+                                style="margin-top: 4px;">
+                            מצא חנות
+                        </button>
                     </div>
                 </div>
             </div>
@@ -231,6 +240,63 @@
                         <button type="submit" class="btn btn-primary">שלח בקשה</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Find Store Modal -->
+<div class="modal fade" id="findStoreModal" tabindex="-1" aria-labelledby="findStoreModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="justify-content: center;">
+                <h5 class="modal-title" id="findStoreModalLabel" style="text-align: center; width: 100%; font-weight: bold;">שלח בקשה לחנות שמוכרת את הדגם</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגור" style="position: absolute; right: 1rem;"></button>
+            </div>
+            <div class="modal-body" style="direction: rtl;">
+                <p style="text-align: right; margin-bottom: 20px; color: #666;">
+                    אנא מלאו את הפרטים ונשלח את בקשתכם לחנות הקרובה אליכם. החנות תיצור קשר בהקדם.
+                </p>
+                <form id="findStoreForm" method="POST" action="{{ url_for('main.find_store') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="bike_model" id="find-store-bike-model" value="">
+                    <input type="hidden" name="bike_id" id="find-store-bike-id" value="">
+                    
+                    <div class="mb-3">
+                        <label for="find-store-name" class="form-label" style="text-align: right;">שם *</label>
+                        <input type="text" class="form-control" id="find-store-name" name="name" required style="text-align: right;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="find-store-phone" class="form-label" style="text-align: right;">טלפון *</label>
+                        <input type="tel" class="form-control" id="find-store-phone" name="phone" required style="text-align: right;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="find-store-city" class="form-label" style="text-align: right;">עיר *</label>
+                        <input list="find-store-cities-data" class="form-control" id="find-store-city" name="city" required style="text-align: right;" placeholder="הקלד או בחר עיר">
+                        <datalist id="find-store-cities-data">
+                            <option value="">טוען רשימת ערים...</option>
+                        </datalist>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="find-store-bike-display" class="form-label" style="text-align: right;">דגם אופניים</label>
+                        <input type="text" class="form-control" id="find-store-bike-display" name="bike_model_display" readonly style="text-align: right; background-color: #e9ecef;">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="find-store-remarks" class="form-label" style="text-align: right;">הערות/שאלות</label>
+                        <textarea class="form-control" id="find-store-remarks" name="remarks" rows="3" style="text-align: right;"></textarea>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">שלח בקשה לחנות</button>
+                    </div>
+                </form>
+                <div id="find-store-success-message" style="display: none; text-align: center; padding: 20px; color: #28a745; font-weight: bold;">
+                    תודה! החנות תיצור קשר בהקדם.
+                </div>
             </div>
         </div>
     </div>

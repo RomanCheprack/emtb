@@ -371,6 +371,15 @@ document.addEventListener("DOMContentLoaded", () => {
                                         style="margin-top: 4px;">
                                     בדוק זמינות
                                 </button>
+                                <button type="button"
+                                        class="btn btn-outline-primary find-store-btn"
+                                        data-bike-id="${adaptedBike.id}"
+                                        data-bike-model="${adaptedBike.brand} ${adaptedBike.model}${adaptedBike.year ? ' ' + adaptedBike.year : ''}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#findStoreModal"
+                                        style="margin-top: 4px;">
+                                    מצא חנות
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1407,7 +1416,7 @@ function showBikeDetailsModal(bike) {
         }
         
         // Prevent click if compare link, purchase button, details button, or availability button is clicked
-        if (e.target.closest('.bike-compare-link') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn') || e.target.closest('.availability-btn')) return;
+        if (e.target.closest('.bike-compare-link') || e.target.closest('.purchase-btn') || e.target.closest('.details-btn') || e.target.closest('.availability-btn') || e.target.closest('.find-store-btn')) return;
         
         // Handle card clicks (excluding buttons)
         const bikeId = card.getAttribute('data-bike-id');
@@ -1531,6 +1540,223 @@ function showBikeDetailsModal(bike) {
                 
                 // Reset form
                 availabilityForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('אירעה שגיאה בשליחת הבקשה. אנא נסה שוב.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        });
+    }
+
+    // ========== FIND STORE MODAL ==========
+    // Israeli cities from data.gov.il API
+    const api_url = "https://data.gov.il/api/3/action/datastore_search";
+    const cities_resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba";
+    const city_name_key = "שם_ישוב";
+    
+    // Cache for cities list
+    let citiesCache = null;
+    let citiesLoading = false;
+
+    /**
+     * Get data from gov data API
+     */
+    const getCitiesData = (limit = "32000") => {
+        return fetch(`${api_url}?resource_id=${cities_resource_id}&limit=${limit}`)
+            .then(response => response.json())
+            .catch(error => {
+                console.error('Error fetching cities:', error);
+                throw error;
+            });
+    };
+
+    /**
+     * Parse records from data into array of city names
+     */
+    const parseCitiesResponse = (records = []) => {
+        const cities = records
+            .map(record => record[city_name_key]?.trim())
+            .filter(city => city) // Remove empty values
+            .sort(); // Sort alphabetically
+        
+        // Remove duplicates
+        return [...new Set(cities)];
+    };
+
+    /**
+     * Parse records from data into 'option' elements for datalist
+     */
+    const parseCitiesForDatalist = (records = []) => {
+        const cities = records
+            .map(record => record[city_name_key]?.trim())
+            .filter(city => city) // Remove empty values
+            .sort(); // Sort alphabetically
+        
+        // Remove duplicates
+        const uniqueCities = [...new Set(cities)];
+        
+        // Return HTML string of options
+        return uniqueCities
+            .map(city => `<option value="${city.replace(/"/g, '&quot;')}">`)
+            .join('\n') || '';
+    };
+
+    /**
+     * Populate cities datalist from API (for autocomplete input)
+     */
+    const populateCitiesDatalist = () => {
+        const datalist = document.getElementById('find-store-cities-data');
+        if (!datalist) {
+            console.log('Cities datalist element not found');
+            return;
+        }
+
+        // If already populated, don't do it again
+        if (citiesCache && datalist.children.length > 1) {
+            return;
+        }
+
+        // If cache exists, use it
+        if (citiesCache) {
+            const optionsHtml = citiesCache
+                .map(city => `<option value="${city.replace(/"/g, '&quot;')}">`)
+                .join('\n');
+            datalist.innerHTML = optionsHtml;
+            return;
+        }
+
+        // If already loading, wait
+        if (citiesLoading) {
+            return;
+        }
+
+        // Show loading state
+        citiesLoading = true;
+        datalist.innerHTML = '<option value="">טוען רשימת ערים...</option>';
+
+        // Fetch cities from API
+        getCitiesData()
+            .then(response => {
+                const records = response?.result?.records || [];
+                citiesCache = parseCitiesResponse(records);
+                
+                // Populate datalist with cities from cache
+                const optionsHtml = citiesCache
+                    .map(city => `<option value="${city.replace(/"/g, '&quot;')}">`)
+                    .join('\n');
+                datalist.innerHTML = optionsHtml;
+            })
+            .catch(error => {
+                console.error('Error populating cities:', error);
+                datalist.innerHTML = '<option value="">שגיאה בטעינת הערים</option>';
+            })
+            .finally(() => {
+                citiesLoading = false;
+            });
+    };
+
+    // Handle find store modal show event
+    const findStoreModal = document.getElementById('findStoreModal');
+    if (findStoreModal) {
+
+        findStoreModal.addEventListener('show.bs.modal', function(event) {
+            // Get the button that triggered the modal
+            const button = event.relatedTarget;
+            if (button && button.classList.contains('find-store-btn')) {
+                const bikeModel = button.getAttribute('data-bike-model');
+                const bikeId = button.getAttribute('data-bike-id');
+                
+                // Populate the bike model and ID in the form
+                const modelInput = document.getElementById('find-store-bike-model');
+                const modelDisplay = document.getElementById('find-store-bike-display');
+                const bikeIdInput = document.getElementById('find-store-bike-id');
+                
+                // Set bike model values
+                if (modelInput) {
+                    modelInput.value = bikeModel || '';
+                }
+                if (modelDisplay) {
+                    modelDisplay.value = bikeModel || '';
+                }
+                if (bikeIdInput) {
+                    bikeIdInput.value = bikeId || '';
+                }
+                
+                // Populate cities datalist (will use cache if available)
+                populateCitiesDatalist();
+                
+                // Reset form and hide success message (but preserve bike model)
+                const form = document.getElementById('findStoreForm');
+                const successMessage = document.getElementById('find-store-success-message');
+                if (form) {
+                    // Store bike model values before reset
+                    const savedBikeModel = modelInput ? modelInput.value : '';
+                    const savedBikeDisplay = modelDisplay ? modelDisplay.value : '';
+                    const savedBikeId = bikeIdInput ? bikeIdInput.value : '';
+                    
+                    form.reset();
+                    
+                    // Restore bike model values after reset
+                    if (modelInput) modelInput.value = savedBikeModel;
+                    if (modelDisplay) modelDisplay.value = savedBikeDisplay;
+                    if (bikeIdInput) bikeIdInput.value = savedBikeId;
+                }
+                if (successMessage) successMessage.style.display = 'none';
+            }
+        });
+    }
+
+    // Handle find store form submission
+    const findStoreForm = document.getElementById('findStoreForm');
+    if (findStoreForm) {
+        findStoreForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(findStoreForm);
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || formData.get('csrf_token');
+            
+            // Show loading state
+            const submitBtn = findStoreForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'שולח...';
+            
+            // Submit via fetch
+            fetch(findStoreForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('Network response was not ok');
+            })
+            .then(data => {
+                // Hide form and show success message
+                findStoreForm.style.display = 'none';
+                const successMessage = document.getElementById('find-store-success-message');
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                }
+                
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('findStoreModal'));
+                    modal.hide();
+                    
+                    // Reset form and show it again for next time
+                    findStoreForm.reset();
+                    findStoreForm.style.display = 'block';
+                    if (successMessage) successMessage.style.display = 'none';
+                }, 2000);
             })
             .catch(error => {
                 console.error('Error:', error);

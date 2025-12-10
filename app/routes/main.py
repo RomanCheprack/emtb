@@ -6,7 +6,7 @@ import os
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime, timedelta
-from app.models import Bike, Comparison, CompareCount, BikeListing, Source, AvailabilityLead, ContactLead
+from app.models import Bike, Comparison, CompareCount, BikeListing, Source, AvailabilityLead, ContactLead, StoreRequestLead
 from app.services.bike_service import get_all_firms
 
 bp = Blueprint('main', __name__)
@@ -222,6 +222,69 @@ def check_availability():
         
     except Exception as e:
         print(f"Error sending availability check email: {e}")
+        import traceback
+        traceback.print_exc()
+        return "אירעה שגיאה בשליחת הבקשה", 500
+
+@bp.route("/find-store", methods=["POST"])
+def find_store():
+    """Handle find store form submission"""
+    try:
+        name = request.form.get("name", "").strip()
+        phone = request.form.get("phone", "").strip()
+        city = request.form.get("city", "").strip()
+        bike_model = request.form.get("bike_model", "").strip()
+        bike_id = request.form.get("bike_id", "").strip()
+        remarks = request.form.get("remarks", "").strip()
+        
+        # Validate required fields
+        if not name or not phone or not city:
+            return "שדות חובה חסרים", 400
+        
+        # Save lead to database
+        try:
+            lead = StoreRequestLead(
+                name=name,
+                phone=phone,
+                city=city,
+                bike_model=bike_model,
+                bike_id=bike_id,
+                remarks=remarks if remarks else None
+            )
+            db.session.add(lead)
+            db.session.commit()
+        except Exception as e:
+            print(f"Error saving store request lead: {e}")
+            db.session.rollback()
+            # Continue even if database save fails
+        
+        # Construct the email
+        msg = EmailMessage()
+        msg["To"] = "rideal.bikes@gmail.com"
+        msg["Subject"] = f"בקשה למציאת חנות מ-{name}"
+        msg["From"] = os.getenv("EMAIL_USER") or "rideal.bikes@gmail.com"
+        
+        # Build email body
+        body = f"בקשה למציאת חנות\n\n"
+        body += f"שם: {name}\n"
+        body += f"טלפון: {phone}\n"
+        body += f"עיר: {city}\n"
+        body += f"דגם אופניים: {bike_model}\n"
+        if remarks:
+            body += f"הערות/שאלות: {remarks}\n"
+        body += f"\nתאריך: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        
+        msg.set_content(body)
+        
+        # Send the email
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
+            smtp.send_message(msg)
+        
+        return "הבקשה נשלחה בהצלחה", 200
+        
+    except Exception as e:
+        print(f"Error sending find store email: {e}")
         import traceback
         traceback.print_exc()
         return "אירעה שגיאה בשליחת הבקשה", 500

@@ -883,6 +883,43 @@
     box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
 }
 
+/* Find Store Button Styles - Same as availability button */
+.btn-outline-primary.find-store-btn {
+    border-radius: 25px;
+    padding: 4px 16px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    color: #6f42c1;
+    border-color: #6f42c1;
+    background-color: transparent;
+}
+
+.btn-outline-primary.find-store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+    color: #6f42c1;
+    border-color: #6f42c1;
+    background-color: transparent;
+}
+
+.btn-outline-primary.find-store-btn:active {
+    transform: translateY(0);
+    color: #6f42c1;
+    border-color: #6f42c1;
+    background-color: transparent;
+}
+
+.btn-outline-primary.find-store-btn:focus {
+    color: #6f42c1;
+    border-color: #6f42c1;
+    background-color: transparent;
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
 /* Purchase Button Styles - Bootstrap outline-primary */
 .btn-outline-primary.purchase-btn {
     border-radius: 25px;
