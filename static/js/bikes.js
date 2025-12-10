@@ -717,6 +717,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (compareList.length > 0) {
             compareBtn.style.display = "inline-block";
             compareCount.textContent = `${compareList.length}`;
+            
+            // Store current page URL in session before navigating to comparison
+            if (compareBtn && !compareBtn.hasAttribute('data-listener-attached')) {
+                compareBtn.addEventListener('click', function(e) {
+                    // Store the current page URL (with query params) for return navigation
+                    const currentUrl = window.location.pathname + window.location.search;
+                    
+                    // Send to server to store in session
+                    fetch('/api/store_compare_referrer', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ referrer: currentUrl })
+                    }).catch(err => {
+                        console.log('Could not store referrer:', err);
+                        // Continue navigation even if storing fails
+                    });
+                });
+                compareBtn.setAttribute('data-listener-attached', 'true');
+            }
         } else {
             compareBtn.style.display = "none";
         }

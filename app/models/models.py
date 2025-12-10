@@ -339,6 +339,7 @@ class Comparison(Base):
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     user_id = Column(BigInteger, ForeignKey("users.id"), nullable=True)
     slug = Column(String(500), unique=True)
+    short_code = Column(String(10), unique=True, nullable=True)  # Short URL code
     bike_ids = Column(Text)  # JSON array of bike IDs
     comparison_data = Column(Text)  # JSON from ChatGPT
     created_at = Column(DateTime, default=datetime.utcnow)

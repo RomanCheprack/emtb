@@ -663,90 +663,40 @@ def generate_comparison_with_ai_from_bikes(bikes_to_compare: List[Dict[str, Any]
     sub_category = bikes_to_compare[0].get('sub_category') if bikes_to_compare else None
     system_message = _get_category_based_system_message(category, sub_category)
 
+    # Use Chat Completions API directly for better JSON support
+    # (Responses API doesn't support response_format and is less reliable for JSON)
+    print(f"Using Chat Completions API with prompt length: {len(prompt)}")
     try:
-        # Check if Responses API is available
-        if not hasattr(client, 'responses'):
-            print("Responses API not available, using Chat Completions directly")
-            raise AttributeError("Responses API not available")
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        f"{system_message} "
+                        "החזר JSON בלבד במבנה: { 'intro': str, 'recommendation': str, 'bikes': [ { 'name': str, 'pros': [str], 'cons': [str], 'best_for': str } ], 'expert_tip': str }."),
+                },
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.6,
+            max_tokens=2000,  # Increased for longer responses
+            response_format={"type": "json_object"},  # Force JSON format
+        )
+        content = completion.choices[0].message.content.strip()
+        print(f"Chat Completions response length: {len(content)}")
+        print(f"Chat Completions response preview: {content[:500]}")
         
-        print(f"Calling OpenAI Responses API with prompt length: {len(prompt)}")
-        # Note: Responses API doesn't support response_format, so we'll rely on the prompt
-        # Since Responses API seems unreliable, skip it and go straight to Chat Completions
-        print("Skipping Responses API (unreliable), using Chat Completions directly")
-        raise AttributeError("Using Chat Completions directly for better JSON support")
-        print(f"OpenAI Responses API call successful")
-        # Prefer parsed JSON if available
-        parsed = getattr(resp, "output_parsed", None)
+        # Try safe parsing
+        parsed = _parse_json_safely(content)
         if parsed:
-            print(f"Got parsed JSON response from OpenAI")
-            return parsed  # already a dict
-        text = getattr(resp, "output_text", None)
-        if text:
-            print(f"Got text response from OpenAI, length: {len(text)}")
-            parsed = _parse_json_safely(text)
-            if parsed:
-                return parsed
-            print(f"Failed to parse JSON from Responses API. Text preview: {text[:500]}")
-        # As a last resort, attempt to stringify the model output
-        try:
-            content_items = getattr(resp, "output", [])
-            if content_items:
-                maybe_texts = []
-                for item in content_items:
-                    # item may have a .content list with .text fields
-                    try:
-                        for sub in getattr(item, "content", []) or []:
-                            t = getattr(sub, "text", None)
-                            if t:
-                                maybe_texts.append(t)
-                    except Exception:
-                        pass
-                joined = "\n".join(maybe_texts).strip()
-                if joined:
-                    parsed = _parse_json_safely(joined)
-                    if parsed:
-                        return parsed
-        except Exception:
-            pass
-        print("Warning: Empty response from OpenAI Responses API")
-        return {"error": "Empty response from model"}
+            print("Successfully parsed JSON from Chat Completions")
+            return parsed
+        
+        print("Could not parse JSON from response")
+        print(f"Full response: {content}")
+        return {"error": "Could not parse JSON from response"}
     except Exception as e:
-        print(f"OpenAI Responses API error: {e}")
+        print(f"Chat Completions API error: {e}")
         import traceback
         traceback.print_exc()
-        # Fallback to Chat Completions with best-effort JSON parsing
-        try:
-            print("Falling back to Chat Completions API...")
-            completion = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            f"{system_message} "
-                            "החזר JSON בלבד במבנה: { 'intro': str, 'recommendation': str, 'bikes': [ { 'name': str, 'pros': [str], 'cons': [str], 'best_for': str } ], 'expert_tip': str }."),
-                    },
-                    {"role": "user", "content": prompt},
-                ],
-                temperature=0.6,
-                max_tokens=2000,  # Increased for longer responses
-                response_format={"type": "json_object"},  # Force JSON format
-            )
-            content = completion.choices[0].message.content.strip()
-            print(f"Chat Completions response length: {len(content)}")
-            print(f"Chat Completions response preview: {content[:500]}")
-            
-            # Try safe parsing
-            parsed = _parse_json_safely(content)
-            if parsed:
-                print("Successfully parsed JSON from Chat Completions fallback")
-                return parsed
-            
-            print("Could not parse JSON from fallback response")
-            print(f"Full response: {content}")
-            return {"error": "Could not parse JSON from fallback"}
-        except Exception as e2:
-            print(f"Chat Completions fallback also failed: {e2}")
-            import traceback
-            traceback.print_exc()
-            return {"error": f"OpenAI Responses error: {str(e)}; fallback error: {str(e2)}"}
+        return {"error": f"OpenAI API error: {str(e)}"}

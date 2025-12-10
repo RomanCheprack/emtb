@@ -1,16 +1,43 @@
-from flask import Blueprint, render_template, request, jsonify, session, abort, url_for
+from flask import Blueprint, render_template, request, jsonify, session, abort, url_for, redirect
 from app.extensions import db, csrf
 from app.models import Comparison
 from app.services.bike_service import get_bikes_by_uuids
 from app.services.ai_service import create_ai_prompt, generate_comparison_with_ai_from_bikes
 import os
 import json
+import secrets
+import string
 
 bp = Blueprint('compare', __name__)
+
+def generate_short_code(length=6):
+    """Generate a random short code for URL shortening"""
+    characters = string.ascii_letters + string.digits
+    while True:
+        code = ''.join(secrets.choice(characters) for _ in range(length))
+        # Check if code already exists
+        existing = db.session.query(Comparison).filter_by(short_code=code).first()
+        if not existing:
+            return code
 
 @bp.route('/api/compare_list')
 def api_compare_list():
     return jsonify({'compare_list': session.get('compare_list', [])})
+
+@bp.route('/api/store_compare_referrer', methods=['POST'])
+@csrf.exempt
+def store_compare_referrer():
+    """Store the referrer URL in session for return navigation"""
+    try:
+        data = request.get_json()
+        referrer = data.get('referrer', '')
+        if referrer:
+            session['compare_referrer'] = referrer
+            session.modified = True
+        return jsonify({'success': True})
+    except Exception as e:
+        print(f"Error storing referrer: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 def get_compare_list():
     try:
@@ -128,11 +155,87 @@ def compare_bikes():
     # Final order: always_show first, then the rest (sorted)
     fields_to_show = always_show + sorted(fields_to_show)
 
+    # Determine return URL based on referrer or stored session data
+    return_url = url_for('bikes.bikes')  # Default fallback
+    
+    # Check if we have a stored referrer in session
+    stored_referrer = session.get('compare_referrer', None)
+    if stored_referrer:
+        # Parse the stored referrer path to build proper return URL
+        from urllib.parse import urlparse, parse_qs
+        parsed = urlparse(stored_referrer)
+        query_params = parse_qs(parsed.query)
+        path_parts = [p for p in parsed.path.split('/') if p]
+        
+        if len(path_parts) > 0:
+            # Check if first part is a category
+            category = path_parts[0]
+            if category in ['electric', 'mtb', 'kids', 'city', 'road', 'gravel']:
+                return_url = url_for('bikes.category_bikes', category=category)
+            elif path_parts[0] == 'bikes':
+                # Bikes page with filters
+                category = query_params.get('category', [None])[0]
+                sub_categories = query_params.get('sub_category', [])
+                
+                if sub_categories:
+                    # Build URL with sub_category filters
+                    return_url = url_for('bikes.bikes', sub_category=sub_categories)
+                elif category:
+                    return_url = url_for('bikes.bikes', category=category)
+    else:
+        # Try to get referrer from HTTP header as fallback
+        referrer = request.referrer
+        if referrer:
+            # Parse referrer to extract category/subcategory
+            from urllib.parse import urlparse, parse_qs
+            parsed = urlparse(referrer)
+            
+            # Check if it's a bikes page
+            if '/bikes' in parsed.path or any(cat in parsed.path for cat in ['electric', 'mtb', 'kids', 'city', 'road', 'gravel']):
+                # Reconstruct the URL with query parameters
+                query_params = parse_qs(parsed.query)
+                
+                # Build return URL
+                path_parts = [p for p in parsed.path.split('/') if p]
+                if len(path_parts) > 0:
+                    # Check if first part is a category
+                    category = path_parts[0]
+                    if category in ['electric', 'mtb', 'kids', 'city', 'road', 'gravel']:
+                        return_url = url_for('bikes.category_bikes', category=category)
+                    elif path_parts[0] == 'bikes' and (query_params.get('category') or query_params.get('sub_category')):
+                        # Bikes page with filters
+                        category = query_params.get('category', [None])[0]
+                        sub_categories = query_params.get('sub_category', [])
+                        
+                        if sub_categories:
+                            # Build URL with sub_category filters
+                            return_url = url_for('bikes.bikes', sub_category=sub_categories)
+                        elif category:
+                            return_url = url_for('bikes.bikes', category=category)
+    
     return render_template(
         'compare_bikes.html',
         bikes=bikes_to_compare,
         fields_to_show=fields_to_show,
+        return_url=return_url,
     )
+
+@bp.route('/s/<short_code>')
+def redirect_short_url(short_code):
+    """Redirect short URL to full comparison page"""
+    try:
+        comparison = db.session.query(Comparison).filter_by(short_code=short_code).first()
+        if not comparison:
+            abort(404)
+        
+        # Redirect to the full comparison URL
+        if comparison.slug:
+            return redirect(url_for('compare.view_comparison', slug=comparison.slug))
+        else:
+            return redirect(url_for('compare.view_comparison', comparison_id=comparison.id))
+    except Exception as e:
+        print(f"Error redirecting short URL {short_code}: {e}")
+        abort(500)
 
 @bp.route('/comparison/<path:slug>')
 def view_comparison(slug):
@@ -156,8 +259,10 @@ def view_comparison(slug):
         # Get comparison data
         comparison_data = json.loads(comparison.comparison_data) if comparison.comparison_data else {}
 
-        # Create a shareable URL for this comparison (prefer slug over ID)
-        if comparison.slug:
+        # Create a shareable URL - prefer short code, then slug, then ID
+        if comparison.short_code:
+            share_url = request.host_url.rstrip('/') + url_for('compare.redirect_short_url', short_code=comparison.short_code)
+        elif comparison.slug:
             share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', slug=comparison.slug)
         else:
             share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', comparison_id=comparison.id)
@@ -220,20 +325,26 @@ def compare_ai_from_session():
             # For now, use a simple slug based on bike IDs
             comparison.slug = '-vs-'.join(compare_list[:4])  # Limit to 4 bikes for URL
             
+            # Generate short code for URL shortening
+            comparison.short_code = generate_short_code()
+            
             db.session.add(comparison)
             db.session.commit()
             
-            # Create share URL - handle both development and production
+            # Create share URL using short code - handle both development and production
             try:
-                # Try to get the full URL
-                share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', slug=comparison.slug)
-                print(f"Method 1 - Generated share URL: {share_url}")
+                # Use short URL
+                share_url = request.host_url.rstrip('/') + url_for('compare.redirect_short_url', short_code=comparison.short_code)
+                print(f"Generated short share URL: {share_url}")
             except Exception as e:
                 print(f"Error generating share URL: {e}")
-                # Fallback: use relative URL
-                share_url = url_for('compare.view_comparison', slug=comparison.slug, _external=True)
+                # Fallback: use slug-based URL
+                try:
+                    share_url = request.host_url.rstrip('/') + url_for('compare.view_comparison', slug=comparison.slug)
+                except:
+                    share_url = url_for('compare.view_comparison', slug=comparison.slug, _external=True)
             
-            print(f"Generated share URL: {share_url}")
+            print(f"Final share URL: {share_url}")
             
             # Create response data
             response_data = {
