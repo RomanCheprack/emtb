@@ -1499,6 +1499,20 @@ function showBikeDetailsModal(bike) {
         }
     });
 
+    // ========== RETURN TO CATEGORIES BUTTON - STICK TO TOP WHEN SCROLLING ==========
+    const returnBtn = document.querySelector('.return-to-categories-btn');
+    if (returnBtn) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 150) { // After scrolling 150px, stick to top
+                returnBtn.style.setProperty('top', '5px', 'important');
+            } else {
+                // Return to original position when near top
+                returnBtn.style.setProperty('top', '105px', 'important');
+            }
+        });
+    }
+
     // ========== BACK TO TOP BUTTON ==========
     // (Infinite scroll removed - all bikes load at once for instant filtering)
     const backToTopBtn = document.getElementById('back-to-top');

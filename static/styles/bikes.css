@@ -42,8 +42,8 @@
 
 /* Subtle return to categories button */
 .return-to-categories-btn {
-    position: fixed;
-    top: 80px;
+    position: fixed !important;
+    top: 105px !important;
     right: 20px;
     width: 50px;
     display: flex;
