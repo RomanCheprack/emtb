@@ -1,0 +1,56 @@
+/* Legal Pages Styling - Privacy Policy and Terms of Use */
+
+.privacy-policy-content,
+.terms-of-use-content {
+    line-height: 1.6;
+    color: #333;
+}
+
+.privacy-policy-content h3,
+.terms-of-use-content h3 {
+    color: #000;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.privacy-policy-content h4,
+.terms-of-use-content h4 {
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.privacy-policy-content ul,
+.terms-of-use-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.privacy-policy-content li,
+.terms-of-use-content li {
+    margin-bottom: 8px;
+}
+
+.privacy-policy-content a,
+.terms-of-use-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.privacy-policy-content a:hover,
+.terms-of-use-content a:hover {
+    text-decoration: underline;
+}
+
+.privacy-policy-content p,
+.terms-of-use-content p {
+    margin-bottom: 15px;
+}
+
+.terms-of-use-content strong {
+    font-weight: bold;
+}
+

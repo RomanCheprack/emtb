@@ -10,17 +10,28 @@
         }, 100);
     }
     
-    // WhatsApp floating share button logic
-    var floatBtn = document.getElementById('whatsapp-share-float');
-    if (floatBtn) {
-        floatBtn.addEventListener('click', function() {
-            if (typeof shareComparison === 'function') {
-                shareComparison();
+    // WhatsApp floating share button logic - use event delegation for dynamic content
+    document.addEventListener('click', function(e) {
+        const floatBtn = document.getElementById('whatsapp-share-float');
+        if (floatBtn && floatBtn.style.display !== 'none') {
+            // Check if click is on the button or its children
+            if (e.target.closest('#whatsapp-share-float') === floatBtn || 
+                e.target === floatBtn || 
+                floatBtn.contains(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('WhatsApp button clicked');
+                if (typeof shareComparison === 'function') {
+                    shareComparison();
+                } else {
+                    console.error('shareComparison function not found');
+                }
             }
-        });
-    }
+        }
+    });
     // Hide the button if there are no bikes to compare
     var bikesTable = document.querySelector('.compare-table');
+    var floatBtn = document.getElementById('whatsapp-share-float');
     if (!bikesTable && floatBtn) {
         floatBtn.style.display = 'none';
     }
@@ -113,7 +124,12 @@ function runAiComparison() {
     }
 
     fetch("/api/compare_ai_from_session")
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(data => {
             // Hide loading message
             if (loadingDiv) {
@@ -122,7 +138,10 @@ function runAiComparison() {
             }
 
             if (data.error) {
-                container.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                console.error("AI comparison error:", data.error, data.details);
+                const errorMsg = data.details ? `${data.error}<br><small>${data.details}</small>` : data.error;
+                container.innerHTML = `<div class="alert alert-danger">${errorMsg}</div>`;
+                container.style.display = "block";
                 return;
             }
             
@@ -147,6 +166,15 @@ function runAiComparison() {
                 shareFloatBtn.style.display = 'flex';
                 shareFloatBtn.setAttribute('data-comparison-id', data.comparison_id);
                 shareFloatBtn.setAttribute('data-share-url', data.share_url);
+                console.log('WhatsApp button shown with URL:', data.share_url);
+                
+                // Add direct click handler as backup
+                shareFloatBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Direct click handler triggered');
+                    shareComparison();
+                }, { once: false });
             }
 
             // Update the UI with ChatGPT response
@@ -187,41 +215,29 @@ function runAiComparison() {
             // Note: WhatsApp share button is already handled above
         })
         .catch(err => {
+            console.error("Error fetching AI comparison:", err);
             if (loadingDiv) {
                 loadingDiv.style.display = 'none';
                 stopThinkingAnimation();
             }
-            container.innerHTML = `<div class="alert alert-danger">שגיאה: ${err.message}</div>`;
+            container.innerHTML = `<div class="alert alert-danger">שגיאה: ${err.message}<br><small>נסה לרענן את הדף או לנסות שוב מאוחר יותר</small></div>`;
+            container.style.display = "block";
         });
 }
 
-// Function to share comparison
+// Function to share comparison via WhatsApp
 function shareComparison() {
     const floatBtn = document.getElementById('whatsapp-share-float');
     const shareUrl = floatBtn.getAttribute('data-share-url');
-    const comparisonId = floatBtn.getAttribute('data-comparison-id');
     
     if (!shareUrl) {
         alert('אין השוואה זמינה לשיתוף');
         return;
     }
     
-    // Check if Web Share API is available (mobile devices)
-    if (navigator.share) {
-        navigator.share({
-            title: 'השוואת אופניים - המלצת מומחה',
-            text: 'בדוק את ההשוואה המקצועית בין אופני הרים חשמליים',
-            url: shareUrl
-        }).then(() => {
-            // Shared successfully
-        }).catch((error) => {
-            // Fallback to copy URL
-            copyShareUrl(shareUrl);
-        });
-    } else {
-        // Fallback for desktop browsers
-        copyShareUrl(shareUrl);
-    }
+    // Open WhatsApp with the comparison URL (same as shared_comparison.html)
+    const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(shareUrl);
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 }
 
 // Function to copy share URL to clipboard (for compare_bikes page)

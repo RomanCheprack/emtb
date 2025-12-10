@@ -633,15 +633,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? `/remove_from_compare`
                     : `/add_to_compare`;
 
-                // Get CSRF token from meta tag
-                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                // Get CSRF token from meta tag (optional since routes are exempt)
+                const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+                const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : null;
+                
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+                // Only add CSRF token if available (routes are exempt anyway)
+                if (csrfToken) {
+                    headers['X-CSRFToken'] = csrfToken;
+                }
                 
                 fetch(url, { 
                     method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrfToken
-                    },
+                    headers: headers,
                     body: JSON.stringify({ bike_id: bikeId })
                 })
                     .then((res) => {
@@ -691,10 +697,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCompareUI(compareList) {
         document.querySelectorAll(".bike-compare-link").forEach((link) => {
-            const bikeId = link.getAttribute("data-bike-id");
+            const bikeId = String(link.getAttribute("data-bike-id")); // Ensure string
             const card = link.closest(".bike-card") || link.closest(".card");
             
-            if (compareList.includes(bikeId)) {
+            // Convert all items in compareList to strings for comparison
+            const compareListStrings = compareList.map(id => String(id));
+            
+            if (compareListStrings.includes(bikeId)) {
                 link.classList.add("selected");
                 if (card) card.classList.add("compare-selected");
             } else {

@@ -20,16 +20,6 @@ def bikes():
     # Get sub_category filters from URL parameters (for MTB subcategories)
     selected_sub_categories = request.args.getlist('sub_category')
     
-    # Get firms, sub-categories, and styles filtered by category if one is selected
-    if selected_category:
-        firms = get_firms_by_category(selected_category)
-        sub_categories = get_sub_categories_by_category(selected_category)
-        styles = get_styles_by_category(selected_category)
-    else:
-        firms = get_all_firms()
-        sub_categories = get_all_sub_categories()
-        styles = get_all_styles()
-    
     # Load ALL bikes (with filters if specified) for client-side filtering
     # Optimized: Skip images loading for list view (not needed for initial render)
     initial_query = db.session.query(Bike).options(
@@ -55,6 +45,41 @@ def bikes():
     
     # Get ALL bikes (no limit for client-side filtering)
     initial_bikes = initial_query.all()
+    
+    # Get firms, sub-categories, and styles based on filtered bikes
+    # If sub_category is selected, extract firms from the actual filtered bikes
+    # This ensures firms list only shows brands present in the filtered results
+    if selected_sub_categories:
+        # Extract unique firms from the filtered bikes
+        firms_set = set()
+        for bike in initial_bikes:
+            if bike.brand and bike.brand.name:
+                firms_set.add(bike.brand.name)
+        firms = sorted(list(firms_set))
+        
+        # Extract unique sub_categories from filtered bikes
+        sub_categories_set = set()
+        for bike in initial_bikes:
+            if bike.sub_category and bike.sub_category not in ['', 'unknown']:
+                sub_categories_set.add(bike.sub_category)
+        sub_categories = sorted(list(sub_categories_set))
+        
+        # Extract unique styles from filtered bikes
+        styles_set = set()
+        for bike in initial_bikes:
+            if bike.style and bike.style not in ['', 'unknown']:
+                styles_set.add(bike.style)
+        styles = sorted(list(styles_set))
+    elif selected_category:
+        # Use category-based filtering when only category is selected
+        firms = get_firms_by_category(selected_category)
+        sub_categories = get_sub_categories_by_category(selected_category)
+        styles = get_styles_by_category(selected_category)
+    else:
+        # No filters - show all
+        firms = get_all_firms()
+        sub_categories = get_all_sub_categories()
+        styles = get_all_styles()
     
     # Convert to template-compatible format using lightweight list_view mode
     # This only includes essential specs (wh, frame_material, motor_brand) for filtering

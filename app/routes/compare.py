@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, request, jsonify, session, abort, url_for
-from app.extensions import db
+from app.extensions import db, csrf
 from app.models import Comparison
 from app.services.bike_service import get_bikes_by_uuids
 from app.services.ai_service import create_ai_prompt, generate_comparison_with_ai_from_bikes
 import os
+import json
 
 bp = Blueprint('compare', __name__)
 
@@ -26,6 +27,7 @@ def save_compare_list(compare_list):
         print(f"Error saving compare list to session: {e}")
 
 @bp.route('/add_to_compare', methods=['POST'])
+@csrf.exempt
 def add_to_compare():
     try:
         # Get bike_id from request data instead of URL path
@@ -63,6 +65,7 @@ def add_to_compare():
         return jsonify({'success': False, 'error': f'Server error: {str(e)}'}), 500
 
 @bp.route('/remove_from_compare', methods=['POST'])
+@csrf.exempt
 def remove_from_compare():
     try:
         # Get bike_id from request data instead of URL path
@@ -146,11 +149,12 @@ def view_comparison(slug):
             abort(404)
 
         # Get bike IDs and load bike details
-        bike_ids = comparison.get_bike_ids()
+        import json
+        bike_ids = json.loads(comparison.bike_ids) if comparison.bike_ids else []
         bikes_to_compare = get_bikes_by_uuids(bike_ids)
-
+        
         # Get comparison data
-        comparison_data = comparison.get_comparison_data()
+        comparison_data = json.loads(comparison.comparison_data) if comparison.comparison_data else {}
 
         # Create a shareable URL for this comparison (prefer slug over ID)
         if comparison.slug:
@@ -194,19 +198,23 @@ def compare_ai_from_session():
         return jsonify({"error": "שגיאה בטעינת נתוני האופניים", "details": str(e)}), 500
 
     try:
+        print(f"Starting AI comparison for {len(bikes_to_compare)} bikes")
         # Generate comparison using AI (async web research + Responses)
         comparison_result = generate_comparison_with_ai_from_bikes(bikes_to_compare)
         
         # Check if AI generation failed
         if "error" in comparison_result:
+            print(f"AI comparison failed: {comparison_result['error']}")
             return jsonify({"error": comparison_result["error"]}), 500
+        
+        print(f"AI comparison successful, got keys: {list(comparison_result.keys())}")
         
         # Save to database
         try:
             # Create new comparison record
             comparison = Comparison()
-            comparison.set_bike_ids(compare_list)
-            comparison.set_comparison_data(comparison_result)
+            comparison.bike_ids = json.dumps(compare_list)  # Store as JSON string
+            comparison.comparison_data = json.dumps(comparison_result)  # Store as JSON string
             
             # Generate slug (need to update method signature to not need session)
             # For now, use a simple slug based on bike IDs
@@ -244,4 +252,7 @@ def compare_ai_from_session():
             return jsonify({"error": "שגיאה בשמירת ההשוואה", "details": str(e)}), 500
             
     except Exception as e:
+        print(f"Error in compare_ai_from_session: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": "שגיאה ביצירת ההשוואה", "details": str(e)}), 500

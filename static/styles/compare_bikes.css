@@ -102,6 +102,15 @@ th {
     padding: 4px;
 }
 
+.specs-th .bike-image-wrapper img {
+    max-height: 100px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #f8f9fa;
+    padding: 4px;
+}
+
 .specs-th h5, .specs-th p {
     white-space: nowrap;
     overflow: hidden;
@@ -134,4 +143,180 @@ th {
     overflow-wrap: break-word;
     word-break: normal;
     hyphens: auto;
+}
+
+/* Main Header Styles */
+.main-header {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    border-bottom: 4px solid #d32f2f;
+    padding: 24px 16px 12px 16px;
+    margin-bottom: 24px;
+}
+
+.main-header h1 {
+    color: #111;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    font-size: 2.1rem;
+}
+
+.main-header .btn {
+    font-weight: 500;
+    min-width: 140px;
+}
+
+/* Comparison Header Styles */
+.comparison-header {
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 32px 16px 24px 16px;
+    margin-bottom: 32px;
+    border: 1px solid #eee;
+}
+
+.comparison-header h2 {
+    color: #111;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 1.5rem;
+}
+
+.comparison-header .ai-emoji {
+    color: #d32f2f;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+.comparison-header .divider {
+    width: 60px;
+    height: 4px;
+    background: #d32f2f;
+    margin: 0 auto 12px auto;
+    border-radius: 2px;
+}
+
+.comparison-header .ai-content-wrapper {
+    max-width: 350px;
+}
+
+/* AI Loading Styles */
+#ai-loading {
+    display: none;
+    text-align: center;
+    margin: 0 0 12px 0;
+}
+
+#ai-spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    vertical-align: middle;
+}
+
+#ai-thinking-text {
+    font-size: 1.1em;
+    margin-right: 12px;
+    vertical-align: middle;
+    color: #111;
+}
+
+#ai-intro {
+    color: #333;
+    min-height: 24px;
+}
+
+/* AI Comparison Container */
+#ai-comparison-container {
+    display: none;
+}
+
+/* Specs Table Header Styles */
+.specs-th {
+    min-width: 160px;
+    max-width: 180px;
+}
+
+.specs-th .bike-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.specs-th .bike-image-wrapper {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.specs-th .bike-firm-name {
+    font-size: 1.05em;
+    color: #000000;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+}
+
+.model-th {
+    position: relative;
+}
+
+/* WhatsApp Share Button Styles */
+#whatsapp-share-float {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#whatsapp-share-float .whatsapp-icon-wrapper {
+    background: #25D366;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+#whatsapp-share-float .whatsapp-icon-wrapper svg {
+    pointer-events: none;
+}
+
+#whatsapp-share-float .whatsapp-text {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #25D366;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    font-size: 1.1em;
+    pointer-events: none;
+}
+
+#whatsapp-share-float:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+#whatsapp-share-float:active {
+    transform: scale(0.95);
+}
+
+#whatsapp-share-float:hover .whatsapp-icon-wrapper {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
 }

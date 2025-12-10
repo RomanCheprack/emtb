@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- Preload critical images for faster display -->
+{% for subcategory in subcategories %}
+    <link rel="preload" as="image" href="{{ url_for('static', filename=subcategory.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}" fetchpriority="high">
+{% endfor %}
+
 <!-- Prefetch bikes pages for faster navigation -->
 {% for subcategory in subcategories %}
     {% if subcategory.slug == 'full_suspension' %}
@@ -27,7 +32,11 @@
                     <img src="{{ url_for('static', filename=subcategory.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
                          alt="{{ subcategory.name }}"
                          class="mtb-card-image"
-                         loading="lazy">
+                         width="280"
+                         height="280"
+                         loading="eager"
+                         fetchpriority="high"
+                         decoding="async">
                 </div>
                 <p class="mtb-card-description">{{ subcategory.description }}</p>
                 <span class="mtb-card-count">{{ subcategory.count }} דגמים</span>
