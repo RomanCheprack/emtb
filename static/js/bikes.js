@@ -1408,6 +1408,108 @@ function showBikeDetailsModal(bike) {
         const card = e.target.closest('.bike-card');
         if (!card) return;
         
+        // Handle three dots menu clicks
+        if (e.target.closest('.bike-menu-dots')) {
+            e.preventDefault();
+            e.stopPropagation();
+            const menuButton = e.target.closest('.bike-menu-dots');
+            const card = menuButton.closest('.bike-card');
+            const bikeId = card.getAttribute('data-bike-id');
+            
+            // Check if menu is already open
+            let existingBackdrop = document.querySelector('.bike-menu-backdrop');
+            let existingDropdown = document.querySelector('.bike-menu-dropdown');
+            
+            if (existingBackdrop || existingDropdown) {
+                // Close existing menu
+                if (existingBackdrop) existingBackdrop.remove();
+                if (existingDropdown) existingDropdown.remove();
+                document.body.style.overflow = '';
+                return;
+            }
+            
+            // Create backdrop overlay
+            const backdrop = document.createElement('div');
+            backdrop.className = 'bike-menu-backdrop';
+            document.body.appendChild(backdrop);
+            document.body.style.overflow = 'hidden';
+            
+            // Get bike details for sharing
+            const bikeBrand = card.querySelector('.bike-brand-link')?.textContent?.trim() || '';
+            const bikeModel = card.querySelector('.bike-model')?.textContent?.trim() || '';
+            const bikeYear = card.querySelector('.bike-year-header')?.textContent?.trim() || '';
+            const bikeName = `${bikeBrand} ${bikeModel}${bikeYear ? ' ' + bikeYear : ''}`.trim();
+            
+            // Create product page URL
+            const productUrl = `${window.location.origin}/bike/${bikeId}`;
+            const shareText = `הסתכל על האופניים האלה: ${bikeName}\n${productUrl}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            
+            // Create dropdown menu
+            const dropdown = document.createElement('div');
+            dropdown.className = 'bike-menu-dropdown';
+            dropdown.innerHTML = `
+                <a href="${whatsappUrl}" target="_blank" class="bike-menu-item" onclick="event.stopPropagation();">
+                    <i class="fab fa-whatsapp me-2"></i>
+                    שתף ב-WhatsApp
+                </a>
+                <a href="#" class="bike-menu-item" data-bike-id="${bikeId}">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    דווח על בעיה
+                </a>
+            `;
+            document.body.appendChild(dropdown);
+            
+            // Position dropdown near the menu button
+            const buttonRect = menuButton.getBoundingClientRect();
+            dropdown.style.top = (buttonRect.bottom + 5) + 'px';
+            dropdown.style.left = buttonRect.left + 'px';
+            
+            // Handle WhatsApp share click
+            const shareButton = dropdown.querySelector('.bike-menu-item[href*="wa.me"]');
+            if (shareButton) {
+                shareButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // Close menu after a short delay to allow WhatsApp to open
+                    setTimeout(closeMenu, 100);
+                });
+            }
+            
+            // Handle report problem click
+            const reportButton = dropdown.querySelector('.bike-menu-item[data-bike-id]');
+            if (reportButton) {
+                reportButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const bikeId = this.getAttribute('data-bike-id');
+                    // TODO: Implement report problem functionality
+                    alert('דווח על בעיה - Bike ID: ' + bikeId);
+                    closeMenu();
+                });
+            }
+            
+            // Close function
+            function closeMenu() {
+                backdrop.remove();
+                dropdown.remove();
+                document.body.style.overflow = '';
+            }
+            
+            // Close when clicking backdrop
+            backdrop.addEventListener('click', closeMenu);
+            
+            // Close on escape key
+            const escapeHandler = function(event) {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+            
+            return;
+        }
+        
         // Handle brand link clicks - filter by brand
         if (e.target.closest('.bike-brand-link')) {
             e.preventDefault();
