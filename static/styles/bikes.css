@@ -920,6 +920,74 @@
     box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
 }
 
+/* City Autocomplete Dropdown Styles */
+.city-autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1055; /* Above Bootstrap modal (1050) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    direction: rtl;
+    margin-top: -1px; /* Connect with input border */
+}
+
+/* Ensure parent container has relative positioning */
+.city-input-container {
+    position: relative;
+}
+
+.city-autocomplete-dropdown .city-option {
+    padding: 10px 15px;
+    cursor: pointer;
+    text-align: right;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.city-autocomplete-dropdown .city-option:hover,
+.city-autocomplete-dropdown .city-option.highlighted {
+    background-color: #f8f9fa;
+}
+
+.city-autocomplete-dropdown .city-option:last-child {
+    border-bottom: none;
+}
+
+.city-autocomplete-dropdown .city-option.no-results {
+    color: #999;
+    cursor: default;
+    font-style: italic;
+}
+
+.city-autocomplete-dropdown .city-option.no-results:hover {
+    background-color: white;
+}
+
+/* Mobile-friendly scrollbar */
+.city-autocomplete-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.city-autocomplete-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.city-autocomplete-dropdown::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.city-autocomplete-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 /* Purchase Button Styles - Bootstrap outline-primary */
 .btn-outline-primary.purchase-btn {
     border-radius: 25px;

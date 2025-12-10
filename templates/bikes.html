@@ -272,12 +272,13 @@
                         <input type="tel" class="form-control" id="find-store-phone" name="phone" required style="text-align: right;">
                     </div>
                     
-                    <div class="mb-3">
+                    <div class="mb-3 city-input-container">
                         <label for="find-store-city" class="form-label" style="text-align: right;">עיר *</label>
-                        <input list="find-store-cities-data" class="form-control" id="find-store-city" name="city" required style="text-align: right;" placeholder="הקלד או בחר עיר">
+                        <input list="find-store-cities-data" class="form-control" id="find-store-city" name="city" required style="text-align: right;" placeholder="הקלד או בחר עיר" autocomplete="off">
                         <datalist id="find-store-cities-data">
                             <option value="">טוען רשימת ערים...</option>
                         </datalist>
+                        <div id="find-store-city-dropdown" class="city-autocomplete-dropdown" style="display: none;"></div>
                     </div>
                     
                     <div class="mb-3">

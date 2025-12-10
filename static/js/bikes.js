@@ -1689,6 +1689,11 @@ function showBikeDetailsModal(bike) {
                 // Populate cities datalist (will use cache if available)
                 populateCitiesDatalist();
                 
+                // Initialize custom autocomplete dropdown after cities are loaded
+                setTimeout(() => {
+                    initCityAutocomplete();
+                }, 100);
+                
                 // Reset form and hide success message (but preserve bike model)
                 const form = document.getElementById('findStoreForm');
                 const successMessage = document.getElementById('find-store-success-message');
@@ -1709,6 +1714,158 @@ function showBikeDetailsModal(bike) {
             }
         });
     }
+
+    /**
+     * Initialize custom city autocomplete dropdown (mobile-friendly)
+     */
+    let currentHighlightedIndex = -1;
+    let filteredCities = [];
+    
+    const initCityAutocomplete = () => {
+        const cityInput = document.getElementById('find-store-city');
+        const cityDropdown = document.getElementById('find-store-city-dropdown');
+        
+        if (!cityInput || !cityDropdown) return;
+        
+        // Clear any existing event listeners by cloning
+        const newInput = cityInput.cloneNode(true);
+        cityInput.parentNode.replaceChild(newInput, cityInput);
+        
+        // Handle input changes
+        newInput.addEventListener('input', function(e) {
+            const query = e.target.value.trim().toLowerCase();
+            currentHighlightedIndex = -1;
+            
+            if (!citiesCache || citiesCache.length === 0) {
+                cityDropdown.style.display = 'none';
+                return;
+            }
+            
+            if (query.length === 0) {
+                cityDropdown.style.display = 'none';
+                return;
+            }
+            
+            // Filter cities
+            filteredCities = citiesCache.filter(city => 
+                city.toLowerCase().includes(query)
+            );
+            
+            // Show dropdown with filtered results
+            if (filteredCities.length > 0) {
+                renderCityDropdown(filteredCities, query);
+                cityDropdown.style.display = 'block';
+            } else {
+                cityDropdown.innerHTML = '<div class="city-option no-results">לא נמצאו ערים</div>';
+                cityDropdown.style.display = 'block';
+            }
+        });
+        
+        // Handle focus
+        newInput.addEventListener('focus', function(e) {
+            const query = e.target.value.trim().toLowerCase();
+            if (query.length > 0 && filteredCities.length > 0) {
+                cityDropdown.style.display = 'block';
+            }
+        });
+        
+        // Handle keyboard navigation
+        newInput.addEventListener('keydown', function(e) {
+            if (!cityDropdown.style.display || cityDropdown.style.display === 'none') {
+                return;
+            }
+            
+            const options = cityDropdown.querySelectorAll('.city-option:not(.no-results)');
+            
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                currentHighlightedIndex = Math.min(currentHighlightedIndex + 1, options.length - 1);
+                updateHighlight(options);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                currentHighlightedIndex = Math.max(currentHighlightedIndex - 1, -1);
+                updateHighlight(options);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (currentHighlightedIndex >= 0 && options[currentHighlightedIndex]) {
+                    const cityName = options[currentHighlightedIndex].getAttribute('data-city');
+                    selectCity(cityName);
+                }
+            } else if (e.key === 'Escape') {
+                cityDropdown.style.display = 'none';
+            }
+        });
+        
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!newInput.contains(e.target) && !cityDropdown.contains(e.target)) {
+                cityDropdown.style.display = 'none';
+            }
+        });
+    };
+    
+    /**
+     * Render city dropdown options
+     */
+    const renderCityDropdown = (cities, query) => {
+        const cityDropdown = document.getElementById('find-store-city-dropdown');
+        if (!cityDropdown) return;
+        
+        // Limit to 10 results for better performance
+        const limitedCities = cities.slice(0, 10);
+        
+        const html = limitedCities.map((city, idx) => {
+            // Highlight matching text
+            const index = city.toLowerCase().indexOf(query);
+            const cityHtml = index >= 0 
+                ? `${city.substring(0, index)}<strong>${city.substring(index, index + query.length)}</strong>${city.substring(index + query.length)}`
+                : city;
+            return `<div class="city-option" data-city="${city.replace(/"/g, '&quot;')}">${cityHtml}</div>`;
+        }).join('');
+        
+        cityDropdown.innerHTML = html;
+        
+        // Add click handlers
+        cityDropdown.querySelectorAll('.city-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const cityName = this.getAttribute('data-city');
+                selectCity(cityName);
+            });
+        });
+    };
+    
+    /**
+     * Update highlighted option
+     */
+    const updateHighlight = (options) => {
+        options.forEach((opt, idx) => {
+            opt.classList.toggle('highlighted', idx === currentHighlightedIndex);
+        });
+        
+        // Scroll into view
+        if (currentHighlightedIndex >= 0 && options[currentHighlightedIndex]) {
+            options[currentHighlightedIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    };
+    
+    /**
+     * Select a city
+     */
+    const selectCity = (city) => {
+        const cityInput = document.getElementById('find-store-city');
+        const cityDropdown = document.getElementById('find-store-city-dropdown');
+        
+        if (cityInput) {
+            cityInput.value = city;
+            cityInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        
+        if (cityDropdown) {
+            cityDropdown.style.display = 'none';
+        }
+        
+        currentHighlightedIndex = -1;
+    };
 
     // Handle find store form submission
     const findStoreForm = document.getElementById('findStoreForm');
