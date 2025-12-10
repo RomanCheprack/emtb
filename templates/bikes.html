@@ -6,6 +6,14 @@
 <!-- Hidden input to store the selected category for JavaScript -->
 <input type="hidden" id="selected-category" value="{{ selected_category if selected_category else '' }}">
 
+<!-- Subtle Return Button (top left corner) -->
+{% if selected_category or selected_sub_categories %}
+<a href="{{ url_for('main.categories') }}" class="return-to-categories-btn" title="חזרה לקטגוריות">
+    <i class="fas fa-arrow-right"></i>
+    <span class="return-text">חזור</span>
+</a>
+{% endif %}
+
 <!-- Category Badge -->
 {% if selected_category %}
 <div class="category-badge-container" style="text-align: center; padding: 20px 15px 10px; direction: rtl;">

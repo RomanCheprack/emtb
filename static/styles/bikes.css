@@ -40,6 +40,68 @@
     100% { transform: rotate(360deg); }
 }
 
+/* Subtle return to categories button */
+.return-to-categories-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #dee2e6;
+    border-radius: 25px;
+    color: #6c757d;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    padding: 8px 4px;
+}
+
+.return-to-categories-btn:hover {
+    background: #fff;
+    color: #d32f2f;
+    border-color: #d32f2f;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+    transform: scale(1.05);
+}
+
+.return-to-categories-btn:active {
+    transform: scale(0.95);
+}
+
+.return-to-categories-btn i {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.return-to-categories-btn .return-text {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .return-to-categories-btn {
+        top: 70px;
+        right: 15px;
+        width: 44px;
+        padding: 6px 3px;
+    }
+    
+    .return-to-categories-btn i {
+        font-size: 14px;
+    }
+    
+    .return-to-categories-btn .return-text {
+        font-size: 9px;
+    }
+}
+
 /* Row-style product list layout */
 .bikes-row-list {
     display: flex;
