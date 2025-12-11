@@ -1,4 +1,54 @@
 ﻿{% extends "layout.html" %}
+
+{% block title %}
+{% if bikes and bikes|length > 0 %}
+{% set bike_names = bikes | map(attribute='model') | list | join(', ') %}
+<title>השוואת {{ bikes|length }} אופניים: {{ bike_names }} | Rideal</title>
+{% else %}
+<title>השוואת אופניים - השווה דגמים ומפרטים | Rideal</title>
+{% endif %}
+{% endblock %}
+
+{% block meta %}
+{% set compare_url = url_for('compare.compare_bikes', _external=True) %}
+{% if bikes and bikes|length > 0 %}
+{% set bike_count = bikes|length %}
+{% set bike_names = bikes | map(attribute='model') | list | join(', ') %}
+{% set page_title = 'השוואת ' ~ bike_count ~ ' אופניים: ' ~ bike_names ~ ' | Rideal' %}
+{% set meta_description = 'השווה ' ~ bike_count ~ ' דגמי אופניים: ' ~ bike_names ~ '. השווה מחירים, מפרטים טכניים ותכונות. קבל המלצה מקצועית.' %}
+{% else %}
+{% set page_title = 'השוואת אופניים - השווה דגמים ומפרטים | Rideal' %}
+{% set meta_description = 'השווה דגמי אופניים, מחירים ומפרטים טכניים. קבל המלצה מקצועית מבינה מלאכותית לבחירת האופניים המתאימים לך.' %}
+{% endif %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ compare_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ compare_url }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ compare_url }}">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+
+<!-- WebPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ page_title | replace('"', '\\"') }}",
+  "description": "{{ meta_description | replace('"', '\\"') }}",
+  "url": "{{ compare_url }}"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/compare_bikes.css') }}">
@@ -62,7 +112,7 @@
              data-bike-id="{{ bike['id'] }}" aria-label="Remove"></button>
      <div class="bike-header-wrapper">
          <div class="bike-image-wrapper">
-             <img src="{{ bike['image_url'] }}" alt="{{ bike['model'] }}" class="img-fluid mb-2" referrerpolicy="no-referrer">
+             <img src="{{ bike['image_url'] }}" alt="{{ bike['model'] }}" class="img-fluid mb-2" loading="lazy" referrerpolicy="no-referrer">
          </div>
          <h5 class="mb-1 bike-firm-name" title="{{ bike['firm'] }}">{{ bike['firm'] }}</h5>
      </div>

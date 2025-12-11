@@ -303,6 +303,11 @@ def sitemap():
         'priority': '1.0'
     })
     pages.append({
+        'loc': url_for('main.categories', _external=True),
+        'lastmod': ten_days_ago,
+        'priority': '0.9'
+    })
+    pages.append({
         'loc': url_for('bikes.bikes', _external=True),
         'lastmod': ten_days_ago,
         'priority': '0.8'
@@ -311,6 +316,29 @@ def sitemap():
         'loc': url_for('blog.blog_list', _external=True),
         'lastmod': ten_days_ago,
         'priority': '0.8'
+    })
+    
+    # Category pages (e.g., /electric, /mtb, /gravel)
+    valid_categories = ['electric', 'mtb', 'kids', 'city', 'road', 'gravel']
+    for category in valid_categories:
+        pages.append({
+            'loc': url_for('bikes.category_bikes', category=category, _external=True),
+            'lastmod': ten_days_ago,
+            'priority': '0.9'
+        })
+    
+    # Subcategory pages - Electric subcategories
+    pages.append({
+        'loc': url_for('main.electric_subcategories', _external=True),
+        'lastmod': ten_days_ago,
+        'priority': '0.85'
+    })
+    
+    # Subcategory pages - MTB subcategories
+    pages.append({
+        'loc': url_for('main.mtb_subcategories', _external=True),
+        'lastmod': ten_days_ago,
+        'priority': '0.85'
     })
 
     # Blog posts
@@ -324,11 +352,18 @@ def sitemap():
         })
 
     # Individual bike pages - prefer slugs for SEO, fallback to UUID
-    bikes = db.session.query(Bike.slug, Bike.uuid, Bike.updated_at).all()
-    for bike_slug, bike_uuid, updated_at in bikes:
+    # Use actual updated_at dates from database (fallback to created_at, then ten_days_ago)
+    bikes = db.session.query(Bike.slug, Bike.uuid, Bike.updated_at, Bike.created_at).all()
+    for bike_slug, bike_uuid, updated_at, created_at in bikes:
         # Use slug if available, otherwise UUID
         bike_id = bike_slug if bike_slug else bike_uuid
-        lastmod = updated_at.date().isoformat() if updated_at else ten_days_ago
+        # Use updated_at if available, otherwise created_at, otherwise fallback
+        if updated_at:
+            lastmod = updated_at.date().isoformat()
+        elif created_at:
+            lastmod = created_at.date().isoformat()
+        else:
+            lastmod = ten_days_ago
         pages.append({
             'loc': url_for('bikes.bike_detail', bike_id=bike_id, _external=True),
             'lastmod': lastmod,

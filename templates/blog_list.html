@@ -1,5 +1,64 @@
 ﻿{% extends "layout.html" %}
 
+{% block title %}
+<title>בלוג אופניים - טיפים, מדריכים והמלצות | Rideal</title>
+{% endblock %}
+
+{% block meta %}
+{% set blog_url = url_for('blog.blog_list', _external=True) %}
+{% set meta_description = 'בלוג אופניים בעברית - טיפים, מדריכים, ביקורות והמלצות מקצועיות. למד הכל על אופניים, רכיבה ותחזוקה.' %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ blog_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ blog_url }}">
+<meta property="og:title" content="בלוג אופניים - טיפים, מדריכים והמלצות | Rideal">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ blog_url }}">
+<meta name="twitter:title" content="בלוג אופניים - טיפים, מדריכים והמלצות | Rideal">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+
+<!-- Blog Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "בלוג Rideal",
+  "description": "{{ meta_description | replace('"', '\\"') }}",
+  "url": "{{ blog_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Rideal",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}"
+    }
+  }{% if posts and posts | length > 0 %},
+  "blogPost": [
+    {% for post in posts[:5] %}
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ post.title | replace('"', '\\"') }}",
+      "url": "{{ url_for('blog.blog_post', slug=post.slug, _external=True) }}",
+      "datePublished": "{{ post.date.strftime('%Y-%m-%d') if post.date else '' }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ post.author | replace('"', '\\"') }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+  {% endif %}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="container my-5" dir="rtl">
     <h1 class="mb-4 text-black">הבלוג שלנו</h1>

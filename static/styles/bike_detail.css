@@ -79,6 +79,11 @@
     overflow: hidden;
     padding: 1rem;
     text-align: center;
+    aspect-ratio: 4 / 3;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-bike-image {

@@ -31,6 +31,7 @@
                 <div class="mtb-card-image-circle">
                     <img src="{{ url_for('static', filename=subcategory.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
                          alt="{{ subcategory.name }}"
+                         loading="lazy"
                          class="mtb-card-image"
                          width="280"
                          height="280"

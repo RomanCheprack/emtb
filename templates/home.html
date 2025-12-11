@@ -85,7 +85,9 @@
                         <!-- Fallback image for production -->
                         <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
                              alt="Electric bike in alps" 
-                             class="hero-banner-fallback-image">
+                             class="hero-banner-fallback-image"
+                             loading="eager"
+                             fetchpriority="high">
                         <div class="hero-banner-overlay"></div>
                         <div class="hero-banner-content">
                             <h3 class="hero-banner-title">טכנולוגיה חדשה נפגשת עם הטבע </h3>
@@ -195,7 +197,7 @@
                     {% for bike in top_bikes[:10] %}
                     <div class="carousel-item">
                         <div class="card-img-container">
-                            <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" referrerpolicy="no-referrer">
+                            <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
                         </div>
                         <div class="w3-container bike-card" style="display: flex; flex-direction: column; align-items: center;">
                             <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>

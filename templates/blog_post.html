@@ -1,4 +1,70 @@
 ﻿{% extends "layout.html" %}
+
+{% block title %}
+<title>{{ post.title }} | בלוג Rideal</title>
+{% endblock %}
+
+{% block meta %}
+{% set post_url = url_for('blog.blog_post', slug=post.slug, _external=True) %}
+{% set meta_description = post.title ~ ' - ' ~ (post.content[:150] | striptags | replace('\n', ' ') | trim if post.content else 'מאמר מעניין על אופניים') %}
+{% if meta_description | length > 160 %}
+{% set meta_description = meta_description[:157] ~ '...' %}
+{% endif %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ post_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ post_url }}">
+<meta property="og:title" content="{{ post.title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+{% if post.date %}
+<meta property="article:published_time" content="{{ post.date.strftime('%Y-%m-%dT%H:%M:%S') }}">
+{% endif %}
+{% if post.author %}
+<meta property="article:author" content="{{ post.author }}">
+{% endif %}
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ post_url }}">
+<meta name="twitter:title" content="{{ post.title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+
+<!-- BlogPosting Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ post.title | replace('"', '\\"') }}",
+  "description": "{{ meta_description | replace('"', '\\"') }}",
+  "url": "{{ post_url }}",
+  {% if post.date %}
+  "datePublished": "{{ post.date.strftime('%Y-%m-%dT%H:%M:%S') }}",
+  "dateModified": "{{ post.date.strftime('%Y-%m-%dT%H:%M:%S') }}",
+  {% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ post.author | replace('"', '\\"') if post.author else 'Rideal' }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Rideal",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ post_url }}"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/blog_posts.css') }}">
 

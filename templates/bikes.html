@@ -1,4 +1,63 @@
 {% extends "layout.html" %}
+
+{% block title %}
+{% if selected_category %}
+{% set category_names = {
+    'electric': 'חשמליים',
+    'mtb': 'אופני שטח',
+    'kids': 'אופני ילדים',
+    'city': 'אופני עיר',
+    'road': 'אופני כביש',
+    'gravel': 'אופני גראבל'
+} %}
+<title>{{ category_names.get(selected_category, selected_category) }} - {{ bikes_count }} דגמים | Rideal</title>
+{% elif selected_sub_categories %}
+<title>{% for subcat in selected_sub_categories %}{{ subcat }}{% if not loop.last %} / {% endif %}{% endfor %} - {{ bikes_count }} דגמים | Rideal</title>
+{% else %}
+<title>כל האופניים - {{ bikes_count }} דגמים להשוואה | Rideal</title>
+{% endif %}
+{% endblock %}
+
+{% block meta %}
+{% set bikes_url = url_for('bikes.bikes', category=selected_category, sub_category=selected_sub_categories, _external=True) if selected_category or selected_sub_categories else url_for('bikes.bikes', _external=True) %}
+{% set canonical_url = bikes_url %}
+
+{% if selected_category %}
+{% set category_names = {
+    'electric': 'חשמליים',
+    'mtb': 'אופני שטח',
+    'kids': 'אופני ילדים',
+    'city': 'אופני עיר',
+    'road': 'אופני כביש',
+    'gravel': 'אופני גראבל'
+} %}
+{% set page_title = category_names.get(selected_category, selected_category) ~ ' - ' ~ bikes_count ~ ' דגמים | Rideal' %}
+{% set meta_description = 'גלה ' ~ bikes_count ~ ' דגמי ' ~ category_names.get(selected_category, selected_category) ~ ' להשוואה. השווה מחירים, מפרטים ותכונות של כל הדגמים במקום אחד.' %}
+{% elif selected_sub_categories %}
+{% set page_title = 'אופניים - ' ~ bikes_count ~ ' דגמים | Rideal' %}
+{% set meta_description = 'גלה ' ~ bikes_count ~ ' דגמי אופניים להשוואה. השווה מחירים, מפרטים ותכונות של כל הדגמים במקום אחד.' %}
+{% else %}
+{% set page_title = 'כל האופניים - ' ~ bikes_count ~ ' דגמים להשוואה | Rideal' %}
+{% set meta_description = 'גלה ' ~ bikes_count ~ ' דגמי אופניים מכל הקטגוריות. השווה מחירים, מפרטים ותכונות. מצא את האופניים המושלמים עבורך.' %}
+{% endif %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ canonical_url }}">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/bikes.css') }}">

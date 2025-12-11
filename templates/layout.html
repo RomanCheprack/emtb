@@ -64,6 +64,10 @@
     <!-- For .png file (modern browsers) -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/rideal_logo_black.jpg') }}">
     
+    <!-- Language declaration -->
+    <link rel="alternate" hreflang="he" href="{{ request.url if request.url else url_for('main.home', _external=True) }}">
+    <link rel="alternate" hreflang="x-default" href="{{ request.url if request.url else url_for('main.home', _external=True) }}">
+    
     {% block meta %}
     <!-- Open Graph / Facebook / WhatsApp / Telegram -->
     <meta property="og:type" content="website">
