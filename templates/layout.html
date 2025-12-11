@@ -77,8 +77,9 @@
     <meta name="twitter:title" content="Rideal - השוואת אופני eMTB בעברית">
     <meta name="twitter:description" content="השווה דגמי אופניים בעברית, בקלות ובחינם.">
     <meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+    {% endblock %}
     
-    <!-- Organization Structured Data -->
+    <!-- Organization Structured Data - Always included on all pages -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -95,7 +96,6 @@
       "sameAs": []
     }
     </script>
-    {% endblock %}
 </head>
 
 <body>
