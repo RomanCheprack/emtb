@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://rideal.co.il.com/sitemap.xml
+Sitemap: https://rideal.co.il/sitemap.xml

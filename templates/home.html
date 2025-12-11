@@ -1,4 +1,50 @@
 {% extends "layout.html" %}
+
+{% block title %}
+<title>Rideal - השוואת אופניים בעברית | מצא את האופניים המושלמים</title>
+{% endblock %}
+
+{% block meta %}
+{% set home_url = url_for('main.home', _external=True) %}
+{% set home_image = url_for('static', filename='images/rideal_logo_bg.png', _external=True) %}
+{% set meta_description = 'השווה דגמי אופניים בעברית, בקלות ובחינם. מעל ' ~ bikes_count ~ ' דגמי אופניים מכל היבואנים בישראל. מצא את האופניים המושלמים עבורך.' %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ home_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ home_url }}">
+<meta property="og:title" content="Rideal - השוואת אופניים בעברית | מצא את האופניים המושלמים">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ home_image }}">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ home_url }}">
+<meta name="twitter:title" content="Rideal - השוואת אופניים בעברית | מצא את האופניים המושלמים">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ home_image }}">
+
+<!-- WebSite Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Rideal",
+  "url": "{{ home_url }}",
+  "description": "{{ meta_description | replace('"', '\\"') }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ url_for('bikes.bikes', _external=True) }}?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Page content -->
 <div class="hero-container">

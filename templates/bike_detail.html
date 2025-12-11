@@ -1,4 +1,118 @@
 {% extends "layout.html" %}
+
+{% block title %}
+<title>{{ brand }} {{ model }}{% if year %} {{ year }}{% endif %} - מפרט ומחיר | Rideal</title>
+{% endblock %}
+
+{% block meta %}
+{% set page_title = brand ~ ' ' ~ model %}
+{% if year %}{% set page_title = page_title ~ ' ' ~ year %}{% endif %}
+{% set page_title = page_title ~ ' - מפרט ומחיר | Rideal' %}
+
+{% set meta_description = 'מפרט טכני מפורט ומחיר של ' ~ brand ~ ' ' ~ model %}
+{% if year %}{% set meta_description = meta_description ~ ' ' ~ year %}{% endif %}
+{% if category_hebrew %}{% set meta_description = meta_description ~ '. ' ~ category_hebrew %}{% endif %}
+{% if rewritten_description and rewritten_description.strip() %}
+{% set desc_preview = rewritten_description[:120] | replace('\n', ' ') | trim %}
+{% set meta_description = desc_preview ~ '...' %}
+{% endif %}
+
+{% set canonical_url = url_for('bikes.bike_detail', bike_id=bike_id, _external=True) %}
+{% set og_image = main_image if main_image else (gallery_images[0] if gallery_images and gallery_images|length > 0 else url_for('static', filename='images/rideal_logo_bg.png', _external=True)) %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="product">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ og_image }}">
+{% if product_url %}
+<meta property="product:price:amount" content="{{ disc_price if disc_price and disc_price != 'None' and disc_price != '' else (original_price if original_price and original_price != 'None' and original_price != '' else '') }}">
+<meta property="product:price:currency" content="ILS">
+{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ canonical_url }}">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ og_image }}">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ brand }} {{ model }}{% if year %} {{ year }}{% endif %}",
+  "description": "{{ meta_description | replace('"', '\\"') }}",
+  {% if main_image or (gallery_images and gallery_images|length > 0) %}
+  "image": [
+    {% if main_image %}"{{ main_image }}"{% if gallery_images and gallery_images|length > 0 %},{% endif %}{% endif %}
+    {% if gallery_images and gallery_images|length > 0 %}
+    {% for img_url in gallery_images[:5] %}"{{ img_url }}"{% if not loop.last %},{% endif %}{% endfor %}
+    {% endif %}
+  ],
+  {% endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ brand }}"
+  }{% if parsed_price %},
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ canonical_url }}",
+    "priceCurrency": "ILS",
+    "price": "{{ parsed_price }}",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Rideal"
+    }
+  }{% endif %}
+  {% if category_hebrew %}
+  "category": "{{ category_hebrew }}",
+  {% endif %}
+  "url": "{{ canonical_url }}"
+}
+</script>
+
+<!-- Breadcrumb Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "בית",
+      "item": "{{ url_for('main.home', _external=True) }}"
+    }{% if category_hebrew %},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ category_hebrew }}",
+      "item": "{% if category %}{{ url_for('bikes.category_bikes', category=category, _external=True) }}{% else %}{{ url_for('bikes.bikes', _external=True) }}{% endif %}"
+    }{% endif %}{% if sub_category_hebrew %},
+    {
+      "@type": "ListItem",
+      "position": {% if category_hebrew %}3{% else %}2{% endif %},
+      "name": "{{ sub_category_hebrew }}",
+      "item": "{% if category %}{{ url_for('bikes.bikes', category=category, sub_category=sub_category, _external=True) }}{% else %}{{ url_for('bikes.bikes', _external=True) }}{% endif %}"
+    }{% endif %},
+    {
+      "@type": "ListItem",
+      "position": {% if sub_category_hebrew %}{% if category_hebrew %}4{% else %}3{% endif %}{% elif category_hebrew %}3{% else %}2{% endif %},
+      "name": "{{ brand }} {{ model }}{% if year %} {{ year }}{% endif %}",
+      "item": "{{ canonical_url }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/bike_detail.css') }}">
 

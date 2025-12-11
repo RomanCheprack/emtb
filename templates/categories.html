@@ -1,4 +1,57 @@
 {% extends "layout.html" %}
+
+{% block title %}
+<title>קטגוריות אופניים - גראבל, ילדים, חשמליים, שטח, עיר, כביש | Rideal</title>
+{% endblock %}
+
+{% block meta %}
+{% set categories_url = url_for('main.categories', _external=True) %}
+{% set total_bikes = categories | sum(attribute='count') %}
+{% set meta_description = 'בחר קטגוריית אופניים: חשמליים, שטח, עיר, כביש, גראבל וילדים. מעל ' ~ total_bikes ~ ' דגמי אופניים להשוואה.' %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ categories_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ categories_url }}">
+<meta property="og:title" content="קטגוריות אופניים - חשמליים, שטח, עיר, כביש | Rideal">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ categories_url }}">
+<meta name="twitter:title" content="קטגוריות אופניים - חשמליים, שטח, עיר, כביש | Rideal">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+
+<!-- CollectionPage Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "קטגוריות אופניים",
+  "description": "{{ meta_description | replace('"', '\\"') }}",
+  "url": "{{ categories_url }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ categories | length }},
+    "itemListElement": [
+      {% for category in categories %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "name": "{{ category.name }}",
+        "description": "{{ category.description }}",
+        "url": "{% if category.slug == 'mtb' %}{{ url_for('main.mtb_subcategories', _external=True) }}{% elif category.slug == 'electric' %}{{ url_for('main.electric_subcategories', _external=True) }}{% else %}{{ url_for('bikes.category_bikes', category=category.slug, _external=True) }}{% endif %}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 
 <!-- Hero Section -->

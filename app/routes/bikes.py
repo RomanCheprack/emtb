@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, abort
+from flask import Blueprint, render_template, request, jsonify, abort, redirect, url_for
 from app.extensions import db
 from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw
 from app.services.bike_service import (
@@ -304,18 +304,22 @@ def filter_bikes():
 def bike_detail(bike_id):
     """Bike detail page - similar to recycles.co.il design"""
     try:
-        # Try to find bike by UUID first, then by slug
+        # Try to find bike by slug first (SEO-friendly), then by UUID (backward compatibility)
         bike = db.session.query(Bike).options(
             db.joinedload(Bike.brand),
             db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
             db.joinedload(Bike.listings).joinedload(BikeListing.prices),
             db.joinedload(Bike.images)
         ).filter(
-            (Bike.uuid == bike_id) | (Bike.slug == bike_id)
+            (Bike.slug == bike_id) | (Bike.uuid == bike_id)
         ).first()
         
         if not bike:
             abort(404)
+        
+        # If accessed via UUID but slug exists, redirect to slug for SEO
+        if bike.slug and bike.uuid == bike_id:
+            return redirect(url_for('bikes.bike_detail', bike_id=bike.slug), code=301)
         
         # Convert to template-compatible format with all data
         bike_dict = bike.to_dict(include_specs=True, include_prices=True, include_images=True, flat_format=True, list_view=False)
@@ -370,6 +374,13 @@ def bike_detail(bike_id):
         original_price = bike_dict.get('price')
         disc_price = bike_dict.get('disc_price')
         
+        # Parse prices for structured data (numeric values)
+        parsed_price = None
+        if disc_price and disc_price != 'None' and disc_price != '' and disc_price != 'צור קשר':
+            parsed_price = parse_price(disc_price)
+        elif original_price and original_price != 'None' and original_price != '' and original_price != 'צור קשר':
+            parsed_price = parse_price(original_price)
+        
         # If disc_price exists, original_price is the original, otherwise price is the current price
         # The to_dict method already handles this correctly
         
@@ -401,6 +412,9 @@ def bike_detail(bike_id):
         category_hebrew = category_translations.get(bike.category, bike.category) if bike.category else None
         sub_category_hebrew = sub_category_translations.get(bike.sub_category, bike.sub_category) if bike.sub_category else None
         
+        # Get canonical bike_id (prefer slug, fallback to uuid)
+        canonical_bike_id = bike.slug if bike.slug else bike.uuid
+        
         return render_template(
             "bike_detail.html",
             bike=bike_dict,
@@ -417,7 +431,9 @@ def bike_detail(bike_id):
             gallery_images=gallery_images,
             product_url=product_url,
             rewritten_description=rewritten_description,
-            raw_specs=raw_specs
+            raw_specs=raw_specs,
+            bike_id=canonical_bike_id,
+            parsed_price=parsed_price
         )
     except Exception as e:
         print(f"Error in bike_detail: {e}")

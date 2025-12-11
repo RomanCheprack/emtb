@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -42,7 +42,9 @@
             }
         }
     </script>
+    {% block title %}
     <title>{{ title or "Rideal" }}</title>
+    {% endblock %}
     <meta name="google-site-verification" content="AtYPxQY8ts7KFVMc0by0ctl4LPQSdYLgZlmRZ4k-zGY" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
@@ -62,6 +64,7 @@
     <!-- For .png file (modern browsers) -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/rideal_logo_black.jpg') }}">
     
+    {% block meta %}
     <!-- Open Graph / Facebook / WhatsApp / Telegram -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rideal.co.il/">
@@ -74,6 +77,25 @@
     <meta name="twitter:title" content="Rideal - השוואת אופני eMTB בעברית">
     <meta name="twitter:description" content="השווה דגמי אופניים בעברית, בקלות ובחינם.">
     <meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+    
+    <!-- Organization Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Rideal",
+      "url": "https://rideal.co.il",
+      "logo": "{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "rideal.bikes@gmail.com",
+        "telephone": "052-5521657",
+        "contactType": "customer service"
+      },
+      "sameAs": []
+    }
+    </script>
+    {% endblock %}
 </head>
 
 <body>

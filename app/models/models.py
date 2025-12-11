@@ -111,7 +111,7 @@ class Bike(Base):
     def _to_dict_nested(self, include_specs, include_prices, include_images):
         """Clean nested format for API/modern usage"""
         data = {
-            "id": self.uuid,  # Use UUID as external ID
+            "id": self.slug if self.slug else self.uuid,  # Prefer slug for SEO, fallback to UUID
             "internal_id": self.id,  # Bigint for internal use
             "brand": self.brand.name if self.brand else None,
             "model": self.model,
@@ -139,7 +139,7 @@ class Bike(Base):
         """Flat format for template compatibility (mimics old SQLite structure)"""
         # Basic fields with template-compatible names
         data = {
-            'id': self.uuid,  # UUID as external ID
+            'id': self.slug if self.slug else self.uuid,  # Prefer slug for SEO, fallback to UUID
             'firm': self.brand.name if self.brand else None,  # 'firm' = brand
             'model': str(self.model) if self.model else None,
             'year': str(self.year) if self.year else None,

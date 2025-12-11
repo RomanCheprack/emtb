@@ -323,12 +323,15 @@ def sitemap():
             'priority': '0.6'
         })
 
-    # Individual bike pages - load only UUIDs, not all bike data
-    bike_uuids = db.session.query(Bike.uuid).all()
-    for (bike_uuid,) in bike_uuids:
+    # Individual bike pages - prefer slugs for SEO, fallback to UUID
+    bikes = db.session.query(Bike.slug, Bike.uuid, Bike.updated_at).all()
+    for bike_slug, bike_uuid, updated_at in bikes:
+        # Use slug if available, otherwise UUID
+        bike_id = bike_slug if bike_slug else bike_uuid
+        lastmod = updated_at.date().isoformat() if updated_at else ten_days_ago
         pages.append({
-            'loc': url_for('bikes.bikes', bike_id=bike_uuid, _external=True),
-            'lastmod': ten_days_ago,
+            'loc': url_for('bikes.bike_detail', bike_id=bike_id, _external=True),
+            'lastmod': lastmod,
             'priority': '0.5'
         })
 
