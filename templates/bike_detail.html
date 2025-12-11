@@ -70,10 +70,8 @@
       "@type": "Organization",
       "name": "Rideal"
     }
-  }{% endif %}
-  {% if category_hebrew %}
-  "category": "{{ category_hebrew }}",
-  {% endif %}
+  }{% endif %}{% if category_hebrew %},
+  "category": "{{ category_hebrew }}"{% endif %},
   "url": "{{ canonical_url }}"
 }
 </script>

@@ -6,7 +6,7 @@
 
 {% block meta %}
 {% set categories_url = url_for('main.categories', _external=True) %}
-{% set total_bikes = categories | sum(attribute='count') %}
+{% set total_bikes = categories | sum(attribute='count') if categories else 0 %}
 {% set meta_description = 'בחר קטגוריית אופניים: חשמליים, שטח, עיר, כביש, גראבל וילדים. מעל ' ~ total_bikes ~ ' דגמי אופניים להשוואה.' %}
 
 <meta name="description" content="{{ meta_description }}">
