@@ -116,6 +116,13 @@ document.addEventListener('click', function(e) {
 function runAiComparison() {
     const container = document.getElementById("ai-comparison-container");
     
+    // Check if there are at least 2 bikes in the comparison table
+    const bikeHeaders = document.querySelectorAll('.specs-th');
+    if (!bikeHeaders || bikeHeaders.length < 2) {
+        console.log("Not enough bikes to compare (need at least 2)");
+        return;
+    }
+    
     // Show loading message
     const loadingDiv = document.getElementById('ai-loading');
     if (loadingDiv) {
@@ -124,11 +131,14 @@ function runAiComparison() {
     }
 
     fetch("/api/compare_ai_from_session")
-        .then(res => {
+        .then(async res => {
+            const data = await res.json();
             if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
+                // Extract error message from response if available
+                const errorMsg = data.error || `HTTP error! status: ${res.status}`;
+                throw new Error(errorMsg);
             }
-            return res.json();
+            return data;
         })
         .then(data => {
             // Hide loading message

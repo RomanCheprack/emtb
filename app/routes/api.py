@@ -128,16 +128,18 @@ def github_webhook():
 
 @bp.route('/bike/<path:bike_id>')
 def get_bike_details(bike_id):
-    """Get bike details by UUID for AJAX requests"""
+    """Get bike details by UUID or slug for AJAX requests"""
     try:
-        # Find the bike by UUID (bike_id is actually UUID in new schema)
+        # Try to find bike by slug first (SEO-friendly), then by UUID (backward compatibility)
         # Load with raw_specs relationship
         bike = db.session.query(Bike).options(
             db.joinedload(Bike.brand),
             db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
             db.joinedload(Bike.listings).joinedload(BikeListing.prices),
             db.joinedload(Bike.images)
-        ).filter_by(uuid=bike_id).first()
+        ).filter(
+            (Bike.slug == bike_id) | (Bike.uuid == bike_id)
+        ).first()
         
         if not bike:
             return jsonify({'error': 'Bike not found'}), 404
@@ -167,8 +169,10 @@ def get_bike_details(bike_id):
 def get_bike_details_v2(bike_id):
     """Get bike details using NEW normalized format (for testing)"""
     try:
-        # Find the bike by UUID
-        bike = db.session.query(Bike).filter_by(uuid=bike_id).first()
+        # Try to find bike by slug first (SEO-friendly), then by UUID (backward compatibility)
+        bike = db.session.query(Bike).filter(
+            (Bike.slug == bike_id) | (Bike.uuid == bike_id)
+        ).first()
         
         if not bike:
             return jsonify({'error': 'Bike not found'}), 404

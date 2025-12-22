@@ -37,6 +37,9 @@
 
 .price {
     font-size: 1.1rem;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
 }
 
 .specs-th {

@@ -1,15 +1,17 @@
 ﻿{% extends "layout.html" %}
 
 {% block title %}
-<title>{{ post.title }} | בלוג Rideal</title>
+<title>{% if post.seo_title %}{{ post.seo_title }}{% else %}{{ post.title }}{% endif %} | בלוג Rideal</title>
 {% endblock %}
 
 {% block meta %}
 {% set post_url = url_for('blog.blog_post', slug=post.slug, _external=True) %}
-{% set meta_description = post.title ~ ' - ' ~ (post.content[:150] | striptags | replace('\n', ' ') | trim if post.content else 'מאמר מעניין על אופניים') %}
+{% set meta_title = post.seo_title if post.seo_title else post.title %}
+{% set meta_description = post.seo_description if post.seo_description else (post.content[:150] | striptags | replace('\n', ' ') | trim if post.content else 'מאמר מעניין על אופניים') %}
 {% if meta_description | length > 160 %}
 {% set meta_description = meta_description[:157] ~ '...' %}
 {% endif %}
+{% set og_image = post.hero_image if post.hero_image else url_for('static', filename='images/rideal_logo_bg.png', _external=True) %}
 
 <meta name="description" content="{{ meta_description }}">
 <link rel="canonical" href="{{ post_url }}">
@@ -17,9 +19,9 @@
 <!-- Open Graph / Facebook / WhatsApp / Telegram -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="{{ post_url }}">
-<meta property="og:title" content="{{ post.title }}">
+<meta property="og:title" content="{{ meta_title }}">
 <meta property="og:description" content="{{ meta_description }}">
-<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<meta property="og:image" content="{{ og_image }}">
 {% if post.date %}
 <meta property="article:published_time" content="{{ post.date.strftime('%Y-%m-%dT%H:%M:%S') }}">
 {% endif %}
@@ -29,16 +31,16 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="{{ post_url }}">
-<meta name="twitter:title" content="{{ post.title }}">
+<meta name="twitter:title" content="{{ meta_title }}">
 <meta name="twitter:description" content="{{ meta_description }}">
-<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<meta name="twitter:image" content="{{ og_image }}">
 
 <!-- BlogPosting Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "{{ post.title | replace('"', '\\"') }}",
+  "headline": "{{ meta_title | replace('"', '\\"') }}",
   "description": "{{ meta_description | replace('"', '\\"') }}",
   "url": "{{ post_url }}",
   {% if post.date %}
@@ -77,29 +79,41 @@
             <h1 class="fw-bold text-black display-5">{{ post.title }}</h1>
             <div class="d-flex justify-content-between text-muted small">
                 <div><i class="bi bi-person-circle"></i> {{ post.author }}</div>
-                <div><i class="bi bi-calendar-event"></i> {{ post.date.strftime('%d/%m/%Y') }}</div>
+                <div><i class="bi bi-calendar-event"></i> {{ post.date.strftime('%d/%m/%Y') if post.date else '' }}</div>
             </div>
         </header>
 
+        <!-- Hero Image -->
+        {% if post.hero_image %}
+        <div class="mb-4">
+            <img src="{{ post.hero_image }}" alt="{{ post.title }}" class="img-fluid rounded">
+        </div>
+        {% endif %}
+
         <!-- Divider -->
         <hr class="border-danger opacity-100">
+
+        <!-- Tags -->
+        {% if post.tags %}
+        <div class="mb-4">
+            {% for tag in post.tags.split(',') %}
+            <span class="badge bg-secondary me-1">{{ tag.strip() }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
 
         <!-- Blog Content -->
         <section class="post-content lh-lg text-black" style="font-size: 1.15rem;">
             {{ post.content | safe }}
         </section>
 
-        <!-- Tags (optional) -->
-        {#
-        <div class="mt-4">
-            {% for tag in post.tags %}
-            <span class="badge bg-danger me-1">{{ tag }}</span>
-            {% endfor %}
-        </div>
-        #}
-
-        <!-- Back to Blog List -->
+        <!-- Back to Blog List / Admin Panel -->
         <div class="mt-5 text-start">
+            {% if is_preview %}
+            <a href="{{ url_for('admin.blog_list') }}" class="btn btn-outline-primary rounded-pill px-4 me-2">
+                ← חזרה לפאנל הניהול
+            </a>
+            {% endif %}
             <a href="{{ url_for('blog.blog_list') }}" class="btn btn-outline-danger rounded-pill px-4">
                 ← חזרה לרשימת הפוסטים
             </a>

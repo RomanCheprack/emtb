@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>{% if guide.seo_title %}{{ guide.seo_title }}{% else %}{{ guide.title }}{% endif %} | Rideal</title>
+{% endblock %}
+
+{% block meta %}
+{% set guide_url = url_for('guides.guide_detail', slug=guide.slug, _external=True) %}
+{% set meta_title = guide.seo_title if guide.seo_title else guide.title %}
+{% set meta_description = guide.seo_description if guide.seo_description else (guide.content[:150] | striptags | replace('\n', ' ') | trim) %}
+{% if meta_description | length > 160 %}
+{% set meta_description = meta_description[:157] ~ '...' %}
+{% endif %}
+{% set og_image = guide.hero_image if guide.hero_image else url_for('static', filename='images/rideal_logo_bg.png', _external=True) %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ guide_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ guide_url }}">
+<meta property="og:title" content="{{ meta_title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ og_image }}">
+{% if guide.created_at %}
+<meta property="article:published_time" content="{{ guide.created_at.strftime('%Y-%m-%dT%H:%M:%S') }}">
+{% endif %}
+{% if guide.updated_at %}
+<meta property="article:modified_time" content="{{ guide.updated_at.strftime('%Y-%m-%dT%H:%M:%S') }}">
+{% endif %}
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ guide_url }}">
+<meta name="twitter:title" content="{{ meta_title }}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ og_image }}">
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/blog_posts.css') }}">
+
+<div class="container my-5" dir="rtl">
+    <article class="p-4 shadow-lg rounded bg-white border-end border-4" style="border-color: red; max-width: 900px; margin: auto;">
+        
+        <!-- Title -->
+        <header class="mb-4">
+            <h1 class="fw-bold text-black display-5">{{ guide.title }}</h1>
+            <div class="d-flex justify-content-between text-muted small">
+                {% if guide.created_at %}
+                <div><i class="bi bi-calendar-event"></i> {{ guide.created_at.strftime('%d/%m/%Y') }}</div>
+                {% endif %}
+                {% if guide.updated_at and guide.updated_at != guide.created_at %}
+                <div><i class="bi bi-pencil"></i> עודכן: {{ guide.updated_at.strftime('%d/%m/%Y') }}</div>
+                {% endif %}
+            </div>
+        </header>
+
+        <!-- Hero Image -->
+        {% if guide.hero_image %}
+        <div class="mb-4">
+            <img src="{{ guide.hero_image }}" alt="{{ guide.title }}" class="img-fluid rounded">
+        </div>
+        {% endif %}
+
+        <!-- Divider -->
+        <hr class="border-danger opacity-100">
+
+        <!-- Tags -->
+        {% if guide.tags %}
+        <div class="mb-4">
+            {% for tag in guide.tags.split(',') %}
+            <span class="badge bg-secondary me-1">{{ tag.strip() }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Guide Content -->
+        <section class="post-content lh-lg text-black" style="font-size: 1.15rem;">
+            {{ guide.content | safe }}
+        </section>
+
+        <!-- Back to Guides List / Admin Panel -->
+        <div class="mt-5 text-start">
+            {% if is_preview %}
+            <a href="{{ url_for('admin.guides_list') }}" class="btn btn-outline-primary rounded-pill px-4 me-2">
+                ← חזרה לפאנל הניהול
+            </a>
+            {% endif %}
+            <a href="{{ url_for('guides.guides_list') }}" class="btn btn-outline-danger rounded-pill px-4">
+                ← חזרה לרשימת המדריכים
+            </a>
+        </div>
+    </article>
+</div>
+{% endblock %}
+

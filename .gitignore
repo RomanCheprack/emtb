@@ -22,7 +22,6 @@ instance/
 
 
 #db
-emtb.db
 *.db
 data_export.sql
 *.sqlite3

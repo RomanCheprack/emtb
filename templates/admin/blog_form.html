@@ -1,0 +1,334 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="admin-container" style="direction: rtl;">
+    <div class="admin-header">
+        <h1>{% if post %}עריכת פוסט{% else %}פוסט חדש{% endif %}</h1>
+        <div>
+            <a href="{{ url_for('admin.blog_list') }}" class="btn btn-secondary">חזור לרשימה</a>
+            <a href="{{ url_for('admin.logout') }}" class="btn btn-outline-danger">התנתק</a>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" action="{% if post %}{{ url_for('admin.blog_edit', post_id=post.id) }}{% else %}{{ url_for('admin.blog_new') }}{% endif %}" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="mb-3">
+                    <label for="title" class="form-label">כותרת <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ post.title if post else '' }}" required>
+                    <small class="form-text text-muted">כותרת הפוסט (בעברית)</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="author" class="form-label">מחבר</label>
+                    <input type="text" class="form-control" id="author" name="author" value="{{ post.author if post else '' }}">
+                    <small class="form-text text-muted">שם המחבר (אופציונלי)</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ post.slug if post else '' }}" pattern="[a-zA-Z0-9-]+">
+                    <small class="form-text text-muted">URL-friendly slug (אנגלית בלבד, אותיות, מספרים ומקפים). אם לא תזין, יווצר אוטומטית מהכותרת.</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="hero_image" class="form-label">תמונת כותרת</label>
+                    <div class="mb-2">
+                        <label for="hero_image_file" class="form-label small text-muted">או העלה תמונה מהמחשב:</label>
+                        <input type="file" class="form-control" id="hero_image_file" name="hero_image_file" accept="image/png,image/jpeg,image/jpg,image/gif,image/webp,image/svg+xml">
+                        <small class="form-text text-muted">פורמטים נתמכים: PNG, JPG, JPEG, GIF, WEBP, SVG</small>
+                    </div>
+                    <div class="mt-2">
+                        <label for="hero_image" class="form-label small text-muted">או הזן URL:</label>
+                        <input type="url" class="form-control" id="hero_image" name="hero_image" value="{{ post.hero_image if post else '' }}" placeholder="https://example.com/image.jpg">
+                        <small class="form-text text-muted">אם תעלה קובץ, הוא יקבל עדיפות על ה-URL</small>
+                    </div>
+                    {% if post and post.hero_image %}
+                    <div class="mt-2">
+                        <small class="text-muted">תמונה נוכחית:</small><br>
+                        <img src="{{ post.hero_image }}" alt="Current hero image" style="max-width: 200px; max-height: 150px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="mb-3">
+                    <label for="seo_title" class="form-label">כותרת SEO</label>
+                    <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{ post.seo_title if post else '' }}" maxlength="255">
+                    <small class="form-text text-muted">כותרת מותאמת SEO (אופציונלי, אם לא תזין, תשתמש בכותרת הרגילה)</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="seo_description" class="form-label">תיאור SEO</label>
+                    <textarea class="form-control" id="seo_description" name="seo_description" rows="3">{{ post.seo_description if post else '' }}</textarea>
+                    <small class="form-text text-muted">תיאור מותאם SEO (מופיע בתוצאות חיפוש)</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="tags" class="form-label">תגיות</label>
+                    <input type="text" class="form-control" id="tags" name="tags" value="{{ post.tags if post else '' }}" placeholder="תגית1, תגית2, תגית3">
+                    <small class="form-text text-muted">תגיות מופרדות בפסיקים</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="content" class="form-label">תוכן <span class="text-danger">*</span></label>
+                    <div class="mb-2">
+                        <label for="docx_file" class="form-label small text-muted">או העלה קובץ Word (DOCX) כבסיס לעריכה:</label>
+                        <input type="file" class="form-control" id="docx_file" name="docx_file" accept=".docx,.doc">
+                        <small class="form-text text-muted">העלה קובץ DOCX מ-Google Docs או Word, והוא יומר אוטומטית ל-HTML בעורך</small>
+                        <button type="button" class="btn btn-sm btn-outline-secondary mt-2" id="uploadDocxBtn" style="display: none;">
+                            המר קובץ Word ל-HTML
+                        </button>
+                    </div>
+                    <textarea class="form-control" id="content" name="content" required>{{ post.content if post else '' }}</textarea>
+                    <small class="form-text text-muted">עורך טקסט עשיר - ניתן להוסיף תמונות, לעצב טקסט, להוסיף טבלאות ועוד</small>
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="is_published" name="is_published" {% if post and post.is_published %}checked{% endif %}>
+                    <label class="form-check-label" for="is_published">
+                        פרסם פוסט זה
+                    </label>
+                </div>
+                
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">שמור</button>
+                    {% if post %}
+                    <a href="{{ url_for('admin.blog_preview', post_id=post.id) }}" class="btn btn-info" target="_blank">תצוגה מקדימה</a>
+                    {% endif %}
+                    <a href="{{ url_for('admin.blog_list') }}" class="btn btn-secondary">ביטול</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- TinyMCE -->
+<script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js"></script>
+<script>
+// Initialize TinyMCE
+tinymce.init({
+    selector: '#content',
+    language: 'he_IL',
+    directionality: 'rtl',
+    height: 600,
+    menubar: true,
+    plugins: [
+        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+        'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+    ],
+    toolbar: 'undo redo | blocks | ' +
+        'bold italic forecolor | alignleft aligncenter alignright alignjustify | ' +
+        'bullist numlist outdent indent | removeformat | help | ' +
+        'link image table | code fullscreen preview',
+    content_style: 'body { font-family: Arial, sans-serif; font-size: 14px; direction: rtl; }',
+    image_advtab: true,
+    file_picker_types: 'image',
+    automatic_uploads: true,
+    images_upload_url: '{{ url_for("admin.blog_upload_content_image") }}',
+    images_upload_handler: function (blobInfo, progress) {
+        return new Promise(function (resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '{{ url_for("admin.blog_upload_content_image") }}');
+            
+            xhr.upload.onprogress = function (e) {
+                progress(e.loaded / e.total * 100);
+            };
+            
+            xhr.onload = function () {
+                if (xhr.status === 403) {
+                    reject({ message: 'HTTP Error: ' + xhr.status, remove: true });
+                    return;
+                }
+                
+                if (xhr.status < 200 || xhr.status >= 300) {
+                    reject('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                
+                var json = JSON.parse(xhr.responseText);
+                
+                if (!json || typeof json.location != 'string') {
+                    reject('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                
+                resolve(json.location);
+            };
+            
+            xhr.onerror = function () {
+                reject('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
+            };
+            
+            var formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            formData.append('csrf_token', '{{ csrf_token() }}');
+            
+            xhr.send(formData);
+        });
+    },
+    setup: function (editor) {
+        editor.on('init', function () {
+            // Set RTL direction
+            editor.getBody().setAttribute('dir', 'rtl');
+        });
+    }
+});
+
+// Auto-generate slug from title
+document.getElementById('title').addEventListener('input', function() {
+    const slugInput = document.getElementById('slug');
+    // Only auto-generate if slug is empty or matches the old title-based slug
+    if (!slugInput.value || slugInput.dataset.autoGenerated === 'true') {
+        const title = this.value;
+        // Simple slug generation (will be improved server-side)
+        const slug = title.toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .trim();
+        slugInput.value = slug;
+        slugInput.dataset.autoGenerated = 'true';
+    }
+});
+
+// Mark slug as manually edited if user types in it
+document.getElementById('slug').addEventListener('input', function() {
+    this.dataset.autoGenerated = 'false';
+});
+
+// DOCX file upload and conversion
+const docxFileInput = document.getElementById('docx_file');
+const uploadDocxBtn = document.getElementById('uploadDocxBtn');
+
+if (docxFileInput && uploadDocxBtn) {
+    docxFileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            uploadDocxBtn.style.display = 'inline-block';
+        } else {
+            uploadDocxBtn.style.display = 'none';
+        }
+    });
+
+    uploadDocxBtn.addEventListener('click', function() {
+        const fileInput = document.getElementById('docx_file');
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('אנא בחר קובץ Word');
+            return;
+        }
+        
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('csrf_token', '{{ csrf_token() }}');
+        
+        // Show loading
+        uploadDocxBtn.disabled = true;
+        uploadDocxBtn.textContent = 'ממיר...';
+        
+        fetch('{{ url_for("admin.blog_upload_docx") }}', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            uploadDocxBtn.disabled = false;
+            uploadDocxBtn.textContent = 'המר קובץ Word ל-HTML';
+            
+            if (data.error) {
+                alert('שגיאה: ' + data.error);
+                return;
+            }
+            
+            if (data.success && data.html) {
+                // Insert HTML into TinyMCE editor
+                if (tinymce.get('content')) {
+                    tinymce.get('content').setContent(data.html);
+                    alert('הקובץ הומר בהצלחה! התוכן נוסף לעורך.');
+                } else {
+                    // Fallback if TinyMCE not loaded yet
+                    document.getElementById('content').value = data.html;
+                    alert('הקובץ הומר בהצלחה! התוכן נוסף לעורך.');
+                }
+                
+                // Clear file input
+                fileInput.value = '';
+                uploadDocxBtn.style.display = 'none';
+                
+                // Show warnings if any
+                if (data.warnings && data.warnings.length > 0) {
+                    console.warn('Conversion warnings:', data.warnings);
+                }
+            }
+        })
+        .catch(error => {
+            uploadDocxBtn.disabled = false;
+            uploadDocxBtn.textContent = 'המר קובץ Word ל-HTML';
+            alert('שגיאה בהמרת הקובץ: ' + error.message);
+        });
+    });
+}
+</script>
+
+<style>
+.admin-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.admin-header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.card {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    direction: rtl;
+    text-align: right;
+}
+
+/* TinyMCE Editor Styling */
+.tox-tinymce {
+    direction: rtl;
+}
+
+.tox .tox-edit-area__iframe {
+    direction: rtl;
+}
+
+.d-flex.gap-2 {
+    gap: 10px;
+}
+</style>
+{% endblock %}
+

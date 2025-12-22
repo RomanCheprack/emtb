@@ -229,11 +229,11 @@
     </div>
 
     <!-- The Contact Section -->
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact" dir="rtl">
         <h2 class="w3-wide w3-center">צור קשר</h2>
-        <p dir="rtl" class="w3-opacity w3-center"><i>רעיונות לפיתוח? שאלות? בקשות? דברו איתנו!</i></p>
+        <p class="w3-opacity w3-center"><i>רעיונות לפיתוח? שאלות? בקשות? דברו איתנו!</i></p>
         <div class="w3-row w3-padding-32">
-            <div dir="rtl" class="w3-col m6">
+            <div class="w3-col m6">
                 <form id="contactForm" action="/contact" method="POST" target="_blank">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                     <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
@@ -250,7 +250,7 @@
                     </div>
                 </form>
             </div>
-            <div dir="rtl" class="w3-col m6 w3-large w3-margin-bottom">
+            <div class="w3-col m6 w3-large w3-margin-bottom">
                 <i class="bi bi-pin" style="width:30px"></i> - כרם מהר"ל<br>
                 <i class="bi bi-telephone-outbound" style="width:30px"> - 052-5521657</i><br>
                 <i class="bi bi-envelope" style="width:30px"> </i> - rideal.bikes@gmail.com<br>
@@ -412,7 +412,7 @@
         transition: all 0.3s ease;
         background: white;
         box-sizing: border-box;
-        direction: rtl;
+        direction: ltr;
         text-align: right;
     }
 

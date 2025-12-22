@@ -341,13 +341,14 @@ def sitemap():
         'priority': '0.85'
     })
 
-    # Blog posts
-    from app.services.blog_service import load_posts
-    blog_posts = load_posts()
+    # Blog posts (from database)
+    from app.models import BlogPost
+    blog_posts = db.session.query(BlogPost).filter_by(is_published=True).all()
     for post in blog_posts:
+        lastmod = post.updated_at.date().isoformat() if post.updated_at else (post.created_at.date().isoformat() if post.created_at else ten_days_ago)
         pages.append({
-            'loc': url_for('blog.blog_post', slug=post['slug'], _external=True),
-            'lastmod': post['date'],
+            'loc': url_for('blog.blog_post', slug=post.slug, _external=True),
+            'lastmod': lastmod,
             'priority': '0.6'
         })
 

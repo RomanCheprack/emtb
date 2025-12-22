@@ -259,3 +259,43 @@ def translate_spec_key_to_hebrew(key):
     
     # If no translation found, return original key (might already be in Hebrew)
     return key
+
+def generate_slug_from_title(title):
+    """Generate SEO-friendly slug from title (English only)
+    
+    Args:
+        title: Title string (can be Hebrew, will be transliterated to English-like slug)
+    
+    Returns:
+        str: URL-friendly slug
+    """
+    import re
+    import unicodedata
+    
+    if not title:
+        return ""
+    
+    # Convert to lowercase
+    slug = title.lower()
+    
+    # Remove Hebrew characters and other non-ASCII, replace with spaces
+    # This will create a basic transliteration effect
+    slug = ''.join(c if ord(c) < 128 else ' ' for c in slug)
+    
+    # Replace spaces and underscores with hyphens
+    slug = re.sub(r'[\s_]+', '-', slug)
+    
+    # Remove all non-alphanumeric characters except hyphens
+    slug = re.sub(r'[^\w\-]', '', slug)
+    
+    # Remove multiple consecutive hyphens
+    slug = re.sub(r'-+', '-', slug)
+    
+    # Remove leading/trailing hyphens
+    slug = slug.strip('-')
+    
+    # If slug is empty after processing, generate a fallback
+    if not slug:
+        slug = "guide"
+    
+    return slug

@@ -5,7 +5,11 @@
 <div class="admin-container" style="direction: rtl;">
     <div class="admin-header">
         <h1>📊 לוח בקרה - מנהל</h1>
-        <a href="{{ url_for('admin.logout') }}" class="btn btn-outline-danger">התנתק</a>
+        <div>
+            <a href="{{ url_for('admin.guides_list') }}" class="btn btn-outline-primary me-2">📚 מדריכים</a>
+            <a href="{{ url_for('admin.blog_list') }}" class="btn btn-outline-info me-2">📝 בלוג</a>
+            <a href="{{ url_for('admin.logout') }}" class="btn btn-outline-danger">התנתק</a>
+        </div>
     </div>
     
     {% with messages = get_flashed_messages(with_categories=true) %}

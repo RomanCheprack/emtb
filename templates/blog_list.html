@@ -57,18 +57,171 @@
   {% endif %}
 }
 </script>
+
+<!-- Inter Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Blog Page Styles -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/blog-list.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="container my-5" dir="rtl">
-    <h1 class="mb-4 text-black">הבלוג שלנו</h1>
-    <div class="list-group">
-        {% for post in posts %}
-        <a href="{{ url_for('blog.blog_post', slug=post.slug) }}" class="list-group-item list-group-item-action">
-            <h5 class="mb-1 text-danger">{{ post.title }}</h5>
-            <small class="text-muted">נכתב על ידי {{ post.author }} ב־{{ post.date }}</small>
-        </a>
-        {% endfor %}
+<section class="blog-page" dir="rtl">
+    <div class="blog-container">
+        <!-- Section Header -->
+        <header class="blog-header">
+            <span class="blog-eyebrow">תוכן מקצועי</span>
+            <h1 class="blog-title">הבלוג שלנו</h1>
+        </header>
+        
+        {% if posts %}
+        <div class="blog-grid">
+            <!-- Featured Post (Left Column - 7 cols in RTL appears on right) -->
+            {% if posts|length > 0 %}
+            <article class="featured-post">
+                <a href="{{ url_for('blog.blog_post', slug=posts[0].slug) }}" class="featured-post-link">
+                    {% if posts[0].hero_image %}
+                    <div class="featured-image-wrapper">
+                        <img src="{{ posts[0].hero_image }}" alt="{{ posts[0].title }}" class="featured-image">
+                    </div>
+                    {% else %}
+                    <div class="featured-post-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    {% endif %}
+                    <div class="featured-post-content">
+                        <h2 class="featured-post-title">{{ posts[0].title }}</h2>
+                        {% if posts[0].seo_description %}
+                        <p class="featured-post-excerpt">{{ posts[0].seo_description[:150] }}{% if posts[0].seo_description|length > 150 %}...{% endif %}</p>
+                        {% endif %}
+                        <div class="featured-post-meta">
+                            <div class="post-meta-info">
+                                <span class="post-author">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                    {{ posts[0].author }}
+                                </span>
+                                <span class="post-date">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                    {{ posts[0].date.strftime('%d/%m/%Y') if posts[0].date else '' }}
+                                </span>
+                            </div>
+                            <span class="post-tag">פוסט</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endif %}
+
+            <!-- Stacked List (Right Column - 5 cols) -->
+            {% if posts|length > 1 %}
+            <div class="posts-list">
+                {% for post in posts[1:6] %}
+                <article class="list-post">
+                    <a href="{{ url_for('blog.blog_post', slug=post.slug) }}" class="list-post-link">
+                        <div class="list-thumbnail-wrapper">
+                            {% if post.hero_image %}
+                            <img src="{{ post.hero_image }}" alt="{{ post.title }}" class="list-thumbnail" loading="lazy">
+                            {% else %}
+                            <div class="list-post-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="list-post-text">
+                            <h3 class="list-post-title">{{ post.title }}</h3>
+                            {% if post.seo_description %}
+                            <p class="list-post-description">{{ post.seo_description[:80] }}{% if post.seo_description|length > 80 %}...{% endif %}</p>
+                            {% endif %}
+                            <div class="list-post-meta">
+                                <span class="post-author-small">{{ post.author }}</span>
+                                <span class="meta-separator">•</span>
+                                <span class="post-date-small">{{ post.date.strftime('%d/%m/%Y') if post.date else '' }}</span>
+                            </div>
+                            <span class="post-tag">פוסט</span>
+                        </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Additional Posts Grid (if more than 6 posts) -->
+        {% if posts|length > 6 %}
+        <div class="additional-posts">
+            <h2 class="section-subtitle">עוד פוסטים</h2>
+            <div class="additional-grid">
+                {% for post in posts[6:] %}
+                <article class="grid-post">
+                    <a href="{{ url_for('blog.blog_post', slug=post.slug) }}" class="grid-post-link">
+                        <div class="grid-image-wrapper">
+                            {% if post.hero_image %}
+                            <img src="{{ post.hero_image }}" alt="{{ post.title }}" class="grid-image" loading="lazy">
+                            {% else %}
+                            <div class="grid-post-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="grid-post-content">
+                            <h3 class="grid-post-title">{{ post.title }}</h3>
+                            {% if post.seo_description %}
+                            <p class="grid-post-description">{{ post.seo_description[:100] }}{% if post.seo_description|length > 100 %}...{% endif %}</p>
+                            {% endif %}
+                            <div class="grid-post-meta">
+                                <span class="post-author-small">{{ post.author }}</span>
+                                <span class="meta-separator">•</span>
+                                <span class="post-date-small">{{ post.date.strftime('%d/%m/%Y') if post.date else '' }}</span>
+                            </div>
+                            <span class="post-tag">פוסט</span>
+                        </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <!-- Empty State -->
+        <div class="empty-state">
+            <div class="empty-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="11" x2="12" y2="17"/>
+                    <line x1="9" y1="14" x2="15" y2="14"/>
+                </svg>
+            </div>
+            <h2 class="empty-title">אין פוסטים זמינים כרגע</h2>
+            <p class="empty-description">פוסטים חדשים יתווספו בקרוב. חזרו לבדוק שוב!</p>
+        </div>
+        {% endif %}
     </div>
-</div>
+</section>
 {% endblock %}

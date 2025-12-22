@@ -102,10 +102,11 @@
 </div>
 
 {% if bikes and bikes|length > 0 %}
-<div class="compare-container overflow-auto">
+<div class="compare-container overflow-auto" dir="rtl">
          <table class="table table-bordered compare-table text-center align-middle">
          <thead>
              <tr>
+                 <th class="model-th" style="position:relative;"></th>
                  {% for bike in bikes %}
                  <th class="specs-th align-middle">
      <button class="btn-close position-absolute top-0 end-0 m-2 remove-bike-btn"
@@ -118,12 +119,12 @@
      </div>
  </th>
                  {% endfor %}
-                 <th class="model-th" style="position:relative;"></th>
              </tr>
          </thead>
          <tbody>
             <!-- רכישה -->
             <tr>
+                <th style="min-width: 150px; background: #fff; text-align: right;"></th>
                 {% for bike in bikes %}
                 <td>
                     {% if bike['product_url'] %}
@@ -136,26 +137,26 @@
                     {% endif %}
                 </td>
                 {% endfor %}
-                <th style="min-width: 150px; background: #fff; text-align: right;"></th>
             </tr>
              <!-- דגם -->
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">דגם</th>
                  {% for bike in bikes %}
                  <td>{{ bike['model'] }}</td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">דגם</th>
              </tr>
 
              <!-- שנה -->
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שנה</th>
                  {% for bike in bikes %}
                  <td>{{ bike['year'] }}</td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שנה</th>
              </tr>
 
              <!-- מחיר -->
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מחיר</th>
                  {% for bike in bikes %}
                  <td>
                      {% if bike['disc_price'] and bike['disc_price'] != '#N/A' %}
@@ -178,12 +179,12 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מחיר</th>
              </tr>
 
              <!-- סוג אופניים -->
              {% if 'sub_category' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">סוג אופניים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('sub_category', '') %}
@@ -197,13 +198,13 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">סוג אופניים</th>
              </tr>
              {% endif %}
 
              <!-- קיבולת סוללה -->
              {% if 'wh' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">קיבולת סוללה</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('wh', '') %}
@@ -217,13 +218,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">קיבולת סוללה</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מנוע -->
              {% if 'motor' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מנוע</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('motor', '') %}
@@ -237,13 +239,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מנוע</th>
+                 
              </tr>
              {% endif %}
 
              <!-- סוללה -->
              {% if 'battery' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">סוללה</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('battery', '') %}
@@ -257,13 +260,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">סוללה</th>
+                 
              </tr>
              {% endif %}
 
              <!-- שלדה -->
              {% if 'frame' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שלדה</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('frame', '') %}
@@ -277,13 +281,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שלדה</th>
+                 
              </tr>
              {% endif %}
 
              <!-- בולם קדמי -->
              {% if 'fork' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם קדמי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('fork', '') %}
@@ -297,13 +302,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם קדמי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- בולם אחורי -->
              {% if 'rear_shock' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם אחורי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rear_shock', '') %}
@@ -317,13 +323,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם אחורי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- בלמים -->
              {% if 'brakes' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">בלמים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('brakes', '') %}
@@ -337,13 +344,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">בלמים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- צמיגים -->
              {% if 'tires' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיגים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('tires', '') %}
@@ -357,13 +365,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיגים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- משקל -->
              {% if 'weight' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">משקל</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('weight', '') %}
@@ -377,13 +386,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">משקל</th>
+                 
              </tr>
              {% endif %}
 
              <!-- גודל גלגלים -->
              {% if 'wheel_size' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גודל גלגלים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('wheel_size', '') %}
@@ -397,13 +407,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גודל גלגלים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מידה -->
              {% if 'size' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מידה</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('size', '') %}
@@ -417,13 +428,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מידה</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מספר הילוכים -->
              {% if 'gear_count' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מספר הילוכים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('gear_count', '') %}
@@ -437,13 +449,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מספר הילוכים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- ברקס קידמי -->
              {% if 'front_brake' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס קידמי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('front_brake', '') %}
@@ -457,13 +470,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס קידמי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- ברקס אחורי -->
              {% if 'rear_brake' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס אחורי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rear_brake', '') %}
@@ -477,13 +491,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס אחורי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- צמיג קדמי -->
              {% if 'front_tire' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג קדמי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('front_tire', '') %}
@@ -497,13 +512,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג קדמי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- צמיג אחורי -->
              {% if 'rear_tire' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג אחורי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rear_tire', '') %}
@@ -517,13 +533,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג אחורי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- אוכף -->
              {% if 'saddle' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">אוכף</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('saddle', '') %}
@@ -537,13 +554,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">אוכף</th>
+                 
              </tr>
              {% endif %}
 
              <!-- דוושות -->
              {% if 'pedals' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">דוושות</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('pedals', '') %}
@@ -557,13 +575,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">דוושות</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מטען -->
              {% if 'charger' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מטען</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('charger', '') %}
@@ -577,13 +596,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מטען</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מסך -->
              {% if 'screen' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מסך</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('screen', '') %}
@@ -597,13 +617,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מסך</th>
+                 
              </tr>
              {% endif %}
 
              <!-- תוספות -->
              {% if 'extras' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">תוספות</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('extras', '') %}
@@ -617,13 +638,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">תוספות</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מעביר אחורי -->
              {% if 'rear_der' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מעביר אחורי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rear_der', '') %}
@@ -637,13 +659,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מעביר אחורי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- שיפטר -->
              {% if 'shifter' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שיפטר</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('shifter', '') %}
@@ -657,13 +680,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שיפטר</th>
+                 
              </tr>
              {% endif %}
 
              <!-- קראנק -->
              {% if 'crank_set' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">קראנק</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('crank_set', '') %}
@@ -677,13 +701,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">קראנק</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מדריך שרשרת -->
              {% if 'chain_guide' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מדריך שרשרת</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('chain_guide', '') %}
@@ -697,13 +722,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מדריך שרשרת</th>
+                 
              </tr>
              {% endif %}
 
              <!-- שרשרת -->
              {% if 'chain' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שרשרת</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('chain', '') %}
@@ -717,13 +743,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שרשרת</th>
+                 
              </tr>
              {% endif %}
 
              <!-- קסטה -->
              {% if 'cassette' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">קסטה</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('cassette', '') %}
@@ -737,13 +764,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">קסטה</th>
+                 
              </tr>
              {% endif %}
 
              <!-- רוטורים -->
              {% if 'rotors' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">רוטורים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rotors', '') %}
@@ -757,13 +785,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">רוטורים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- כידון -->
              {% if 'handlebar' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">כידון</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('handlebar', '') %}
@@ -777,13 +806,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">כידון</th>
+                 
              </tr>
              {% endif %}
 
              <!-- מוט אוכף -->
              {% if 'seat_post' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">מוט אוכף</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('seat_post', '') %}
@@ -797,13 +827,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מוט אוכף</th>
+                 
              </tr>
              {% endif %}
 
              <!-- סטם -->
              {% if 'stem' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">סטם</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('stem', '') %}
@@ -817,13 +848,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">סטם</th>
+                 
              </tr>
              {% endif %}
 
              <!-- תאורה -->
              {% if 'lights' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">תאורה</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('lights', '') %}
@@ -837,13 +869,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">תאורה</th>
+                 
              </tr>
              {% endif %}
 
              <!-- גלגלים -->
              {% if 'wheels' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגלים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('wheels', '') %}
@@ -857,13 +890,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגלים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- חישוקים -->
              {% if 'rims' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">חישוקים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rims', '') %}
@@ -877,13 +911,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">חישוקים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- חישורים -->
              {% if 'spokes' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">חישורים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('spokes', '') %}
@@ -897,13 +932,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">חישורים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- ציר קדמי -->
              {% if 'front_hub' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר קדמי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('front_hub', '') %}
@@ -917,13 +953,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר קדמי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- ציר אחורי -->
              {% if 'rear_hub' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר אחורי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rear_hub', '') %}
@@ -937,13 +974,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר אחורי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- הד סט -->
              {% if 'headset' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">הד סט</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('headset', '') %}
@@ -957,13 +995,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">הד סט</th>
+                 
              </tr>
              {% endif %}
 
              <!-- שלט -->
              {% if 'remote' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">שלט</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('remote', '') %}
@@ -977,13 +1016,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שלט</th>
+                 
              </tr>
              {% endif %}
 
              <!-- אורך בולמים -->
              {% if 'fork_length' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">אורך בולמים</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('fork_length', '') %}
@@ -997,13 +1037,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">אורך בולמים</th>
+                 
              </tr>
              {% endif %}
 
              <!-- פנימיות -->
              {% if 'tubes' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">פנימיות</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('tubes', '') %}
@@ -1017,13 +1058,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">פנימיות</th>
+                 
              </tr>
              {% endif %}
 
              <!-- גלגל קדמי -->
              {% if 'front_wheel' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל קדמי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('front_wheel', '') %}
@@ -1037,13 +1079,14 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל קדמי</th>
+                 
              </tr>
              {% endif %}
 
              <!-- גלגל אחורי -->
              {% if 'rear_wheel' in fields_to_show %}
              <tr>
+                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל אחורי</th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
                      {% set value = bike.get('rear_wheel', '') %}
@@ -1057,7 +1100,7 @@
                      {% endif %}
                  </td>
                  {% endfor %}
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל אחורי</th>
+                 
              </tr>
              {% endif %}
          </tbody>

@@ -35,7 +35,7 @@ def create_app(config_name=None):
     db.init_app(app)
     
     # Register blueprints
-    from .routes import main, bikes, blog, compare, api, debug, admin
+    from .routes import main, bikes, blog, compare, api, debug, admin, guides
     
     app.register_blueprint(main.bp)
     app.register_blueprint(bikes.bp)
@@ -44,6 +44,7 @@ def create_app(config_name=None):
     app.register_blueprint(api.bp)
     app.register_blueprint(debug.bp)
     app.register_blueprint(admin.bp)
+    app.register_blueprint(guides.bp)
     
     # Register Jinja2 filters
     from .utils.helpers import format_number_with_commas

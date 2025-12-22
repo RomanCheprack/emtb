@@ -22,8 +22,8 @@ html, body {
     overflow-x: hidden;
 }
 
-body[dir="rtl"], [dir="rtl"] {
-    direction: rtl;
+body[dir="ltr"], [dir="ltr"] {
+    direction: ltr;
     unicode-bidi: embed;
 }
 

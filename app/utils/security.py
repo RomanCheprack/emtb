@@ -10,21 +10,32 @@ def sanitize_html_content(content):
         'p', 'br', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
         'strong', 'b', 'em', 'i', 'u', 'strike', 'del',
         'ul', 'ol', 'li', 'blockquote', 'pre', 'code',
-        'img', 'a', 'div', 'span'
+        'img', 'a', 'div', 'span', 'table', 'thead', 'tbody',
+        'tr', 'td', 'th', 'hr', 'sub', 'sup'
     ]
     
     allowed_attributes = {
-        'img': ['src', 'alt', 'title', 'width', 'height', 'style'],
-        'a': ['href', 'title', 'target', 'rel'],
-        'div': ['class', 'style'],
-        'span': ['class', 'style'],
-        'p': ['class', 'style'],
-        'h1': ['class', 'style'],
-        'h2': ['class', 'style'],
-        'h3': ['class', 'style'],
-        'h4': ['class', 'style'],
-        'h5': ['class', 'style'],
-        'h6': ['class', 'style']
+        'img': ['src', 'alt', 'title', 'width', 'height', 'style', 'class'],
+        'a': ['href', 'title', 'target', 'rel', 'class'],
+        'div': ['class', 'style', 'id'],
+        'span': ['class', 'style', 'id'],
+        'p': ['class', 'style', 'id'],
+        'h1': ['class', 'style', 'id'],
+        'h2': ['class', 'style', 'id'],
+        'h3': ['class', 'style', 'id'],
+        'h4': ['class', 'style', 'id'],
+        'h5': ['class', 'style', 'id'],
+        'h6': ['class', 'style', 'id'],
+        'table': ['class', 'style', 'border', 'cellpadding', 'cellspacing'],
+        'tr': ['class', 'style'],
+        'td': ['class', 'style', 'colspan', 'rowspan'],
+        'th': ['class', 'style', 'colspan', 'rowspan'],
+        'ul': ['class', 'style'],
+        'ol': ['class', 'style'],
+        'li': ['class', 'style'],
+        'blockquote': ['class', 'style'],
+        'pre': ['class', 'style'],
+        'code': ['class', 'style']
     }
     
     # Clean the HTML content

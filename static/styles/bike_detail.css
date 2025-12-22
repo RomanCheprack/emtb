@@ -26,30 +26,44 @@
 .price-section {
     padding: 1.5rem 0;
     background: transparent;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .price-wrapper {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .original-price {
     font-size: 1.25rem;
     color: #9ca3af;
     text-decoration: line-through;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
 }
 
 .discount-price {
     font-size: 2rem;
     font-weight: 700;
     color: #d32f2f;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
 }
 
 .current-price {
     font-size: 2rem;
     font-weight: 700;
     color: #1f2937;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
 }
 
 /* Purchase Button */
@@ -71,29 +85,41 @@
 }
 
 /* Main Image Container */
-.main-image-container {
+.bike_detail .main-image-container,
+.container .main-image-container {
     position: relative;
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    overflow: hidden;
     padding: 1rem;
     text-align: center;
-    aspect-ratio: 4 / 3;
     min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible !important;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.main-bike-image {
-    width: 100%;
-    height: auto;
-    max-height: 600px;
-    object-fit: contain;
+.bike_detail .main-image-container .main-bike-image,
+.container .main-image-container .main-bike-image,
+.main-bike-image.img-fluid {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 600px !important;
+    object-fit: contain !important;
     border-radius: 4px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Ensure parent column doesn't clip */
+.col-lg-6 {
+    overflow: visible !important;
 }
 
 .main-bike-image:hover {
@@ -228,16 +254,21 @@
 
 .specs-table {
     margin: 0;
+    table-layout: auto;
+    width: 100%;
 }
 
 .specs-table th {
-    width: 30%;
+    width: auto !important;
+    min-width: fit-content;
+    max-width: 30%;
     font-weight: 600;
     color: #1f2937;
     background: #f9fafb;
     text-align: right;
     padding: 1rem;
     border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
 }
 
 .specs-table td {

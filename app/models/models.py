@@ -432,3 +432,70 @@ class StoreRequestLead(Base):
             "remarks": self.remarks,
             "created_at": self.created_at.isoformat() if self.created_at else None
         }
+
+
+# ---------------------------
+# Guides
+# ---------------------------
+class Guide(Base):
+    __tablename__ = "guides"
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    title = Column(String(255), nullable=False)
+    slug = Column(String(255), unique=True, nullable=False, index=True)
+    hero_image = Column(String(500))  # Path or URL
+    content = Column(Text)  # LONGTEXT - HTML content
+    seo_title = Column(String(255))
+    seo_description = Column(Text)
+    tags = Column(String(500))  # Comma-separated tags
+    is_published = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "slug": self.slug,
+            "hero_image": self.hero_image,
+            "content": self.content,
+            "seo_title": self.seo_title,
+            "seo_description": self.seo_description,
+            "tags": self.tags,
+            "is_published": self.is_published,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+            "updated_at": self.updated_at.isoformat() if self.updated_at else None
+        }
+
+# ---------------------------
+# Blog Posts
+# ---------------------------
+class BlogPost(Base):
+    __tablename__ = "blog_posts"
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    title = Column(String(255), nullable=False)
+    slug = Column(String(255), unique=True, nullable=False, index=True)
+    author = Column(String(255))  # Author name
+    hero_image = Column(String(500))  # Path or URL
+    content = Column(Text)  # LONGTEXT - HTML content
+    seo_title = Column(String(255))
+    seo_description = Column(Text)
+    tags = Column(String(500))  # Comma-separated tags
+    is_published = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "slug": self.slug,
+            "author": self.author,
+            "hero_image": self.hero_image,
+            "content": self.content,
+            "seo_title": self.seo_title,
+            "seo_description": self.seo_description,
+            "tags": self.tags,
+            "is_published": self.is_published,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+            "updated_at": self.updated_at.isoformat() if self.updated_at else None
+        }

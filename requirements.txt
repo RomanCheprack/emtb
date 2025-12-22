@@ -46,4 +46,5 @@ pandas==2.0.3
 undetected-chromedriver==3.5.5
 Pillow==10.4.0
 pytesseract==0.3.10
-bleach==6.1.0 
+bleach==6.1.0
+mammoth==1.7.0

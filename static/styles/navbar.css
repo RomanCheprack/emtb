@@ -6,7 +6,8 @@
 
 /* Navbar branding */
 .navbar-brand {
-  
+    display: flex;
+    align-items: center;
 }
 
 /* Nav links style */

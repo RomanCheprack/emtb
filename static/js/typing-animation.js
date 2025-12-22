@@ -124,7 +124,7 @@ function prepareSpanForAnimation(spanElement) {
         // Split text into words immediately to prevent flash of content
         const text = spanElement.textContent.trim();
         const words = text.split(/\s+/);
-        const isRTL = spanElement.getAttribute('dir') === 'rtl';
+        const isRTL = spanElement.getAttribute('dir') === 'ltr';
         const duration = parseFloat(spanElement.getAttribute('data-text-animate-duration')) || 0.4;
         
         // Clear the element and prepare words (but keep hidden)

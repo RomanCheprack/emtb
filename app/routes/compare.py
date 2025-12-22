@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify, session, abort, url_for, redirect
 from app.extensions import db, csrf
-from app.models import Comparison
+from app.models import Comparison, Bike, CompareCount
 from app.services.bike_service import get_bikes_by_uuids
 from app.services.ai_service import create_ai_prompt, generate_comparison_with_ai_from_bikes
 import os
@@ -77,11 +77,26 @@ def add_to_compare():
 
                 # ✅ Increment popularity count in database
                 try:
-                    from scripts.data.migrate_compare_counts import update_compare_count
-                    update_compare_count(normalized_bike_id)
-                    print(f"Updated compare count for bike {normalized_bike_id}")
+                    # First, get the bike to convert UUID/slug to numeric ID
+                    bike = db.session.query(Bike).filter(
+                        (Bike.uuid == normalized_bike_id) | (Bike.slug == normalized_bike_id)
+                    ).first()
+                    
+                    if bike:
+                        # Find or create CompareCount record using numeric bike.id
+                        compare_count = db.session.query(CompareCount).filter_by(bike_id=bike.id).first()
+                        if compare_count:
+                            compare_count.count += 1
+                        else:
+                            compare_count = CompareCount(bike_id=bike.id, count=1)
+                            db.session.add(compare_count)
+                        db.session.commit()
+                        print(f"Updated compare count for bike {normalized_bike_id} (numeric ID: {bike.id}, count: {compare_count.count})")
+                    else:
+                        print(f"Bike not found for UUID/slug: {normalized_bike_id}")
                 except Exception as e:
-                    print("Error updating compare counts:", e)
+                    print(f"Error updating compare counts: {e}")
+                    db.session.rollback()
 
                 return jsonify({'success': True, 'compare_list': compare_list})
             else:
@@ -286,12 +301,14 @@ def clear_compare():
 def compare_ai_from_session():
     try:
         compare_list = get_compare_list()
+        print(f"DEBUG: compare_list from session: {compare_list}, length: {len(compare_list)}")
         
         if len(compare_list) < 2:
             return jsonify({"error": "צריך לבחור לפחות שני דגמים להשוואה."}), 400
 
         # Optimized: Only load bikes that are being compared (not all bikes!)
         bikes_to_compare = get_bikes_by_uuids(compare_list)
+        print(f"DEBUG: Found {len(bikes_to_compare)} bikes from {len(compare_list)} IDs")
         
         if len(bikes_to_compare) < 2:
             return jsonify({"error": "לא נמצאו מספיק דגמים להשוואה. נסה לבחור דגמים אחרים."}), 400

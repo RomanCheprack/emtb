@@ -1,2 +1,2 @@
 # Routes package
-from . import main, bikes, blog, compare, api, debug, admin
+from . import main, bikes, blog, compare, api, debug, admin, guides

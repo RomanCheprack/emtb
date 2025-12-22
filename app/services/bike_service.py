@@ -6,6 +6,7 @@ Provides backward compatibility with the old flat structure.
 from app.extensions import cache, db
 from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecStd, BikeImage
 from app.utils.helpers import clean_bike_data_for_json
+from sqlalchemy import or_
 import json
 
 
@@ -139,14 +140,16 @@ def get_bike_by_uuid(uuid):
 
 
 def get_bikes_by_uuids(uuids):
-    """Get multiple bikes by their UUIDs"""
+    """Get multiple bikes by their UUIDs or slugs"""
     try:
         bikes = Bike.query.options(
             db.joinedload(Bike.brand),
             db.joinedload(Bike.listings).joinedload(BikeListing.prices),
             db.joinedload(Bike.standardized_specs),
             db.joinedload(Bike.images)
-        ).filter(Bike.uuid.in_(uuids)).all()
+        ).filter(
+            or_(Bike.uuid.in_(uuids), Bike.slug.in_(uuids))
+        ).all()
         return [bike.to_dict() for bike in bikes]
     except Exception as e:
         print(f"Error loading bikes: {e}")

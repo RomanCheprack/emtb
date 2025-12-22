@@ -5,9 +5,33 @@ class Config:
     """Base configuration class"""
     
     # Flask settings
-    SECRET_KEY = os.getenv('FLASK_SECRET_KEY') or os.urandom(24)
+    # IMPORTANT: SECRET_KEY must be stable across restarts, otherwise sessions will be invalidated
+    # Set FLASK_SECRET_KEY in your .env file or environment variables
+    SECRET_KEY = os.getenv('FLASK_SECRET_KEY')
+    if not SECRET_KEY:
+        # Fallback: try to read from a file, or generate and warn
+        secret_file = os.path.join(os.path.dirname(__file__), '..', '.secret_key')
+        if os.path.exists(secret_file):
+            with open(secret_file, 'r') as f:
+                SECRET_KEY = f.read().strip()
+        else:
+            # Generate a new key and save it
+            import secrets
+            SECRET_KEY = secrets.token_urlsafe(32)
+            try:
+                with open(secret_file, 'w') as f:
+                    f.write(SECRET_KEY)
+            except:
+                pass  # If we can't write, continue with generated key
+    
     DEBUG = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
     PERMANENT_SESSION_LIFETIME = timedelta(hours=24)  # Admin session expires after 24 hours
+    
+    # Session cookie settings
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    SESSION_REFRESH_EACH_REQUEST = False  # Don't refresh session on each request (prevents premature expiration)
     
     # Version for cache busting
     VERSION = os.getenv('APP_VERSION', '1.0.0')

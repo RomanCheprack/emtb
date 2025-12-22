@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>מדריכים - טיפים והנחיות | Rideal</title>
+{% endblock %}
+
+{% block meta %}
+{% set guides_url = url_for('guides.guides_list', _external=True) %}
+{% set meta_description = 'מדריכים מקצועיים בעברית - טיפים, הנחיות ומידע מפורט על אופניים, רכיבה ותחזוקה.' %}
+
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ guides_url }}">
+
+<!-- Open Graph / Facebook / WhatsApp / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ guides_url }}">
+<meta property="og:title" content="מדריכים - טיפים והנחיות | Rideal">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ guides_url }}">
+<meta name="twitter:title" content="מדריכים - טיפים והנחיות | Rideal">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/rideal_logo_bg.png', _external=True) }}">
+
+<!-- Inter Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Guides Page Styles -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/guides.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="guides-page" dir="rtl">
+    <div class="guides-container">
+        <!-- Section Header -->
+        <header class="guides-header">
+            <span class="guides-eyebrow">מרכז הידע</span>
+            <h1 class="guides-title">מדריכים</h1>
+        </header>
+        
+        {% if guides %}
+        <div class="guides-grid">
+            <!-- Featured Card (Left Column - 7 cols in RTL appears on right) -->
+            {% if guides|length > 0 %}
+            <article class="featured-card">
+                <a href="{{ url_for('guides.guide_detail', slug=guides[0].slug) }}" class="featured-card-link">
+                    <div class="featured-image-wrapper">
+                        {% if guides[0].hero_image %}
+                        <img src="{{ guides[0].hero_image }}" alt="{{ guides[0].title }}" class="featured-image" loading="lazy">
+                        {% else %}
+                        <div class="featured-image-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                                <circle cx="12" cy="13" r="3"/>
+                            </svg>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="featured-content">
+                        <h2 class="featured-title">{{ guides[0].title }}</h2>
+                        <div class="featured-meta">
+                            {% if guides[0].seo_description and guides[0].seo_description != 'None' %}
+                            <p class="featured-description">{{ guides[0].seo_description[:120] }}{% if guides[0].seo_description|length > 120 %}...{% endif %}</p>
+                            {% endif %}
+                            <span class="guide-tag">מדריך</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endif %}
+
+            <!-- Stacked List (Right Column - 5 cols) -->
+            {% if guides|length > 1 %}
+            <div class="guides-list">
+                {% for guide in guides[1:6] %}
+                <article class="list-card">
+                    <a href="{{ url_for('guides.guide_detail', slug=guide.slug) }}" class="list-card-link">
+                        <div class="list-thumbnail-wrapper">
+                            {% if guide.hero_image %}
+                            <img src="{{ guide.hero_image }}" alt="{{ guide.title }}" class="list-thumbnail" loading="lazy">
+                            {% else %}
+                            <div class="list-thumbnail-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                                    <circle cx="12" cy="13" r="3"/>
+                                </svg>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="list-text-block">
+                            <h3 class="list-title">{{ guide.title }}</h3>
+                            {% if guide.seo_description and guide.seo_description != 'None' %}
+                            <p class="list-description">{{ guide.seo_description[:80] }}{% if guide.seo_description|length > 80 %}...{% endif %}</p>
+                            {% endif %}
+                            <span class="guide-tag">מדריך</span>
+                        </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Additional Guides Grid (if more than 6 guides) -->
+        {% if guides|length > 6 %}
+        <div class="additional-guides">
+            <h2 class="section-subtitle">עוד מדריכים</h2>
+            <div class="additional-grid">
+                {% for guide in guides[6:] %}
+                <article class="grid-card">
+                    <a href="{{ url_for('guides.guide_detail', slug=guide.slug) }}" class="grid-card-link">
+                        <div class="grid-image-wrapper">
+                            {% if guide.hero_image %}
+                            <img src="{{ guide.hero_image }}" alt="{{ guide.title }}" class="grid-image" loading="lazy">
+                            {% else %}
+                            <div class="grid-image-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                                    <circle cx="12" cy="13" r="3"/>
+                                </svg>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="grid-content">
+                            <h3 class="grid-title">{{ guide.title }}</h3>
+                            {% if guide.seo_description and guide.seo_description != 'None' %}
+                            <p class="grid-description">{{ guide.seo_description[:100] }}{% if guide.seo_description|length > 100 %}...{% endif %}</p>
+                            {% endif %}
+                            <span class="guide-tag">מדריך</span>
+                        </div>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <!-- Empty State -->
+        <div class="empty-state">
+            <div class="empty-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    <line x1="12" y1="6" x2="12" y2="10"/>
+                    <line x1="12" y1="14" x2="12.01" y2="14"/>
+                </svg>
+            </div>
+            <h2 class="empty-title">אין מדריכים זמינים כרגע</h2>
+            <p class="empty-description">מדריכים חדשים יתווספו בקרוב. חזרו לבדוק שוב!</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

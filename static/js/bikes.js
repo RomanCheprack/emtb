@@ -29,8 +29,13 @@ function formatNumberWithCommas(value) {
 function adaptBikeData(bike) {
     // Check if already in new format (has 'brand' instead of 'firm')
     if (bike.brand !== undefined && bike.listing !== undefined) {
-        // New format - already normalized
-        return bike;
+        // New format - already normalized, but ensure required properties exist
+        return {
+            ...bike,
+            listing: bike.listing || { product_url: null, price: null, original_price: null },
+            specs: bike.specs || {},
+            images: bike.images || []
+        };
     }
     
     // Old format - convert to new format structure for internal use
@@ -1019,7 +1024,18 @@ function showBikeDetailsModal(bike) {
         ];
         
         // Get gallery images from adapted bike (already an array)
-        let galleryImages = adaptedBike.images || [];
+        // Handle both array format and ensure it's always an array
+        let galleryImages = [];
+        if (Array.isArray(adaptedBike.images)) {
+            galleryImages = adaptedBike.images;
+        } else if (adaptedBike.images && typeof adaptedBike.images === 'string') {
+            try {
+                galleryImages = JSON.parse(adaptedBike.images);
+            } catch (e) {
+                console.warn('Failed to parse gallery images:', e);
+                galleryImages = [];
+            }
+        }
         
         // Gallery images ready
         
@@ -1027,7 +1043,7 @@ function showBikeDetailsModal(bike) {
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-image-container">
-                        <img src="${adaptedBike.image_url || ''}" class="img-fluid main-bike-image" alt="${adaptedBike.model || 'Bike'}" id="main-bike-image" onclick="openImageZoom('${adaptedBike.image_url || ''}', '${adaptedBike.model || 'Bike'}')" loading="lazy" referrerpolicy="no-referrer">
+                        <img src="${adaptedBike.image_url || ''}" class="img-fluid main-bike-image" alt="${(adaptedBike.model || 'Bike').replace(/"/g, '&quot;')}" id="main-bike-image" onclick="openImageZoom(${JSON.stringify(adaptedBike.image_url || '')}, ${JSON.stringify(adaptedBike.model || 'Bike')})" loading="lazy" referrerpolicy="no-referrer">
                         <div class="zoom-overlay">
                             <i class="fas fa-search-plus"></i>
                         </div>
@@ -1036,8 +1052,8 @@ function showBikeDetailsModal(bike) {
                     <div class="gallery-carousel mt-3">
                         <div class="gallery-scroll">
                             ${galleryImages.map((imgUrl, index) => `
-                                <div class="gallery-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
-                                    <img src="${imgUrl}" alt="${adaptedBike.model || 'Bike'} - תמונה ${index + 1}" class="img-fluid" loading="lazy">
+                                <div class="gallery-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage(${JSON.stringify(imgUrl)}, this)">
+                                    <img src="${imgUrl}" alt="${(adaptedBike.model || 'Bike').replace(/"/g, '&quot;')} - תמונה ${index + 1}" class="img-fluid" loading="lazy">
                                 </div>
                             `).join('')}
                         </div>
@@ -1045,7 +1061,7 @@ function showBikeDetailsModal(bike) {
                     ` : ''}
                 </div>
                 <div class="col-md-8">
-                    <table class="table table-striped">
+                    <table class="table table-striped" dir="rtl">
                         <tbody>
         `;
 
@@ -1060,17 +1076,18 @@ function showBikeDetailsModal(bike) {
                 value = adaptedBike[key];
             } else if (key === 'price') {
                 // Price from listing
-                value = adaptedBike.listing.original_price;
+                value = adaptedBike.listing?.original_price;
             } else if (key === 'disc_price') {
                 // Discounted price from listing
-                value = adaptedBike.listing.price;
+                value = adaptedBike.listing?.price;
             } else {
                 // Everything else is in specs
-                value = adaptedBike.specs[key];
+                value = adaptedBike.specs?.[key];
             }
             
             // Check if there's a discount
-            const hasDiscount = adaptedBike.listing.price !== adaptedBike.listing.original_price && 
+            const hasDiscount = adaptedBike.listing && 
+                               adaptedBike.listing.price !== adaptedBike.listing.original_price && 
                                adaptedBike.listing.price !== null && 
                                adaptedBike.listing.price !== undefined &&
                                adaptedBike.listing.price !== '';
@@ -1106,22 +1123,22 @@ function showBikeDetailsModal(bike) {
             // Apply styling based on field type and discount status
             let cellStyle = 'text-align: left;';
             if (key === 'price' && hasDiscount) {
-                // Original price with strikethrough when there's a discount
-                cellStyle += ' text-decoration: line-through; color: #888;';
+                // Original price with strikethrough when there's a discount - right aligned
+                cellStyle = 'text-align: right; text-decoration: line-through; color: #888;';
             } else if (key === 'disc_price') {
-                // Discounted price in red
-                cellStyle += ' color: #d32f2f; font-weight: bold;';
+                // Discounted price in red - right aligned
+                cellStyle = 'text-align: right; color: #d32f2f; font-weight: bold;';
             }
             
             if (isLongValue) {
                 const shortValue = value.substring(0, 100) + '...';
-                html += `<tr><td style="${cellStyle}">
+                html += `<tr><th style="width:40%; text-align: right;">${translatedKey}</th><td style="${cellStyle}">
                     <span class="cell-short">${shortValue}</span>
                     <span class="cell-full" style="display: none;">${value}</span>
                     <button class="show-more-btn" onclick="toggleValue(this)">הצג עוד</button>
-                </td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                </td></tr>`;
             } else {
-                html += `<tr><td style="${cellStyle}">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                html += `<tr><th style="width:40%; text-align: right;">${translatedKey}</th><td style="${cellStyle}">${value}</td></tr>`;
             }
         });
         
@@ -1133,7 +1150,7 @@ function showBikeDetailsModal(bike) {
                     return;
                 }
                 
-                const value = adaptedBike.specs[key];
+                const value = adaptedBike.specs?.[key];
                 
                 // Skip if value is undefined, null, or empty
                 if (value === undefined || value === null || value === '') {
@@ -1148,13 +1165,13 @@ function showBikeDetailsModal(bike) {
                 
                 if (isLongValue) {
                     const shortValue = value.substring(0, 100) + '...';
-                    html += `<tr><td style="text-align: left;">
+                    html += `<tr><th style="width:40%; text-align: right;">${translatedKey}</th><td style="text-align: left;">
                         <span class="cell-short">${shortValue}</span>
                         <span class="cell-full" style="display: none;">${value}</span>
                         <button class="show-more-btn" onclick="toggleValue(this)">הצג עוד</button>
-                    </td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                    </td></tr>`;
                 } else {
-                    html += `<tr><td style="text-align: left;">${value}</td><th style="width:40%; text-align: right;">${translatedKey}</th></tr>`;
+                    html += `<tr><th style="width:40%; text-align: right;">${translatedKey}</th><td style="text-align: left;">${value}</td></tr>`;
                 }
             });
         }
@@ -1164,7 +1181,7 @@ function showBikeDetailsModal(bike) {
                     </table>
                 </div>
                 <div class="mt-3">
-                    ${adaptedBike.listing.product_url ? `<a href="${adaptedBike.listing.product_url}" class="btn btn-info" target="_blank">לרכישה</a>` : ''}
+                    ${adaptedBike.listing?.product_url ? `<a href="${adaptedBike.listing.product_url}" class="btn btn-info" target="_blank">לרכישה</a>` : ''}
                 </div>
             </div>
         </div>

@@ -287,6 +287,9 @@ section {
     font-weight: bold;
     font-size: 18px;
     margin: 10px 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
 }
 
 .card-img-container {
