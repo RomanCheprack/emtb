@@ -14,9 +14,7 @@ def create_app(config_name=None):
     load_dotenv(override=True)
     
     # Create Flask app
-    app = Flask(__name__, 
-                template_folder='../templates',
-                static_folder='../static')
+    app = Flask(__name__)
     
     # Configure app based on environment
     if config_name is None:
