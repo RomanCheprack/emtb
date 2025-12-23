@@ -38,7 +38,7 @@
                 
                 <div class="mb-3">
                     <label for="slug" class="form-label">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" value="{{ post.slug if post else '' }}" pattern="[a-zA-Z0-9-]+">
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ post.slug if post else '' }}" pattern="[-a-zA-Z0-9]+">
                     <small class="form-text text-muted">URL-friendly slug (אנגלית בלבד, אותיות, מספרים ומקפים). אם לא תזין, יווצר אוטומטית מהכותרת.</small>
                 </div>
                 
@@ -90,7 +90,7 @@
                             המר קובץ Word ל-HTML
                         </button>
                     </div>
-                    <textarea class="form-control" id="content" name="content" required>{{ post.content if post else '' }}</textarea>
+                    <textarea class="form-control" id="content" name="content">{{ post.content if post else '' }}</textarea>
                     <small class="form-text text-muted">עורך טקסט עשיר - ניתן להוסיף תמונות, לעצב טקסט, להוסיף טבלאות ועוד</small>
                 </div>
                 
