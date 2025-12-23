@@ -32,7 +32,7 @@
                 
                 <div class="mb-3">
                     <label for="slug" class="form-label">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" value="{{ guide.slug if guide else '' }}" pattern="[a-zA-Z0-9-]+">
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ guide.slug if guide else '' }}" pattern="[-a-zA-Z0-9]+">
                     <small class="form-text text-muted">URL-friendly slug (אנגלית בלבד, אותיות, מספרים ומקפים). אם לא תזין, יווצר אוטומטית מהכותרת.</small>
                 </div>
                 
@@ -84,7 +84,7 @@
                             המר קובץ Word ל-HTML
                         </button>
                     </div>
-                    <textarea class="form-control" id="content" name="content" required>{{ guide.content if guide else '' }}</textarea>
+                    <textarea class="form-control" id="content" name="content">{{ guide.content if guide else '' }}</textarea>
                     <small class="form-text text-muted">עורך טקסט עשיר - ניתן להוסיף תמונות, לעצב טקסט, להוסיף טבלאות ועוד</small>
                 </div>
                 
@@ -279,6 +279,8 @@ if (docxFileInput && uploadDocxBtn) {
 const form = document.querySelector('form');
 if (form) {
     form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Always prevent default first, we'll submit manually if validation passes
+        
         console.log('Form submit event triggered');
         
         // Sync TinyMCE content to textarea before form submission
@@ -299,12 +301,16 @@ if (form) {
         
         if (!contentValue || contentWithoutHtml === '') {
             console.error('Content validation failed: content is empty');
-            e.preventDefault();
             alert('אנא הזן תוכן למדריך. שדה התוכן הוא חובה.');
             if (editor) {
                 editor.focus();
             } else if (contentTextarea) {
+                // Temporarily show textarea for focus
+                contentTextarea.style.display = 'block';
                 contentTextarea.focus();
+                setTimeout(() => {
+                    contentTextarea.style.display = 'none';
+                }, 100);
             }
             return false;
         }
@@ -313,7 +319,6 @@ if (form) {
         const titleInput = document.getElementById('title');
         if (!titleInput || !titleInput.value.trim()) {
             console.error('Title validation failed: title is empty');
-            e.preventDefault();
             alert('אנא הזן כותרת למדריך. שדה הכותרת הוא חובה.');
             if (titleInput) {
                 titleInput.focus();
@@ -325,14 +330,13 @@ if (form) {
         const csrfToken = document.querySelector('input[name="csrf_token"]');
         if (!csrfToken || !csrfToken.value) {
             console.error('CSRF token validation failed: token is missing');
-            e.preventDefault();
             alert('שגיאה: אסימון אבטחה חסר. אנא רענן את הדף ונסה שוב.');
             return false;
         }
         
         console.log('Form validation passed, submitting form');
-        // If all validations pass, allow form to submit normally
-        return true;
+        // If all validations pass, submit the form manually
+        form.submit();
     });
 } else {
     console.error('Form not found in DOM');
