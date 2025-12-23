@@ -66,19 +66,31 @@ def logout():
 def dashboard():
     """Admin dashboard showing all leads"""
     # Get availability leads
-    availability_leads = db.session.query(AvailabilityLead).order_by(
-        AvailabilityLead.created_at.desc()
-    ).all()
+    try:
+        availability_leads = db.session.query(AvailabilityLead).order_by(
+            AvailabilityLead.created_at.desc()
+        ).all()
+    except Exception as e:
+        current_app.logger.error(f"Error loading availability leads: {e}")
+        availability_leads = []
     
     # Get contact leads
-    contact_leads = db.session.query(ContactLead).order_by(
-        ContactLead.created_at.desc()
-    ).all()
+    try:
+        contact_leads = db.session.query(ContactLead).order_by(
+            ContactLead.created_at.desc()
+        ).all()
+    except Exception as e:
+        current_app.logger.error(f"Error loading contact leads: {e}")
+        contact_leads = []
     
     # Get store request leads
-    store_request_leads = db.session.query(StoreRequestLead).order_by(
-        StoreRequestLead.created_at.desc()
-    ).all()
+    try:
+        store_request_leads = db.session.query(StoreRequestLead).order_by(
+            StoreRequestLead.created_at.desc()
+        ).all()
+    except Exception as e:
+        current_app.logger.error(f"Error loading store request leads: {e}")
+        store_request_leads = []
     
     return render_template('admin/dashboard.html', 
                          availability_leads=availability_leads,
