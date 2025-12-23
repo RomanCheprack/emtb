@@ -274,6 +274,69 @@ if (docxFileInput && uploadDocxBtn) {
         });
     });
 }
+
+// Handle form submission - sync TinyMCE content before submitting
+const form = document.querySelector('form');
+if (form) {
+    form.addEventListener('submit', function(e) {
+        console.log('Form submit event triggered');
+        
+        // Sync TinyMCE content to textarea before form submission
+        const editor = tinymce.get('content');
+        if (editor) {
+            console.log('Syncing TinyMCE content to textarea');
+            editor.save(); // This syncs the editor content to the textarea
+        } else {
+            console.warn('TinyMCE editor not found');
+        }
+        
+        // Validate that content is not empty (after syncing)
+        const contentTextarea = document.getElementById('content');
+        const contentValue = contentTextarea ? contentTextarea.value.trim() : '';
+        
+        // Check if content is empty or just contains whitespace/HTML tags
+        const contentWithoutHtml = contentValue.replace(/<[^>]*>/g, '').trim();
+        
+        if (!contentValue || contentWithoutHtml === '') {
+            console.error('Content validation failed: content is empty');
+            e.preventDefault();
+            alert('אנא הזן תוכן למדריך. שדה התוכן הוא חובה.');
+            if (editor) {
+                editor.focus();
+            } else if (contentTextarea) {
+                contentTextarea.focus();
+            }
+            return false;
+        }
+        
+        // Validate title
+        const titleInput = document.getElementById('title');
+        if (!titleInput || !titleInput.value.trim()) {
+            console.error('Title validation failed: title is empty');
+            e.preventDefault();
+            alert('אנא הזן כותרת למדריך. שדה הכותרת הוא חובה.');
+            if (titleInput) {
+                titleInput.focus();
+            }
+            return false;
+        }
+        
+        // Check CSRF token
+        const csrfToken = document.querySelector('input[name="csrf_token"]');
+        if (!csrfToken || !csrfToken.value) {
+            console.error('CSRF token validation failed: token is missing');
+            e.preventDefault();
+            alert('שגיאה: אסימון אבטחה חסר. אנא רענן את הדף ונסה שוב.');
+            return false;
+        }
+        
+        console.log('Form validation passed, submitting form');
+        // If all validations pass, allow form to submit normally
+        return true;
+    });
+} else {
+    console.error('Form not found in DOM');
+}
 </script>
 
 <style>
