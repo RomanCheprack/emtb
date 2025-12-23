@@ -3,7 +3,7 @@ from functools import wraps
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 from app.extensions import db
-from app.models import AvailabilityLead, ContactLead, Guide, BlogPost
+from app.models import AvailabilityLead, ContactLead, StoreRequestLead, Guide, BlogPost
 from app.utils.helpers import generate_slug_from_title
 from datetime import datetime
 import os
@@ -75,9 +75,15 @@ def dashboard():
         ContactLead.created_at.desc()
     ).all()
     
+    # Get store request leads
+    store_request_leads = db.session.query(StoreRequestLead).order_by(
+        StoreRequestLead.created_at.desc()
+    ).all()
+    
     return render_template('admin/dashboard.html', 
                          availability_leads=availability_leads,
-                         contact_leads=contact_leads)
+                         contact_leads=contact_leads,
+                         store_request_leads=store_request_leads)
 
 
 @bp.route('/availability-leads')
@@ -100,6 +106,17 @@ def contact_leads():
     ).all()
     
     return render_template('admin/contact_leads.html', leads=leads)
+
+
+@bp.route('/store-request-leads')
+@login_required
+def store_request_leads():
+    """View all store request leads"""
+    leads = db.session.query(StoreRequestLead).order_by(
+        StoreRequestLead.created_at.desc()
+    ).all()
+    
+    return render_template('admin/store_request_leads.html', leads=leads)
 
 
 # ---------------------------

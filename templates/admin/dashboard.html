@@ -104,6 +104,52 @@
             </div>
         </div>
     </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h3>🏪 לידים - מציאת חנות</h3>
+                    <span class="badge bg-light text-dark">{{ store_request_leads|length }} לידים</span>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>תאריך</th>
+                                <th>שם</th>
+                                <th>טלפון</th>
+                                <th>עיר</th>
+                                <th>דגם</th>
+                                <th>הערות/שאלות</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lead in store_request_leads[:10] %}
+                            <tr>
+                                <td>{{ lead.created_at.strftime('%d/%m/%Y %H:%M') if lead.created_at else 'N/A' }}</td>
+                                <td>{{ lead.name }}</td>
+                                <td>{{ lead.phone }}</td>
+                                <td>{{ lead.city }}</td>
+                                <td>{{ lead.bike_model[:30] + '...' if lead.bike_model and lead.bike_model|length > 30 else (lead.bike_model or 'N/A') }}</td>
+                                <td>{{ (lead.remarks[:30] + '...' if lead.remarks and lead.remarks|length > 30 else (lead.remarks or 'N/A')) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if store_request_leads|length > 10 %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.store_request_leads') }}" class="btn btn-warning">צפה בכל הלידים ({{ store_request_leads|length }})</a>
+                    </div>
+                    {% elif store_request_leads|length > 0 %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.store_request_leads') }}" class="btn btn-warning">צפה בכל הלידים</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style>
