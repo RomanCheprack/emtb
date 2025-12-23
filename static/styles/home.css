@@ -167,91 +167,97 @@ section {
     display: block;
 }
 
-/* Carousel Styles */
-.carousel-container {
-    position: relative;
-    max-width: 1200px;
+/* Splide Carousel Styles */
+#popular-bikes-splide {
     margin: 0 auto;
+    max-width: 1200px;
+}
+
+#popular-bikes-splide .splide__track {
+    padding: 20px 0;
+}
+
+#popular-bikes-splide .splide__slide {
+    height: auto;
+}
+
+.bike-card-splide {
+    background: white;
+    border-radius: 8px;
     overflow: hidden;
-    padding: 0 60px;
-    min-height: 400px; /* Ensure container has height */
-    display: flex;
-    align-items: center;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    min-height: 400px; /* Ensure track has height */
-    width: 100%;
-    align-items: center;
-    gap: 0; /* Remove any default gap, we use margins */
-}
-
-.carousel-item {
-    width: calc(33.333% - 20px);
-    flex-shrink: 0;
-    margin: 0 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: auto;
-    justify-content: center;
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.bike-card-splide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Splide arrows customization - one on left, one on right */
+#popular-bikes-splide .splide__arrow {
     background: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 50%;
     width: 50px;
     height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
+    border-radius: 50%;
+    opacity: 1;
     transition: all 0.3s ease;
-    font-size: 1.2rem;
-    color: #333;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.carousel-button:hover {
+#popular-bikes-splide .splide__arrow:hover {
     background: rgba(255, 255, 255, 1);
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-button-prev {
+#popular-bikes-splide .splide__arrow--prev {
     left: -25px;
+    right: auto;
 }
 
-.carousel-button-next {
+#popular-bikes-splide .splide__arrow--next {
     right: -25px;
+    left: auto;
 }
 
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    gap: 10px;
+#popular-bikes-splide .splide__arrow svg {
+    fill: #333;
+    width: 20px;
+    height: 20px;
 }
 
-.carousel-dot {
+/* Flip both arrows to point outward */
+#popular-bikes-splide .splide__arrow--prev svg {
+    transform: scaleX(-1);
+}
+
+#popular-bikes-splide .splide__arrow--next svg {
+    transform: scaleX(1);
+}
+
+/* Splide pagination dots */
+#popular-bikes-splide .splide__pagination {
+    bottom: -40px;
+}
+
+#popular-bikes-splide .splide__pagination__page {
+    background: rgba(255, 255, 255, 0.5);
     width: 12px;
     height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
+    margin: 0 5px;
     transition: background 0.3s ease;
 }
 
-.carousel-dot.active {
+#popular-bikes-splide .splide__pagination__page.is-active {
     background: rgba(255, 255, 255, 1);
+    transform: scale(1.2);
 }
 
-.carousel-dot:hover {
+#popular-bikes-splide .splide__pagination__page:hover {
     background: rgba(255, 255, 255, 0.8);
 }
 
@@ -282,65 +288,106 @@ section {
     font-size: 25px;
 }
 
+.price-container {
+    margin: 10px 0;
+    text-align: center;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
 .price {
     color: #000000 !important;
     font-weight: bold;
     font-size: 18px;
-    margin: 10px 0;
+    margin: 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+}
+
+.price-discounted {
+    color: #dc143c !important;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 5px 0 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+}
+
+.price-original {
+    color: #999 !important;
+    font-weight: normal;
+    font-size: 16px;
+    text-decoration: line-through;
+    margin: 0;
     direction: ltr;
     unicode-bidi: embed;
     display: inline-block;
 }
 
 .card-img-container {
-    height: 200px;
+    height: 220px;
     overflow: hidden;
     border-radius: 8px 8px 0 0;
+    background: #f8f9fa;
 }
 
 .card-img-top {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s ease;
+    display: block;
 }
 
-.carousel-item:hover .card-img-top {
+.bike-card-splide:hover .card-img-top {
     transform: scale(1.05);
 }
 
-/* Responsive adjustments */
+.bike-card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.bike-card-buttons .btn {
+    width: 100%;
+    text-align: center;
+}
+
+.bike-card-buttons .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.bike-card-buttons .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    color: white;
+}
+
+/* Responsive adjustments for Splide */
 @media (max-width: 768px) {
-    .carousel-container {
-        max-width: 100%;
-        padding: 0 40px;
-        overflow: hidden;
-    }
-    
-    .carousel-item {
-        width: calc(100% - 20px);
-        margin: 0 10px;
-        min-width: 280px; /* Ensure minimum width for mobile */
-    }
-    
-    .carousel-button {
+    #popular-bikes-splide .splide__arrow {
         width: 40px;
         height: 40px;
-        font-size: 1rem;
     }
     
-    .carousel-button-prev {
+    #popular-bikes-splide .splide__arrow--prev {
         left: 0;
     }
     
-    .carousel-button-next {
+    #popular-bikes-splide .splide__arrow--next {
         right: 0;
     }
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-    .carousel-item {
-        width: calc(50% - 20px);
-        margin: 0 10px;
+    
+    #popular-bikes-splide .splide__arrow svg {
+        width: 16px;
+        height: 16px;
     }
 }

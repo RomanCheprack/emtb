@@ -241,11 +241,44 @@
 
 @media (min-width: 768px) {
     .hero-banner-container {
-        height: 500px;
+        height: 80vh;
+        min-height: 650px;
+        max-height: 950px;
     }
     
     .hero-banner-title {
         font-size: 2.5rem;
+    }
+    
+    .hero-banner-fallback-image {
+        object-fit: contain;
+        object-position: center center;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-banner-container {
+        height: 85vh;
+        min-height: 750px;
+        max-height: 1100px;
+    }
+    
+    .hero-banner-fallback-image {
+        object-fit: contain;
+        object-position: center center;
+    }
+}
+
+@media (min-width: 1440px) {
+    .hero-banner-container {
+        height: 90vh;
+        min-height: 850px;
+        max-height: 1300px;
+    }
+    
+    .hero-banner-fallback-image {
+        object-fit: contain;
+        object-position: center center;
     }
 }
 

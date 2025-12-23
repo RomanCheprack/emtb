@@ -188,42 +188,38 @@
         <div class="w3-container w3-content w3-padding-64" style="max-width:1200px">
             <h2 class="w3-wide w3-center popular">הפופולריים ביותר</h2>
             <p class="w3-opacity w3-center"><i>האופניים שרוכבים השוו הכי הרבה</i></p>
-            <div class="carousel-container">
-                <button class="carousel-button carousel-button-prev" onclick="moveCarousel(-1)">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                
-                <div class="carousel-track">
-                    {% for bike in top_bikes[:10] %}
-                    <div class="carousel-item">
-                        <div class="card-img-container">
-                            <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
-                        </div>
-                        <div class="w3-container bike-card" style="display: flex; flex-direction: column; align-items: center;">
-                            <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
-                            <p class="model-text">{{ bike['model'] }}</p>
-                            <p class="price">
-                                {% if bike['price'] | format_number == 'צור קשר' %}
-                                    {{ bike['price'] | format_number }}
-                                {% else %}
-                                    ₪{{ bike['price'] | format_number }}
-                                {% endif %}
-                            </p>
-                            <a href="{{ bike['product_url'] }}" target="_blank" class="btn btn-primary mb-3">לרכישה</a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                
-                <button class="carousel-button carousel-button-next" onclick="moveCarousel(1)">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
-            </div>
             
-            <div class="carousel-dots">
-                {% for bike in top_bikes[:10] %}
-                <span class="carousel-dot" data-slide="{{ loop.index0 }}"></span>
-                {% endfor %}
+            <div class="splide" id="popular-bikes-splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for bike in top_bikes[:10] %}
+                        <li class="splide__slide">
+                            <div class="bike-card-splide">
+                                <div class="card-img-container">
+                                    <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
+                                </div>
+                                <div class="w3-container bike-card" style="display: flex; flex-direction: column; align-items: center;">
+                                    <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
+                                    <p class="model-text">{{ bike['model'] }}</p>
+                                    <div class="price-container">
+                                        {% if bike.get('disc_price') and bike['disc_price'] not in [None, '', 'N/A', '#N/A'] %}
+                                            <p class="price-discounted">₪{{ bike['disc_price'] | format_number }}</p>
+                                            <p class="price-original">₪{{ bike['price'] | format_number }}</p>
+                                        {% elif bike['price'] and bike['price'] | format_number != 'צור קשר' %}
+                                            <p class="price">₪{{ bike['price'] | format_number }}</p>
+                                        {% else %}
+                                            <p class="price">{{ bike['price'] | format_number if bike['price'] else 'צור קשר' }}</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="bike-card-buttons">
+                                        <a href="{{ url_for('bikes.bike_detail', bike_id=bike['id']) }}" class="btn btn-primary mb-3">פרטים</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

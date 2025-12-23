@@ -1881,6 +1881,9 @@ function showBikeDetailsModal(bike) {
                 // Reset form and hide success message (but preserve bike model)
                 const form = document.getElementById('findStoreForm');
                 const successMessage = document.getElementById('find-store-success-message');
+                const modalBody = document.querySelector('#findStoreModal .modal-body');
+                const descriptiveParagraph = modalBody ? modalBody.querySelector('p') : null;
+                
                 if (form) {
                     // Store bike model values before reset
                     const savedBikeModel = modelInput ? modelInput.value : '';
@@ -1888,11 +1891,15 @@ function showBikeDetailsModal(bike) {
                     const savedBikeId = bikeIdInput ? bikeIdInput.value : '';
                     
                     form.reset();
+                    form.style.display = 'block';
                     
                     // Restore bike model values after reset
                     if (modelInput) modelInput.value = savedBikeModel;
                     if (modelDisplay) modelDisplay.value = savedBikeDisplay;
                     if (bikeIdInput) bikeIdInput.value = savedBikeId;
+                }
+                if (descriptiveParagraph) {
+                    descriptiveParagraph.style.display = 'block';
                 }
                 if (successMessage) successMessage.style.display = 'none';
             }
@@ -2081,10 +2088,18 @@ function showBikeDetailsModal(bike) {
                 throw new Error('Network response was not ok');
             })
             .then(data => {
-                // Hide form and show success message
+                // Hide form and descriptive paragraph, show success message
                 findStoreForm.style.display = 'none';
+                const modalBody = findStoreForm.closest('.modal-body');
+                const descriptiveParagraph = modalBody ? modalBody.querySelector('p') : null;
+                if (descriptiveParagraph) {
+                    descriptiveParagraph.style.display = 'none';
+                }
+                
                 const successMessage = document.getElementById('find-store-success-message');
                 if (successMessage) {
+                    // Ensure only the intended text is shown
+                    successMessage.textContent = 'תודה! החנות תיצור קשר בהקדם.';
                     successMessage.style.display = 'block';
                 }
                 
@@ -2096,6 +2111,9 @@ function showBikeDetailsModal(bike) {
                     // Reset form and show it again for next time
                     findStoreForm.reset();
                     findStoreForm.style.display = 'block';
+                    if (descriptiveParagraph) {
+                        descriptiveParagraph.style.display = 'block';
+                    }
                     if (successMessage) successMessage.style.display = 'none';
                 }, 2000);
             })
