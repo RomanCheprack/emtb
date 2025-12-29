@@ -102,9 +102,14 @@ def dashboard():
 @login_required
 def availability_leads():
     """View all availability leads"""
-    leads = db.session.query(AvailabilityLead).order_by(
-        AvailabilityLead.created_at.desc()
-    ).all()
+    try:
+        leads = db.session.query(AvailabilityLead).order_by(
+            AvailabilityLead.created_at.desc()
+        ).all()
+    except Exception as e:
+        current_app.logger.error(f"Error loading availability leads: {e}")
+        leads = []
+        flash(f'שגיאה בטעינת הלידים: {str(e)}', 'error')
     
     return render_template('admin/availability_leads.html', leads=leads)
 
@@ -113,9 +118,14 @@ def availability_leads():
 @login_required
 def contact_leads():
     """View all contact leads"""
-    leads = db.session.query(ContactLead).order_by(
-        ContactLead.created_at.desc()
-    ).all()
+    try:
+        leads = db.session.query(ContactLead).order_by(
+            ContactLead.created_at.desc()
+        ).all()
+    except Exception as e:
+        current_app.logger.error(f"Error loading contact leads: {e}")
+        leads = []
+        flash(f'שגיאה בטעינת הלידים: {str(e)}', 'error')
     
     return render_template('admin/contact_leads.html', leads=leads)
 
@@ -124,9 +134,14 @@ def contact_leads():
 @login_required
 def store_request_leads():
     """View all store request leads"""
-    leads = db.session.query(StoreRequestLead).order_by(
-        StoreRequestLead.created_at.desc()
-    ).all()
+    try:
+        leads = db.session.query(StoreRequestLead).order_by(
+            StoreRequestLead.created_at.desc()
+        ).all()
+    except Exception as e:
+        current_app.logger.error(f"Error loading store request leads: {e}")
+        leads = []
+        flash(f'שגיאה בטעינת הלידים: {str(e)}', 'error')
     
     return render_template('admin/store_request_leads.html', leads=leads)
 
@@ -148,7 +163,7 @@ def availability_lead_delete(lead_id):
     return redirect(url_for('admin.availability_leads'))
 
 
-@bp.route('/store-request-leads/<int:lead_id>/delete', methods=['POST'])
+@bp.route('/store-request-leads/<int:lead_id>/delete', methods=['POST'], endpoint='store_request_lead_delete')
 @login_required
 def store_request_lead_delete(lead_id):
     """Delete store request lead"""
