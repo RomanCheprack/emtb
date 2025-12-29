@@ -131,6 +131,40 @@ def store_request_leads():
     return render_template('admin/store_request_leads.html', leads=leads)
 
 
+@bp.route('/availability-leads/<int:lead_id>/delete', methods=['POST'])
+@login_required
+def availability_lead_delete(lead_id):
+    """Delete availability lead"""
+    lead = db.session.query(AvailabilityLead).filter_by(id=lead_id).first_or_404()
+    
+    try:
+        db.session.delete(lead)
+        db.session.commit()
+        flash('הליד נמחק בהצלחה', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'שגיאה במחיקת הליד: {str(e)}', 'error')
+    
+    return redirect(url_for('admin.availability_leads'))
+
+
+@bp.route('/store-request-leads/<int:lead_id>/delete', methods=['POST'])
+@login_required
+def store_request_lead_delete(lead_id):
+    """Delete store request lead"""
+    lead = db.session.query(StoreRequestLead).filter_by(id=lead_id).first_or_404()
+    
+    try:
+        db.session.delete(lead)
+        db.session.commit()
+        flash('הליד נמחק בהצלחה', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'שגיאה במחיקת הליד: {str(e)}', 'error')
+    
+    return redirect(url_for('admin.store_request_leads'))
+
+
 # ---------------------------
 # Guides Routes
 # ---------------------------

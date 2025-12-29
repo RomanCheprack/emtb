@@ -448,7 +448,7 @@ def electric_subcategories():
     if electric_gravel_count > 0:
         subcategories.append({
             'slug': 'electric_gravel',
-            'name': 'אופני גרוול חשמליים',
+            'name': 'אופני גראבל חשמליים',
             'description': 'גמישות לכל שטח עם עזרה חשמלית',
             'image': 'images/blog/alps_man_walks_with_bike.jpg',
             'count': electric_gravel_count

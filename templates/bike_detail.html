@@ -282,6 +282,16 @@
         </div>
     </div>
     {% endif %}
+
+    <!-- Similar Bikes Carousel Section -->
+    <div class="row mt-5" id="similar-bikes-section" data-bike-id="{{ bike_id }}">
+        <div class="col-12">
+            <h2 class="section-title mb-4">אופניים דומים</h2>
+            <div id="similar-bikes-carousel">
+                <!-- Carousel will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -309,6 +319,9 @@ function zoomImage() {
     }
 }
 </script>
+
+<!-- Similar Bikes Carousel Script -->
+<script src="{{ url_for('static', filename='js/similar_bikes.js') }}"></script>
 
 {% endblock %}
 

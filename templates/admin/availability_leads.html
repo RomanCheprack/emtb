@@ -25,6 +25,7 @@
                             <th>דגם אופניים</th>
                             <th>יבואן</th>
                             <th>גובה מועדף</th>
+                            <th>פעולות</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,10 +38,16 @@
                             <td>{{ lead.bike_model or 'N/A' }}</td>
                             <td>{{ lead.importer or 'N/A' }}</td>
                             <td>{{ lead.preferred_size + ' ס"מ' if lead.preferred_size else 'N/A' }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('admin.availability_lead_delete', lead_id=lead.id) }}" style="display: inline;" onsubmit="return confirm('האם אתה בטוח שברצונך למחוק ליד זה?');">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                    <button type="submit" class="btn btn-sm btn-danger">מחק</button>
+                                </form>
+                            </td>
                         </tr>
                         {% else %}
                         <tr>
-                            <td colspan="7" class="text-center text-muted">אין לידים עדיין</td>
+                            <td colspan="8" class="text-center text-muted">אין לידים עדיין</td>
                         </tr>
                         {% endfor %}
                     </tbody>

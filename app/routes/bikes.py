@@ -440,3 +440,89 @@ def bike_detail(bike_id):
         import traceback
         traceback.print_exc()
         abort(500)
+
+@bp.route("/similar_bikes/<bike_id>")
+def similar_bikes(bike_id):
+    """Get similar bikes based on category and price range"""
+    try:
+        # Find the current bike
+        bike = db.session.query(Bike).options(
+            db.joinedload(Bike.brand),
+            db.joinedload(Bike.listings).joinedload(BikeListing.prices)
+        ).filter(
+            (Bike.slug == bike_id) | (Bike.uuid == bike_id)
+        ).first()
+        
+        if not bike:
+            return jsonify({'error': 'Bike not found'}), 404
+        
+        # Get current bike's price (prefer disc_price, fallback to original_price)
+        bike_dict = bike.to_dict(include_specs=False, include_prices=True, include_images=False, flat_format=True)
+        price_str = bike_dict.get('disc_price') or bike_dict.get('price')
+        current_price = parse_price(price_str)
+        
+        # Build query for similar bikes
+        similar_query = db.session.query(Bike).options(
+            db.joinedload(Bike.brand),
+            db.joinedload(Bike.listings).joinedload(BikeListing.prices),
+            db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs)
+        ).filter(
+            Bike.id != bike.id  # Exclude current bike
+        )
+        
+        # Filter by same category if available
+        if bike.category:
+            similar_query = similar_query.filter(Bike.category == bike.category)
+        
+        # Get all potential similar bikes
+        similar_bikes_list = similar_query.all()
+        
+        # Calculate price similarity and filter by price range (±50% of current price)
+        similar_bikes_with_scores = []
+        for similar_bike in similar_bikes_list:
+            similar_bike_dict = similar_bike.to_dict(include_specs=False, include_prices=True, include_images=False, flat_format=True)
+            similar_price_str = similar_bike_dict.get('disc_price') or similar_bike_dict.get('price')
+            similar_price = parse_price(similar_price_str)
+            
+            # Skip bikes without valid prices (if current bike has a price)
+            if current_price and (not similar_price or similar_price == 0):
+                continue
+            
+            # Filter by price range (±50% of current price)
+            if current_price:
+                min_price = current_price * 0.5
+                max_price = current_price * 1.5
+                if similar_price < min_price or similar_price > max_price:
+                    continue
+                
+                # Calculate price similarity score (lower is better)
+                price_diff = abs(similar_price - current_price)
+                price_similarity = price_diff / current_price if current_price > 0 else float('inf')
+            else:
+                # If current bike has no price, accept all bikes
+                price_similarity = 0
+            
+            # Also consider sub_category if available
+            sub_category_match = 1 if (bike.sub_category and similar_bike.sub_category == bike.sub_category) else 0
+            
+            # Calculate total similarity score (lower is better)
+            # Weight price similarity more heavily
+            similarity_score = price_similarity * 0.7 + (1 - sub_category_match) * 0.3
+            
+            similar_bikes_with_scores.append((similarity_score, similar_bike_dict))
+        
+        # Sort by similarity score and take top 15
+        similar_bikes_with_scores.sort(key=lambda x: x[0])
+        top_similar = [bike_dict for _, bike_dict in similar_bikes_with_scores[:15]]
+        
+        # Clean bike data for JSON
+        from app.utils.helpers import clean_bike_data_for_json
+        cleaned_similar = [clean_bike_data_for_json(b) for b in top_similar]
+        
+        return jsonify({'similar_bikes': cleaned_similar})
+        
+    except Exception as e:
+        print(f"Error in similar_bikes: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': 'Internal server error'}), 500

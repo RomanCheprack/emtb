@@ -185,8 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
     priceSlider.noUiSlider.on("update", (values) => {
         minPriceInput.value = values[0];
         maxPriceInput.value = values[1];
-        minPriceValue.textContent = values[0];
-        maxPriceValue.textContent = values[1];
+        // Swap display values for RTL: left handle (visually) updates left display, right handle (visually) updates right display
+        minPriceValue.textContent = values[1];
+        maxPriceValue.textContent = values[0];
     });
     
     // Only create battery slider if category is electric
@@ -254,8 +255,9 @@ document.addEventListener("DOMContentLoaded", () => {
             forkSlider.noUiSlider.on("update", (values) => {
                 minForkInput.value = values[0];
                 maxForkInput.value = values[1];
-                minForkValue.textContent = values[0];
-                maxForkValue.textContent = values[1];
+                // Swap display values for RTL: left handle (visually) updates left display, right handle (visually) updates right display
+                minForkValue.textContent = values[1];
+                maxForkValue.textContent = values[0];
             });
         }
     }

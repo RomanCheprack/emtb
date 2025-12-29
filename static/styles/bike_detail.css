@@ -353,3 +353,217 @@
     }
 }
 
+/* Similar Bikes Carousel Styles */
+#similar-bikes-splide {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+#similar-bikes-splide .splide__track {
+    padding: 20px 0;
+}
+
+#similar-bikes-splide .splide__slide {
+    height: auto;
+}
+
+#similar-bikes-section .bike-card-splide {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#similar-bikes-section .bike-card-splide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Splide arrows customization for similar bikes */
+#similar-bikes-splide .splide__arrow {
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 1;
+    transition: all 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#similar-bikes-splide .splide__arrow:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+#similar-bikes-splide .splide__arrow--prev {
+    left: -25px;
+    right: auto;
+}
+
+#similar-bikes-splide .splide__arrow--next {
+    right: -25px;
+    left: auto;
+}
+
+#similar-bikes-splide .splide__arrow svg {
+    fill: #333;
+    width: 20px;
+    height: 20px;
+}
+
+/* Flip both arrows to point outward */
+#similar-bikes-splide .splide__arrow--prev svg {
+    transform: scaleX(-1);
+}
+
+#similar-bikes-splide .splide__arrow--next svg {
+    transform: scaleX(1);
+}
+
+/* Splide pagination dots for similar bikes */
+#similar-bikes-splide .splide__pagination {
+    bottom: -40px;
+}
+
+#similar-bikes-splide .splide__pagination__page {
+    background: rgba(0, 0, 0, 0.3);
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    transition: background 0.3s ease;
+}
+
+#similar-bikes-splide .splide__pagination__page.is-active {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.2);
+}
+
+#similar-bikes-splide .splide__pagination__page:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#similar-bikes-section .bike-card {
+    border-radius: 8px;
+    box-shadow: none;
+    transition: none;
+    background: white !important;
+    color: black !important;
+    padding: 15px;
+    margin: 0;
+}
+
+#similar-bikes-section .model-text {
+    color: #666 !important;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+#similar-bikes-section .card-firm {
+    color: #333 !important;
+    margin: 10px 0 5px 0;
+    font-size: 25px;
+}
+
+#similar-bikes-section .price-container {
+    margin: 10px 0;
+    text-align: center;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+#similar-bikes-section .price {
+    color: #000000 !important;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+}
+
+#similar-bikes-section .price-discounted {
+    color: #dc143c !important;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 5px 0 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+}
+
+#similar-bikes-section .price-original {
+    color: #999 !important;
+    font-weight: normal;
+    font-size: 16px;
+    text-decoration: line-through;
+    margin: 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+}
+
+#similar-bikes-section .card-img-container {
+    height: 220px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    background: #f8f9fa;
+}
+
+#similar-bikes-section .card-img-container a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#similar-bikes-section .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+#similar-bikes-section .bike-card-splide:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+#similar-bikes-section .bike-card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+#similar-bikes-section .bike-card-buttons .btn {
+    width: 100%;
+    text-align: center;
+}
+
+/* Responsive adjustments for similar bikes carousel */
+@media (max-width: 768px) {
+    #similar-bikes-splide .splide__arrow {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #similar-bikes-splide .splide__arrow--prev {
+        left: 0;
+    }
+    
+    #similar-bikes-splide .splide__arrow--next {
+        right: 0;
+    }
+    
+    #similar-bikes-splide .splide__arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
