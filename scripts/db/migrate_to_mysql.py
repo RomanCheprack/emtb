@@ -270,6 +270,15 @@ def migrate_json_data(app):
         
         total_added = 0
         total_skipped = 0
+        skipped_reasons = {
+            'missing_model': 0,
+            'model_too_long': 0,
+            'empty_slug': 0,
+            'slug_too_long': 0,
+            'duplicate_in_file': 0,
+            'duplicate_in_db': 0,
+            'errors': 0
+        }
         
         for json_file in json_files:
             json_path = os.path.join(json_dir, json_file)
@@ -313,12 +322,14 @@ def migrate_json_data(app):
                         if not model or len(model) == 0:
                             print(f"   ⚠️  Skipping bike with missing model: {bike_data.get('source', {}).get('product_url', 'N/A')[:50]}...")
                             total_skipped += 1
+                            skipped_reasons['missing_model'] += 1
                             continue
                         
                         # Validate model length (max 255 chars)
                         if len(model) > 255:
                             print(f"   ⚠️  Skipping bike with model too long ({len(model)} chars): {model[:50]}...")
                             total_skipped += 1
+                            skipped_reasons['model_too_long'] += 1
                             continue
                         
                         # Get or create brand
@@ -334,12 +345,14 @@ def migrate_json_data(app):
                         if not slug:
                             print(f"   ⚠️  Skipping bike with empty slug: {brand.name if brand else 'Unknown'} {model}")
                             total_skipped += 1
+                            skipped_reasons['empty_slug'] += 1
                             continue
                         
                         # Validate slug length (max 255 chars)
                         if len(slug) > 255:
                             print(f"   ⚠️  Skipping bike with slug too long ({len(slug)} chars): {brand.name if brand else 'Unknown'} {model}")
                             total_skipped += 1
+                            skipped_reasons['slug_too_long'] += 1
                             continue
                         
                         # Track this slug as used
@@ -357,6 +370,7 @@ def migrate_json_data(app):
                             # This bike was already added in this file batch - skip it
                             print(f"   ⚠️  Skipping duplicate bike in file: {brand.name if brand else 'Unknown'} {model} ({year})")
                             total_skipped += 1
+                            skipped_reasons['duplicate_in_file'] += 1
                             continue
                         
                         existing_bike = None
@@ -407,6 +421,7 @@ def migrate_json_data(app):
                                         print(f"   ⚠️  No price found for existing bike {model}: original_price={bike_data.get('original_price')}, disc_price={bike_data.get('disc_price')}")
                             
                             total_skipped += 1
+                            skipped_reasons['duplicate_in_db'] += 1
                             continue
                         
                         # Extract image data (nested under 'images' key in standardized format)
@@ -543,6 +558,8 @@ def migrate_json_data(app):
                     except Exception as e:
                         print(f"   ⚠️  Error processing bike {bike_data.get('model', 'unknown')}: {e}")
                         db.session.rollback()  # Rollback failed bike to keep session clean
+                        total_skipped += 1
+                        skipped_reasons['errors'] += 1
                         continue
                 
                 # Commit after each file
@@ -561,8 +578,14 @@ def migrate_json_data(app):
         
         print(f"\n✅ JSON Migration Complete:")
         print(f"   Bikes added: {total_added}")
-        print(f"   Bikes skipped (duplicates): {total_skipped}")
-        print(f"   Listings created: {total_listings}")
+        print(f"   Bikes skipped (total): {total_skipped}")
+        if total_skipped > 0:
+            print(f"\n   Skip reasons breakdown:")
+            for reason, count in skipped_reasons.items():
+                if count > 0:
+                    reason_display = reason.replace('_', ' ').title()
+                    print(f"     - {reason_display}: {count}")
+        print(f"\n   Listings created: {total_listings}")
         print(f"   Prices created: {total_prices}")
         if total_listings > 0:
             print(f"   Price coverage: {(total_prices / total_listings * 100):.1f}% ({total_prices}/{total_listings} listings have prices)")
