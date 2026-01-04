@@ -1,40 +1,39 @@
 // Similar bikes carousel functionality
 // This file handles fetching and displaying similar bikes in a Splide carousel
 
-document.addEventListener('DOMContentLoaded', function() {
+// Function to start loading immediately if element exists, otherwise wait for DOM
+function initSimilarBikes() {
     // Get bike_id from the page (from the similar-bikes-section data attribute)
     const bikeIdElement = document.getElementById('similar-bikes-section');
     if (!bikeIdElement) {
-        console.warn('Similar bikes section not found, cannot load similar bikes');
         return;
     }
     
     const bikeId = bikeIdElement.getAttribute('data-bike-id');
     if (!bikeId) {
-        console.warn('Bike ID not found, cannot load similar bikes');
         return;
     }
     
+    // Show loading placeholder immediately
+    const carouselContainer = document.getElementById('similar-bikes-carousel');
+    if (carouselContainer) {
+        carouselContainer.innerHTML = '<div style="text-align: center; padding: 40px;"><div class="spinner-border text-danger" role="status"><span class="visually-hidden">טוען...</span></div></div>';
+    }
+    
     // Fetch similar bikes
-    console.log('Fetching similar bikes for bike_id:', bikeId);
     fetch(`/similar_bikes/${bikeId}`)
         .then(response => {
-            console.log('Response status:', response.status);
             if (!response.ok) {
                 return response.json().then(err => {
-                    console.error('API error:', err);
                     throw new Error(err.error || 'Failed to fetch similar bikes');
                 });
             }
             return response.json();
         })
         .then(data => {
-            console.log('Similar bikes data:', data);
             const similarBikes = data.similar_bikes || [];
-            console.log('Number of similar bikes:', similarBikes.length);
             if (similarBikes.length === 0) {
                 // Hide the carousel section if no similar bikes
-                console.log('No similar bikes found, hiding section');
                 const carouselSection = document.getElementById('similar-bikes-section');
                 if (carouselSection) {
                     carouselSection.style.display = 'none';
@@ -46,14 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
             renderSimilarBikesCarousel(similarBikes);
         })
         .catch(error => {
-            console.error('Error loading similar bikes:', error);
             // Don't hide the section on error - show error message instead
             const carouselContainer = document.getElementById('similar-bikes-carousel');
             if (carouselContainer) {
-                carouselContainer.innerHTML = '<p>שגיאה בטעינת אופניים דומים. אנא נסה שוב מאוחר יותר.</p>';
+                carouselContainer.innerHTML = '<p style="text-align: center; padding: 20px;">שגיאה בטעינת אופניים דומים. אנא נסה שוב מאוחר יותר.</p>';
             }
         });
-});
+}
+
+// Try to start immediately if DOM is ready, otherwise wait
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSimilarBikes);
+} else {
+    // DOM is already ready, start immediately
+    initSimilarBikes();
+}
 
 function renderSimilarBikesCarousel(bikes) {
     const carouselContainer = document.getElementById('similar-bikes-carousel');
@@ -103,7 +109,7 @@ function renderSimilarBikesCarousel(bikes) {
             <li class="splide__slide">
                 <div class="bike-card-splide">
                     <div class="card-img-container">
-                        <a href="/bikes/bike/${bikeId}">
+                        <a href="/bike/${bikeId}">
                             <img src="${imageUrl}" class="card-img-top" alt="${brand} ${model}" loading="lazy" referrerpolicy="no-referrer">
                         </a>
                     </div>
@@ -114,7 +120,7 @@ function renderSimilarBikesCarousel(bikes) {
                             ${priceHTML}
                         </div>
                         <div class="bike-card-buttons">
-                            <a href="/bikes/bike/${bikeId}" class="btn btn-primary mb-3">פרטים</a>
+                            <a href="/bike/${bikeId}" class="btn btn-primary mb-3">פרטים</a>
                         </div>
                     </div>
                 </div>
@@ -131,16 +137,8 @@ function renderSimilarBikesCarousel(bikes) {
     carouselContainer.innerHTML = carouselHTML;
     
     // Initialize Splide carousel
-    // Configuration matches user's specification:
-    // type: 'loop', drag: 'free', focus: 'center', perPage: 3, autoScroll: { speed: 1 }
     const splideElement = document.querySelector('#similar-bikes-splide');
-    if (!splideElement) {
-        console.error('Splide element #similar-bikes-splide not found');
-        return;
-    }
-    
-    if (typeof Splide === 'undefined') {
-        console.error('Splide library not found. Make sure Splide is loaded before this script.');
+    if (!splideElement || typeof Splide === 'undefined') {
         return;
     }
     
@@ -173,12 +171,10 @@ function renderSimilarBikesCarousel(bikes) {
             };
             const splide = new Splide('#similar-bikes-splide', splideConfig);
             splide.mount({ AutoScroll: window.AutoScroll });
-            console.log('Splide carousel initialized with AutoScroll');
         } else {
             // Initialize without AutoScroll (carousel will still work)
             const splide = new Splide('#similar-bikes-splide', splideConfig);
             splide.mount();
-            console.log('Splide carousel initialized without AutoScroll');
         }
     } catch (error) {
         console.error('Error initializing Splide carousel:', error);

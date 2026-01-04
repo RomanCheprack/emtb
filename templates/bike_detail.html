@@ -254,8 +254,8 @@
         <div class="col-12">
             <div class="description-section mb-4">
                 <h3 class="section-title">תיאור</h3>
-                <div class="description-content">
-                    {{ rewritten_description | replace('\n', '<br>') | safe }}
+                <div class="description-content" dir="rtl">
+                    {{ rewritten_description | replace('\n\n', '<br><br>') | replace('\n', '<br>') | safe }}
                 </div>
             </div>
         </div>

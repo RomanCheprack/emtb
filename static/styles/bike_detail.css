@@ -238,10 +238,42 @@
 }
 
 .description-content {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #4b5563;
-    white-space: pre-wrap;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #374151;
+    text-align: right;
+    direction: rtl;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+}
+
+.description-content p {
+    margin-bottom: 1.25rem;
+    text-align: right;
+    line-height: 1.9;
+    word-wrap: break-word;
+}
+
+.description-content p:last-child {
+    margin-bottom: 0;
+}
+
+.description-content strong,
+.description-content b {
+    font-weight: 700;
+    color: #1f2937;
+    letter-spacing: 0.02em;
+}
+
+.description-content br {
+    line-height: 1.9;
 }
 
 /* Specs Table */

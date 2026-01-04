@@ -511,9 +511,9 @@ def similar_bikes(bike_id):
             
             similar_bikes_with_scores.append((similarity_score, similar_bike_dict))
         
-        # Sort by similarity score and take top 15
+        # Sort by similarity score and take top 9 (optimized for carousel - 3 visible at a time)
         similar_bikes_with_scores.sort(key=lambda x: x[0])
-        top_similar = [bike_dict for _, bike_dict in similar_bikes_with_scores[:15]]
+        top_similar = [bike_dict for _, bike_dict in similar_bikes_with_scores[:9]]
         
         # Clean bike data for JSON
         from app.utils.helpers import clean_bike_data_for_json
