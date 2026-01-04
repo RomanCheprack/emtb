@@ -13,6 +13,20 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 from threading import Thread
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Import email notifier
+# Get project root (two levels up from scripts/scrapers/)
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+sys.path.insert(0, os.path.join(project_root, 'scripts', 'utils'))
+try:
+    from email_notifier import send_email  # type: ignore
+    EMAIL_AVAILABLE = True
+except ImportError:
+    EMAIL_AVAILABLE = False
 
 def stream_output(pipe, logger, prefix=""):
     """Stream output from a pipe in real-time, handling UTF-8 encoding"""
@@ -114,7 +128,7 @@ def run_scraper(scraper_path, output_dir, logger):
         # Wait for process to complete with periodic status updates and timeout
         last_status_time = time.time()
         status_interval = 300  # Print status every 5 minutes
-        timeout_seconds = 1800  # 30 minutes timeout
+        timeout_seconds = 10800  # 180 minutes timeout (increased from 120 minutes for large scrapers)
         
         while process.poll() is None:
             elapsed = time.time() - start_time
@@ -192,10 +206,10 @@ def run_scraper(scraper_path, output_dir, logger):
     except subprocess.TimeoutExpired:
         elapsed_time = time.time() - start_time
         elapsed_min = int(elapsed_time / 60)
-        print(f"\n⏰ {scraper_name} timed out after 30 minutes")
+        print(f"\n⏰ {scraper_name} timed out after 180 minutes")
         result_info["status"] = "timeout"
         result_info["elapsed_time"] = elapsed_time
-        result_info["error"] = "Timeout after 30 minutes"
+        result_info["error"] = "Timeout after 180 minutes"
         logger.error(f"{scraper_name} timed out after {elapsed_min} minutes")
     except Exception as e:
         elapsed_time = time.time() - start_time
@@ -320,6 +334,55 @@ def normalize_scraper_name(name):
     if name.endswith('.py'):
         name = name[:-3]
     return name.lower()
+
+def format_scraper_summary(results, duration_seconds, success_count, failed_count, timeout_count, error_count):
+    """Format scraper execution summary as email body"""
+    duration_min = int(duration_seconds / 60)
+    duration_sec = int(duration_seconds % 60)
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    total_count = len(results)
+    
+    body = f"""
+Scraper Execution Summary
+==========================
+Date: {timestamp}
+Duration: {duration_min}m {duration_sec}s
+Status: {success_count}/{total_count} successful
+
+Results:
+  ✅ Successful: {success_count}
+"""
+    
+    if failed_count > 0:
+        body += f"  ❌ Failed: {failed_count}\n"
+    if timeout_count > 0:
+        body += f"  ⏰ Timed out: {timeout_count}\n"
+    if error_count > 0:
+        body += f"  ⚠️  Errors: {error_count}\n"
+    
+    body += "\nDetailed Results:\n"
+    body += "-" * 80 + "\n"
+    
+    for result in results:
+        scraper_name = result["name"]
+        status_icon = {
+            "success": "✅",
+            "failed": "❌",
+            "timeout": "⏰",
+            "error": "⚠️"
+        }.get(result["status"], "❓")
+        
+        elapsed = result["elapsed_time"]
+        elapsed_str = f"{int(elapsed/60)}m {int(elapsed%60)}s" if elapsed > 0 else "N/A"
+        entry_count = result.get("entry_count", "N/A")
+        
+        body += f"{status_icon} {scraper_name:<25} {result['status']:<12} {elapsed_str:<15} {entry_count:<10}\n"
+        
+        if result.get("error"):
+            body += f"   └─ Error: {result['error']}\n"
+    
+    return body
 
 def main():
     """Run all scrapers"""
@@ -501,6 +564,18 @@ Examples:
     print(f"{'='*70}\n")
     
     logger.info(f"Orchestrator completed. Success: {success_count}/{len(results)}, Total time: {overall_elapsed_min}m {overall_elapsed_sec}s")
+    
+    # Send email notification
+    if EMAIL_AVAILABLE:
+        try:
+            email_body = format_scraper_summary(results, overall_elapsed, success_count, failed_count, timeout_count, error_count)
+            to_email = os.getenv('EMAIL_USER') or 'romancheprack@gmail.com'
+            status = "SUCCESS" if (failed_count == 0 and timeout_count == 0 and error_count == 0) else "PARTIAL"
+            subject = f"[eMTB Scrapers] Run {status} - {success_count}/{len(results)} successful"
+            send_email(to_email, subject, email_body)
+        except Exception as e:
+            print(f"\n⚠️  Warning: Could not send email notification: {e}")
+            logger.warning(f"Could not send email notification: {e}")
     
     # Exit with error code if any scrapers failed
     if failed_count > 0 or timeout_count > 0 or error_count > 0:

@@ -427,6 +427,12 @@ def electric_subcategories():
         Bike.sub_category == 'electric_gravel'
     ).count()
     
+    # Electric Road count
+    electric_road_count = db.session.query(Bike).filter(
+        Bike.category == 'electric',
+        Bike.sub_category == 'electric_road'
+    ).count()
+    
     subcategories = [
         {
             'slug': 'electric_mtb',
@@ -441,18 +447,22 @@ def electric_subcategories():
             'description': 'נסיעה נוחה בעיר עם סיוע חשמלי',
             'image': 'images/categories/electric_city_bike.jpg',
             'count': electric_city_count
-        }
-    ]
-    
-    # Only add gravel if there are bikes
-    if electric_gravel_count > 0:
-        subcategories.append({
+        },
+        {
             'slug': 'electric_gravel',
             'name': 'אופני גראבל חשמליים',
             'description': 'גמישות לכל שטח עם עזרה חשמלית',
-            'image': 'images/blog/alps_man_walks_with_bike.jpg',
+            'image': 'images/categories/gravel_rider.jpg',
             'count': electric_gravel_count
-        })
+        },
+        {
+            'slug': 'electric_road',
+            'name': 'אופני כביש חשמליים',
+            'description': 'מהירות וכוח על הכביש עם סיוע חשמלי',
+            'image': 'images/categories/road_rider.jpg',
+            'count': electric_road_count
+        }
+    ]
     
     return render_template("electric_subcategories.html", subcategories=subcategories)
 

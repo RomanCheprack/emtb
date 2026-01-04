@@ -45,7 +45,7 @@ RECYCLES_TARGET_URLS = [
     {"url": f"{BASE_URL}/אופני_כביש?סוג%20אופניים=261375&bsfilter-11634=261375", "category": "road", "sub_category": "road"},
     {"url": f"{BASE_URL}/אופני_כביש?סוג%20אופניים=261376&bsfilter-11634=261376", "category": "road", "sub_category": "timetrail"},
     {"url": f"{BASE_URL}/אופני_גראבל?סוג%20אופניים=261374&bsfilter-11634=261374", "category": "gravel", "sub_category": "gravel"},
-    {"url": f"{BASE_URL}/אופני_גראבל?סוג%20אופניים=504381&bsfilter-11634=504381", "category": "gravel", "sub_category": "electric_gravel"},
+    {"url": f"{BASE_URL}/אופני_גראבל?סוג%20אופניים=504381&bsfilter-11634=504381", "category": "electric", "sub_category": "electric_gravel"},
     {"url": f"{BASE_URL}/עירוני_חשמלי", "category": "electric", "sub_category": "electric_ city"},
     {"url": f"{BASE_URL}/אופני_עיר", "category": "city", "sub_category": "city"},
     {"url": f"{BASE_URL}/אופני_ילדים", "category": "kids", "sub_category": "kids"},

@@ -42,7 +42,8 @@ CHATGPT_API_KEY = os.getenv('SCRAPER_OPENAI_API_KEY', '')
 scraped_data = []
 
 PEDALIM_TARGET_URLS = [
-    {"url": f"{BASE_URL}/אופניים-חשמליים", "category": "electric", "sub_category": "electric_mtb"},
+    {"url": f"{BASE_URL}/אופניים-חשמליים?סוג%20אופניים=333012&bsfilter-13166=333012", "category": "electric", "sub_category": "electric_mtb"},
+    {"url": f"{BASE_URL}/אופניים-חשמליים?סוג%20אופניים=339479&bsfilter-13166=339479", "category": "electric", "sub_category": "electric_city"},
     {"url": f"{BASE_URL}/אופני-הרים?סוג%20אופניים=307444&bsfilter-13166=307444", "category": "mtb", "sub_category": "hardtail"},
     {"url": f"{BASE_URL}/אופני-הרים?סוג%20אופניים=306187&bsfilter-13166=306187", "category": "mtb", "sub_category": "full_suspension"},
     {"url": f"{BASE_URL}/אופני-הרים?סוג%20אופניים=310291&bsfilter-13166=310291", "category": "mtb", "sub_category": "tandem"},

@@ -40,6 +40,7 @@ MATZMAN_TARGET_URLS = [
     {"url": f"{BASE_URL}/city-bike", "category": "city", "sub_category": "city"},
     {"url": f"{BASE_URL}/folding-bicycle", "category": "city", "sub_category": "folding_city"},
     {"url": f"{BASE_URL}/gravel", "category": "gravel", "sub_category": "gravel"},
+    {"url": f"{BASE_URL}/electric-gravel", "category": "electric", "sub_category": "electric_gravel"},
     {"url": f"{BASE_URL}/road-bike", "category": "road", "sub_category": "road"},
     {"url": f"{BASE_URL}/kids-bike-bmx","category": "kids", "sub_category": "kids"},
     {"url": f"{BASE_URL}/triathlon-bike", "category": "road", "sub_category": "time_trial"},

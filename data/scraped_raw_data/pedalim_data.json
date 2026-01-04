@@ -3,11 +3,111 @@
         "source": {
             "importer": "Pedalim",
             "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/whyte-elyte-evo-stag-works"
+        },
+        "firm": "Whyte",
+        "model": "E-Lyte EVO STAG WORKS",
+        "year": "לא צויין",
+        "category": "electric",
+        "sub_category": "electric_mtb",
+        "original_price": 43990,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/ELyte_Evo_Stag_Works_-_Blurple_-_1.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/ELyte_Evo_Stag_Works_-_Blurple_-_1(1).webp",
+                "https://pedalim.co.il/Media/Uploads/ELyte_Evo_Stag_Works_-_Blurple_-_6.webp",
+                "https://pedalim.co.il/Media/Uploads/ELyte_Evo_Stag_Works_-_Blurple_-_8.webp",
+                "https://pedalim.co.il/Media/Uploads/ELyte_Evo_Stag_Works_-_Blurple_-_9.webp"
+            ]
+        },
+        "specs": {
+            "frame": "Uni-directional carbon mainframe, tapered head tube, ISCG 2 guide mounts, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+            "fork": "2026 Fox Float 36 Factory 29in, 150mm travel, 44mm offset, Grip X2 custom tuned damper, tapered steerer, 110m x 15mm Kabolt axle",
+            "rear_shock": "Fox Float X Factory Series, EVOL, lock out, 210mm x 50mm, custom tuned for Whyte",
+            "motor": "Bosch Performance Line CX (Smart System), 100Nm torque + 750W peak power + the all-new E-MTB+ mode. Features four power mode settings and eMTB+",
+            "battery": "Bosch Compact PowerTube 400Wh, Also comes with the external, removable 250Wh PowerMore range extender to deliver a combined 650Wh of battery capacity",
+            "shifters": "SRAM AXS Pod, right, MMX, 12 speed",
+            "front_derailleur": "N/A",
+            "rear_derailleur": "SRAM XO T-Type AXS, 12 speed, powered off Bosch CX Motor",
+            "crankset": "Hope E-Bike Cranks, 155mm length, Bosch mounting, 36T chainring T-type",
+            "bottom_bracket": "N/A",
+            "cassette": "SRAM XS 1295, T-Type, 10-52T, 12 speed",
+            "chain": "SRAM XO T-Type, 12 speed",
+            "brakes": "Hope EVO GR4, four piston hydraulic, 200mm diameter floating disc rotor",
+            "wheels": "DT HX531, 30mm Internal, 29\" F / 27.5\" R",
+            "tires": "Whyte Enduro lock-on",
+            "saddle": "Fizik Terra Aidon, 145mm wide, Wingflex, S-Alloy Mobius rail",
+            "seatpost": "Whyte drop.it II Adjust, 30.9mm, 140-170mm travel, MMX Paddle remote lever",
+            "handlebar": "Race Face ERA Carbon, 20mm rise, 35mm bar bore, 800mm wide",
+            "stem": "Whyte Trail full CNC, 32mm extension, 35mm bar bore",
+            "headset": "FSA No. 55R, 1-1/8in upper and 1.5in lower",
+            "pedals": "Fibre reinforced composite platform"
+        },
+        "rewritten_description": "**אופני שטח חשמליים Full-Power - חוויית רכיבה שאין כמותה!**\n\nהכירו את האופניים החשמליים שיגרמו לכם להתאהב מחדש ברכיבה בשטח! עם משקל קל של 20.8 ק\"ג ושלדת קרבון מתקדמת, אתם זוכים לשליטה מדויקת ולחוויית רכיבה מרגשת בכל שביל. המנוע המתקדם מבית Bosch, דור 5, מציע 100Nm ו-750W של כוח טהור, מה שמבטיח תאוצה חדה ותמיכה רציפה, גם כאשר אתם בוחרים את הקצב שלכם.\n\nעם סוללה פנימית של 400Wh וסוללה חיצונית נוספת של 250Wh מבית PowerMore, תוכלו לצאת לרכיבות ארוכות ולטפוס את האתגרים הטכניים ביותר ללא חשש. המתלים המתקדמים של Fox, יחד עם גלגלי DT בגודל 29/27.5 וצמיגי Maxxis, מבטיחים אחיזה מעולה ושליטה אולטרה מדויקת, כך שתהיו מוכנים לכל מצב בדרך.\n\nאל תפספסו את ההזדמנות לחוות רכיבה מהירה, זורמת ומהנה כמו שלא הייתה לכם מעולם! בחרו באופני השטח החשמליים Full-Power והפכו כל רכיבה למסע בלתי נשכח.",
+        "wh": 400,
+        "fork length": 150,
+        "style": "trail"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/whyte-elyte-evo-rs"
+        },
+        "firm": "Whyte",
+        "model": "E-Lyte EVO RS",
+        "year": "לא צויין",
+        "category": "electric",
+        "sub_category": "electric_mtb",
+        "original_price": 33990,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/Elyte_150_RS_-_Purple_and_Black_-_1.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/Elyte_150_RS_-_Purple_and_Black_-_1(1).webp",
+                "https://pedalim.co.il/Media/Uploads/Elyte_150_RS_-_Purple_and_Black_-_6.webp",
+                "https://pedalim.co.il/Media/Uploads/Elyte_150_RS_-_Purple_and_Black_-_8.webp",
+                "https://pedalim.co.il/Media/Uploads/Elyte_150_RS_-_Purple_and_Black_-_9.webp"
+            ]
+        },
+        "specs": {
+            "frame": "Uni-directional carbon mainframe, tapered head tube, ISCG 2 guide mounts, internal cable routing, Shape.it Link V2 and 12mm x 148mm Boost dropouts",
+            "fork": "RockShox Lyrik Select+, 150mm travel, DebonAir+, Charger 3.1 Damper, Fast Black coating, tapered steerer, 110 x 15mm Boost",
+            "rear_shock": "RockShox Deluxe Select + RT, DebonAir, adjustable rebound and two position compression adjustment, 210x 50mm, custom tuned for Whyte",
+            "motor": "Bosch Performance Line CX (Smart System), 100Nm torque + 750W peak power + the all-new E-MTB+ mode. Features four power mode settings and eMTB+",
+            "battery": "Bosch Compact PowerTube 400Wh, Also comes with the external, removable 250Wh PowerMore range extender to deliver a combined 650Wh of battery capacity",
+            "shifters": "SRAM Eagle 90 mechanical, 12 speed",
+            "front_derailleur": "N/A",
+            "rear_derailleur": "SRAM Eagle 90 T-Type Mechanical",
+            "crankset": "Whyte 155mm ISIS arms, SRAM Direct Mount 36T chainring, T-Type",
+            "bottom_bracket": "N/A",
+            "cassette": "SRAM XS 1270, T-Type, 10-52T, 12 speed",
+            "chain": "SRAM GX T-Type, 12 speed",
+            "brakes": "SRAM DB8, four piston hydraulic, 200mm diameter disc rotor",
+            "wheels": "WTB ST Tough 29\" (front), HTZ Trail 27.5\" (rear), 30mm internal width",
+            "tires": "Maxxis Minion DHF, EXO TR MaxxGrip 29in x 2.5in front; Maxxis Minion DHR II, EXO+ TR MaxxTerra 27.5in x 2.5in, rear",
+            "saddle": "Whyte Custom",
+            "seatpost": "TranzX +RAD 30.9mm, Adjustable, 125 drop",
+            "handlebar": "Whyte Custom 6061 alloy, 30mm rise, 35mm bar bore, 800mm wide",
+            "stem": "Whyte Trail, 35mm extension, 35mm bar bore",
+            "headset": "FSA No. 55R, 1-1/8in upper and 1.5in lower",
+            "pedals": "Fibre reinforced composite platform"
+        },
+        "rewritten_description": "**אופני שטח חשמליים Full-Power - החוויה האולטימטיבית על השביל!**\n\nהכירו את האופניים שיגרמו לכם להרגיש את האדרנלין בכל רכיבה! אופני השטח החשמליים Full-Power, במשקל קל של 20.9 ק\"ג, מציעים שילוב מושלם של עוצמה, נוחות וחדשנות. עם שלדת קרבון מתקדמת, תיהנו משליטה מדויקת ומרכז כובד מהנמוכים ביותר בקטגוריה, מה שמבטיח רכיבה חלקה ובטוחה בכל תנאי שטח.\n\nהודות למנוע Bosch דור 5, עם 100Nm ו-750W, תגלו תאוצה חדה ותמיכה רציפה, גם בדיווש איטי. כך תוכלו להתמודד עם אתגרים טכניים ולכבוש את השבילים הקשים ביותר, מבלי להרגיש עייפות. \n\nעם סוללה פנימית של 400Wh וסוללה חיצונית של 250Wh מבית PowerMore, תיהנו מטווח רכיבה מרשים שמאפשר לכם לצאת להרפתקאות ארוכות מבלי לחשוש מהטעינה הבאה. \n\nמערכת המתלים RockShox והגלגלים המתקדמים WTB 29/27.5, יחד עם צמיגי Maxxis, מספקים אחיזה מצוינת וביטחון מלא. כך תוכלו לשפר את יכולותיכם ולהתמקד בהנאה מהרכיבה.\n\nאל תפספסו את ההזדמנות לרכוש את האופניים שיביאו את חוויית הרכיבה שלכם לשיאים חדשים! הצטרפו לקהילת הרוכבים המתקדמים וגלו את השבילים מחדש עם אופני השטח החשמליים Full-Power!",
+        "wh": 400,
+        "fork length": 150,
+        "style": "trail"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
             "product_url": "https://pedalim.co.il/bianchi-e-vertic-fx-9-2"
         },
         "firm": "Bianchi",
         "model": "E-Vertic FX-Type 9.2",
-        "year": "2026",
+        "year": "לא צויין",
         "category": "electric",
         "sub_category": "electric_mtb",
         "original_price": 22990,
@@ -51,7 +151,7 @@
         },
         "firm": "Whyte",
         "model": "E-160 Sphera מהדורה מיוחדת!",
-        "year": "2026",
+        "year": "לא צויין",
         "category": "electric",
         "sub_category": "electric_mtb",
         "original_price": 18990,
@@ -82,56 +182,9 @@
             "stem": "Whyte Enduro, 35mm extension, 35mm bar bore",
             "headset": "FSA No. 55/35 Orbit 1.5 ZS, 1.8in lower and 1 1/8in upper sealed cartridge bearings"
         },
-        "rewritten_description": "E160 SPHERA - חשמליים שטח במחיר הכי שפוי בישראל! לימטד אדישן במיוחד לישראל עם מנוע בוש עוצמתי, סוללה AH750 ומפרט שמשאיר את המתחרים הרחק מאחור! אמינות ועוצמה לפני הכל! מנוע בוש CX עוצמתי NM85 עם 8 מצבי עזרה לבחירה וסוללה אדירה שמספיקה ליום שלם של רכיבה מהנה ומלאת הרפתקאות בכל דרך וסינגל שתבחרו שילדת אלומיניום מוקשח 6061 T6 בנויה גם לאנדורו הקשוח ביותר. ביקורות מטורפות מכל האתרים משבחים את תנוחת הרכיבה והיכולת להתמודד עם כל שטח בקלות ובביטחה בולמי זעזועים FOX 38 FERPORMENCE 160mm, גלגלי WTB עם צמיגי מקסיס, מערכת הילוכים ובלמי דיסק הידראוליים של SRAM משלימים את ה-SPHERA לאופני שטח מעולים!",
+        "rewritten_description": "🌟 **הכירו את E160 SPHERA - האופניים החשמליים שטח שיגרמו לכם להתאהב ברכיבה מחדש!** 🌟\n\nאם אתם מחפשים את האופניים החשמליים המושלמים לשטח במחיר שפוי, הגעתם למקום הנכון! ה-E160 SPHERA, במהדורה מוגבלת לישראל, מציע לכם חווית רכיבה שאין כמותה, עם מנוע בוש עוצמתי וסוללה מרשימה של AH750 שתספיק לכם ליום שלם של הרפתקאות.\n\n💪 **עוצמה שאין כמותה:** המנוע בוש CX NM85 מגיע עם 8 מצבי עזרה, כך שתוכלו להתאים את עוצמת הרכיבה בדיוק לצרכים שלכם. בין אם אתם חוצים סינגלים מאתגרים או עולים על שבילים קשים, ה-E160 SPHERA ייתן לכם את הכוח להמשיך.\n\n🏞️ **בנוי לכל אתגר:** שילדת האלומיניום המוקשח 6061 T6 עוצבה במיוחד כדי לעמוד בכל האתגרים שאתם מציבים בפניה. עם בולמי זעזועים FOX 38 PERFORMANCE בגובה 160 מ\"מ, תוכלו להתמודד עם כל מכשול בקלות ובביטחון.\n\n🚴‍♂️ **חווית רכיבה בלתי נשכחת:** ביקורות מצטיינות מכל רחבי הרשת מעידות על תנוחת רכיבה נוחה ויכולת מעולה להתמודד עם כל שטח. גלגלי WTB עם צמיגי מקסיס מבטיחים אחיזה מצוינת וביצועים גבוהים בכל מצב.\n\n🔧 **מפרט טכני ברמה הגבוהה ביותר:** מערכת הילוכים ובלמי דיסק הידראוליים של SRAM מספקים לכם את השליטה המושלמת, כך שתוכלו ליהנות מרכיבה חלקה ובטוחה.\n\nאל תפספסו את ההזדמנות לרכוש את ה-E160 SPHERA - האופניים החשמליים שיביאו אתכם לכל מקום, עם עוצמה, אמינות וחווית רכיבה שאין כמותה. 🚵‍♀️✨\n\n**הזמינו עכשיו והצטרפו למהפכת הרכיבה החשמלית!**",
         "wh": 750,
         "fork length": 160,
-        "style": "enduro"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/whyte-e180-rsx"
-        },
-        "firm": "Whyte",
-        "model": "E-180 RSX",
-        "year": "לא צויין",
-        "category": "electric",
-        "sub_category": "electric_mtb",
-        "original_price": 25900,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/E-180_RSX_main.webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/E-180_RSX_main(1).webp",
-                "https://pedalim.co.il/Media/Uploads/E-180_RSX_side.webp",
-                "https://pedalim.co.il/Media/Uploads/E-180_RSX_back.webp",
-                "https://pedalim.co.il/Media/Uploads/E-180_RSX_action.webp"
-            ]
-        },
-        "specs": {
-            "frame": "Hydro Formed T6 6061 Aluminium, Multi Butted, Custom Drawn, Tapered Headtube, Internal Cable Routing, Shape.it Link and 12mm X 148mm Boost Dropouts",
-            "fork": "Fox Float 38, Factory 29\", 180mm Travel, 44mm Offset with Grip 2 Damper, Tapered Steerer, Kashima Coating, 110mm x 15mm Boost, E-Thru Axle",
-            "rear_shock": "Fox Float X2, Factory, independently adjustable Compression and Rebound damping, Kashima coating",
-            "motor": "Bosch Performance Line CX, 85Nm maximum torque, 250W nominal power. Features four power settings",
-            "battery": "Bosch PowerTube 750Wh internal, perfectly integrated into the frame with an intuitive lockable mechanism for easy removal",
-            "shifters": "SRAM AXS Pod, 2 Button MMX, 12 Speed",
-            "rear_derailleur": "SRAM GX AXS T-Type 12 Speed",
-            "crankset": "Race Face Affect E-Bike, 165mm, ISIS with T-Type Direct Mount 36T for Bosch Performance Line CX, Black",
-            "cassette": "SRAM XS-1275 T-Type Eagle, 10-52, 12 Speed",
-            "chain": "SRAM GX T-Type Eagle, 12 Speed",
-            "brakes": "SRAM Code RSC, 4 Piston with Sintered Metal Pads, 220mm Disc",
-            "wheels": "DT Swiss Hybrid HX1700",
-            "tires": "Maxxis Assigai WT, 29\"x2.5\" 120TPI, EXO + Sidewall Protection, 3C MaxxGrip (F)/Maxxis Assigai WT, 27.5\" x 2.5\" 120TPI, Double Casing, 3C MaxxGrip ®",
-            "saddle": "Fizik Terra Aidon, 145mm wide, Wingflex, S-Alloy Mobius rail",
-            "seatpost": "Crank Bro High-Line 3, 30.9mm, 150mm Travel, High-Line Ball Socket Remote Lever",
-            "handlebar": "Race Face Turbine R, 35mm Rise, 35mm Bar Bore, 800mm Wide",
-            "stem": "Race Face Atlas, 35mm Bar Bore, 35mm Extension",
-            "headset": "FSA No. 55/35 Orbit 1.5 ZS, 1.8\" Lower and 1 1/8\" Upper Sealed Cartridge Bearings"
-        },
-        "rewritten_description": "",
-        "wh": 750,
-        "fork length": 180,
         "style": "enduro"
     },
     {
@@ -222,7 +275,7 @@
             "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) cartridge bearings, with side entry internal routing",
             "pedals": "Fibre reinforced composite platform"
         },
-        "rewritten_description": "אופני טרייל/אנדורו ברמה הגבוהה של Whyte – שילדת קרבון מלאה, מהלך מתלים 160/150 מ״מ וטווח סוללה 800Wh להנאה ללא גבולות. מנוע Bosch Performance Line CX דור 5 עם 100Nm מומנט ו-600W שיא עוצמה – ביצועים שיא שיישאו אותך לכל מסלול. גלגלי 29″ מלפנים ומאחור, מרכז כובד נמוך במיוחד וטיפול מתלים מותאם בקפידה – לשליטה מדויקת, זריזות ואחיזה בסיטואציות הקשות ביותר. דגם שמעניק הרבה יותר ממה שאתה מצפה במחיר נגיש – ביצועים, איכות ורכיבים מהשורה הראשונה ללא פשרות.",
+        "rewritten_description": "**גלה את חווית הרכיבה המושלמת עם אופני הטרייל/אנדורו של Whyte!**\n\nהכנס את עצמך לעולם של הרפתקאות בלתי נגמרות עם האופניים המתקדמים ביותר של Whyte. שילדת הקרבון המלאה והקלילה שלנו, יחד עם מהלך מתלים של 160/150 מ״מ, מבטיחים לך רכיבה חלקה ויכולת התמודדות עם כל סוגי השטח. עם טווח סוללה מרשים של 800Wh, תוכל להרגיש חופשי לחקור מסלולים חדשים ולכבוש פסגות גבוהות מבלי לדאוג למגבלות.\n\nהודות למנוע Bosch Performance Line CX דור 5, תוכל ליהנות מעוצמה אדירה של 100Nm מומנט ו-600W שיא עוצמה, שיביאו אותך לכל יעד בקלות ובמהירות. גלגלי ה-29″ שלנו, בשילוב מרכז כובד נמוך במיוחד, מבטיחים לך שליטה מדויקת וזריזות מרשימה, כך שתוכל להתגבר על האתגרים הקשים ביותר בשטח.\n\nהדגם הזה מציע ביצועים שאין להם תחליף, איכות בלתי מתפשרת ורכיבים מהשורה הראשונה – הכל במחיר נגיש שלא תמצא בשום מקום אחר. \n\nהצטרף למהפכת הרכיבה עם אופני הטרייל/אנדורו של Whyte – כי כל מסלול הוא הזדמנות חדשה לחוויות מדהימות! אל תפספס את ההזדמנות לרכוש אופניים שישדרגו את חווית הרכיבה שלך!",
         "wh": 800,
         "fork length": 160,
         "style": "enduro"
@@ -270,7 +323,7 @@
             "headset": "FSA No. 55R, 1-1/8in upper and 1.5in lower",
             "pedals": "Fibre reinforced composite platform"
         },
-        "rewritten_description": "אופני הקצה של WHYTE,עטורי השבחים, עם המפרט הטוב ביותר במחיר הכי משתלם שתוכלו למצוא! מנוע Bosch Performance Line CX דור 5 עם מומנט 100Nm וסוללת 800Wh נשלפת – טווח עצום ועוצמה ששולטת בכל עלייה ובכל מסלול. מערכת מתלים FOX FACTORY PUDIUM וFox Float X2 מכוילות בדיוק לשליטה מלאה במהירות גבוהה, אחיזה מושלמת וביצועים ברמת תחרות. מערכת הילוכים אלחוטית SRAM X01 Eagle AXS, בלמי Hope EVO GR4 הידראוליים וחישוקי DT Swiss – שילוב של דיוק, אמינות ועוצמה ללא פשרות.",
+        "rewritten_description": "**אופני WHYTE – חוויית רכיבה שאין כמותה!**\n\nגלה את האופניים המתקדמים ביותר בשוק – אופני WHYTE, המובילים את התחום עם מפרט שאין לו תחליף במחיר משתלם במיוחד! \n\nעם מנוע ה-Bosch Performance Line CX דור 5, תוכל להרגיש את הכוח המדהים של 100Nm שמניע אותך קדימה בכל עלייה ובכל מסלול. הסוללה הנשלפת של 800Wh מבטיחה טווח רכיבה מרשים, כך שתוכל לשייט בקלות באורך המסלול שלך בלי דאגות.\n\nהמערכת מתלים המתקדמת FOX FACTORY PUDIUM ו-Fox Float X2 מתכווננת במיוחד לשליטה מושלמת במהירויות גבוהות, מספקת אחיזה מעולה וביצועים ברמה תחרותית. \n\nאל תשכח את מערכת ההילוכים האלחוטית SRAM X01 Eagle AXS, המציעה דיוק מרבי ותגובה מהירה, יחד עם בלמי Hope EVO GR4 הידראוליים שמספקים עוצמת עצירה שאין שני לה. חישוקי DT Swiss משלימים את החבילה עם שילוב מושלם של אמינות ועוצמה.\n\nהצטרף לעולם הרכיבה המתקדמת עם אופני WHYTE – הבחירה המושלמת לרוכבים שמחפשים את הטוב ביותר!",
         "wh": 800,
         "fork length": 170,
         "style": "enduro"
@@ -318,56 +371,8 @@
             "headset": "Token TK19506 1/8in upper and 1.5in lower with sealed bearings",
             "pedals": "Fibre reinforced composite platform"
         },
-        "rewritten_description": "אופני ההרים החשמליים הכי מדוברים הגיעו לארץ !מצוידים במנוע בוש דור 5, עם 100ניוטון/מטר 750W וסוללה Ah800 על שילדת קרבון שמשאירה אבק למתחרים ! אמינות ועוצמה לפני הכל! מערכת BOSCH CX דור 5 עם 12 מצבי רכיבה לבחירה וסוללה 800AH שתספיק ליום שלם של רכיבה מהנה ומלאת הרפתקאות בכל דרך וסינגל שתבחר שילדת קרבון UD משובחת וזנב אלומיניום קשוחה ומפנקת.ביקורות מטורפות מכל האתרים משבחים את תנוחת הרכיבה והיכולת להתמודד עם כל שטח בקלות ושליטה מרבית מצוידים במערכת החדשה TRANSMITION SRAM ובולמי זעזועים ROCKSHOX 160MM גלגלי WTB עם צמיגי מקסיס ובלמי דיסק הידראוליים 8DB SRAM לרכיבה טכנית בלי פשרות",
+        "rewritten_description": "🌟 **הכירו את אופני ההרים החשמליים שחוללו מהפכה!** 🌟\n\nאופני ההרים החשמליים החדשים והמדוברים ביותר סוף סוף הגיעו לישראל, והם מוכנים לקחת אתכם לחוויות רכיבה בלתי נשכחות! עם מנוע בוש דור 5 עוצמתי של 750W, המפיק 100 ניוטון/מטר, תוכלו להרגיש את הכוח בכל פניה ובכל עליה.\n\n🔋 **סוללה עוצמתית של 800Ah** תספק לכם מספיק אנרגיה לרכיבה ארוכה ומלאת הרפתקאות, בין אם אתם בוחרים בדרכי שטח קשות או בסינגלים מאתגרים. \n\n💎 **שילדת קרבון UD** משובחת מבטיחה עמידות קלה אך חזקה, בעוד שהזנב האלומיניום הקשיח מוסיף לרמת הנוחות והשליטה. לא פלא שהביקורות מהללות את תנוחת הרכיבה המושלמת והיכולת להתמודד עם כל שטח בקלות.\n\n🚴‍♂️ עם **מערכת BOSCH CX דור 5**, אתם מקבלים 12 מצבי רכיבה לבחירה, כך שתוכלו להתאים את החוויה שלכם בדיוק לצרכים האישיים שלכם. \n\n🌄 **בולמי זעזועים ROCKSHOX 160MM** וגלגלי WTB עם צמיגי מקסיס מבטיחים רכיבה חלקה ובטוחה בכל תנאי שטח, בעוד שבלמי דיסק הידראוליים 8DB SRAM מבטיחים עצירה מדויקת ובטוחה בכל רגע.\n\nאם אתם מחפשים את האופניים שיביאו את חווית הרכיבה שלכם לרמה הבאה, אל תפספסו את ההזדמנות! **הזמינו עכשיו ותהנו מרכיבה ללא פשרות!** 🚵‍♀️✨",
         "wh": 800,
-        "fork length": 160,
-        "style": "enduro"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/e-vertic-pro-fx-sx"
-        },
-        "firm": "Bianchi",
-        "model": "E-Vertic Pro FX SX",
-        "year": "לא צויין",
-        "category": "electric",
-        "sub_category": "electric_mtb",
-        "original_price": 24990,
-        "disc_price": 17990,
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/1920Wx1920H_YSBD4IE3_result(36).webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/1920Wx1920H_YSBD4IE3_result(40).webp",
-                "https://pedalim.co.il/Media/Uploads/IMG_0010_result(1).webp",
-                "https://pedalim.co.il/Media/Uploads/6A4A1142_result.webp",
-                "https://pedalim.co.il/Media/Uploads/6A4A1221_result.webp"
-            ]
-        },
-        "specs": {
-            "frame": "e-VERTIC FX-Type Pro FULL SUSPENDED CARBON/ALU sizes: 43-48-53 - 160 mm front travel - 65 mm rear travel - HT 1,5\" tapered - Seatpost 31,6 mm - 12x148",
-            "fork": "Rock Shox FS 35S TK 29F SB SA 160 EDFB FB 44 A1",
-            "rear_shock": "Rock Shox Deluxe Select +, 230/65, DebonAir Linear, Damer Type RT, Compression Tune L1, Lockout Force 380, Shaft 25x8, external rebound adjustment, Vo",
-            "motor": "Bosch Performance CX BES3 motor unit",
-            "battery": "Bosch Powertube 750wh integrated battery, w/Kiox display",
-            "shifters": "Sram SX EAGLE 1x12",
-            "rear_derailleur": "Sram SX EAGLE 12sp",
-            "crankset": "FSA Direct Mount Steel Chainring - 34T / w/HT Steel / ED / C.L. 52mm CK-320 FSA E-Bike Diecast Crankset - ISIS / 165mm / w/o crank bolt",
-            "bottom_bracket": "included in the motor",
-            "cassette": "Sram, 12sp, 11-50T",
-            "chain": "Sram SX EAGLE, 12sp",
-            "brakes": "Shimano, BL-M4100, BR-MT420, BLACK, SM-MA-F203P/PM, RESIN PAD, 800MM HOSE / 1700 HOSE + Shimano, SM-RT30, L 203MM",
-            "wheels": "Velomann 2.0 29”, 30mm 29”, 489g, 32 hole drilling, Disc Only + Shimano, CENTER LOCK DISC",
-            "tires": "Vittoria e-Barzo 29x2.6 XC-Trail TNT",
-            "saddle": "Velomann, manganese rail, lenght 277mm x width 144mm",
-            "seatpost": "Alpha1 Series - 31.6 mm - Remote RM07 I-Spec EV - 1800 mm cable length - Velomann logo 125 mm",
-            "handlebar": "Velomann, width 780mm diam.35mm, rise 20mm, backsweep 9°",
-            "stem": "Velomann Ursa, 50 mm, 35 mm, 1\"1/8",
-            "headset": "Acros 1\"1/8 top / 1,5\" bottom - bearings Starnut, Alloy Topcap"
-        },
-        "rewritten_description": "ביאנקי E-VERTIC PRO קרבון-אופני הרים חשמליים המשתלמים ביותר בישראל ! שילוב מנצח של עיצוב איטלקי מדהים, מנוע בוש גרמני עוצמתי וחלקים איכותיים מבית SARM שילדת קרבון קשיחה וקלה שבילים/אנדורו 160 מ\"מ בעיצוב א-סימטרי עם זוית ראש 65 מעלות מצוידת בבולמי ROCKSHOX איכותיים מוכנים לכל הרפתקה וטיול שתרצו לעשות. מנוע Bosch CX דור 4 עם 85 ניוטון/מטר, מערכת SMART SYSTEM וצג צבעוני KIOX משולב סוללה אדירה בנפח 750AH מבטיחים טווח רכיבה עצום בכל שטח ושביל שתבחרו. מערכת SRAM 12 הילוכים מיוחדת לחשמלי, ברקסים SHIMANO עם 4 פיסטונים עוצמתיים, גלגלי וצמיגי טיובלס משלימים לכם אופניים חשמליים שלא תרצו לרדת מהם !",
-        "wh": 750,
         "fork length": 160,
         "style": "enduro"
     },
@@ -383,14 +388,14 @@
         "category": "electric",
         "sub_category": "electric_mtb",
         "original_price": 48900,
-        "disc_price": "",
+        "disc_price": 38900,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte-140-Works-with-powermore_1100x.webp",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte-140-Works-with-powermore_1100x(4).webp",
-                "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-140-Works-Whyte-bc-3-2000pix_1100x.webp",
-                "https://pedalim.co.il/Media/Uploads/E-Lyte-140-Works-Whyte-3.webp",
-                "https://pedalim.co.il/Media/Uploads/E-Lyte-140-Works-Whyte-7.webp"
+                "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-ELyte-140-Works-with-powermore_1100x(7).webp",
+                "https://pedalim.co.il/Media/Uploads/Whyte-Bikes-E-Lyte-140-Works-Whyte-bc-3-2000pix_1100x(2).webp",
+                "https://pedalim.co.il/Media/Uploads/E-Lyte-140-Works-Whyte-3(2).webp",
+                "https://pedalim.co.il/Media/Uploads/E-Lyte-140-Works-Whyte-7(2).webp"
             ]
         },
         "specs": {
@@ -414,7 +419,7 @@
             "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) catridge bearings, with side entry internal routing",
             "pedals": "Fibre reinforced composite platform"
         },
-        "rewritten_description": "החשמלי אולטרה לייט של WHYTE עם מערכת בוש SX החדשה ושילדת קרבון מדהימה ! משקל 17.4 ק\"ג בלבד, מומנט של 60Nm ו-600W של כוח שיא לרכיבת XC/Trail מושלמת. מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים.קיבולת סוללה משולבת של 650Wh (400Wh פנימית + 250Wh חיצונית) תדאג שתגיעו לכל מקום ! אופנים בלי פשרות,לא בחלקים וכמובן לא במנוע הטוב בעולם !הביקורת מטורפות :\"האופניים החשמליים הקלים הטובים ביותר עם המנוע הטוב ביותר\" מערכות קצה אלחוטיות של SRAM עם בולמי זעזועים FOX FACTORY, גלגלי קרבון DT ובלמי דיסק הידראוליים SRAM Level Ultimate וגם סוללה 250W כוללה במחיר !",
+        "rewritten_description": "**אופניים חשמליים אולטרה לייט WHYTE – חוויית רכיבה שאין כמותה!**\n\nגלה את עולם רכיבת ה-XC וה-Trail עם האופניים החשמליים האולטרה לייט של WHYTE, המשלבים טכנולוגיה מתקדמת עם עיצוב מדהים. עם מערכת בוש SX החדשה, שילדת קרבון קלילה ומשקל של 17.4 ק\"ג בלבד, תוכל לחוות את חוויית הרכיבה המושלמת מבלי להתפשר על הביצועים.\n\nהמנוע החדשני של בוש מספק מומנט של 60Nm וכוח שיא של 600W, מה שמבטיח לך תחושת רכיבה טבעית וזורמת, כמעט כמו על אופניים רגילים. עם קיבולת סוללה משולבת של 650Wh (400Wh פנימית ו-250Wh חיצונית), תוכל לצאת למסעות ארוכים ולגלות מקומות חדשים מבלי לדאוג למגבלת טווח.\n\nלא מדובר באופניים רגילים – מדובר באופניים ללא פשרות! הביקורות מדברות בעד עצמן: \"האופניים החשמליים הקלים הטובים ביותר עם המנוע הטוב ביותר\". בעזרת מערכות קצה אלחוטיות של SRAM, בולמי זעזועים FOX FACTORY, גלגלי קרבון DT ובלמי דיסק הידראוליים SRAM Level Ultimate, תוכל להיות בטוח שאתה רוכב על הטוב ביותר שיש לשוק להציע.\n\nוהכי טוב? סוללה נוספת של 250W כלולה במחיר, כך שאתה מקבל את כל היתרונות מבלי להוסיף עלויות נוספות!\n\nאל תפספס את ההזדמנות לרכוש את האופניים שיגרמו לך להרגיש חופשי על כל שביל! היכנסו עכשיו לחנות שלנו והזמינו את ה-WHYTE שלכם עוד היום!",
         "wh": 400,
         "fork length": 140,
         "style": "trail"
@@ -462,7 +467,7 @@
             "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) catridge bearings, with side entry internal routing",
             "pedals": "Fibre reinforced composite platform"
         },
-        "rewritten_description": "אופני הרים חשמליים קלים של WHYTE עם מנוע הבוש החדשני במומנט של 60Nm ו-600W של כוח שיא לרכיבת אנדורו ושבילים ויכולת טיפוס מושלמת ב 19.2 ק\"ג בלבד מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים.קיבולת סוללה משולבת של 650Wh (400Wh פנימית + 250Wh חיצונית) תדאג שתגיעו לכל מקום ! שילדת קרבון סופר חזקה מתאימה גם לטרייל/אנדורו והביקורות מכל האתרים משבחות ! אופני השנה לשנת 2024 בקטגוריית חשמליים קלים באנגליה ! מערכות קצה אלחוטיות של SRAM עם בולמי זעזועים FOX FACTORY, גלגלי קרבון ובלמי דיסק הידראוליים HOPE וגם סוללה 250W כוללה במחיר !",
+        "rewritten_description": "### הכירו את אופני ההרים החשמליים של WHYTE – חווית רכיבה שלא תשכחו!\n\nהאם אתם מוכנים לקחת את הרכיבה שלכם לשלב הבא? עם אופני ההרים החשמליים הקלים של WHYTE, אתם מקבלים את השילוב המושלם בין כוח, קלות ונוחות, וכל זאת במשקל שוקל של 19.2 ק\"ג בלבד!\n\n#### **מנוע בוש החדשני**\nהודות למנוע הבוש המתקדם עם מומנט של 60Nm וכוח שיא של 600W, תיהנו מרכיבה חלקה ומרגשת על כל שביל ואנדרו. המנוע יעניק לכם תחושת רכיבה קרובה ככל האפשר לאופניים רגילים, כך שתוכלו להתמודד עם כל אתגר בשטח.\n\n#### **סוללה עוצמתית**\nעם קיבולת סוללה משולבת של 650Wh (400Wh פנימית + 250Wh חיצונית), תדאגו להגיע לכל מקום – בין אם זה מסלול טיול רגוע ובין אם זה אתגר טכני. אין יותר דאגות לגבי טווח הרכיבה!\n\n#### **שילדת קרבון מתקדמת**\nשילדת הקרבון הסופר חזקה מתאימה גם לטרייל וגם לאנדורו, ומספקת עמידות וקלות משקל שאין כמותן. עם ביקורות מהללות מכל אתרי האופניים המובילים, אין ספק שהאופניים הללו הם הבחירה המושלמת עבורכם.\n\n#### **הטכנולוגיה המתקדמת ביותר**\nאופני WHYTE מצוידים במערכות קצה אלחוטיות של SRAM, בולמי זעזועים FOX FACTORY, גלגלי קרבון ובלמי דיסק הידראוליים HOPE. כל פרט נבחר בקפידה כדי להעניק לכם את חווית הרכיבה האופטימלית.\n\n#### **אופני השנה 2024**\nעם תואר אופני השנה לשנת 2024 בקטגוריית חשמליים קלים באנגליה, אתם בידיים הנכונות! \n\nאל תחכו – הצטרפו למהפכה החשמלית והזמינו את אופני WHYTE שלכם היום!",
         "wh": 400,
         "fork length": 150,
         "style": "trail"
@@ -509,7 +514,7 @@
             "headset": "FSA No. 69/56/SRS, 1-1/8in upper and 1.5in lower with sealed angular contact bearing (ACB) catridge bearings, with side entry internal routing",
             "pedals": "Fibre reinforced composite platform"
         },
-        "rewritten_description": "אופני הרים חשמליים קלים של WHYTE עם מנוע הבוש החדשני במומנט של 60Nm ו-600W של כוח שיא לרכיבת אנדורו ושבילים ויכולת טיפוס מושלמת ב 18.9 ק\"ג בלבד מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים.קיבולת סוללה 400Wh פנימית עם יכולת הרחבה של 250Wh חיצונית תדאג שתגיעו לכל מקום ! שילדת קרבון סופר חזקה מתאימה גם לטרייל/אנדורו והביקורות מכל האתרים משבחות ! בחירת העורכים בקטגוריית חשמליים קלים באנגליה ! מערכות קצה אלחוטיות של SRAM עם בולמי זעזועים ROCKSHOX, גלגלי קרבון ובלמי דיסק הידראוליים SRAM CODE BRONZE משלימים את האופניים לכיף טהור",
+        "rewritten_description": "**אופני הרים חשמליים WHYTE – חוויית רכיבה שלא הכרתם!**\n\nחולמים על רכיבת אנדורו ושבילים עם תחושת חופש אמיתית? הכירו את אופני ההרים החשמליים של WHYTE – הבחירה המושלמת עבור רוכבים שמחפשים את האדרנלין והביצועים הגבוהים ביותר!\n\nעם מנוע בוש חדשני המספק מומנט של **60Nm** וכוח שיא של **600W**, תיהנו מהיכולת לטפס בקלות על כל גבעה ולהתמודד עם כל שביל. כל זה במשקל קל במיוחד של **18.9 ק\"ג** – כך שתוכלו להרגיש את חוויית הרכיבה הטבעית והדינמית, כמעט כמו על אופניים רגילים!\n\nסוללת **400Wh** פנימית, עם אפשרות להרחבה של **250Wh** חיצונית, מבטיחה לכם טווח רכיבה מרשים שיביא אתכם לכל יעד. שילדת הקרבון הסופר חזקה מתאימה לא רק לטרייל ואנדורו, אלא גם לשימוש יומיומי, מה שהופך את האופניים האלו לבחירה המושלמת עבור כל רוכב.\n\nהביקורות מדברות בעד עצמן – אופני WHYTE נבחרו כאופניים החשמליים הקלים הטובים ביותר באנגליה! עם מערכות קצה אלחוטיות של **SRAM**, בולמי זעזועים **ROCKSHOX**, גלגלי קרבון ובלמי דיסק הידראוליים **SRAM CODE BRONZE**, אתם יכולים להיות בטוחים שאתם מקבלים את הטוב ביותר.\n\nאל תפספסו את ההזדמנות להרגיש את הכיף הטהור של רכיבה על אופני WHYTE! הצטרפו למהפכה והזמינו עכשיו!",
         "wh": 400,
         "fork length": 150,
         "style": "trail"
@@ -556,7 +561,7 @@
             "headset": "FSA No 57, Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”",
             "pedals": "Marin MTB Plastic"
         },
-        "rewritten_description": "אופני הרים חשמליים קלים וזריזים עם מערכת בוש SX החדשה וגאומטריית TRAIL .מומנט של 60Nm ו-W600 של כוח שיא לרכיבת XC/Trail מושלמת! מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים .סוללה AH400 תעניק לכם טווח של 25-90 ק\"מ שתוכלו לדווש בכיף לסינגל הבא שלכם. שילדת Lightweight E חדשה וקלה בזווית ראש 65 מעלות ומהלך בולמים 140 מ\"מ אחורי ו 150 מ\"מ קדמי של FOX תעיף אותכם קדימה בכל הסינגלים שתבחרו לעשות ! מערכת הילוכים SRAM AXS חשמלית,ברקסים Magura MT7, 4-Piston מטורפים, גלגלי טיובלס וצמיגי MAXXIS 2.4 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך ענק!",
+        "rewritten_description": "**אופני הרים חשמליים - חווית רכיבה שלא הכרתם!**\n\nהכירו את אופני ההרים החשמליים החדשים שלנו, המשלבים קלילות וזריזות עם טכנולוגיה מתקדמת! עם מערכת בוש SX החדשה, תיהנו מהמומנט המרשים של 60Nm וכוח שיא של W600, שיביאו אתכם לרכיבת XC/Trail מושלמת. המנוע החדשני של בוש מבטיח חווית רכיבה קרובה ככל האפשר לאופניים רגילים, כך שתוכלו להרגיש את חופש הרכיבה בכל פנייה.\n\nעם סוללת AH400, תוכלו לשכוח מהדאגות ולצאת להרפתקאות בלתי נגמרות עם טווח רכיבה של 25-90 ק\"מ. השילדה הקלה והחדשנית שלנו, בזווית ראש של 65 מעלות, בשילוב עם מהלך הבולמים של 140 מ\"מ אחורי ו-150 מ\"מ קדמי מתוצרת FOX, תעיף אתכם קדימה בכל סינגל שתבחרו.\n\nכדי להבטיח שתסיימו כל רכיבה בביטחה ובסטייל, אנחנו מציעים מערכת הילוכים חשמלית SRAM AXS, ברקסים מטורפים Magura MT7 עם 4 פיסטונים, גלגלי טיובלס וצמיגי MAXXIS 2.4. כל פרט נבחר בקפידה כדי להעניק לכם חווית רכיבה שאין שניה לה.\n\nאל תחכו! הצטרפו למהפכה ברכיבת ההרים והזמינו את האופניים החשמליים שלכם היום!",
         "wh": 400,
         "fork length": 150,
         "style": "trail"
@@ -584,10 +589,29 @@
             ]
         },
         "specs": {
-            "גלגליםFront": "Marin Aluminum Double Wall, 29\"(F)/27.5\"(R) Diameter, 32mm Inner Rim Width, Pinned Joint, Disc Specific, Tubeless Compatible"
+            "frame": "All New Series 4 Alloy, 160mm MultiTrac LT Suspension, Adjustable Headset & CS Length/Height, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
+            "fork": "Fox 38 Performance Elite, 170mm Travel, 29\" , 110x15mm Boost Kabolt Thru-Axle, 44mm Offset, Integrated Fox Fender",
+            "rear_shock": "Fox Float DHX2, Performance Elite, Low Speed Compression and Rebound Adjustment, 205x65mm, Trunnion Upper Mount, 30mmxM8 Lower Mount, S/M Spring Rate",
+            "motor": "Bosch Performance CX, 600W, 85Nm",
+            "battery": "Bosch PowerTube 750Wh",
+            "shifters": "Shimano SLX 12-Speed, I-Spec EV",
+            "rear_derailleur": "Shimano XT 12-Speed, SGS",
+            "crankset": "e*thirteen e*spec Plus Cranks, 160mm Length",
+            "cassette": "Shimano SLX M7100 Cassette, 12-Speed, 10-51T",
+            "chain": "KMC E12S, E-Bike Specific",
+            "brakes": "TRP DH-R EVO 4-Piston Hydraulic Disc, 203mm 2.3mm Thick Rotor",
+            "wheels": "Front: Marin Aluminum Double Wall, 29\"(F)/27.5\"(R) Diameter, 32mm Inner Rim Width, Pinned Joint, Disc Specific, Tubeless Compatible",
+            "tires": "Vee Tire Co Attack HPL, E-Control Compound, Front 29x2.5\", Rear 27.5x2.5\"",
+            "saddle": "Marin Speed Concept",
+            "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, Travel S = 150mm, M/L = 170mm, XL = 200mm",
+            "handlebar": "Marin Trail Bar, 35mm Clamp, 7000 Alloy Bar, 800mm Length, 20mm Rise, 5 Degree Up, 8 Degree Back",
+            "stem": "Marin CNC, 35mm Length, 35mm Bar Bore",
+            "headset": "FSA Custom Headset, Adjustable HTA Design"
         },
-        "rewritten_description": "ALPINE TRAIL E2 אופני הרים חשמליים עם מנוע בוש עוצמתי וגאומטריית אנדורו אמיתית מוכנים לכל אתגר עם ביצועים ומחיר שמשאיר את המתחרים הרבה מאחור! אמינות ועוצמה לפני הכל !מנוע בוש CX עוצמתי 85NM עם 4 מצבי עזרה וסוללה 750AH שמספיקה ליום שלם של רכיבה קשוחה ומלאת אדרנלין שילדה LT2 חדשה עם כיוון גובה BB וזווית ראש מצוידת ב 38 FOX קדמי 170מ\"מ ואחורי 160 מ\"מ ,תשאיר אותכם דבוקים לקרקע גם באנדורו הכי מטורף שתבחרו לעשות מערכת הילוכים SHIMANO XT ,ברקסים TRP DH-R EVO 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי VEE ATTACK 2.6 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך",
-        "fork length": null
+        "rewritten_description": "**ALPINE TRAIL E2 – האופניים החשמליים שיגרמו לכם לגלות עולמות חדשים!**\n\nמוכנים לקחת את חוויית רכיבת ההרים שלכם לרמה הבאה? ה-ALPINE TRAIL E2 מציע שילוב מושלם של עוצמה, אמינות וחדשנות טכנולוגית, עם מנוע בוש CX המתקדם. עם 85NM של כוח ו-4 מצבי עזרה, אתם יכולים להיות בטוחים שתהיו מוכנים לכל אתגר, בין אם זה מסלול סלעי או טיפוס תלול.\n\nהסוללה החזקה של 750AH תספק לכם יום שלם של רכיבות מרגשות, מלאות באדרנלין, מבלי לדאוג להפסיק. עם גאומטריית אנדורו מתקדמת ושילדת LT2 חדשה, כל רכיבה תהיה חוויה מדויקת ומלאה בביטחון. \n\nעם מערכת מתלים מהשורה הראשונה – FOX 38 קדמי 170 מ\"מ ואחורי 160 מ\"מ – תרגישו איך אתם דבוקים לקרקע, גם במסלולים האתגריים ביותר. מערכת הילוכים SHIMANO XT והברקסים TRP DH-R EVO 4-Piston מבטיחים לכם שליטה מוחלטת בכל מצב.\n\nהגלגלים הטיובלס וצמיגי VEE ATTACK 2.6 יבטיחו לכם יציבות וביטחון בכל פנייה, כך שתוכלו לסיים כל סינגל עם חיוך רחב על הפנים.\n\nאל תפספסו את ההזדמנות להרגיש את החופש שבטבע עם ALPINE TRAIL E2 – האופניים החשמליים שיגרמו לכם להתאהב מחדש ברכיבה!",
+        "wh": 750,
+        "fork length": 170,
+        "style": "enduro"
     },
     {
         "source": {
@@ -631,57 +655,10 @@
             "headset": "FSA No 57, Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”",
             "pedals": "Marin MTB Plastic"
         },
-        "rewritten_description": "אופני הרים חשמליים קלים וזריזים עם מערכת בוש SX החדשה וגאומטריית TRAIL .מומנט של 55Nm ו-W600 של כוח שיא לרכיבת XC/Trail מושלמת! מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים .סוללה AH400 תעניק לכם טווח של 25-90 ק\"מ שתוכלו לדווש בכיף לסינגל הבא שלכם. שילדת Lightweight E חדשה וקלה בזווית ראש 65 מעלות ומהלך בולמים 140 מ\"מ אחורי ו 150 מ\"מ קדמי של FOX תעיף אותכם קדימה בכל הסינגלים שתבחרו לעשות ! מערכת הילוכים SRAM GX משובחת ,ברקסים SRAM Code Bronze, 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי MAXXIS 2.4 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך.",
+        "rewritten_description": "### אופני הרים חשמליים - חוויית רכיבה שלא תשכחו!\n\nהכירו את האופניים החשמליים החדשים שלכם, המשלבים קלילות וזריזות עם טכנולוגיה מתקדמת! עם מערכת בוש SX החדשה, גאומטריית TRAIL המותאמת לרכיבת XC/Trail, ומומנט של 55Nm, תגלו את הכוח שיביא אתכם לכל סינגל בקלות ובסטייל.\n\n**מנוע בוש החדשני** מעניק לכם תחושת רכיבה טבעית, כמעט כאילו אתם רוכבים על אופניים רגילים. עם סוללה AH400, תיהנו מטווח רכיבה של 25-90 ק\"מ, כך שתוכלו לדווש בכיף לסינגל הבא שלכם, בלי לדאוג לסוללה.\n\nשילדת Lightweight E החדשה, עם זווית ראש של 65 מעלות ומהלך בולמים של 140 מ\"מ אחורי ו-150 מ\"מ קדמי מבית FOX, תאפשר לכם לעוף קדימה בכל סינגל שתבחרו. מערכת ההילוכים SRAM GX המתקדמת תספק לכם העברות חלקות ומדויקות, וברקסים SRAM Code Bronze עם 4 פיסטונים יבטיחו עצירות עוצמתיות ובטוחות בכל מצב.\n\nולא נשכח את הגלגלים הטיובלס וצמיגי MAXXIS 2.4, שיבטיחו לכם אחיזה מצוינת באדמה ויכולת התמודדות עם כל אתגר בשטח.\n\nאל תתפשרו על חוויית רכיבה – בחרו באופני ההרים החשמליים שלנו ותנו לעצמכם את המתנה של חופש, הרפתקה וכיף אינסופי!",
         "wh": 400,
         "fork length": 150,
         "style": "trail"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/marin-alpine-trail-e1-25"
-        },
-        "firm": "Marin",
-        "model": "Alpine Trail E1",
-        "year": "לא צויין",
-        "category": "electric",
-        "sub_category": "electric_mtb",
-        "original_price": 24990,
-        "disc_price": 17490,
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/AT-E1-Bosch-profile.webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/AT-E1-Bosch-profile(1).webp",
-                "https://pedalim.co.il/Media/Uploads/AT_E1_Bosch_front_3_4.webp",
-                "https://pedalim.co.il/Media/Uploads/E1_BIG.webp",
-                "https://pedalim.co.il/Media/Uploads/ATE-Bosch-adj-geo(2).webp"
-            ]
-        },
-        "specs": {
-            "frame": "All New Series 4 Alloy, 160mm MultiTrac LT Suspension, Adjustable Headset & CS Length/Height, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
-            "fork": "Marzocchi Z1, 170mm, 29\", 110x15 Kabolt Thru Axle, 44mm Offset",
-            "rear_shock": "Marzocchi CR Coil, 205x65mm, Trunnion Upper Mount, 30xM8 Lower Hardware, Custom Tune, Spring Rate S/M = 350 lbs/in M/L = 450 lbs/in",
-            "motor": "Bosch Performance CX, 600W, 85Nm",
-            "battery": "Bosch PowerTube 750Wh",
-            "shifters": "Shimano CUES SL-U6000-10R, 10-Speed",
-            "rear_derailleur": "Shimano CUES RD-U6000 GS, 10-Speed",
-            "crankset": "e*thirteen e*spec Plus, 160mm Length",
-            "cassette": "Shimano CS-LG300-10, 11-48T",
-            "chain": "Shimano LG500",
-            "brakes": "TRP Slate EVO, 4-Piston Hydraulic Disc, Resin Pads, 203mm Rotor",
-            "wheels": "Marin Aluminum Double Wall, 29\"(F)/27.5\"(R), 32mm Inner Rim, Pinned Joint, Disc Specific, Tubeless Compatible",
-            "tires": "Vee Tire Co Attack HPL, E-Control Compound, Front 29x2.5\", Rear 27.5x2.5\"",
-            "saddle": "Marin Speed Concept",
-            "seatpost": "TranzX, YSP39 1x Remote, 34.9 Seatpost Diameter, Travel S = 150mm, M/L = 170mm, XL = 200mm",
-            "handlebar": "Marin Mini Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
-            "stem": "Marin 3D Forged Alloy, 35mm",
-            "headset": "FSA Custom Headset, Adjustable HTA Design"
-        },
-        "rewritten_description": "ALPINE TRAIL E1 אופני הרים חשמליים עם מנוע בוש עוצמתי וגאומטריית אנדורו אמיתית מוכנים לכל אתגר עם ביצועים ומחיר שמשאיר את המתחרים הרבה מאחור! אמינות ועוצמה לפני הכל !מנוע בוש CX עוצמתי 85NM עם 4 מצבי עזרה וסוללה 750AH שמספיקה ליום שלם של רכיבה קשוחה ומלאת אדרנלין שילדה LT2 חדשה עם כיוון גובה BB וזווית ראש מצוידת במרזוקי קדמי 170מ\"מ ואחורי 160 מ\"מ ,תשאיר אותכם דבוקים לקרקע גם באנדורו הכי מטורף שתבחרו לעשות מערכת הילוכים SHIMANO CUES ,ברקסים TRP Slate EVO, 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי VEE ATTACK 2.6 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך",
-        "wh": 750,
-        "fork length": 170,
-        "style": "enduro"
     },
     {
         "source": {
@@ -700,15 +677,15 @@
             "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_side.webp",
             "gallery_images_urls": [
                 "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_side(1).webp",
-                "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_front(2).webp",
-                "https://pedalim.co.il/Media/Uploads/Marin_Play(100).png"
+                "https://pedalim.co.il/Media/Uploads/RIFTZONE_EL_1_front(4).webp",
+                "https://pedalim.co.il/Media/Uploads/Marin_Play(101).png"
             ]
         },
         "specs": {
             "frame": "All New Series 4 Alloy Lightweight E, 140mm MultiTrac Suspension, Integrated Battery/Charging Port, 148mm Rear Thru-Axle",
             "fork": "Marzocchi Bomber Z1 140mm Travel, 29, 110x15 Kabolt Thru Axle, 44mm Offset",
             "rear_shock": "Marzocchi Bomber Air Shock, ALL NEW for 2025, Custom Tune, 210x55mm, 25xM8 Upper Mount, No Lower DU or Hardware",
-            "motor": "Bosch Performance Line SX, 600W, 55Nm",
+            "motor": "Bosch Performance Line SX, 600W, 60Nm",
             "battery": "Bosch 400Wh Internal",
             "shifters": "Shimano CUES SL-U6000-10R, 10-Speed",
             "rear_derailleur": "Shimano CUES RD-U6000 GS, 10-Speed",
@@ -725,7 +702,7 @@
             "headset": "FSA No 57, Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”",
             "pedals": "Marin MTB Plastic"
         },
-        "rewritten_description": "אופני הרים חשמליים קלים וזריזים עם מערכת בוש SX החדשה וגאומטריית TRAIL .מומנט של 55Nm ו-W600 של כוח שיא לרכיבת XC/Trail מושלמת! מנוע הבוש החדשני יעניק לכם תחושת רכיבה הכי קרובה לאופניים רגילים .סוללה AH400 תעניק לכם טווח של 25-90 ק\"מ שתוכלו לדווש בכיף לסינגל הבא שלכם. שילדת Lightweight E חדשה וקלה בזווית ראש 65 מעלות ומהלך בולמים 140 מ\"מ אחורי ו 150 מ\"מ קדמי של מרזוקי תעיף אותכם קדימה בכל הסינגלים שתבחרו לעשות ! מערכת הילוכים SHIMANO CUES ,ברקסים TRP Slate EVO, 4- Piston עוצמתיים, גלגלי טיובלס וצמיגי MAXXIS 2.4 יבטיחו שתסיימו כל סינגל בביטחה ועם חיוך.",
+        "rewritten_description": "**אופני הרים חשמליים קלים וזריזים - חווית רכיבה שלא תשכחו!**\n\nהכירו את האופניים שיגרמו לכם להרגיש כאילו אתם רוכבים על ענן! עם מערכת בוש SX החדשה והמתקדמת, גאומטריית TRAIL המושלמת ומומנט מרשים של 60Nm, אתם על סף הרפתקה חדשה ומרגשת בכל סינגל.\n\n**כוח בלתי נגמר:** עם W600 של כוח שיא, המנוע החדשני מבית בוש מבטיח לכם חווית רכיבה קרובה ככל האפשר לאופניים רגילים, כך שתוכלו להתמקד בנופים ובאתגרים שמסביבכם.\n\n**סוללה עוצמתית:** סוללת AH400 מאפשרת טווח רכיבה של 25-90 ק\"מ, כך שתוכלו ליהנות מרכיבה ארוכה ומרגיעה, בלי לדאוג להפסיק באמצע המסלול. \n\n**שילדה קלה ועמידה:** שילדת Lightweight E החדשה מציעה עיצוב קל וזווית ראש של 65 מעלות, עם מהלך בולמים מרהיב של 140 מ\"מ אחורי ו-150 מ\"מ קדמי מבית מרזוקי, כדי להבטיח לכם רכיבה חלקה וזורמת בכל סינגל שתבחרו.\n\n**ביצועים משופרים:** מערכת הילוכים SHIMANO CUES וברקסים TRP Slate EVO עם 4 פיסטונים מבטיחים לכם שליטה מלאה וביטחון בכל מצב. עם גלגלי טיובלס וצמיגי MAXXIS 2.4, אתם יכולים להיות בטוחים שתסיימו כל מסלול עם חיוך רחב על הפנים.\n\nאז למה אתם מחכים? הצטרפו לחווית רכיבה עוצמתית ומרגשת עם אופני ההרים החשמליים שלנו – כי כל סינגל הוא הזדמנות חדשה להרפתקה!",
         "wh": 400,
         "fork length": 140,
         "style": "trail"
@@ -740,7 +717,7 @@
         "model": "Kalosi V2",
         "year": "לא צויין",
         "category": "electric",
-        "sub_category": "electric_mtb",
+        "sub_category": "electric_city",
         "original_price": 10500,
         "disc_price": "",
         "images": {
@@ -770,7 +747,7 @@
             "headset": "ZERO STACK (ZS) SEMI INTEGRATED SEALED BEARING FOR TAPER H/T, ZS 44/28.6 | ZS 56/30",
             "pedals": "PP PEDALS W/ REFLECTOR"
         },
-        "rewritten_description": "העתיד של התחבורה הירוקה העירונית הגיע לישראל ! אופניים חשמליים היברדיים אמיתיים ,סופר איכותיים ומפנקים עם מנוע שימאנו עוצמתי ומפרט חלקים מעולה ! ה-KALOSI יהיו השותף שלכם בכל רכיבה בכביש או דרך עפר. מנוע SHIMANO עם מומנט של 40 ניוטון/מטר עם סוללה אדירה 504WH ייתן לכם טווח רכיבה 70-185 ק\"מ ! מצוידים במערכת 10 הילוכים SHIMANO CEUS החדשה ובלמי שימאנו הידראוליים חזקים יחד עם בולם SUNTOUR XCM 100mm ציר 9 מ\"מ. צמיגי SCHWALBE 27.5 בחתך \"2.4, ושלל אביזרי נוחות יעצימו לכם את ההנאה והשימוש בKALOSI החדשים.",
+        "rewritten_description": "✨ **הכירו את KALOSI – האופניים החשמליים של העתיד!** ✨\n\nאם אתם מחפשים את השילוב המושלם בין עוצמה, נוחות וסטייל, הגעתם למקום הנכון! ה-KALOSI הם אופניים חשמליים היברידיים שמביאים את התחבורה הירוקה העירונית לישראל ברמה חדשה לגמרי.\n\n🚴‍♂️ **מנוע Shimano עוצמתי** - עם מומנט של 40 ניוטון/מטר, תיהנו מעוצמה שמתאימה לכל סוגי השבילים, בין אם זה כביש עירוני או דרך עפר.\n\n🔋 **סוללה אדירה של 504WH** - טווח רכיבה מרשים של 70-185 ק\"מ, כך שתוכלו לחקור את העיר בלי דאגות ולגלות מקומות חדשים, כל יום מחדש.\n\n⚙️ **מערכת הילוכים מתקדמת** - עם 10 הילוכים של Shimano CEUS, תוכלו להתאים את מהירות הרכיבה שלכם לכל מצב, מה שמבטיח חווית רכיבה חלקה וזורמת.\n\n🛑 **בלמים הידראוליים של Shimano** - הבטיחו לעצמכם בלימה מדויקת ובטוחה, גם בתנאים מאתגרים ביותר.\n\n🌄 **בולמי SUNTOUR XCM 100mm** - שדרגו את חווית הרכיבה שלכם עם בולמים שמספקים נוחות ויכולת ספיגה מעולה, גם בדרכים פחות סלולרות.\n\n🌟 **צמיגי SCHWALBE 27.5\" בחתך 2.4** - עיצוב שמבטיח אחיזה מצוינת וביצועים גבוהים, בכל תנאי שטח.\n\n💼 **אביזרי נוחות** - ה-KALOSI מגיעים עם שלל אביזרי נוחות שיביאו את חווית הרכיבה שלכם לרמה הבאה.\n\nאז למה אתם מחכים? הצטרפו למהפכה של התחבורה הירוקה עם KALOSI, ותהנו מרכיבה מהנה, בטוחה וידידותית לסביבה! 🌍💚\n\n**רכוש עכשיו את ה-KALOSI שלך ותן לעתיד לנסוע!** 🚀",
         "wh": 504,
         "fork length": 100,
         "style": "cross-country"
@@ -785,7 +762,7 @@
         "model": "Kalosi V2 ST",
         "year": "לא צויין",
         "category": "electric",
-        "sub_category": "electric_mtb",
+        "sub_category": "electric_city",
         "original_price": 10500,
         "disc_price": "",
         "images": {
@@ -815,7 +792,7 @@
             "headset": "ZERO STACK SEMI INTEGRATED SEALED BEARING FOR TAPER H/T, ZS 44/28.6 | ZS 56/30",
             "pedals": "PP PEDALS W/ REFLECTOR"
         },
-        "rewritten_description": "העתיד של התחבורה הירוקה העירונית הגיע לישראל ! אופניים חשמליים היברדיים אמיתיים ,סופר איכותיים ומפנקים עם מנוע שימאנו עוצמתי ומפרט חלקים מעולה ! ה-KALOSI יהיו השותף שלכם בכל רכיבה בכביש או דרך עפר. מנוע SHIMANO עם מומנט של 40 ניוטון/מטר עם סוללה אדירה 504WH ייתן לכם טווח רכיבה 70-185 ק\"מ ! מצוידים במערכת 10 הילוכים SHIMANO CEUS החדשה ובלמי שימאנו הידראוליים חזקים יחד עם בולם SUNTOUR XCM 100mm ציר 9 מ\"מ. צמיגי SCHWALBE 27.5 בחתך \"2.4, ושלל אביזרי נוחות יעצימו לכם את ההנאה והשימוש בKALOSI החדשים.",
+        "rewritten_description": "🌿🚴‍♂️ העתיד של התחבורה הירוקה בעיר – ה-KALOSI כאן! 🚴‍♀️🌿\n\nהכירו את האופניים החשמליים ההיברידיים שיביאו את חווית הרכיבה שלכם לרמה הבאה! עם מנוע שימאנו עוצמתי ומפרט חלקים מהשורה הראשונה, ה-KALOSI הם השותפים המושלמים שלכם לכל מסלול – בכביש העירוני או בדרכי עפר.\n\n💪 **מנוע SHIMANO חזק** – עם מומנט של 40 ניוטון/מטר, תיהנו מעוצמה שאין כמותה בכל רכיבה.\n🔋 **סוללה עוצמתית של 504WH** – טווח רכיבה מדהים של 70-185 ק\"מ! תכננו את המסלול שלכם בלי דאגות.\n⚙️ **מערכת הילוכים מתקדמת** – 10 הילוכים SHIMANO CEUS, מאפשרים לכם להתאים את הקצב לכל מצב.\n🛠️ **בלמים הידראוליים של SHIMANO** – הבטיחו לעצמכם עצירה בטוחה ומדויקת בכל תנאי השטח.\n🌟 **בולם SUNTOUR XCM 100mm** – ספיגת זעזועים מצוינת שתרכך כל פינה בדרך.\n🚲 **צמיגי SCHWALBE 27.5 בחתך \"2.4** – אחיזה מצוינת ונוחות רכיבה מושלמת, בכל תנאי שטח.\n\nעם שלל אביזרי נוחות שיביאו לכם את ההנאה המירבית, ה-KALOSI הם הבחירה האידיאלית לכל רוכב – מתחיל ומקצועי כאחד. אל תפספסו את ההזדמנות להיות חלק מהמהפכה הירוקה! 🌍✨\n\nהזמינו עכשיו את ה-KALOSI שלכם והתחילו לחוות רכיבה כמו שמעולם לא חוויתם!",
         "wh": 504,
         "fork length": 100,
         "style": "cross-country"
@@ -859,7 +836,7 @@
             "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40",
             "pedals": "PP FLAT PEDAL W/ REFLECTOR"
         },
-        "rewritten_description": "אופני זנב קשיח \"27.5 החדשים והמדוברים של POLYGON שילדת אלומיניום קלילה ALX CX גאומטריית שטח , עם בולם זעזועים 120 מ\"מ מערכות הילוכים שימאנו 1X12 ,בלמי דיסק שימאנו",
+        "rewritten_description": "גלה את חווית הרכיבה המושלמת עם אופני זנב קשיח \"27.5 החדשים של POLYGON! \n\nעם שילדת אלומיניום קלילה ALX CX והגאומטריה המתקדמת המיועדת לשטח, תוכל להתמודד עם כל שביל, הר או אתגר שיבוא בדרכך. הבולם זעזועים המתקדם בגובה 120 מ\"מ מבטיח לך רכיבה חלקה ונוחה גם בתנאים קשים, כך שתוכל להתרכז במה שבאמת חשוב – ליהנות מהדרך.\n\nמערכת ההילוכים שימאנו 1X12 תספק לך את הכוח והגמישות הנדרשים כדי להתמודד עם כל עלייה וירידה, בעוד שבלמי הדיסק שימאנו מבטיחים עצירות בטוחות ומדויקות בכל תנאי מזג האוויר.\n\nהצטרף למהפכה בשטח עם אופני POLYGON – הבחירה של רוכבים מקצועיים וחובבים כאחד! אל תפספס את ההזדמנות לשדרג את חווית הרכיבה שלך – הזמן עכשיו!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -901,7 +878,7 @@
             "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40",
             "pedals": "PP FLAT PEDAL W/ REFLECTOR"
         },
-        "rewritten_description": "אופני זנב קשיח \"29 החדשים והמדוברים של POLYGON שילדת אלומיניום קלילה ALX CX גאומטריית שטח, עם בולם זעזועים 120 מ\"מ מערכות הילוכים שימאנו 1X11, בלמי דיסק הידראוליים שימאנו",
+        "rewritten_description": "### הכירו את אופני ה-Zanav Kashir \"29 החדשים של POLYGON!\n\nאם אתם מחפשים את השילוב המושלם בין ביצועים, נוחות וסטייל, הגעתם למקום הנכון! אופני ה-Zanav Kashir \"29 של POLYGON מציעים לכם חוויית רכיבה שאין כמותה, עם כל התכונות שצריך כדי conquer את השטח.\n\n#### תכונות עיקריות:\n\n- **שילדת אלומיניום קלילה ALX CX**: שיפור משמעותי במשקל האופניים, המאפשר לכם לרכב בקלות ובמהירות על כל מסלול.\n- **גאומטריית שטח מתקדמת**: עיצוב שמספק יציבות, שליטה ונוחות גם בשבילים הקשים ביותר.\n- **בולם זעזועים 120 מ\"מ**: מתמודד עם כל מהמורה, מספק נוחות מרבית והגנה על הגוף, כך שתוכלו להתרכז ברכיבה.\n- **מערכת הילוכים שימאנו 1X11**: מאפשרת לכם לעבור בין הילוכים בקלות, עם טווח הילוכים רחב שמתאים לכל סוגי השטח.\n- **בלמי דיסק הידראוליים שימאנו**: מבטיחים עצירה מדויקת ובטוחה בכל תנאי מזג האוויר, כך שתמיד תוכלו לרכב בביטחון.\n\nהגיע הזמן לצאת להרפתקה הבאה שלכם עם אופני ה-Zanav Kashir \"29 של POLYGON. חוויית רכיבה מהשורה הראשונה מחכה לכם - אל תפספסו! \n\n**הזמינו עכשיו ותהנו מנסיעה שלא תשכחו!**",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -946,7 +923,7 @@
             "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40",
             "pedals": "PP FLAT PEDAL W/ REFLECTOR"
         },
-        "rewritten_description": "אופני זנב קשיח \"29 המדוברים של POLYGON שילדת אלומיניום קלילה ALX XC גאומטריית השטח העדכנית ביותר של POLYGON, עם בולם זעזועים 120 מ\"מ מערכות הילוכים שימאנו 2X10 ,בלמי דיסק שימאנו",
+        "rewritten_description": "גלה את חוויית רכיבת השטח האולטימטיבית עם אופני ה-Z29 החדשים של POLYGON! שילדת אלומיניום קלילה ומתקדמת, בשילוב גאומטריית השטח העדכנית ביותר, מבטיחה לך ביצועים גבוהים ונוחות מקסימלית בכל מסלול. \n\nעם בולם זעזועים בעוצמה של 120 מ\"מ, תוכל להתמודד עם כל מהמורה וליהנות מרכיבה חלקה גם בתנאים הקשים ביותר. מערכת ההילוכים המתקדמת של שימאנו 2X10 מעניקה לך את הגמישות והדיוק הנדרשים כדי להתמודד עם כל טיפוס וירידה, בעוד שבלמי הדיסק של שימאנו מבטיחים עצירות מדויקות ובטוחות בכל מצב.\n\nהצטרף למהפכת רכיבת השטח עם אופני POLYGON – הבחירה המושלמת לרוכבים שמחפשים איכות, ביצועים וסטייל. אל תפספס את ההזדמנות להרגיש את ההבדל!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -991,49 +968,7 @@
             "headset": "FSA No.10-P",
             "pedals": "Nylon Platform"
         },
-        "rewritten_description": "אופני השטח החדשים של MARIN לשנת 2025 ! סופר כיפיים,סופר יכולות,סופר משתלמים! מצוידים בחלקים מעולים ועמידים שיבטיחו לכם להמשיך לחייך כל הדרך שילדת אלומיניום חדשה SERIES 2,חזקה וקלה עם תעלות כבלים פנימיות וזוית ראש 66.5 מעלות מבטיחה רכיבה מדהימה גם בשבילים קשוחים ועצבניים מערכת הילוכים 1X11 שימאנו להעברה חלקה וטווח הילוכים גדול לטיפוס גם בעלייה הקשה ביותר בולם זעזועים 120 מ\"מ SUNTOUR XCR BOOST עם נעילה הידראולית וברקסים הידראוליים חזקים של TEKTRO ידאגו להשאיר אותכם על המסלול גם בשטח משובש",
-        "fork length": 120,
-        "style": "cross-country"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/polygon-syncline-c5-2024"
-        },
-        "firm": "Polygon",
-        "model": "Syncline C5",
-        "year": "לא צויין",
-        "category": "mtb",
-        "sub_category": "hardtail",
-        "original_price": 8500,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/Syncline_C5.webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/Syncline_C5(10).webp",
-                "https://pedalim.co.il/Media/Uploads/SynclineC5_front.webp"
-            ]
-        },
-        "specs": {
-            "frame": "ACX XC PERFORMANCE",
-            "fork": "FOX 32 RHYTHM, 120mm",
-            "shifters": "SHIMANO SLX SL-M7100-R 12-SPEED TRIGGER",
-            "rear_derailleur": "SHIMANO SLX RD-M7100-SGS DIRECT ATTACH",
-            "crankset": "SHIMANO SLX FC-M7100-1 32T 2-PIECE-CRANK",
-            "bottom_bracket": "SHIMANO BB-MT500-PA",
-            "cassette": "12 SPEED 11-51T",
-            "chain": "KMC NEW X-12",
-            "brakes": "SHIMANO MT400 HYDRAULIC DISC BRAKE + FRONT:180mm REAR:160mm CENTER-LOCK",
-            "wheels": "ALLOY DOUBLE WALL",
-            "tires": "WTB TRAIL BOSS TIRE, 29x2.25",
-            "saddle": "ENTITY VOID SADDLE",
-            "seatpost": "ENTITY XPERT, 27.2x350mm",
-            "handlebar": "ENTITY XPERT, W: 740mm, BB: 31.8mm, R/D: 12mm, B: 9degree",
-            "stem": "ENTITY XPERT, EXT: 60mm, BB: 31.8mm, R/D: 7degree",
-            "headset": "INTEGRATED W/ SEALED BEARING FOR TAPER HEAD TUBE, IS 42/28.6 | IS 52/40"
-        },
-        "rewritten_description": "אופני ה-Syncline 5 הם אופני הרים מתקדמים לרכיבת קרוס-קאנטרי ושבילים. הם מתאימים גם לרכיבת פנאי וגם למרוצים, מה שהופך אותם לבחירה מושלמת! אופני קרבון במחיר שובר שוק! מצוידים בשלדת קרבון קלת משקל וחזקה, מערכת בלימה הידראולית של Shimano ובמערכת הילוכים של Shimano SLX בעלת 12 הילוכים בולם אוויר ננעל FOX 120mm ושלדה עם ספיגת זעזועים מצוינת מבטיחים רכיבה חלקה גם בשבילים הכי קשים. גלגלים בהכנה לטיובלס מאפשרים שדרוג בקנייה או אחריה עיצוב אלגנטי בצביעה מיוחדת כולל צבע כפול והובלת כבלים פנימית שומר על הכבלים והשלדה מפני נזקים לאורך זמן",
+        "rewritten_description": "**אופני השטח MARIN 2025 – חווית רכיבה שלא תשכחו!**\n\nהכירו את הדגם החדש והמרהיב של MARIN לשנת 2025! האופניים הללו לא רק נראים מדהים, אלא גם מציעים יכולות שאין כמותן. עם שילדת אלומיניום חדשה בסדרת 2, אתם יכולים להיות בטוחים שהרכיבה שלכם תהיה חזקה, קלה ועמידה בכל תנאי השטח.\n\n**מה היתרונות?**\n- **תעלות כבלים פנימיות**: עיצוב נקי ומסודר שיבטיח לכם רכיבה חלקה יותר.\n- **זוית ראש של 66.5 מעלות**: מאפשרת שליטה מדויקת וביטחון במהלך רכיבות בשבילים מאתגרים.\n- **מערכת הילוכים 1X11 של שימאנו**: העברה חלקה ומהירה, עם טווח הילוכים רחב שיתמודד עם כל טיפוס, גם הקשים ביותר.\n\n**בולמי זעזועים SUNTOUR XCR BOOST** בגובה 120 מ\"מ עם נעילה הידראולית, יחד עם ברקסים הידראוליים חזקים של TEKTRO, מבטיחים שאתם תישארו על המסלול, גם בשטח משובש. \n\n**הצטרפו לחווית רכיבה שאין כמותה!** עם אופני MARIN 2025, אתם לא רק רוכבים – אתם חווים את השטח מחדש. אל תפספסו את ההזדמנות לרכוש את האופניים שיגרמו לכם לחייך בכל רכיבה!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -1075,7 +1010,7 @@
             "stem": "ALLOY, ext. 45mm, bore 31.8mm",
             "headset": "ZERO STACK W/ SEALED BEARING"
         },
-        "rewritten_description": "אופני הכניסה למתחילים המשתלמים ביותר בישראל מתחדשים ומשתדרגים לכבוד 2026 במחיר ללא תחרות! שילדת אלומיניום חדשה ועדכנית עם גיאומטרייה סופר נוחה לרוכבים המתחילים בצבע חדש לחלוטין! בולם זעזועים אמיתי סנטור 100 מ\"מ לשיכוך כל מהמורה בדרך ומערכת הילוכים שימאנו 3X7 סופר אמינה ברקסים דיסק חזקים ובטיחותיים של שימאנו וצמיגי דו שימושיים לשימוש בעיר וגם בשטח כורכר",
+        "rewritten_description": "**אופני הכניסה המושלמים למתחילים - חדש 2026!**\n\nהכירו את האופניים החדשים שלנו, המציעים את התמורה הטובה ביותר בישראל עבור רוכבים מתחילים! עם שילדת אלומיניום קלה ועיצוב עדכני, האופניים הללו מציעים גיאומטריה סופר נוחה שתתאים לכל רוכב חדש. \n\nבולמי הזעזועים של סנטור עם 100 מ\"מ שיכוך יבטיחו שתעברו כל מהמורה בדרך בנוחות ובקלות. מערכת הילוכים שימאנו 3X7, הידועה באמינותה, תספק לכם את הגמישות הנדרשת לכל מצב רכב. עם ברקסים דיסק חזקים של שימאנו, תיהנו מביטחון מקסימלי בכל עצירה.\n\nהצמיגים הדו-שימושיים שלנו מתאימים הן לנסיעות בעיר והן לשבילים כורכריים, כך שאתם מוכנים לכל אתגר. אל תפספסו את ההזדמנות לרכוש את האופניים המושלמים להתחלה חדשה במחיר שאין לו תחרות! \n\nהצטרפו אל חוויית הרכיבה המדהימה והתחילו את המסע שלכם על אופניים שיתאימו לכם בדיוק!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -1095,8 +1030,9 @@
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/cascade_3_silver.webp",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/cascade_3_black_silver-removebg-preview(7).webp",
-                "https://pedalim.co.il/Media/Uploads/cascade_3_black_silver_front(2).webp"
+                "https://pedalim.co.il/Media/Uploads/cascade_3_pink-removebg-preview(1).webp",
+                "https://pedalim.co.il/Media/Uploads/cascade_3_pink_front(2).webp",
+                "https://pedalim.co.il/Media/Uploads/cascade_3_pink_rear(2).webp"
             ]
         },
         "specs": {
@@ -1117,7 +1053,7 @@
             "stem": "ENTITY ALLOY, E: 45MM, B: 31.8MM, R/D: 0",
             "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30"
         },
-        "rewritten_description": "אופני הכניסה למתחילים המשתלמים ביותר בישראל מתחדשים ומשתדרגים לכבוד 2025 במחיר ללא תחרות! שילדת אלומיניום חדשה ועדכנית עם גיאומטרייה סופר נוחה לרוכבים המתחילים גם במידה XS לגובה 143 ס\"מ ומעלה ב3 צבעים מרהיבים לבחירה ! בולם זעזועים אמיתי סנטור 100 מ\"מ לשיכוך כל מהמורה בדרך ומערכת הילוכים שימאנו 3X7 סופר אמינה ברקסים דיסק חזקים ובטיחותיים של שימאנו וצמיגי דו שימושיים לשימוש בעיר וגם בשטח כורכר",
+        "rewritten_description": "**אופני הכניסה המושלמים למתחילים - חווית רכיבה שלא תשכחו!**\n\nהכירו את האופניים החדשים והמשודרגים שלנו לשנת 2025 - הבחירה האידיאלית עבור רוכבים מתחילים! עם שילדת אלומיניום קלה וחזקה, גיאומטריית רכיבה נוחה במיוחד ומידות XS המתאימות לגובה של 143 ס\"מ ומעלה, תמצאו את עצמכם רוכבים בשמחה ובנוחות בכל מסלול.\n\n**למה לבחור באופניים שלנו?**\n- **בולם זעזועים סנטור 100 מ\"מ**: שיכוך מקצועי למענה על כל מהמורה בדרך, כך שתוכלו ליהנות מרכיבה חלקה גם בשבילים מאתגרים.\n- **מערכת הילוכים שימאנו 3X7**: אמינות גבוהה וביצועים מרשימים, המאפשרים לכם להתמודד עם כל עליה וירידה בקלות.\n- **ברקסים דיסק של שימאנו**: עוצמת בלימה מרשימה ובטיחותית, כך שתוכלו לרכב בראש שקט.\n- **צמיגים דו שימושיים**: אידיאליים לשימוש בעיר וגם בשטח כורכר, מה שמאפשר לכם לחקור את העולם בכל מקום.\n\nבחרו מתוך שלושה צבעים מרהיבים והתאימו את האופניים שלכם לסגנון האישי! אל תפספסו את ההזדמנות לרכוש את האופניים המשתלמים ביותר בישראל במחיר ללא תחרות. הצטרפו אלינו וגלו את עולם הרכיבה כמו שלא הכרתם!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -1159,7 +1095,7 @@
             "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30",
             "pedals": "CAGE PEDAL W/ REFLECTOR"
         },
-        "rewritten_description": "אופני הרים \"29 בעיצוב חדשני המתאימים לרכיבות שטח ועיר שילדת אלומיניום ALUTECH עם חיווט פנימי והכנה למוט אוכף הידראולי גיאומטריית שטח עדכנית לרכיבות מושלמות ובולם 120 מ\"מ מערכות שימאנו מתקדמות, ומערכת הילוכים 2x9",
+        "rewritten_description": "כותרת: חווית רכיבה בלתי מתפשרת עם אופני הרים \"29 בעיצוב חדשני!\n\nתיאור המוצר:\nגלו את עולם הרכיבה החדש עם אופני הרים \"29 שלנו, המשלבים טכנולוגיה מתקדמת עם עיצוב מרהיב! עם שילדת אלומיניום ALUTECH הקלה והחזקה, תיהנו מרכיבות שטח מרהיבות כמו גם בעיר, בכל תנאי השטח.\n\nהעיצוב החדשני כולל חיווט פנימי, המעניק לאופניים מראה נקי ומודרני, והכנה למוט אוכף הידראולי, כך שתוכלו להתאים את הרכיבה בדיוק לצרכים שלכם. גיאומטריית השטח העדכנית מבטיחה נוחות ויציבות בכל פנייה, מה שמאפשר לכם להתמודד עם כל אתגר בדרכים.\n\nעם בולם של 120 מ\"מ, תיהנו מרכיבה חלקה גם בשבילים הקשים ביותר. המערכות המתקדמות של שימאנו, בשילוב מערכת הילוכים 2x9, מבטיחות העברת הילוכים חלקה ומדויקת, כך שאתם תמיד מוכנים למאמצים הגדולים ביותר.\n\nאל תפספסו את ההזדמנות לשדרג את חווית הרכיבה שלכם עם אופני הרים \"29 שלנו - הבחירה המושלמת עבור רוכבים שמחפשים איכות, נוחות וסגנון! הזמינו עכשיו והתחילו את המסע שלכם לעבר חוויות חדשות!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -1201,50 +1137,7 @@
             "stem": "ENTITY SPORT ALLOY, EXT: 45mm, BB: 31.8mm, R/D: 0degree",
             "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30"
         },
-        "rewritten_description": "אופני הרים \"29 בעיצוב חדשני המתאימים לרכיבות שטח ועיר שילדת אלומיניום ALUTECH עם חיווט פנימי והכנה למוט אוכף הידראולי בולם 120 מ\"מ ומערכות הילוכים שימאנו מתקדמות 3 מידות לבחירה המתאימים לגובה 168 ס\"מ ועד 192 ס\"מ",
-        "fork length": 120,
-        "style": "cross-country"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/marin-wildcat-3-25"
-        },
-        "firm": "Marin",
-        "model": "Wildcat 3",
-        "year": "לא צויין",
-        "category": "mtb",
-        "sub_category": "hardtail",
-        "original_price": 3150,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/WILDCAT-TRAIL-3-C2-MARIN24-P-cop(7).webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/WILDCAT_TRAIL_3_-BLUE_-_SIDE(1).webp",
-                "https://pedalim.co.il/Media/Uploads/WILDCAT_TRAIL_3_-BLUE_-_FRONT.webp"
-            ]
-        },
-        "specs": {
-            "frame": "Series 2 6061 Aluminum, Women's Specific Frame, 27.5\" Wheels, Low Standover, 68mm BB shell, 135mm Forged Dropouts, IS Chainstay Disc Mount, Internal H",
-            "fork": "SR Suntour XCM HLO, 120mm Travel, Hydraulic Lockout, 46mm Offset",
-            "shifters": "microSHIFT Advent 9 Trail",
-            "rear_derailleur": "microSHIFT Advent 9, Clutch",
-            "crankset": "Alloy Crank, Steel Narrow-Wide Chainring, 32T",
-            "bottom_bracket": "Sealed Cartridge Bearings, Square Taper",
-            "cassette": "SunRace 9-Speed, 11-46T",
-            "chain": "KMC X9",
-            "brakes": "Shimano BR-MT200 Hydraulic Disc, 160mm Rotor",
-            "wheels": "Marin Aluminum Double Wall, 25mm Inner, Pinned Joint, Disc Specific + Forged Alloy, Disc, 32H",
-            "tires": "MTB, 27.5x2.25\"",
-            "saddle": "Marin MTB",
-            "seatpost": "Marin Alloy, 30.9",
-            "handlebar": "Marin 31.8 Riser, 12mm Rise, 740mm Width",
-            "stem": "Marin Alloy, 31.8mm Clamp, 45mm",
-            "headset": "FSA No.10-P",
-            "pedals": "Nylon Platform"
-        },
-        "rewritten_description": "אופני ההרים החדשים והמקסימים של MARIN לשנת 2025 ! בנויים בתאמה מיוחדת לנשים וילדים במפרט טכני מותאם לסיבוב בשכונה או להרפתקאה שלך בשטח האמיתי . שילדת אלומיניום SERIES 2,בנויה בגאומטריית שטח המותאמת לנשים ,קלה וחזקה עם תעלות כבלים פנימיות מבטיחה רכיבה מדהימה בעיר וגם בשבילים קשוחים ועצבניים מערכת הילוכים 1X9 משובחת של MicroShift ADVENT מבטיחה העברת הילוכים מצוינת גם התנאי לחץ וכן טווח הילוכים רחב שמתאים גם לטיפוסים ארוכים בכביש ובשטח. בולם זעזועים 120 מ\"מ ננעל הידראולית של SUNTOUR וברקסים הידראוליים חזקים של TEKTRO המותאמים לנשים מבטיחים לכן רכיבה נעימה ובטוחה גם בשטחים משובשים",
+        "rewritten_description": "**אופני הרים \"29 - חווית רכיבה בלתי נשכחת!**\n\nגלה את השילוב המושלם בין עיצוב חדשני ויכולות טכניות מרשימות עם אופני הרים \"29 שלנו! מיועדים לרכיבות שטח ועיר, אופניים אלו מציעים שילדת אלומיניום ALUTECH קלה וחזקה, עם חיווט פנימי שמוסיף למראה המסוגנן והנקי.\n\n**בולמי זעזועים מתקדמים:** עם בולם 120 מ\"מ, תוכל להתמודד עם כל תוואי שטח, ולהתמודד עם אתגרים בצורה חלקה ונוחה. \n\n**מערכת הילוכים שימאנו:** תיהנה משינויי הילוכים חלקים ומדויקים שיבטיחו לך חווית רכיבה מושלמת בכל מסלול.\n\n**התאמה אישית:** אופני הרים אלו מגיעים ב-3 מידות שונות, המתאימות לגובה של 168 ס\"מ ועד 192 ס\"מ, כך שכל רוכב יוכל למצוא את המידה המושלמת עבורו.\n\nהצטרף לעולם של הרפתקאות עם אופני הרים \"29 שלנו - כי כל רכיבה היא חוויה! אל תחמיץ את ההזדמנות – הזמן עכשיו ותהנה מרכיבה שלא תשכח!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -1264,10 +1157,10 @@
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/cascade_4_black_side.webp",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/cascade_4_black_side(4).webp",
-                "https://pedalim.co.il/Media/Uploads/cascade_4_black_front.webp",
-                "https://pedalim.co.il/Media/Uploads/cascade_4_black_back.webp",
-                "https://pedalim.co.il/Media/Uploads/cascade_4_black_left.webp"
+                "https://pedalim.co.il/Media/Uploads/cascade_4_black_side(7).webp",
+                "https://pedalim.co.il/Media/Uploads/cascade_4_black_front(2).webp",
+                "https://pedalim.co.il/Media/Uploads/cascade_4_black_back(2).webp",
+                "https://pedalim.co.il/Media/Uploads/cascade_4_black_left(2).webp"
             ]
         },
         "specs": {
@@ -1289,7 +1182,7 @@
             "headset": "ZERO STACK (ZS) THREADLESS, ZS 44/28.6 | 44/30",
             "pedals": "PP CAGE W/ REFLECTOR"
         },
-        "rewritten_description": "אופני ההרים המשתלמים ביותר בישראל מתחדשים ומשתדרגים לכבוד 2025 במחיר ללא תחרות! שילדת אלומיניום חדשה ועדכנית עם גיאומטרייה סופר נוחה לרוכבים המתחילים גם במידה XS ב3 צבעים מרהיבים לבחירה ! בולם 100 מ\"מ של סנטור לשיכוך כל מהמורה בדרך ומערכת הילוכים שימאנו ACERA 2X8 סופר אמינה וידידותית ביותר לתפעול ברקסים הידראוליים עוצמתיים של טקטרו שיעצרו אותכם תמיד וצמיגי דו שימושיים לשימוש בעיר וגם בשטח כורכר",
+        "rewritten_description": "**אופני ההרים המושלמים לשנת 2025 - חווית רכיבה שאין כמותה!**\n\nהכירו את אופני ההרים המשתלמים ביותר בישראל, שעברו שדרוגים מרהיבים לכבוד 2025! עם שילדת אלומיניום חדשה ועדכנית, הגיאומטריה המתקדמת שלנו מספקת נוחות מירבית לרוכבים מתחילים, גם במידה XS. תבחרו מתוך שלושה צבעים מרהיבים שיתאימו לסגנון שלכם!\n\nתיהנו מבולם איכותי של 100 מ\"מ מבית סנטור, שמספק שיכוך מושלם לכל מהמורה בדרך. מערכת הילוכים שימאנו ACERA 2X8 מציעה אמינות גבוהה ותפעול קל, כך שתוכלו להתמקד ברכיבה ולא במכשולים. \n\nולא נשכח את ברקסי ההידראוליים העוצמתיים של טקטרו, שיעצרו אתכם תמיד בביטחון. עם צמיגים דו-שימושיים, תוכלו לרכב בנוחות בעיר ובשטח כורכר, וליהנות מחווית רכיבה מגוונת ומרגשת.\n\nאל תפספסו את ההזדמנות לרכוש את האופניים האידיאליים עבורכם במחיר ללא תחרות! התחילו את המסע שלכם על אופני ההרים המתקדמים שלנו – כי הרכיבה שלכם מתחילה כאן!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -1332,7 +1225,7 @@
             "headset": "FSA No.10-P",
             "pedals": "Nylon Platform"
         },
-        "rewritten_description": "אופני השטח החדשים של MARIN לשנת 2025 ! אופני הרים אמיתיים שנועדו לכל סוגי הרכיבה:מכביש ועד סינגלים .מצוידים בחלקים מעולים ובמחיר הנמוך ביותר האפשרי. שילדת אלומיניום חדשה SERIES 2,חזקה וקלה עם תעלות כבלים פנימיות וזוית ראש 66.5 מעלות מבטיחה רכיבה מדהימה גם בשבילים קשוחים ועצבניים מערכת הילוכים 1X9 משובחת של MicroShift ADVENT מבטיחה העברת הילוכים מצוינת גם התנאי לחץ וכן טווח הילוכים רחב שמתאים גם לטיפוסים ארוכים בכביש ובשטח. בולם זעזועים 120 מ\"מ ננעל הידראולית של SUNTOUR וברקסים הידראוליים של TEKTRO ידאגו להשאיר אותכם על המסלול גם בשטח משובש",
+        "rewritten_description": "**אופני השטח MARIN 2025 – השותף המושלם לכל מסלול!**\n\nהכינו את עצמכם לרכיבה שאין כמוה עם אופני השטח החדשים של MARIN לשנת 2025! אלו הם אופני הרים אמיתיים, שנועדו לספק לכם חווית רכיבה בלתי נשכחת – בין אם אתם בוחרים לדהור על הכביש או לחקור סינגלים מאתגרים.\n\nעם שילדת אלומיניום חדשה מדגם SERIES 2, שתוכננה בקפידה, אתם מקבלים שילוב אידיאלי של כוח וקלות, שמבטיחים לכם רכיבה חלקה גם בשבילים הקשים ביותר. התעלות הכבלים הפנימיות מוסיפות לאסתטיקה ומבטיחות שתחוו רכיבה נקייה ומסודרת.\n\nהמערכת הילוכים 1X9 של MicroShift ADVENT מציעה לכם העברת הילוכים חלקה ומדויקת, גם בתנאים הקיצוניים ביותר. עם טווח הילוכים רחב, תוכלו להתמודד עם טיפוסים ארוכים בכביש ובשטח בקלות ובנוחות.\n\nבולם הזעזועים של SUNTOUR, עם מהלך של 120 מ\"מ ונעילה הידראולית, יחד עם ברקסים הידראוליים של TEKTRO, מבטיחים לכם שליטה מוחלטת וביטחון גם בשטח משובש. \n\nאל תתפשרו על חווית הרכיבה שלכם! בחרו באופני MARIN 2025 ותנו לעצמכם את המתנה האידיאלית לכל הרפתקה. רכיבה מהנה ובטוחה, במחיר הנמוך ביותר האפשרי – זה מה שמחכה לכם!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -1375,7 +1268,7 @@
             "headset": "FSA No.10-P",
             "pedals": "Nylon Platform"
         },
-        "rewritten_description": "אופני השטח החדשים של MARIN לשנת 2025 ! מוכנים להרפתקאה הבאה שלכם ישר מהקופסא .מצוידים בחלקים איכותיים ועמידים שיבטיחו לכם הנאה עצומה וחיוך ענק שילדת אלומיניום חדשה SERIES 2,חזקה וקלה עם תעלות כבלים פנימיות וזוית ראש 66.5 מעלות מבטיחה רכיבה מדהימה גם בשבילים קשוחים ועצבניים מערכת הילוכים 1X10 חדשה ומדהימה של SHIMANO CUES מבטיחה העברת הילוכים מצוינת בתנאים קשים וטווח הילוכים רחב מאוד שמתאים גם לטיפוסים קשים. בולם זעזועים 120 מ\"מ ננעל הידראולית של SUNTOUR וברקסים הידראוליים של TEKTRO ידאגו להשאיר אותכם על המסלול גם בשטח משובש",
+        "rewritten_description": "**אופני השטח החדשים של MARIN לשנת 2025 – ההרפתקה שלכם מתחילה כאן!**\n\nהכירו את אופני השטח המתקדמים של MARIN, שעוצבו במיוחד עבור חובבי האדרנלין והטבע! עם שילדת אלומיניום חדשה בסדרה 2, אתם מקבלים את השילוב המושלם של קלות ועמידות, כך שתוכלו ליהנות מרכיבה מדהימה גם בשבילים הקשים ביותר.  \n\nהמערכת החדשנית של SHIMANO CUES עם 1X10 מהירות מבטיחה העברת הילוכים חלקה ומדויקת, גם בתנאים מאתגרים. עם טווח הילוכים רחב, תוכלו להתמודד עם טיפוסים תלולים בקלות ובנוחות.  \n\nבולם הזעזועים של SUNTOUR, בגובה 120 מ\"מ, ננעל הידראולית, יחד עם מערכת הבלמים ההידראוליים של TEKTRO, מספקים לכם את הביטחון המוחלט שאתם צריכים כדי להתמודד עם כל מסלול, גם כאשר השטח נהיה משובש.  \n\nהצטרפו אל אלפי רוכבים מרוצים והכינו את עצמכם לחוויות רכיבה בלתי נשכחות! אופני MARIN החדשים מחכים לכם – אל תפספסו את ההזדמנות לרכוב על האופניים שיביאו אתכם למקומות שמעולם לא חלמתם עליהם!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -1419,7 +1312,7 @@
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”",
             "pedals": "Nylon Platform"
         },
-        "rewritten_description": "אופני הכיף הטהור של MARIN בעיצוב וגאומטרייה חדשה לרכיבה הכי מטורפת שלכם שילדת אלומיניום מוקשחת וזווית ראש 64 מעלות יעיפו אתכם בכל שביל שתבחרו בולם 130 מ\"מ בעובי 34 מ\"מ עם ציר 15 וצמיגי 27.5X2.6 לאחיזה ובטיחות מירבית גם בשטחים הקשוחים ביותר מערכת הילוכים 1X9 שתדאג שלא תיפול לכם השרשרת בקפיצות והכנה למוט אוכף הידראולי, בשביל שדרוג עתידי",
+        "rewritten_description": "### הכירו את אופני הכיף הטהור של MARIN – חוויית רכיבה שלא הכרתם!\n\nאם אתם מחפשים את האופניים שיביאו את הרכיבה שלכם לרמה הבאה, הגעתם למקום הנכון! אופני MARIN החדשים מציעים עיצוב חדשני וגאומטריה מתקדמת, שיבטיחו לכם חוויית רכיבה מטורפת על כל שביל.\n\n**עוצמה ויציבות**  \nעם שלדת אלומיניום מוקשחת וזווית ראש של 64 מעלות, האופניים הללו יעיפו אתכם בכל שביל ותוואי שטח. בולם של 130 מ\"מ בעובי 34 מ\"מ עם ציר 15 מבטיחים נסיעה חלקה ובטוחה, גם במצבים הקשים ביותר.\n\n**אחיזה מושלמת**  \nהצמיגים בעובי 27.5X2.6 מספקים אחיזה וביטחון מירביים, כך שתוכלו להתמודד עם האתגרים הכי קשים בשטח ללא חשש. \n\n**טכנולוגיה מתקדמת**  \nעם מערכת הילוכים 1X9, אתם יכולים להיות בטוחים שהשרשרת לא תיפול גם בקפיצות הכי מטורפות. בנוסף, האופניים מגיעים עם הכנה למוט אוכף הידראולי, כך שתוכלו לשדרג את החוויה שלכם בעתיד.\n\nאל תפספסו את ההזדמנות לרכב על אופניים שיביאו אתכם לגבהים חדשים! הזמינו עכשיו את אופני הכיף הטהור של MARIN ותתכוננו לחוויות רכיבה בלתי נשכחות!",
         "fork length": 110,
         "style": "cross-country"
     },
@@ -1463,7 +1356,7 @@
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”",
             "pedals": "Nylon Platform"
         },
-        "rewritten_description": "אופני הכיף הטהור של MARIN בעיצוב וגאומטרייה חדשה לרכיבה הכי מטורפת שלכם שילדת אלומיניום מוקשחת וזווית ראש 64 מעלות יעיפו אתכם בכל שביל שתבחרו בולם 130 מ\"מ בעובי 34 מ\"מ עם ציר 15 וצמיגי 29X2.6 לאחיזה ובטיחות מירבית גם בשטחים הקשוחים ביותר מערכת הילוכים 1X9 שתדאג שלא תיפול לכם השרשרת בקפיצות והכנה למוט אוכף הידראולי, בשביל שדרוג עתידי",
+        "rewritten_description": "**אופני MARIN – הכיף הטהור שלכם בשבילים!**\n\nהכירו את אופני MARIN, הבחירה המושלמת לרוכבים שמחפשים את האדרנלין וההנאה בכל רכיבה! עם עיצוב חדשני וגיאומטריה מתקדמת, האופניים הללו נבנו כדי להעניק לכם את החוויה המושלמת בכל שביל ובכל תנאי.\n\nשילדת האלומיניום המוקשחת מבטיחה עמידות וקלילות, בעוד זווית הראש של 64 מעלות מאפשרת שליטה מדויקת ויציבות מרבית. עם בולם קדמי בעובי 34 מ\"מ, מצויד בטכנולוגיית 130 מ\"מ, תיהנו מהקפיצות והירידות החדות ביותר מבלי לחשוש מהמכשולים בדרך.\n\nצמיגי ה-29X2.6 שלנו מספקים אחיזה בלתי מתפשרת ובטיחות מירבית, כך שתוכלו לצלוח גם את השטחים הקשוחים ביותר בביטחון מלא. מערכת הילוכים 1X9 מתקדמת מבטיחה שהשרשרת שלכם תישאר במקומה, גם כאשר אתם מתמודדים עם האתגרים הגדולים ביותר.\n\nבנוסף, האופניים מגיעים עם הכנה למוט אוכף הידראולי, כך שתוכלו לשדרג את חוויית הרכיבה שלכם בעתיד בקלות.\n\nאל תפספסו את ההזדמנות לרכב על אופני MARIN – כי רכיבה אמיתית מתחילה כאן!",
         "fork length": 110,
         "style": "cross-country"
     },
@@ -1506,7 +1399,7 @@
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”",
             "pedals": "Marin MTB Plastic"
         },
-        "rewritten_description": "האופניים היחידים שיודעים לעשות הכל! מרכיבת שבילים אגרסיבית ועד דירט ג'אמפ במחיר שלא יקרע לכם את הכיס שילדת אלומיניום מוקשחת וזווית ראש 64 מעלות לרכיבת שבילים ואנדורו בולם 140 מ\"מ ציר 15 מערכת הילוכים 1X11 ומוט אוכף הידראולי גלגלי \"29 וצמיגי 2.6 רחבים",
+        "rewritten_description": "**האופניים המושלמים לכל סוגי הרכיבה – הפתרון האידיאלי לרוכבים שאוהבים את האדרנלין!**\n\nהכירו את האופניים שיכולים לעשות הכל – מהשבילים האגרסיביים ביותר ועד לדירט ג'אמפ מרהיב! עם שילדת אלומיניום מוקשחת, עמידות מרשימה וזווית ראש של 64 מעלות, אתם מוכנים לכל אתגר בשטח. \n\nעם בולם בעוצמת 140 מ\"מ, אתם יכולים להיות בטוחים שהרכיבה תהיה חלקה ונעימה, גם כשאתם מתמודדים עם מכשולים קשים. מערכת הילוכים 1X11 מבטיחה לכם גמישות מקסימלית, כך שתוכלו לטפס בקלות או לדהור במורדות תלולים. \n\nהגלגלים בגודל \"29 וצמיגים רחבים 2.6 מעניקים לכם יציבות מרבית ואחיזה מעולה, כך שתוכלו להתמודד עם כל סוג של שטח בביטחון מלא. \n\nוהכי טוב? כל זה במחיר שלא יקרע לכם את הכיס! אל תפספסו – הצטרפו לחוויית הרכיבה המושלמת עם האופניים האלה והפכו כל מסלול להרפתקה בלתי נשכחת!",
         "fork length": 140,
         "style": "trail"
     },
@@ -1514,40 +1407,82 @@
         "source": {
             "importer": "Pedalim",
             "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/bianchi_magma_9s"
+            "product_url": "https://pedalim.co.il/polygon-syncline-c3-2024"
         },
-        "firm": "Bianchi",
-        "model": "Magma 9.S",
+        "firm": "Polygon",
+        "model": "Syncline C3",
         "year": "לא צויין",
         "category": "mtb",
         "sub_category": "hardtail",
-        "original_price": 5990,
-        "disc_price": "",
+        "original_price": 7000,
+        "disc_price": 5250,
         "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/MAGMA_9.S_BLK-CHEL_result.webp",
+            "image_url": "https://pedalim.co.il/Media/Uploads/syncline_C3(3).webp",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/MAGMA_9.S_BLK-CHEL_result(10).webp"
+                "https://pedalim.co.il/Media/Uploads/syncline_C3(7).webp",
+                "https://pedalim.co.il/Media/Uploads/syncline_C3_front(2).webp"
             ]
         },
         "specs": {
-            "frame": "Magma 29 alu, 1.1/8\" HT, BSA 68mm, seatpost diam. 27,2mm, HDM bottom pull or Side-Swing, PM 160mm, BOOST 9x141mm QR, internal cable routing",
+            "frame": "ACX XC PERFORMANCE",
+            "fork": "ROCKSHOX RECON SILVER RL, 120mm",
+            "shifters": "SHIMANO DEORE SL-M6100-R 12-SPEED TRIGGER",
+            "rear_derailleur": "SHIMANO DEORE RD-M6100-SGS DIRECT ATTACH",
+            "crankset": "SHIMANO FC-MT510-1 32T 2-PIECE-CRANK",
+            "bottom_bracket": "SHIMANO BB-MT500-PA",
+            "cassette": "12 SPEED 11-51T",
+            "chain": "KMC NEW X-12",
+            "brakes": "SHIMANO BL-MT201 + SHIMANO SM-RT10 F:180mm R:160MM CENTERL LOCK",
+            "wheels": "ALLOY DOUBLE WALL + F: SHIMANO HB-MT400-B 15x110mm 32H CENTER LOCK / R: SHIMANO FH-MT510-B 12x142mm 32H CENTER LOCK",
+            "tires": "WTB TRAIL BOSS TIRE, 29x2.25",
+            "saddle": "ENTITY VOID SADDLE",
+            "seatpost": "ENTITY XPERT, 27.2x350mm",
+            "handlebar": "ENTITY XPERT, W: 740mm, BB: 31.8mm, R/D: 12mm, B: 9degree",
+            "stem": "INTEGRATED W/ SEALED BEARING FOR TAPER HEAD TUBE, IS 42/28.6 | IS 52/40",
+            "headset": "INTEGRATED W/ SEALED BEARING FOR TAPER HEAD TUBE, IS 42/28.6 | IS 52/40"
+        },
+        "rewritten_description": "גלה את האופניים החדשים והמהפכניים של פוליגון – אופני XC תחרותיים שלא תוכל להתעלם מהם! עם שילדת קרבון אולטרה לייט, תוכל לגלוש בקלות ובמהירות על כל מסלול, הודות לגיאומטריה המתקדמת שלנו המותאמת לרכיבות XC טכניות.\n\nהמערכת המתקדמת של הילוכים שימאנו 12 תספק לך חווית רכיבה חלקה ומדויקת, בעוד שהברקסים החזקים והאמינים של שימאנו יבטיחו עצירות מדויקות ובטוחות בכל תנאי השטח. עם בולם של 120 מ\"מ וזווית ראש של 67 מעלות, תוכל לשלוט בכל פנייה ובכל מכשול בקלות ובביטחון.\n\nצירים בוסט משלימים את החבילה המדהימה הזו, ומספקים לך את הביצועים והיציבות שאתה צריך כדי לכבוש כל פסגה. אל תחמיץ את ההזדמנות לרכוב על האופניים שיביאו אותך לגבהים חדשים – קח את החוויות שלך לרמה הבאה עם אופני ה-XC של פוליגון!",
+        "fork length": 120,
+        "style": "cross-country"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/אופני-הרים-bianchi-nitron-9-4-2022"
+        },
+        "firm": "Bianchi",
+        "model": "Nitron 9.4",
+        "year": "לא צויין",
+        "category": "mtb",
+        "sub_category": "hardtail",
+        "original_price": 9990,
+        "disc_price": 6990,
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/621111(1)_jpg.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/621112.JPG"
+            ]
+        },
+        "specs": {
+            "frame": "Nitron 29\" full carbon monocoque, 1.5\" tapered HT, BB92, seatpost diam. 27,2mm, HDM FD, PM 160mm carbon dropout 12x148mm BOOST Thru axle, internal cab",
             "fork": "Rock Shox Judy Silver TK 29\" Solo Air 100mm",
             "shifters": "Shimano Deore SL-M6100-R 1x12sp",
-            "rear_derailleur": "Shimano Deore RD-M6100 12sp",
-            "crankset": "Shimano FC-MT511-1, 32T, crank length: 175mm",
-            "bottom_bracket": "included in the crankset",
+            "rear_derailleur": "Shimano XT RD-M8100-SGS Shadow Design + 12sp",
+            "crankset": "Shimano FC-MT511-1, 32T, crank length:175mm",
+            "bottom_bracket": "Shimano BB-MT500-PA PressFit 41x92mm",
             "cassette": "Shimano CS-M6100-12, 12sp, 10-51T",
             "chain": "Shimano CN-M6100 12sp",
-            "brakes": "Shimano BR-MT200, 160mm Rotors",
-            "wheels": "VelomannDP2.5, 622x25c + Shimano FH-MT410-B",
-            "tires": "Kenda Booster 29x2.20",
-            "saddle": "Velomann, steel rails, PVC soft touch cover, 140mm width",
-            "seatpost": "Velomann AL2014 shaft w/alloy head, diam. 27.2mm, 0mm seatback, length 350mm",
+            "brakes": "Shimano BR-MT200 + Shimano SM-RT10 CL, 180mm front & 160mm rear",
+            "wheels": "Velomann KOM light i25 29\", 622x25+Shimano FH-MT410-B(R)+Shimano HB-MT400-B(F)",
+            "tires": "Kenda Booster Pro 29x2.20",
+            "saddle": "Velomann 1285URN, manganese rail, lenght 277mm x width 144mm",
+            "seatpost": "Velomann, AL6061 shaft with forged head, lenght 400mm, diam.27.2mm, 0mm seatback",
             "handlebar": "Velomann Flat top DB Alloy 6061-T6, width 720mm, diam. 31,8mm, 9° backsweep",
-            "stem": "Velomann 3D forged Alloy 6061, +/-7°, 1.1/8mm, diam. 31.8mm, ext: 90mm",
-            "headset": "Fsa TH888"
+            "stem": "Velomann 3D forged alloy 6061, 1,1/8 x diam.31.8mm, ext: 90mm",
+            "headset": "Fsa Orbit C-40"
         },
-        "rewritten_description": "אופני ה XC המשובחים של BIANCHI בגירסת אלומיניום מהממת לרוכבים שרוצים לטוס בשבילים עם חיוך שילדת אלומיניום \"29 בצביעה ועיצוב XC מדהימים עם חיווט פנימי ב4 מידות S-XL מערכת הילוכים SHIMANO DEORE 1X12 לקלות דיווש והעברה בכל שטח וברקסים SHIMANO חזקים ואמינים בולם קדמי ROCKSHOX JUDY אויר 100 מ\"מ ננעל וצמיגי קנדה מהירים 2.2",
+        "rewritten_description": "",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -1555,24 +1490,67 @@
         "source": {
             "importer": "Pedalim",
             "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/team-marin-1-2024"
+            "product_url": "https://pedalim.co.il/marin-team-marin-2-2025"
+        },
+        "firm": "Marin",
+        "model": "Team  2",
+        "year": "לא צויין",
+        "category": "mtb",
+        "sub_category": "hardtail",
+        "original_price": 10990,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/TEAM-MARIN-2_side.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/TEAM-MARIN-2_side(1).webp",
+                "https://pedalim.co.il/Media/Uploads/TEAM-MARIN-2_front.webp"
+            ]
+        },
+        "specs": {
+            "frame": "Series 4 6061 Aluminum, 29\" Wheels, Superlight Aluminum, Flat Mount Rear Brake, Internal Shifter and Dropper Post Routing, 148x12mm Boost Thru-Axle",
+            "fork": "Fox 34 StepCast Performance, 120mm Travel, Alloy Tapered Steerer, Air Spring, 110x15mm Boost Spacing, Kabolt Thru-Axle, 44mm Offset",
+            "shifters": "Shimano SLX, SLM7100, 12-Speed",
+            "rear_derailleur": "Shimano XT, RDM8100, 12-Speed",
+            "crankset": "FSA Grid, Modular 1x, 32T Direct Mount Chainring, MegaTooth Technology, MegaExo Spindle, Boost Spacing",
+            "bottom_bracket": "FSA MegaExo 73mm BSA",
+            "cassette": "SunRace 12-Speed, 11-51T",
+            "chain": "KMC X12",
+            "brakes": "TRP G-Spec FMR Hydraulic Disc, 180mm (F)/160mm (R) Rotor",
+            "wheels": "Marin Aluminum Double Wall, 29mm Inner, Sleeve Joint, Disc Specific, Tubeless Compatible",
+            "tires": "Maxxis Rekon Race, 29x2.35\", Folding Bead, Tubeless Ready",
+            "saddle": "Marin Speed Concept",
+            "seatpost": "TranzX, YSP23JL, 1x Remote, 150mm Travel, 30.9mm",
+            "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 4º Up, 9º Back",
+            "stem": "Marin 3D Forged Alloy, 35mm",
+            "headset": "FSA No 42ACB, 1 1/8\" x 1 1/2”",
+            "pedals": "Marin Oso OEM Nylon Platform"
+        },
+        "rewritten_description": "גלה את החוויות המרגשות של רכיבה על אופני ה-XC המתקדמים של Marin! עם שילדת אלומיניום SERIES 4 הקלה והחזקה, תוכל להתמודד עם הסינגלים הכי מאתגרים בלי להפסיק לרכב. טכנולוגיית הבוסט 148 מ\"מ מבטיחה יציבות מעולה וביצועים גבוהים בכל מסלול.\n\nעם מערכת הילוכים 1X12, תוכל לעבור בין הילוכים בקלות ובמהירות, כך שתמיד תהיה מוכן לכל אתגר. הבולם האוויר של 120 מ\"מ מספק נוחות ובקרה מושלמת, וגלגלי ה-\"29 מייעלים את התנועה על פני כל השבילים. בזווית ראש של 67 מעלות, תוכל לגלוש בביטחון ובמהירות, ולהרגיש את האדרנלין זורם בעורקים.\n\nהצטרף לחוויית רכיבה שאין כמותה עם אופני Marin – הבחירה המושלמת לכל רוכב שרוצה לפרוץ גבולות ולכבוש את השטח!",
+        "fork length": 120,
+        "style": "cross-country"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/team-marin-1-2025"
         },
         "firm": "Marin",
         "model": "Team  1",
-        "year": "לא צויין",
+        "year": "2026",
         "category": "mtb",
         "sub_category": "hardtail",
         "original_price": 6500,
         "disc_price": "",
         "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/side_result(210).webp",
+            "image_url": "https://pedalim.co.il/Media/Uploads/Team-Marin-1-profile(3).webp",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/side_result(214).webp",
-                "https://pedalim.co.il/Media/Uploads/front_result(30).webp"
+                "https://pedalim.co.il/Media/Uploads/Team-Marin-1-profile(4).webp",
+                "https://pedalim.co.il/Media/Uploads/Team-Marin-1-front-3-4.webp"
             ]
         },
         "specs": {
-            "frame": "Series 4 6061 Aluminum, 29\" Wheels, Superlight Aluminum, Post-Mount Rear Brake, Internal Shifter and Dropper Post Routing, 148x12mm Boost Thru-Axle",
+            "frame": "All New Series 4 6061 Aluminum, 29\" Wheels, Superlight Aluminum, Post-Mount Rear Brake, Internal Shifter and Dropper Post Routing, 148x12mm Boost Thru",
             "fork": "RockShox Judy Silver TK, 120mm Travel, Alloy Tapered Steerer, Solo Air Spring, 110x15mm Boost Spacing, Maxle Stealth, 51mm Offset",
             "shifters": "Shimano Deore, SLM6100, 12-Speed",
             "rear_derailleur": "Shimano Deore, RDM6100, 12-Speed",
@@ -1580,16 +1558,17 @@
             "bottom_bracket": "External Sealed Cartridge Bearings",
             "cassette": "SunRace, 12-Speed, 11-51T",
             "chain": "KMC X12",
-            "brakes": "Tektro HDT280, Hydraulic, 180mm Rotor + Tektro HDR285 Flat-Mount Hydraulic, 180mm Rotor",
-            "wheels": "Marin Aluminum Double Wall, 29mm Inner, Tubeless Compatible + 148x12mm R + 110x15mm F",
+            "brakes": "Shimano BR-MT200 Hydraulic Disc, 180mm(F)/160mm(R) Rotor",
+            "wheels": "Marin Aluminum Double Wall, 29mm Inner, Sleeve Joint, Disc Specific, Tubeless Compatible",
             "tires": "Vee Tire, Rail Rocco XC, 29x2.3\", Dual Control Compound, Folding Bead, Tubeless Ready",
             "saddle": "Marin Speed Concept",
             "seatpost": "Marin Alloy, 30.9mm",
             "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 4º Up, 9º Back",
             "stem": "Marin 3D Forged Alloy, 35mm",
-            "headset": "FSA No 42ACB, 1 1/8\" x 1 1/2”"
+            "headset": "FSA No 42ACB, 1 1/8\" x 1 1/2”",
+            "pedals": "Nylon Platform"
         },
-        "rewritten_description": "אופני XC מצויינים שלא עוצרים גם בסינגלים קשוחים שילדת אלומיניום SERIES 4 קלה וחזקה בטכנולוגיית בוסט 148 מ\"מ עדכנית מערכת הילוכים 1X12 ובולם אוויר 120 מ\"מ גלגלי \"29 וזוית ראש 67 מעלות שתטיס אתכם בשבילים",
+        "rewritten_description": "### הכירו את האופניים החדשות של 2026 - הפתרון המושלם לרוכבי XC!\n\nאם אתם מחפשים את האופניים שיכולים להתמודד עם כל אתגר בשטח, הגעתם למקום הנכון! האופניים החדשות שלנו מצוידות בשילדת אלומיניום SERIES 4, שמשלבת קלות עם עמידות יוצאת דופן, כך שתוכלו לרכב בביטחון גם בסינגלים הקשוחים ביותר.\n\nעם טכנולוגיית בוסט 148 מ\"מ המתקדמת, מערכת הילוכים 1X12 המאפשרת לכם לעבור בין הילוכים בקלות ובולמי אוויר רוקשוקס של 120 מ\"מ, תיהנו מנסיעה חלקה ומדויקת בכל תנאי השטח. גלגלי \"29 מספקים יציבות ויכולת תמרון מעולה, בעוד שזווית הראש של 66.5 מעלות מבטיחה חוויית רכיבה מהירה ומרגשת.\n\nאל תפספסו את ההזדמנות לשדרג את חוויית הרכיבה שלכם עם האופניים המתקדמים ביותר בשוק! רכבו עם סגנון, רכבו עם ביטחון - רכבו על האופניים של 2026!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -1634,7 +1613,7 @@
             "stem": "SRAM Descendant DH Direct Mount, 31.8mm Clamp, 50mm Length",
             "headset": "FSA No 74"
         },
-        "rewritten_description": "מהפכת הגרוויטי של Marin – שלדת אלומיניום מתקדמת ומהלך מתלה אחורי של 180 מ\"מ לרכיבת דאונהיל, פארקים אנדורו קיצונית. מערכת Flip Chip מאפשרת לשנות את גובה הציר המרכזי ולהתאים את הגאומטריה לסגנון הרכיבה שלך. תומך בשילובי גלגלים 29/27.5 או 29/29 – בחירה חופשית בין מהירות יציבה לשליטה חדה ומהנה במסלולים טכניים. שיכוך MultiTrac 2 LT ומבנה עמיד מעניקים אחיזה וביטחון גם כשאתה דוהר במורדות הקשוחים ביותר.",
+        "rewritten_description": "**גלה את מהפכת הגרוויטי של Marin!**\n\nהכירו את האופניים שיגיעו אתכם לכל פסגה – עם שלדת אלומיניום מתקדמת ומהלך מתלה אחורי מרהיב של 180 מ\"מ, אתם מוכנים לכל אתגר, בין אם זה דאונהיל פראי או רכיבת אנדורו קיצונית. \n\nהודות למערכת ה-Flip Chip החדשנית, תוכלו להתאים בקלות את גובה הציר המרכזי ולהתאים את הגאומטריה לסגנון הרכיבה שלכם – כי כל רוכב צריך את ההתאמה המושלמת! \n\nעם אפשרות לשילובי גלגלים 29/27.5 או 29/29, אתם חופשיים לבחור בין מהירות יציבה לשליטה חדה ומהנה במסלולים טכניים. השיכוך המתקדם של MultiTrac 2 LT מבטיח לכם אחיזה וביטחון, גם כשאתם דוהרים במורדות הקשוחים ביותר.\n\nהצטרפו למהפכה – הרכיבה שלכם לא תהיה כמו שהייתה! **Marin – האופניים שיביאו אתכם למקום שבו האדרנלין פוגש את ההנאה!**",
         "fork length": 110,
         "style": "cross-country"
     },
@@ -1679,7 +1658,7 @@
             "stem": "Marin CNC, 35mm Length, 35mm Bar Bore",
             "headset": "FSA Custom Headset, Adjustable HTA Design"
         },
-        "rewritten_description": "אופני האנדורו המדוברים ביותר בעולם בצביעת ורוד MARIN משגע ממתינים לכם כדי לקרוע את השבילים ! ביקורות מטורפות בכל העולם,איבזור קצה ומחיר ללא תחרות ! שילדת אלומיניום חדשה לחלוטין LT2 סופר חזקה ומוגנת עם אפשרות שינוי גיאומטריה להתאמה מוחלטת לסגנון הרכיבה שלכם :DH מהיר,אנדורו טכני,סלעים או DIRT JUMP מערכת הילוכים אלחוטית ומעביר SRAM AXS ,ברקסים SRAM Code Bronze 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי מקסיס ASSEGAI יבטיחו שתסיימו כל מסלול עם חיוך בולמי זעזועים משובחים RockShox Zeb Ultimate קדמי 170מ\"מ RockShox Super Deluxe Coil Ultimate אחורי 160 מ\"מ ישאירו אותכם על השביל הכי משובש בלי בעייה",
+        "rewritten_description": "**הכירו את האופניים שכולם מדברים עליהם!**\n\nאופני האנדורו המהפכניים בצביעת ורוד MARIN המהממת ממתינים לכם כדי להוביל אתכם אל הרפתקאות בלתי נשכחות על השבילים! עם ביקורות מהללות מכל קצוות הגלובוס, איבזור מהשורה הראשונה ומחיר שלא תמצאו בשום מקום אחר, זה הזמן שלכם לקחת את הרכיבה לשלב הבא!\n\nשילדת האלומיניום החדשה LT2 שלנו לא רק סופר חזקה, אלא גם מציעה אפשרות לשינוי גיאומטריה, כך שתוכלו להתאים אותה בקלות לסגנון הרכיבה שלכם – בין אם זה DH מהיר, אנדורו טכני, סלעים או DIRT JUMP. \n\nתיהנו ממערכת הילוכים אלחוטית מתקדמת של SRAM AXS, ברקסים עוצמתיים מדגם SRAM Code Bronze 4-Piston, וגלגלי טיובלס עם צמיגי מקסיס ASSEGAI – כל אלו מבטיחים שתסיימו כל מסלול עם חיוך רחב על הפנים!\n\nובנוסף, בולמי הזעזועים המשובחים RockShox Zeb Ultimate הקדמי (170 מ\"מ) ו-RockShox Super Deluxe Coil Ultimate האחורי (160 מ\"מ) יאפשרו לכם לרכב על השבילים הכי משובשים בלי שום בעיה.\n\nאל תפספסו את ההזדמנות לרכוש את האופניים שיביאו את חווית הרכיבה שלכם לרמה חדשה! הזמינו עכשיו והצטרפו למהפכה!",
         "fork length": 170,
         "style": "enduro"
     },
@@ -1722,7 +1701,7 @@
             "stem": "Marin 3D Forged Alloy, 35mm",
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”"
         },
-        "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ\"מ עם בולם 140 מ\"מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל מערכת טקטרו 11 הילוכים עם קסטה 51 שיניים ובולמי אוויר לא יעצרו אותכם גם בעליות הטכניות ביותר שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+        "rewritten_description": "**גלה את הרפתקת השבילים החדשה שלך עם אופני MARIN!**\n\nהכירו את האופניים המושלמים לכל חובבי השבילים – אופני MARIN החדשים והמעודכנים! עם מתלה MultiTrac המפנק, תיהנו מ-130 מ\"מ של נוחות ויכולת ספיגה, ובולם קדמי מרהיב של 140 מ\"מ שיבטיחו לכם חוויית רכיבה חלקה ויציבה. \n\nהזווית המתקדמת של 65.5 מעלות תספק לכם שליטה מדויקת גם בשבילים הקשים ביותר, כך שאתם מוכנים להתמודד עם כל אתגר. עם מערכת הילוכים טקטרו מתקדמת של 11 הילוכים וקסטה של 51 שיניים, תצליחו לטפס על כל גבעה ולהתמודד עם העליות הטכניות ביותר בקלות.\n\nלא משנה אם אתם חובבי XC, תחרויות או קפיצות – הריפט זון החדש מבית MARIN כאן כדי להרים את הרכיבה שלכם לגבהים חדשים! אל תפספסו את ההזדמנות לגלות את השבילים בצורה חדשה ומלהיבה. \n\n**הצטרפו למהפכה – רכבו עם MARIN!**",
         "fork length": 140,
         "style": "trail"
     },
@@ -1765,7 +1744,7 @@
             "stem": "Marin 3D Forged Alloy, 35mm",
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”"
         },
-        "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ\"מ עם בולם 140 מ\"מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל מערכת טקטרו 11 הילוכים עם קסטה 51 שיניים ובולמי אוויר לא יעצרו אותכם גם בעליות הטכניות ביותר שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+        "rewritten_description": "**גלה את הרפתקאות השביל עם אופני MARIN החדשים!**\n\nהכירו את האופניים שיגרמו לכם להתאהב מחדש בשבילים – אופני השבילים המעודכנים של MARIN, המשלבים טכנולוגיה מתקדמת עם עיצוב חכם. עם מתלה MultiTrac המפנק, אשר מציע 130 מ\"מ של מהלך, ובולם קדמי של 140 מ\"מ, אתם מוכנים לכבוש כל שביל באשר הוא!\n\nבזווית ראש של 65.5 מעלות, האופניים הללו מציעים יציבות בלתי מתפשרת, כך שתוכלו לגלוש בביטחון גם בשבילים הכי מאתגרים. מערכת ההילוכים המתקדמת של טקטרו עם 11 הילוכים וקסטה של 51 שיניים מבטיחה שתתמודדו עם כל עלייה טכנית בקלות וביעילות.\n\nאם אתם חובבי XC, תחרויות או פשוט מחפשים את האדרנלין של קפיצות – הריפט זון החדש הוא הבחירה המושלמת עבורכם. אל תפספסו את ההזדמנות לחוות את החופש והכיף שבשבילי השטח עם האופניים שיכולים לעשות הכל!\n\n**הצטרפו למהפכה והזמינו את אופני MARIN שלכם עוד היום!**",
         "fork length": 140,
         "style": "trail"
     },
@@ -1786,8 +1765,8 @@
             "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_side.webp",
             "gallery_images_urls": [
                 "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_side(1).webp",
-                "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_front(2).webp",
-                "https://pedalim.co.il/Media/Uploads/Marin_Play(34)_png.webp"
+                "https://pedalim.co.il/Media/Uploads/RIFTZONE-2_gray_front(4).webp",
+                "https://pedalim.co.il/Media/Uploads/Marin_Play(35)_png.webp"
             ]
         },
         "specs": {
@@ -1809,51 +1788,7 @@
             "stem": "Marin 3D Forged Alloy, 35mm",
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”"
         },
-        "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ\"מ עם בולם 140 מ\"מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל גלגלי 29\" רחבים ומערכת שימאנו 12 הילוכים יעיפו אותכם בעליות ויטיסו אותכם בביטחה בירידות שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
-        "fork length": 140,
-        "style": "trail"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/marin-rift-zone-1-2025"
-        },
-        "firm": "Marin",
-        "model": "Rift Zone 1",
-        "year": "לא צויין",
-        "category": "mtb",
-        "sub_category": "full_suspension",
-        "original_price": 7990,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/RIFTZONE-1_pnk_side(12).webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/RIFTZONE-1_pnk_side(7).webp",
-                "https://pedalim.co.il/Media/Uploads/RIFTZONE-1_pnk_front(4).webp",
-                "https://pedalim.co.il/Media/Uploads/Marin_Play(107).png"
-            ]
-        },
-        "specs": {
-            "frame": "Series 3 6061 Aluminum, 130mm Travel, MultiTrac Suspension Platform, 141 Boost Spacing, 73mm Threaded BB w/ ISCG05 Tabs",
-            "fork": "X-Fusion Slide, 140mm Travel, Compression and Rebound Adjustment, 44mm Offset",
-            "rear_shock": "X-Fusion O2 Pro R, Custom Tune, 210x55mm, M8x25mm Hardware Top and Bottom",
-            "shifters": "Shimano Deore, 11-Speed, SL-5100R",
-            "rear_derailleur": "Shimano Deore, 11-Speed, SGS",
-            "crankset": "Marin Forged Alloy, Integrated Steel 32T Narrow Wide Chainring, Boost Spacing",
-            "bottom_bracket": "External Sealed Cartridge Bearing",
-            "cassette": "Sunrace, 11-Speed, 11-51T, ED Black",
-            "chain": "KMC X-11 Silver and Black",
-            "brakes": "Tektro HD-M280 Hydraulic, 180mm Rotor",
-            "wheels": "Marin Aluminum Double Wall, 29mm Inner, Pinned Joint, Disc Specific, Tubeless Compatible",
-            "tires": "Vee Tire Co. Snap WCE 2.35\", Top 40 Compound, GXE Core, 90 TPI, Tubeless Compatible",
-            "saddle": "Marin Speed Concept",
-            "seatpost": "X-Fusion Manic, 1x Composite Remote, 170mm Travel, 30.9mm",
-            "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
-            "stem": "Marin 3D Forged Alloy, 35mm",
-            "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”"
-        },
-        "rewritten_description": "אופני השבילים החדשים והמעודכנים של MARIN הגיעו TO DO- IT -ALL ! מתלה MultiTrac מפנק עם 130 מ\"מ עם בולם 140 מ\"מ קדמי וזויות ראש 65.5 מוכנים לקרוע כל שביל מערכת שימאנו 11 הילוכים עם קסטה 51 שיניים ובולמי אוויר לא יעצרו אותכם גם בעליות הטכניות ביותר שבילים- XC -תחרויות -קפיצות : הריפט זון החדש בא לתת איתכם בראש !",
+        "rewritten_description": "🌟 **הכירו את אופני השבילים החדשים של MARIN - TO DO-IT-ALL!** 🌟\n\nאם אתם מחפשים את האופניים המושלמים שיתאימו לכל אתגר בשטח, הגעתם למקום הנכון! עם מתלה MultiTrac המפנק והמתקדם, 130 מ\"מ של נוחות ובולם קדמי של 140 מ\"מ, אתם מוכנים לכבוש כל שביל באומץ ובביטחון.\n\n🔧 **תכונות עיקריות:**\n- **זווית ראש 65.5°**: עיצוב שמספק לכם יציבות ושליטה מושלמת בכל תנאי שטח.\n- **גלגלי 29\" רחבים**: עוצמתיים ומסוגלים לגלוש על כל מכשול בדרך.\n- **מערכת שימאנו 12 הילוכים**: העבירו הילוכים בקלות ובמהירות כדי להתמודד עם כל עליה ולהתענג על כל ירידה.\n\nה-RIPT ZONE החדש נועד לא רק לשפר את הביצועים שלכם, אלא גם לספק חווית רכיבה בלתי נשכחת. בין אם אתם רוכבים בשבילים טכניים, מתחרים בתחרויות XC או פשוט נהנים מקפיצות מרגשות, האופניים הללו יעזרו לכם להגיע לגבהים חדשים!\n\nאל תפספסו את ההזדמנות לעלות על אופני השבילים שכולם מדברים עליהם. היכנסו לעולם של חוויות רכיבה מדהימות עם MARIN - כי אתם ראויים לטוב ביותר! 🚴‍♂️💨\n\n**הזמינו עכשיו ותהנו מרכיבה שאין כמותה!**",
         "fork length": 140,
         "style": "trail"
     },
@@ -1898,57 +1833,9 @@
             "stem": "Marin CNC, 35mm Length, 35mm Bar Bore",
             "headset": "FSA Custom Headset, Adjustable HTA Design"
         },
-        "rewritten_description": "אופני האנדורו החדשים והכי ניתנים לכיוון גאומטרייה אישית ממתינים לכם כדי לקרוע את השבילים ! ביקורות מטורפות בכל העולם,איבזור קצה ומחיר ללא תחרות ! שילדת אלומיניום חדשה לחלוטין LT2 סופר חזקה ומוגנת עם אפשרות שינוי גיאומטריה להתאמה מוחלטת לסגנון הרכיבה שלכם :DH מהיר,אנדורו טכני,סלעים או DIRT JUMP מערכת הילוכים SRAM GX 12 ,ברקסים SRAM DB8 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי מקסיס ASSEGAI יבטיחו שתסיימו כל מסלול עם חיוך בולמי זעזועים משובחים RockShox Zeb Ultimate קדמי 170מ\"מ RockShox Super Deluxe Coil Ultimate אחורי 160 מ\"מ ישאירו אותכם על השביל הכי משובש בלי בעייה",
+        "rewritten_description": "**אופני האנדורו החדשים – חוויית רכיבה בלתי נשכחת!**\n\nהכנסו לעולם של רכיבת שטח מרגשת עם אופני האנדורו החדשים שלנו, המציעים גאומטריה ניתנת לכיוון אישי שמתאימה בדיוק לסגנון הרכיבה שלכם! עם ביקורות מהללות מכל העולם, איבזור מהשורה הראשונה ומחיר שאין לו מתחרים, אתם בדרך לחוויית רכיבה שאין כמותה.\n\nשילדת האלומיניום LT2 שלנו היא חזקת משקל קל, עם עמידות מרשימה שמאפשרת לכם להתמודד עם כל אתגר בשטח. בעזרת אפשרות שינוי הגיאומטריה, תוכלו להתאים את האופניים בדיוק למה שאתם צריכים – בין אם זה לרכיבות מהירות על מסלולי DH, טכניות באנדורו, סלעים מאתגרים או קפיצות Dirt Jump.\n\nעם מערכת הילוכים SRAM GX 12 המתקדמת, וברקסים עוצמתיים SRAM DB8 4-Piston, תרגישו את הכוח והדיוק בכל רכיבה. גלגלי הטיובלס וצמיגי מקסיס ASSEGAI מבטיחים אחיזה מושלמת, כך שתוכלו לסיים כל מסלול עם חיוך רחב על הפנים!\n\nוהבולמים? עם RockShox Zeb Ultimate קדמי של 170 מ\"מ ו-RockShox Super Deluxe Coil Ultimate אחורי של 160 מ\"מ, אתם יכולים להיות בטוחים שהאופניים שלכם יעמדו בכל מכשול בדרך, וישאירו אתכם על השביל גם בשטחים הכי משובשים.\n\nהצטרפו למהפכה ברכיבת האנדורו – הזמינו את האופניים שלכם עכשיו וגלו את החוויה האולטימטיבית!",
         "fork length": 170,
         "style": "enduro"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/polygon-siskiu-d5-2021"
-        },
-        "firm": "Polygon",
-        "model": "Siskiu D5",
-        "year": "לא צויין",
-        "category": "mtb",
-        "sub_category": "full_suspension",
-        "original_price": 4790,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-P2_png.webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/SISKIU_D5(1).webp",
-                "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-RF_png.webp",
-                "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-RR_png.webp",
-                "https://pedalim.co.il/Media/Uploads/MY22-SISKIU-D5-RED-LF-1122x748_png.webp",
-                "https://pedalim.co.il/Media/Uploads/polygon_play(1)_png.webp"
-            ]
-        },
-        "specs": {
-            "frame": "ALX XC TRAIL FRAME",
-            "fork": "SUNTOUR XCM HLO, 120MM TRAVEL",
-            "rear_shock": "SUNTOUR RAIDON LO AIR, E2E: 190x51MM",
-            "shifters": "SHIMANO SL-M3100, 2x9 SPEED TRIGGER",
-            "front_derailleur": "SHIMANO M3100",
-            "rear_derailleur": "SHIMANO RD-M3100 DIRECT ATTACH 9-SPEED",
-            "crankset": "SHIMANO FC-MT210 36/22T TWO PIECE CRANK, 170MM",
-            "bottom_bracket": "BSA THREADED 68/73MM",
-            "cassette": "SHIMANO CS-HG200 11-36T 9-SPEED",
-            "chain": "KMC X9",
-            "brakes": "SHIMANO MT200 HYDRAULIC DISC BRAKE, ROTOR: FRONT:180MM REAR:160MM CENTER-LOCK",
-            "wheels": "ALLOY DOUBLE WALL, RIM: ALLOY DOUBLE WALL 584-15 32H FOR TYRE 584-35/68",
-            "tires": "DELI TIRE 27.5\"x2.25\"",
-            "saddle": "ENTITY VOID SADDLE",
-            "seatpost": "ENTITY SPORT ALLOY, DXL: 30.9x350MM",
-            "handlebar": "ENTITY SPORT ALLOY, W: 760MM, BB: 31.8MM, R/D: 12MM, B: 0DEGREE",
-            "stem": "ENTITY SPORT ALLOY, E: 45MM, B: 31.8MM, R/D: 0DEGREE",
-            "headset": "THREADLESS ZERO STACK HEADSET",
-            "pedals": "ALLOY CAGE PEDAL W/ REFLECTOR"
-        },
-        "rewritten_description": "אופני שבילים אמיתיים במחיר מצוין שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 120 מ\"מ ומערכת הילוכים 2X9 גלגלי \"27.5 לשליטה מצוינת בכל תנאי השטח",
-        "fork length": 120,
-        "style": "cross-country"
     },
     {
         "source": {
@@ -1962,15 +1849,15 @@
         "category": "mtb",
         "sub_category": "full_suspension",
         "original_price": 6500,
-        "disc_price": "",
+        "disc_price": 4890,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/SISKIU_D6_1.png",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_1(16).png",
-                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_2.png",
-                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_3.png",
-                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_4.png",
-                "https://pedalim.co.il/Media/Uploads/polygon_play_png.webp"
+                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_1(19).png",
+                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_2(2).png",
+                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_3(2).png",
+                "https://pedalim.co.il/Media/Uploads/SISKIU_D6_4(2).png",
+                "https://pedalim.co.il/Media/Uploads/polygon_play(2)_png.webp"
             ]
         },
         "specs": {
@@ -1993,7 +1880,7 @@
             "headset": "THREADLESS ZERO STACK HEADSET, ZS 44/28.6 | ZS 56/30",
             "pedals": "PP PEDAL"
         },
-        "rewritten_description": "אופני שבילים אמיתיים במחיר מצוין שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 120 מ\"מ ומערכת הילוכים 1X10 גלגלי \"29 לשליטה מצוינת בכל תנאי השטח",
+        "rewritten_description": "גלה את חוויית השטח האמיתית עם האופניים שלנו! \n\nאופני השבילים שלנו מציעים שילדת אלומיניום ALX קלה במיוחד, המבטיחה עמידות ויכולת תמרון מעולה. עם גאומטריה עדכנית המותאמת במיוחד לרכיבת שטח, תוכל להתגבר על כל אתגר שביל. \n\nבולמי הזעזועים של 120 מ\"מ יפנקו אותך בנוחות וביצועים מעולים, כך שתוכל ליהנות מהרכיבה גם בתנאים הקשים ביותר. מערכת ההילוכים 1X10 תספק לך שליטה מדויקת ומענה מהיר בכל טיפוס או ירידה. \n\nעם גלגלי \"29, תחושת הרכיבה שלך תהיה חלקה ויציבה, ותוכל להתמודד עם כל מכשול בדרך. \n\nאל תחמיץ את ההזדמנות לרכוש אופניים שמביאים את חווית השטח לרמה הבאה – במחיר מצוין! התחל את ההרפתקה שלך עכשיו!",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -2038,7 +1925,7 @@
             "stem": "Marin 3D Forged Alloy, 35mm",
             "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”"
         },
-        "rewritten_description": "אופני השיכוך מלא המושלמים לילדים - עכשיו במפרט 2026! שילדה חדשנית שממשיכה עם הילד עם גלגלי \"24 ואופציה עתידית לגלגלי \"26 בולמי אוויר 130 מ\"מ ומערכת הילוכים 1x11 של טקטרו ברקסים הידראוליים וצמיגי שטח אמיתיים",
+        "rewritten_description": "🌟 **אופני השיכוך המלא המושלמים לילדים – הדור הבא של רוכבי העתיד!** 🌟\n\nהכירו את האופניים שיגרמו לכל ילד להרגיש כמו אלוף בפעולה! עם המפרט החדשני של 2026, אלו הם לא סתם אופניים – הם חוויית רכיבה שאין כמותה. \n\n✔️ **שילדה מתקדמת**: שילדה חדשנית שמותאמת במיוחד לצמיחה של הילד, עם גלגלי \"24 ואופציה עתידית לגלגלי \"26, כך שהאופניים ילווה אותו לאורך שנים רבות.\n\n✔️ **בולמי אוויר 130 מ\"מ**: תיהנו מרכיבה חלקה ונעימה על כל שביל, עם בולמים שיספגו כל מהמורה בדרך.\n\n✔️ **מערכת הילוכים 1x11**: מערכת הילוכים מתקדמת מבית טקטרו, שתבטיח שהילד יוכל להתמודד עם כל טיפוס וירידה בקלות ובנוחות.\n\n✔️ **ברקסים הידראוליים**: ברקסים מהירים ויעילים שיבטיחו עצירה בטוחה בכל מצב.\n\n✔️ **צמיגי שטח אמיתיים**: צמיגים איכותיים שיספקו אחיזה מצוינת בכל סוגי השבילים והשטחים, כך שהילד יוכל לחקור את העולם ללא מגבלות.\n\nהזמן עכשיו את אופני השיכוך המלא המושלמים לילדים ותן לו את האפשרות לחוות את החופש וההרפתקאות של רכיבת אופניים בצורה הטובה ביותר! 🚴‍♂️💨",
         "fork length": 130,
         "style": "trail"
     },
@@ -2054,7 +1941,7 @@
         "category": "mtb",
         "sub_category": "full_suspension",
         "original_price": 9500,
-        "disc_price": "",
+        "disc_price": 7600,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/siskiu_t7_grey.webp",
             "gallery_images_urls": [
@@ -2083,99 +1970,9 @@
             "stem": "ENTITY XPERT, ALLOY E:35MM R:7DEG BB:35MM",
             "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40"
         },
-        "rewritten_description": "אופני שבילים ואינדורו מעולים של POLYGON שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 140 מ\"מ ומערכת הילוכים 1X12 גלגלי \"29 לשליטה מצוינת בכל תנאי השטח",
+        "rewritten_description": "גלה את חווית השטח האולטימטיבית עם אופני השבילים והאינדורו של POLYGON! עם שילדת אלומיניום ALX הקלה, תוכל להתגבר על כל אתגר שביל בקלות ובסגנון. הגאומטריה המתקדמת שלנו מבטיחה נוחות ויציבות בכל פנייה ובכל טיפוס.\n\nהבולמים המתקדמים של 140 מ\"מ יספקו לך את התמיכה הנדרשת כדי לחדור לתוך כל מסלול, לא משנה כמה קשה הוא יהיה. מערכת ההילוכים 1X12 תאפשר לך לשלוט במהירות ובכוח בכל תנאי השטח, כך שתמיד תוכל למצוא את ההילוך המושלם.\n\nעם גלגלי \"29, תוכל ליהנות מהחלקות חלקות על פני כל מכשול, מה שמבטיח שאתה תמיד תגיע ליעד שלך במהירות ובבטחה. אל תתפשר על איכות – בחר באופני POLYGON ותהנה מחוויית רכיבה שאין כמותה!",
         "fork length": 110,
         "style": "cross-country"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/siskiu_t8_2023"
-        },
-        "firm": "Polygon",
-        "model": "Siskiu T8 29",
-        "year": "לא צויין",
-        "category": "mtb",
-        "sub_category": "full_suspension",
-        "original_price": 11990,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/SIDE_result(78).webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/SIDE_result(181).webp",
-                "https://pedalim.co.il/Media/Uploads/FACE_FRONT_result(22).webp",
-                "https://pedalim.co.il/Media/Uploads/FACE_FRONT_2_result.webp",
-                "https://pedalim.co.il/Media/Uploads/FACE_BACK_result(12).webp",
-                "https://pedalim.co.il/Media/Uploads/polygon_play(20).png"
-            ]
-        },
-        "specs": {
-            "frame": "ALX TRAIL FRAME 135MM TRAVEL, TAPER H/T",
-            "fork": "FOX 34 RHYTHM 140mm TRAVEL",
-            "rear_shock": "FOX FLOAT DPS SPECIAL TUNING E2E:210X55MM, HARDWARE:8MMX25MM",
-            "shifters": "SHIMANO SLX SL-M7100-R, 1x12-SPEED TRIGGER",
-            "rear_derailleur": "SHIMANO SLX RD-M7100-SGS DIRECT ATTACH",
-            "crankset": "SHIMANO MT-510-1 BOOST 32T",
-            "bottom_bracket": "SHIMANO 2-PIECE CRANKSET BSA THREADED",
-            "cassette": "Sunrace 11-51 HG",
-            "chain": "KMC X12 12SPEED",
-            "brakes": "TEKTRO HD-M745 4-PISTONS HYDRAULIC DISC BRAKES + SHIMANO SM-RT54 180mm CENTER-LOCK",
-            "wheels": "ENTITY XL2 DISC 622-35",
-            "tires": "PERFORMANCE TIRE, 29”X2.40”",
-            "saddle": "ENTITY XTENT",
-            "seatpost": "TRANZ-X 150MM TRAVEL, ZERO OFFSET, 30.9MM",
-            "handlebar": "ENTITY XPERT, ALLOY W:780MM R:20MM BB:35MM",
-            "stem": "ENTITY XPERT ALLOY, EXT: 35mm, BB: 35mm, R/D: 7 Degree",
-            "headset": "ZERO STACK (ZS) SEALED BEARING FOR TAPER HEAD TUBE, ZS 44/28.6 | ZS 56/40"
-        },
-        "rewritten_description": "אופני שבילים ואינדורו החדשים של POLYGON שילדת אלומיניום ALX קלה וגאומטריית שטח עדכנית בולמי 140 מ\"מ ומערכת הילוכים 1X12 גלגלי \"29 לשליטה מצוינת בכל תנאי השטח",
-        "fork length": 140,
-        "style": "trail"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/marin-alpine-trail-7-2021"
-        },
-        "firm": "Marin",
-        "model": "Alpine Trail 7",
-        "year": "לא צויין",
-        "category": "mtb",
-        "sub_category": "full_suspension",
-        "original_price": 13990,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/690260(10)_jpg.webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/690260(20)_jpg.webp",
-                "https://pedalim.co.il/Media/Uploads/2021_Alpine_Trail_7_gallery_2(4)_jpg.webp",
-                "https://pedalim.co.il/Media/Uploads/Marin_Play(47)_png.webp"
-            ]
-        },
-        "specs": {
-            "frame": "Series 4 6061 Aluminum Frame, 29” Wheels, 150mm Travel MultiTrac Suspension Platform, Internal Dropper Post and Rear Derailleur Routing, Chainstay Mou",
-            "fork": "RockShox Yari RC, 29”, 160mm of Travel, Air Sprung, Debonair, Compression and Rebound Adjustment, Fast Black Stanchions, 110x15mm Maxle Stealth, 42mm",
-            "rear_shock": "Rock Shox Deluxe Select + RT, Debonair Air Spring, 2 Position Compression and Rebound Adjustment, 205x65mm, Trunnion Upper Mount, 25mmxM8 Lower Mount",
-            "shifters": "Shimano Deore, 12-Speed, SL-7100R",
-            "rear_derailleur": "Shimano Deore SGS, Shadow Plus, Direct Attachment, 12-Speed",
-            "crankset": "FSA Comet Heavy Duty, Modular 1x, 32T Direct Mount Chainring, MegaTooth Technology, Boost Spacing",
-            "bottom_bracket": "External Sealed Cartridge Bearing",
-            "cassette": "Shimano, Deore 12-Speed, 10-51T",
-            "chain": "KMC X-12 Silver and Black",
-            "brakes": "Shimano MT420, 4-Piston Hydraulic Disc Brake, 203\\180mm Rotors",
-            "wheels": "Marin, Double Wall Alloy, 29mm Inner, Pinned Joint, Disc Specific, 32H, Tubeless Compatible + Shimano HB-MT410B, 148x12mm, Centerlock, Microspline Fre",
-            "tires": "Vee Tire Flow Snap, 29x2.6”, Tackee Compound, 72 TPI, Tubeless Compatible",
-            "saddle": "Marin Speed Concept",
-            "seatpost": "TranzX, YSP23JL, 1x Remote, 150mm Travel 30.9",
-            "handlebar": "Marin Mini-Riser, 6061 Double Butted Aluminum, 780mm Width, 28mm Rise, 5º Up, 9º Back",
-            "stem": "Marin 3D Forged Alloy, 35mm",
-            "headset": "FSA No 57E, Semi-Sealed Cartridge Bearings, 1 1/8\" x 1 1/2”"
-        },
-        "rewritten_description": "אופני האנדורו החדשים והמגניבים של MARIN ! שילדת אלומיניום SERIES 4 חזקה עם גאומטריות עדכניות מתלה MULTI TRAC משובח למניעת נדנוד לא רצוי גלגלי \"29 ובולמי 160/150 מ\"מ עם מערכות הילוכים מעולות",
-        "fork length": 160,
-        "style": "enduro"
     },
     {
         "source": {
@@ -2217,7 +2014,7 @@
             "stem": "Marin 3D Forged Alloy, 35mm",
             "headset": "FSA Custom Headset, Adjustable HTA Design"
         },
-        "rewritten_description": "אופני האנדורו החדשים והכי ניתנים לכיוון גאומטרייה אישית ממתינים לכם כדי לקרוע את השבילים ! ביקורות מטורפות בכל העולם,איבזור קצה ומחיר ללא תחרות ! שילדת אלומיניום חדשה לחלוטין LT2 סופר חזקה ומוגנת עם אפשרות שינוי גיאומטריה להתאמה מוחלטת לסגנון הרכיבה שלכם :DH מהיר,אנדורו טכני,סלעים או DIRT JUMP מערכת הילוכים SHIMANO DEORE 12 ,ברקסים TRP Slate EVO, 4-Piston עוצמתיים, גלגלי טיובלס וצמיגי VEE WCE SNAP 2.6 יבטיחו שתסיימו כל מסלול עם חיוך בולמי זעזועים מצוינים FOX 36 קדמי 170מ\"מ FOX FLOAT אחורי 160 מ\"מ ישאירו אותכם על השביל הכי משובש בלי בעייה",
+        "rewritten_description": "**אופני האנדורו החדשים – עוצמה, גמישות וסגנון!**\n\nהכירו את אופני האנדורו החדשים שלנו – הבחירה המושלמת לכל רוכב שמחפש את האדרנלין בשבילים! עם עיצוב גאומטרי ניתנים לכיוון אישי, אופניים אלו יאפשרו לכם להתאים את החוויה בדיוק לסגנון הרכיבה שלכם, whether it's DH מהיר, אנדורו טכני, או קפיצות Dirt Jump מרהיבות.\n\nשילדת האלומיניום LT2 החדשה, החזקה והמוגנת, מבטיחה עמידות לאורך זמן, בעוד מערכת ההילוכים SHIMANO DEORE 12 תספק לכם את הביצועים הגבוהים ביותר בכל מסלול. עם ברקסים TRP Slate EVO 4-Piston עוצמתיים, תרגישו ביטחון מוחלט בכל בלימה.\n\nהגלגלים הטיובלס וצמיגי VEE WCE SNAP 2.6 יתמכו בכל פנייה ובכל עלייה, והבולמים המתקדמים – FOX 36 קדמי 170 מ\"מ ו-FOX FLOAT אחורי 160 מ\"מ – יאפשרו לכם לרכב על השבילים המשובשים ביותר מבלי להרגיש את הקפיצים.\n\nאל תפספסו את ההזדמנות לרכוב על אופניים שמקבלים ביקורות מטורפות ברחבי העולם – עם מחיר ללא תחרות, הם מחכים רק לכם! קחו את הרכיבה שלכם לשלב הבא והצטרפו למהפכת האנדורו! 🚴‍♂️💨",
         "fork length": 170,
         "style": "enduro"
     },
@@ -2233,7 +2030,7 @@
         "category": "mtb",
         "sub_category": "full_suspension",
         "original_price": 19990,
-        "disc_price": "",
+        "disc_price": 12990,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/SIDE_result(3).webp",
             "gallery_images_urls": [
@@ -2277,33 +2074,33 @@
         "category": "mtb",
         "sub_category": "full_suspension",
         "original_price": 22000,
-        "disc_price": "",
+        "disc_price": 16500,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/621213(1)_jpg.webp",
             "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/621213(5)_jpg.webp"
+                "https://pedalim.co.il/Media/Uploads/621215(2)_jpg.webp"
             ]
         },
         "specs": {
-            "frame": "METHANOL CV FS 100MM 29\" FULL CARBON HM MONOCOQUE W/BIANCHI CV, 1.5\" TAPERED HT, BB92, ONLY 1X DRIVETRAIN, PM 160MM CARBON DROPOUT, 12X148MM BOOST",
-            "fork": "ROCK SHOX SID SL SELECT 29\", CHARGER RL, SOLO AIR 100MM",
+            "frame": "METHANOL CV FS 100MM 29\" FULL CARBON HM MONOCOQUE W/COUNTERVAIL, 1.5\" TAPERED HT, BB92, ONLY 1X DRIVETRAIN, PM 160MM CARBON DROPOUT, 12X148MM BOOST",
+            "fork": "FOX 32 RHYTHM 29\" REMOTE, 100MM TRAVEL",
             "rear_shock": "Sram Sid Luxe Select + RLR, 190/40mm, Debonair, w/eyelets 20mm x diam.8mm",
             "shifters": "SHIMANO SLX 12SP",
             "rear_derailleur": "SHIMANO XT RD-M8100-SGS SHADOW DESIGN + 12SP",
-            "crankset": "FC-MT511-1, 32T, 52MM CHAINLINE, CRANK LENGTH 170MM",
-            "bottom_bracket": "SHIMANO BB-MT500-PA PRESSFIT 41X92MM",
+            "crankset": "SHIMANO FC-MT610 34T, 52MM CHAINLINE, CRANK LENGTH: 175MM",
+            "bottom_bracket": "SHIMANO BB-MT800-PA PRESSFIT 41X92MM",
             "cassette": "SHIMANO CS-M7100-12, 10-51T",
             "chain": "SHIMANO CN-M7100, 12SP",
-            "brakes": "SHIMANO BR-M6100",
-            "wheels": "WTB KOM LIGHT I25 29 + SHIMANO FH-MT510-B + FORMULA CL-811",
+            "brakes": "SHIMANO BR-MT501",
+            "wheels": "SHIMANO FH-MT510-B + FORMULA CL-811 + WTB KOM LIGHT I25 29",
             "tires": "KENDA BOOSTER PRO 29X2.20",
-            "saddle": "FI'ZI:K TAIGA, S-ALLOY RAILS",
-            "seatpost": "Reparto Corse CARBON SB0, CARBON UD FIBER SHAFT W/FORGED HEAD, DIAM. 31.6MM, 0MM SEATBACK, LENGTH: 350MM",
+            "saddle": "FI'ZI:K TAIGA",
+            "seatpost": "Reparto Corse CARBON SB0, CARBON UD FIBER SHAFT W/FORGED HEAD, DIAM. 31.6MM, 0MM SEATBACK, LENGTH: 400MM",
             "handlebar": "Reparto Corse FLAT, DOUBLE BUTTED AL2014-T6, WIDTH 740MM, DIAM. 31,8MM, 9° BACKSWEEP",
-            "stem": "Reparto Corse, 3D FORGED AL7050-T6 W/FORGED ALLOY FACEPLATE, +/-7º, 1.1/8\", DIAM. 31.8MM, EXT: 60MM",
+            "stem": "Reparto Corse, 3D FORGED AL7050-T6 W/FORGED ALLOY FACEPLATE, +/-7º, 1.1/8\", DIAM. 31.8MM, EXT: 70MM",
             "headset": "FSA ORBIT C-40"
         },
-        "rewritten_description": "מכונת המירוצים המושלמת והמתקדמת ביותר בעולם שילדת קרבון מלאה משולבת COUNTERVAIL המשכך 80% מהזעזועים בולמי 100 מ\"מ בשילוב שילדת קרבון מתקדמת יוצרים חוויית רכיבה מהנה ובטוחה בנויה במיוחד לשבילי XC אבל תטיס אתכם בלי בעייה גם בסינגלים המהירים",
+        "rewritten_description": "**אופני מירוץ קרבון עם טכנולוגיית COUNTERVAIL – חוויית רכיבה שלא הכרתם!**\n\nהכירו את מכונת המירוצים המתקדמת ביותר בעולם – אופני קרבון מלאים שמשלבים טכנולוגיית COUNTERVAIL המהפכנית, המפחיתה 80% מהזעזועים! עם בולמי זעזועים של 100 מ\"מ ושילדת קרבון מתקדמת, תיהנו מחוויית רכיבה שלא רק שהיא מהנה, אלא גם בטוחה במיוחד.\n\nבנויים במיוחד לשבילי XC, האופניים הללו יטיסו אתכם גם בסינגלים המהירים ביותר, ויחדשו את הדרך שבה אתם רוכבים. כל רכיבה תהפוך לחוויה עוצמתית, מלהיבה ומלאה באדרנלין. \n\nאל תפספסו את ההזדמנות לעלות על אופני המירוץ שיביאו את הביצועים שלכם לרמה הבאה!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -2388,7 +2185,138 @@
             "stem": "POLYGON SPORT ALLOY, E: 45mm, BB: 31.8m, R/D:0degree",
             "headset": "THREADLESS ZERO STACK HEADSET"
         },
-        "rewritten_description": "גאומטריית שבילים מודרנית עם זווית ראש 67° ובסיס גלגלים יציב לשליטה מלאה בירידות ובשבילים מערכת הילוכים 1x9 שמעניקה פשטות לתפעול, אמינות מרבית ודיוק בשינויים לרכיבת שבילים יומיומית בלמי דיסק הידראוליים של שימאנו חזקים שמבטיחים עצירה נשלטת ובטוחה גם בתנאי שטח טכניים מערכת Faux Bar לספיגת מהמורות חלקה, אחיזה מעולה ויעילות גבוהה במעבר בין טיפוס, מישור וירידות",
+        "rewritten_description": "**אופני הרים איכותיים עם גאומטריה מתקדמת – חוויות רכיבה בלתי נשכחות!**\n\nגלה את המהות האמיתית של רכיבת שטח עם האופניים המתקדמים שלנו, המציעים גאומטריה מודרנית שמותאמת במיוחד לשבילים. עם זווית ראש של 67° ובסיס גלגלים רחב, תוכל לשלוט בצורה מוחלטת בירידות ובשבילים טכניים, ולהרגיש בטוח בכל סיבוב.\n\nהמערכת ההילוכים 1x9 שלנו מביאה איתה פשטות ואמינות – כל שינוי הילוך מתבצע בקלות ובדיוק, כך שתוכל להתמקד במה שחשוב באמת: רכיבה מהנה. \n\nהבלמים ההידראוליים של שימאנו מבטיחים עצירה בטוחה ומדויקת, גם בתנאים המאתגרים ביותר. תוכל להתמודד עם כל אתגר בשטח בידיעה שאתה מצויד בטכנולוגיה מהשורה הראשונה.\n\nוהחידוש האמיתי? מערכת ה-Faux Bar שלנו, המציעה ספיגת מהמורות חלקה ואחיזה מעולה, שתספק לך חוויית רכיבה חלקה ויעילה, בין אם אתה מטפס על הרים, רוכב במישורים או מתמודד עם ירידות חדות.\n\nהצטרף אלינו והגלה את הכוח והביטחון של אופני השבילים שלנו – כל רכיבה היא הרפתקה חדשה!",
+        "fork length": 120,
+        "style": "cross-country"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/polygon-siskiu-d6-2026"
+        },
+        "firm": "Polygon",
+        "model": "Siskiu D6",
+        "year": "לא צויין",
+        "category": "mtb",
+        "sub_category": "full_suspension",
+        "original_price": 6500,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/MY25-SISKIU-D6-P-1-768x576.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/MY25-SISKIU-D6-P-1-768x576(1).webp"
+            ]
+        },
+        "specs": {
+            "frame": "ALX XC TRAIL FRAME",
+            "fork": "SUNTOUR XCM 34 BOOST 120mm TRAVEL",
+            "rear_shock": "SUNTOUR RAIDON LO AIR, E2E: 190x45mm",
+            "shifters": "SHIMANO CUES SL-U6000, 10-SPEED TRIGGER",
+            "rear_derailleur": "SHIMANO CUES RD-U6000 DIRECT ATTACH 10/11-SPEED",
+            "crankset": "SHIMANO CUES FC-U6000-1 32T TWO-PIECE-CRANK",
+            "bottom_bracket": "BSA THREADED 68/73mm",
+            "cassette": "SHIMANO CUES CS-LG300 11-48T 10-SPEED",
+            "chain": "KMC X GLIDE",
+            "brakes": "SHIMANO MT200 HYDRAULIC DISC BRAKE",
+            "wheels": "POLYGON MT6 TUBELESS READY W/ TUBELESS TAPE",
+            "tires": "DELI SPIDERBAIT 29\"x2.25\"",
+            "saddle": "LINC VOID SADDLE ø 7mm",
+            "seatpost": "TRANZ X JD-YSP23KL 150mm TRAVEL, DxL: 30.9 x 456mm",
+            "handlebar": "POLYGON SPORT ALLOY, W: 760mm, BB: 31.8mm, R/D: 12mm, B: 9degree",
+            "stem": "POLYGON SPORT ALLOY, E: 45mm, BB: 31.8m, R/D:0degree",
+            "headset": "THREADLESS ZERO STACK HEADSET"
+        },
+        "rewritten_description": "**גלה את חוויית הרכיבה המושלמת עם האופניים החדשים שלנו!**\n\nהכירו את האופניים המתקדמים בעיצוב גאומטרי שמיועדים לאוהבי השבילים. עם זווית ראש של 67.5°, תיהנו מיציבות בלתי מתפשרת בירידות וזרימה טבעית בסינגלים – כל רכיבה תהיה חוויה מהנה ומרגשת!\n\nבזכות המזלג המתקדם של 120 מ״מ ומתלה SUNTOUR, תרגישו את ההבדל בכל פנייה ובכל מכשול. ספיגת הזעזועים חלקה ותגובה מהירה במקטעים טכניים, כך שתוכלו להתמודד עם כל אתגר בדרך.\n\nעם מערכת הילוכים Shimano 1x10, תיהנו מתפעול מדויק ויעילות גבוהה בכל שטח, מה שמבטיח שתמיד תהיו מוכנים לכל עלייה וירידה. ועם בלמי דיסק הידראוליים Shimano, תיהנו מהפסקה בטוחה ושליטה מרבית בכל תנאי הרכיבה.\n\nאל תפספסו את ההזדמנות לרכב על האופניים שיגרמו לכם להרגיש כמו מקצוענים! הגיע הזמן לשדרג את חוויית הרכיבה שלכם. רכבו על הטוב ביותר – רכבו על האופניים שלנו!",
+        "fork length": 120,
+        "style": "cross-country"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/polygon-syncline-dr6"
+        },
+        "firm": "Polygon",
+        "model": "Syncline DR6",
+        "year": "לא צויין",
+        "category": "mtb",
+        "sub_category": "full_suspension",
+        "original_price": 14990,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR6-P-768x576.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR6-P-768x576(1).webp",
+                "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR6-LF-768x576.webp",
+                "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR6-RF-768x576.webp"
+            ]
+        },
+        "specs": {
+            "frame": "ACX XC 110mm TRAVEL",
+            "fork": "FOX 34 SL PERFORMANCE SERIES 120mm TRAVEL",
+            "rear_shock": "FOX FLOAT SL PERFORMANCE ELITE SERIES, E2E: 165x40mm",
+            "shifters": "SHIMANO DEORE M6100, 1x12 SPEED",
+            "rear_derailleur": "SHIMANO DEORE M6100",
+            "crankset": "SHIMANO MT512, 32T",
+            "bottom_bracket": "SHIMANO BSA BB",
+            "cassette": "SHIMANO DEORE M6100, 10-51T",
+            "chain": "KMC X-12",
+            "brakes": "SHIMANO DEORE M6100",
+            "wheels": "ALLOY DOUBLE WALL, 32H, POLYGON MT6 TUBELESS READY",
+            "tires": "MAXXIS REKON RACE 29\"x2.35\"",
+            "saddle": "FIZIK TERRA ARGO X7, CR-MO ø 7mm",
+            "seatpost": "TRANZ-X JD-YSP23J 125mm TRAVEL, DxL: 31.6x412mm",
+            "handlebar": "POLYGON EXPERT, W: 760mm, BB: 31.8mm, R/D: 5mm, B: 9degree",
+            "stem": "POLYGON EXPERT, E: 70mm, BB: 31.8m, R/D: -17degree",
+            "headset": "FSA NO.69/59/SRS/DUAL, IS 52/28.6 | IS 52/40",
+            "pedals": "ALLOY FLAT W/ REPLACEABLE PIN"
+        },
+        "rewritten_description": "",
+        "fork length": 120,
+        "style": "cross-country"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/polygon-syncline-dr9"
+        },
+        "firm": "Polygon",
+        "model": "Syncline DR9",
+        "year": "לא צויין",
+        "category": "mtb",
+        "sub_category": "full_suspension",
+        "original_price": 33000,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR9-P-768x576.webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR9-P-768x576(1).webp",
+                "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR9-LF-768x576.webp",
+                "https://pedalim.co.il/Media/Uploads/MY26-SYNCLINE-DR9-RF-768x576.webp"
+            ]
+        },
+        "specs": {
+            "frame": "ACX XC 110mm TRAVEL",
+            "fork": "FOX 34 SL FACTORY SERIES 120mm TRAVEL",
+            "rear_shock": "FOX FLOAT SL FACTORY SERIES, E2E: 165x40mm",
+            "shifters": "SHIMANO XTR Di2 M9250 I-SPEC EV, 1x12 SPEED",
+            "rear_derailleur": "SHIMANO XTR Di2 M9250",
+            "crankset": "SHIMANO XTR M9200, 34T",
+            "bottom_bracket": "SHIMANO BB93",
+            "cassette": "SHIMANO XTR M9200, 10-51T",
+            "chain": "SHIMANO XTR M9100",
+            "brakes": "SHIMANO XTR M9200",
+            "wheels": "RACE FACE ERA CARBON, TUBELESS READY",
+            "tires": "MAXXIS REKON RACE 29\"x2.35\"",
+            "saddle": "FIZIK TERRA ARGO X7, R: CR-MO ø 7mm",
+            "seatpost": "FOX TRANSFER SL FACTORY SERIES 120mm TRAVEL, DxL: 31.6x455mm",
+            "handlebar": "FSA KFX FLAT CARBON, W: 760mm, BB: 31.8mm, R/D:-",
+            "stem": "FSA KFX 2-BOLT, E: 70mm, BB: 31.8m, R/D: -20degree",
+            "headset": "FSA NO.69/59/SRS/DUAL, S.H.I.S. IS 52/28.6 | IS 52/40"
+        },
+        "rewritten_description": "",
         "fork length": 120,
         "style": "cross-country"
     },
@@ -2430,7 +2358,7 @@
             "headset": "FP-H863 ALLOY CAGED BEARING",
             "pedals": "PLASTIC PEDAL"
         },
-        "rewritten_description": "אופני הטנדם הנמכרים בישראל שילדת אלומיניום קלה לרכיבה עירונית ושטח קל משקל כולל של 18 ק\"ג בלבד! בלמי דיסק ומערכות היולוכים של שימאנו 3X8 גלגלי דיסק \"27.5 עם צמיגי דו שימושיים",
+        "rewritten_description": "**אופני טנדם – חווית רכיבה זוגית שאין כמותה!**\n\nגלה את הרכיבה המושלמת עם אופני הטנדם שלנו, הבחירה האידיאלית עבור זוגות שאוהבים לחקור את העיר והשטח יחד! שילדת האלומיניום הקלה שלנו, במשקל כולל של רק 18 ק\"ג, מבטיחה רכיבה נוחה ומהירה, בכל מצב.\n\nעם בלמי דיסק מתקדמים ומערכות הילוכים איכותיות של שימאנו 3X8, תוכל ליהנות מעוצמת בלימה מרשימה ושליטה מדויקת בכל עלייה ובכל ירידה. הגלגלים בגודל \"27.5 מצוידים בצמיגים דו שימושיים, כך שתוכל לעבור בקלות בין המסלולים העירוניים לבין שטחים פתוחים.\n\nאל תפספס את ההזדמנות לחוות את חווית הרכיבה המושלמת עם בן/בת הזוג שלך. תן לרוח ללטף את פניך, הרגש את החיבור וההנאה שבשיתוף פעולה – עם אופני הטנדם שלנו, כל רכיבה היא הרפתקה חדשה! \n\n**הזמן עכשיו ותהנה מהנחות מיוחדות לחגים!**",
         "fork length": null
     },
     {
@@ -2726,7 +2654,7 @@
             "stem": "Reparto Corse integrated handlebar, material Carbon, for Acros ICR system drop 125mm, reach 80mm Ext: 110/400",
             "headset": "Acros IS52 ICR SS custom headtube cover Specialissima"
         },
-        "rewritten_description": "אופני האולטרה לייט החדשים של ביאנקי משולבים בשכבת הקאונטרוייל CV הפטנטי לנוחות מקסימלית עם קשיחות מרבית ומשקל מינימלי. מערכת הילוכים אלקטרונית משולבת בלמי דיסק הידראוליים של SHIMANO ULTEGRA המבטיחה ביצועים יוצאי דופן גם בתנאים קשים וגלגלי קרבון מעולים בפרופיל 33 מ\"מ. יצירת אומנות איטלקית מעוצבת עם קווים נקיים,צבעים מרהיבים ותשומת לב לפרטים הקטנים שיטיסו אותכם בכבישים ויסובבו ראשים בכל מקום שתגיעו אליו. שכבת ה-COUNTERVAIL של BIANCHI המוטמעת בשילדה מפחיתה את רעידות הכביש ב80%,משפרת את נוחות הרכיבה ותורמת ליציבות גם בכבישים משובשים ומהירויות גבוהות.",
+        "rewritten_description": "**אופני Bianchi Ultra Lite – חוויית רכיבה שאין כמותה!**\n\nגלה את האופניים החדשים של ביאנקי, המשלבים טכנולוגיה מתקדמת עם עיצוב איטלקי בלתי מתפשר. אופני ה-Ultra Lite מציעים לך את השילוב המושלם בין נוחות, קשיחות ומשקל קל, הודות לשכבת ה-Countervail CV הפטנטית, המפחיתה את רעידות הכביש ב-80%. \n\nעם מערכת הילוכים אלקטרונית מתקדמת ובלמי דיסק הידראוליים של Shimano Ultegra, תוכל ליהנות מביצועים מעולים בכל תנאי רכיבה – גם בכבישים המשובשים ביותר. הגלגלים הקרבון בפרופיל 33 מ\"מ מבטיחים יציבות מרבית ומהירות גבוהה, כך שתוכל להתמודד עם כל אתגר בכביש.\n\nהעיצוב המרהיב של אופני Bianchi Ultra Lite, עם קווים נקיים וצבעים עוצרי נשימה, ימשוך תשומת לב בכל מקום בו תגיע. זה הזמן לשדרג את חוויית הרכיבה שלך ולהרגיש את ההבדל עם אופני ביאנקי – כי רכיבה על אופניים היא לא רק ספורט, היא אמנות! \n\nאל תפספס את ההזדמנות להיות חלק מהמהפכה – הזמין עכשיו והצטרף למועדון הרוכבים המובילים!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -2771,7 +2699,7 @@
             "stem": "REPARTO CORSE BY FSA NS ACR, ST-OS-160, 3D FORGED/CNC AL6061, 31.8MM, RISE -6°, DI2 COMPATIBLE, EXT: 90MM-47/50CM, 110MM",
             "headset": "FSA NO.55R 1.5\"/ACR/BIANCHI"
         },
-        "rewritten_description": "אופני המרוצים החדשים של ביאנקי בגירסה עדכנית ל 2022 שילדת קרבון היי מודולוס בשילוב COUNTERVAIL המשכך 80% מהזעזועים מתאימה לכל סוגי הרכיבה ולכל הרוכבים אפשרות לצביעה מיוחדת -TAVOLOZZA",
+        "rewritten_description": "**אופני המרוצים החדשים של ביאנקי - הגירסה המתקדמת של 2022!**\n\nהיכונו לחוויה בלתי נשכחת על הכביש עם האופניים המהפכניים של ביאנקי! שילדת הקרבון היי מודולוס בשילוב טכנולוגיית COUNTERVAIL המתקדמת, מספקת לכם יכולת להתמודד עם כל זעזוע ולהרגיש את הכביש כמו שלא הרגשתם מעולם. עם יכולת לספוג 80% מהזעזועים, תוכלו לרכב בנוחות וביציבות בכל תנאי השטח.\n\nלא משנה אם אתם רוכבים מקצועיים או חובבים, האופניים הללו מתאימים לכל סוגי הרכיבה ומעניקים חווית רכיבה שאין כמותה. והכי טוב? יש לכם אפשרות לבחור בצביעה מיוחדת - TAVOLOZZA, שתאפשר לכם להתבלט על הכביש עם עיצוב אישי ומיוחד.\n\nאל תפספסו את ההזדמנות לשדרג את חווית הרכיבה שלכם! רכבו עם ביאנקי - הבחירה של אלופים!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -2813,7 +2741,7 @@
             "stem": "Velomann, AL6061, fully internal cable routing stem, compatible with Acros AICR system, Ext: 100mm",
             "headset": "Acros IS52 ICR"
         },
-        "rewritten_description": "שילדת קרבון קלה במיוחד המציעה קשיחות מרבית ומשקל מינימלי מאפשרת לרוכבים להשיג ביצועים מרביים בכל תנאי הרכיבה, עם נוחות ללא פשרות. מערכת הילוכים אלקטרונית משולבת בלמי דיסק הידראוליים של SHIMANO ULTEGRA המבטיחה ביצועים יוצאי דופן גם בתנאים קשים וגלגלי קרבון מעולים בפרופיל 33 מ\"מ. יצירת אומנות איטלקית מעוצבת עם קווים נקיים,צבעים מרהיבים ותשומת לב לפרטים הקטנים שיטיסו אותכם בכבישים ויסובבו ראשים בכל מקום שתגיעו אליו. אופני אולטרה לייט מושלמים לטיפוס ולרכיבות נפח. מגיעים עם כידון אלומיניום כדי לאפשר הרכבת אירובאר.",
+        "rewritten_description": "**אופני קרבון אולטרה לייט - חוויה חדשה על הכביש!**\n\nגלו את עוצמת הביצועים עם האופניים המתקדמים שלנו, המשלבים בין טכנולוגיה מתקדמת לעיצוב איטלקי מרהיב. השילדה הקלה במיוחד עשויה מקרבון איכותי, מציעה קשיחות מרבית ומשקל מינימלי, כך שתוכלו להשיג את הביצועים הגבוהים ביותר בכל סוגי הרכיבות.\n\nהודות למערכת ההילוכים האלקטרונית המתקדמת ולבלמי דיסק הידראוליים של SHIMANO ULTEGRA, תיהנו מהביצועים יוצאי הדופן גם בתנאים הקשים ביותר. גלגלי הקרבון שלנו בפרופיל 33 מ\"מ מבטיחים יציבות מרבית ומהירות שאין כמוה.\n\nהעיצוב המוקפד, עם קווים נקיים וצבעים עוצרי נשימה, יהפוך אתכם למרכז תשומת הלב בכל רכיבה. עם אופני האולטרה לייט שלנו, תרגישו את השיפור בכל טיפוס ובכל רכיבת נפח.\n\nכדי להוסיף עוד יותר לנוחות ולביצועים, מגיעים האופניים עם כידון אלומיניום, המאפשר הרכבת אירובאר למי שחולם על רכיבות מהירות ואפקטיביות.\n\nהיכנסו לעולם חדש של רכיבה עם האופניים שלנו - עוצמה, נוחות ועיצוב שאין להם תחליף!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -2855,7 +2783,7 @@
             "stem": "Integrated Aero handlebar, material Carbon, drop 125mm, reach 80mm, Di2 compatible Ext:100x420",
             "headset": "Fsa No. 54 - MR137 - ACB 1-1/4\"\" diam.46.9xdiam.37x7 Fsa TH970R - MR082R - SL Alloy ACB 1-1/4\"\" diam.46.8xdiam.34x7"
         },
-        "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים ששואפים תמיד להיות בראש שילדת AERO תחרותית מקרבון מודול גבוה קשיח במיוחד משולב בCV סופג זעזועים הפטנטי של ביאנקי מערכות חשמליות אלחוטיות 12 הילוכים חדשות מבית שימאנו ULTEGRA DI2 גלגלי קרבון REPRTO CORSE בפרופיל 50 מ\"מ מוכנים לטיובלס וכידון מקשה אחת",
+        "rewritten_description": "**אופני BIANCHI - דגל החדשנות והביצועים!**\n\nהכירו את האופניים החדשים של BIANCHI, המשלבים בין טכנולוגיה מתקדמת לעיצוב ייחודי, בכדי להעניק לכם את חוויית הרכיבה האולטימטיבית. עם שילדת AERO תחרותית מקרבון מודול גבוה, תוכלו להרגיש את הקשיחות והקלות בכל רכיבה, מה שמסייע לכם להתמקד במטרה - להיות תמיד בראש!\n\nתכונת ה-CV הסופגת זעזועים, הפטנט הייחודי של ביאנקי, מבטיחה רכות ונוחות גם בכבישים הקשים ביותר. עם מערכות חשמליות אלחוטיות חדשות מבית שימאנו ULTEGRA DI2, כל העברות ההילוכים מתבצעות בצורה חלקה ומהירה, כך שתוכלו להתרכז במה שחשוב באמת - הביצועים שלכם!\n\nהגלגלים מקרבון REPRTO CORSE בפרופיל 50 מ\"מ מוכנים לטיובלס, מבטיחים יציבות ומהירות מקסימלית, והכידון המקשה אחת מספק שליטה מושלמת על האופניים בכל מצב. \n\nאל תפספסו את ההזדמנות להיות חלק מעולם הרכיבה המתקדם ביותר. רכשו את אופני BIANCHI שלכם היום והתחילו את המסע לעבר הפסגה!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -2987,7 +2915,7 @@
             "stem": "Integrated Aero handlebar, material Carbon, drop 125mm, reach 80mm, Di2 compatible Ext:90x400",
             "headset": "Fsa No. 54 - MR137 - ACB 1-1/4\"\" diam.46.9xdiam.37x7 Fsa TH970R - MR082R - SL Alloy ACB 1-1/4\"\" diam.46.8xdiam.34x7"
         },
-        "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים ששואפים תמיד להיות בראש שילדת AERO תחרותית מקרבון מודול גבוה קשיח במיוחד משולב בCV סופג זעזועים הפטנטי של ביאנקי מערכות חשמליות אלחוטיות 12 הילוכים חדשות מבית שימאנו ULTEGRA DI2 גלגלי קרבון REPRTO CORSE בפרופיל 50 מ\"מ מוכנים לטיובלס וכידון מקשה אחת",
+        "rewritten_description": "**אופני BIANCHI AERO – חוויית רכיבה שלא הכרתם!**\n\nהכירו את אופני הדגל החדשים של BIANCHI – הבחירה המושלמת לרוכבים שמחפשים את הקצה של הביצועים. עם שילדת AERO תחרותית עשויה קרבון מודול גבוה, תיהנו מקשיחות מרבית שמספקת לכם את האנרגיה הנדרשת כדי להיות תמיד בראש.\n\nהודות לטכנולוגיית CV המתקדמת שלנו, השילדה סופגת זעזועים ומבטיחה רכיבה חלקה ונעימה, גם בתנאים הקשים ביותר. למערכת ההילוכים, בחרנו במערכת חשמלית אלחוטית 12 הילוכים מבית שימאנו ULTEGRA DI2, שתספק לכם שינויים מדויקים וחלקים, מבלי להפריע לרכיבה שלכם.\n\nתוסיפו לכך את גלגלי הקרבון REPRTO CORSE בפרופיל 50 מ\"מ, המוכנים לטיובלס, ותהיו מוכנים להתמודד עם כל אתגר בכביש. הכידון המקשה אחת מבטיח לכם שליטה מוחלטת וביטחון בכל סיבוב.\n\nאל תתפשרו על פחות מהטוב ביותר – השקיעו באופני BIANCHI AERO והציבו את עצמכם בחזית!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -3003,7 +2931,7 @@
         "category": "road",
         "sub_category": "road",
         "original_price": 15000,
-        "disc_price": "",
+        "disc_price": 5000,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/620303(1)_jpg.webp",
             "gallery_images_urls": [
@@ -3016,7 +2944,7 @@
             "seatpost": "OLTRE FULL CARBON AERO; CLAMP WITH ALLOY HEAD ADJUSTABLE AND REVERSIBLE +/- 35MM, LENGTH: 300MM SETBACK: 25MM/-10MM",
             "headset": "FSA ORBIT C-33, 1.1/8\"-1.4\""
         },
-        "rewritten_description": "עיצוב אוירודינמי שפותח עבור הקבוצה המקצוענית במנהרות הרוח של ביאנקי שילדת קרבון היי מודולוס בשילוב COUNTERVAIL המשכך 80% מהזעזועים אפשרות לצביעה מיוחדת -TAVOLOZZA",
+        "rewritten_description": "**אופני Bianchi - האידיאלים של המהירות והנוחות!**\n\nהכירו את האופניים שיגדירו מחדש את חוויית רכיבתכם! עם עיצוב אוירודינמי פורץ דרך, שפותח במיוחד עבור הקבוצה המקצוענית במנהרות הרוח של Bianchi, תיהנו מהאצה מהירה וזריזה בכל רכיבה.\n\nשילדת הקרבון ההיי מודולוס שלנו מציעה את השילוב המושלם בין קלילות לחוזק, מה שמבטיח לכם רכיבה חלקה ויציבה בכל תנאי שטח. תוספת ה-Countervail שלנו מספקת טכנולוגיה מתקדמת שמפחיתה עד 80% מהזעזועים, כך שתוכלו להתרכז במה שחשוב באמת - הכיף שבדרך!\n\nולא נשכח את האפשרות לצביעה מיוחדת - TAVOLOZZA, שתאפשר לכם להתבלט ולהביע את הסגנון האישי שלכם על הכביש.\n\nהצטרפו למהפכה בעולם האופניים עם Bianchi - כי כל רכיבה צריכה להיות חוויה בלתי נשכחת!",
         "fork length": null
     },
     {
@@ -3039,27 +2967,10 @@
             ]
         },
         "specs": {
-            "frame": "Oltre Race aero carbon, compatible with internal cable routing, BB-PressFit 86,5x41, integrated seat clamp, disc brake flat mount, thru axle 12x142",
-            "fork": "Full Carbon Aero Road, integrated head , disc brake flat mount, thru axle 12x100",
-            "shifters": "Shimano 105 Di2 hydraulic disc brake for road, ST-R7170, BR-R7170, for 160mm rotor",
-            "front_derailleur": "Shimano 105 Di2 12sp, FD-R7150, top gear 50-52T, for rear 12-speed",
-            "rear_derailleur": "Shimano, RD-R7150, 105 Di2 12-speed",
-            "crankset": "Shimano 105 12sp, FC-R7100, hollowtech 2, for rear 12- speed, 50x34T Crank Length: 170mm",
-            "bottom_bracket": "Shimano, SM-BB72-41B, press fit for road",
-            "cassette": "Shimano 105 12 sp 11-32",
-            "chain": "Shimano, 105 12sp, CN-M7100",
-            "brakes": "Shimano BR-R7170 Hydraulic disc brake + 160mm rotor",
-            "wheels": "Fulcrum Racing 818 disc brake, Aluminium C19 2WF-R Tubeless ready 622x19c, profile height 34mm, HG11",
-            "tires": "Vittoria Rubino IV G2.0 graphene, 700x28, 60TPI",
-            "saddle": "Velomann Seta",
-            "seatpost": "Velomann Full Carbon Aeroshape, special Clamp type with alloy head adjustable and reversible +/- 35mm; lenght: 300mm",
-            "handlebar": "Velomann Aero Compact, alloy 6061 diam. 31,8mm, reach 74mm, drop 116mm Size: 400mm",
-            "stem": "Velomann, Alloy 6061, raise - 7° Ext: 90mm",
-            "headset": "ACROS & FSA, for internal cable routing"
+            "מוט כידוןVelomann, Alloy 6061, raise - 7° Ext": "90mm"
         },
-        "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים ששואפים תמיד להיות בראש שילדת AERO תחרותית מקרבון בעיצוב אוירודינמי במיוחד בהתאמה מוחלטת למערכות אלחוטיות מערכות 12 הילוכים אלחוטיות שימאנו 105 Di2 להעברת הילוכים מדויקת איכותית וללא תחזוקה גלגלי אלומיניום FULCRUM C 19 בפרופיל 34 מ\"מ מוכנים לטיובלס",
-        "fork length": 100,
-        "style": "cross-country"
+        "rewritten_description": "**אופני BIANCHI - חוויית רכיבה שאין שנייה לה!**\n\nהכירו את האופניים החדשים והמתקדמים ביותר של BIANCHI - האופניים שיביאו אתכם אל קו הסיום עם סטייל וביצועים שאין להם תחרות! שילדת AERO התחרותית שלנו, עשויה מקרבון קליל וחזק, נועדה במיוחד עבור רוכבים שאפתניים שמחפשים את המהירות והדיוק בכל רכיבה.\n\nעם מערכת ההילוכים האלחוטית המתקדמת Shimano 105 Di2, תוכלו ליהנות מהעברות הילוכים חלקות ומדויקות, ללא צורך בתחזוקה מתמדת. כך תוכלו להתמקד במה שחשוב באמת - להרגיש את הרוח בפנים ולהתעלות על עצמכם בכל רכיבה.\n\nגלגלי האלומיניום FULCRUM C 19 בפרופיל 34 מ\"מ מציעים יציבות יוצאת דופן וביצועים מעולים, והם מוכנים לשימוש טיובלס, כך שתוכלו לרכב עם ביטחון מוחלט בכל תנאי שטח.\n\nאל תתפשרו על פחות מהטוב ביותר - בחרו ב-BIANCHI ונצלו כל רגע על הכביש!",
+        "fork length": null
     },
     {
         "source": {
@@ -3099,7 +3010,7 @@
             "stem": "Velomann Aero stem, material alloy, Oversize, 1.1/8\", size: 90mm",
             "headset": "Fsa TH-073E ACB 1.5\" 51.8x40x9"
         },
-        "rewritten_description": "אופני המרוצים המדהימים של ביאנקי, שזכו בפרס העיצוב לשנת 2023 שלדת קרבון אוירודינמית תחרותית קשיחה וחזקה בעיצוב עוצר נשימה מערכות 12 הילוכים אלחוטיות שימאנו 105 Di2 להעברת הילוכים מדויקת איכותית וללא תחזוקה גלגלי קרבון תחרותיים VELOMANN בפרופיל 55 מ\"מ מוכנים לטיובלס ברוחב 21 מ\"מ",
+        "rewritten_description": "**אופני המרוצים של ביאנקי – חוויית רכיבה שלא תשכחו!**\n\nגלה את האופניים המהפכניים של ביאנקי, שזכו בפרס העיצוב לשנת 2023! עם שלדת קרבון אוירודינמית תחרותית, תיהנו משילוב מושלם של קשיחות ועיצוב עוצר נשימה. \n\nהמערכת של 12 הילוכים האלחוטית שימאנו 105 Di2 מבטיחה העברת הילוכים מדויקת, איכותית וללא צורך בתחזוקה – כך שתוכלו להתמקד במה שחשוב באמת: הרכיבה!\n\nהגלגלים הקלים והמהירים של VELOMANN, בפרופיל 55 מ\"מ ורוחב 21 מ\"מ, מוכנים לטיובלס ומספקים את התמיכה והביצועים שאתם צריכים כדי לכבוש כל מסלול.\n\nאל תתפשרו על איכות, בחרו באופני המרוצים של ביאנקי – כי כל רכיבה היא חוויה ייחודית!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -3144,7 +3055,7 @@
             "stem": "Velomann Aero stem, material alloy, Oversize, 1.1/8\", size: 90, w/Oltre custom top cap stem cover w/magnet",
             "headset": "Fsa ACB 1.5\"\" 51.8x40x8"
         },
-        "rewritten_description": "אופני הדגל החדשים של BIANCHI עם השילדה הייחודית לרוכבים מנוסים שאוהבים לרכוב מהר שילדת AERO תחרותית מקרבון מודול גבוה קשיח במיוחד בתבנית ייעודית לנוחות מירבית מערכות חשמליות אלחוטיות 12 הילוכים חדשות מבית שימאנו ULTEGRA DI2 גלגלי קרבון VELOMANN בפרופיל 55 מ\"מ מוכנים לטיובלס",
+        "rewritten_description": "גלה את האופניים החדשים של BIANCHI – דגם הדגל המושלם לרוכבים המנוסים שמחפשים את המהירות והביצועים הגבוהים ביותר! עם שילדת AERO תחרותית עשויה מקרבון מודול גבוה, תוכל ליהנות מקשיחות מרבית ונוחות מירבית בכל רכיבה. \n\nהודות למערכות החשמליות האלחוטיות 12 הילוכים החדשות מבית שימאנו ULTEGRA DI2, תוכל לעבור בין ההילוכים בקלות ובדיוק מדהים, בכל מצב רכיבה. בנוסף, גלגלי הקרבון VELOMANN בפרופיל 55 מ\"מ מוכנים לטיובלס, מבטיחים לך רכיבה חלקה ומהירה, עם יציבות גבוהה בכל תנאי שטח.\n\nהצטרף לעולם של ביצועים בלתי מתפשרים עם BIANCHI – האופניים שיביאו אותך למקום הראשון! אל תפספס את ההזדמנות לרכוש את הדגם המושלם עבורך.",
         "fork length": null
     },
     {
@@ -3185,49 +3096,7 @@
             "stem": "Velomann, Alloy 6061, raise - 7° Ext: 90mm",
             "headset": "ACROS & FSA, for internal cable routing"
         },
-        "rewritten_description": "אופני ה-Sprint מתאפיינים בשילדת קרבון איכותית כמיטב המסורת של ביאנקי, מתאימים לרוכבים המחפשים אופני כביש אמינים וחזקים. מצויידים במערכת הילוכים Shimano 105 בעלת 12 הילוכים, שמבטיחה החלפת הילוכים חלקה ואמינה המתאימה לרכיבות תחרותיות ופנאי. מעצורי דיסק הידראוליים של שימאנו וגלגלי דיסק Fulcrum Racing 818 עם כוח עצירה מעולה, לבטיחות ושליטה מוגברת באופניים. עיצוב ארגונומי המשלב מוט אוכף וכידון אלומיניום, שמספקים נוחות וחווית רכיבה נעימה, מתאימים לרכיבות ארוכות וספרינטים מהירים.",
-        "fork length": 100,
-        "style": "cross-country"
-    },
-    {
-        "source": {
-            "importer": "Pedalim",
-            "domain": "https://pedalim.co.il",
-            "product_url": "https://pedalim.co.il/אופני-כביש-bianchi-infinito-disc-ultegra-di2"
-        },
-        "firm": "Bianchi",
-        "model": "INFINITO Disc Ultegra DI2",
-        "year": "לא צויין",
-        "category": "road",
-        "sub_category": "road",
-        "original_price": 27990,
-        "disc_price": "",
-        "images": {
-            "image_url": "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_DI2_result.webp",
-            "gallery_images_urls": [
-                "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_DI2_result(10).webp"
-            ]
-        },
-        "specs": {
-            "frame": "INFINITO CV DISC CARBON W/COUNTERVAIL, MECHANICAL/ELECTRONIC DI2/EPS SHIFTING COMPATIBLE, COMPATIBLE WITH 32\" TIRE, PRESSFIT 86,5X41MM, THRU AXLE 12X1",
-            "fork": "BIANCHI FULL CARBON W/COUNTERVAIL DISC, 1.5\" HEAD, FLAT MOUNT, THRU AXLE 12X100MM, COMPATIBLE WITH 32\" TIRE",
-            "shifters": "SHIMANO ULTEGRA DI2 ST-R8070 2X11SP",
-            "front_derailleur": "SHIMANO ULTEGRA DI2 FD-R8050",
-            "rear_derailleur": "SHIMANO ULTEGRA DI2 RD-R8050 SS 11SP",
-            "crankset": "SHIMANO ULTEGRA FC-R8000, 50X34T, HOLLOWTECH II, CRANK LENGTH: 172.5MM",
-            "bottom_bracket": "SHIMANO SM-BB72-41B",
-            "cassette": "SHIMANO ULTEGRA CS-R8000, 11-12-13-14-15-17-19-21-24-27-30T",
-            "chain": "SHIMANO ULTEGRA CN-HG701-11, 11SP",
-            "brakes": "SHIMANO BR-R8070",
-            "wheels": "FULCRUM RACING 418 DISC BRAKE",
-            "tires": "VITTORIA RUBINO PRO G2.0 GRAPHENE 700X28",
-            "saddle": "FI'ZI:K ALIANTE R5 OPEN LARGE",
-            "seatpost": "INFINITO FULL CARBON, CLAMP WITH ALLOY HEAD ADJUSTABLE AND REVERSIBLE +/- 35MM, LENGTH: 350MM",
-            "handlebar": "REPARTO CORSE FULL CARBON, DIAM. 31,8MM, REACH 76MM, DROP 120MM, 4º OUTWARD BEND, SIZE: 420MM",
-            "stem": "REPARTO CORSE 3D FORGED ALLOY 7050, RISE +/-7°, 1.1/8\", EXT: 70MM-47, 110MM",
-            "headset": "FSA ORBIT C-40-ACB"
-        },
-        "rewritten_description": "השילדה המושלמת לרכיבות ארוכות ונוחות במיוחד שילדת קרבון בשילוב COUNTERVAIL המשכך 80% מהזעזועים עיצוב וגיאומטריה המפחיתה משמעותית את העייפות המצטברת מבלי לפגוע בביצועים בלמי דיסק לעצירה מוחלטת בכל שטח,מצב ומזג אויר",
+        "rewritten_description": "**גלה את האופניים המושלמות לרכיבות שלך: אופני ה-Sprint מבית ביאנקי!**\n\nאם אתה רוכב שמחפש את השילוב המושלם בין ביצועים, נוחות ואיכות, אופני ה-Sprint הם הבחירה האידיאלית עבורך. עם שילדת קרבון קלילה וחזקה, תוכל ליהנות מרכיבות אמינות ומרגשות, בין אם מדובר ברכיבות תחרותיות או בסופי שבוע רגועים בכבישים הפתוחים.\n\nה-Sprint מצוידים במערכת הילוכים Shimano 105 מתקדמת עם 12 הילוכים, המבטיחה החלפת הילוכים חלקה ומדויקת – כך שתוכל לעלות בכל עליה ולהאיץ בכל ספרינט בקלות ובביטחון. המעצורים ההידראוליים של שימאנו מבטיחים כוח עצירה מעולה, כך שתוכל לרכב בביטחון בכל תנאי מזג האוויר ולשמור על שליטה מלאה.\n\nהגלגלים של Fulcrum Racing 818 לא רק מוסיפים ליציבות, אלא גם מבטיחים חווית רכיבה חלקה ומהירה. בעיצוב ארגונומי שמבצע את העבודה, מוט האוכף וכידון האלומיניום מספקים נוחות מקסימלית, כך שתוכל לרכב שעות ארוכות מבלי להרגיש עייפות.\n\nה-Sprint הם לא רק אופניים – הם השותפים המושלמים שלך למסעות על הכביש. אל תפספס את ההזדמנות לשדרג את חווית הרכיבה שלך עם אופניים שמספקים את כל מה שאתה צריך! הזמן עכשיו ותן לעצמך את המתנה של רכיבה איכותית!",
         "fork length": 100,
         "style": "cross-country"
     },
@@ -3285,7 +3154,7 @@
         "category": "road",
         "sub_category": "road",
         "original_price": 19900,
-        "disc_price": "",
+        "disc_price": 9990,
         "images": {
             "image_url": "https://pedalim.co.il/Media/Uploads/INFINITO_Disc_Ultegra_celeste_result.webp",
             "gallery_images_urls": [
@@ -3311,7 +3180,49 @@
             "stem": "REPARTO CORSE 3D FORGED ALLOY 7050, RISE +/-7°, 1.1/8\", EXT: 70MM-47, 110MM",
             "headset": "FSA ORBIT C-40-ACB"
         },
-        "rewritten_description": "השילדה המושלמת לרכיבות ארוכות ונוחות במיוחד שילדת קרבון בשילוב COUNTERVAIL המשכך 80% מהזעזועים עיצוב וגיאומטריה המפחיתה משמעותית את העייפות המצטברת מבלי לפגוע בביצועים בלמי דיסק לעצירה מוחלטת בכל שטח,מצב ומזג אויר",
+        "rewritten_description": "הכירו את האופניים שיביאו את חוויית הרכיבה שלכם לרמה חדשה! עם שילדת קרבון מתקדמת בשילוב טכנולוגיית COUNTERVAIL, אתם יכולים להרגיש את ההבדל כבר מהפיד הראשון. טכנולוגיה זו משככת 80% מהזעזועים, כך שתהיו מוכנים לרכיבות ארוכות ונוחות מבלי להרגיש עייפות מצטברת.\n\nהגיאומטריה המיוחדת של האופניים עוצבה במיוחד כדי להעניק לכם חוויית רכיבה חלקה ויציבה, מבלי לפגוע בביצועים. והבלמים? בלמי דיסק איכותיים מבטיחים עצירה מוחלטת ובטוחה בכל תנאי שטח ובכל מזג אוויר.\n\nהצטרפו למהפכת הרכיבה עם האופניים שיכולים לקחת אתכם לכל מקום – כי כל רכיבה צריכה להיות חוויה בלתי נשכחת!",
+        "fork length": 100,
+        "style": "cross-country"
+    },
+    {
+        "source": {
+            "importer": "Pedalim",
+            "domain": "https://pedalim.co.il",
+            "product_url": "https://pedalim.co.il/אופני-כביש-bianchi-infinito-xe-105"
+        },
+        "firm": "Bianchi",
+        "model": "BIANCH INFINITO XE 105 DI2",
+        "year": "לא צויין",
+        "category": "road",
+        "sub_category": "road",
+        "original_price": 17000,
+        "disc_price": "",
+        "images": {
+            "image_url": "https://pedalim.co.il/Media/Uploads/INFINITO_XE_105_DI2_result(6).webp",
+            "gallery_images_urls": [
+                "https://pedalim.co.il/Media/Uploads/INFINITO_XE_105_DI2_result(10).webp"
+            ]
+        },
+        "specs": {
+            "frame": "Infinito XE Disc carbon, tapered HT 1.1/8\"- 1.5\", Mechanical/Electronic Di2 shifting compatible, compatible with 32\" tire, PressFit 86,5x41mm BBset, t",
+            "fork": "Bianchi Full Carbon Disc, 1.5\" head, thru axle 12x100mm, compatible with 32\" tire",
+            "shifters": "Shimano 105 Di2 hydraulic disc brake for road",
+            "front_derailleur": "Shimano 105, top gear 50-52T",
+            "rear_derailleur": "Shimano 105 Di2",
+            "crankset": "Shimano 105, Ultegra hollowtech 2, 170-172,5-175mm, 50x34T, Crank Length: 170mm",
+            "bottom_bracket": "Shimano SM-BB72-41B, press fit for road",
+            "cassette": "Shimano 105, 11-34T",
+            "chain": "Shimano 105, CN-M7100, 112link",
+            "brakes": "included w/shifters + Shimano SM-RT70 rotor for disc brake center lock , S 160mm w/lock ring (2pcs)",
+            "wheels": "Fulcrum Racing 918 DB 2WF-R C19, front HH12 - REAR 12/142 HG11",
+            "tires": "Vittoria Zaffiro Pro V 700x28",
+            "saddle": "Velomann rail steel black, open, cover PU, lenght/wide 250x148mm",
+            "seatpost": "Velomann alloy shaft 2014, head alloy 6061, hardwares: Steel, Setback 25mm, size: 350mm",
+            "handlebar": "Velomann Compact, Flat Top, alloy 6061 diam. 31,8mm, reach 80mm, drop 130mm, Size: 400mm",
+            "stem": "Velomann, 3D Forged alloy 6061, rise +/ - 7°, height 38mm, Oversize, 1.1/8\", Ext: 70mm",
+            "headset": "Fsa NO.42/47CF/ACB/5D"
+        },
+        "rewritten_description": "**גלו את חוויית הרכיבה המושלמת עם האופניים שלנו!**\n\nהכירו את האופניים המהפכניים שמיוצרים עם שילדת קרבון איכותית, המיועדת במיוחד לרוכבים שאוהבים את המרחקים הארוכים. אם אתם מחפשים נוחות ללא פשרות – הגעתם למקום הנכון! \n\nעם מערכות חשמליות אלחוטיות חדשות מבית שימאנו 105 DI2, תוכלו ליהנות מ-12 הילוכים חלקים ומדויקים, שיביאו אתכם לכל יעד בקלות ובסטייל. בלמי דיסק הידראוליים מתקדמים מספקים לכם עצירה מוחלטת בכל שטח, בכל מצב ומזג אוויר – כך שתוכלו לרכב בביטחון מוחלט.\n\nהעיצוב והגיאומטריה המיוחדים שלנו מפחיתים משמעותית את העייפות המצטברת, מבלי לפגוע בביצועים הגבוהים שכולם מצפים מהם. וכמובן, העיצוב האיטלקי המהמם יוסיף לכם נוכחות מרשימה בכל רכיבה.\n\nאל תחמיצו את ההזדמנות לרכב על האופניים שכוללים את כל מה שרוכב מקצועי זקוק לו – נוחות, ביצועים ועיצוב שלא תשכחו! רכבו עם סטייל, רכבו עם טכנולוגיה מתקדמת – רכבו על האופניים שלנו!",
         "fork length": 100,
         "style": "cross-country"
     }

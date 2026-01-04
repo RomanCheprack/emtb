@@ -13,6 +13,7 @@ import requests
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 # ----------------- Logging -----------------
 # Configure logging to output to stdout instead of stderr
@@ -101,6 +102,38 @@ else:
     chatgpt_cache = {}
 
 # ----------------- Utilities -----------------
+def is_driver_alive(driver):
+    """Check if the Chrome driver is still alive and responsive"""
+    try:
+        driver.current_url
+        return True
+    except:
+        return False
+
+def recreate_driver():
+    """Recreate a new Chrome driver instance"""
+    try:
+        logging.info("🔄 Recreating Chrome driver...")
+        options = uc.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--headless=new')
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--disable-extensions')
+        options.add_argument('--disable-logging')
+        options.add_argument('--log-level=3')  # Suppress Chrome logging
+        driver = uc.Chrome(options=options)
+        # Set explicit timeouts for better reliability
+        # Use 60s page load timeout to avoid connection timeout issues (Selenium default is 120s)
+        driver.set_page_load_timeout(60)  # 60 seconds for page load
+        driver.implicitly_wait(10)  # 10 seconds for element finding
+        logging.info("✅ Chrome driver recreated successfully!")
+        return driver
+    except Exception as e:
+        logging.error(f"❌ Failed to recreate Chrome driver: {e}")
+        return None
+
 def wait_for_element(driver, by, value, timeout=10):
     try:
         return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
@@ -199,25 +232,122 @@ def ctc_bikes(driver, output_file):
         category_text = entry["category"]
         sub_category_text = entry.get("sub_category", None)
         logging.info(f"Scraping URL #{i+1}: {target_url}")
+        
+        # Check driver health before starting
+        if not is_driver_alive(driver):
+            logging.warning(f"Driver is not alive before loading {target_url}, recreating...")
+            new_driver = recreate_driver()
+            if new_driver is None:
+                logging.error("Failed to recreate driver, skipping URL")
+                continue
+            # Clean up old driver
+            try:
+                driver.quit()
+            except:
+                pass
+            driver = new_driver
+        
         try:
             driver.get(target_url)
+        except TimeoutException as e:
+            logging.warning(f"Page load timeout for URL {target_url}: {e}")
+            # Try to stop the page load
+            try:
+                driver.execute_script("window.stop();")
+            except:
+                pass
+            # Check if driver died during page load
+            if not is_driver_alive(driver):
+                logging.warning("Driver died during page load timeout, recreating...")
+                new_driver = recreate_driver()
+                if new_driver is None:
+                    logging.error("Failed to recreate driver, skipping URL")
+                    continue
+                try:
+                    driver.quit()
+                except:
+                    pass
+                driver = new_driver
+            continue
         except Exception as e:
             logging.warning(f"Error loading URL {target_url}: {e}")
+            # Check if driver died during page load
+            if not is_driver_alive(driver):
+                logging.warning("Driver died during page load, recreating...")
+                new_driver = recreate_driver()
+                if new_driver is None:
+                    logging.error("Failed to recreate driver, skipping URL")
+                    continue
+                try:
+                    driver.quit()
+                except:
+                    pass
+                driver = new_driver
             continue
-        scroll_to_bottom(driver, pause=0.5)
+        
+        try:
+            scroll_to_bottom(driver, pause=0.5)
+        except Exception as e:
+            logging.warning(f"Error scrolling page {target_url}: {e}")
+            if not is_driver_alive(driver):
+                logging.warning("Driver died during scroll, recreating...")
+                new_driver = recreate_driver()
+                if new_driver is None:
+                    logging.error("Failed to recreate driver, skipping URL")
+                    continue
+                try:
+                    driver.quit()
+                except:
+                    pass
+                driver = new_driver
+                continue
+        
         # Add timeout and retry for getting page source
         max_retries = 3
         soup = None
         for retry in range(max_retries):
             try:
+                # Check driver health before accessing page_source
+                if not is_driver_alive(driver):
+                    logging.warning(f"Driver not alive before getting page source (retry {retry + 1}/{max_retries}), recreating...")
+                    new_driver = recreate_driver()
+                    if new_driver is None:
+                        logging.error("Failed to recreate driver")
+                        break
+                    try:
+                        driver.quit()
+                    except:
+                        pass
+                    driver = new_driver
+                    # Reload the page with new driver
+                    try:
+                        driver.get(target_url)
+                        scroll_to_bottom(driver, pause=0.5)
+                    except Exception as e2:
+                        logging.warning(f"Error reloading page after driver recreation: {e2}")
+                        break
+                
                 soup = BeautifulSoup(driver.page_source, "html.parser")
                 break
             except Exception as e:
                 if retry < max_retries - 1:
                     logging.warning(f"Retry {retry + 1}/{max_retries} getting page source for {target_url}: {e}")
+                    # Check if driver is still alive
+                    if not is_driver_alive(driver):
+                        logging.warning("Driver died, will recreate on next retry")
                     time.sleep(2)
                 else:
                     logging.error(f"Failed to get page source after {max_retries} retries: {e}")
+                    # Try to recreate driver one last time
+                    if not is_driver_alive(driver):
+                        logging.warning("Attempting final driver recreation...")
+                        new_driver = recreate_driver()
+                        if new_driver:
+                            try:
+                                driver.quit()
+                            except:
+                                pass
+                            driver = new_driver
                     continue
         if soup is None:
             continue
@@ -235,6 +365,9 @@ def ctc_bikes(driver, output_file):
             original_price, discounted_price = None, None
             price_span = card.find("span", class_="price")
             if price_span:
+                # Skip archived products (ארכיון means "archive")
+                if "ארכיון" in price_span.get_text():
+                    continue
                 original_price = extract_price(price_span.find("bdi"))
             if not original_price:
                 price_wrap = card.find("div", class_="price-wrap")
@@ -267,22 +400,121 @@ def ctc_bikes(driver, output_file):
 
             if product_url:
                 try:
-                    driver.get(product_url)
-                    scroll_to_bottom(driver, pause=0.5)
-                    # Add timeout and retry for getting page source
-                    max_retries = 3
+                    # Check driver health before loading product page
+                    if not is_driver_alive(driver):
+                        logging.warning(f"Driver not alive before loading product {product_url}, recreating...")
+                        new_driver = recreate_driver()
+                        if new_driver is None:
+                            logging.error("Failed to recreate driver, skipping product page")
+                            product_soup = None
+                        else:
+                            try:
+                                driver.quit()
+                            except:
+                                pass
+                            driver = new_driver
+                    
                     product_soup = None
-                    for retry in range(max_retries):
+                    if is_driver_alive(driver):
                         try:
-                            product_soup = BeautifulSoup(driver.page_source, "html.parser")
-                            break
+                            driver.get(product_url)
+                        except TimeoutException as e:
+                            logging.warning(f"Page load timeout for product URL {product_url}: {e}")
+                            # Try to stop the page load
+                            try:
+                                driver.execute_script("window.stop();")
+                            except:
+                                pass
+                            if not is_driver_alive(driver):
+                                logging.warning("Driver died during product page load timeout, recreating...")
+                                new_driver = recreate_driver()
+                                if new_driver is None:
+                                    logging.error("Failed to recreate driver, skipping product page")
+                                else:
+                                    try:
+                                        driver.quit()
+                                    except:
+                                        pass
+                                    driver = new_driver
                         except Exception as e:
-                            if retry < max_retries - 1:
-                                logging.warning(f"Retry {retry + 1}/{max_retries} getting page source for {product_url}: {e}")
-                                time.sleep(2)
-                            else:
-                                logging.error(f"Failed to get page source after {max_retries} retries: {e}")
-                                product_soup = None
+                            logging.warning(f"Error loading product URL {product_url}: {e}")
+                            if not is_driver_alive(driver):
+                                logging.warning("Driver died during product page load, recreating...")
+                                new_driver = recreate_driver()
+                                if new_driver is None:
+                                    logging.error("Failed to recreate driver, skipping product page")
+                                else:
+                                    try:
+                                        driver.quit()
+                                    except:
+                                        pass
+                                    driver = new_driver
+                        
+                        if is_driver_alive(driver):
+                            try:
+                                scroll_to_bottom(driver, pause=0.5)
+                            except Exception as e:
+                                logging.warning(f"Error scrolling product page {product_url}: {e}")
+                                if not is_driver_alive(driver):
+                                    logging.warning("Driver died during scroll, recreating...")
+                                    new_driver = recreate_driver()
+                                    if new_driver is None:
+                                        logging.error("Failed to recreate driver, skipping product page")
+                                    else:
+                                        try:
+                                            driver.quit()
+                                        except:
+                                            pass
+                                        driver = new_driver
+                            
+                            # Add timeout and retry for getting page source
+                            if is_driver_alive(driver):
+                                max_retries = 3
+                                for retry in range(max_retries):
+                                    try:
+                                        # Check driver health before accessing page_source
+                                        if not is_driver_alive(driver):
+                                            logging.warning(f"Driver not alive before getting product page source (retry {retry + 1}/{max_retries}), recreating...")
+                                            new_driver = recreate_driver()
+                                            if new_driver is None:
+                                                logging.error("Failed to recreate driver")
+                                                break
+                                            try:
+                                                driver.quit()
+                                            except:
+                                                pass
+                                            driver = new_driver
+                                            # Reload the page with new driver
+                                            try:
+                                                driver.get(product_url)
+                                                scroll_to_bottom(driver, pause=0.5)
+                                            except Exception as e2:
+                                                logging.warning(f"Error reloading product page after driver recreation: {e2}")
+                                                break
+                                        
+                                        product_soup = BeautifulSoup(driver.page_source, "html.parser")
+                                        break
+                                    except Exception as e:
+                                        if retry < max_retries - 1:
+                                            logging.warning(f"Retry {retry + 1}/{max_retries} getting page source for {product_url}: {e}")
+                                            # Check if driver is still alive
+                                            if not is_driver_alive(driver):
+                                                logging.warning("Driver died, will recreate on next retry")
+                                            time.sleep(2)
+                                        else:
+                                            logging.error(f"Failed to get page source after {max_retries} retries: {e}")
+                                            # Try to recreate driver one last time
+                                            if not is_driver_alive(driver):
+                                                logging.warning("Attempting final driver recreation...")
+                                                new_driver = recreate_driver()
+                                                if new_driver:
+                                                    try:
+                                                        driver.quit()
+                                                    except:
+                                                        pass
+                                                    driver = new_driver
+                                            product_soup = None
+                    
                     if product_soup is None:
                         logging.warning(f"Skipping product page details for {product_url} due to page source error")
                         # Continue to append product_data at the end with basic info only
@@ -313,7 +545,6 @@ def ctc_bikes(driver, output_file):
                                     if key in skip_keys: continue
                                     english_key = HEBREW_TO_ENGLISH_KEYS.get(key, key)
                                     product_data["specs"][english_key] = val
-
                 except Exception as e:
                     logging.warning(f"Error scraping product page ({product_url}): {e}")
 
@@ -344,7 +575,7 @@ def ctc_bikes(driver, output_file):
             except Exception as e:
                 logging.warning(f"Could not save progress: {e}")
 
-    return scraped_data
+    return scraped_data, driver
 
 # ----------------- Setup Output -----------------
 if __name__ == '__main__':
@@ -376,10 +607,11 @@ if __name__ == '__main__':
         options.add_argument('--log-level=3')  # Suppress Chrome logging
         driver = uc.Chrome(options=options)
         # Set explicit timeouts for better reliability
-        driver.set_page_load_timeout(180)  # 3 minutes for page load
+        # Use 60s page load timeout to avoid connection timeout issues (Selenium default is 120s)
+        driver.set_page_load_timeout(60)  # 60 seconds for page load
         driver.implicitly_wait(10)  # 10 seconds for element finding
         logging.info("Chrome driver started successfully!")
-        products = ctc_bikes(driver, output_file)
+        products, driver = ctc_bikes(driver, output_file)
     except Exception as e:
         logging.error(f"Error during scraping: {e}")
     finally:
