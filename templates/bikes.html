@@ -541,7 +541,7 @@
         </div>
         
         <!-- Style Filter -->
-        {% if styles %}
+        {% if styles and selected_category != 'road' and selected_category != 'kids' %}
         <div class="mb-3">
             <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">סגנון</label>
             {% for style in styles %}
@@ -559,7 +559,7 @@
 </div>
 
 <p style="font-size: 0.9em; color: #666; text-align: right;">
-    המחירים המוצגים נאספו מהאתרים הרשמים של החנויות, ואינם מתעדכנים בזמן אמת. ייתכנו פערים בין המחיר המוצג לבין המחיר בפועל בחנות. – נשמח שתעדכנו אותנו אם התגלו פערים
+    המחירים המוצגים נאספו מהאתרים הרשמים של החנויות, ומתעדכנים אחת לשבוע. ייתכנו פערים בין המחיר המוצג לבין המחיר בפועל בחנות. – נשמח שתעדכנו אותנו אם התגלו פערים
 </p>
 
 <!-- Back to Top Button -->

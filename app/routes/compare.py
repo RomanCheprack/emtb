@@ -139,7 +139,15 @@ def compare_bikes():
     bikes_to_compare = get_bikes_by_uuids(compare_list) if compare_list else []
 
     # Key fields to always show
-    always_show = ["firm", "model", "price", "year", "motor", "battery"]
+    always_show = ["firm", "model", "price", "year"]
+    
+    # Only include motor and battery if at least one bike is electric
+    has_electric_bike = any(
+        bike.get("category") == "electric" 
+        for bike in bikes_to_compare
+    )
+    if has_electric_bike:
+        always_show.extend(["motor", "battery"])
 
     # Disc_price: show if at least one bike has it non-empty
     show_disc_price = any(

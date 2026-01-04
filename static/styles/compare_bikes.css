@@ -170,15 +170,46 @@ th {
     min-width: 140px;
 }
 
+.main-header-container {
+    position: relative;
+}
+
+.main-header-title {
+    text-align: center;
+}
+
 .main-header-btn-wrapper {
-    position: absolute;
-    right: 16px;
-    top: 24px;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .main-header-container {
+        justify-content: center;
+        padding-right: 156px; /* Space for button (140px + 16px) */
+    }
+    
+    .main-header-btn-wrapper {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    
+    .main-header-title {
+        flex: 0 1 auto;
+        text-align: center;
+    }
 }
 
 @media (max-width: 767.98px) {
+    .main-header-title {
+        text-align: center;
+    }
+    
     .main-header-btn-wrapper {
-        position: static;
+        width: 100%;
+        justify-content: center;
     }
 }
 
