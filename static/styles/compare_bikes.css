@@ -18,16 +18,20 @@
     padding-bottom: 1rem;
 }
 
-/* Fix for sticky columns - remove the problematic sticky positioning */
+/* Base styles for first column (field names) */
 .compare-table th:first-child,
 .compare-table tbody th {
     background: #fff;
-    z-index: 3;
     white-space: normal;
     word-wrap: break-word;
     hyphens: auto;
     min-width: 150px;
     max-width: 200px;
+}
+
+/* Hide mobile field names on desktop */
+.mobile-field-name {
+    display: none;
 }
 
 .compare-table thead th {
@@ -121,6 +125,10 @@ th {
     max-width: 140px;
 }
 
+.compare-table {
+    border: 1px solid transparent !important;
+}
+
 .compare-table th,
 .compare-table td {
     padding: 12px 16px;
@@ -129,6 +137,20 @@ th {
     word-break: normal;
     overflow-wrap: anywhere;
     vertical-align: middle;
+    border: 1px solid transparent !important;
+}
+
+/* Alternating row colors - zebra striping */
+.compare-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.compare-table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.compare-table thead tr {
+    background-color: #fff;
 }
 
 /* Hebrew text wrapping for long keys */
@@ -210,6 +232,34 @@ th {
     .main-header-btn-wrapper {
         width: 100%;
         justify-content: center;
+    }
+    
+    /* Sticky field name text for mobile - only the text stays visible when scrolling horizontally */
+    .compare-table thead th:first-child,
+    .compare-table tbody th {
+        position: sticky;
+        right: 0;
+        z-index: 5;
+        background: transparent !important;
+        vertical-align: top;
+        padding-top: 2px;
+    }
+    
+    .compare-table thead th:first-child {
+        z-index: 10;
+    }
+    
+    .compare-table thead th:first-child .sticky-field-name,
+    .compare-table tbody th .sticky-field-name {
+        position: relative;
+        display: inline-block;
+        background: transparent;
+        padding: 4px 8px;
+        font-weight: bold;
+        margin-top: -8px;
+        vertical-align: top;
+        line-height: 1.3;
+        white-space: nowrap;
     }
 }
 

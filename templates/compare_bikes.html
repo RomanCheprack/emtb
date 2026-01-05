@@ -140,25 +140,32 @@
             </tr>
              <!-- דגם -->
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">דגם</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">דגם</span></th>
                  {% for bike in bikes %}
-                 <td>{{ bike['model'] }}</td>
+                 <td>
+                     {% if loop.index == 1 %}<div class="mobile-field-name">דגם</div>{% endif %}
+                     {{ bike['model'] }}
+                 </td>
                  {% endfor %}
              </tr>
 
              <!-- שנה -->
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שנה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">שנה</span></th>
                  {% for bike in bikes %}
-                 <td>{{ bike['year'] }}</td>
+                 <td>
+                     {% if loop.index == 1 %}<div class="mobile-field-name">שנה</div>{% endif %}
+                     {{ bike['year'] }}
+                 </td>
                  {% endfor %}
              </tr>
 
              <!-- מחיר -->
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מחיר</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מחיר</span></th>
                  {% for bike in bikes %}
                  <td>
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מחיר</div>{% endif %}
                      {% if bike['disc_price'] and bike['disc_price'] != '#N/A' %}
                          {% if bike['price'] | format_number == 'צור קשר' %}
                              <span style="text-decoration: line-through; color: #888;">{{ bike['price'] | format_number }}</span><br>
@@ -184,9 +191,10 @@
              <!-- סוג אופניים -->
              {% if 'sub_category' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">סוג אופניים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">סוג אופניים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">סוג אופניים</div>{% endif %}
                      {% set value = bike.get('sub_category', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -204,9 +212,10 @@
              <!-- קיבולת סוללה -->
              {% if 'wh' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">קיבולת סוללה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">קיבולת סוללה</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">קיבולת סוללה</div>{% endif %}
                      {% set value = bike.get('wh', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -225,9 +234,10 @@
              <!-- מנוע -->
              {% if 'motor' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מנוע</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מנוע</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מנוע</div>{% endif %}
                      {% set value = bike.get('motor', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -246,9 +256,10 @@
              <!-- סוללה -->
              {% if 'battery' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">סוללה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">סוללה</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">סוללה</div>{% endif %}
                      {% set value = bike.get('battery', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -267,9 +278,10 @@
              <!-- שלדה -->
              {% if 'frame' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שלדה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">שלדה</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">שלדה</div>{% endif %}
                      {% set value = bike.get('frame', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -288,9 +300,10 @@
              <!-- בולם קדמי -->
              {% if 'fork' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם קדמי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">בולם קדמי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">בולם קדמי</div>{% endif %}
                      {% set value = bike.get('fork', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -309,9 +322,10 @@
              <!-- בולם אחורי -->
              {% if 'rear_shock' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">בולם אחורי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">בולם אחורי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">בולם אחורי</div>{% endif %}
                      {% set value = bike.get('rear_shock', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -330,9 +344,10 @@
              <!-- בלמים -->
              {% if 'brakes' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">בלמים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">בלמים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">בלמים</div>{% endif %}
                      {% set value = bike.get('brakes', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -351,9 +366,10 @@
              <!-- צמיגים -->
              {% if 'tires' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיגים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">צמיגים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">צמיגים</div>{% endif %}
                      {% set value = bike.get('tires', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -372,9 +388,10 @@
              <!-- משקל -->
              {% if 'weight' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">משקל</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">משקל</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">משקל</div>{% endif %}
                      {% set value = bike.get('weight', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -393,9 +410,10 @@
              <!-- גודל גלגלים -->
              {% if 'wheel_size' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גודל גלגלים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">גודל גלגלים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">גודל גלגלים</div>{% endif %}
                      {% set value = bike.get('wheel_size', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -414,9 +432,10 @@
              <!-- מידה -->
              {% if 'size' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מידה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מידה</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מידה</div>{% endif %}
                      {% set value = bike.get('size', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -435,9 +454,10 @@
              <!-- מספר הילוכים -->
              {% if 'gear_count' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מספר הילוכים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מספר הילוכים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מספר הילוכים</div>{% endif %}
                      {% set value = bike.get('gear_count', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -456,9 +476,10 @@
              <!-- ברקס קידמי -->
              {% if 'front_brake' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס קידמי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">ברקס קידמי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">ברקס קידמי</div>{% endif %}
                      {% set value = bike.get('front_brake', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -477,9 +498,10 @@
              <!-- ברקס אחורי -->
              {% if 'rear_brake' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ברקס אחורי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">ברקס אחורי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">ברקס אחורי</div>{% endif %}
                      {% set value = bike.get('rear_brake', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -498,9 +520,10 @@
              <!-- צמיג קדמי -->
              {% if 'front_tire' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג קדמי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">צמיג קדמי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">צמיג קדמי</div>{% endif %}
                      {% set value = bike.get('front_tire', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -519,9 +542,10 @@
              <!-- צמיג אחורי -->
              {% if 'rear_tire' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">צמיג אחורי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">צמיג אחורי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">צמיג אחורי</div>{% endif %}
                      {% set value = bike.get('rear_tire', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -540,9 +564,10 @@
              <!-- אוכף -->
              {% if 'saddle' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">אוכף</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">אוכף</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">אוכף</div>{% endif %}
                      {% set value = bike.get('saddle', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -561,9 +586,10 @@
              <!-- דוושות -->
              {% if 'pedals' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">דוושות</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">דוושות</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">דוושות</div>{% endif %}
                      {% set value = bike.get('pedals', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -582,9 +608,10 @@
              <!-- מטען -->
              {% if 'charger' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מטען</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מטען</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מטען</div>{% endif %}
                      {% set value = bike.get('charger', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -603,9 +630,10 @@
              <!-- מסך -->
              {% if 'screen' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מסך</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מסך</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מסך</div>{% endif %}
                      {% set value = bike.get('screen', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -624,9 +652,10 @@
              <!-- תוספות -->
              {% if 'extras' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">תוספות</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">תוספות</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">תוספות</div>{% endif %}
                      {% set value = bike.get('extras', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -645,9 +674,10 @@
              <!-- מעביר אחורי -->
              {% if 'rear_der' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מעביר אחורי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מעביר אחורי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מעביר אחורי</div>{% endif %}
                      {% set value = bike.get('rear_der', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -666,9 +696,10 @@
              <!-- שיפטר -->
              {% if 'shifter' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שיפטר</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">שיפטר</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">שיפטר</div>{% endif %}
                      {% set value = bike.get('shifter', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -687,9 +718,10 @@
              <!-- קראנק -->
              {% if 'crank_set' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">קראנק</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">קראנק</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">קראנק</div>{% endif %}
                      {% set value = bike.get('crank_set', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -708,9 +740,10 @@
              <!-- מדריך שרשרת -->
              {% if 'chain_guide' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מדריך שרשרת</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מדריך שרשרת</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מדריך שרשרת</div>{% endif %}
                      {% set value = bike.get('chain_guide', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -729,9 +762,10 @@
              <!-- שרשרת -->
              {% if 'chain' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שרשרת</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">שרשרת</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">שרשרת</div>{% endif %}
                      {% set value = bike.get('chain', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -750,9 +784,10 @@
              <!-- קסטה -->
              {% if 'cassette' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">קסטה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">קסטה</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">קסטה</div>{% endif %}
                      {% set value = bike.get('cassette', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -771,9 +806,10 @@
              <!-- רוטורים -->
              {% if 'rotors' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">רוטורים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">רוטורים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">רוטורים</div>{% endif %}
                      {% set value = bike.get('rotors', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -792,9 +828,10 @@
              <!-- כידון -->
              {% if 'handlebar' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">כידון</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">כידון</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">כידון</div>{% endif %}
                      {% set value = bike.get('handlebar', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -813,9 +850,10 @@
              <!-- מוט אוכף -->
              {% if 'seat_post' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">מוט אוכף</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">מוט אוכף</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">מוט אוכף</div>{% endif %}
                      {% set value = bike.get('seat_post', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -834,9 +872,10 @@
              <!-- סטם -->
              {% if 'stem' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">סטם</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">סטם</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">סטם</div>{% endif %}
                      {% set value = bike.get('stem', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -855,9 +894,10 @@
              <!-- תאורה -->
              {% if 'lights' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">תאורה</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">תאורה</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">תאורה</div>{% endif %}
                      {% set value = bike.get('lights', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -876,9 +916,10 @@
              <!-- גלגלים -->
              {% if 'wheels' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגלים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">גלגלים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">גלגלים</div>{% endif %}
                      {% set value = bike.get('wheels', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -897,9 +938,10 @@
              <!-- חישוקים -->
              {% if 'rims' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">חישוקים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">חישוקים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">חישוקים</div>{% endif %}
                      {% set value = bike.get('rims', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -918,9 +960,10 @@
              <!-- חישורים -->
              {% if 'spokes' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">חישורים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">חישורים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">חישורים</div>{% endif %}
                      {% set value = bike.get('spokes', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -939,9 +982,10 @@
              <!-- ציר קדמי -->
              {% if 'front_hub' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר קדמי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">ציר קדמי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">ציר קדמי</div>{% endif %}
                      {% set value = bike.get('front_hub', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -960,9 +1004,10 @@
              <!-- ציר אחורי -->
              {% if 'rear_hub' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">ציר אחורי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">ציר אחורי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">ציר אחורי</div>{% endif %}
                      {% set value = bike.get('rear_hub', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -981,9 +1026,10 @@
              <!-- הד סט -->
              {% if 'headset' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">הד סט</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">הד סט</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">הד סט</div>{% endif %}
                      {% set value = bike.get('headset', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -1002,9 +1048,10 @@
              <!-- שלט -->
              {% if 'remote' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">שלט</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">שלט</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">שלט</div>{% endif %}
                      {% set value = bike.get('remote', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -1023,9 +1070,10 @@
              <!-- אורך בולמים -->
              {% if 'fork_length' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">אורך בולמים</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">אורך בולמים</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">אורך בולמים</div>{% endif %}
                      {% set value = bike.get('fork_length', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -1044,9 +1092,10 @@
              <!-- פנימיות -->
              {% if 'tubes' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">פנימיות</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">פנימיות</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">פנימיות</div>{% endif %}
                      {% set value = bike.get('tubes', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -1065,9 +1114,10 @@
              <!-- גלגל קדמי -->
              {% if 'front_wheel' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל קדמי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">גלגל קדמי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">גלגל קדמי</div>{% endif %}
                      {% set value = bike.get('front_wheel', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
@@ -1086,9 +1136,10 @@
              <!-- גלגל אחורי -->
              {% if 'rear_wheel' in fields_to_show %}
              <tr>
-                 <th style="min-width: 150px; background: #fff; text-align: right;">גלגל אחורי</th>
+                 <th style="min-width: 150px; background: #fff; text-align: right;"><span class="sticky-field-name">גלגל אחורי</span></th>
                  {% for bike in bikes %}
                  <td class="collapsible-cell">
+                     {% if loop.index == 1 %}<div class="mobile-field-name">גלגל אחורי</div>{% endif %}
                      {% set value = bike.get('rear_wheel', '') %}
                      {% set value_str = value|string %}
                      {% if value_str|length > 40 %}
