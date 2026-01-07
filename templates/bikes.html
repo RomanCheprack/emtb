@@ -372,7 +372,17 @@
         <!-- Price Range Slider -->
         <div class="col-12 col-md-6 mb-3 slider-padding-price">
             <div class="prices-label">
-                <label class="form-label" style="font-weight: bold;">טווח מחירים</label>
+                <label class="form-label" style="font-weight: bold;">טווח מחירים
+                    <span class="filter-help-icon" data-filter="price">
+                        <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                    </span>
+                </label>
+                <div class="filter-help-tooltip" id="tooltip-price">
+                    <div class="tooltip-content">
+                        <button class="tooltip-close" aria-label="סגור">×</button>
+                        <p>טווח המחירים עוזר לך לסנן אופניים לפי התקציב שלך. תוכל להגדיר טווח מינימום ומקסימום כדי למצוא את האופניים שמתאימים לכיסך.</p>
+                    </div>
+                </div>
             </div>
             <div id="price-slider"></div>
             <div class="d-flex justify-content-between mt-2">
@@ -385,7 +395,20 @@
         </div>
         <div class="col-12 col-md-6 mb-3 slider-padding-wh">
             <div class="wh-label">
-                <label class="form-label" style="font-weight: bold;">גודל סוללה (Wh)</label>
+                <label class="form-label" style="font-weight: bold;">גודל סוללה (Wh)
+                    <span class="filter-help-icon" data-filter="battery">
+                        <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                    </span>
+                </label>
+                <div class="filter-help-tooltip" id="tooltip-battery">
+                    <div class="tooltip-content">
+                        <button class="tooltip-close" aria-label="סגור">×</button>
+                        <p><strong>גודל סוללה - מדוע לא תמיד גדול יותר זה טוב יותר:</strong></p>
+                        <p>סוללות גדולות (700Wh+) מתאימות לרכיבה ארוכה ומאפשרות טווח נסיעה של עד 150 ק"מ. עם זאת, הן כבדות יותר ומשפיעות על המשקל הכולל של האופניים.</p>
+                        <p>סוללות בינוניות (400-600Wh) מספקות איזון טוב בין טווח נסיעה (80-100 ק"מ) למשקל, ומתאימות לרוב הרכיבות היומיומיות.</p>
+                        <p>סוללות קטנות (250-400Wh) קלות יותר ומתאימות לרכיבות עירוניות קצרות (40-60 ק"מ), ולמי שמעדיף אופניים קלים יותר.</p>
+                    </div>
+                </div>
             </div>
             <div id="battery-slider"></div>
             <div class="d-flex justify-content-between mt-2">
@@ -398,7 +421,20 @@
         <!-- Fork Length Slider (hide for road, city, kids, gravel categories) -->
         <div class="col-12 col-md-6 mb-3 slider-padding-fork" id="fork-slider-container">
             <div class="fork-label">
-                <label class="form-label" style="font-weight: bold;">אורך בולם</label>
+                <label class="form-label" style="font-weight: bold;">אורך בולם
+                    <span class="filter-help-icon" data-filter="fork">
+                        <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                    </span>
+                </label>
+                <div class="filter-help-tooltip" id="tooltip-fork">
+                    <div class="tooltip-content">
+                        <button class="tooltip-close" aria-label="סגור">×</button>
+                        <p><strong>אורך בולם (Fork Travel):</strong></p>
+                        <p>אורך הבולם נמדד במילימטרים וקובע את כמות הספיגה של המזלג. בולמים ארוכים (140-170 מ"מ) מתאימים לרכיבה בשטח קשה, מאפשרים ספיגה טובה יותר של מפגעים ומספקים יציבות במורדות תלולים.</p>
+                        <p>בולמים בינוניים (100-130 מ"מ) מספקים איזון בין ספיגה לרכיבה יעילה ומתאימים לשטח מגוון.</p>
+                        <p>בולמים קצרים (80-100 מ"מ) מתאימים לרכיבת קרוס קאנטרי ולשטח חלק יותר, ומשפיעים פחות על יעילות הפדלינג.</p>
+                    </div>
+                </div>
             </div>
             <div id="fork-slider"></div>
             <div class="d-flex justify-content-between mt-2">
@@ -410,7 +446,18 @@
         </div>
         <!-- Custom Firm Dropdown Filter -->
         <div class="mb-3">
-            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">מותג</label>
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">
+                מותג
+                <span class="filter-help-icon" data-filter="brand">
+                    <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                </span>
+            </label>
+            <div class="filter-help-tooltip" id="tooltip-brand">
+                <div class="tooltip-content">
+                    <button class="tooltip-close" aria-label="סגור">×</button>
+                    <p>בחירת מותג מאפשרת לך לסנן אופניים לפי היצרן. כל מותג מציע פילוסופיה עיצובית שונה, טכנולוגיות ייחודיות ותמיכה שונה. אתה יכול לבחור מספר מותגים להשוואה.</p>
+                </div>
+            </div>
             <div class="dropdown">
                 <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="firmDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     בחר מותגים
@@ -429,7 +476,24 @@
         </div>
         <!-- Custom Motor Brand Dropdown Filter -->
         <div class="mb-3">
-            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">מנוע</label>
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">
+                מנוע
+                <span class="filter-help-icon" data-filter="motor">
+                    <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                </span>
+            </label>
+            <div class="filter-help-tooltip" id="tooltip-motor">
+                <div class="tooltip-content">
+                    <button class="tooltip-close" aria-label="סגור">×</button>
+                    <p><strong>מותגי מנוע:</strong></p>
+                    <p>בחירת מותג מנוע מאפשרת לך לסנן אופניים לפי יצרן המנוע. כל מותג מציע טכנולוגיות שונות, ביצועים שונים, ורמות תמיכה שונות.</p>
+                    <p><strong>Shimano:</strong> מנועים קלים וקומפקטיים, מתאימים לרכיבה טבעית עם תמיכה חלקה.</p>
+                    <p><strong>Bosch:</strong> מנועים חזקים ואמינים, מתאימים לרכיבה בשטח ולעליות תלולות.</p>
+                    <p><strong>TQ:</strong> מנועים שקטים וקלים, מתאימים לרוכבים שמחפשים חוויית רכיבה טבעית.</p>
+                    <p><strong>Specialized:</strong> מנועים ייחודיים המותאמים במיוחד לאופני Specialized.</p>
+                    <p>כל מותג מציע יתרונות שונים - בחר לפי סגנון הרכיבה והצרכים שלך.</p>
+                </div>
+            </div>
             <div class="dropdown">
                 <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="motorBrandDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     בחר מותגי מנוע
@@ -516,7 +580,20 @@
         </div>
         <!-- Frame Material Filter -->
         <div class="mb-3">
-            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">חומר שלדה</label>
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">
+                חומר שלדה
+                <span class="filter-help-icon" data-filter="frame-material">
+                    <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                </span>
+            </label>
+            <div class="filter-help-tooltip" id="tooltip-frame-material">
+                <div class="tooltip-content">
+                    <button class="tooltip-close" aria-label="סגור">×</button>
+                    <p><strong>חומר שלדה:</strong></p>
+                    <p><strong>קרבון:</strong> קל משמעותית מאלומיניום, מציע נוחות רכיבה מעולה עם יכולת ספיגת רעידות טובה. בעל עלות גבוהה יותר ודורש טיפול מיוחד במקרה של נזק. מתאים לרוכבים מקצועיים ולמי שמחפש ביצועים מרביים.</p>
+                    <p><strong>אלומיניום:</strong> חומר חזק ואמין עם יחס מחיר-ביצועים מצוין. מעט כבד יותר מקרבון אך עמיד יותר וקל לתיקון. מתאים לרוב הרוכבים ולרכיבה יומיומית.</p>
+                </div>
+            </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="frame_material" id="frame-material-all" value="">
                 <label class="form-check-label" for="frame-material-all">הכל</label>

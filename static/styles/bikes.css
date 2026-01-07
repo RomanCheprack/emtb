@@ -1323,6 +1323,283 @@ additional-filter-btn {
     }
 }
 
+/* Filter Help Icon and Tooltip Styles */
+.filter-help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    vertical-align: middle;
+    position: relative;
+}
+
+.filter-help-icon:hover {
+    color: #007bff;
+}
+
+.filter-help-icon:hover img {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.filter-help-icon svg,
+.filter-help-icon img {
+    width: 14px;
+    height: 14px;
+    display: block;
+    object-fit: contain;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.filter-help-tooltip {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    z-index: 1050;
+    max-width: 320px;
+    min-width: 280px;
+    display: none;
+    direction: rtl;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.filter-help-tooltip.show {
+    display: block;
+    opacity: 1;
+    background: #ffffff !important;
+}
+
+.filter-help-tooltip .tooltip-content {
+    padding: 14px 16px;
+    background: #ffffff;
+}
+
+.filter-help-tooltip .tooltip-content p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+    background: transparent;
+}
+
+.filter-help-tooltip .tooltip-content p:last-child {
+    margin-bottom: 0;
+}
+
+.filter-help-tooltip .tooltip-content strong {
+    color: #007bff;
+    font-weight: 600;
+}
+
+/* Position tooltips above on mobile, to the side on desktop */
+.prices-label,
+.wh-label,
+.fork-label {
+    position: relative;
+}
+
+.filter-help-tooltip.position-bottom {
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+}
+
+.filter-help-tooltip.position-left {
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.filter-help-tooltip.position-left.show {
+    transform: translateY(-50%);
+}
+
+/* Large screens: hover tooltip */
+@media (min-width: 992px) {
+    .filter-help-icon:hover + .filter-help-tooltip,
+    .filter-help-tooltip:hover {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    
+    .filter-help-tooltip {
+        position: absolute;
+    }
+    
+    .prices-label .filter-help-tooltip,
+    .wh-label .filter-help-tooltip,
+    .fork-label .filter-help-tooltip {
+        right: 0;
+        top: 100%;
+        margin-top: 8px;
+    }
+    
+    .mb-3 > .filter-help-tooltip {
+        right: 50%;
+        transform: translateX(50%);
+        top: 100%;
+        margin-top: 8px;
+    }
+    
+    .mb-3 > .filter-help-tooltip.show {
+        transform: translateX(50%);
+    }
+    
+    /* Hide close button on large screens */
+    .filter-help-tooltip .tooltip-close {
+        display: none;
+    }
+}
+
+/* Medium and small screens: click tooltip */
+@media (max-width: 991px) {
+    .filter-help-tooltip {
+        position: fixed;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        max-width: 85vw;
+        min-width: 280px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        z-index: 10000 !important;
+        background: #ffffff !important;
+        border: 2px solid #fff !important;
+        filter: none !important;
+        opacity: 1 !important;
+        will-change: transform;
+        isolation: isolate;
+    }
+    
+    .filter-help-tooltip.show {
+        transform: translate(50%, -50%) !important;
+        background: #ffffff !important;
+        opacity: 1 !important;
+        filter: none !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    /* Ensure tooltip content is bright white */
+    .filter-help-tooltip.show .tooltip-content,
+    .filter-help-tooltip.show .tooltip-content * {
+        background: #ffffff !important;
+        color: #333 !important;
+        filter: none !important;
+        opacity: 1 !important;
+    }
+    
+    /* Backdrop for mobile tooltips */
+    .tooltip-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1059;
+        display: none;
+        animation: fadeIn 0.2s ease;
+    }
+    
+    .tooltip-backdrop.show {
+        display: block;
+    }
+    
+    /* Close button for mobile tooltips - positioned on the left (RTL) */
+    .filter-help-tooltip .tooltip-close {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 50%;
+        font-size: 18px;
+        color: #6c757d;
+        cursor: pointer;
+        padding: 0;
+        width: 28px;
+        height: 28px;
+        line-height: 1;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .filter-help-tooltip .tooltip-close:hover {
+        color: #333;
+        background: #f8f9fa;
+        border-color: #adb5bd;
+        transform: scale(1.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    
+    .filter-help-tooltip .tooltip-close:active {
+        transform: scale(0.95);
+    }
+    
+    /* Add padding to tooltip content on mobile to accommodate close button */
+    /* Tooltip is RTL, so close button appears on left visually (but it's actually left in LTR) */
+    /* Close button is 28px wide + 12px position + 10px gap = 50px */
+    .filter-help-tooltip .tooltip-content {
+        padding: 14px 16px 14px 50px !important;
+        background: #ffffff !important;
+        position: relative;
+        min-height: 56px; /* Ensure enough space for button + text */
+        overflow: visible; /* Ensure button is visible */
+    }
+    
+    /* Close button positioning - absolutely positioned on the left side */
+    /* In RTL, this appears on the left visually */
+    .filter-help-tooltip .tooltip-content > .tooltip-close {
+        position: absolute !important;
+        top: 12px !important;
+        left: 12px !important;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    /* Hide close button from text flow - make it not affect layout */
+    .filter-help-tooltip .tooltip-content > .tooltip-close:first-child {
+        position: absolute !important;
+    }
+    
+    /* Ensure all text content starts after the close button area (50px from left) */
+    .filter-help-tooltip .tooltip-content > p,
+    .filter-help-tooltip .tooltip-content > strong,
+    .filter-help-tooltip .tooltip-content > *:not(.tooltip-close) {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block;
+        clear: both;
+    }
+    
+    /* First text element should have proper spacing from close button */
+    .filter-help-tooltip .tooltip-content > p:first-of-type,
+    .filter-help-tooltip .tooltip-content > *:not(.tooltip-close):first-of-type {
+        margin-top: 0 !important;
+    }
+    
+    /* Add spacing between paragraphs */
+    .filter-help-tooltip .tooltip-content > p + p {
+        margin-top: 10px !important;
+    }
+}
+
 /* Image Zoom Functionality */
 .main-image-container {
     position: relative;

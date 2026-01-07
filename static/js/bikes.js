@@ -1184,6 +1184,7 @@ function showBikeDetailsModal(bike) {
                 </div>
                 <div class="mt-3">
                     ${adaptedBike.listing?.product_url ? `<a href="${adaptedBike.listing.product_url}" class="btn btn-info" target="_blank">לרכישה</a>` : ''}
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 10px;">סגור</button>
                 </div>
             </div>
         </div>
@@ -2384,3 +2385,172 @@ function cleanupDragHandlers() {
     document.removeEventListener('touchmove', dragTouch);
     document.removeEventListener('touchend', endDrag);
 }
+
+// ========== FILTER HELP TOOLTIPS ==========
+(function initFilterTooltips() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTooltips);
+    } else {
+        initTooltips();
+    }
+    
+    function initTooltips() {
+        // Create backdrop for mobile tooltips if it doesn't exist
+        let tooltipBackdrop = document.getElementById('tooltip-backdrop');
+        if (!tooltipBackdrop) {
+            tooltipBackdrop = document.createElement('div');
+            tooltipBackdrop.id = 'tooltip-backdrop';
+            tooltipBackdrop.className = 'tooltip-backdrop';
+            document.body.appendChild(tooltipBackdrop);
+        }
+        
+        // Get all help icons
+        const helpIcons = document.querySelectorAll('.filter-help-icon');
+        let activeTooltip = null;
+        
+        // Check if we're on a large screen
+        function isLargeScreen() {
+            return window.matchMedia('(min-width: 992px)').matches;
+        }
+        
+        // Function to show tooltip
+        function showTooltip(icon, tooltipId) {
+            // Hide any currently active tooltip
+            if (activeTooltip) {
+                hideTooltip(activeTooltip);
+            }
+            
+            const tooltip = document.getElementById(`tooltip-${tooltipId}`);
+            if (!tooltip) return;
+            
+            activeTooltip = tooltipId;
+            
+            if (isLargeScreen()) {
+                // Large screen: show on hover (CSS handles most of it, but we handle click too)
+                tooltip.classList.add('show');
+            } else {
+                // Medium/small screen: show modal-style tooltip with backdrop
+                // Move tooltip to body level to avoid offcanvas dimming effects
+                if (tooltip.parentElement !== document.body) {
+                    const originalParent = tooltip.parentElement;
+                    tooltip.setAttribute('data-original-parent', originalParent ? 'true' : 'false');
+                    document.body.appendChild(tooltip);
+                }
+                tooltipBackdrop.classList.add('show');
+                tooltip.classList.add('show');
+            }
+        }
+        
+        // Function to hide tooltip
+        function hideTooltip(tooltipId) {
+            const tooltip = document.getElementById(`tooltip-${tooltipId}`);
+            if (tooltip) {
+                tooltip.classList.remove('show');
+                // Return tooltip to original position after a brief delay
+                setTimeout(() => {
+                    if (!tooltip.classList.contains('show')) {
+                        // Find the original parent by checking the HTML structure
+                        // We'll keep it simple - just move it back if needed
+                        const offcanvasBody = document.querySelector('#offcanvasFilters .offcanvas-body');
+                        if (offcanvasBody && tooltip.parentElement === document.body) {
+                            // Try to find where it should go based on filter ID
+                            let targetContainer = null;
+                            if (tooltipId === 'price') {
+                                targetContainer = document.querySelector('.prices-label');
+                            } else if (tooltipId === 'battery') {
+                                targetContainer = document.querySelector('.wh-label');
+                            } else if (tooltipId === 'fork') {
+                                targetContainer = document.querySelector('.fork-label');
+                            } else if (tooltipId === 'brand') {
+                                targetContainer = document.querySelector('#offcanvasFilters .mb-3:has(label:contains("מותג"))');
+                            } else if (tooltipId === 'frame-material') {
+                                targetContainer = document.querySelector('#offcanvasFilters .mb-3:has(label:contains("חומר שלדה"))');
+                            }
+                            
+                            if (targetContainer) {
+                                targetContainer.appendChild(tooltip);
+                            } else {
+                                // Default: put it back in offcanvas body
+                                offcanvasBody.appendChild(tooltip);
+                            }
+                        }
+                    }
+                }, 300);
+            }
+            if (tooltipBackdrop) {
+                tooltipBackdrop.classList.remove('show');
+            }
+            activeTooltip = null;
+        }
+        
+        // Handle clicks on help icons (for all screen sizes)
+        helpIcons.forEach(icon => {
+            const filterType = icon.getAttribute('data-filter');
+            
+            // Click handler for medium/small screens and toggle on large screens
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                if (activeTooltip === filterType) {
+                    // Already showing this tooltip, hide it
+                    hideTooltip(filterType);
+                } else {
+                    // Show this tooltip
+                    showTooltip(icon, filterType);
+                }
+            });
+        });
+        
+        // Handle close button clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tooltip-close')) {
+                e.stopPropagation();
+                if (activeTooltip) {
+                    hideTooltip(activeTooltip);
+                }
+            }
+        });
+        
+        // Hide tooltip when clicking on backdrop (mobile/tablet)
+        tooltipBackdrop.addEventListener('click', () => {
+            if (activeTooltip) {
+                hideTooltip(activeTooltip);
+            }
+        });
+        
+        // Hide tooltip when clicking outside (mobile/tablet)
+        document.addEventListener('click', (e) => {
+            if (!isLargeScreen() && activeTooltip) {
+                const tooltip = document.getElementById(`tooltip-${activeTooltip}`);
+                const icon = document.querySelector(`[data-filter="${activeTooltip}"]`);
+                
+                if (tooltip && icon && 
+                    !tooltip.contains(e.target) && 
+                    !icon.contains(e.target) &&
+                    !e.target.classList.contains('tooltip-close')) {
+                    hideTooltip(activeTooltip);
+                }
+            }
+        });
+        
+        // Hide tooltip on window resize if switching from small to large
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (isLargeScreen() && activeTooltip) {
+                    // On large screens, tooltips work better with hover
+                    // But we keep click functionality too
+                }
+            }, 250);
+        });
+        
+        // Close tooltip on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activeTooltip) {
+                hideTooltip(activeTooltip);
+            }
+        });
+    }
+})();
