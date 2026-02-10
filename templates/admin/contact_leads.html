@@ -24,6 +24,7 @@
                             <th>טלפון</th>
                             <th>סוג</th>
                             <th>הודעה/דגם</th>
+                            <th>פעולות</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,10 +48,16 @@
                                     {{ (lead.message[:50] + '...' if lead.message and lead.message|length > 50 else (lead.message or 'N/A')) }}
                                 {% endif %}
                             </td>
+                            <td>
+                                <form method="POST" action="{{ url_for('admin.contact_lead_delete', lead_id=lead.id) }}" style="display: inline;" onsubmit="return confirm('האם אתה בטוח שברצונך למחוק ליד זה?');">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                    <button type="submit" class="btn btn-sm btn-danger">מחק</button>
+                                </form>
+                            </td>
                         </tr>
                         {% else %}
                         <tr>
-                            <td colspan="6" class="text-center text-muted">אין לידים עדיין</td>
+                            <td colspan="7" class="text-center text-muted">אין לידים עדיין</td>
                         </tr>
                         {% endfor %}
                     </tbody>

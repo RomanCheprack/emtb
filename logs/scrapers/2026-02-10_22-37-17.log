@@ -229,3 +229,15 @@
 2026-02-10 23:08:41,730 - INFO - [ctc_full_site] 2026-02-10 23:08:41,729 [INFO] Scraping URL #5: https://ctc.co.il/product-category/bikes/mountain-bikes/hard-tail/
 2026-02-10 23:08:46,930 - INFO - [ctc_full_site] 2026-02-10 23:08:46,930 [INFO] Found 21 product links.
 2026-02-10 23:09:25,240 - INFO - ctc_full_site still running after 15 minutes
+2026-02-10 23:14:10,571 - INFO - [ctc_full_site] 2026-02-10 23:14:10,565 [INFO] Scraping URL #6: https://ctc.co.il/product-tag/aero/
+2026-02-10 23:14:18,262 - INFO - [ctc_full_site] 2026-02-10 23:14:18,262 [INFO] Found 17 product links.
+2026-02-10 23:14:26,134 - INFO - ctc_full_site still running after 20 minutes
+2026-02-10 23:16:43,203 - INFO - [ctc_full_site] 2026-02-10 23:16:43,198 [INFO] Scraping URL #7: https://ctc.co.il/product-tag/lightweight/
+2026-02-10 23:16:52,697 - INFO - [ctc_full_site] 2026-02-10 23:16:52,697 [INFO] Found 15 product links.
+2026-02-10 23:18:05,957 - INFO - [ctc_full_site] 2026-02-10 23:18:05,957 [INFO] Scraping URL #8: https://ctc.co.il/product-tag/endurance/
+2026-02-10 23:18:11,851 - INFO - [ctc_full_site] 2026-02-10 23:18:11,850 [INFO] Found 8 product links.
+2026-02-10 23:19:05,798 - INFO - [ctc_full_site] 2026-02-10 23:19:05,797 [INFO] Scraping URL #9: https://ctc.co.il/product-tag/גראבל/
+2026-02-10 23:19:10,839 - INFO - [ctc_full_site] 2026-02-10 23:19:10,839 [INFO] Found 16 product links.
+2026-02-10 23:19:26,179 - INFO - ctc_full_site still running after 25 minutes
+2026-02-10 23:21:28,502 - INFO - [ctc_full_site] 2026-02-10 23:21:28,501 [INFO] Scraping URL #10: https://ctc.co.il/product-category/bikes/city-bikes
+2026-02-10 23:21:40,321 - INFO - [ctc_full_site] 2026-02-10 23:21:40,319 [INFO] Found 21 product links.

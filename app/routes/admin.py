@@ -163,6 +163,23 @@ def availability_lead_delete(lead_id):
     return redirect(url_for('admin.availability_leads'))
 
 
+@bp.route('/contact-leads/<int:lead_id>/delete', methods=['POST'])
+@login_required
+def contact_lead_delete(lead_id):
+    """Delete contact lead"""
+    lead = db.session.query(ContactLead).filter_by(id=lead_id).first_or_404()
+    
+    try:
+        db.session.delete(lead)
+        db.session.commit()
+        flash('הליד נמחק בהצלחה', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'שגיאה במחיקת הליד: {str(e)}', 'error')
+    
+    return redirect(url_for('admin.contact_leads'))
+
+
 @bp.route('/store-request-leads/<int:lead_id>/delete', methods=['POST'], endpoint='store_request_lead_delete')
 @login_required
 def store_request_lead_delete(lead_id):

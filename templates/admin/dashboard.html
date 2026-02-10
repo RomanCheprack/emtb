@@ -57,6 +57,10 @@
                     <div class="text-center mt-3">
                         <a href="{{ url_for('admin.availability_leads') }}" class="btn btn-primary">צפה בכל הלידים ({{ availability_leads|length }})</a>
                     </div>
+                    {% elif availability_leads|length > 0 %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.availability_leads') }}" class="btn btn-primary">צפה בכל הלידים</a>
+                    </div>
                     {% endif %}
                 </div>
             </div>
@@ -98,6 +102,10 @@
                     {% if contact_leads|length > 10 %}
                     <div class="text-center mt-3">
                         <a href="{{ url_for('admin.contact_leads') }}" class="btn btn-success">צפה בכל הלידים ({{ contact_leads|length }})</a>
+                    </div>
+                    {% elif contact_leads|length > 0 %}
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('admin.contact_leads') }}" class="btn btn-success">צפה בכל הלידים</a>
                     </div>
                     {% endif %}
                 </div>
