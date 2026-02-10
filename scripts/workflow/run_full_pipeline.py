@@ -35,6 +35,7 @@ from app.models import Bike, Brand, Source, BikeListing
 # Import email notifier
 sys.path.insert(0, os.path.join(project_root, 'scripts', 'utils'))
 from email_notifier import send_pipeline_notification
+from fix_chromedriver_cache import clear_chromedriver_cache
 
 
 class PipelineStats:
@@ -610,6 +611,21 @@ def main():
     error_message = None
     
     try:
+        # Step 0: Clear ChromeDriver cache (only if running scrapers)
+        if not args.skip_scrapers:
+            print(f"\n{'='*80}")
+            print(f"🔄 Starting Step 0: Clearing ChromeDriver Cache")
+            print(f"{'='*80}")
+            sys.stdout.flush()
+            try:
+                clear_chromedriver_cache()
+                print("✅ ChromeDriver cache cleared successfully")
+                sys.stdout.flush()
+            except Exception as e:
+                print(f"⚠️  Warning: Could not clear ChromeDriver cache: {e}")
+                print("   Continuing anyway...")
+                sys.stdout.flush()
+        
         # Step 1: Run scrapers
         if not args.skip_scrapers:
             print(f"\n{'='*80}")

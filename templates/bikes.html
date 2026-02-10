@@ -350,6 +350,15 @@
                         <textarea class="form-control" id="find-store-remarks" name="remarks" rows="3" style="text-align: right;"></textarea>
                     </div>
                     
+                    <div class="mb-3">
+                        <div class="form-check" style="direction: rtl; display: flex; align-items: center; justify-content: flex-start;">
+                            <input class="form-check-input" type="checkbox" id="find-store-agreement" name="agreement" required style="margin-left: 8px; margin-right: 0;">
+                            <label class="form-check-label" for="find-store-agreement" style="text-align: right; margin-right: 0;">
+                                אני מסכים/ה ל<a href="{{ url_for('main.privacy_policy') }}" target="_blank">מדיניות הפרטיות</a> ול<a href="{{ url_for('main.terms_of_use') }}" target="_blank">תנאי השימוש</a> *
+                            </label>
+                        </div>
+                    </div>
+                    
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">שלח בקשה לחנות</button>
                     </div>

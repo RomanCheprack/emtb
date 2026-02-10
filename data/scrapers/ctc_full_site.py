@@ -123,7 +123,7 @@ def recreate_driver():
         options.add_argument('--disable-extensions')
         options.add_argument('--disable-logging')
         options.add_argument('--log-level=3')  # Suppress Chrome logging
-        driver = uc.Chrome(options=options)
+        driver = uc.Chrome(options=options, version_main=144)
         # Set explicit timeouts for better reliability
         # Use 60s page load timeout to avoid connection timeout issues (Selenium default is 120s)
         driver.set_page_load_timeout(60)  # 60 seconds for page load
@@ -605,7 +605,7 @@ if __name__ == '__main__':
         options.add_argument('--disable-extensions')
         options.add_argument('--disable-logging')
         options.add_argument('--log-level=3')  # Suppress Chrome logging
-        driver = uc.Chrome(options=options)
+        driver = uc.Chrome(options=options, version_main=144)
         # Set explicit timeouts for better reliability
         # Use 60s page load timeout to avoid connection timeout issues (Selenium default is 120s)
         driver.set_page_load_timeout(60)  # 60 seconds for page load

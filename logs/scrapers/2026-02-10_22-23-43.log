@@ -1,0 +1,74 @@
+2026-02-10 22:23:43,900 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-02-10_22-23-43.log
+2026-02-10 22:23:43,900 - INFO - Scraper orchestrator started at 2026-02-10 22:23:43
+2026-02-10 22:23:43,900 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-02-10 22:23:43,902 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-02-10 22:23:43,905 - INFO - Starting scraper: cobra_full_site at 2026-02-10 22:23:43
+2026-02-10 22:24:01,505 - INFO - [cobra_full_site] 📁 Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-10 22:24:01,507 - INFO - [cobra_full_site] 🚀 Starting Chrome driver...
+2026-02-10 22:24:01,507 - INFO - [cobra_full_site] ❌ Chrome driver init error: Message: session not created: cannot connect to chrome at 127.0.0.1:64814
+2026-02-10 22:24:01,507 - INFO - [cobra_full_site] from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:24:01,508 - INFO - [cobra_full_site] Current browser version is 144.0.7559.133
+2026-02-10 22:24:01,508 - INFO - [cobra_full_site] Stacktrace:
+2026-02-10 22:24:01,508 - INFO - [cobra_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:24:01,508 - INFO - [cobra_full_site] 	0xb2f393
+2026-02-10 22:24:01,508 - INFO - [cobra_full_site] 	0xb2f3d4
+2026-02-10 22:24:01,509 - INFO - [cobra_full_site] 	0x922090
+2026-02-10 22:24:01,509 - INFO - [cobra_full_site] 	0x95d732
+2026-02-10 22:24:01,509 - INFO - [cobra_full_site] 	0x95c76c
+2026-02-10 22:24:01,510 - INFO - [cobra_full_site] 	0x952845
+2026-02-10 22:24:01,510 - INFO - [cobra_full_site] 	0x952666
+2026-02-10 22:24:01,510 - INFO - [cobra_full_site] 	0x99ae7f
+2026-02-10 22:24:01,510 - INFO - [cobra_full_site] 	0x99a697
+2026-02-10 22:24:01,510 - INFO - [cobra_full_site] 	0x98ebb6
+2026-02-10 22:24:01,511 - INFO - [cobra_full_site] 	0x960319
+2026-02-10 22:24:01,511 - INFO - [cobra_full_site] 	0x9610d4
+2026-02-10 22:24:01,511 - INFO - [cobra_full_site] 	0xd83de4
+2026-02-10 22:24:01,511 - INFO - [cobra_full_site] 	0xd7f0e9
+2026-02-10 22:24:01,511 - INFO - [cobra_full_site] 	0xd9c080
+2026-02-10 22:24:01,511 - INFO - [cobra_full_site] 	0xb480a8
+2026-02-10 22:24:01,512 - INFO - [cobra_full_site] 	0xb4fdfd
+2026-02-10 22:24:01,512 - INFO - [cobra_full_site] 	0xb37bc8
+2026-02-10 22:24:01,512 - INFO - [cobra_full_site] 	0xb37d92
+2026-02-10 22:24:01,512 - INFO - [cobra_full_site] 	0xb2189a
+2026-02-10 22:24:01,512 - INFO - [cobra_full_site] 	0x76645d49
+2026-02-10 22:24:01,512 - INFO - [cobra_full_site] 	0x77c9d5db
+2026-02-10 22:24:01,513 - INFO - [cobra_full_site] 	0x77c9d561
+2026-02-10 22:24:01,513 - INFO - [cobra_full_site] ✅ Scraping completed: 0 products
+2026-02-10 22:24:01,513 - INFO - [cobra_full_site] 💾 Saved 0 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-10 22:24:07,194 - INFO - cobra_full_site completed successfully in 0m 23s
+2026-02-10 22:24:07,194 - INFO - cobra_full_site scraped 0 entries
+2026-02-10 22:24:09,203 - INFO - Starting scraper: ctc_full_site at 2026-02-10 22:24:09
+2026-02-10 22:24:10,523 - INFO - [ctc_full_site] 2026-02-10 22:24:10,523 [INFO] Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\ctc_data.json
+2026-02-10 22:24:10,524 - INFO - [ctc_full_site] 2026-02-10 22:24:10,523 [INFO] Starting Chrome driver...
+2026-02-10 22:24:13,093 - INFO - [ctc_full_site] 2026-02-10 22:24:13,093 [INFO] patching driver executable C:\Users\roman\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-02-10 22:24:24,095 - INFO - [ctc_full_site] 2026-02-10 22:24:24,094 [ERROR] Error during scraping: Message: session not created: cannot connect to chrome at 127.0.0.1:50507
+2026-02-10 22:24:24,095 - INFO - [ctc_full_site] from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:24:24,096 - INFO - [ctc_full_site] Current browser version is 144.0.7559.133
+2026-02-10 22:24:24,096 - INFO - [ctc_full_site] Stacktrace:
+2026-02-10 22:24:24,096 - INFO - [ctc_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:24:24,097 - INFO - [ctc_full_site] 	0x119f393
+2026-02-10 22:24:24,097 - INFO - [ctc_full_site] 	0x119f3d4
+2026-02-10 22:24:24,097 - INFO - [ctc_full_site] 	0xf92090
+2026-02-10 22:24:24,097 - INFO - [ctc_full_site] 	0xfcd732
+2026-02-10 22:24:24,098 - INFO - [ctc_full_site] 	0xfcc76c
+2026-02-10 22:24:24,098 - INFO - [ctc_full_site] 	0xfc2845
+2026-02-10 22:24:24,099 - INFO - [ctc_full_site] 	0xfc2666
+2026-02-10 22:24:24,099 - INFO - [ctc_full_site] 	0x100ae7f
+2026-02-10 22:24:24,099 - INFO - [ctc_full_site] 	0x100a697
+2026-02-10 22:24:24,100 - INFO - [ctc_full_site] 	0xffebb6
+2026-02-10 22:24:24,100 - INFO - [ctc_full_site] 	0xfd0319
+2026-02-10 22:24:24,100 - INFO - [ctc_full_site] 	0xfd10d4
+2026-02-10 22:24:24,101 - INFO - [ctc_full_site] 	0x13f3de4
+2026-02-10 22:24:24,101 - INFO - [ctc_full_site] 	0x13ef0e9
+2026-02-10 22:24:24,102 - INFO - [ctc_full_site] 	0x140c080
+2026-02-10 22:24:24,102 - INFO - [ctc_full_site] 	0x11b80a8
+2026-02-10 22:24:24,102 - INFO - [ctc_full_site] 	0x11bfdfd
+2026-02-10 22:24:24,103 - INFO - [ctc_full_site] 	0x11a7bc8
+2026-02-10 22:24:24,103 - INFO - [ctc_full_site] 	0x11a7d92
+2026-02-10 22:24:24,103 - INFO - [ctc_full_site] 	0x119189a
+2026-02-10 22:24:24,104 - INFO - [ctc_full_site] 	0x76645d49
+2026-02-10 22:24:24,104 - INFO - [ctc_full_site] 	0x77c9d5db
+2026-02-10 22:24:24,104 - INFO - [ctc_full_site] 	0x77c9d561
+2026-02-10 22:24:24,105 - INFO - [ctc_full_site] 2026-02-10 22:24:24,096 [INFO] Scraping completed! Total products: 0. Data saved to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\ctc_data.json
+2026-02-10 22:24:29,449 - INFO - ctc_full_site completed successfully in 0m 20s
+2026-02-10 22:24:29,449 - INFO - ctc_full_site scraped 0 entries

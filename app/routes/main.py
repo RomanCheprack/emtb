@@ -213,15 +213,26 @@ def check_availability():
         
         msg.set_content(body)
         
-        # Send the email
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-            smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
-            smtp.send_message(msg)
-        
-        return "הבקשה נשלחה בהצלחה", 200
+        # Send the email (adjust SMTP settings)
+        try:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+                print("EMAIL_USER from os.getenv:", os.getenv("EMAIL_USER"))
+                print("EMAIL_PASS from os.getenv:", os.getenv("EMAIL_PASS"))
+                print("About to login to SMTP for availability check")
+                smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
+                print("Logged in to SMTP for availability check")
+                smtp.send_message(msg)
+                print("Availability check email sent successfully")
+            return "הבקשה נשלחה בהצלחה", 200
+        except Exception as e:
+            print(f"Email failed for availability check: {e}")
+            import traceback
+            traceback.print_exc()
+            # Still return success since the lead was saved to database
+            return "הבקשה נשלחה בהצלחה", 200
         
     except Exception as e:
-        print(f"Error sending availability check email: {e}")
+        print(f"Error processing availability check: {e}")
         import traceback
         traceback.print_exc()
         return "אירעה שגיאה בשליחת הבקשה", 500
@@ -259,10 +270,11 @@ def find_store():
             # Continue even if database save fails
         
         # Construct the email
+        email_user = os.getenv("EMAIL_USER") or "rideal.bikes@gmail.com"
         msg = EmailMessage()
         msg["To"] = "rideal.bikes@gmail.com"
         msg["Subject"] = f"בקשה למציאת חנות מ-{name}"
-        msg["From"] = os.getenv("EMAIL_USER") or "rideal.bikes@gmail.com"
+        msg["From"] = email_user
         
         # Build email body
         body = f"בקשה למציאת חנות\n\n"
@@ -276,15 +288,47 @@ def find_store():
         
         msg.set_content(body)
         
-        # Send the email
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-            smtp.login(os.getenv("EMAIL_USER"), os.getenv("EMAIL_PASS"))
-            smtp.send_message(msg)
+        # Send the email (adjust SMTP settings)
+        email_pass = os.getenv("EMAIL_PASS")
         
-        return "הבקשה נשלחה בהצלחה", 200
+        if not email_user or not email_pass:
+            print("ERROR: EMAIL_USER or EMAIL_PASS not configured for find store email")
+            print(f"EMAIL_USER: {email_user}")
+            print(f"EMAIL_PASS: {'***' if email_pass else 'None'}")
+            # Still return success since the lead was saved to database
+            return "הבקשה נשלחה בהצלחה", 200
+        
+        try:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+                print("EMAIL_USER from os.getenv:", email_user)
+                print("EMAIL_PASS from os.getenv:", "***" if email_pass else "None")
+                print("About to login to SMTP for find store")
+                smtp.login(email_user, email_pass)
+                print("Logged in to SMTP for find store")
+                smtp.send_message(msg)
+                print("Find store email sent successfully")
+            return "הבקשה נשלחה בהצלחה", 200
+        except smtplib.SMTPAuthenticationError as e:
+            print(f"SMTP Authentication Error for find store: {e}")
+            import traceback
+            traceback.print_exc()
+            # Still return success since the lead was saved to database
+            return "הבקשה נשלחה בהצלחה", 200
+        except smtplib.SMTPException as e:
+            print(f"SMTP Error for find store: {e}")
+            import traceback
+            traceback.print_exc()
+            # Still return success since the lead was saved to database
+            return "הבקשה נשלחה בהצלחה", 200
+        except Exception as e:
+            print(f"Email failed for find store: {e}")
+            import traceback
+            traceback.print_exc()
+            # Still return success since the lead was saved to database
+            return "הבקשה נשלחה בהצלחה", 200
         
     except Exception as e:
-        print(f"Error sending find store email: {e}")
+        print(f"Error processing find store request: {e}")
         import traceback
         traceback.print_exc()
         return "אירעה שגיאה בשליחת הבקשה", 500

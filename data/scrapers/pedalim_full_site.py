@@ -333,7 +333,7 @@ if __name__ == '__main__':
         options.add_argument('--headless=new')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
-        driver = uc.Chrome(options=options)
+        driver = uc.Chrome(options=options, version_main=144)
         products = pedalim_bikes(driver, output_file)
     except Exception as e:
         print(f"❌ Chrome driver error: {e}")

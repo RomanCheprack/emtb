@@ -2067,6 +2067,14 @@ function showBikeDetailsModal(bike) {
         findStoreForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Check if agreement checkbox is checked
+            const agreementCheckbox = document.getElementById('find-store-agreement');
+            if (!agreementCheckbox.checked) {
+                alert('אנא אשר/י את הסכמתך למדיניות הפרטיות ותנאי השימוש');
+                agreementCheckbox.focus();
+                return;
+            }
+            
             const formData = new FormData(findStoreForm);
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || formData.get('csrf_token');
             
@@ -2108,8 +2116,19 @@ function showBikeDetailsModal(bike) {
                 
                 // Close modal after 2 seconds
                 setTimeout(() => {
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('findStoreModal'));
-                    modal.hide();
+                    const modalElement = document.getElementById('findStoreModal');
+                    if (modalElement) {
+                        const modal = bootstrap.Modal.getInstance(modalElement);
+                        if (modal) {
+                            modal.hide();
+                        } else {
+                            // Fallback: hide modal manually if Bootstrap instance doesn't exist
+                            modalElement.style.display = 'none';
+                            document.body.classList.remove('modal-open');
+                            const backdrop = document.querySelector('.modal-backdrop');
+                            if (backdrop) backdrop.remove();
+                        }
+                    }
                     
                     // Reset form and show it again for next time
                     findStoreForm.reset();

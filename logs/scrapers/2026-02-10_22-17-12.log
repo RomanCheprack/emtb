@@ -1,0 +1,334 @@
+2026-02-10 22:17:12,321 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-02-10_22-17-12.log
+2026-02-10 22:17:12,325 - INFO - Scraper orchestrator started at 2026-02-10 22:17:12
+2026-02-10 22:17:12,327 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-02-10 22:17:12,327 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-02-10 22:17:12,335 - INFO - Starting scraper: cobra_full_site at 2026-02-10 22:17:12
+2026-02-10 22:17:34,718 - INFO - [cobra_full_site] 📁 Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-10 22:17:34,721 - INFO - [cobra_full_site] 🚀 Starting Chrome driver...
+2026-02-10 22:17:34,722 - INFO - [cobra_full_site] ❌ Chrome driver init error: Message: session not created: cannot connect to chrome at 127.0.0.1:60969
+2026-02-10 22:17:34,722 - INFO - [cobra_full_site] from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:17:34,722 - INFO - [cobra_full_site] Current browser version is 144.0.7559.133
+2026-02-10 22:17:34,723 - INFO - [cobra_full_site] Stacktrace:
+2026-02-10 22:17:34,723 - INFO - [cobra_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:17:34,723 - INFO - [cobra_full_site] 	0x91f393
+2026-02-10 22:17:34,724 - INFO - [cobra_full_site] 	0x91f3d4
+2026-02-10 22:17:34,724 - INFO - [cobra_full_site] 	0x712090
+2026-02-10 22:17:34,724 - INFO - [cobra_full_site] 	0x74d732
+2026-02-10 22:17:34,725 - INFO - [cobra_full_site] 	0x74c76c
+2026-02-10 22:17:34,725 - INFO - [cobra_full_site] 	0x742845
+2026-02-10 22:17:34,725 - INFO - [cobra_full_site] 	0x742666
+2026-02-10 22:17:34,726 - INFO - [cobra_full_site] 	0x78ae7f
+2026-02-10 22:17:34,726 - INFO - [cobra_full_site] 	0x78a697
+2026-02-10 22:17:34,726 - INFO - [cobra_full_site] 	0x77ebb6
+2026-02-10 22:17:34,727 - INFO - [cobra_full_site] 	0x750319
+2026-02-10 22:17:34,727 - INFO - [cobra_full_site] 	0x7510d4
+2026-02-10 22:17:34,727 - INFO - [cobra_full_site] 	0xb73de4
+2026-02-10 22:17:34,727 - INFO - [cobra_full_site] 	0xb6f0e9
+2026-02-10 22:17:34,727 - INFO - [cobra_full_site] 	0xb8c080
+2026-02-10 22:17:34,728 - INFO - [cobra_full_site] 	0x9380a8
+2026-02-10 22:17:34,728 - INFO - [cobra_full_site] 	0x93fdfd
+2026-02-10 22:17:34,728 - INFO - [cobra_full_site] 	0x927bc8
+2026-02-10 22:17:34,728 - INFO - [cobra_full_site] 	0x927d92
+2026-02-10 22:17:34,729 - INFO - [cobra_full_site] 	0x91189a
+2026-02-10 22:17:34,729 - INFO - [cobra_full_site] 	0x76645d49
+2026-02-10 22:17:34,729 - INFO - [cobra_full_site] 	0x77c9d5db
+2026-02-10 22:17:34,730 - INFO - [cobra_full_site] 	0x77c9d561
+2026-02-10 22:17:34,730 - INFO - [cobra_full_site] ✅ Scraping completed: 0 products
+2026-02-10 22:17:34,730 - INFO - [cobra_full_site] 💾 Saved 0 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-10 22:17:39,653 - INFO - cobra_full_site completed successfully in 0m 27s
+2026-02-10 22:17:39,653 - INFO - cobra_full_site scraped 0 entries
+2026-02-10 22:17:41,662 - INFO - Starting scraper: ctc_full_site at 2026-02-10 22:17:41
+2026-02-10 22:17:43,432 - INFO - [ctc_full_site] 2026-02-10 22:17:43,432 [INFO] Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\ctc_data.json
+2026-02-10 22:17:43,433 - INFO - [ctc_full_site] 2026-02-10 22:17:43,432 [INFO] Starting Chrome driver...
+2026-02-10 22:17:45,934 - INFO - [ctc_full_site] 2026-02-10 22:17:45,933 [INFO] patching driver executable C:\Users\roman\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-02-10 22:17:58,730 - INFO - [ctc_full_site] 2026-02-10 22:17:58,729 [ERROR] Error during scraping: Message: session not created: cannot connect to chrome at 127.0.0.1:59198
+2026-02-10 22:17:58,730 - INFO - [ctc_full_site] from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:17:58,731 - INFO - [ctc_full_site] Current browser version is 144.0.7559.133
+2026-02-10 22:17:58,731 - INFO - [ctc_full_site] Stacktrace:
+2026-02-10 22:17:58,732 - INFO - [ctc_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:17:58,732 - INFO - [ctc_full_site] 	0x11ef393
+2026-02-10 22:17:58,732 - INFO - [ctc_full_site] 	0x11ef3d4
+2026-02-10 22:17:58,733 - INFO - [ctc_full_site] 	0xfe2090
+2026-02-10 22:17:58,733 - INFO - [ctc_full_site] 	0x101d732
+2026-02-10 22:17:58,733 - INFO - [ctc_full_site] 	0x101c76c
+2026-02-10 22:17:58,734 - INFO - [ctc_full_site] 	0x1012845
+2026-02-10 22:17:58,734 - INFO - [ctc_full_site] 	0x1012666
+2026-02-10 22:17:58,735 - INFO - [ctc_full_site] 	0x105ae7f
+2026-02-10 22:17:58,735 - INFO - [ctc_full_site] 	0x105a697
+2026-02-10 22:17:58,735 - INFO - [ctc_full_site] 	0x104ebb6
+2026-02-10 22:17:58,736 - INFO - [ctc_full_site] 	0x1020319
+2026-02-10 22:17:58,736 - INFO - [ctc_full_site] 	0x10210d4
+2026-02-10 22:17:58,736 - INFO - [ctc_full_site] 	0x1443de4
+2026-02-10 22:17:58,737 - INFO - [ctc_full_site] 	0x143f0e9
+2026-02-10 22:17:58,737 - INFO - [ctc_full_site] 	0x145c080
+2026-02-10 22:17:58,737 - INFO - [ctc_full_site] 	0x12080a8
+2026-02-10 22:17:58,738 - INFO - [ctc_full_site] 	0x120fdfd
+2026-02-10 22:17:58,738 - INFO - [ctc_full_site] 	0x11f7bc8
+2026-02-10 22:17:58,738 - INFO - [ctc_full_site] 	0x11f7d92
+2026-02-10 22:17:58,739 - INFO - [ctc_full_site] 	0x11e189a
+2026-02-10 22:17:58,739 - INFO - [ctc_full_site] 	0x76645d49
+2026-02-10 22:17:58,739 - INFO - [ctc_full_site] 	0x77c9d5db
+2026-02-10 22:17:58,740 - INFO - [ctc_full_site] 	0x77c9d561
+2026-02-10 22:17:58,740 - INFO - [ctc_full_site] 2026-02-10 22:17:58,731 [INFO] Scraping completed! Total products: 0. Data saved to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\ctc_data.json
+2026-02-10 22:18:03,935 - INFO - ctc_full_site completed successfully in 0m 22s
+2026-02-10 22:18:03,936 - INFO - ctc_full_site scraped 0 entries
+2026-02-10 22:18:05,954 - INFO - Starting scraper: cube_full_site at 2026-02-10 22:18:05
+2026-02-10 22:18:41,570 - INFO - [cube_full_site] ERROR: Traceback (most recent call last):
+2026-02-10 22:18:41,571 - INFO - [cube_full_site] ERROR:   File "cube_full_site.py", line 299, in <module>
+2026-02-10 22:18:41,572 - INFO - [cube_full_site] ERROR:     driver = uc.Chrome(options=options)
+2026-02-10 22:18:41,573 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+2026-02-10 22:18:41,573 - INFO - [cube_full_site] ERROR:     super(Chrome, self).__init__(
+2026-02-10 22:18:41,574 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+2026-02-10 22:18:41,574 - INFO - [cube_full_site] ERROR:     super().__init__(
+2026-02-10 22:18:41,575 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+2026-02-10 22:18:41,576 - INFO - [cube_full_site] ERROR:     super().__init__(command_executor=executor, options=options)
+2026-02-10 22:18:41,576 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 241, in __init__
+2026-02-10 22:18:41,576 - INFO - [cube_full_site] ERROR:     self.start_session(capabilities)
+2026-02-10 22:18:41,577 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+2026-02-10 22:18:41,577 - INFO - [cube_full_site] ERROR:     super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+2026-02-10 22:18:41,577 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 329, in start_session
+2026-02-10 22:18:41,578 - INFO - [cube_full_site] ERROR:     response = self.execute(Command.NEW_SESSION, caps)["value"]
+2026-02-10 22:18:41,578 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+2026-02-10 22:18:41,579 - INFO - [cube_full_site] ERROR:     self.error_handler.check_response(response)
+2026-02-10 22:18:41,579 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2026-02-10 22:18:41,580 - INFO - [cube_full_site] ERROR:     raise exception_class(message, screen, stacktrace)
+2026-02-10 22:18:41,580 - INFO - [cube_full_site] ERROR: selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:52858
+2026-02-10 22:18:41,581 - INFO - [cube_full_site] ERROR: from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:18:41,581 - INFO - [cube_full_site] ERROR: Current browser version is 144.0.7559.133
+2026-02-10 22:18:41,582 - INFO - [cube_full_site] ERROR: Stacktrace:
+2026-02-10 22:18:41,583 - INFO - [cube_full_site] ERROR: Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:18:41,583 - INFO - [cube_full_site] ERROR: 	0xd4f393
+2026-02-10 22:18:41,583 - INFO - [cube_full_site] ERROR: 	0xd4f3d4
+2026-02-10 22:18:41,583 - INFO - [cube_full_site] ERROR: 	0xb42090
+2026-02-10 22:18:41,585 - INFO - [cube_full_site] ERROR: 	0xb7d732
+2026-02-10 22:18:41,585 - INFO - [cube_full_site] ERROR: 	0xb7c76c
+2026-02-10 22:18:41,586 - INFO - [cube_full_site] ERROR: 	0xb72845
+2026-02-10 22:18:41,586 - INFO - [cube_full_site] ERROR: 	0xb72666
+2026-02-10 22:18:41,586 - INFO - [cube_full_site] ERROR: 	0xbbae7f
+2026-02-10 22:18:41,588 - INFO - [cube_full_site] ERROR: 	0xbba697
+2026-02-10 22:18:41,588 - INFO - [cube_full_site] ERROR: 	0xbaebb6
+2026-02-10 22:18:41,588 - INFO - [cube_full_site] ERROR: 	0xb80319
+2026-02-10 22:18:41,589 - INFO - [cube_full_site] ERROR: 	0xb810d4
+2026-02-10 22:18:41,590 - INFO - [cube_full_site] ERROR: 	0xfa3de4
+2026-02-10 22:18:41,590 - INFO - [cube_full_site] ERROR: 	0xf9f0e9
+2026-02-10 22:18:41,590 - INFO - [cube_full_site] ERROR: 	0xfbc080
+2026-02-10 22:18:41,590 - INFO - [cube_full_site] ERROR: 	0xd680a8
+2026-02-10 22:18:41,591 - INFO - [cube_full_site] ERROR: 	0xd6fdfd
+2026-02-10 22:18:41,591 - INFO - [cube_full_site] ERROR: 	0xd57bc8
+2026-02-10 22:18:41,592 - INFO - [cube_full_site] ERROR: 	0xd57d92
+2026-02-10 22:18:41,592 - INFO - [cube_full_site] ERROR: 	0xd4189a
+2026-02-10 22:18:41,592 - INFO - [cube_full_site] ERROR: 	0x76645d49
+2026-02-10 22:18:41,593 - INFO - [cube_full_site] ERROR: 	0x77c9d5db
+2026-02-10 22:18:41,593 - INFO - [cube_full_site] ERROR: 	0x77c9d561
+2026-02-10 22:18:48,262 - ERROR - cube_full_site failed with return code 1 after 0m 42s
+2026-02-10 22:18:50,285 - INFO - Starting scraper: giant_full_site at 2026-02-10 22:18:50
+2026-02-10 22:18:56,454 - INFO - [giant_full_site] 2026-02-10 22:18:56,454 | INFO | patching driver executable C:\Users\roman\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-02-10 22:19:11,577 - INFO - [giant_full_site] ERROR: Traceback (most recent call last):
+2026-02-10 22:19:11,579 - INFO - [giant_full_site] ERROR:   File "giant_full_site.py", line 331, in <module>
+2026-02-10 22:19:11,582 - INFO - [giant_full_site] ERROR:     main()
+2026-02-10 22:19:11,587 - INFO - [giant_full_site] ERROR:   File "giant_full_site.py", line 324, in main
+2026-02-10 22:19:11,603 - INFO - [giant_full_site] ERROR:     driver = uc.Chrome(options=options)
+2026-02-10 22:19:11,662 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+2026-02-10 22:19:11,668 - INFO - [giant_full_site] ERROR:     super(Chrome, self).__init__(
+2026-02-10 22:19:11,681 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+2026-02-10 22:19:11,682 - INFO - [giant_full_site] ERROR:     super().__init__(
+2026-02-10 22:19:11,683 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+2026-02-10 22:19:11,683 - INFO - [giant_full_site] ERROR:     super().__init__(command_executor=executor, options=options)
+2026-02-10 22:19:11,683 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 241, in __init__
+2026-02-10 22:19:11,683 - INFO - [giant_full_site] ERROR:     self.start_session(capabilities)
+2026-02-10 22:19:11,684 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+2026-02-10 22:19:11,684 - INFO - [giant_full_site] ERROR:     super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+2026-02-10 22:19:11,684 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 329, in start_session
+2026-02-10 22:19:11,684 - INFO - [giant_full_site] ERROR:     response = self.execute(Command.NEW_SESSION, caps)["value"]
+2026-02-10 22:19:11,685 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+2026-02-10 22:19:11,685 - INFO - [giant_full_site] ERROR:     self.error_handler.check_response(response)
+2026-02-10 22:19:11,685 - INFO - [giant_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2026-02-10 22:19:11,686 - INFO - [giant_full_site] ERROR:     raise exception_class(message, screen, stacktrace)
+2026-02-10 22:19:11,686 - INFO - [giant_full_site] ERROR: selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:56359
+2026-02-10 22:19:11,686 - INFO - [giant_full_site] ERROR: from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:19:11,687 - INFO - [giant_full_site] ERROR: Current browser version is 144.0.7559.133
+2026-02-10 22:19:11,687 - INFO - [giant_full_site] ERROR: Stacktrace:
+2026-02-10 22:19:11,687 - INFO - [giant_full_site] ERROR: Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:19:11,688 - INFO - [giant_full_site] ERROR: 	0x113f393
+2026-02-10 22:19:11,688 - INFO - [giant_full_site] ERROR: 	0x113f3d4
+2026-02-10 22:19:11,688 - INFO - [giant_full_site] ERROR: 	0xf32090
+2026-02-10 22:19:11,689 - INFO - [giant_full_site] ERROR: 	0xf6d732
+2026-02-10 22:19:11,694 - INFO - [giant_full_site] ERROR: 	0xf6c76c
+2026-02-10 22:19:11,695 - INFO - [giant_full_site] ERROR: 	0xf62845
+2026-02-10 22:19:11,697 - INFO - [giant_full_site] ERROR: 	0xf62666
+2026-02-10 22:19:11,697 - INFO - [giant_full_site] ERROR: 	0xfaae7f
+2026-02-10 22:19:11,698 - INFO - [giant_full_site] ERROR: 	0xfaa697
+2026-02-10 22:19:11,698 - INFO - [giant_full_site] ERROR: 	0xf9ebb6
+2026-02-10 22:19:11,699 - INFO - [giant_full_site] ERROR: 	0xf70319
+2026-02-10 22:19:11,702 - INFO - [giant_full_site] ERROR: 	0xf710d4
+2026-02-10 22:19:11,704 - INFO - [giant_full_site] ERROR: 	0x1393de4
+2026-02-10 22:19:11,704 - INFO - [giant_full_site] ERROR: 	0x138f0e9
+2026-02-10 22:19:11,706 - INFO - [giant_full_site] ERROR: 	0x13ac080
+2026-02-10 22:19:11,707 - INFO - [giant_full_site] ERROR: 	0x11580a8
+2026-02-10 22:19:11,708 - INFO - [giant_full_site] ERROR: 	0x115fdfd
+2026-02-10 22:19:11,708 - INFO - [giant_full_site] ERROR: 	0x1147bc8
+2026-02-10 22:19:11,709 - INFO - [giant_full_site] ERROR: 	0x1147d92
+2026-02-10 22:19:11,709 - INFO - [giant_full_site] ERROR: 	0x113189a
+2026-02-10 22:19:11,710 - INFO - [giant_full_site] ERROR: 	0x76645d49
+2026-02-10 22:19:11,710 - INFO - [giant_full_site] ERROR: 	0x77c9d5db
+2026-02-10 22:19:11,711 - INFO - [giant_full_site] ERROR: 	0x77c9d561
+2026-02-10 22:19:17,024 - ERROR - giant_full_site failed with return code 1 after 0m 26s
+2026-02-10 22:19:19,034 - INFO - Starting scraper: matzman_full_site at 2026-02-10 22:19:19
+2026-02-10 22:19:40,421 - INFO - [matzman_full_site] ERROR: Traceback (most recent call last):
+2026-02-10 22:19:40,422 - INFO - [matzman_full_site] ERROR:   File "matzman_full_site.py", line 658, in <module>
+2026-02-10 22:19:40,422 - INFO - [matzman_full_site] ERROR:     products = scrape_matzman(output_file)
+2026-02-10 22:19:40,422 - INFO - [matzman_full_site] ERROR:   File "matzman_full_site.py", line 417, in scrape_matzman
+2026-02-10 22:19:40,424 - INFO - [matzman_full_site] ERROR:     driver = create_driver()
+2026-02-10 22:19:40,424 - INFO - [matzman_full_site] ERROR:   File "matzman_full_site.py", line 180, in create_driver
+2026-02-10 22:19:40,424 - INFO - [matzman_full_site] ERROR:     driver = uc.Chrome(options=options)
+2026-02-10 22:19:40,425 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+2026-02-10 22:19:40,425 - INFO - [matzman_full_site] ERROR:     super(Chrome, self).__init__(
+2026-02-10 22:19:40,425 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+2026-02-10 22:19:40,425 - INFO - [matzman_full_site] ERROR:     super().__init__(
+2026-02-10 22:19:40,426 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+2026-02-10 22:19:40,426 - INFO - [matzman_full_site] ERROR:     super().__init__(command_executor=executor, options=options)
+2026-02-10 22:19:40,426 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 241, in __init__
+2026-02-10 22:19:40,427 - INFO - [matzman_full_site] ERROR:     self.start_session(capabilities)
+2026-02-10 22:19:40,427 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+2026-02-10 22:19:40,427 - INFO - [matzman_full_site] ERROR:     super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+2026-02-10 22:19:40,428 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 329, in start_session
+2026-02-10 22:19:40,428 - INFO - [matzman_full_site] ERROR:     response = self.execute(Command.NEW_SESSION, caps)["value"]
+2026-02-10 22:19:40,428 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+2026-02-10 22:19:40,428 - INFO - [matzman_full_site] ERROR:     self.error_handler.check_response(response)
+2026-02-10 22:19:40,429 - INFO - [matzman_full_site] ERROR:   File "C:\Users\roman\Code\emtb_site\env\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2026-02-10 22:19:40,429 - INFO - [matzman_full_site] ERROR:     raise exception_class(message, screen, stacktrace)
+2026-02-10 22:19:40,429 - INFO - [matzman_full_site] ERROR: selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:63606
+2026-02-10 22:19:40,430 - INFO - [matzman_full_site] ERROR: from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:19:40,430 - INFO - [matzman_full_site] ERROR: Current browser version is 144.0.7559.133
+2026-02-10 22:19:40,430 - INFO - [matzman_full_site] ERROR: Stacktrace:
+2026-02-10 22:19:40,431 - INFO - [matzman_full_site] ERROR: Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:19:40,431 - INFO - [matzman_full_site] ERROR: 	0x61f393
+2026-02-10 22:19:40,431 - INFO - [matzman_full_site] ERROR: 	0x61f3d4
+2026-02-10 22:19:40,432 - INFO - [matzman_full_site] ERROR: 	0x412090
+2026-02-10 22:19:40,432 - INFO - [matzman_full_site] ERROR: 	0x44d732
+2026-02-10 22:19:40,432 - INFO - [matzman_full_site] ERROR: 	0x44c76c
+2026-02-10 22:19:40,433 - INFO - [matzman_full_site] ERROR: 	0x442845
+2026-02-10 22:19:40,434 - INFO - [matzman_full_site] ERROR: 	0x442666
+2026-02-10 22:19:40,434 - INFO - [matzman_full_site] ERROR: 	0x48ae7f
+2026-02-10 22:19:40,434 - INFO - [matzman_full_site] ERROR: 	0x48a697
+2026-02-10 22:19:40,434 - INFO - [matzman_full_site] ERROR: 	0x47ebb6
+2026-02-10 22:19:40,435 - INFO - [matzman_full_site] ERROR: 	0x450319
+2026-02-10 22:19:40,435 - INFO - [matzman_full_site] ERROR: 	0x4510d4
+2026-02-10 22:19:40,436 - INFO - [matzman_full_site] ERROR: 	0x873de4
+2026-02-10 22:19:40,436 - INFO - [matzman_full_site] ERROR: 	0x86f0e9
+2026-02-10 22:19:40,436 - INFO - [matzman_full_site] ERROR: 	0x88c080
+2026-02-10 22:19:40,437 - INFO - [matzman_full_site] ERROR: 	0x6380a8
+2026-02-10 22:19:40,437 - INFO - [matzman_full_site] ERROR: 	0x63fdfd
+2026-02-10 22:19:40,437 - INFO - [matzman_full_site] ERROR: 	0x627bc8
+2026-02-10 22:19:40,437 - INFO - [matzman_full_site] ERROR: 	0x627d92
+2026-02-10 22:19:40,438 - INFO - [matzman_full_site] ERROR: 	0x61189a
+2026-02-10 22:19:40,439 - INFO - [matzman_full_site] ERROR: 	0x76645d49
+2026-02-10 22:19:40,439 - INFO - [matzman_full_site] ERROR: 	0x77c9d5db
+2026-02-10 22:19:40,440 - INFO - [matzman_full_site] ERROR: 	0x77c9d561
+2026-02-10 22:19:45,571 - ERROR - matzman_full_site failed with return code 1 after 0m 26s
+2026-02-10 22:19:47,597 - INFO - Starting scraper: motofan_full_site at 2026-02-10 22:19:47
+2026-02-10 22:21:23,082 - INFO - [motofan_full_site] 📁 Output file: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\motofan_data.json
+2026-02-10 22:21:23,083 - INFO - [motofan_full_site] 📄 Created empty JSON file - ready for data!
+2026-02-10 22:21:23,083 - INFO - [motofan_full_site] 🚀 Starting Chrome driver...
+2026-02-10 22:21:23,084 - INFO - [motofan_full_site] ❌ Error initializing Chrome driver: Message: session not created: cannot connect to chrome at 127.0.0.1:63313
+2026-02-10 22:21:23,084 - INFO - [motofan_full_site] from chrome not reachable
+2026-02-10 22:21:23,085 - INFO - [motofan_full_site] Stacktrace:
+2026-02-10 22:21:23,085 - INFO - [motofan_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:21:23,085 - INFO - [motofan_full_site] 	0x8ef393
+2026-02-10 22:21:23,085 - INFO - [motofan_full_site] 	0x8ef3d4
+2026-02-10 22:21:23,086 - INFO - [motofan_full_site] 	0x6e1ece
+2026-02-10 22:21:23,086 - INFO - [motofan_full_site] 	0x6d56b8
+2026-02-10 22:21:23,086 - INFO - [motofan_full_site] 	0x71c572
+2026-02-10 22:21:23,086 - INFO - [motofan_full_site] 	0x712845
+2026-02-10 22:21:23,087 - INFO - [motofan_full_site] 	0x712666
+2026-02-10 22:21:23,087 - INFO - [motofan_full_site] 	0x75ae7f
+2026-02-10 22:21:23,087 - INFO - [motofan_full_site] 	0x75a697
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0x74ebb6
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0x720319
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0x7210d4
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0xb43de4
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0xb3f0e9
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0xb5c080
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0x9080a8
+2026-02-10 22:21:23,088 - INFO - [motofan_full_site] 	0x90fdfd
+2026-02-10 22:21:23,090 - INFO - [motofan_full_site] 	0x8f7bc8
+2026-02-10 22:21:23,090 - INFO - [motofan_full_site] 	0x8f7d92
+2026-02-10 22:21:23,090 - INFO - [motofan_full_site] 	0x8e189a
+2026-02-10 22:21:23,090 - INFO - [motofan_full_site] 	0x76645d49
+2026-02-10 22:21:23,091 - INFO - [motofan_full_site] 	0x77c9d5db
+2026-02-10 22:21:23,091 - INFO - [motofan_full_site] 	0x77c9d561
+2026-02-10 22:21:23,091 - INFO - [motofan_full_site] 💡 Make sure Chrome browser is installed and accessible
+2026-02-10 22:21:23,091 - INFO - [motofan_full_site] ✅ Scraping completed!
+2026-02-10 22:21:23,093 - INFO - [motofan_full_site] 📊 Total products scraped: 0
+2026-02-10 22:21:23,093 - INFO - [motofan_full_site] 💾 Final data saved to: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\motofan_data.json
+2026-02-10 22:21:23,093 - INFO - [motofan_full_site] 📄 Updated JSON file with empty results
+2026-02-10 22:21:28,364 - INFO - motofan_full_site completed successfully in 1m 40s
+2026-02-10 22:21:28,365 - INFO - motofan_full_site scraped 0 entries
+2026-02-10 22:21:30,380 - INFO - Starting scraper: motosport_full_site at 2026-02-10 22:21:30
+2026-02-10 22:21:47,625 - INFO - [motosport_full_site] 📁 Output file: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\motosport_data.json
+2026-02-10 22:21:47,626 - INFO - [motosport_full_site] 📄 Created empty JSON file - ready for data!
+2026-02-10 22:21:47,626 - INFO - [motosport_full_site] 🚀 Starting Chrome driver...
+2026-02-10 22:21:47,628 - INFO - [motosport_full_site] ❌ Error initializing Chrome driver: Message: session not created: cannot connect to chrome at 127.0.0.1:56912
+2026-02-10 22:21:47,628 - INFO - [motosport_full_site] from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:21:47,628 - INFO - [motosport_full_site] Current browser version is 144.0.7559.133
+2026-02-10 22:21:47,629 - INFO - [motosport_full_site] Stacktrace:
+2026-02-10 22:21:47,629 - INFO - [motosport_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:21:47,629 - INFO - [motosport_full_site] 	0xdcf393
+2026-02-10 22:21:47,629 - INFO - [motosport_full_site] 	0xdcf3d4
+2026-02-10 22:21:47,630 - INFO - [motosport_full_site] 	0xbc2090
+2026-02-10 22:21:47,630 - INFO - [motosport_full_site] 	0xbfd732
+2026-02-10 22:21:47,630 - INFO - [motosport_full_site] 	0xbfc76c
+2026-02-10 22:21:47,631 - INFO - [motosport_full_site] 	0xbf2845
+2026-02-10 22:21:47,631 - INFO - [motosport_full_site] 	0xbf2666
+2026-02-10 22:21:47,631 - INFO - [motosport_full_site] 	0xc3ae7f
+2026-02-10 22:21:47,631 - INFO - [motosport_full_site] 	0xc3a697
+2026-02-10 22:21:47,632 - INFO - [motosport_full_site] 	0xc2ebb6
+2026-02-10 22:21:47,632 - INFO - [motosport_full_site] 	0xc00319
+2026-02-10 22:21:47,632 - INFO - [motosport_full_site] 	0xc010d4
+2026-02-10 22:21:47,633 - INFO - [motosport_full_site] 	0x1023de4
+2026-02-10 22:21:47,633 - INFO - [motosport_full_site] 	0x101f0e9
+2026-02-10 22:21:47,633 - INFO - [motosport_full_site] 	0x103c080
+2026-02-10 22:21:47,633 - INFO - [motosport_full_site] 	0xde80a8
+2026-02-10 22:21:47,634 - INFO - [motosport_full_site] 	0xdefdfd
+2026-02-10 22:21:47,634 - INFO - [motosport_full_site] 	0xdd7bc8
+2026-02-10 22:21:47,634 - INFO - [motosport_full_site] 	0xdd7d92
+2026-02-10 22:21:47,634 - INFO - [motosport_full_site] 	0xdc189a
+2026-02-10 22:21:47,634 - INFO - [motosport_full_site] 	0x76645d49
+2026-02-10 22:21:47,635 - INFO - [motosport_full_site] 	0x77c9d5db
+2026-02-10 22:21:47,635 - INFO - [motosport_full_site] 	0x77c9d561
+2026-02-10 22:21:47,635 - INFO - [motosport_full_site] 💡 Make sure Chrome browser is installed and accessible
+2026-02-10 22:21:47,635 - INFO - [motosport_full_site] ✅ Scraping completed!
+2026-02-10 22:21:47,635 - INFO - [motosport_full_site] 📊 Total products scraped: 0
+2026-02-10 22:21:47,636 - INFO - [motosport_full_site] 💾 Final data saved to: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\motosport_data.json
+2026-02-10 22:21:52,686 - INFO - motosport_full_site completed successfully in 0m 22s
+2026-02-10 22:21:52,686 - INFO - motosport_full_site scraped 0 entries
+2026-02-10 22:21:54,687 - INFO - Starting scraper: pedalim_full_site at 2026-02-10 22:21:54
+2026-02-10 22:22:10,443 - INFO - [pedalim_full_site] ❌ Chrome driver error: Message: session not created: cannot connect to chrome at 127.0.0.1:58742
+2026-02-10 22:22:10,443 - INFO - [pedalim_full_site] from session not created: This version of ChromeDriver only supports Chrome version 145
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] Current browser version is 144.0.7559.133
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] Stacktrace:
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] 	0xacf393
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] 	0xacf3d4
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] 	0x8c2090
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] 	0x8fd732
+2026-02-10 22:22:10,444 - INFO - [pedalim_full_site] 	0x8fc76c
+2026-02-10 22:22:10,446 - INFO - [pedalim_full_site] 	0x8f2845
+2026-02-10 22:22:10,446 - INFO - [pedalim_full_site] 	0x8f2666
+2026-02-10 22:22:10,446 - INFO - [pedalim_full_site] 	0x93ae7f
+2026-02-10 22:22:10,446 - INFO - [pedalim_full_site] 	0x93a697
+2026-02-10 22:22:10,446 - INFO - [pedalim_full_site] 	0x92ebb6
+2026-02-10 22:22:10,446 - INFO - [pedalim_full_site] 	0x900319
+2026-02-10 22:22:10,447 - INFO - [pedalim_full_site] 	0x9010d4
+2026-02-10 22:22:10,447 - INFO - [pedalim_full_site] 	0xd23de4
+2026-02-10 22:22:10,447 - INFO - [pedalim_full_site] 	0xd1f0e9
+2026-02-10 22:22:10,447 - INFO - [pedalim_full_site] 	0xd3c080
+2026-02-10 22:22:10,447 - INFO - [pedalim_full_site] 	0xae80a8
+2026-02-10 22:22:10,447 - INFO - [pedalim_full_site] 	0xaefdfd
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] 	0xad7bc8
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] 	0xad7d92
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] 	0xac189a
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] 	0x76645d49
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] 	0x77c9d5db
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] 	0x77c9d561
+2026-02-10 22:22:10,448 - INFO - [pedalim_full_site] ✅ Scraping completed! Total products: 0. Saved to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\pedalim_data.json
