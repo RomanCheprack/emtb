@@ -22,7 +22,7 @@
     
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{% if guide %}{{ url_for('admin.guide_edit', guide_id=guide.id) }}{% else %}{{ url_for('admin.guide_new') }}{% endif %}" enctype="multipart/form-data">
+            <form method="POST" action="{% if guide and guide.id %}{{ url_for('admin.guide_edit', guide_id=guide.id) }}{% else %}{{ url_for('admin.guide_new') }}{% endif %}" enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <div class="mb-3">
                     <label for="title" class="form-label">כותרת <span class="text-danger">*</span></label>
@@ -97,7 +97,7 @@
                 
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">שמור</button>
-                    {% if guide %}
+                    {% if guide and guide.id %}
                     <a href="{{ url_for('admin.guide_preview', guide_id=guide.id) }}" class="btn btn-info" target="_blank">תצוגה מקדימה</a>
                     {% endif %}
                     <a href="{{ url_for('admin.guides_list') }}" class="btn btn-secondary">ביטול</a>

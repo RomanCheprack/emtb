@@ -22,7 +22,7 @@
     
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{% if post %}{{ url_for('admin.blog_edit', post_id=post.id) }}{% else %}{{ url_for('admin.blog_new') }}{% endif %}" enctype="multipart/form-data">
+            <form method="POST" action="{% if post and post.id %}{{ url_for('admin.blog_edit', post_id=post.id) }}{% else %}{{ url_for('admin.blog_new') }}{% endif %}" enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <div class="mb-3">
                     <label for="title" class="form-label">כותרת <span class="text-danger">*</span></label>
@@ -103,7 +103,7 @@
                 
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">שמור</button>
-                    {% if post %}
+                    {% if post and post.id %}
                     <a href="{{ url_for('admin.blog_preview', post_id=post.id) }}" class="btn btn-info" target="_blank">תצוגה מקדימה</a>
                     {% endif %}
                     <a href="{{ url_for('admin.blog_list') }}" class="btn btn-secondary">ביטול</a>

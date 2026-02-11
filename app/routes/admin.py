@@ -257,6 +257,7 @@ def guide_new():
         
         # Create a temporary object to hold form data for re-rendering on error
         form_data = type('obj', (object,), {
+            'id': None,
             'title': title,
             'slug': slug,
             'hero_image': hero_image_url,
@@ -635,6 +636,7 @@ def blog_new():
         
         # Create a temporary object to hold form data for re-rendering on error
         form_data = type('obj', (object,), {
+            'id': None,
             'title': title,
             'slug': slug,
             'author': author,
