@@ -11,14 +11,14 @@
     "category": "electric",
     "sub_category": "electric_mtb",
     "original_price": 44900,
-    "disc_price": 27990,
+    "disc_price": null,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15819111/show/7e7a85b44f783a49141a0bfb015fb8bb.jpg",
       "gallery_images_urls": [
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15819111/large/7e7a85b44f783a49141a0bfb015fb8bb.jpg"
       ]
     },
-    "rewritten_description": "### חווית רכיבה חדשה ומרגשת עם ה-Strike eRIDE!  בעידן שבו הטכנולוגיה משנה את כללי המשחק, רכיבת השטח מקבלת תפנית מרהיבה עם אופני ההרים החשמליים - ה-Strike eRIDE! אם בעבר נחשבו רוכבי השטח “האמיתיים” לאלו שמסתפקים בכוח הגוף בלבד, היום כל רוכב יודע שהכוח החשמלי הוא המפתח לחוויות רכיבה מסעירות ובלתי נשכחות.  עם מהלך בולם קדמי של 150 מ'מ, שלדה קשיחה, חזקה וקלה, ה-Strike eRIDE מציע חווית רכיבה שלא הייתה כמותה באופני הרים אגרסיביים. SCOTT עבדו קשה כדי לדמות את התחושה של רכיבה על אופניים רגילים, והצליחו לשלב בין המוכר למתקדם. הגיאומטריה, הגלגלים, הבלמים ומערכת ההילוכים הם מהשורה הראשונה, כשכל פרט תוכנן בקפידה כדי להעניק לכם את הביטחון הנדרש בשטחים המחוספסים ביותר.  אך זה לא הכל! המנוע החזק Bosch CX עם סוללת 750Wh PowerTube מבטיח לכם כוח ועוצמה בכל עלייה ובכל ירידה. עם טכנולוגיות חדישות ואינטגרציה מתקדמת לניהול קיבולת הסוללה, תוכלו להתמקד ברכיבה וליהנות מהנופים המדהימים סביבכם מבלי לדאוג למגבלות.  ה-Strike eRIDE הוא הבחירה האולטימטיבית לכל רוכב שמחפש להרפתקה חדשה ולחוות את השטח באור חדש. האם אתם מוכנים לעלות על האופניים ולהרגיש את החופש המוחלט? הצטרפו למהפכה של רכיבת השטח והזמינו את ה-Strike eRIDE שלכם עכשיו!",
+    "rewritten_description": "**אזל מהמלאי בכל המידות - הזדמנות שלא תרצו לפספס!**  אם אתם רוכבי שטח אמיתיים או סתם חובבי אדרנלין, הגעתם למקום הנכון! בשנים האחרונות, אופני ההרים החשמליים הפכו לא רק לפופולריים, אלא גם לחוויה שמהפכה את הדרך בה אנו רוכבים. והפעם, הכירו את ה-Strike eRIDE – הבחירה המושלמת עבור כל רוכב שמחפש את האקסטרים הבא!  עם מהלך בולם קדמי של 150 מ'מ, שלדה קשיחה, חזקה וקלה, ה-Strike eRIDE מציע חווית רכיבה שלא נראתה כמותה. SCOTT עבדו קשה כדי לדמות את התחושה של רכיבה על אופניים רגילים, כך שהגיאומטריה, הגלגלים, הבלמים ומערכת ההילוכים הותאמו במיוחד כדי לשמור על תחושת הרכיבה הטבעית, אך עם תוספות מתקדמות שמיועדות לאופניים חשמליים.  הודות למנוע Bosch CX החזק והקל, עם סוללת PowerTube של 750Wh, תיהנו מעוצמת רכיבה שאין שנייה לה. טכנולוגיות חדישות ואינטגרציה חכמה לניהול קיבולת הסוללה מבטיחות שהרכיבה שלכם תהיה לא רק מהירה, אלא גם חכמה ובטוחה.  אל תפספסו את ההזדמנות לחוות את האופניים שיגרמו לכם להרגיש כמו מקצוענים בכל שטח. ה-Strike eRIDE הוא הבחירה האולטימטיבית לרוכבים שמחפשים ביטחון, עוצמה וחוויות בלתי נשכחות בשטח.   **מהרו להזמין – המלאי מוגבל!**",
     "specs": {
       "frame": "Carbon Main Frame / Alloy SST-CST-Link Virtual 4 link kinematic VLK 29x2.6 / Boost 148x12mm UDH 150mm travel / Bosch Gen4 / Integr. removable Battery 1.8' Headtube, Central Kickstand Mount Integr. Cable",
       "travel": "Front & Rear: 150mm",
@@ -84,7 +84,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/13986504/large/c8196fcdd454568441c1090da5c3cae7.png"
       ]
     },
-    "rewritten_description": "**אופני ה-Lumen eRIDE – חווית רכיבה בלתי מתפשרת!**   **נשאר במלאי מידה XL בלבד!**  אם אתם מחפשים את האופניים החשמליים שיביאו אתכם אל הפסגה, הגעתם למקום הנכון. סדרת ה-Spark שינתה את כללי המשחק עם פלטפורמת שלדה חדשנית ומתקדמת, ועכשיו ה-Lumen eRIDE לוקחים את זה צעד קדימה.  **עיצוב מרהיב ופונקציונליות מושלמת!**  ה-Lumen eRIDE לא רק נראים מדהים - הם מביאים איתם את תכונות המתלים המתקדמות ביותר, מבלי להקריב על המשקל. עם מהלך של 130 מ'מ, סקוט השתמשו בניסיון שלהם מה-Spark 900, והפכו את ה-Lumen לאופני ה-E-MTB הקלים בעולם – רק 15.5 ק'ג!  **חדשנות שמרגישים!** העיצוב המתקדם של ה-Lumen לא רק שומר על אסתטיקה, אלא גם משפר את הביצועים. עם מנוע וסוללה משולבים בשלדה, הצלחנו להגדיל את נפח צינורות השלדה ב-17% בלבד לעומת ה-Spark, מה שמאפשר רכיבה חלקה ומרגשת בכל מסלול.  **סוללה עוצמתית!** ה-Lumen מגיעים עם סוללת 360wh פנימית, ובנוסף ישנה אפשרות לחיבור סוללה חיצונית של 160wh – כך שתוכלו להאריך את זמן הרכיבה שלכם ולגלות את השבילים הכי מרגשים.  אל תפספסו את ההזדמנות להיות חלק מהמהפכה! רוכבים מקצועיים ואנשי שטח כבר יודעים – ה-Lumen eRIDE הם הבחירה המושלמת לכל מי שמחפש את האיכות והביצועים הטובים ביותר.   **מהרו להזמין – מידה XL בלבד במלאי!**",
+    "rewritten_description": "**הכירו את אופני ה-Lumen eRIDE – חווית רכיבה חשמלית שלא הכרתם!**  סדרת ה-Spark הציבה רף חדש בעולם האופניים עם פלטפורמת שלדה מהפכנית ובולם משולב, ועכשיו אופני ה-Lumen לוקחים את זה לשלב הבא! עם עיצוב מדהים שיגרום לכולם להסתובב אחריכם, ה-Lumen לא רק נראים טוב – הם גם מציעים ביצועים שאין להם תחליף.  **מהו הסוד?**  הודות למהלך מתלים של 130 מ'מ, סקוט הצליחו לשמר את המשקל הנמוך ביותר בקטגוריית ה-E-MTB, כשכל גרם נחשב! בעזרת הפלטפורמה המוכחת של ה-Spark 900, האופניים הללו עברו התאמות מתקדמות כדי לענות על הצרכים המיוחדים של רכיבת הרים חשמלית. עם שיפורים בעובי הקרבון, קינמטיקה מותאמת, ומיקום זעזועים אופטימלי, ה-Lumen מציעים חווית רכיבה חלקה ויציבה יותר.  **מה שונה?**  למרות שה-Lumen eRIDE וה-Spark חולקים דמיון ויזואלי, העיצוב של ה-Lumen עבר אופטימיזציה מדויקת כדי להתאים למנוע ולסוללה. התוצאה? מנוע וסוללה משולבים באופן מושלם בשלדה, עם הגדלת נפח צינורות של 17% בלבד לעומת הספארק – כך שתקבלו את העוצמה שאתם צריכים מבלי להכביד על המשקל.  **ולא נשכח את המספרים!**  עם משקל מדהים של 15.5 ק'ג בלבד, ה-Lumen מצוידים בסוללת 360wh פנימית, וכוללים אפשרות לחיבור סוללה חיצונית נוספת של 160wh. זה אומר שאתם יכולים לרכב עוד יותר רחוק, עוד יותר מהר – מבלי להתפשר על נוחות.  ה-Lumen eRIDE הם לא רק אופניים – הם כרטיס הכניסה שלכם לעולם חדש של רכיבה חשמלית. אל תפספסו את ההזדמנות להיות בין הראשונים לחוות את המהפ",
     "specs": {
       "frame": "Carbon HMX Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System TQ HPR50 / UDH Interface / 12x148mm with 55mm Chainline",
       "travel": "Front: 130mm / Rear: 130mm",
@@ -136,7 +136,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/13771773/large/92d0255b5f1f3358a59d714a2b7f4568.png"
       ]
     },
-    "rewritten_description": "גלה את ה-Lumen: האופניים החשמליים שמשנים את כללי המשחק!  סדרת ה-Spark הציבה רף חדש בעולם האופניים, ועכשיו ה-Lumen לוקחים את ההישגים הללו צעד קדימה עם עיצוב מרהיב ופלטפורמה טכנולוגית מתקדמת. עם בולם משולב לחלוטין, ה-Lumen מציעים חוויית רכיבה שאין דומה לה, המשלבת בין קלות משקל לביצועים מעולים.  ה-Lumen מצוידים במהלך של 130 מ'מ, מה שמאפשר להם להתמודד עם כל אתגר, והם נבנים על בסיס הפלטפורמה המוכחת של ה-Spark 900. כל פרט בעיצוב עבר אופטימיזציה כדי לשפר את הקינמטיקה, מיקום הזעזועים והגיאומטריה, כך שהאופניים הללו מתאימים בדיוק לצרכים של רוכבי הרים חשמליים.  מה שמקנה ל-Lumen את יתרונם הוא השילוב המושלם של מנוע וסוללה בתוך השלדה, עם הגדלת נפח צינורות של 17% בלבד בהשוואה לספארק. התוצאה? אופני הרים חשמליים ששוקלים רק 16.3 ק'ג!   ה-Lumen מגיעים עם סוללת 360wh פנימית, ועם אפשרות לחיבור סוללה חיצונית נוספת של 160wh, כך שתוכל לרכב רחוק יותר ובזמן ארוך יותר.   אם אתה מחפש את האופניים החשמליים הקלים והמתקדמים ביותר בשוק, ה-Lumen הם הבחירה המושלמת עבורך. הצטרף למהפכה, רכב על ה-Lumen, והרגיש את ההבדל!",
+    "rewritten_description": "**גלה את ה-Lumen: האופניים החשמליים שמביסים את כל הציפיות!**  סדרת ה-Lumen מתהדרת בטכנולוגיה פורצת דרך עם שלדה המשלבת בולם משולב לחלוטין, שהוצגה לראשונה בסדרת ה-Spark. זה לא רק עיצוב מרהיב - זהו מהלך מהפכני שמאפשר שיפור דרמטי במאפייני המתלים, מבלי להוסיף משקל מיותר. כשמדובר באופני ה-E-MTB הקלים ביותר בעולם, כל גרם חשוב!  עם מהלך של 130 מ'מ, סקוט לא לקחו סיכונים. הם התבססו על הפלטפורמה המוכחת של ה-Spark 900, תוך שילוב של ניסיון הנדסי עשיר ומשוב מרוכבים ברמה הגבוהה ביותר. ה-Lumen עוצבו בקפידה כדי לענות על דרישות האופניים החשמליים, עם התאמות חכמות בעובי הקרבון, קינמטיקה, מיקום הזעזועים וגיאומטריה מתקדמת.  למרות הדמיון החזותי, ה-Lumen eRIDE עבר אופטימיזציה כדי להשתלב בצורה מושלמת עם המנוע והסוללה. התוצאה? שלדה עם נפח צינורות מוגדל ב-17% בלבד לעומת ה-Spark, ובסופו של דבר – אופני הרים חשמליים ששוקלים רק 16.3 ק'ג!   ה-Lumen מגיעים עם סוללת 360wh פנימית, ויש להם גם אפשרות לחיבור סוללה חיצונית נוספת של 160wh, כך שתוכל ליהנות מהרכיבות הארוכות ביותר מבלי לדאוג לטווח.   הצטרף למהפכה – רכב על ה-Lumen, והרגש את ההבדל!",
     "specs": {
       "frame": "Lumen eRIDE Carbon HMX Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System TQ HPR50 / UDH Interface / 12x148mm with 55mm Chainline",
       "travel": "Front: 130mm / Rear: 130mm",
@@ -194,7 +194,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15903554/large/4b3a58eb14f88a75d063ac1cac4c6a06.jpg"
       ]
     },
-    "rewritten_description": "גלה את אופני ה-SCOTTPatron eRIDE החדשים – חוויה של רכיבה שלא תיארת לעצמך! עם עיצוב אינטגרטיבי מרהיב וגיאומטריה שהוקפצה לשיאים חדשים, האופניים הללו מציעים מערכת הנעה עוצמתית וחדשנית של Bosch, שתשדרג כל מסלול רכיבה שלך.  ה-Patron eRIDE לא רק מספק רכיבה חלקה ונעימה, אלא גם מעניק לך את הכוח לעלות על כל פסגה ולגלוש במורדות בצורה שלא הכרת. כל רכיבה היא חוויה מסחררת, מלאה בריגושים ובאדרנלין, שבה תרגיש כמו מלך השטח.  בין אם אתה רוכב מתחיל או מקצוען, ה-Patron eRIDE מבטיח לך את הכלים להתרגש מחדש בכל מסלול. אל תפספס את ההזדמנות לחוות את עוצמת רכיבת השטח – חווה את ה-Patron eRIDE ותן לכל רכיבה להיות מסע בלתי נשכח!",
+    "rewritten_description": "**הכירו את SCOTT Patron eRIDE – רוכבים לעתיד, היום!**  אם אתם מחפשים את האופניים המושלמים שיביאו את חוויית הרכיבה שלכם לרמה הבאה, ה-SCOTT Patron eRIDE הם התשובה. עם עיצוב מודרני ונקי, הם לא רק נראים כמו משהו מהעתיד – הם גם מספקים את כל מה שאתם צריכים להרגיש בטוחים ומחוברים לשטח.  **ביצועים שאין להם תחליף**   ה-SCOTT Patron eRIDE מציעים מהלך של 150 מ״מ מלפנים ומאחור, מה שמבטיח שהרכיבה שלכם תהיה חלקה ובטוחה, גם במצבים המאתגרים ביותר. עם בולמים מתקדמים מבית FOX, תרגישו כל פינה ופתילה בשטח, מבלי להתפשר על נוחות.  **כוח בלתי נגמר**   הודות למנוע עוצמתי מבית Bosch Performance CX וסוללת 800Wh, תיהנו משילוב מושלם של כוח וטווח, כך שאתם יכולים לרכב שעות ארוכות מבלי לחשוב על טעינה. מערכת ההילוכים החדשה של SRAM GX AXSTransmission מבטיחה שהשיפוטים יהיו מדויקים ומהירים, כך שתוכלו להתמודד עם כל עלייה וירידה בקלות.  **ביטחון ברכיבה**   בלמי Magura MT7 עם טכנולוגיית Bosch ABS Pro מוסיפים שכבת ביטחון נוספת, כך שתוכלו לרכב בביטחון מלא, גם כשהשטח מתגלה כאגרסיבי ומהיר.   **לסיכום**   ה-SCOTT Patron eRIDE הם הבחירה המושלמת עבור הרוכבים שרוצים לחוות רכיבה עוצמתית, נוחה ובטוחה, עם אופניים שמחזיקים קצב בכל מסלול. אל תוותרו על ההזדמנות לרכב על האופניים שיגרמו לכם להרגיש שאתם על פסגת העולם!",
     "specs": {
       "frame": "Carbon Main Frame / Alloy SST-CST Integrated Suspension Technology Virtual 4 Link kinematic / Adjustable head angle Syncros Cable Integration System Bosch Smart System / UDH Interface / 12x148mm with 55mm Chainline Bosch PowerMore Ready",
       "travel": "Front: 150mm / Rear: 150mm",
@@ -237,109 +237,15 @@
     "source": {
       "importer": "Cobra-Bordo",
       "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7298659-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-World-Cup-SL-2025"
+      "product_url": "https://www.cobra-bordo.co.il/items/8529816-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-SL-2026"
     },
     "firm": "Scott",
-    "model": "Spark RC World Cup SL",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 74900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15221339/show/47534d9293d054aad3830b4af74a0407.png",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15221339/large/47534d9293d054aad3830b4af74a0407.png"
-      ]
-    },
-    "rewritten_description": "**SCOTT Spark RC World Cup SL 2025 – רמה חדשה של ביצועים!**  הכירו את ה-SCOTT Spark RC World Cup SL 2025, האופניים שיגרמו לכם להרגיש כמו אלופים בכל רכיבה! בשנים האחרונות, דגם ה-XC המוביל הזה שומר על מעמדו כאחד הטובים בעולם, ועכשיו הוא מציע חידושים שלא ראיתם כמותם.  **מה חדש? מערכת הבולמים המתקדמת RockShox Flight Attendant!** בשיתוף פעולה עם האגדה נינו שורטר, מערכת זו מתאימה את עצמה לצרכים שלכם בזמן אמת, ומספקת חוויית רכיבה חלקה ומדויקת יותר. בין אם אתם מתמודדים עם מסלולים קשים או שטחים משתנים, מערכת זו מנתחת את סגנון הרכיבה שלכם ומביאה אתכם למקסימום הביצועים.  **רכיבה חכמה יותר:** עם Flight Attendant, אין יותר עייפות מהחלטות. המערכת לומדת את סגנון הרכיבה שלכם ומספקת את הגדרות הבולמים האידיאליות, כך שאתם יכולים פשוט להתמקד במה שחשוב – ליהנות מהרכיבה!  **עוצמה ואיכות:** ה-SCOTT Spark RC מגיעים עם שלדת קרבון HMX קלה וחזקה, המאפשרת לכם לנסוק במהירות גבוהה יותר. הודות לטכנולוגיית TwinLoc, אתם שולטים בשני הבולמים במגוון מצבים – נעילה, רכיבה יעילה ופתיחה – הכל מהכידון שלכם, בנוחות ובקלות.  **ההילוכים האלחוטיים של SRAM XX SL Eagle AXS:** עם מערכת העברת ההילוכים המתקדמת, אתם יכולים להיות בטוחים שתשמרו על קצב רכיבה גבוה, גם בעליות התלולות. והבלמים? דיסק מבית SRAM Level Ultimate Stealth 4-Piston, שיבטיחו לכם עצירה מדויקת ובטוחה בדיוק כשצריך.  **אז למה אתם מחכים?** ה-SCOTT Spark RC World Cup SL 2025 הם לא רק אופניים, הם כרטיס הכניסה שלכם לעולם של ביצועים גבוהים, טכנולוגיה מתקדמת ורכיבות בלתי נשכחות.",
-    "specs": {
-      "frame": "Spark RC Carbon HMX SL Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline Lightest 120mm frame 1870g (w/shock)",
-      "fork": "RockShox SID Ultimate Flight Attendant Electronically controlled Suspension FA Race Day damper 3 Modes 15x110mm Maxle Stealth / 44mm offset /Tapered steerer Lockout / Reb. Adj. / 120mm travel",
-      "rear_shock": "RockShox SIDLuxe Ultimate Flight Attendant Custom Electronically controlled Suspension 3 Modes Lockout-Pedal-Descend Solo Air / Reb. Adj./ Lockout / Travel 120mm / T165X45mm",
-      "control_system": "Automatic electrionic suspension system,that listens to the rider and responds in real-time",
-      "rear_derailleur": "SRAM XX SL Eagle AXS Transmission 12 Speed Wireless Electronic Shift System",
-      "shifters": "SRAM AXS Rocker Pod Controller",
-      "crankset": "SRAM XX SL Eagle AXS Transmission Carbon crankarm / Spider Power Meter DUB / 55mm CL / 34T",
-      "chain_guide": "SCOTT custom",
-      "bottom_bracket": "SRAM DUB PF 92 MTB / shell 41x92mm",
-      "chain": "SRAM CN XX SL Eagle Transmission",
-      "cassette": "SRAM XX SL Eagle XS 1299 Transmission 10-52",
-      "brakes": "SRAM Level Ultimate Stealth 4-Piston Disc",
-      "rotors": "SRAM HS2 CL Rotors 180/F and 160/R",
-      "handlebar": "Syncros Fraser iC SL XC Carbon -12° rise / back sweep 8° / 740mm Syncros Performance XC lock-on grips",
-      "seatpost": "Rock Shox Reverb AXS 31.6mm / S size 100mm / M L & XL size 125mm",
-      "saddle": "Syncros Belcarra SL Regular 1.0 Carbon rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System Stainless +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "wheels": "Syncros Silverton SL2-30 CL full Carbon F: 15x110mm R: 12x148mm / 30mm Tubeless ready rim DT Swiss 240 Ratchet EXP 36 / XD Driver SRAM TyreWiz / Syncros SL Axle w/Removable Lever with 6mm Allen T30 and T25 Tools",
-      "front_tire": "Maxxis Rekon Race / 29x2.4' / 120TPI Foldable Bead Tubeless Ready / EXO",
-      "rear_tire": "Maxxis Rekon Race / 29x2.4' / 120TPI Foldable Bead Tubeless Ready / EXO",
-      "accessories": "SRAM AXS Powerpack SRAM TyreWiz Syncros Tubeless Handlebar Tool",
-      "weight": "10.7 (Tubeless setup)"
-    },
-    "fork length": 120,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7966867-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-Issue-2025-%D7%9E%D7%99%D7%93%D7%94-S-%D7%91%D7%9C%D7%91%D7%93"
-    },
-    "firm": "Scott",
-    "model": "Spark RC Team Issue  מידה S בלבד",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 28900,
-    "disc_price": 17340,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18879603/show/0b39ab1217c5f0d7a65cf6e355ea7688.png",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18879603/large/0b39ab1217c5f0d7a65cf6e355ea7688.png"
-      ]
-    },
-    "rewritten_description": "הכירו את ה-Spark RC Team Issue החדשים של SCOTT לשנת 2025 – האופניים שיגרמו לכם להרגיש את מהירות הרוח על הפנים! עם טכנולוגיה מתקדמת וחדשנות שאין כמותה, ה-Spark RC מציעים לכם חווית רכיבה שאין שנייה לה.  אם אתם מחפשים אופניים שיכולים להתמודד עם האתגרים הקשים ביותר, הגעתם למקום הנכון. עם גרופ 12 הילוכים של SRAM GX AXSTransmission, תיהנו מהעברות הילוכים חלקות ומדויקות, המספקות לכם את הכוח הנדרש לעלות בכל מסלול. הבולם הקדמי של RockShox SID Select 3P עם מהלך של 120 מ'מ מבטיח לכם נוחות וביצועים מעולים, גם בשבילים הקשים ביותר.  הפטנט המתקדם TwinLoc מאפשר לכם לשלוט על שני הבולמים במגוון מצבי רכיבה – נעילה, רכיבה יעילה ופתיחה – כל זאת מהכידון, כך שתוכלו להתאים את הרכיבה שלכם לכל מצב ולשפר את הביצועים שלכם בכל קטע מסלול.  לא בכדי רוכבי SCOTT ברמות הגבוהות בעולם בוחרים בדגם זה ככלי העבודה העיקרי שלהם בתחרויות היוקרתיות. עם ה-Spark RC Team Issue, אתם לא רק רוכבים – אתם חווים את הרכיבה ברמה אחרת! קלים, נוחים ויעילים – זה הזמן לקחת את הרכיבה שלכם לשיאים חדשים!",
-    "specs": {
-      "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "RockShox SID Select 3P Air Charger RL 3-Mode Damper 15x110mm Maxle Stealth / 44mm offset / Tapered steerer Lockout / Reb. Adj. / 120mm travel",
-      "rear_shock": "RockShox NUDE 5 RL3 Trunnion SCOTT custom w. travel / geo adj. 3 modes: Lockout-Traction Control-Descend Debon Air / Reb. Adj. / Travel 120-80-Lockout / T165X45mm",
-      "control_system": "SCOTT TwinLoc Technology 3 Suspension modes",
-      "rear_derailleur": "SRAM GX Eagle AXS Transmission 12 Speed Wireless Electronic Shift System",
-      "shifters": "SRAM AXS Pod Controller",
-      "crankset": "SRAM GX Eagle Transmission DUB / 55mm CL / 34T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain_guide": "SCOTT custom",
-      "chain": "SRAM CN GX Eagle Transmission",
-      "cassette": "SRAM GX Eagle XS 1275 Transmission 10-52",
-      "brakes": "SRAM Level Bronze Stealth 4-Piston Disc",
-      "rotors": "SRAM HS2 CL Rotors 180/F and 160/R",
-      "handlebar": "Syncros Fraser iC SL XC Carbon -12° rise / back sweep 8° / 740mm Syncros Performance XC lock-on grips",
-      "seatpost": "Syncros Duncan Dropper Post 1.5XC / 31.6mm all sizes 100mm",
-      "saddle": "Syncros Belcarra Regular 1.5 Titanium rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "wheels": "Syncros Silverton 2.0-30 CL F: 15x110mm R: 12x148mm 30mm Tubeless ready rim / 28H / XD Driver Syncros Axle w/Removable Lever with 6mm Allen T30 and T25 Tools",
-      "front_tire": "Maxxis Rekon Race / 29x2.4' / 120TPI Foldable Bead Tubeless Ready / EXO",
-      "rear_tire": "Maxxis Rekon Race / 29x2.4' / 120TPI Foldable Bead Tubeless Ready / EXO",
-      "accessories": "SRAM AXS Powerpack",
-      "weight": "11.8"
-    },
-    "fork length": 120,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/8529816-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-World-Cup-SL-2026"
-    },
-    "firm": "Scott",
-    "model": "Spark RC World Cup SL",
+    "model": "Spark RC SL",
     "year": 2026,
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 74900,
-    "disc_price": null,
+    "disc_price": 56175,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18512545/show/8b05b16a5ed69fd36f39bd12556d9f1b.jpg",
       "gallery_images_urls": [
@@ -352,7 +258,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18512545/large/8b05b16a5ed69fd36f39bd12556d9f1b.jpg"
       ]
     },
-    "rewritten_description": "### SCOTT Spark RC World Cup SL 2026 – האופניים שישנו את חוויית הרכיבה שלך!  הכירו את SCOTT Spark RC World Cup SL 2026 – הדגם שכבש את עולם ה-XC בעשור האחרון, והפעם הוא מגיע עם טכנולוגיות חדשות שישדרגו את כל רכיבה שלכם! בשיתוף פעולה עם האלוף האגדי, שורטר, הושקה מערכת הבולמים המהפכנית RockShox Flight Attendant, שתהפוך אתכם לרוכבים המהירים והיעילים ביותר!  #### טכנולוגיה פורצת דרך עם מערכת הבולמים האוטומטית של Flight Attendant, אתם לא צריכים יותר לדאוג להגדרות – המערכת מנתחת את תנאי השטח בזמן אמת ומביאה את הביצועים שלכם לרמה חדשה. היא לומדת את סגנון הרכיבה שלכם ומביאה אתכם למקסימום, כך שכל מה שנשאר לכם לעשות זה לרכוב ולהתמקד במסלול!  #### התאמה אישית מושלמת בין אם אתם רוכבים מתחילים או מקצוענים, המערכת תתאים את עצמה אליכם. היא מזהה את 'אזור המאמץ' שלכם ומכוונת את הבולמים בהתאם, תוך שמירה על נתונים משמונה הרכיבות האחרונות. כך, בכל רכיבה תרגישו את השיפור וההתאמה האישית.  #### ביצועים שלא הכרתם עם שלדת קרבון HMX קלה ועמידה, גיאומטריה משודרגת ומערכת ההילוכים האלחוטית SRAM XX SL Eagle AXS Transmission 12 Speed, אתם מוכנים לכל אתגר. פטנט ה-TwinLoc מאפשר לכם לשלוט על שני הבולמים במצבים שונים – נעילה, רכיבה יעילה ופתיחה – הכל בלחיצת כפתור מהכידון.  #### עיצוב מרהיב SCOTT Spark RC World Cup SL 2026 לא רק מציעה ביצועים יוצאי דופן, אלא גם עיצוב מרהיב שיביא אתכם לפודיום עם סטייל. עם בלמי דיסק מבית SRAM Level Ultimate Stealth 4-Piston, אתם תרגישו בטוחים בכל ירידה ובכל פנייה.  ### הגיע הזמן לקחת את הרכיבה שלכם לרמה הב",
+    "rewritten_description": "**SCOTT Spark RC SL 2026 – מהפכה על גלגלים!**  הכירו את ה-SCOTT Spark RC SL 2026 – דגם XC החדשני שעתיד לשנות את כל מה שחשבתם על רכיבת אופניים. בעשור האחרון, דגמי SCOTT Spark RC הוכיחו את עצמם כאחד מהמיטב שבמיטב בתחום רכיבת ה-XC, ועכשיו, עם השקת מערכת הבולמים המתקדמת RockShox Flight Attendant, הם שוב עולים על כל הציפיות!  **המהירות שלכם – ללא מגבלות!**   ה-Flight Attendant היא מערכת בולמים אוטומטית שמביאה את רכיבתכם לרמה חדשה. בעזרת טכנולוגיה מתקדמת, היא מנתחת בזמן אמת את תנאי השטח שלכם ומספקת את הגדרת הבולם האידיאלית שמביאה אתכם למהירות המקסימלית. כל שעליכם לעשות הוא לרכב וליהנות!  **אינטליגנציה מתקדמת ברכיבה**   ככל שתתפתחו כרוכבים, המערכת תתאים את עצמה אליכם. היא לומדת את סגנון הרכיבה שלכם ומספקת תמיכה מדויקת בכל 'אזור מאמץ'. בין אם אתם מתמודדים עם עליות תלולות או ירידות חדות, ה-SCOTT Spark RC SL 2026 שם בשבילכם.  **עוצמה ודיוק**   עם שלדת קרבון HMX, הגיאומטריה המשופרת והפטנט הייחודי TwinLoc, תיהנו משליטה מלאה בשני הבולמים במצב של נעילה, רכיבה יעילה או פתיחה – הכל בלחיצת כפתור מהכידון.  ולא נשכח את מערכת ההילוכים האלחוטית SRAM XX SL Eagle AXS Transmission 12 Speed, שתספק לכם את היתרון הנדרש בכל מסלול.  **הגיע הזמן לעלות על הפודיום!**   ה-SCOTT Spark RC World Cup SL נבנו במיוחד כדי שתוכלו לכבוש כל מסלול שיפגוש אתכם. עם בלמי דיסק מבית SRAM Level Ultimate Stealth 4-Piston, אתם מוכנים לבלום בכל מהירות ולהתכונן לרגעים",
     "specs": {
       "frame": "Spark RC Carbon HMX SL Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline Lightest 120mm frame 1870g (w/shock)",
       "fork": "RockShox SID Ultimate Flight Attendant Electronically controlled Suspension, FA Race Day damper 3 Modes 15x110mm Maxle Stealth, 44mm offset /Tapered steerer Lockout, Reb. Adj., 120mm travel",
@@ -392,7 +298,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 59900,
-    "disc_price": null,
+    "disc_price": 44925,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514677/show/a3b46f9692a03cf977e35e89039c4cce.jpg",
       "gallery_images_urls": [
@@ -405,7 +311,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514677/large/a3b46f9692a03cf977e35e89039c4cce.jpg"
       ]
     },
-    "rewritten_description": "### הכירו את SCOTT Spark RC World Cup EVO – האופניים שיגרמו לכם לרכב כמו אלופים!  אם אתם מחפשים את האופניים המושלמים לרכיבת XC, הגעתם למקום הנכון! ה-SCOTT Spark RC World Cup EVO מביאים אתכם לשיאים חדשים של ביצועים, עם טכנולוגיה פורצת דרך שמותאמת עבור רוכבים שמחפשים את הטוב ביותר.  **מה חדש?** שנת 2026 מביאה עמה את מערכת הבולמים המהפכנית RockShox Flight Attendant, שפותחה בשיתוף פעולה עם האגדה של עולם הרכיבה, שורטר! המערכת הזו לא רק משפרת את חווית הרכיבה שלכם, אלא גם ממקסמת את יכולות הבולמים ומפחיתה את עייפות ההחלטות – כל מה שאתם צריכים לעשות זה לרכב!  **ביצועים אוטומטיים בזמן אמת** ה-Fight Attendant מנתחת את תנאי השטח והמסלול בזמן אמת, ומביאה לכם את ההגדרות האידיאליות עבורכם. ככל שתשתפרו, המערכת תתאים את עצמה לסגנון הרכיבה שלכם, ותשמור על נתונים משמונה הרכיבות האחרונות – כך שתמיד תהיו מוכנים לאתגרים הבאים.  **נוחות וביצועים משולבים** עם שלדת קרבון HMX המתקדמת, והגיאומטריה המותאמת לתנאים הקשים ביותר, ה-SCOTT Spark RC World Cup EVO מתוכננים עבור רוכבים שמחפשים מהירות וביצועים גבוהים. פטנט ה-TwinLoc מאפשר לכם לשלוט על שני הבולמים במגוון מצבי רכיבה – נעילה, רכיבה יעילה ופתיחה – הכל בלחיצת כפתור!  **הקדמה טכנולוגית** המערכת האלחוטית SRAM XX SL Eagle AXS Transmission עם 12 הילוכים תסייע לכם להתמודד עם כל עלייה, בעוד שבלמי הדיסק SRAM Level Ultimate Stealth 4-Piston יבטיחו עצירה מדויקת ובטוחה בכל מהירות.  ה-SCOTT Spark RC World Cup EVO לא רק אופניים – הם כרטיס הכניסה שלכם לעולם של תחרויות",
+    "rewritten_description": "### הכירו את SCOTT Spark RC World Cup EVO – האופניים שישנו את כללי המשחק!  אם אתם מחפשים את האופניים המושלמים לרכיבות XC, הגעתם למקום הנכון! דגם ה-SCOTT Spark RC World Cup EVO הוא תוצר של שנים רבות של חקר ופיתוח, והוא נועד להביא אתכם להישגים חדשים על המסלול.  #### טכנולוגיה פורצת דרך  במרכז החוויה נמצא מערכת הבולמים המתקדמת RockShox Flight Attendant, שפותחה בשיתוף פעולה עם האגדה נינו שורטר. המערכת הזו לא רק משפרת את ביצועי הבולמים, אלא גם חוסכת לכם את העייפות שבקבלת החלטות – פשוט רכבו והמערכת תעשה את השאר!   הבולמים מגיבים בזמן אמת לצרכים שלכם, מנתחים את המסלול ואת תנאי השטח, ומספקים את ההגדרה האידיאלית עבורכם. עם כל רכיבה, המערכת לומדת את סגנון הרכיבה שלכם ומכוונת את עצמה בהתאם, כך שכל רכיבה תהיה טובה יותר מהקודמת.  #### ביצועים שלא הכרתם  עם שלדת קרבון HMX קלילה וחזקה, הגיאומטריה המותאמת והפטנט המיוחד TwinLoc, אתם יכולים לשלוט בשני הבולמים במגוון מצבים – נעילה, רכיבה יעילה ופתיחה – בלחיצת כפתור מהכידון.   #### שדרגו את חווית הרכיבה שלכם  ה-SCOTT Spark RC World Cup EVO מצוידים במערכת הילוכים אלחוטית SRAM XX SL Eagle AXS Transmission 12 Speed, שתעזור לכם לטפס על כל שביל בקלות ובסגנון. בלמי דיסק מבית SRAM Level Ultimate Stealth 4-Piston Disc יספקו לכם את הבטיחות והדיוק שאתם זקוקים להם, כך שתהיו מוכנים לכל אתגר.  #### סיכום  אם אתם רוכבים שמחפשים את הטוב ביותר, ה-SCOTT Spark RC World Cup EVO הוא הבחירה המושלמת עבורכם. עם טכנולוגיות מתקדמות וביצועים שאין להם תחליף, אתם תכבשו כל מסלול שע",
     "specs": {
       "frame": "Spark RC Carbon HMX Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "RockShox SID Ultimate Flight Attendant Electronically controlled Suspension, FA Race Day damper 3 Modes 15x110mm Maxle Stealth, 44mm offset /Tapered steerer Lockout, Reb. Adj., 120mm travel",
@@ -445,7 +351,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 44900,
-    "disc_price": null,
+    "disc_price": 33675,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514853/show/7522ac9a2c5c1116ad660d1e511248c0.jpg",
       "gallery_images_urls": [
@@ -458,60 +364,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514853/large/7522ac9a2c5c1116ad660d1e511248c0.jpg"
       ]
     },
-    "rewritten_description": "**הכינו את עצמכם לרכיבה שלא הכרתם – SCOTT Spark RC World Cup!**  עולם רכיבת ה-XC לא יהיה אותו דבר – ה-SCOTT Spark RC World Cup מגיעים לשוק עם טכנולוגיה פורצת דרך שמקבעת אותם כאחד מדגמי ה-XC המובילים בעשור האחרון. בשנת 2025, עם השקת מערכת הבולמים החדשנית RockShox Flight Attendant, בשיתוף פעולה עם האלוף האגדי נינו שורטר, אתם עומדים בפני חוויה רכיבתית שלא תפסיק להפתיע אתכם.  **מה עושה את ה-Spark RC World Cup למיוחדים?**  עם מערכת הבולמים האוטומטית Flight Attendant, אתם תהפכו לרוכבים המהירים ביותר שאתם יכולים להיות. המערכת מנתחת בזמן אמת את תנאי השטח והדרישות שלכם, ומספקת לכם את הגדרת הבולם האידיאלית – כל מה שאתם צריכים לעשות זה לרכוב! ככל שתשפרו את יכולותיכם, המערכת תתאים את עצמה אליכם, ותשמור על נתונים משמונה הרכיבות האחרונות שלכם כדי להבטיח חווית רכיבה מותאמת אישית.  **היכנסו לעולם של ביצועים בלתי מתפשרים!**  ה-SCOTT Spark RC World Cup נבנו עבור רוכבים שמחפשים את הטוב ביותר. עם שלדת קרבון קלה במיוחד, גיאומטריה תחרותית יוצאת דופן ופטנט ה-TwinLoc שמאפשר שליטה על שני הבולמים בשלושה מצבים (נעילה, רכיבה יעילה, פתיחה) – כל זה בהישג ידכם מהכידון.   **אל תתפשרו!**  ה-Spark RC World Cup הם אופני הדגל של SCOTT, ובצדק! הם מציעים שילוב מושלם של מהירות, עמידות וביצועים מרשימים, והם נחשבים לאופניים המהירים והמשתלמים ביותר בשוק. אם אתם רוצים לכבוש כל מסלול, לא משנה כמה קשה, ה-SCOTT Spark RC World Cup הם הבחירה שלכם.  **הצטרפו לעידן חדש של רכיבה!** אל תפספסו את ההזדמנות לרכוב על האופניים שהענ",
-    "specs": {
-      "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
-      "fork": "RockShox SID Ultimate Flight Attendant Electronically controlled Suspension, FA Race Day damper 3 Modes 15x110mm Maxle Stealth, 44mm offset /Tapered steerer Lockout, Reb. Adj., 120mm travel",
-      "rear_shock": "RockShox SIDLuxe Ultimate Flight Attendant Custom Electronically controlled Suspension 3 Modes Lockout-Pedal-Descend Solo Air, Reb. Adj./ Lockout Bearing Hardware, Travel 120mm, T165X45mm",
-      "control_system": "Automatic electronic suspension system that listens to the rider and responds in real-time",
-      "rear_derailleur": "SRAM X0 Eagle AXS Transmission 12 Speed Wireless Electronic Shift System",
-      "shifters": "SRAM AXS Rocker Pod Controller",
-      "crankset": "SRAM X0 Eagle Transmission Spindle Power Meter, DUB, 55mm CL, 34T",
-      "chain_guide": "SCOTT custom",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide, shell 41x92mm",
-      "chain": "SRAM CN X0 Eagle Transmission",
-      "cassette": "SRAM X0 Eagle XS 1295 Transmission 10-52",
-      "brakes": "SRAM Motive Silver 4-Piston Disc",
-      "rotors": "SRAM HS2 CL Rotors 180/F and 160/R",
-      "handlebar": "Syncros Fraser iC SL XC Carbon -12° rise, back sweep 8°, 740mm Syncros Performance XC lock-on grips",
-      "seatpost": "Syncros Duncan Dropper 1.5XC, 31.6mm, all sizes 100mm",
-      "saddle": "Syncros Belcarra V1.0 Cut Out Carbon rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System Stainless, +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "wheels": "Syncros Silverton 1.0-30 CL F: 15x110mm, R: 12x148mm 30mm Tubeless ready Carbon rim 28H Syncros Hubs, XD Driver Syncros SL Axle w/Removable Lever with 6mm Allen, T30 and T25 Tools",
-      "front_tire": "Maxxis Rekon Race, 29x2.4', 120TPI Foldable Bead Tubeless Ready, EXO",
-      "rear_tire": "Maxxis Rekon Race, 29x2.4', 120TPI Foldable Bead Tubeless Ready, EXO",
-      "accessories": "Tire Sealant Transport Axle",
-      "weight": "11.3 (Tubless setup) kg"
-    },
-    "fork length": 120,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/8529849-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-World-Cup-2026"
-    },
-    "firm": "Scott",
-    "model": "Spark RC World Cup",
-    "year": 2026,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 44900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514865/show/93a63843c5e61fd495ce86a1fe9dd96b.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514869/large/3eda6737aadc444b2670ac4b1afa9e4e.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514865/large/93a63843c5e61fd495ce86a1fe9dd96b.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514866/large/6dcc83cc1bb102e3750a0cd3b32d8ef0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514867/large/522248ebdac0d36c162ce02fcc071d3f.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514868/large/7bb5ed632b8447fe5b3cb3afd8a15747.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514869/large/3eda6737aadc444b2670ac4b1afa9e4e.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514865/large/93a63843c5e61fd495ce86a1fe9dd96b.jpg"
-      ]
-    },
-    "rewritten_description": "### הכירו את SCOTT Spark RC World Cup – האופניים שיביאו אתכם לעידן חדש של רכיבה!  האם אתם מוכנים לקחת את הרכיבה שלכם לשלב הבא? ה-SCOTT Spark RC World Cup מגיעים עם טכנולוגיה שלא ראיתם כמותה! בעשור האחרון, דגם ה-XC הזה שמר על מעמדו כאחד מהאופניים הטובים ביותר בעולם, ועכשיו, בשנת 2025, הוא מציע חידושים מרגשים במיוחד עם מערכת הבולמים החדשה RockShox Flight Attendant – פיתוח שיתוף פעולה עם האגדה עצמה, נינו שורטר!  #### למה לבחור ב-Spark RC World Cup?  **מהירות וביצועים**: Flight Attendant אינה סתם מערכת בולמים – היא המפתח שלכם לרכיבה מהירה ומדויקת יותר. המערכת מנתחת בזמן אמת את תנאי השטח והדרישות שלכם, ומספקת את ההתאמה המושלמת לכל רגע ורגע. אתם רק צריכים לרכוב!  **אינטליגנציה אוטומטית**: המערכת לומדת את סגנון הרכיבה שלכם ומבינה באיזה 'אזור מאמץ' אתם נמצאים. בין אם אתם רוכבים מתחילים או מקצוענים, Flight Attendant תתאים את עצמה אליכם, ותשמור על שיאים חדשים של ביצועים.  **עיצוב מתקדם**: עם שלדת קרבון קלה במיוחד וגיאומטריה תחרותית יוצאת דופן, ה-SCOTT Spark RC World Cup נועדו להציע לכם את הביצועים הטובים ביותר גם בתנאים הקשים ביותר. פטנט ה-TwinLoc מאפשר לכם לשלוט על שני הבולמים במגוון מצבים – הכל בלחיצת כפתור מהכידון!  **אופניים לא מתפשרים**: אם אתם מחפשים את האופניים המהירים והמשתלמים ביותר בשוק הקרוס קנטרי, ה-Spark RC World Cup הם התשובה שלכם. הם עוצבו במיוחד כדי להתמודד עם כל אתגר שייפול עליכם, ובזמן שרוכבים אחרים מתמודדים עם עייפות, אתם תמשיכו לדחוף קדימה!  #### הצטרפו אל האלופים!  אתם לא צריכים",
+    "rewritten_description": "**SCOTT Spark RC World Cup – עוצמה שלא הכרתם!**  הכירו את SCOTT Spark RC World Cup, הדגם שמוביל את מהפכת ה-XC בעשור האחרון! בשנת 2025, אנחנו גאים להציג את מערכת הבולמים המתקדמת RockShox Flight Attendant, שפותחה בשיתוף פעולה עם האגדה הנודעת, נינו שורטר – האחד והיחיד! אם אתם מחפשים את האופניים המהירים והיעילים ביותר בשוק, ה-Spark RC World Cup הם התשובה שלכם.  **מה כל כך מיוחד?**   המערכת האוטומטית Flight Attendant משנה את כללי המשחק! היא מגיבה בזמן אמת לצרכים שלכם, מנתחת את תנאי השטח ומביאה את הבולמים שלכם למקסימום ביצועים. כל מה שאתם צריכים לעשות זה לרכוב! המערכת מתאימה את עצמה לסגנון הרכיבה שלכם, כך שככל שתשתפרו, גם האופניים שלכם יתאימו את עצמם אליכם.  **עיצוב טכנולוגי מרהיב**   ה-SCOTT Spark RC World Cup מציעים רמת אינטגרציה ודיוק שאין להם תחליף. הם נבנו עבור רוכבים שמחפשים את הטוב ביותר, עם שלדת קרבון קלה במיוחד, גיאומטריה תחרותית מדויקת ופטנט ה-TwinLoc המאפשר שליטה מושלמת על הבולמים במגוון מצבים – נעילה, רכיבה יעילה ופתיחה – כל זאת בלחיצת כפתור מהכידון.  **המותג שמאחוריהם**   עם ה-Spark RC World Cup, אתם לא רק רוכבים על אופניים, אלא על דגם הדגל של SCOTT, שנחשב לאופניים המהירים והמשתלמים ביותר בשוק הקרוס קנטרי. אל תשכחו, נינו שורטר, אלוף העולם, בחר לרכב עליהם – וזה אומר הכל!  הצטרפו למהפכה, הציבו את עצמכם בחזית התחרות והרגישו את ההבדל. עם SCOTT Spark RC World Cup, כל מסלול הופך לאתגר שאתם יכולים conquer!   **אל תפספסו – הזמינו עכשיו!",
     "specs": {
       "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "RockShox SID Ultimate Flight Attendant Electronically controlled Suspension, FA Race Day damper 3 Modes 15x110mm Maxle Stealth, 44mm offset /Tapered steerer Lockout, Reb. Adj., 120mm travel",
@@ -551,7 +404,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 34900,
-    "disc_price": null,
+    "disc_price": 26175,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18512908/show/01fc46174f5da9a40ca5ee9e490c5f2e.jpg",
       "gallery_images_urls": [
@@ -564,7 +417,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18512908/large/01fc46174f5da9a40ca5ee9e490c5f2e.jpg"
       ]
     },
-    "rewritten_description": "הפכו את החלום למציאות עם ה-Spark RC 900 Pro 2026! אם תמיד רציתם להיות חלק מעולם הקרוס-קאנטרי, זה הזמן שלכם לעלות על האופניים שיגרמו לכם להרגיש כמו מקצוענים.   ה-Spark RC 900 Pro הוא הדגם המתקדם ביותר מבית SCOTT, עם שלדת קרבון HMF קלה וקשיחה שמספקת ביצועים שאין להם תחליף. עם מערכת הילוכים Shimano XT Di2 המציעה 12 הילוכים, אתם יכולים להיות בטוחים שתמיד תהיה לכם את ההילוך הנכון בכל מצב.  הפטנט המיוחד של SCOTT - TwinLoc - מאפשר לכם לשלוט בשני הבולמים בלחיצת כפתור מהכידון, עם שלושה מצבי רכיבה: נעילה, רכיבה יעילה ופתיחה מלאה. כך תוכלו להתאים את האופניים שלכם לכל מסלול ולכל אתגר.  והשדרוגים לא נגמרים כאן! עם רכיבי Syncros האיכותיים, ה-Spark RC 900 Pro לא רק מציע ביצועים מרהיבים, אלא גם עיצוב חד ויוקרתי שיביא אתכם לכל מקום בסטייל.  אל תחכו - ה-Spark RC 900 Pro 2026 מחכה לכם! הגיע הזמן למצות את הפוטנציאל שלכם ולכבוש את השבילים!",
+    "rewritten_description": "חולמים על קריירת קרוס-קאנטרי? קבלו את ה-Spark RC 900 Pro 2026 – האופניים שמביאות את החלום שלכם למציאות!   עם שלדת קרבון HMF קלילה וקשיחה, הדגם החדש הזה הוא התגלמות האיכות והביצועים המתקדמים של SCOTT. מערכת הילוכים Shimano XT Di2 עם 12 הילוכים מבטיחה לכם חווית רכיבה חלקה ומדויקת, בעוד פטנט ה-TwinLoc מציע שליטה מושלמת על שני הבולמים – כל זאת בלחיצת כפתור מהכידון.   בין אם אתם רוכבים מקצועיים ובין אם חובבים, ה-Spark RC 900 Pro תוכנן כדי למצות את הפוטנציאל שלכם ולהעניק לכם את החוויה המושלמת במסלול. עם רכיבי Syncros המוסיפים נופך של יוקרה וסטייל, אתם לא רק רוכבים – אתם בולטים!   אל תפספסו את ההזדמנות לרכב על האופניים של החלומות שלכם. ה-Spark RC 900 Pro 2026 מחכה לכם!",
     "specs": {
       "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "FOX 34SL Float Performance Elite Air Grip SL 3-Modes, Kabolt 15x110mm Axle 44mm offset, tapered steerer, Reb. Adj., Lockout 120mm travel",
@@ -595,59 +448,6 @@
     "source": {
       "importer": "Cobra-Bordo",
       "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/8529939-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-Issue-2026"
-    },
-    "firm": "Scott",
-    "model": "Spark RC Team Issue",
-    "year": 2026,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 29900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513172/show/b8bcdbcaa96583c816998dd09b7fb203.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513176/large/a6f27603829e06a95ae291970d2e7851.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513172/large/b8bcdbcaa96583c816998dd09b7fb203.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513173/large/4591c154166fe877d73c1472d7925ddc.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513174/large/f8adcb56f30485c2b397b711ecdfe658.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513175/large/7af56c7ef09cdb5db2222a1076c99cb0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513176/large/a6f27603829e06a95ae291970d2e7851.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513172/large/b8bcdbcaa96583c816998dd09b7fb203.jpg"
-      ]
-    },
-    "rewritten_description": "הכירו את ה־Spark RC Team Issue 2026 החדשים מבית SCOTT - האופניים שיגרמו לכם לפצח את כל שיאי המהירות! עם עיצוב חדשני שמשלב ביצועים גבוהים עם נוחות מקסימלית, דגם ה־Team Issue הוא הבחירה המושלמת לרוכבים שאוהבים את האדרנלין שבמסלולים התובעניים ביותר.  הצוות של SCOTT לא מתפשר - האופניים מצוידים במערכת הילוכים מתקדמת SRAM GX AXS עם 12 הילוכים, שמספקת שידוכים חלקים ומהירים בכל תנאי שטח. הבולם הקדמי RockShox SID Select+ 3P עם מהלך של 120 מ'מ מבטיח תגובות מהירות ונוחות בלתי מתפשרת, גם באתגרים הקשים ביותר.  אבל זה לא הכל! עם הפטנט הייחודי של SCOTT - TwinLoc, תוכלו לשלוט על שני הבולמים בקלות ובמהירות ישירות מהכידון. שלושה מצבי רכיבה (נעילה, רכיבה יעילה, פתיחה מלאה) יאפשרו לכם לנצל את הפוטנציאל של האופניים בכל מצב, כך שתמיד תהיו מוכנים לכל אתגר.  הרוכבים המקצועיים של SCOTT סומכים על ה־Team Issue שלהם בתחרויות החשובות בעולם, והאופניים הללו מציעים את השילוב המושלם של קלות, נוחות ויעילות. אם אתם מחפשים את האופניים שיביאו אתכם לשיאים חדשים, ה־Spark RC Team Issue 2026 הוא בדיוק מה שאתם צריכים. אל תפספסו את ההזדמנות לרכוש את המובילים בתחום!",
-    "specs": {
-      "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
-      "fork": "RockShox SID Select 3P Air Charger RL 3-Mode Damper 15x110mm Maxle Stealth, 44mm offset, Tapered steerer Lockout, Reb. Adj., 120mm travel",
-      "rear_shock": "RockShox NUDE 5 RL3 Trunnion SCOTT custom w. travel, geo adj. 3 modes: Lockout-Traction Control-Descend Debon Air, Reb. Adj. Bearing Hardware/ Travel 120-80-Lockout, T165X45mm",
-      "control_system": "SCOTT TwinLoc Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "SRAM GX Eagle AXS Transmission 12 Speed Wireless Electronic Shift System",
-      "shifters": "SRAM AXS Pod Controller",
-      "crankset": "SRAM GX Eagle Transmission DUB, 55mm CL, 34T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide, shell 41x92mm",
-      "chain_guide": "SCOTT custom",
-      "chain": "SRAM CN GX Eagle Transmission",
-      "cassette": "SRAM GX Eagle XS 1275 Transmission 10-52",
-      "brakes": "SRAM Motive Bronze 4-Piston Disc",
-      "rotors": "SRAM HS2 CL Rotors 180/F and 160/R",
-      "handlebar": "Syncros Fraser iC SL XC Carbon -12° rise, back sweep 8°, 740mm Syncros Performance XC lock-on grips",
-      "seatpost": "Syncros Duncan Dropper 1.5XC, 31.6mm, all sizes 100mm",
-      "saddle": "Syncros Belcarra V2.0 Cut Out CRMO rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "wheels": "Syncros Silverton 1.0-30 CL F: 15x110mm, R: 12x148mm 30mm Tubeless ready Carbon rim 28H Syncros Hubs, XD Driver Syncros SL Axle w/Removable Lever with 6mm Allen, T30 and T25 Tools",
-      "front_tire": "Maxxis Rekon Race, 29x2.4', 120TPI Foldable Bead Tubeless Ready, EXO",
-      "rear_tire": "Maxxis Rekon Race, 29x2.4', 120TPI Foldable Bead Tubeless Ready, EXO",
-      "accessories": "SRAM AXS Powerpack",
-      "weight": "11.7 (Tubless setup) kg"
-    },
-    "fork length": 120,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
       "product_url": "https://www.cobra-bordo.co.il/items/8530339-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-RC-Team-Issue-2026"
     },
     "firm": "Scott",
@@ -656,7 +456,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 29900,
-    "disc_price": null,
+    "disc_price": 22425,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513209/show/f35fab3ec298b6493eef98f1aafbedf1.jpg",
       "gallery_images_urls": [
@@ -669,7 +469,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513209/large/f35fab3ec298b6493eef98f1aafbedf1.jpg"
       ]
     },
-    "rewritten_description": "**הכירו את ה-Spark RC Team Issue 2026 של SCOTT – המהות של ביצועים מרהיבים!**  אם אתם מחפשים אופניים שיביאו אתכם לשיאים חדשים, ה-Spark RC Team Issue 2026 הם הבחירה המושלמת עבורכם! עם עיצוב קליל ומתקדם, דגם זה מציע חווית רכיבה שאין שנייה לה.  **מה מצפה לכם?** - **מערכת הילוכים מתקדמת**: עם מערכת SRAM GXAXS Transmission עם 12 הילוכים, תוכלו ליהנות מהעברת הילוכים חלקה ומדויקת, שתשדרג את חווית הרכיבה שלכם. - **בולם קדמי מהשורה הראשונה**: RockShox SID Select+ 3P עם מהלך של 120 מ'מ, מבטיח שיטפון של נוחות וביצועים בכל מסלול. - **שליטה מושלמת**: בזכות הפטנט הייחודי של SCOTT – TwinLoc, תוכלו לשלוט על שני הבולמים בשלושה מצבי רכיבה (נעילה, רכיבה יעילה, פתיחה מלאה) ישירות מהכידון! כך תוכלו להתאים את האופניים שלכם לכל מצב רכיבה בצורה קלה ונוחה.  **לא סתם אופניים, אלא כלי עבודה של אלופים!** רוכבי SCOTT מהשורה הראשונה בוחרים ב-Team Issue 2026 ככלי העבודה העיקרי שלהם במסלולי התחרות התובעניים ביותר. עם שילוב מושלם של קלות, נוחות ויעילות מקסימלית, הם מתאימים בדיוק למה שצריך באופני XC אמיתיים.  **אל תפספסו את ההזדמנות לרכב על האופניים שהפכו את התחרות לאומנות!**  ה-Spark RC Team Issue 2026 מחכים לכם – הצעד הבא שלכם לעבר חוויות רכיבה בלתי נשכחות מתחיל כאן!",
+    "rewritten_description": "**הכירו את ה-Spark RC Team Issue 2026 – הגביע הקדוש של עולם האופניים!**  ה-SCOTT Spark RC Team Issue 2026 מציב רף חדש בביצועים – מהירות חסרת תקדים, משקל קליל ויעילות שאין כמוה. עם מערכת ה-SRAM GX AXS Transmission המתקדמת עם 12 הילוכים, תיהנו מהעברות חלקות ומהירות בכל תנאי שטח.  בולם קדמי RockShox SID Select+ 3P עם מהלך של 120 מ'מ מבטיח לכם רכיבה חלקה ונוחה, גם במסלולים התובעניים ביותר. והפטנט הייחודי של SCOTT – TwinLoc – מאפשר לכם לשלוט בשני הבולמים במגע יד, עם שלושה מצבי רכיבה: נעילה, רכיבה יעילה ופתיחה מלאה. כך תוכלו להתאים את האופניים שלכם לכל מצב רכיבה בלחיצת כפתור!  רוכבי SCOTT המובילים בעולם סומכים על ה-Team Issue ככלי העבודה העיקרי שלהם במרוצים הכי קשים. עם שילוב מושלם של קלות, נוחות ויעילות מקסימלית, ה-Spark RC Team Issue 2026 הוא הבחירה האידיאלית עבור כל רוכב XC שאפתן. אל תפספסו את ההזדמנות לרכב על האופניים שיכולים לקחת אתכם הכי רחוק!",
     "specs": {
       "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "RockShox SID Select 3P Air Charger RL 3-Mode Damper 15x110mm Maxle Stealth, 44mm offset, Tapered steerer Lockout, Reb. Adj., 120mm travel",
@@ -709,7 +509,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 24900,
-    "disc_price": null,
+    "disc_price": 18675,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513294/show/2d84d344ab183a75674c9ef49765d3bc.jpg",
       "gallery_images_urls": [
@@ -722,7 +522,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513294/large/2d84d344ab183a75674c9ef49765d3bc.jpg"
       ]
     },
-    "rewritten_description": "הכירו את ה-Spark RC Team החדשים של SCOTT לשנת 2026 – האופניים המהירים, הזריזים והיעילים ביותר שנראו עד כה! לא בכדי ה-RC זכו לא פעם באליפות העולם ב-XC.   עם גרופ 12 הילוכים מתקדמים של SRAM S1000 Eagle AXS Transmission, תוכלו ליהנות משידור הילוכים חלק ותגובה מהירה, שיביאו אתכם להצלחה בכל מסלול. הבולם הקדמי מבית RockShox SID3P, עם מהלך של 120 מ'מ, מבטיח רכות ונוחות בכל פנייה ובכל חצי גבעה.  הפטנט הייחודי של טכנולוגיית TwinLoc מאפשר לכם לשלוט בשני הבולמים במקביל, ובשלושה מצבי רכיבה שונים – נעילה, רכיבה יעילה ופתיחה – הכל מהכידון, בצורה נוחה ומושלמת.   ה-Spark RC Team הוא הבחירה המועדפת על רוכבי SCOTT ברמות הגבוהות בעולם, שמשתמשים בו ככלי העבודה העיקרי שלהם בניצחון בתחרויות היוקרתיות. קלים, נוחים ויעילים, הם לא רק אופניים – הם כרטיס הכניסה שלכם לעולם הרכיבה המקצועית! אל תחמיצו את ההזדמנות לרכב על הדגם שיכול לשדרג את הביצועים שלכם לרמה הבאה!",
+    "rewritten_description": "הכירו את ה-Spark RC Team החדשים של SCOTT לשנת 2026 – האופניים המושלמים לכל רוכב שמחפש מהירות, זריזות ויעילות ללא תחרות! ה-RC, אשר זכו לא אחת באליפות העולם ב-XC, מעמידים סטנדרטים חדשים בתחום האופניים הקלים והמתקדמים.  עם מערכת הילוכים מתקדמת של SRAM S1000 Eagle AXS Transmission עם 12 הילוכים, תוכלו ליהנות מהעברת הילוכים חלקה ומדויקת בכל מסלול. הבולם הקדמי של RockShox SID3P, עם מהלך של 120 מ'מ, מבטיח לכם נסיעה חלקה גם בשבילים הקשים ביותר.  הפטנט הייחודי של TwinLoc מאפשר לכם לשלוט על שני הבולמים בשלושה מצבי רכיבה – נעילה, רכיבה יעילה ופתיחה – וכל זאת בנוחות מקסימלית מהכידון. כך תוכלו להתאים את האופניים שלכם לכל מסלול ולכל אתגר.  רוכבי SCOTT מהשורה הראשונה בוחרים בדגם זה ככלי העבודה העיקרי שלהם, והוא הוכיח את עצמו בזירות התחרותיות היוקרתיות בעולם. קלות, נוחות ויעילות הם המאפיינים שמבדילים את ה-Spark RC Team משאר הדגמים בשוק.  אל תחמיצו את ההזדמנות לרכוב על האופניים שיכולים לשדרג את חוויית הרכיבה שלכם ולסייע לכם להגיע להישגים חדשים. הזמינו עכשיו את ה-Spark RC Team ותהפכו את כל מסלול לרכיבה בלתי נשכחת!",
     "specs": {
       "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "RockShox SID 3P Air Rush RL 3-Mode Damper 15x110mm Maxle Stealth, 44mm offset, Tapered steerer Lockout, Reb. Adj., 120mm travel",
@@ -763,7 +563,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 24900,
-    "disc_price": null,
+    "disc_price": 18675,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513337/show/f07575d8a84336d9ae67d4486a34c41c.jpg",
       "gallery_images_urls": [
@@ -776,7 +576,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18513337/large/f07575d8a84336d9ae67d4486a34c41c.jpg"
       ]
     },
-    "rewritten_description": "ה-Spark RC Team החדשים של SCOTT לשנת 2026 הם לא סתם אופניים – הם מהפכה על גלגלים! עם טכנולוגיה מתקדמת שמביאה אתכם לראש הדירוגים, ה-Spark RC Team מציעים מהירות שאין כמותה, זריזות מרשימה ויעילות שאין שנייה לה.   ה-DNA של ה-RC טמון בהצלחותיו – לא בכדי הם זכו לא אחת באליפות העולם XC! עם מערכת הילוכים מתקדמת של SRAM S1000 Eagle AXS Transmission עם 12 הילוכים, כל עלייה, ירידה או פנייה תהפוך לחוויה חלקה ומדויקת.  הבולם הקדמי של RockShox SID3P עם מהלך של 120 מ'מ יבטיח לכם שליטה מוחלטת בכל תנאי שטח, בעוד שהפטנט הייחודי TwinLoc מאפשר לכם לשלוט בשני הבולמים במקביל, עם שלושה מצבי רכיבה (נעילה, רכיבה יעילה ופתיחה) – הכל בלחיצת כפתור מהכידון.  ה-Spark RC Team הוא האופניים המושלמים לרוכבים ברמות הגבוהות ביותר, שזקוקים לכלי עבודה מהשורה הראשונה כדי לנצח בתחרויות היוקרתיות ביותר בעולם. הם קלים, נוחים ומוכנים להציע לכם חווית רכיבה שלא תשכחו. הצטרפו לעולם של SCOTT ובואו לחוות את העתיד של רכיבת האופניים!",
+    "rewritten_description": "הכירו את ה-Spark RC Team החדשים של SCOTT לשנת 2026 – האופניים שיביאו את הרכיבה שלכם לרמה הבאה! מהירים יותר, זריזים יותר ועם יעילות שאין כמותה, ה-Spark RC Team הם הבחירה המושלמת עבור רוכבים שמחפשים את הטוב ביותר.  עם מערכת הילוכים מתקדמת של SRAM S1000 Eagle AXS Transmission עם 12 הילוכים, תיהנו מהעברת הילוכים חלקה ומדויקת בכל תנאי שטח. הבולם הקדמי של RockShox SID3P עם מהלך של 120 מ'מ מבטיח נוחות וביצועים גבוהים, גם במסלולים הקשים ביותר.  אבל זה לא הכל! הפטנט הייחודי של SCOTT – TwinLoc – מאפשר לכם לשלוט בשני הבולמים במקביל, בכל מצב רכיבה שתרצו: נעילה, רכיבה יעילה או פתיחה, וכל זאת בלחיצת כפתור מהכידון. כך תוכל להתאים את האופניים לצרכים שלכם ולקבל ביצועים מושלמים בכל רגע.  ה-Spark RC Team נבחרים על ידי רוכבי SCOTT המובילים בעולם, שמסתמכים עליהם ככלי העבודה העיקרי שלהם בתחרויות היוקרתיות. קלים, נוחים ויעילים – הם פשוט האופניים שתמיד חלמתם עליהם. אל תפספסו את ההזדמנות לרכב על הדגם שמוביל את הענף!",
     "specs": {
       "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "RockShox SID 3P Air Rush RL 3-Mode Damper 15x110mm Maxle Stealth, 44mm offset, Tapered steerer Lockout, Reb. Adj., 120mm travel",
@@ -817,7 +617,7 @@
     "category": "mtb",
     "sub_category": "full_suspension",
     "original_price": 19900,
-    "disc_price": null,
+    "disc_price": 14925,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514496/show/33370c92a153cce73ab7d2f869ff743c.jpg",
       "gallery_images_urls": [
@@ -830,7 +630,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514496/large/33370c92a153cce73ab7d2f869ff743c.jpg"
       ]
     },
-    "rewritten_description": "הכירו את אופני ה-Spark RC Comp – הבחירה המושלמת לרוכבים שמחפשים את השילוב המושלם בין ביצועים מעולים ואבזור מתקדם במחיר ללא תחרות!   עם שלדת קרבון HMF קלה וחזקה, אתם יכולים להיות בטוחים שהאופניים הללו יעמדו בכל אתגר שיציבו בפניכם. מערכת ה-TwinLoc המהפכנית מאפשרת לכם לשלוט בשני הבולמים במקביל, ולהתאים את מצב הרכיבה בדיוק לצרכים שלכם – בין אם אתם מחפשים נעילה מוחלטת, רכיבה יעילה או פתיחה מלאה.  בזכות התכנון החכם והטכנולוגיה המתקדמת, האופניים הללו מספקים חוויית רכיבה חלקה ונוחה, שתאפשר לכם להתמקד במה שחשוב באמת – ליהנות מהדרך.   סקוט שוב מצליחה להוכיח שהאיכות לא חייבת להיות יקרה, וה-Spark RC Comp הם הוכחה חיה לכך. הצטרפו למועדון הרוכבים המקצועיים והתחילו את ההרפתקה שלכם עם האופניים שכולם מדברים עליהם! אל תחכו – חווית רכיבה שאין כמוה מחכה לכם!",
+    "rewritten_description": "**אופני ה-Spark RC Comp – הבחירה המושלמת לרוכבים מקצועיים!**  היכנסו לעולם הביצועים הגבוהים עם אופני ה-Spark RC Comp, שמציעים את השילוב המושלם בין טכנולוגיה מתקדמת לעיצוב חדשני. עם שלדת קרבון מסוג HMF, אתם מבטיחים לעצמכם חווית רכיבה קלה, מהירה ועמידה.  הפטנט הייחודי של סקוט - TwinLoc - מאפשר לכם לשלוט על שני הבולמים במקביל, עם שלושה מצבי רכיבה שונים: נעילה, רכיבה יעילה ופתיחה. כל זה נשלט בקלות מהכידון, כך שתוכלו להתאים את האופניים שלכם לכל מסלול ולכל תנאי שטח בצורה מיטבית.  מה שמפתיע באמת הוא איך סקוט מצליחה להציע חבילה כל כך עשירה בביצועים ובאבזור במחיר שלא תמצאו בשום מקום אחר. ה-Spark RC Comp הם לא רק אופניים – הם כלי עבודה מקצועי שיביא אתכם להישגים חדשים!  אל תפספסו את ההזדמנות לשדרג את חווית הרכיבה שלכם – בחרו באופני ה-Spark RC Comp ותיהנו מכל רכיבה!",
     "specs": {
       "frame": "Spark RC Carbon HMF Integrated Suspension Technology Flex Pivot, Adjustable head angle Syncros Cable Integration System BB92, UDH Interface, 12x148mm with 55mm Chainline",
       "fork": "FOX 32 Float Rhythm Grip 3-Modes, Kabolt 15x110mm axle, 44mm offset, tapered steerer Reb. Adj., Lockout, 120mm travel",
@@ -880,7 +680,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18514286/large/7a5d102a946155d73818367bfd8993fc.png"
       ]
     },
-    "rewritten_description": "**אופני השיכוך המלא של סקוט - חווית רכיבה שאין כמותה!**  הכירו את האופניים המתקדמים ביותר שלנו, המשלבים טכנולוגיה מתקדמת עם עיצוב אטרקטיבי! עם משולש קדמי עשוי קרבון ברמת HMF, אתם מקבלים את רמת הגימור הגבוהה ביותר של סקוט, שמבטיחה עמידות וקלות משקל.  הבולמים המתקדמים - FOX34 בבחירה קדמית ובולם אחורי מותאם אישית של FOXNude - יספקו לכם שליטה מלאה על כל מסלול. בזכות פטנט ה-TwinLoc, תוכלו להתאים את רמת השיכוך לשלושה מצבים שונים (פתיחה, נעילה ומצב אמצע) ישירות מהכידון, כך שתוכלו למקסם את הביצועים שלכם בכל רכיבה.  אם אתם מחפשים אופניים שיכולים להתמודד עם כל אתגר - גני סלעים, עליות תלולות או ירידות מהירות - הגעתם למקום הנכון! עם האופניים שלנו, תיהנו מחוויית רכיבה קלה, בטוחה, מהירה וקשוחה. הם נועדו לרוכבים שאוהבים את השטח ולא מתפשרים על איכות.  אל תוותרו על ההזדמנות לרכב על האופניים שיביאו אתכם לגבהים חדשים. רכשו עכשיו והצטרפו לקהילת הרוכבים המובילים!",
+    "rewritten_description": "**אופני השיכוך המלא המושלמים שלכם - חווית רכיבה שלא תשכחו!**  הכירו את הדור הבא של אופני השיכוך המלא – שילוב מושלם של טכנולוגיה מתקדמת ועיצוב יוקרתי! עם משולש קדמי עשוי מקרבון ברמת HMF, הנחשבת לגימור הגבוה ביותר של סקוט, אתם מבטיחים לעצמכם רכיבה קלה ונוחה בכל מסלול.  **בולמים באיכות פרימיום**:  בזכות הבולם הקדמי FOX34 והבולם האחורי המותאם אישית של FOX Nude, תוכלו להרגיש את ההבדל בכל פנייה ובכל עלייה. הפטנט הייחודי של TwinLoc מאפשר לכם לשלוט על הבולמים ישירות מהכידון, במגוון מצבים – פתיחה, נעילה ומצב אמצע – כך שתוכלו להתאים את האופניים לצרכיכם בכל רגע.  **אופניים לכל אתגר**:  בין אם אתם רוכבים בגני סלעים, מתמודדים עם עליות תלולות או פשוט נהנים מירידות מהירות – האופניים הללו מציעים לכם את הביצועים האידיאליים. הם קלים, מהירים וקשוחים, כך שתוכלו לחוות את השטח במלואו ולהתמקד בהנאה.  **הגיע הזמן לצאת לדרך**:  אל תתפשרו על איכות! אם אתם מחפשים אופניים שיתנו לכם את החופש להיות בשטח כמה שיותר – אלו האופניים בשבילכם. הצטרפו למהפכה בעולם הרכיבה והזמינו את האופניים שלכם עוד היום!",
     "specs": {
       "frame": "Spark Carbon HMF Mainframe with Alloy 6011 Swingarm Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
       "fork": "FOX 34 Float Rhythm Air Grip 3 3-Modes / Kabolt 15x110mm axle / tapered steerer 44mm offset / Reb. Adj. / Lockout / 130mm travel",
@@ -929,7 +729,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500832/large/70df58af4678e4d2dc609adeccad2ca1.jpg"
       ]
     },
-    "rewritten_description": "גלה את חוויית הרכיבה המתקדמת עם אופני SCOTT Spark 940! עם משולש קדמי עשוי HMF, כל רכיבה תהפוך למסע שאין כמותו. הבולם הקדמי RockShox Pike RL3 Air והבולם האחורי המותאם אישית RockShox Deluxe מבטיחים לך נוחות וביצועים בלתי מתפשרים בכל תנאי שטח.  החדשנות לא נגמרת כאן! עם פטנט ה-TwinLoc, תוכל לשלוט על שלושת מצבי הבולמים ישירות מהכידון, כך שתוכל להתאים את הרכיבה שלך במהירות ובקלות. בין אם אתה מתמודד עם עליות תלולות או יורד במורדות מהירים, SCOTT Spark 940 כאן כדי לספק לך את התמיכה והביצועים שאתה צריך. אל תפספס את ההזדמנות לשדרג את חוויית הרכיבה שלך – בחר ב-SCOTT Spark 940 ותן לעצמך את הטוב ביותר!",
+    "rewritten_description": "גלה את חוויית הרכיבה המושלמת עם אופני SCOTT Spark 940! עם משולש קדמי עשוי HMF המבטיח עמידות וקלות, תוכל להתמודד עם כל שביל באמון מוחלט. הבולם הקדמי RockShox Pike RL3 Air והבולם האחורי המותאם אישית RockShox Deluxe מציעים רמות שיכוך שאין כמותן, כך שתוכל לחוות רכיבה חלקה ונוחה גם בתנאים הקשים ביותר.  הייחודיות של ה-Spark 940 לא נגמרת כאן! בזכות פטנט ה-TwinLoc, אתה יכול לשלוט על הבולמים בקלות ובנוחות ישירות מהכידון, ולבחור בין שלושה מצבים שונים שיתאימו לכל מצב רכיבה. בין אם אתה מטפס על הרים תלולים או יורד בשבילים מהירים, SCOTT Spark 940 הוא האופניים המושלמים עבורך.  הצטרף למהפכה ברכיבה על אופניים והזמן את SCOTT Spark 940 שלך עוד היום!",
     "specs": {
       "frame": "Spark Carbon HMF Mainframe with Alloy 6011 Swingarm Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
       "fork": "RockShox Pike RL3 Air Custom Charger 3-Mode Damper 15x110mm Maxle Lite / 44mm offset / Tapered steerer Lockout / Reb. Adj. / 130mm travel",
@@ -978,7 +778,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/17665848/large/8e5368c055ec83e70ab6a25cd805bb08.jpg"
       ]
     },
-    "rewritten_description": "**SPARK950 – האופניים שיביאו את הרכיבה שלך לרמה הבאה!**  אם אתה רוכב Trail שמחפש את השילוב המושלם בין קלות, דיוק ונוחות, ה-SPARK950 הם הבחירה המושלמת עבורך. עם עיצוב ייחודי שמקדש את יעילות הדיווש, תוכל לגלות את השבילים כמו שמעולם לא עשית לפני כן.  **מה הופך את ה-SPARK950 לכה מיוחדים?** - **בולמים מתקדמים**: האופניים מצוידים בבולמים קדמיים ואחוריים מבית RockShox, שמספקים ביצועים מדהימים, כך שתוכל להתמודד עם כל אתגר שטח. - **מוט אוכף מתכוונן**: שלוט בגובה המושב שלך בלחיצת כפתור! בידית הייעודית, עם פטנט ה-TwinLoc, תוכל לבחור בין שלושה מצבי רכיבה – נעילה, רכיבה יעילה ופתיחה – וליהנות מחוויית רכיבה מותאמת אישית בכל תנאי השטח. - **שליטה מלאה**: ה-SPARK950 מעניקים לך את היכולת לשלוט בכל פנייה, עלייה או ירידה, כך שתוכל להתמקד בכיף שבדרך.  **הכנה לרכיבות ארוכות**: עם נוחות שאין שניה לה, תוכל לגלוש בשבילים במשך שעות מבלי להרגיש עייפות. האופניים מגיעים ללא פדלים, כך שתוכל להתאים את החוויה בדיוק לפי הצרכים שלך.  ה-SPARK950 לא רק שתשפר את הביצועים שלך, אלא גם תעניק לך את הביטחון והנוחות שאתה צריך כדי לכבוש כל מסלול. אל תפספס את ההזדמנות לרכוב על האופניים שיגרמו לך להרגיש כמו מקצוען!  **הזמן עכשיו את ה-SPARK950 שלך ותתחיל את הרפתקת הרכיבה הבאה שלך!**",
+    "rewritten_description": "ה-SPARK950 – האופניים שיגרמו לכם להרגיש כמו אלופים בכל שביל! אם אתם מחפשים את השילוב המושלם בין קלות, דיוק ונוחות, הגעתם למקום הנכון.   עם עיצוב מתוחכם המיועד לרוכבים שאוהבים את האתגר שבשטח, ה-SPARK950 מצוידים בבולמים קדמיים ואחוריים מבית RockShox, שמבטיחים חוויית רכיבה חלקה ומרשימה בכל תנאי שטח. תיהנו משליטה מוחלטת עם מוט אוכף מתכוונן, שנשלט ישירות מהכידון באמצעות ידית ייחודית עם פטנט ה-TwinLoc. כך תוכלו לעבור בקלות בין שלושה מצבי רכיבה – נעילה, רכיבה יעילה ופתיחה – ולהתאים את האופניים לצרכים שלכם בכל רגע.  ה-SPARK950 לא רק יאפשרו לכם לרכב בקלות ובנוחות, אלא גם יעניקו לכם את הביטחון הנדרש להתמודד עם כל אתגר בדרך. הם מגיעים ללא פדלים, כך שתוכלו לבחור את הפדלים המתאימים לכם וליצור את חוויית הרכיבה המושלמת.  אל תפספסו את ההזדמנות להרגיש את ההבדל – רכשו את ה-SPARK950 עכשיו והצטרפו לעולם של רכיבות בלתי נגמרות!",
     "specs": {
       "frame": "Spark Alloy SL 6011 Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
       "fork": "RockShox Pike RL3 Air Custom Charger 3-Mode Damper 15x110mm Maxle Lite / 44mm offset / Tapered steerer Lockout / Reb. Adj. / 130mm travel",
@@ -1022,15 +822,14 @@
     "original_price": 13800,
     "disc_price": 7990,
     "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15643687/show/28c33c5cf9d810d3e39785ef324efc33.png",
+      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/12494276/show/a4021445eb13ff7c475df1b14a5614da.jpg",
       "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15643687/large/28c33c5cf9d810d3e39785ef324efc33.png",
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/12494276/large/a4021445eb13ff7c475df1b14a5614da.jpg",
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/13706525/large/dca04364c8331cd7041a190b81c56a0c.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15643687/large/28c33c5cf9d810d3e39785ef324efc33.png"
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/12494276/large/a4021445eb13ff7c475df1b14a5614da.jpg"
       ]
     },
-    "rewritten_description": "אם אתם חובבי שטח ומחפשים את העסקה המושלמת, הגעתם למקום הנכון! ה-SPARK960 מבית SCOTT, שהצליחו לכבוש את ליבם של רוכבים רבים, מגיעים השנה בעיצוב חדשני המוקדש להנאה וביטחון ברכיבה. עם שלדה קלילה במיוחד ומערכת מתקדמת, הם מציעים חווית רכיבה שאין כמותה!  בולמי ה-RockShox עם מהלך של 130 מ'מ, מוט אוכף מתכוונן הנשלט ישירות מהכידון, וטכנולוגיית ה-TwinLoc המאפשרת שליטה על הבולמים בשלושה מצבי רכיבה (נעילה, רכיבה יעילה ופתיחה) - כל אלה יחד מבטיחים ביצועים מעולים בכל תנאי שטח.   ה-SPARK960 הם אופניים קלים ועמידים, שומרים על גיאומטריה מצוינת ומציעים חווית רכיבה דינמית, ממש כמו האופניים הקרבוניים, אך במחיר שווה לכל נפש.   אל תפספסו את ההזדמנות לרכוש את האופניים הללו במחיר שאסור לפספס! שימו לב, המלאי בצבע כחול אזל בכל המידות, ובצבע שחור נותרו רק מידות L ו-M.   למידע נוסף על ה-SPARK960 והזמנות, כנסו לאתר שלנו. *המחיר אינו כולל טרייד אין, האופניים מגיעים ללא פדלים וטיובלס.*",
+    "rewritten_description": "**קונים אופניים ומקבלים במתנה!** 🎁 פדלים, טיובלס ומחזיק בקבוק – כל המוצרים יתווספו אוטומטית לעגלת הקניות שלכם!  אם אתם חובבי שטח ומחפשים את ההזדמנות המושלמת לרכוש אופניים במחיר מנצח, הגעתם למקום הנכון! 🌄  הכירו את ה-SPARK960 מבית SCOTT – אופניים שישאירו אתכם עם חיוך על הפנים בכל מסלול! עם קונספט מהיר וחזק, הם מיועדים לרוכבים שמחפשים את השילוב המושלם בין הנאה וביטחון.   ✨ **מה עושה את ה-SPARK960 לכל כך מיוחדים?** - **שלדה קלילה במיוחד:** עיצוב מתקדם שמספק ביצועים מעולים מבלי להוסיף משקל מיותר. - **מהלך בולם קדמי 130 מ'מ מבית RockShox:** פינוק אמיתי על השבילים, מעניק שיכוך מצוין בכל תנאי שטח. - **מוט אוכף מתכוונן:** שליטה נוחה מהכידון, כך שתוכלו להתאים את גובה האוכף בזמן אמת. - **פטנט ה-TwinLoc:** מערכת חכמה המאפשרת שליטה על שני הבולמים בשלושה מצבי רכיבה (נעילה, רכיבה יעילה, פתיחה) – כל זה בלחיצת כפתור!  עם SPARK960 אתם מקבלים אופניים קלים, עמידים, ששומרים על הגיאומטריה המושלמת והנסיעה הנפלאה של אחיהם הקרבונים – והכל במחיר משתלם במיוחד! 💰   🔹 **לפרטים נוספים על אופני ה-SPARK960** – אל תהססו לפנות אלינו!  🚚 בנוסף, אנו מציעים משלוח חינם עד בית הלקוח או אפשרות לאיסוף עצמי מהסניף בתל אביב.   אל תחמיצו את ההזדמנות לרכוש אופניים שישדרגו את חוויית הרכיבה שלכם – הגיע הזמן לצאת לדרך! 🚴‍♂️💨",
     "specs": {
       "frame": "Spark Alloy SL 6011 Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
       "fork": "RockShox Judy Silver TK Solo Air 15x110mm QR axle / 42mm offset / Tapered Steerer 2-Modes / Reb. Adj. / Lockout / 130mm travel",
@@ -1064,312 +863,6 @@
     "source": {
       "importer": "Cobra-Bordo",
       "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/3941998-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-970-"
-    },
-    "firm": "Scott",
-    "model": "Spark 90",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 12400,
-    "disc_price": 6200,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/11538361/show/68da6a1e33bb4f525aa1740ef4392793.png",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/11538361/large/68da6a1e33bb4f525aa1740ef4392793.png",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/11538361/large/68da6a1e33bb4f525aa1740ef4392793.png"
-      ]
-    },
-    "rewritten_description": "🚴‍♂️ **הזדמנות אחרונה! אופני SCOTT SPARK 970 - גרסה משופרת!** 🚴‍♀️  שימו לב! המידות M ו-XL אזלו מהמלאי – נשארו יחידות בודדות בלבד! אל תפספסו את ההזדמנות לרכוש את האופניים שמביסות את המתחרים בכל פרמטר: ביצועים, איכות ומחיר!  אופני SCOTT SPARK 970 מגיעים עם שלדה קלילה במיוחד ובולם קדמי RockShox Judy בגובה 130 מ'מ, כך שתוכלו להתמודד עם כל שביל ואתגר. הפטנט המיוחד של טכנולוגיית TwinLoc מאפשר לכם לשלוט על שני הבולמים בקלות ובשלושה מצבי רכיבה (נעילה, רכיבה יעילה ופתיחה) – הכל מהכידון!   נבנו עבור רוכבים שמחפשים את הביצועים המושלמים והחוויה הבלתי נשכחת. 🌟  *לפרטים נוספים על אופני SPARK החדשים והזמנות, אל תהססו לפנות אלינו!*  🛒 **זכרו: האופניים מגיעים ללא פדלים.** אל תמתינו – המלאי מוגבל!",
-    "specs": {
-      "frame": "Spark Alloy SL 6011 Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "RockShox Judy Silver TK Solo Air 15x110mm QR axle / 42mm offset / Tapered Steerer 2-Modes / Reb. Adj. / Lockout / 130mm travel",
-      "rear_shock": "X-Fusion NUDE 5 RLX Trunnion SCOTT custom w. travel / geo adj. 3 modes: Lockout-Traction Control-Descend Reb. Adj. Travel 120-80-Lockout / T165X45mm",
-      "control_system": "SCOTT TwinLoc 2 Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "SRAM NX Eagle 12 Speed",
-      "shifters": "SRAM SX Eagle Trigger",
-      "crankset": "SRAM SX Eagle DUB 55mm CL / 32T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN SX Eagle",
-      "cassette": "SRAM SX-PG1210 / 11-50 T",
-      "brakes": "Shimano MT201 Disc",
-      "rotors": "Shimano SM-RT10 CL / F&R 180mm",
-      "handlebar": "Syncros Fraser 2.0 DC Alloy 6061 D.B. mini Rise / back sweep 8° / 760mm Syncros Pro lock-on grips",
-      "stem": "Syncros DC 3.0 Syncros Cable Integration System 0° rise / 6061 Alloy / 31.8mm / 1 1/8'",
-      "seatpost": "Syncros Duncan Dropper Post 2.5 31.6mm / S & M size 130mm / L & XL size 150mm",
-      "saddle": "Syncros Tofino 2.5 Regular",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-3248 / 12x148mm",
-      "front_tire": "Schwalbe Wicked Will 29x2.4' Performance  / Addix",
-      "rear_tire": "Schwalbe Wicked Will 29x2.4' Performance  / Addix",
-      "rims": "Syncros X-30SE / 32H / 30mm",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "weight": "14.95"
-    },
-    "fork length": 130,
-    "style": "trail"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7526769-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Spark-920-TR-2025"
-    },
-    "firm": "Scott",
-    "model": "Spark 920 TR",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 29700,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15709213/show/0e4b91ec543bf718c72e286c43d2faae.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15709213/large/0e4b91ec543bf718c72e286c43d2faae.jpg"
-      ]
-    },
-    "rewritten_description": "כשאתם מדמיינים את האופניים המושלמים לשטח, ה-Spark 920 הם בדיוק מה שאתם מחפשים! הם לא רק מהירים וקלילים — הם גם עוצמתיים ויעילים בכל תנאי שטח. עם עיצוב מרהיב שמושך את העין, ה-Spark 920 יהפכו כל רכיבה לחוויה בלתי נשכחת.  עוצבו עם משולש קרבון קדמי מסוג HMF, הם מצוידים ברכיבים מהשורה הראשונה שמבטיחים ביצועים מרשימים. הודות לפטנט ה-TwinLoc, תוכלו לשלוט בשני הבולמים בשלושה מצבי רכיבה — נעילה, רכיבה יעילה ופתיחה — וכל זה מהכידון, כך שתוכלו להתאים את הרכיבה שלכם בצורה מושלמת לכל מסלול.  סקוט יצרו כלי עבודה שכולל את כל מה שצריך כדי לפלס את דרככם במעלה השביל. ה-Spark 920 הם לא רק אופניים — הם חוויה שלמה של מהירות, עוצמה וסטייל. אל תפספסו את ההזדמנות לרכב על האופניים שיכולים לשדרג כל רכיבה שלכם!",
-    "specs": {
-      "frame": "Spark Carbon HMF Mainframe with Alloy 6011 Swingarm Integrated Suspension Technology Flex Pivot / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "FOX 34 Float Performance Air Grip 3-Modes / Kabolt 15x110mm axle / tapered steerer 44mm offset / Reb. Adj. / Lockout / 130mm travel",
-      "rear_shock": "FOX NUDE 5T EVOL Trunnion SCOTT custom w. travel / geo adj. 3 modes: Lockout-Traction Control-Descend Custom large Air volume / DPS / Reb. Adj. Travel 120-80-Lockout / T165X45mm",
-      "control_system": "SCOTT TwinLoc 2 Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "SRAM GX Eagle AXS Transmission 12 Speed Wireless Electronic Shift System",
-      "shifters": "SRAM GX Eagle AXS Rocker Controller",
-      "crankset": "SRAM GX Eagle Transmission DUB / 55mm CL / 32T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN GX Eagle Transmission",
-      "cassette": "SRAM GX Eagle XS 1275 Transmission 10-52",
-      "brakes": "SRAM DB8 4 Piston Disc",
-      "rotors": "SRAM HS2 Rotos / 6 Bolt / F&R 180mm",
-      "handlebar": "Syncros Fraser 1.5 DC Alloy 7075 D.B. mini Rise / back sweep 8° / 760mm Syncros Performance XC lock-on grips",
-      "seatpost": "Syncros Duncan Dropper Post 1.5 31.6mm / S size 125mm / M size 140mm / L size 150mm / XL size 150mm",
-      "saddle": "Syncros Tofino 2.0 Regular CRMO rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "wheels": "Syncros Silverton 2.5-30 6 Bolt F: 15x110mm R: 12x148mm 30mm Tubeless ready rim 28H / XD Driver Syncros Axle w/Removable Lever with 6mm Allen T30 and T25 Tools",
-      "stem": "Syncros DC 1.5 Syncros Cable Integration System 0° rise / 7050 Alloy / 31.8mm / 1 1/8'",
-      "front_tire": "Schwalbe Wicked Will 29x2.4' EVO Super Race / TLE / 67EPI / Addix Speed Soft",
-      "rear_tire": "Schwalbe Wicked Will 29x2.4' EVO Super Race / TLE / 67EPI / Addix Speed Grip",
-      "accessories": "Syncros Fork Fender",
-      "weight": "12.9 ק'ג"
-    },
-    "fork length": 130,
-    "style": "trail"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/6226002-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Genius-910-"
-    },
-    "firm": "Scott",
-    "model": "Genius 910",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 31900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/13047158/show/5685f76f9a746d42499489a92299b7d2.png",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/13047158/large/5685f76f9a746d42499489a92299b7d2.png"
-      ]
-    },
-    "rewritten_description": "**אופני SCOTT Genius 910 – הבחירה המושלמת לרוכבי שטח אמיצים!**  אם אתם רוכבים שמחפשים את האתגר הבא במסלולים טכניים בעמקי השטח, אופני ה-SCOTT Genius 910 הם בדיוק מה שאתם צריכים! עם שיפורים מרשימים לגרסה החדשה, הם מציעים חווית רכיבה שאין כמותה.  **מהלך של 160 מ'מ מלפנים ו-150 מ'מ מאחור** מבטיחים שמירה על נוחות ויכולת ספיגה מעולה, גם במצבים הקשים ביותר. עם שילוב מושלם של **איכות, יעילות וקלות**, האופניים האלה יעלו את הרכיבה שלכם לרמה הבאה.  המשולש הקדמי עשוי **Carbon HMF** קל וחזק, ותוכנה חדשנית עם בולם אחורי משולב בתוך השלדה מבטיחים חווית רכיבה חלקה ומדויקת. הבולם הקדמי **FOX36 Float Performance** והבולם האחורי **FOX Nude 5T EVOL** מספקים את התמיכה הנדרשת לרכיבות אגרסיביות, כך שתוכלו להתמקד באתגר ולא בדאגות.  **פטנט TwinLoc** החדשני מציע שליטה על 3 מצבי שיכוך, כך שתוכלו להתאים את הרכיבה שלכם לכל מסלול. מערכת ההילוכים המתקדמת **SRAM GX Eagle 12** ובלמי הדיסק ההידראוליים **Shimano XT 4** מבטיחים ביצועים גבוהים וביטחון בכל מצב.  ושלא נשכח את הגלגלים – **Syncros Revelstoke 1.5** תוכננו במיוחד כדי לעמוד באתגרים הקשים ביותר ולהעניק לכם את הביטחון שאתם צריכים לרכיבות אגרסיביות.  ה-SCOTT Genius 910 הוא לא סתם זוג אופניים, אלא כלי שמסייע לכם לגלות את הגבולות שלכם ולהתמודד עם כל אתגר. אל תפספסו את ההזדמנות לרכוב על המהדורה המשופרת של השנה! רכשו עכשיו והצטרפו לעולם של הרכיבה האולטימטיבית!",
-    "specs": {
-      "frame": "Genius Carbon HMF Mainframe with Alloy 6061 Swingarm Integrated Suspension Technology Virtual 4 Link kinematic / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "FOX 36 Float Performance Elite Air FIT4 3-Modes with low Speed adj. / Kabolt 15x110mm axle 44mm offset / tapered steerer / Reb. Adj. / Lockout 160mm travel",
-      "rear_shock": "FOX NUDE 5T EVOL Trunnion SCOTT custom w. travel / geo adj. 3 modes: Lockout-Traction Control-Descend Custom large Air volume / DPS / Reb. Adj. Travel 150-100-Lockout / T185X55mm",
-      "control_system": "SCOTT TwinLoc 2 Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "SRAM GX Eagle AXS 12 Speed Wireless Electronic Shift System",
-      "shifters": "SRAM GX Eagle AXS Rocker Controller",
-      "crankset": "SRAM GX Eagle DUB 55mm CL / 32T",
-      "chain_guide": "SCOTT custom",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN GX Eagle",
-      "cassette": "SRAM XG1275 / 10-52 T",
-      "brakes": "Shimano XT M8120 4 Piston Disc",
-      "rotors": "Shimano SM-RT76 / 6 Bolt / 203/F and 180/R",
-      "handlebar": "Syncros Hixon iC Carbon Size S & M 15mm rise / Size L & XL 25mm rise back sweep 8° / 780mm Syncros Endurance lock-on grips",
-      "seatpost": "Syncros Duncan Dropper Post 1.5 31.6mm / S size 140mm / M size 160mm / L size 170mm / XL size 200mm",
-      "saddle": "Syncros Tofino 1.5 Regular Titanium rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "front_tire": "Maxxis Dissector / 60TPI Foldable Tubeless Ready / EXO 3C maxx Terra",
-      "rear_tire": "Maxxis Dissector / 60TPI Foldable Tubeless Ready / EXO 3C maxx Terra",
-      "wheels": "Syncros Revelstoke 1.5 6 Bolt F: 15x110mm, R: 12x148mm 30mm Tubeless ready rim 28H / XD Driver Syncros Axle w/Removable Lever with 6mm Allen, T30 and T25 Tools",
-      "accessories": "SRAM AXS Powerpack Syncros Fork Fender",
-      "weight": "14.1 (Tubeless setup)"
-    },
-    "fork length": 160,
-    "style": "enduro"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/4902074-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Genius-920-"
-    },
-    "firm": "Scott",
-    "model": "Genius 920",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 22400,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500856/show/967ab916fda469cdf342c0763fbe63e0.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/10523996/large/604cbf0ecd2ecb02659aa6440871d1e0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500856/large/967ab916fda469cdf342c0763fbe63e0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/10523996/large/604cbf0ecd2ecb02659aa6440871d1e0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500856/large/967ab916fda469cdf342c0763fbe63e0.jpg"
-      ]
-    },
-    "rewritten_description": "**גלה את עולם האופניים עם SCOTT Genius 920 – האופניים המושלמים לרוכבי שטח!**  אם אתם מחפשים את האופניים שיביאו את חוויית הרכיבה שלכם לרמה הבאה, ה-SCOTT Genius 920 הוא בדיוק מה שאתם צריכים! השנה, גרסה זו מגיעה עם שיפורים מרהיבים, ומוכנה להתמודד עם אתגרים בכל מסלול.  עם מזלג FOX36 Float Rhythm המתקדם, תיהנו ממהלך של 160 מ'מ מלפנים ו-150 מ'מ מאחור, שמבטיחים חוויית רכיבה חלקה גם בתנאים הקשים ביותר. פטנט ה-TwinLoc מאפשר לכם שליטה מוחלטת על הבולמים, כך שתוכלו לעבור בין שלושת המצבים בלחיצת כפתור מהכידון – כל מה שצריך כדי להתאים את הרכיבה שלכם לסוג השטח.  והכי חשוב – מערכת ההילוכים של Shimano XT RD מבטיחה שהמעברים יהיו חלקים ומדויקים, כך שתוכלו להתמקד במה שחשוב באמת: הרכיבה והנוף המרהיב שסביבכם.  ה-SCOTT Genius 920 הוא לא רק אופניים, אלא שותף אמין בכל הרפתקה. אז למה אתם מחכים? צאו לדרך עם האופניים שיביאו אתכם למקומות שמעולם לא חלמתם להגיע אליהם!",
-    "specs": {
-      "frame": "Genius Carbon HMF Mainframe with Alloy 6061 Swingarm Integrated Suspension Technology Virtual 4 Link kinematic / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "FOX 36 Float Rhythm Air Grip 3-Modes / 15x110mm QR axle / tapered steerer 44mm offset / Reb. Adj. / Lockout / 160mm travel",
-      "rear_shock": "FOX NUDE 5T EVOL Trunnion SCOTT custom w. travel / geo adj. 3 modes: Lockout-Traction Control-Descend Custom large Air volume / DPS / Reb. Adj. Travel 150-100-Lockout / T185X55mm",
-      "control_system": "SCOTT TwinLoc 2 Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "Shimano XT RD-M8100 SGS Shadow Plus / 12 Speed",
-      "shifters": "Shimano Deore SL-M6100-IR / Rapidfire Plus Ispec EV clamp",
-      "crankset": "Shimano SLX FC-M7120-1 / Hollowtech 2 55mm CL / 32T",
-      "chain_guide": "SCOTT custom",
-      "bottom_bracket": "Shimano BB-MT500 / shell 41x92mm",
-      "chain": "Shimano Deore CN-M6100",
-      "cassette": "Shimano Deore CS-M6100-12 / 10-51 T",
-      "brakes": "Shimano Deore M6120 4 Piston Disc",
-      "rotors": "Shimano SM-RT64 CL / 203/F and 180/R",
-      "stem": "Syncros AM 1.5 Syncros Cable Integration System 4° rise / 7050 Alloy / 31.8mm / 1 1/8'",
-      "handlebar": "Syncros Hixon 1.5 Alloy 7050 Size S & M 15mm rise / Size L & XL 25mm rise back sweep 8° / 780mm Syncros Endurance lock-on grips",
-      "seatpost": "Syncros Duncan Dropper Post 1.5 31.6mm / S size 140mm / M size 160mm / L size 170mm / XL size 200mm",
-      "saddle": "Syncros Tofino 2.0 Regular CRMO rails",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "front_tire": "Maxxis Dissector / 2.4' / 60TPI Foldable Tubeless Ready / EXO 3C maxx Terra",
-      "rear_tire": "Maxxis Dissector / 2.4' / 60TPI Foldable Tubeless Ready / EXO 3C maxx Terra",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-148M / 12x148mm",
-      "rims": "Syncros X-30S / 32H / 30mm / Sleeve Joint Tubeless ready",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "accessories": "Syncros Fork Fender",
-      "weight": "14.8 kg"
-    },
-    "fork length": 160,
-    "style": "enduro"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/4902260-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2023-SCOTT-Genius-940-"
-    },
-    "firm": "Scott",
-    "model": "Genius 940",
-    "year": 2023,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 16200,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500869/show/025703707d1e9af77b785af3c2b5461b.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/11560660/large/ba0af76342d53336b1b768c34161f1b5.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500869/large/025703707d1e9af77b785af3c2b5461b.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/10524033/large/35d4ec339ba80013e20a84f69876ba2b.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/11560645/large/b55742f04d231e16c99caed13cda1e5b.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/11560646/large/241cb0cafae4bf3a0811988be1766584.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/11560660/large/ba0af76342d53336b1b768c34161f1b5.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500869/large/025703707d1e9af77b785af3c2b5461b.jpg"
-      ]
-    },
-    "rewritten_description": "**אופני סקוט Genius 940 – הכוח שמוביל אותך קדימה!**  הכירו את האופניים שהפכו לאגדה בשטח – אופני סקוט Genius 940! דגם הדגל של סקוט בסגנון האול מאונטיין, שמגיע השנה עם שדרוגים מרשימים שיהפכו כל רכיבה לחוויה בלתי נשכחת.  **מה חדש השנה?** עם מערכת ה-TwinLoc המתקדמת, תרגישו כאילו אתם רוכבים על אופני XC כשאתם מטפסים במעלה הגבעות, ובזכות המהלך הארוך של 150 מ'מ מלפנים ומאחור, תוכלו להתמודד עם כל אתגר בשטח – פשוט 'לדרוס' כל מכשול שעומד בדרככם!  **עיצוב וטכנולוגיה שאין כמותם** אם אתם מעריכים אינטגרציה מושלמת, טכנולוגיה מתקדמת ועיצוב מרהיב, אופני ה-Genius 940 הם הבחירה המושלמת עבורכם. הם מציעים את כל מה שצריך כדי להתמודד עם כל מסלול, בכל תנאי שטח – לא משנה אם מדובר בדרכים משובשות או במסלולים מאתגרים.  **כלי שטח קרבי** ה-Genius 940 מצוידים ברכיבי Syncros המתקדמים, כך שכל מה שנשאר לכם זה לתפוס את האופניים ולצאת לדרך. הם תוכננו עבור רוכבים שמחפשים את הכלי המושלם למשימות שטח – תמיד מוכנים לאתגרים חדשים!  **שימו לב:** המחיר אינו כולל פדלים וטיובלס, ולא ניתן לבצע טרייד אין.   אל תפספסו את ההזדמנות לרכוש את אחת מהמהדורות המיוחדות ביותר בשוק האופניים. **הזמינו עכשיו את אופני סקוט Genius 940 והתחילו את ההרפתקה שלכם!**",
-    "specs": {
-      "frame": "Genius Alloy 6061 Integrated Suspension Technology Virtual 4 Link kinematic / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "Marzocchi Z2 Air Rail 3-Modes / 15x110mm QR axle / tapered steerer 44mm offset / Reb. Adj. / Lockout / 150mm travel",
-      "rear_shock": "X-Fusion NUDE 5 RLX Trunnion SCOTT custom w. travel / geo adj. 3 modes: Lockout-Traction Control-Descend Reb. Adj. Travel 150-100-Lockout / T185X55mm",
-      "control_system": "SCOTT TwinLoc 2 Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "SRAM NX Eagle 12 Speed",
-      "shifters": "SRAM SX Eagle Trigger",
-      "crankset": "SRAM SX Eagle DUB 55mm CL / 32T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN SX Eagle",
-      "cassette": "SRAM SX-PG1210 / 11-50 T",
-      "brakes": "Shimano MT501 Disc",
-      "rotors": "Shimano SM-RT30 CL / 203/F and 180/R",
-      "stem": "Syncros AM 2.0 Syncros Cable Integration System 4° rise / 6061 Alloy / 31.8mm / 1 1/8'",
-      "handlebar": "Syncros Hixon 2.0 Alloy 6061 D.B. 12mm Rise / back sweep 8° / 780mm Syncros Endurance lock-on grips",
-      "seatpost": "Syncros Duncan Dropper Post 31.6mm / S size 130mm / M size 150mm / L & XLsize 170mm",
-      "saddle": "Syncros Tofino 2.5 Regular",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-148S / 12x148mm",
-      "rims": "Syncros X-30S / 32H / 30mm / Sleeve Joint",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "front_tire": "Maxxis Dissector / 2.6' / 60TPI Foldable Tubeless Ready / EXO",
-      "rear_tire": "Maxxis Dissector / 2.6' / 60TPI Foldable Tubeless Ready / EXO",
-      "weight": "15.8 kg"
-    },
-    "fork length": 150,
-    "style": "trail"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/4902111-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Genius-930-"
-    },
-    "firm": "Scott",
-    "model": "Genius 930",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 19900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500867/show/fe2e5592ae890dbd02088af9769bc7b8.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/10524029/large/c354c387ec620981413f67e2636c8139.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500867/large/fe2e5592ae890dbd02088af9769bc7b8.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/10524029/large/c354c387ec620981413f67e2636c8139.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9500867/large/fe2e5592ae890dbd02088af9769bc7b8.jpg"
-      ]
-    },
-    "rewritten_description": "**אופני SCOTT Genius 930 – מידה M בלבד**  היכנסו לעולם של חווית רכיבה בלתי נשכחת עם אופני ה-SCOTT Genius 930! האופניים הללו לא רק שהן מתאימות לכל שביל ובכל עת, אלא גם מביאות עימן טכנולוגיה מתקדמת שתשדרג כל רכיבה שלכם.  עם פטנט ה-TwinLoc, תוכלו לשלוט בבולמים שלכם בקלות ובמהירות – שלושה מצבים שונים ישירות מהכידון! תתכוננו לעבור בין שטח קשה לשבילים חלקים בלחיצת כפתור אחת.  מערכת הילוכים Shimano XT RD המתקדמת יחד עם רכיבי Syncros המושלמים מציעים לכם חווית רכיבה חלקה, מדויקת ומהנה יותר מאי פעם. בין אם אתם רוכבים על שבילים טכניים או במסלולים מהירים, ה-SCOTT Genius 930 ילווה אתכם בכל פנייה ובכל עלייה.  אל תפספסו את ההזדמנות לקחת את הרכיבה שלכם לשלב הבא – הזמינו עכשיו את ה-SCOTT Genius 930 במידה M בלבד ותהנו מרכיבה שאין לה תחליף!",
-    "specs": {
-      "frame": "Genius Alloy 6061 Integrated Suspension Technology Virtual 4 Link kinematic / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "FOX 36 Float Rhythm Air Grip 3-Modes / 15x110mm QR axle / tapered steerer 44mm offset / Reb. Adj. / Lockout / 160mm travel",
-      "rear_shock": "FOX Float Custom EVOL Performace Trunnion 3 modes / Lockout-Trail-Descend DPS / Reb. Adj. Travel 150mm / T185X55mm",
-      "control_system": "SCOTT TwinLoc 2 Technology Suspension & Dropper Remote 3 Suspension modes",
-      "rear_derailleur": "Shimano XT RD-M8100 SGS Shadow Plus / 12 Speed",
-      "shifters": "Shimano Deore SL-M6100-R / Rapidfire Plus",
-      "crankset": "Praxis Cadet M24HD 55mm CL / 32T",
-      "chain_guide": "SCOTT custom",
-      "bottom_bracket": "Praxis M24 BB92 / shell 41x92mm",
-      "chain": "Shimano Deore CN-M6100",
-      "cassette": "Shimano Deore CS-M6100-12 / 10-51 T",
-      "brakes": "SRAM DB8 4 Piston Disc",
-      "rotors": "SRAM Centerline CL Rotors 200/F and 180/R",
-      "stem": "Syncros AM 2.0 Syncros Cable Integration System 4° rise / 6061 Alloy / 31.8mm / 1 1/8'",
-      "handlebar": "Syncros Hixon 2.0 Alloy 6061 D.B. 12mm Rise / back sweep 8° / 780mm Syncros Endurance lock-on grips",
-      "seatpost": "Syncros Duncan Dropper Post 2.5 31.6mm / S size 125mm / M size 150mm / L & XLsize 170mm",
-      "saddle": "Syncros Tofino 2.5 Regular",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-148M / 12x148mm",
-      "rims": "Syncros X-30S / 32H / 30mm / Sleeve Joint Tubeless ready",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "front_tire": "Maxxis Dissector / 2.4' / 60TPI Foldable Tubeless Ready / EXO",
-      "rear_tire": "Maxxis Dissector / 2.4' / 60TPI Foldable Tubeless Ready / EXO",
-      "accessories": "Syncros Fork Fender",
-      "weight": "15.5 kg"
-    },
-    "fork length": 160,
-    "style": "enduro"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
       "product_url": "https://www.cobra-bordo.co.il/items/7526651-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2025-SCOTT-Ransom-930-"
     },
     "firm": "Scott",
@@ -1390,7 +883,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15709139/large/0ab3434d020fa767f1a062978fa5c625.jpg"
       ]
     },
-    "rewritten_description": "גלה את SCOTTRansom 930 – האופניים שמביאות את חוויית רכיבת השטח לרמה חדשה לגמרי! אם אתה רוכב שמחפש את האתגרים הגדולים ביותר ואת המסלולים הטכניים ביותר, ה-Ransom 930 הוא הבחירה המושלמת עבורך.   עם שלדה קלילה אך קשיחה, גלגלי “29 ומערכת מתלים מתקדמת עם מהלך של 170 מ”מ מלפנים ומאחור, תוכל להתמודד עם כל אתגר שהשביל מציב בפניך. פטנט ה-TwinLoc מאפשר לך להתאים את רמת המתלים לצרכים שלך, כך שתוכל לעבור בקלות בין מסלולים שונים וליהנות מביצועים שלא נראו כמותם בארץ.  ה-Ransom 930 הוא לא סתם אופניים – הם חבר נאמן לרכיבה מהירה ואגרסיבית, שמעניקים לך ביטחון בכל פנייה ובכל תיקול. אם אתה מחפש את המהירות והדיוק, אין ספק שה-Ransom 930 הוא הדגם שייתן לך את הכנפיים שאתה צריך בסינגלים הקשוחים ביותר.  אל תתפשר על חוויית הרכיבה שלך – בחר ב-SCOTTRansom 930 והפוך כל מסלול לאתגר בלתי נשכח!",
+    "rewritten_description": "הכירו את אופני SCOTTRansom 930 – הבחירה המושלמת לרוכבים שאוהבים את הטבע והאתגר! אם אתם מחפשים את האופניים שייקחו אתכם לטיולים מרהיבים ומסלולים טכניים, הגעתם למקום הנכון.   עם שלדה קלילה וקשיחה, גלגלי “29 והמהלך המדהים של 170 מ”מ מלפנים ומאחור, ה-Ransom 930 מציעים חווית רכיבה שאין כמוה. טכנולוגיית ה-TwinLoc המתקדמת מאפשרת לכם להתאים את האופניים לכל מסלול ולכל תנאי שטח, כך שתמיד תהיו מוכנים לאתגר הבא.  רוכבים שרוצים להרגיש את העוצמה והביטחון בכל סינגל מאתגר יגלו באופניים אלו חבר נאמן שידחוף אותם מעבר לגבולותיהם. SCOTTRansom 930 הם לא רק אופניים, הם חוויה שלמה של רכיבה מהירה, בטוחה ומרגשת.   אם אתם מחפשים שלמות בעיצוב ובביצועים, ה-Ransom 930 הם הבחירה שלכם. אל תפספסו את ההזדמנות להרגיש את הקסם של רכיבת שטח אמיתית – תנו לעצמכם את המתנה הזו!",
     "specs": {
       "frame": "Ransom Carbon HMF Mainframe with Alloy 6061 Swingarm Integrated Suspension Technology 6 Link kinematic / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline / MX Ready",
       "fork": "RockShox Domain R Solo Air 15x110mm Maxle stealth axle 42mm offset / Tapered Steerer Reb. Adj. / 170mm travel",
@@ -1426,60 +919,6 @@
     "source": {
       "importer": "Cobra-Bordo",
       "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7526498-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2025-SCOTT-Ransom-920-"
-    },
-    "firm": "Scott",
-    "model": "Ransom 920",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 25900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708590/show/35cbf937f8a23155393b404340257a61.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708660/large/2e28fb8b5e0e32b710688932ab5cb7a0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708590/large/35cbf937f8a23155393b404340257a61.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708615/large/61f0e047a901591e00f409064368b934.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708623/large/0c938118fab623054e9904e1c1432027.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708659/large/47293592680770172506ab3147dac67f.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708660/large/2e28fb8b5e0e32b710688932ab5cb7a0.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708590/large/35cbf937f8a23155393b404340257a61.jpg"
-      ]
-    },
-    "rewritten_description": "**גלה את SCOTT Ransom 920 – המלך של רכיבת האנדורו!**  אם אתה רוכב שמחפש את האתגר הבא, הגעת למקום הנכון! אופני SCOTT Ransom 920 הם הבחירה המושלמת עבור מי שמבקש להתמודד עם השטח הקשה ביותר והמסלולים הטכניים ביותר. עם שלדה קלילה וקשיחה, גלגלי '29 ומהלך מתלה מרהיב של 170 מ'מ מלפנים ומאחור, האופניים הללו מעוצבים כדי לקחת אותך לכל פינה נידחת ולספק חוויית רכיבה בלתי נשכחת.  הפטנט המהפכני של TwinLoc מאפשר לך לשלוט במתלים בקלות, מה שנותן לך את הגמישות להתמודד עם כל אתגר שמגיע בדרכך. בין אם אתה רוכב בסינגלים האגרסיביים ביותר או במסלולים טכניים תובעניים, ה-Ransom 920 מבטיחים לך ביטחון וביצועים שלא הכרת עד כה.  אופני SCOTT Ransom 920 לא רק יעניקו לך את הכנפיים שאתה צריך כדי לעוף בסינגלים הקשוחים, אלא גם יהפכו אותך לרוכב המהיר והבטוח ביותר על המסלול. אל תפספס את ההזדמנות להיות חלק מהמהפכה – כשמדובר ב-Ransom 920, אנחנו מדברים על חוויית רכיבה מושלמת!   הצטרף אל המובילים בתחום האנדורו וצא לדרך עם SCOTT Ransom 920 – האופניים שיביאו אותך רחוק יותר, מהר יותר!",
-    "specs": {
-      "frame": "Ransom Carbon HMF Mainframe with Alloy 6061 Swingarm Integrated Suspension Technology 6 Link kinematic / Adjustable head angle Syncros Cable Integration System BB92 / UDH Interface / 12x148mm with 55mm Chainline / MX Ready",
-      "fork": "RockShox Zeb Select+ Charger 3 HSC - LSC - LSR adjustable / 15x110mm Maxle stealth axle 42mm offset / Tapered Steerer / 170mm travel",
-      "rear_shock": "FOX FLOAT X NUDE EVOL Piggy Back Trunnion / SCOTT custom w. travel / geo adj. 3 modes: Climb-Ramp Control-Descend Custom large Air volume / Comp & Reb. Adj. Travel 170-130-Climb / T205X65mm / Bearing Hardware",
-      "control_system": "TracLoc Technology Rear Suspension & Dropper Remote 3 Rear Suspension modes",
-      "rear_derailleur": "SRAM NX Eagle 12 Speed",
-      "shifters": "SRAM SX Eagle Trigger",
-      "crankset": "SRAM X1 1000 Eagle DUB Boost 32T / Chainline 55mm",
-      "chain_guide": "SCOTT custom",
-      "bottom_bracket": "SRAM DUB PF integrated / shell 41x92mm",
-      "chain": "SRAM CN SX Eagle",
-      "cassette": "SRAM NX / PG1210 / 11-50 T",
-      "brakes": "SRAM DB8 4 Piston Disc",
-      "rotors": "SRAM Centerline Rotors F&R 200mm",
-      "handlebar": "Syncros Hixon 2.0 Alloy 6061 D.B. Size S & M 12mm Rise / Size L & XL 20mm Rise / back sweep 8° / 780mm Syncros Endurance lock-on grips",
-      "stem": "Syncros AM 2.0 Syncros Cable Integration System 4° rise / 6061 Alloy / 31.8mm / 40mm",
-      "seatpost": "Syncros Duncan Dropper Post 1.5S / Travel Adjust / 31.6mm S size 140mm / M size 180mm / L & XL size 210mm",
-      "saddle": "Syncros Tofino 2.0 Crmo Rails",
-      "wheels": "Syncros Revelstoke 2.5 6 Bolt F: 15x110mm R: 12x148mm Boost 30mm Tubeless ready rim 28Hr Syncros Axle w/Removable Lever with Tool",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "front_tire": "Maxxis Assegai / 2.5' / 60TPI Foldable / EXO+ / TR / 3C Maxx Gripp",
-      "rear_tire": "Maxxis Dissector / 2.4' / 120TPI Foldable / DD/ TR / 3C Maxx Terra",
-      "accessories": "RS Zeb Fender",
-      "weight": "16.4 ק'ג"
-    },
-    "fork length": 170,
-    "style": "enduro"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
       "product_url": "https://www.cobra-bordo.co.il/items/4901719--%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Scale-970-2025"
     },
     "firm": "Scott",
@@ -1488,14 +927,14 @@
     "category": "mtb",
     "sub_category": "hardtail",
     "original_price": 5900,
-    "disc_price": 4425,
+    "disc_price": 2890,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/9501279/show/d5fbdca85dfa74063d2889d045d1eaad.jpg",
       "gallery_images_urls": [
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/9501279/large/d5fbdca85dfa74063d2889d045d1eaad.jpg"
       ]
     },
-    "rewritten_description": "הכירו את ה-Scale 970 – התשובה האולטימטיבית לכל רוכב שטח שמחפש את האדרנלין שבאתגר! מבית היוצר של SCOTT, האופניים הללו נבנו בהשראת תחרויות מהשורה הראשונה, והם מציעים גיאומטריה מתקדמת שמפגישה בין ביצועים מרשימים לעיצוב עוצר נשימה.  בשנת 2023, SCOTT מציבה רף חדש עם ה-Scale 970 – זן חדש לחלוטין בקטגוריית אופני ההרים עם זנב קשיח. עיצובם הפשוט והחד לא רק שמהווה הצהרה, אלא גם מעניק לאופניים הללו אופי ייחודי ומראה אגרסיבי שלא ניתן להתעלם ממנו.   ה-Scale 970 מצוידים בטכנולוגיות מתקדמות שמבטיחות חוויית רכיבה יוצאת דופן – מהירויות גבוהות, שליטה מדויקת על המסלול וביצועים מעולים בכל תנאי שטח. הם נבנו כדי להתמודד עם כל אתגר, מהפיתולים החדים של השבילים ועד לירידות התלולות ביותר.  אל תתפשרו על פחות – הצטרפו למהפכה של SCOTT ורכבו על ה-Scale 970. עם אופניים אלו, כל מסלול הופך להרפתקה בלתי נשכחת!",
+    "rewritten_description": "הכירו את ה-Scale 970 – הפלא החדש של SCOTT! עם גיאומטריה מתקדמת שנוצרה בהשראת התחרויות המובילות בעולם, ה-SCALE 970 מייצג את השיא של טכנולוגיית אופני ההרים עם זנב קשיח. בשנת 2023, SCOTT לא רק מצליחים לחדש, אלא גם לשבור את הגבולות וליצור קטגוריה חדשה בעיצוב אופניים.  עם קווים חדים ומראה אגרסיבי, ה-Scale 970 לא רק נראה מעולה, אלא גם מציע חוויית רכיבה שאין כמותה. כל פרט בו תוכנן בקפידה כדי להבטיח ביצועים מרהיבים בכל סוגי השטח. בין אם אתם רוכבים בשבילים הרריים, במסלולי XC או סתם נהנים מרכיבה רגועה בפארק, ה-SCALE 970 הוא הבחירה המושלמת עבורכם.  הצטרפו למהפכה בעולם אופני ההרים – רכבו על ה-Scale 970 ותנו לעצמכם את החוויה של רכיבה בלתי נשכחת!",
     "specs": {
       "frame": "Scale Alloy 6061 Custom Butted Tubing Syncros Cable Integration System / Tapered Headtube BB92 / QR 5x141mm with 55mm Chainline",
       "fork": "RockShox Judy Silver TK Solo Air 46mm offset / Tapered Steerer / Reb. Adj. Lockout / 100mm travel",
@@ -1537,14 +976,14 @@
     "category": "mtb",
     "sub_category": "hardtail",
     "original_price": 3100,
-    "disc_price": 2240,
+    "disc_price": 1890,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18806439/show/a3a916a89816bd4e76cc7634f3fea6dc.jpg",
       "gallery_images_urls": [
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18806439/large/a3a916a89816bd4e76cc7634f3fea6dc.jpg"
       ]
     },
-    "rewritten_description": "**אופני CONTESSA ACTIVE – הכניסה שלך לעולם הרכיבה!**  הכירו את אופני ה-CONTESSA ACTIVE – הבחירה המושלמת לרוכבי שטח מתחילים שרוצים לחוות את הטבע בדרך חדשה ומרגשת! עם עיצוב חדשני ובנייה שמתאימה בדיוק לצרכים שלך, האופניים הללו יעניקו לך ביטחון ושליטה בכל רכיבה.  **מה מיוחד באופניים האלה?** - **מרכז כובד אופטימלי:** תכנון חכם שמבטיח יציבות בכל תמרון טכני, כך שתוכל להתמודד עם אתגרים בקלות. - **קלות הפעלה:** כל רכיבה תהיה חוויה מהנה, בזכות העיצוב הידידותי שמאפשר לך להתמקד בנוף ולא במכשולים. - **נוחות מירבית:** קורה עליונה מעוקלת מאפשרת גישה נוחה לאופניים, כך שתוכל לקפוץ עליהם ולצאת לדרך בקלות.  **מידות וגלגלים:** - מידות XS ו-S מצוידות בגלגלים בגודל 27.5 אינצ' – אידיאלי לרוכבים קטנים יותר. - מידות M ו-L מגיעות עם גלגלים בגודל 29 אינצ' – מושלם לרוכבים גבוהים ולרכיבות מהירות.  אל תפספס את ההזדמנות לחוות את הרכיבה בשטח בצורה הטובה ביותר. רכב על אופני ה-CONTESSA ACTIVE והצטרף למהפכת הרכיבה!",
+    "rewritten_description": "הכירו את אופני ה-CONTESSA ACTIVE – המהפכה מתחילה כאן! אם אתם רוכבי שטח מתחילים, האופניים הללו הם הבחירה המושלמת עבורכם. עם עיצוב חדשני ובנייה מותאמת אישית, ה-CONTESSA ACTIVE מעניקים לכם תחושת ביטחון ושליטה שאין כמותה.   הודות למיקום מרכז כובד אופטימלי, תיהנו מקלות הפעלה ויציבות מרשימה בכל תמרון טכני – בין אם זה ירידות תלולות או פניות חדות. השלדה בעלת הקורה העליונה המעוקלת מאפשרת לכם עלייה וירידה נוחה מהאופניים, כך שתוכלו להתמקד במה שחשוב באמת – הרכיבה.  אופני CONTESSA ACTIVE זמינים במידות XS ו-S עם גלגלים בקוטר 27.5 אינצ' ובמידות M ו-L עם גלגלים בקוטר 29 אינצ'. זה הזמן שלכם לחוות את השטח כמו שמעולם לא חוויתם – עם האופניים שמבינים אתכם. אל תפספסו את ההזדמנות להתחיל את המסע שלכם על גלגלים!",
     "specs": {
       "frame": "Contessa Active 700/900 series / Alloy 6061 Custom Tubing OLD 135mm / BSA73 Internal shifting Cable Routing / replaceable hanger",
       "fork": "Suntour XCT30-HLO Hyd. Lockout / 100mm travel",
@@ -1596,7 +1035,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18806569/large/2cb2e21f31b892a99e3e480d22b78838.jpg"
       ]
     },
-    "rewritten_description": "גלה את עולם השטח עם אופני ה-CONTESSA ACTIVE – הבחירה המושלמת לרוכבי שטח מתחילים!   אופניים אלו מעוצבים בקפידה כדי לשדרג את חוויית הרכיבה שלך. עם עיצוב פיזיולוגי שמבטיח לך ביטחון מוחלט ושליטה מרבית, תוכל להתגבר על אתגרים טכניים בקלות וביציבות. מרכז הכובד האופטימלי מעניק לך את היכולת לבצע תמרונים בקלות, כך שתוכל להתמקד רק בכיף של הרכיבה.  השלדה המיוחדת עם קורה עליונה מעוקלת, מבטיחה גישה נוחה והורדה קלה מהאופניים, כך שלא תצטרך לדאוג לשום דבר חוץ מההנאה שבדרך.   אופני ה-CONTESSA ACTIVE מגיעים במידות XS ו-S עם גלגלים בגודל 27.5 אינצ' למי שמעדיף את הזריזות, ומידות M ו-L עם גלגלים בגודל 29 אינצ' לשיוט חלק ונעים יותר על השבילים.   הצטרף למהפכת הרכיבה והתחל את המסע שלך עם אופני ה-CONTESSA ACTIVE – כי כל רוכב ראוי להתחיל את הדרך עם הכלים הנכונים!",
+    "rewritten_description": "**אופני CONTESSA ACTIVE – הבחירה המושלמת לרוכבי שטח מתחילים!**  הכירו את אופני ה-CONTESSA ACTIVE – אופניים שיגרמו לכם להתאהב בשטח! עם עיצוב ייחודי ובנייה מתקדמת, הם נועדו לשדרג כל חווית רכיבה שלכם.   מה היתרון? תכנון פיזיולוגי חכם שמספק לכם ביטחון ושליטה מרבית. בזכות מיקום מרכז הכובד האופטימלי, תוכלו להתמודד עם כל תמרון טכני בקלות וביציבות.   שלדת האופניים מגיעה עם קורה עליונה מעוקלת, מה שמבטיח גישה נוחה לעלייה וירידה. כך, תוכלו להתרכז ברכיבה ולא במאבק עם האופניים.  **מידות וגלגלים:** - מידות XS ו-S מצוידות בגלגלים בקוטר 27.5 אינץ'. - מידות M ו-L מציעות גלגלים בקוטר 29 אינץ'.  הצטרפו למהפכת הרכיבה בשטח עם אופני CONTESSA ACTIVE – כי כל רוכב מתחיל ראוי לחווית רכיבה מדהימה! 🌟🚴‍♀️",
     "specs": {
       "frame": "Contessa Active 700/900 series / Alloy 6061 Custom Butted Tubing OLD 135mm / BSA73 Internal Cable Routing / replaceable hanger",
       "fork": "Suntour XCR32/X1-LO-R / Hyd. Lockout / Reb. Adj. 100mm travel",
@@ -1648,7 +1087,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/4476380/large/e6f46a7f33de60d0f877d381ad352075.jpg"
       ]
     },
-    "rewritten_description": "גלה את חווית הרכיבה המושלמת עם אופני ההרים Fast XC920 – הבחירה האידיאלית עבור רוכבים שמחפשים ביצועים גבוהים ואיכות בלתי מתפשרת!   עם שלדת אלומיניום קלילה שנועדה להעניק לך את האיזון המושלם בין עמידות למהירות, האופניים הללו מצוידים ב-21 הילוכים מתקדמים של Shimano, המאפשרים לך להתמודד עם כל שטח בקלות וביעילות.   הבולמים המכניים והגלגלים בקוטר 29 אינץ' מבטיחים ספיגת זעזועים אופטימלית, כך שתוכל להתמקד אך ורק ברכיבה וליהנות מחוויות בלתי נשכחות בטבע.   עם עיצוב מרהיב ומבחר צבעים מרשים, ה-Fast XC920 לא רק יוביל אותך למקומות חדשים, אלא גם יגרום לך להיראות מעולה בזמן שאתה עושה זאת!   הצטרף לקהילת הרוכבים המובילים והשג את האופניים שיביאו אותך לגבהים חדשים! אל תפספס את ההזדמנות – רכב על ה-Fast XC920 והרגש את ההבדל!",
+    "rewritten_description": "גלה את חווית רכיבת השטח האולטימטיבית עם אופני ההרים Fast XC920 – הבחירה המושלמת לכל רוכב! עם שלדת אלומיניום קלילה שתספק לך מהירות וזריזות, תוכל להתמודד עם כל מסלול בצורה חלקה ובטוחה.  הודות ל-21 הילוכים של Shimano, תוכל להתאים את הרכיבה שלך לכל תנאי שטח – מהעליות התלולות ועד הירידות המהירות. מערכת בולמי הדיסק המכניים מבטיחה לך בלימה מדויקת ובטיחותית בכל מצב, וגלגלי ה-29 אינצ' מספקים יציבות ויכולת חציית מכשולים בצורה יוצאת דופן.  אבל זה לא הכל! האופניים מגיעים במגוון צבעים מהמם, כך שתוכל לבחור את הסגנון שמתאים לך. עם עיצוב מרהיב, נוחות תפעול ושימושיות שאין לה תחליף, ה-Fast XC920 ישדרגו את חווית הרכיבה שלך ויביאו אותך למקומות חדשים.  אל תפספס את ההזדמנות לרכוש את האופניים שיביאו אותך לקצה החדש של חוויות הרכיבה שלך!",
     "specs": {
       "frame": "Aluminium FAST HT Frame",
       "fork": "suspension fork 100mm",
@@ -1668,253 +1107,6 @@
     "source": {
       "importer": "Cobra-Bordo",
       "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7526957-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2025-SCOTT-Scale-940"
-    },
-    "firm": "Scott",
-    "model": "Scale 940",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "hardtail",
-    "original_price": 8900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15710134/show/e205ff6c89b55d9169eb33090dd14b2a.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15710134/large/e205ff6c89b55d9169eb33090dd14b2a.jpg"
-      ]
-    },
-    "rewritten_description": "גלה את ה-Scale 940 – האופניים שיביאו אותך לשיאים חדשים! מבית SCOTT, מדובר באופניים המשלבים טכנולוגיה מתקדמת עם עיצוב גאוני. עם שלדת קרבון קלה וגיאומטריה תחרותית, ה-Scale 940 מציע לך חווית רכיבה שאין כמותה. הכבלים המושחלים לחלוטין מעניקים לאופניים מראה נקי ומודרני, בעוד שהבולם זעזועים של RockShox עם מהלך של 100 מ'מ מבטיח נוחות וביצועים מרהיבים בכל מסלול.  המערכת ההינע של SRAM NX-SX Eagle מציעה גמישות ודיוק, כך שתוכל להתמודד עם כל אתגר בקלות ובסגנון. רכיבי Syncros משלימים את החבילה, ומבטיחים עמידות ואיכות שלא תמצא בשום מקום אחר.  אם אתה מחפש את השלדה המתקדמת ביותר במחיר משתלם, ה-Scale 940 הוא הבחירה המושלמת עבורך. אל תפספס את ההזדמנות לרכוש את האופניים שיכולים להפוך כל רכיבה להרפתקה בלתי נשכחת!",
-    "specs": {
-      "frame": "Scale Carbon HMF Adjustable head angle / Syncros Cable Integration System Advanced Shock & Standing Damping System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "RockShox Judy Silver TK Solo Air 15x110mm QR axle / 42mm offset / Tapered Steerer Reb. Adj. / Lockout / 100mm travel",
-      "control_system": "SCOTT RideLoc 2 Remote",
-      "rear_derailleur": "SRAM NX Eagle 12 Speed",
-      "shifters": "SRAM SX Eagle Trigger",
-      "crankset": "SRAM SX Eagle DUB 55mm CL / 32T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN SX Eagle",
-      "cassette": "SRAM SX-PG1210 / 11-50 T",
-      "brakes": "Shimano MT200 Disc Brake",
-      "rotors": "Shimano SM-RT10 CL / 180/F and 160/R",
-      "handlebar": "Syncros Alloy 6061 T shape Flat / 9° / 740mm Syncros Performance XC lock-on grips",
-      "stem": "Syncros Alloy 6061 oversized 31.8mm / 1 1/8' / 6° angle",
-      "seatpost": "Syncros / 31.6x400mm",
-      "saddle": "Syncros Belcarra Regular 2.5",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-3248 / 12x148mm",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "rims": "Syncros X-30SE / 32H / 30mm Tubeless ready",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "front_tire": "Schwalbe Smart Sam 29x2.35' / Active line",
-      "rear_tire": "Schwalbe Smart Sam 29x2.35' / Active line",
-      "weight": "12.7 ק'ג"
-    },
-    "fork length": 100,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7526861-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2025-SCOTT-Scale-RC-Comp"
-    },
-    "firm": "Scott",
-    "model": "Scale RC Comp",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "hardtail",
-    "original_price": 11900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/16160467/show/c8b4077563b8bc3f5ec71904574a18a5.png",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15709775/large/4bd3a93a9c7f14f4ea0bef394730294f.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/16160467/large/c8b4077563b8bc3f5ec71904574a18a5.png",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15709775/large/4bd3a93a9c7f14f4ea0bef394730294f.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/16160467/large/c8b4077563b8bc3f5ec71904574a18a5.png"
-      ]
-    },
-    "rewritten_description": "**גלה את חווית הרכיבה האולטימטיבית עם אופני SCOTT Scale RC Comp!**  האם אתה מוכן להעלות את הרכיבה שלך לרמה הבאה? אופני SCOTT Scale RC Comp הם לא סתם אופניים – הם מכונת תחרות שנועדה לספק מהירות שאין כמוה. עם שלדת קרבון HMF קלה וחזקה, אתה יכול להיות בטוח שהביצועים שלך יעמדו בסטנדרטים הגבוהים ביותר.  בולם הזעזועים המתקדם של RockShox SID SL עם מהלך של 100 מ'מ מבטיח לך רכיבה חלקה ומדויקת, גם על השבילים הקשים ביותר. מערכת ההינע של SRAM NX Eagle מבטיחה שאתה תמיד עם ההילוך הנכון, כך שתוכל להתמודד עם כל אתגר בדרך.  ולא נשכח את הברקסים המתקדמים של Shimano MT401 Disc – הם מספקים עוצמת בלימה מדויקת ובטוחה, כך שתוכל להתרכז ברכיבה שלך בלי דאגות.  ה-SCOTT Scale RC Comp לא רק מתהדר במאפיינים טכנולוגיים מתקדמים, אלא גם מבטיח חווית רכיבה בלתי נשכחת. הצטרף למהפכה – רכב על ה-SCOTT Scale RC Comp והרגש את ההבדל!",
-    "specs": {
-      "frame": "Scale Carbon HMF Adjustable head angle / Syncros Cable Integration System Advanced Shock & Standing Damping System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "RockShox SID SL 3P Air Rush RL 3-Mode Damper 15x110mm Maxle Stealth / 44mm offset / Tapered steerer Lockout / Reb. Adj. / 110mm travel",
-      "control_system": "SCOTT RideLoc Technology 3 Suspension modes",
-      "rear_derailleur": "SRAM NX Eagle 12 Speed",
-      "shifters": "SRAM NX Eagle Trigger",
-      "crankset": "SRAM NX Eagle DUB 55mm CL / 32T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN NX Eagle",
-      "cassette": "SRAM SX-PG1230 / 11-50",
-      "brakes": "Shimano MT401 Disc",
-      "handlebar": "Syncros Fraser 2.0 XC Alloy 6061 D.B. Flat Bar / 8° / 740mm Syncros Performance XC lock-on grips",
-      "stem": "Syncros DC 3.0 Syncros Cable Integration System 0° rise / 6061 Alloy / 31.8mm / 1 1/8'",
-      "seatpost": "Syncros / 31.6x400mm",
-      "saddle": "Syncros Belcarra Regular 2.5",
-      "front_tire": "Maxxis Rekon Race / 29x2.4' / 120TPI Foldable Bead Tubeless Ready / EXO",
-      "rear_tire": "Maxxis Rekon Race / 29x2.4' / 120TPI Foldable Bead Tubeless Ready / EXO",
-      "rotors": "Shimano SM-RT10 CL / 180/F and 160/R",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-3248 / 12x148mm",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "rims": "Syncros X-30SE / 32H / 30mm Tubeless ready",
-      "weight": "11.9 ק'ג"
-    },
-    "fork length": null
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/4901570--%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Scale-950"
-    },
-    "firm": "Scott",
-    "model": "Scale 950",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "hardtail",
-    "original_price": 9300,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/13590788/show/80d3d4a64d303cf3fbfd63f1135ec49c.png",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9501266/large/b051a02f2d93bf5fd90db753f8e2b9a8.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/13590788/large/80d3d4a64d303cf3fbfd63f1135ec49c.png",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9501266/large/b051a02f2d93bf5fd90db753f8e2b9a8.jpg",
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/13590788/large/80d3d4a64d303cf3fbfd63f1135ec49c.png"
-      ]
-    },
-    "rewritten_description": "🚴‍♂️ **הזדמנות שלא תרצו לפספס!** 🚴‍♂️  שימו לב! במלאי שלנו מידה XL של ה-Lebeda Scale 950 מבית SCOTT – אופני הרים מהשורה הראשונה, שנוצרו בהשראת תחרויות עילית. השנה, SCOTT מתעלה על כל הציפיות ומביאים לעולם את הדור החדש של אופני ההרים עם זנב קשיח.  💥 **עיצוב ייחודי ואגרסיבי** 💥 האופניים הללו מצטיינים בגיאומטריה מתקדמת שמציעה ביצועים מרהיבים בכל מסלול. עם קווים נקיים ומראה חזק, ה-SCALE 950 לא רק מספקים חווית רכיבה יוצאת דופן, אלא גם מושכים את העין בכל פינה.  ✨ **מאפיינים מדהימים** ✨ ה-SCALE 950 תוכננו עבור רוכבים שמחפשים את האתגר הבא – הם מתאימים לכל תנאי שטח, מציעים יציבות וביצועים גבוהים, ומספקים את האיזון המושלם בין מהירות לשליטה.  אל תפספסו את ההזדמנות לרכוש אופניים שיכולים לעשות הכל. חווית רכיבה שאין כמותה מחכה לכם! 🌟  🔗 **הזמינו עכשיו ותהיו חלק מהמהפכה של SCOTT!**",
-    "specs": {
-      "frame": "Scale Alloy 6061 Custom Butted Tubing Syncros Cable Integration System / Tapered Headtube BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "FOX 32 Float Rhythm Grip 3-Modes / 15x110mm QR axle / 44mm offset / tapered steerer Reb. Adj. / Lockout / 100mm travel",
-      "control_system": "SCOTT RideLoc 2 Technology 3 Suspension modes",
-      "rear_derailleur": "Shimano XT RD-M8100 SGS Shadow Plus / 12 Speed",
-      "shifters": "Shimano Deore SL-M6100-R / Rapidfire Plus",
-      "crankset": "Praxis Cadet M24",
-      "bottom_bracket": "Praxis M24 BB92",
-      "chain": "KMC X12",
-      "brakes": "Shimano MT501 Disc Brake",
-      "rotors": "Shimano SM-RT64 CL / 180/F and 160/R",
-      "handlebar": "Syncros Alloy 6061 T shape Flat / 9° / 740mm Syncros Performance XC lock-on grips",
-      "seatpost": "Syncros / 31.6x400mm",
-      "saddle": "Syncros Belcarra Regular 2.0 CrMo rails",
-      "cassette": "Shimano Deore CS-M6100-12 / 10-51 T",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-3248M / 12x148mm / Micro Spline",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "rims": "Syncros X-27 / 32H / 27mm",
-      "צמיגי קדמי": "Maxxis Rekon Race / 2.4' / 60TPI Foldable",
-      "rear_tire": "Maxxis Rekon Race / 2.4' / 60TPI Foldable",
-      "pedals": "Femin FP873ZU",
-      "headset": "Syncros - Acros OE Cable Routing HS System OD 50/62mm / ID 42/56mm",
-      "stem": "Syncros DC 3.0 Syncros Cable Integration System 0° rise / 6061 Alloy / 31.8mm / 1 1/8'",
-      "weight": "12.7"
-    },
-    "fork length": 100,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/4901711--%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Scale-965"
-    },
-    "firm": "Scott",
-    "model": "Scale 965",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "hardtail",
-    "original_price": 6300,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/9501268/show/4c98751d10e0274cb13dac9b2f2542e0.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/9501268/large/4c98751d10e0274cb13dac9b2f2542e0.jpg"
-      ]
-    },
-    "rewritten_description": "**הכירו את ה-SCALE 965 – המהות של ביצועים ואיכות!**  אופני ההרים ה-SCALE 965 מבית SCOTT הם התגשמות של טכנולוגיה מתקדמת ועיצוב חדשני, שנוצרו בהשראת תחרויות ברמה הגבוהה ביותר. בשנת 2023, SCOTT קובעים רף חדש בעולם אופני ההרים עם זן חדש לגמרי של אופניים זנב קשיח – אופניים שמביאות עימן עיצוב נקי, חד ומרשים, שמעניק להן אופי ייחודי ומראה אגרסיבי שלא ניתן להתעלם ממנו.  עם ה-SCALE 965 אתם לא רק מתמודדים עם השטח – אתם שואפים לגבהים חדשים! מאפיינים מרהיבים, טכנולוגיות מתקדמות וביצועים עוצרי נשימה הופכים את האופניים הללו לכלי אידיאלי לכל רוכב, בין אם אתם מקצוענים או חובבים.   ה-SCALE 965 לא רק נראים טוב, הם גם מצוידים בטכנולוגיות מתקדמות שמאפשרות לכם להתמודד עם אתגרים בכל מסלול. עם יכולת תגובה מהירה, יציבות וביצועים בלתי מתפשרים, אתם מוכנים לפגוש כל הרפתקה.  אל תפספסו את ההזדמנות לרכוש את ה-SCALE 965 – האופניים שיגרמו לכם להרגיש שהשמיים הם הגבול! רכבו על האופניים שיכולים לעשות הכל – ותנו ליצירתיות שלכם לפרוץ גבולות!",
-    "specs": {
-      "frame": "Scale Alloy 6061 Custom Butted Tubing Syncros Cable Integration System / Tapered Headtube BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "RockShox Judy Silver TK Solo Air 15x110mm QR axle / 42mm offset / Tapered Steerer Reb. Adj. / Lockout / 100mm travel",
-      "control_system": "SCOTT RideLoc 2 Remote",
-      "rear_derailleur": "Shimano SLX RD-M7100 SGS Shadow Plus / 12 Speed",
-      "shifters": "Shimano Deore SL-M6100-R / Rapidfire Plus",
-      "crankset": "Praxis Cadet M24",
-      "bottom_bracket": "Praxis M24 BB92",
-      "chain": "KMC X12",
-      "brakes": "Shimano MT201 Disc Brake",
-      "rotors": "Shimano SM-RT10 CL / 180/F and 160/R",
-      "handlebar": "Syncros Alloy 6061 T shape Flat / 9° / 740mm Syncros Performance XC grips",
-      "seatpost": "Syncros / 31.6x400mm",
-      "saddle": "Syncros Belcarra Regular 2.5",
-      "cassette": "Shimano Deore CS-M6100-12 / 10-51 T",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-3248 / 12x148mm / Micro Spline",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "rims": "Syncros R27 / 32H / 27mm",
-      "front_tire": "Maxxis Rekon Race / 2.4' / 60TPI",
-      "rear_tire": "Maxxis Rekon Race / 2.4' / 60TPI",
-      "headset": "Syncros - Acros OE Cable Routing HS System OD 50/62mm / ID 42/56mm",
-      "stem": "Syncros Alloy 6061 oversized 31.8mm / 1 1/8' / 6° angle",
-      "pedals": "Femin FP873ZU",
-      "weight": "13.3 ק'ג"
-    },
-    "fork length": 100,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
-      "product_url": "https://www.cobra-bordo.co.il/items/7526595-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2025-SCOTT-Scale-920"
-    },
-    "firm": "Scott",
-    "model": "Scale 920",
-    "year": 2025,
-    "category": "mtb",
-    "sub_category": "hardtail",
-    "original_price": 10900,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708831/show/e3292d3c2dc9c96514ec6869261707ed.jpg",
-      "gallery_images_urls": [
-        "https://d3m9l0v76dty0.cloudfront.net/system/photos/15708831/large/e3292d3c2dc9c96514ec6869261707ed.jpg"
-      ]
-    },
-    "rewritten_description": "**אופני SCOTT Scale 920 – הכוח שביצועים!**  הכירו את אופני ה-Scale 920 מבית SCOTT – הדגם המוביל של סדרת האופניים המתקדמים. עם גיאומטריה שנוצרה בהשראת תחרויות ברמה הגבוהה ביותר, הם מציעים חוויית רכיבה שאין כמותה.  שלדת הקרבון HMF שלנו מציעה שילוב מושלם של קלות ועוצמה, עם תכנון, יצור וגימור ברמה הגבוהה ביותר שיגרום לכם להרגיש כאילו אתם רוכבים על ענן. מערכת ההינע של SRAM GX Eagle עם 12 הילוכים מבטיחה שאתם תמיד מוכנים לכל אתגר, בכל מסלול.  ולא נשכח את רכיבי Syncros, אשר מספקים לכם את הזנב הקשיח הטוב ביותר בשוק, כך שתוכלו להתמקד במה שחשוב – רכיבה מהירה, חלקה ומרגשת.   אל תפספסו את ההזדמנות להעלות את רמת הרכיבה שלכם עם SCOTT Scale 920. חוויית רכיבה בלתי נשכחת מחכה לכם! 🚴‍♂️✨",
-    "specs": {
-      "frame": "Scale Carbon HMF Adjustable head angle / Syncros Cable Integration System Advanced Shock & Standing Damping System BB92 / UDH Interface / 12x148mm with 55mm Chainline",
-      "fork": "FOX 32 SC Float Performance Air Grip 3-Modes / 15x110mm QR axle / 44mm offset / tapered steerer Lockout / Reb. Adj. / 100mm travel",
-      "control_system": "SCOTT RideLoc 2 Technology 3 Suspension modes",
-      "rear_derailleur": "SRAM GX Eagle 12 Speed",
-      "shifters": "SRAM NX Eagle Trigger",
-      "crankset": "SRAM GX Eagle DUB 55mm CL / 32T",
-      "bottom_bracket": "SRAM DUB PF 92 MTB Wide / shell 41x92mm",
-      "chain": "SRAM CN NX Eagle",
-      "cassette": "SRAM XG1275 / 10-52 T",
-      "brakes": "Shimano Deore M6100 Disc Brake",
-      "handlebar": "Syncros Fraser 2.0 XC Alloy 6061 D.B. Flat Bar / 8° / 740mm Syncros Performance XC lock-on grips",
-      "stem": "Syncros XC 2.0 Syncros Cable Integration System -12° rise / 6061 Alloy / 31.8mm / 1 1/8'",
-      "seatpost": "Syncros Duncan 2.0 31.6x400mm",
-      "saddle": "Syncros Belcarra Regular 2.0 CrMo rails",
-      "front_hub": "Formula CL-811 / 15x110mm",
-      "rear_hub": "Formula CL-14811 / 12x148mm / XD Driver",
-      "rotors": "Shimano SM-RT64 CL / 180/F and 160/R",
-      "rims": "Syncros X-30SE / 32H / 30mm Tubeless ready",
-      "headset": "Syncros - Acros Angle adjust & Cable Routing HS System +-0.6° head angle adjustment ZS56/28.6 – ZS56/40 MTB",
-      "spokes": "Stainless Black 15G / 1.8mm",
-      "front_tire": "Schwalbe Racing Ray 29x2.35' Performance Folding / TLE Tubeless ready / Addix",
-      "rear_tire": "Schwalbe Racing Ralph 29x2.35' Performance Folding / TLE Tubeless ready / Addix",
-      "weight": "11.3 ק'ג"
-    },
-    "fork length": 100,
-    "style": "cross-country"
-  },
-  {
-    "source": {
-      "importer": "Cobra-Bordo",
-      "domain": "https://www.cobra-bordo.co.il",
       "product_url": "https://www.cobra-bordo.co.il/items/8573243-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-FOIL-RC-PRO-2026"
     },
     "firm": "Scott",
@@ -1923,7 +1115,7 @@
     "category": "road",
     "sub_category": "road",
     "original_price": 46900,
-    "disc_price": null,
+    "disc_price": 28140,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804563/show/7c229104faf559c801656dccc2ce6bb4.jpg",
       "gallery_images_urls": [
@@ -1939,7 +1131,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804563/large/7c229104faf559c801656dccc2ce6bb4.jpg"
       ]
     },
-    "rewritten_description": "### הכירו את SCOTT Foil RC Pro 2026 – האופניים שיגרמו לכם לעוף על הכביש!  אם אתם מחפשים את השילוב המושלם בין מהירות, ביצועים ועיצוב מדהים, הגעתם למקום הנכון! אופני SCOTT Foil RC Pro 2026 מביאים עימם טכנולוגיה מתקדמת ועיצוב אווירודינמי שאין כמותו.  #### תכנים מרהיבים: - **שלדת קרבון HMX**: קלות משקל עם עמידות גבוהה, שתשאיר אתכם מרוכזים במה שחשוב – מהירות! - **גאומטריית מרוץ אווירודינמית**: עיצוב שמפחית חיכוך עם האוויר, כך שתוכלו להגיע ליעד שלכם מהר יותר. - **מערכת הילוכים Shimano Dura-Ace Di2**: 24 הילוכים אלקטרוניים, המבטיחים שינויים חלקים ומדויקים, בכל מצב. - **בלמי דיסק הידראוליים**: שליטה מוחלטת וביטחון בכל תנאי מזג האוויר.  #### חווית רכיבה מושלמת: עם **גלגלי Syncros Capital 1.0 S Aero** בגובה 60 מ'מ וצמיגי **Schwalbe PRO ONE Aero 700x28C**, תקבלו את השילוב המושלם של קלות ואווירודינמיקה, שיביא אתכם למרחקים חדשים בקלות ובמהירות. עם משקל כולל של **7.1 ק'ג**, כל רכיבה תהפוך לחוויה בלתי נשכחת.  #### למי זה מיועד? אופני SCOTT Foil RC Pro 2026 הם הבחירה האידיאלית לרוכבים שמחפשים את המקסימום – ביצועים גבוהים, מהירות מרשימה ואחיזה מצוינת, הן בקטעים שטוחים והן בעליות המאתגרות.  אל תפספסו את ההזדמנות לרכב על אופניים שמייצגים את הפסגה של טכנולוגיית הרכיבה! **הזמינו עכשיו** ותהפכו כל רכיבה לחוויה של פעם בחיים!",
+    "rewritten_description": "### הכירו את SCOTT Foil RC Pro 2026: האופניים שיביאו אתכם לשיאים חדשים!  אם אתם רוכבים שמחפשים את האופניים המושלמים לאתגרים הבאים שלכם, הגעתם למקום הנכון! SCOTT Foil RC Pro 2026 מציע חוויית רכיבה שאין דומה לה, עם טכנולוגיות מתקדמות ועיצוב פרימיום שיביאו את הביצועים שלכם לרמה חדשה.  #### תכונות עיקריות: - **שלדת קרבון HMX**: קלה וקשיחה, עם גאומטריה אווירודינמית שמפחיתה את התנגדות הרוח ומספקת מהירות מרשימה. - **מערכת הילוכים Shimano Dura-Ace Di2**: הילוכים אלקטרוניים מדויקים עם 24 הילוכים, המאפשרים לכם להרגיש את הכוח בכל פנייה ובכל עליה. - **בלמים דיסק הידראוליים**: שליטה מושלמת וביטחון בכל תנאי מזג האוויר, כך שתמיד תרגישו בטוחים על הכביש. - **גלגלי Syncros Capital 1.0 S Aero 60 מ'מ**: מספקים שילוב מושלם של קלות ואווירודינמיקה, כדי שתוכלו להתרכז במהירות ובביצועים. - **צמיגי Schwalbe PRO ONE Aero 700×28C**: מציעים אחיזה מעולה, גם בקטעים שטוחים וגם בעליות.  עם משקל של רק 7.1 ק'ג, SCOTT Foil RC Pro 2026 הוא הבחירה המושלמת לרוכבים שמחפשים לעבור את הגבולות שלהם. בין אם אתם מתמודדים עם מירוצים תחרותיים או פשוט נהנים מרכיבות ארוכות, האופניים הללו יעניקו לכם את הביצועים המירביים שאתם זקוקים להם.  #### למה אתם מחכים?  הצטרפו לרוכבים המובילים והתחילו את המסע שלכם עם SCOTT Foil RC Pro 2026. תחוו את השילוב המושלם של טכנולוגיה מתקדמת, עיצוב מרהיב וביצועים בלתי מתפשרים! 🚴‍♂️💨",
     "specs": {
       "frame": "FOIL RC Disc HMX Road Race geometry, Replaceable Derailleur Hanger Internal cable routing",
       "fork": "FOIL Disc HMX 1' Eccentric Carbon steerer",
@@ -1967,6 +1159,109 @@
     "source": {
       "importer": "Cobra-Bordo",
       "domain": "https://www.cobra-bordo.co.il",
+      "product_url": "https://www.cobra-bordo.co.il/items/8573312-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-FOIL-RC-10-2026"
+    },
+    "firm": "Scott",
+    "model": "FOIL RC 10",
+    "year": 2026,
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 32900,
+    "disc_price": 19740,
+    "images": {
+      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804794/show/644b98fbd60c80b733a5916c4a52a187.jpg",
+      "gallery_images_urls": [
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804801/large/c90236008422eebe1578d6c6ee48f025.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804794/large/644b98fbd60c80b733a5916c4a52a187.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804795/large/592abbbfd3e7c15eefa9a08b1e41565e.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804796/large/fc046d3f4483cc656f95955a929d7b3f.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804797/large/9d5eca981fca21eeb2adaf8d4c49a099.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804798/large/860fbeff03969ac1cdbfcb2752d3b177.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804800/large/2e5f7bde1af6156e6dc7e368d443fd79.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804801/large/c90236008422eebe1578d6c6ee48f025.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804794/large/644b98fbd60c80b733a5916c4a52a187.jpg"
+      ]
+    },
+    "rewritten_description": "**אופני SCOTT Foil RC 10 2026 - חווית רכיבה שלא הכרתם!**  הכירו את אופני SCOTT Foil RC 10 2026 - הבחירה המושלמת לרוכבים שמחפשים את הטוב ביותר! עם שלדת קרבון HMX מתקדמת וגאומטריית מרוץ אווירודינמית, האופניים הללו מעוצבים כדי להעניק לכם את הביצועים המקסימליים בכל רכיבה.  **ביצועים ללא תחרות**: מערכת הילוכים Shimano Ultegra Di2 אלקטרונית עם 24 הילוכים מבטיחה שינויים חלקים ומדויקים, כך שתוכלו להתרכז במה שחשוב באמת - המהירות! הבלמים ההידראוליים דיסק מבטיחים עצירה בטוחה גם בתנאים קשים.  **קלות ואווירודינמיקה**: עם משקל של 7.9 ק'ג בלבד, הגלגלים של Syncros Capital 1.0 מספקים שילוב מושלם של קלות ואווירודינמיקה, כך שתוכלו להרגיש את הרוח על פניכם בכל פנייה ובכל עלייה.  **עיצוב מתקדם**: טכנולוגיית F01 Airfoil מבטיחה אווירודינמיקה משופרת, כך שתוכלו להרגיש את הפער במהירות ובביצועים גם בקטעים שטוחים וגם בעליות מאתגרות.  אם אתם רוכבים שמבינים את החשיבות של איכות וביצועים, אופני SCOTT Foil RC 10 2026 הם הבחירה הנכונה עבורכם. הגיע הזמן להרגיש את ההבדל ולכבוש את הדרך! 🚴‍♂️💨",
+    "specs": {
+      "frame": "FOIL RC Disc HMX Road Race geometry, Replaceable Derailleur Hanger Internal cable routing",
+      "fork": "FOIL Disc HMX 1' Eccentric Carbon steerer",
+      "rear_derailleur": "Shimano Ultegra Di2 RD-R8150 24 Speed Electronic Shift System",
+      "front_derailleur": "Shimano Ultegra Di2 FD-R8150 Electronic Shift System",
+      "shifters": "Shimano Ultegra Di2 ST-R8170 24 Speed Electronic Shift System",
+      "crankset": "Shimano Ultegra FC-R8100 Hollowtech II 52x36 T",
+      "bottom_bracket": "Shimano SM-BB71-41B",
+      "chain": "Shimano CN-M8100-12",
+      "cassette": "Shimano Ultegra CS-R8100-12 11-34",
+      "brakes": "Shimano BR-R8170 Hyd.Disc",
+      "rotors": "Shimano RT-CL800 rotor 160/F and 140/R",
+      "handlebar": "Syncros Creston 1.0 Aero",
+      "stem": "Syncros Foil 1.5 Aero",
+      "seatpost": "Syncros Duncan SL Aero CFT",
+      "saddle": "Syncros Belcarra V 2.0 NEO Cut Out",
+      "headset": "Acros AIF-1138",
+      "wheels": "Syncros Capital 1.0 60 24 Front, 24 Rear Syncros SL Axle, Removable Lever with Tool",
+      "front_tire": "Schwalbe PRO ONE Aero, TL-Easy, Fold, 700x28C",
+      "rear_tire": "Schwalbe PRO ONE Aero, TL-Easy, Fold, 700x28C",
+      "weight": "7.9 ק'ג"
+    },
+    "fork length": null
+  },
+  {
+    "source": {
+      "importer": "Cobra-Bordo",
+      "domain": "https://www.cobra-bordo.co.il",
+      "product_url": "https://www.cobra-bordo.co.il/items/8572864-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2026-2025-SCOTT-ADDICT-RC-10"
+    },
+    "firm": "Scott",
+    "model": "/  ADDICT RC 10",
+    "year": 2026,
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 34900,
+    "disc_price": 20940,
+    "images": {
+      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803022/show/eb515269197d0e69c2a0b1f9270cfd8b.jpg",
+      "gallery_images_urls": [
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803036/large/7fca23a539b44ab1082dc356424b1871.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803022/large/eb515269197d0e69c2a0b1f9270cfd8b.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803023/large/54c7597434821f784e295518812275c6.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803024/large/963e7d8018d127feb8236d20c530de3d.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803025/large/1f1134a431b3eb308d39dd7dfaf25ec2.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803035/large/59b625b2195347ab85cd5a481be367b6.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803036/large/7fca23a539b44ab1082dc356424b1871.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18803022/large/eb515269197d0e69c2a0b1f9270cfd8b.jpg"
+      ]
+    },
+    "rewritten_description": "הכירו את ה-Addict RC החדשים – האופניים שנוצרו כדי להוביל אתכם לפסגה! עם שלדה קלילה במיוחד וטכנולוגיה פורצת דרך, הם מציעים את השילוב המושלם בין מהירות לדיוק. בין אם אתם מתמודדים בעליות תלולות או פשוט מחפשים את הרכיבה החלקה והמהירה ביותר, ה-Addict RC כאן כדי להעניק לכם יתרון משמעותי על המתחרים. אל תפספסו את ההזדמנות לשדרג את הביצועים שלכם ולהרגיש את ההבדל בכל פנייה ובכל קו סיום!",
+    "specs": {
+      "frame": "Addict RC HMX Road Race geometry, Replaceable Derailleur Hanger Internal cable routing",
+      "fork": "Addict RC HMX Flatmount Disc 27.2mm Eccentric Carbon steerer",
+      "rear_derailleur": "Shimano Ultegra Di2 RD-R8150 24 Speed Electronic Shift System",
+      "front_derailleur": "Shimano Ultegra Di2 FD-R8150 Electronic Shift System",
+      "shifters": "Shimano Ultegra Di2 ST-R8170 Electronic Shift System",
+      "crankset": "Shimano Ultegra FC-R8100 Hollowtech II 52x36",
+      "bottom_bracket": "Shimano SM-BB71-41B",
+      "chain": "Shimano CN-M8100-12",
+      "cassette": "Shimano Ultegra CS-R8101-12 11-34",
+      "brakes": "Shimano BR-R8170 Hyd.Disc",
+      "rotors": "Shimano RT-CL800 rotor 160/F and 140/R",
+      "handlebar": "Syncros IC-R100-SL Carbon combo",
+      "seatpost": "Syncros SP-R101-CF",
+      "saddle": "Syncros Belcarra Regular 2.0",
+      "headset": "Acros AIF-1317",
+      "wheels": "Syncros Capital 1.0S 40mm 24 Front, 24 Rear Syncros SL Axle",
+      "accessories": "Syncros iS Drop Bar Tool 2",
+      "front_tire": "Schwalbe ONE TLE Race-Guard Fold, 700x30C",
+      "rear_tire": "Schwalbe ONE TLE Race-Guard Fold, 700x30C",
+      "weight": "7"
+    },
+    "fork length": null
+  },
+  {
+    "source": {
+      "importer": "Cobra-Bordo",
+      "domain": "https://www.cobra-bordo.co.il",
       "product_url": "https://www.cobra-bordo.co.il/items/7880190-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-2026-2025-SCOTT-ADDICT-RC-20-"
     },
     "firm": "Scott",
@@ -1987,7 +1282,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/16445964/large/c554f29ef263b8b29d3093662273e8c9.jpg"
       ]
     },
-    "rewritten_description": "הכירו את ה-Addict RC החדשים – האופניים שיביאו את הביצועים שלכם לשיאים חדשים! עם שלדה קלילה במיוחד וטכנולוגיה מתקדמת, כל רכיבה תהפוך לחוויה בלתי נשכחת. בין אם אתם מתמודדים עם עליות תלולות או רוכבים במהירות לקו הסיום, ה-Addict RC מציעים לכם את היתרון המושלם על המתחרים. הגיע הזמן לשדרג את הרכיבה שלכם ולכבוש כל מסלול עם האופניים שיכולים להוציא את המיטב מכם. אל תפספסו את ההזדמנות – הצטרפו למהפכה של ה-Addict RC!",
+    "rewritten_description": "הכירו את ה-Addict RC החדשים – האופניים שעושים את ההבדל! עם שלדה קלילה וחדשנית, הם נבנו במיוחד כדי לשדרג את הביצועים שלכם ולתת לכם את היתרון המיוחל על פני המתחרים. טכנולוגיה מתקדמת מבטיחה רכיבה חלקה ומהירה, כך שתוכלו לכבוש כל עלייה תלולה ולהרגיש את הרוח השורקת סביבכם. תנו לעצמכם את ההזדמנות לנצח – עם ה-Addict RC, הקו הסיום הוא רק ההתחלה!",
     "specs": {
       "frame": "Addict RC HMX Road Race geometry, Replaceable Derailleur Hanger Internal cable routing",
       "fork": "Addict RC HMX Flatmount Disc 27.2mm Eccentric Carbon steerer",
@@ -2004,7 +1299,7 @@
       "seatpost": "Syncros SP-R101-CF",
       "saddle": "Syncros Belcarra Regular 2.0",
       "headset": "Acros AIF-1317",
-      "wheels": "Syncros Capital 1.0 40 24 Front, 24 Rear Syncros SL Axle",
+      "wheels": "Syncros Carbon Capital 1.0 40 24 Front, 24 Rear Syncros SL Axle",
       "stem": "Syncros ST-R100-AL",
       "accessories": "Syncros iS Drop Bar Tool 2",
       "front_tire": "Schwalbe ONE TLE Race-Guard Fold, 700x30C",
@@ -2042,7 +1337,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/16445841/large/1613e3050bbaafa47dc37648d64e1974.jpg"
       ]
     },
-    "rewritten_description": "**SCOTT ADDICT RC 30 – האופניים שיביאו אתכם לפסגה!**  אם אתם רוכבים מלאי תשוקה שמחפשים את האתגר הבא שלכם, או מתחרים נחושים שאינם מוכנים להתפשר – ה-SCOTT ADDICT RC 30 הוא הכלי המושלם עבורכם! אופני כביש מתקדמים אלו נוצרו כדי להגדיר מחדש את גבולות הביצועים, ולהעניק לכם חווית רכיבה שאין כמותה.  עם שלדה אולטרה-קלה וקשיחה, ה-SCOTT ADDICT RC 30 מבטיחים להעניק לכם את המהירות והשליטה שאתם זקוקים להן. החיווט הפנימי המושלם מעניק לאופניים מראה אלגנטי ואווירודינמי, בעוד מערכת הבלמים העוצמתית מבטיחה לכם שליטה מלאה גם בירידות התלולות ביותר. כל רכיבה על ה-SCOTT ADDICT RC 30 מתורגמת לעוצמה, חלקות וביטחון, והופכת את האתגרים לנסיעות מהנות.  בין אם אתם מתמודדים עם עליות מאתגרות או פשוט רוצים ליהנות מרכיבה מהירה על הכביש, המפרט הטכני המוביל של ה-ADDICT RC 30 ייתן לכם את המענה המושלם לכל מסלול. כל דיווש שלכם ירגיש כאילו אתם מעופפים, ומדובר באופניים שיכולים להפוך כל טיפוס לאפשרי.  **זמינות:** - צבע כחול - מידה S בלבד - צבע שחור - מידות XS, S, L, XL  אל תחמיצו את ההזדמנות לרכוש את SCOTT ADDICT RC 30 – כי כשיש לכם את הכלי הנכון, אין מסלול שאי אפשר לנצח!",
+    "rewritten_description": "**SCOTT ADDICT RC 30 – האופניים שיביאו אתכם לפסגה!**  אם אתם רוכבים מלאי תשוקה או מתחרים עם רצון עז להגיע להישגים חדשים, ה-SCOTT ADDICT RC 30 הוא הכלי המושלם עבורכם. אופני הכביש המתקדמים הללו מעצבים מחדש את חווית הרכיבה עם טכנולוגיה מתקדמת וביצועים שאין להם תחליף.  **מה הופך את ה-SCOTT ADDICT RC 30 לייחודיים?** - **שלדה אולטרה-קלה וקשיחה:** תיהנו מעוצמה מרבית בכל דיווש, שמאפשרת לכם להתמודד עם כל עלייה בקלות ובחינניות. - **חיווט פנימי:** עיצוב אלגנטי ואווירודינמי שמסייע לשפר את הביצועים שלכם, ולשמור על המראה המושך של האופניים. - **מערכת בלמים מתקדמת:** שליטה מלאה וביטחון גם בירידות התלולות ביותר, כך שתמיד תרגישו בטוחים על הכביש.  עם מפרט טכני מהשורה הראשונה, ה-SCOTT ADDICT RC 30 מתמודד עם כל מסלול ומספק את המענה המושלם לכל אתגר. כל דיווש מתורגם לעוצמה, כל ירידה חלקה ובטוחה, וכל טיפוס מרגיש פתאום אפשרי יותר.  **ה-SCOTT ADDICT RC 30 – כי עם הכלים הנכונים, אין גבולות לרכיבה שלכם!**  זמין בצבע כחול במידה S בלבד, ובצבע שחור במידות XS, S, L, XL. אל תפספסו את ההזדמנות להעלות את הרכיבה שלכם לרמה הבאה!",
     "specs": {
       "frame": "Addict RC HMX Road Race geometry, Replaceable Derailleur Hanger Internal cable routing",
       "fork": "Addict RC HMX Flatmount Disc 27.2mm Eccentric Carbon steerer",
@@ -2059,7 +1354,7 @@
       "seatpost": "Syncros SP-R101-CF",
       "saddle": "Syncros Belcarra Regular 2.0",
       "headset": "Acros AIF-1317",
-      "wheels": "Syncros Capital 1.0 X40 24 Front, 24 Rear Syncros SL Axle",
+      "wheels": "Syncros Carbon Capital 1.0 X40 24 Front, 24 Rear Syncros SL Axle",
       "stem": "Syncros ST-R100-AL",
       "accessories": "Syncros iS Drop Bar Tool 2",
       "front_tire": "Schwalbe ONE TLE Race-Guard Fold, 700x30C",
@@ -2080,7 +1375,7 @@
     "category": "road",
     "sub_category": "road",
     "original_price": 14950,
-    "disc_price": null,
+    "disc_price": 7990,
     "images": {
       "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804897/show/e6d7cc80e86c4bafda1703023521c0f3.jpg",
       "gallery_images_urls": [
@@ -2095,7 +1390,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/18804897/large/e6d7cc80e86c4bafda1703023521c0f3.jpg"
       ]
     },
-    "rewritten_description": "### גלו את אופני SCOTT Addict 50: חוויית רכיבה שאין כמותה!  אם אתם מחפשים את האיזון המושלם בין ביצועים מרהיבים לנוחות מקסימלית, אופני SCOTT Addict 50 הם הבחירה המושלמת עבורכם. עם שלדת קרבון HMF המתקדמת, תוכלו ליהנות מביצועים אווירודינמיים שמקנים לכם יתרון על הכביש.   השלדה הגמישה, שהיא ב-25% יותר רכה מהדור הקודם, מפחיתה את תחושת הכביש ומספקת נוחות מרבית, כך שתוכלו לרכב למרחקים ארוכים מבלי להרגיש עייפות. הגאומטריה הפתוחה והנוחה מתאימה לכל סוגי הרוכבים, עם מרווח לצמיגים עד 38 מ'מ, מה שמאפשר לכם לצאת לרכיבות על משטחים מגוונים – מהכביש החלק ועד השבילים המאתגרים.  בזכות מערכת ההילוכים Shimano 105 וגלגלי Syncros RP2.0 עם צמיגי Schwalbe ONE, תיהנו מביצועים אמינים ואיכותיים בכל רכיבה. בין אם אתם מעדיפים ליהנות מהנוף או לרכב במהירות, ה-SCOTT Addict 50 יתן לכם את הכלים לעשות זאת בסטייל.  אל תפספסו את ההזדמנות להעלות את חוויית הרכיבה שלכם לרמה הבאה עם אופני SCOTT Addict 50 – רכיבה שתשאיר אתכם עם חיוך רחב על הפנים!",
+    "rewritten_description": "**אופני SCOTT Addict 50 – חוויית רכיבה שלא תשכחו!**  הכירו את אופני SCOTT Addict 50, הבחירה המושלמת לרוכבים שמעריכים ביצועים גבוהים ונוחות מרבית במחיר נגיש. עם שלדת קרבון HMF אווירודינמית, תיהנו משיפור של 25% בגמישות האנכית לעומת דגמים קודמים, מה שמפחית את רעידות הכביש ומאפשר לכם לרכב שעות ארוכות ללא תחושת עייפות.  צמיגים רחבים בגובה 34 מ'מ עם אפשרות למרווח של עד 38 מ'מ, מאפשרים לכם להתמודד עם מגוון משטחים, החל מכבישים סלולים ועד שטחים מעורבים.   מערכת ההילוכים Shimano 105 וגלגלי Syncros RP2.0 עם צמיגי Schwalbe ONE מבטיחים חוויית רכיבה חלקה ותגובה מהירה, כך שתוכלו להתמקד במה שחשוב – הכיף ברכיבה!  אל תפספסו את ההזדמנות לגלות את עולם הרכיבה מחדש עם אופני SCOTT Addict 50 – כי כל רכיבה צריכה להיות חוויה בלתי נשכחת!",
     "specs": {
       "frame": "Addict HMF Carbon Endurance geometry, Replaceable UDH Derailleur Hanger Internal cable routing Integrated storage",
       "fork": "Addict HMF Flatmount Disc 27.2mm Eccentric Carbon steerer",
@@ -2142,7 +1437,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/17666988/large/9cbebf8bd4d9433f4db2ff96a717e3a0.jpg"
       ]
     },
-    "rewritten_description": "**גלה את חוויית הרכיבה המושלמת עם אופני ה-SCOTTSpeedster 20!**  ה-SCOTTSpeedster 20 עברו שדרוגים מרשימים, והם עכשיו מצוידים בשלדה קלה יותר, חיווט פנימי גאוני וגיאומטריה מתונה המיועדת במיוחד לרכיבות ארוכות. אם אתם מחפשים את האופניים שיביאו אתכם רחוק יותר, מהר יותר ובנוחות מירבית, הגעתם למקום הנכון!  עם איזון מושלם בין נוחות ליעילות, משקל קל והעברת כוח מדויקת, ה-SCOTTSpeedster 20 הם האופניים האידיאליים לרוכבים שאוהבים אתגרים. מערכת הילוכים מתקדמת של Shimano ורכיבי Syncros איכותיים מעניקים לכם את הכלים הנכונים כדי לכבוש כל מסלול.  אל תתפשרו על חוויית הרכיבה שלכם! האופניים שלנו מצוידים בכל מה שצריך כדי להתמודד עם כל אתגר שיבוא בדרככם.   שימו לב: האופניים מגיעים ללא פדלים.  הצטרפו למהפכת הרכיבה עם SCOTTSpeedster 20 – חוויית רכיבה שלא תשכחו!",
+    "rewritten_description": "### ה-SCOTTSpeedster 20 – האופניים שיביאו את הרכיבה שלך לרמה הבאה!  הכירו את ה-SCOTTSpeedster 20 – דגם חדש ומתקדם, שעבר שדרוגים מרשימים כדי לספק לכם חוויית רכיבה שאין כמותה! עם שלדה קלה יותר, חיווט פנימי וגיאומטריה מתונה, ה-SCOTTSpeedster 20 מתאימים בצורה מושלמת לרכיבות ארוכות ומאתגרות.  ### למה לבחור ב-SCOTTSpeedster 20?  - **נוחות ויעילות**: העיצוב המתקדם של האופניים מבטיח איזון מושלם בין נוחות לרכיבה ויעילות מרבית, כך שתוכלו להתמודד עם כל אתגר בכיף ובקלות.    - **משקל נמוך**: עם שלדה קלה במיוחד, תרגישו את ההבדל בכל רכיבה – יותר מהירות, פחות מאמץ!  - **עברת כוח מושלמת**: מערכת הילוכים של Shimano ורכיבי Syncros איכותיים מבטיחים שאתם תמיד על המסלול הנכון, עם ביצועים שאין להם תחליף.  - **מוכנים לכל אתגר**: בין אם אתם רוכבים בשבילים עירוניים או במסלולים טכניים, ה-SCOTTSpeedster 20 מצוידים בכל מה שצריך כדי להעניק לכם חוויית רכיבה יוצאת דופן.  **שימו לב**: האופניים מגיעים ללא פדלים, כך שתוכלו להתאים את הרכיבים המועדפים עליכם.  אל תפספסו את ההזדמנות להעלות את הרכיבה שלכם על מסלול חדש! ה-SCOTTSpeedster 20 מחכים לכם – הצטרפו למסע! 🚴‍♂️💨",
     "specs": {
       "frame": "Speedster Disc / 6061 D.Butted Alloy Endurance geometry / int. cable routing Syncros fender kit ready",
       "fork": "Speedster HMF Disc 1 1/4'-1 1/2' Eccentric Carbon steerer",
@@ -2188,7 +1483,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15891814/large/55becf26ee984e31e2a6d90ef667ce0e.jpg"
       ]
     },
-    "rewritten_description": "**גלה את אופני ה-SCOTT Metrix 30 – השותף המושלם לרכיבה עירונית!**  אם אתה מחפש את האופניים שיביאו אותך ממקום למקום בעיר בסטייל ובנוחות, ה-Metrix 30 הם הבחירה האולטימטיבית. עם עיצוב ייחודי ואיכותי, אופני הכביש הללו מציעים לך חווית רכיבה שאין כמותה – בין אם זה לרכיבות יומיומיות או לסופי שבוע ספורטיביים.  ה-Metrix 30 מצוידים במערכת הילוכים מתקדמת של Shimano, המבטיחה לך שליטה מדויקת וקלות בהעברת הילוכים, כך שתוכל להתמודד עם כל אתגר עירוני בקלות ובנוחות. תנוחת הישיבה המפנקת שלהם מאפשרת לך לרכב שעות ארוכות מבלי להרגיש עייפות, בדיוק מה שאתה צריך כדי ליהנות מהרכיבה שלך.  אז למה לחכות? הפוך את הרכיבה שלך לחווית חיים עם ה-SCOTT Metrix 30 – האופניים שיביאו אותך לכל מקום בסטייל ונוחות! 🌟🚴‍♂️",
+    "rewritten_description": "### הכירו את אופני ה-SCOTT Metrix 30 – הבחירה המושלמת לרכיבה עירונית וספורטיבית!  אם אתם מחפשים אופניים שיביאו אתכם בקלות ובנוחות לכל מקום בעיר, ה-SCOTT Metrix 30 הם הפתרון המושלם עבורכם. עם עיצוב מודרני ותנוחת ישיבה נוחה, תוכלו לרכב בביטחון ובשליטה מלאה, בין אם זה בדרך לעבודה או במהלך רכיבת סוף שבוע מרגשת.  #### תכונות בולטות: - **מערכת הילוכים מתקדמת של Shimano**: מאפשרת לכם לבחור את ההילוך המתאים לכל מצב, כך שתמיד תהיו מוכנים לאתגרים של העיר. - **עיצוב קל ונוח**: האופניים מתאימים לרכיבה יומיומית, עם מסגרת קלה שמסייעת לכם להתנייד בקלות. - **תנוחת רכיבה אופטימלית**: תכנון ארגונומי שמספק לכם נוחות מרבית, גם במהלך רכיבות ארוכות.  עם ה-SCOTT Metrix 30, כל רכיבה הופכת לחוויה בלתי נשכחת. הצטרפו למהפכת הרכיבה העירונית והפכו כל יום להרפתקה חדשה!   אל תחכו – קחו את האופניים שלכם לבית היום! 🚴‍♂️✨",
     "specs": {
       "frame": "Metrix Disc / 6061 D.Butted Alloy Endurance geometry Replaceable Derailleur Hanger Syncros fender kit ready",
       "fork": "Metrix Alloy Disc 1 1/4'-1 1/2' Excentric Alloy steerer",
@@ -2244,7 +1539,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15992956/large/3a109b5f0ee1339c65efb39d358d9a9e.jpg"
       ]
     },
-    "rewritten_description": "**אופני נשים בסגנון “אופני קיבוץ” – חוויה נוסטלגית עם טוויסט מודרני!**  גלה את השילוב המושלם בין המסורת לחדשנות עם אופני הנשים שלנו בסגנון 'אופני קיבוץ'. בעיצוב קלאסי שמזכיר ימים יפים, אך עם טכנולוגיה מתקדמת שמותאמת לצרכים של היום.   עם שלדת ברזל קלה במיוחד, תוכלו ליהנות מעלייה וירידה נוחה מהאופניים, גם במקומות הצפופים ביותר. תיבת הילוכים מתקדמת עם 7 הילוכים של Shimano תאפשר לכם להתמודד בקלות עם עליות ואתגרים בשטח העירוני.  הדגם העירוני שלנו מציע נוחות רכיבה שאין כמותה. תנוחת הגוף הזקופה והאוכף המפנק מבטיחים לכם רכיבה נוחה בכל נסיעה, קטנה או גדולה.   אבל זה לא הכל! האופניים שלנו מצוידים בסבל חזק ונוח למשאות, סלסלה קדמית מובנית לשימוש יומיומי, ואוכף קפיצי רחב שמספק תמיכה מרבית. עם רגלית העמדה החזקה תרגישו בטוחות בכל עצירה.  גלגלי 26' המיועדים לספק יציבות ורכיבה חלקה, יאפשרו לכם להרגיש את החופש והנוחות בכל פנייה בעיר.   בחרו באופניים שלנו ותחוו רכיבה עם הרבה סטייל, נוחות וביטחון. אל תפספסו את ההזדמנות להיות חלק מהטרנד המרגש הזה!"
+    "rewritten_description": "**אופני נשים בסגנון 'אופני קיבוץ' - נוסטלגיה מודרנית!**  הכירו את הדגם החדש שלנו, שמביא את הרוח של פעם אל המאה ה-21! אופני הנשים בסגנון 'אופני קיבוץ' מצוידות בשלדת ברזל קלת משקל, בעיצוב שמדגיש נוחות וסטייל. עם 'רמה' נמוכה, עלייה וירידה מהאופניים מעולם לא הייתה קלה יותר!  ההילוכים של Shimano עם 7 מהירויות מבטיחים לכם חווית רכיבה חלקה גם בעליות ובשיפועים מאתגרים. התחילו את היום ברכיבה נוחה בעיר, עם תנוחת גוף זקופה ואוכף מפנק שיבטיחו לכם שעות של הנאה על הכביש.  דגם זה מגיע עם תוספות שיתאימו לכל צורך: סבל חזק ונוח לשאת את הציוד שלכם, סלסלה קדמית מובנית לאחסון קל, ואוכף קפיצי רחב שיבטיח לכם נוחות מרבית. בנוסף, הרגלית החזקה מאפשרת לכם להעמיד את האופניים בביטחון בכל מקום.  עם גלגלי 26 אינץ', תהנו משילוב מושלם של יציבות וזריזות, כך שתוכלו לרכב בסטייל ובנוחות בכל פינה בעיר.  אל תפספסו את ההזדמנות לרכב על אופניים שמשלבות בין נוסטלגיה למודרניות - בואו לגלות את החוויה החדשה שלכם!"
   },
   {
     "source": {
@@ -2271,7 +1566,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/13936157/large/208fc902c0bbe1b1dfd254de6d25f1db.jpg"
       ]
     },
-    "rewritten_description": "**אופני עיר בסגנון 'אופני קיבוץ' - חוויה נוסטלגית עם טכנולוגיה מתקדמת!**  הכירו את האופניים שיחזירו אתכם לתקופת הילדות, אך עם טוויסט מודרני! אופני העיר שלנו בסגנון 'אופני קיבוץ' מציעים שילוב מושלם של עיצוב רטרו מהמם וטכנולוגיות חדישות, כך שתוכלו ליהנות מרכיבה נוחה ומרעננת בכל פינה בעיר.  **מאפיינים עיקריים:**  - **שלדה קלת משקל:** עיצוב נוח המאפשר עלייה וירידה קלה מהאופניים, אידיאלי לרכיבה עירונית קלילה.    - **גיאומטריה נוחה:** רכיבה זקופה שמביאה איתה נוחות ואסתטיקה, כך שתוכלו לטפח את הסגנון האישי שלכם בכל רכיבה.  - **גלגלי אלומיניום בגודל 26':** גודל קלאסי המעניק יציבות ונוחות, מושלם לכל הכבישים והרחובות בעיר.  - **אוכף קפיצי רחב:** נוחות מקסימלית גם ברכיבות ארוכות, כך שתוכלו לטפח את האהבה לרכיבה מבלי להתפשר על נוחות.  - **סלסלה קדמית אינטגרלית:** פתרון אחסון מעולה לכל מה שצריך לקחת אתכם - קניות, תיק אישי או פריטים קטנים.  - **סבל אחורי חזק:** אידיאלי לנשיאת מטען, קניות או תיקי עבודה, כך שתוכלו להיות מוכנים לכל משימה.  - **בלמי אלומיניום V-Brakes:** מערכת בלימה בטיחותית וחזקה, שמזכירה את הימים הטובים של פעם.  **למה לבחור באופני עיר שלנו?** אם אתם מחפשים אופניים שמשלבים בין נוסטלגיה לאיכות מודרנית, הגעתם למקום הנכון! אופני העיר שלנו מציעים חווית רכיבה שאין כמותה, עם נוחות וסטייל שאין להם תחליף.   הצטרפו אלינו למסע בעיר עם אופניים שיגרמו לכם לחייך בכל רכיבה! אל תח"
+    "rewritten_description": "### אופני עיר בסגנון 'אופני קיבוץ' – נוסטלגיה מודרנית  חולמים על רכיבה נוחה בעיר עם נגיעה של נוסטלגיה? הכירו את אופני העיר בסגנון 'אופני קיבוץ' – שילוב מושלם של סגנון רטרו עם טכנולוגיה מתקדמת!   **עיצוב מדהים, טכנולוגיה מתקדמת** עם שלדה קלת משקל ועיצוב המשלב בין ישן לחדש, האופניים הללו מציעים לכם חוויה ייחודית. הגיאומטריה הנוחה מאפשרת רכיבה זקופה, אידיאלית לטיולים בעיר ובין אם מדובר ברכיבה יומיומית או טיול בסוף השבוע.  **מאפיינים עיקריים:** - **שלדה נמוכה וקלת משקל:** עלייה וירידה נוחות מהאופניים, מושלם לכל מי שמחפש פתרון תחבורה עירוני קליל. - **סבל אחורי חזק:** אידיאלי לנשיאת קניות, תיקים או כל מה שצריך לקחת איתכם. - **סלסלה קדמית מובנית:** פתרון אחסון נהדר למוצרים קטנים וחפצים אישיים, כך שתמיד תהיו מסודרים. - **אוכף קפיצי רחב:** מבטיח רכיבה נוחה גם למרחקים ארוכים, כדי שתוכלו ליהנות מהדרך. - **בלמי אלומיניום V-Brakes:** חזקים ובטוחים, בדיוק כמו שהיו פעם, עם יתרון של טכנולוגיה מודרנית. - **גלגלים בגודל 26':** גודל קלאסי שמספק יציבות ונוחות ברכיבה.  **למה לבחור באופני העיר שלנו?** עם אופני העיר שלנו, אתם לא רק קונים אופניים – אתם רוכשים חווית רכיבה מלאה בסגנון ובנוחות. תנו לעצמכם את המתנה של רכיבה קלה, מהנה וסטייליסטית בעיר, והצטרפו למהפכת התחבורה הירוקה!  אל תפספסו את ההזדמנות להרגיש את השילוב המושלם של עיצוב, נוחות וחדשנות. רכבו עם סטייל – רכבו על אופני"
   },
   {
     "source": {
@@ -2299,7 +1594,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15992711/large/2552b3a199ce462cee581cb646f17d26.jpg"
       ]
     },
-    "rewritten_description": "**אופני נשים בסגנון “אופני קיבוץ” - חווית רכיבה נוסטלגית עם טכנולוגיה מודרנית!**  גלה מחדש את חווית הרכיבה עם אופני הנשים שלנו, שמביאים את הקסם של פעם לעידן המודרני! עם שלדת ברזל קלה במיוחד ועיצוב נמוך, תוכל/י לעלות ולרדת מהאופניים בקלות ובנוחות.  **מה מחכה לך?** - **7 הילוכים של Shimano**: טכנולוגיה מתקדמת שתסייע לך להתמודד עם עליות ושיפועים בקלות ובנוחות. - **נוחות רכיבה בלתי מתפשרת**: תנוחת גוף זקופה ואוכף מפנק מבטיחים חווית רכיבה נוחה לאורך שעות. - **עיצוב הולנדי ייחודי**: סבל חזק ונוח למשאות, סלסלה קדמית מובנית, ואוכף קפיצי רחב - כל מה שצריך כדי לרכוב עם ביטחון וסטייל. - **גלגלי 26'**: נותנים לך את היציבות והנוחות הנדרשות בכל מסלול.  אז אם את מחפשת אופניים שמשלבים בין נוסטלגיה לאיכות גבוהה, אלו האופניים בשבילך! רכבו בביטחון, נוחות ועם הרבה סטייל - כי מגיע לך את הטוב ביותר!"
+    "rewritten_description": "**אופני נשים בסגנון 'אופני קיבוץ' – חוויה נוסטלגית בעידן המודרני!**  גלה את השילוב המושלם בין המסורת לחדשנות עם אופני הנשים שלנו, המיועדות לכל מי שמחפשת רכיבה נוחה, בטוחה ומלאת סטייל. בעיצוב קלאסי, אך עם טכנולוגיה מתקדמת, האופניים הללו מציעות:  - **שלדת ברזל קלה**: עם רמה נמוכה המאפשרת כניסה ויציאה נוחה, כך שתוכלי להרגיש חופשיה בכל רכיבה. - **7 הילוכים של Shimano**: מערכת הילוכים מתקדמת שתסייע לך להתמודד עם עליות ושיפועים בקלות ובנוחות, מבלי להתפשר על חוויית הרכיבה. - **תנוחת רכיבה זקופה**: כדי לשמור על הגב שלך ולספק לך נוחות מירבית, גם ברכיבות הארוכות ביותר. - **אוכף קפיצי רחב**: מפנק ונוח, שמפיג את העומס ומאפשר לך ליהנות מהדרך. - **סבל חזק וסלסלה קדמית**: מושלמים להובלת כל מה שאת צריכה – קניות, תיק או אפילו פיקניק עם חברות. - **גלגלי 26'**: מעניקים יציבות ויכולת תמרון מצוינת ברחובות העיר.  עם האופניים הללו, כל רכיבה תהפוך להרפתקה מלאת סטייל ונוחות. הגיע הזמן לרכוב על אופניים שיתאימו לאורח החיים שלך – בואי לגלות את החופש שבדרכים! 🌼🚴‍♀️"
   },
   {
     "source": {
@@ -2324,7 +1619,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15025668/large/7c9bfe325d3952c06f21f35e9d3bf025.png"
       ]
     },
-    "rewritten_description": "מחפשים את האופניים המושלמים לשטח במחיר נוח לכל כיס? ה-Fast XC620 הם הפתרון האידיאלי עבורכם!   עם גלגלי '26, אופניים אלו מציעים שילוב מנצח של איכות, אמינות ונוחות. המערכת של 21 הילוכים מבית Shimano תאפשר לכם לעבור בין השבילים השונים בקלות, בעוד שבלמי הדיסק המכניים יספקו לכם עצירה בטוחה בכל תנאי שטח.   הבולם הקדמי בגובה 60 מ'מ יספוג את הזעזועים ויבטיח רכיבה חלקה ונעימה, והגלגלים מאלומיניום הם גם חזקים וגם קלים, מה שיביא לכם יתרון משמעותי בשטח. הצמיגים המיוחדים מתאימים לרכיבות בדרכי עפר, כורכר וגם בדרכים סלולות, כך שהילד שלכם יוכל ליהנות מחווית רכיבה בלתי נשכחת בכל מסלול.  אל תפספסו את ההזדמנות לרכוש את ה-Fast XC620 ולהעניק לילדכם את חווית הרכיבה המושלמת!",
+    "rewritten_description": "מחפשים את האופניים המושלמים לשטח במחיר נגיש? הכירו את ה-Fast XC620 – הבחירה המושלמת עבורכם!   עם גלגלי '26, האופניים הללו מציעים שילוב אידיאלי של איכות, אמינות ומשתלמות. תיהנו מרכיבה חלקה עם 21 הילוכים מתקדמים של Shimano, שיביאו אתכם לכל יעד בקלות. הבלמים הדיסק המכניים מספקים עוצמת בלימה מעולה, גם בתנאים מאתגרים.  הבולם הקדמי בגובה 60 מ'מ יקל עליכם לעבור את השבילים הסלעיים והלא סלולים, בעוד שגלגלי האלומיניום החזקים והקלים יבטיחו לכם עמידות וביצועים מעולים. הצמיגים המיוחדים יאפשרו לכם ליהנות מחוויית רכיבה מדהימה, سواء על דרכי עפר, כורכר או אפילו בדרכים סלולות.  אל תפספסו את ההזדמנות להעניק לילדכם את הכלי המושלם להרפתקאות חדשות! ה-Fast XC620 – כי רכיבה בטוחה ומהנה מתחילה כאן. הזמינו עכשיו!",
     "specs": {
       "frame": "Aluminium FAST HT Frame",
       "fork": "suspension fork 60mm",
@@ -2359,7 +1654,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/5748345/large/64df4c6a3dfb27cb712080b6daf148d0.jpg"
       ]
     },
-    "rewritten_description": "מחפשים אופני שטח איכותיים במחיר נגיש? ה-Fast XC620 הם הבחירה המושלמת בשבילכם! עם גלגלי '26 שמספקים יציבות ונוחות בכל מסלול, אלו אופניים שמיועדים לתת לכם את חווית הרכיבה המושלמת.  ה-Fast XC620 מצוידים ב-21 הילוכים איכותיים של Shimano, כך שתוכלו להתמודד עם כל טיפוס או ירידה בקלות. הבלמים הדיסק המכניים מבטיחים עצירה בטוחה ומדויקת בכל תנאי שטח, והבולם הקדמי בגובה 60 מ'מ סופג את כל מהמורות הדרך, כך שתוכלו ליהנות מרכיבה חלקה ונעימה.  עם גלגלי אלומיניום קלים וחזקים, וצמיגים שמתאימים לכל סוגי השבילים – מעפר ועד סלולים – ה-Fast XC620 הם האופניים שיביאו אתכם לכל יעד, עם סטייל וביטחון. אל תפספסו את ההזדמנות לרכוש אופניים אמינים ואיכותיים במחיר שיתאים לכל כיס! רכיבה מהנה מתחילה כאן!",
+    "rewritten_description": "מחפשים את האופניים המושלמים לרכיבת שטח במחיר נוח? ה-Fast XC620 הם הבחירה האידיאלית עבורכם! עם גלגלי '26, האופניים הללו מציעים שילוב מושלם של איכות, עמידות וערך מצוין.   תתכוננו לחוות רכיבה חלקה ומלאה בהנאה עם 21 הילוכים מתקדמים של Shimano, שיאפשרו לכם להתמודד עם כל מסלול באשר הוא. הבלמים הדיסק המכניים מבטיחים לכם עצירות בטוחות ומדויקות, בעוד הבולם הקדמי בגובה 60 מ'מ יספק לכם נוחות מרבית על פני השטח המאתגרים.  הגלגלים מאלומיניום הם לא רק חזקים אלא גם קלים, מה שמבטיח לכם רכיבות זריזות וקלות. עם צמיגים שמתאימים לרכיבות בדרכי עפר, כורכר וגם בדרכים סלולות, תהנו מחוויית רכיבה שלא תשכחו.  אל תפספסו את ההזדמנות להכניס את ה-Fast XC620 לחייכם ולהתנסות ברכיבה מהנה ומאתגרת. רכשו עכשיו ותגלו עולם חדש של חוויות על גלגלים!",
     "specs": {
       "frame": "Aluminium woman FAST HT Frame",
       "fork": "suspension fork 60mm",
@@ -2398,7 +1693,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/4475808/large/dfd098f40ed976fee08209c10f463d28.png"
       ]
     },
-    "rewritten_description": "### אופני הרים מקצועיים לילדים מבית 'Fast' – הרכיבה שתשנה את כל מה שחשבתם!  הכינו את ילדכם לחוויות רכיבה בלתי נשכחות עם אופני ההרים המתקדמים מבית 'Fast'! האופניים שלנו מצוידים בשלדת אלומיניום קלה וחזקה, המבטיחה יציבות וביטחון בכל מסלול. עם 21 הילוכים מבית Shimano, בלמי דיסק מכניים ובולם זעזועים קדמי של 80 מ'מ, הילדים שלכם ייהנו מרכיבה חלקה ובטוחה על כל סוגי השבילים – בין אם זה בדרכי עפר, כורכר או אפילו בדרכים סלולות.  #### למה לבחור באופני הרים לילדים? אופני הרים לילדים שונים מאופניים רגילים בכמה מובנים חשובים. הם מצוידים בגלגלים בקוטר '20 ומעלה, מה שמספק יכולת תמרון טובה יותר בשטח. מערכת הילוכים מתקדמת ובולם זעזועים קדמי מוסיפים לאיכות הרכיבה ומאפשרים לילדים להתמודד עם אתגרים שונים – מהעליות המאתגרות ועד הירידות המהנות.  #### יתרונות האופניים שלנו: - **קלים ועמידים**: שלדת האלומיניום מבטיחה שהאופניים יהיו קלים לנשיאה ולרכיבה, מה שמגביר את עצמאות הילדים ומאפשר להם ליהנות מהרכיבה. - **עיצוב ייחודי**: האופניים מעוצבים במיוחד לאורח חיים פעיל, עם צמיגים שמתאימים לרכיבות בכל סוגי השבילים. - **בטיחות מעל הכל**: הבלמים והבולמים שלנו נועדו להעניק לילדכם את תחושת הביטחון הנדרשת בכל רכיבה.  #### טבלת התאמה לגיל וגובה: | גובה הילד (ס'מ) | גיל (שנים) | דגם אופניים / גודל שילדה (קוטר גלגל) | |------------------|-------------|-----------------------------------------| | 120 – 142        | 12 – 8     | 24'                                     |  הצטרפו אל אלפי הילדים שכבר חווים את חווית הרכיבה המושלמת עם אופני ההרים מבית '",
+    "rewritten_description": "### אופני הרים מקצועיים לילדים מבית 'Fast' – הרפתקאות בלתי נגמרות!  הכירו את האופניים שיביאו את הילד שלכם לגבהים חדשים – אופני הרים מקצועיים מבית 'Fast'! עם שלדת אלומיניום קלה וחזקה, הם מציעים את השילוב המושלם בין בטיחות, נוחות וחווית רכיבה בלתי נשכחת.  #### תכונות מרהיבות: - **21 הילוכי Shimano**: מערכת הילוכים מתקדמת המאפשרת לילדכם לגלוש בקלות על כל מסלול, בין אם זה בדרכי עפר, כורכר או סלולות. - **בלמי דיסק מכניים**: מערכת בלימה אמינה ומדויקת, שתספק שקט נפשי גם ברכיבות המאתגרות ביותר. - **בולם קדמי של 80 מ'מ**: שיכוך מיטבי שיספק רכיבה חלקה ונעימה, גם בשטח קשה. - **גלגלי אלומיניום קלים**: עמידים וחזקים, כדי להבטיח לילדכם רכיבה בטוחה ומלאת אנרגיה.  #### למה לבחור באופני הרים לילדים? אופני הרים לילדים שונים מאופניים רגילים במספר פרמטרים חשובים: - **קוטר הגלגלים**: בדרך כלל החל מ-20 אינצ' ומעלה, המאפשרים יציבות וביצועים טובים יותר בשטח. - **מערכת הילוכים ובולם זעזועים קדמי**: תכונות שמבטיחות חווית רכיבה מהנה ומאתגרת, עם יכולת להתמודד עם כל סוגי השטח. - **קלות משקל**: אופניים עשויות אלומיניום מקלות על הילד שלכם לרכב עצמאית וליהנות מהחופש שבדרך.  #### טבלת מידות: | גובה הילד (ס'מ) | גיל (שנים) | דגם אופניים / גודל שילדה (קוטר גלגל) | |-----------------|-------------|-----------------------------------------| | 120 – 142       | 8 – 12      | 24'                                     |  אל תפספסו את ההזדמנות להעניק לילדכם את חווית הרכיבה המושלמת!",
     "specs": {
       "frame": "Aluminium FAST Tapered HT Frame",
       "fork": "suspension fork 80mm",
@@ -2437,7 +1732,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/15025624/large/553e19c806f15a5091697b5a5ce0bb32.png"
       ]
     },
-    "rewritten_description": "### אופני הרים לילדים מבית 'Fast' - חווית רכיבה בלתי נשכחת!  הכירו את אופני ההרים לילדים מבית 'Fast', הבחירה המושלמת עבור ילדיכם! עם שלדת אלומיניום קלה במיוחד, 21 הילוכים מבית Shimano ובלמי דיסק מכניים, האופניים הללו מבטיחים רכיבה חלקה ובטוחה בכל תנאי השטח.   #### מה מייחד את אופני ההרים לילדים? אופני הרים לילדים שונים מאופניים רגילים במספר פרמטרים חשובים: - **קוטר גלגלים**: אופני הרים לילדים מגיעים בדרך כלל עם גלגלים בקוטר '20 ומעלה, מה שמספק יציבות ויכולת תמרון טובה יותר. - **מערכת הילוכים**: הילוכים מתקדמים שמאפשרים לילדכם להתמודד עם עליות וירידות בצורה קלה יותר. - **בולם זעזועים קדמי**: מספק נוחות ורכיבה חלקה גם בדרכים לא סלולות.  #### למה לבחור באופני הרים לילדים? אופני הרים קלים עשויים מאלומיניום, מה שמקל על הילדים להשתמש בהם באופן עצמאי ומגביר את ההנאה מרכיבה. הם מצוידים בצמיגים עמידים שמתאימים לרכיבה בדרכי עפר, כורכר ואפילו בדרכים סלולות. כך, הילד שלכם יוכל לחקור את העולם סביבו, להתגבר על אתגרים וליהנות מהרפתקאות חדשות!  #### נתוני התאמה: - **גובה הילד/ה (ס'מ)**: 105-119 - **גילאים מומלצים**: 6-10 - **דגם אופניים/גודל שילדה**: 20'  אל תפספסו את ההזדמנות להעניק לילדכם את חווית הרכיבה המושלמת! עם אופני הרים מבית 'Fast', כל רכיבה היא חוויה בלתי נשכחת!",
+    "rewritten_description": "**אופני הרים לילדים מבית 'Fast' – חווית רכיבה שלא תשכח!**  הכירו את אופני ההרים לילדים מבית 'Fast', הבחירה המושלמת עבור הרפתקאות רכיבה בלתי נגמרות! עם שלדת אלומיניום קלה במיוחד, תכונות מתקדמות ומראה ספורטיבי, הילדים שלכם ייהנו מחוויות רכיבה מרגשות בכל מסלול.  **מה מייחד את אופני ההרים הללו?** - **קלים וחזקים:** שלדת האלומיניום שלנו מבטיחה עמידות וקלות משקל, כך שהילדים שלכם יוכלו לרכב בנוחות ובקלות. - **21 הילוכים של Shimano:** מערכת הילוכים מתקדמת מאפשרת לילדים להתמודד עם עליות וירידות בקלות, וליהנות מרכיבה חלקה בכל תנאי שטח. - **בלמי דיסק מכניים:** הבטיחות היא בראש סדר העדיפויות, ובלמי הדיסק שלנו מספקים עצירה מדויקת ובטוחה – גם בתנאים קשים. - **גלגלים וצמיגים מותאמים:** הגלגלים האלומיניום החזקים והצמיגים המיועדים לרכיבה בדרכי עפר, כורכר וגם בדרכים סלולות, מבטיחים חווית רכיבה מהנה ומאתגרת.  **מה ההבדל בין אופני הרים לאופניים רגילים?** אופני הרים לילדים מצוידים בקוטר גלגלים של '20 ומעלה, מה שמאפשר להם להתמודד עם שטחים מגוונים בצורה טובה יותר. בנוסף, הם כוללים מערכת הילוכים מתקדמת ובולם זעזועים קדמי, שמסייעים בשיכוך זעזועים ומשפרים את נוחות הרכיבה.   **למה לבחור באופני הרים קלים?** אופניים קלים יותר, כמו אלו העשויים מאלומיניום, מקנים לילדים עצמאות רבה יותר ומאפשרים להם ליהנות מהנסיעה. הם מתאימים לרכיבה בדרכים לא סלולות וגם לאתגרים עירוניים כמו עלייה וירידה מהמדרכות.  **מפרט טכני:** - **גובה הילד (ס'מ):** 119 –",
     "specs": {
       "frame": "Aluminium Fast Tapered HT Frame",
       "fork": "suspension fork 40mm",
@@ -2451,6 +1746,114 @@
     },
     "fork length": 40,
     "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Cobra-Bordo",
+      "domain": "https://www.cobra-bordo.co.il",
+      "product_url": "https://www.cobra-bordo.co.il/items/8572675-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Roxter-600-2026"
+    },
+    "firm": "Scott",
+    "model": "Roxter 600",
+    "year": 2026,
+    "category": "kids",
+    "sub_category": "kids",
+    "original_price": 2990,
+    "disc_price": 1590,
+    "images": {
+      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802764/show/d9078ca963b19a5d4b5bdecefb2f4562.jpg",
+      "gallery_images_urls": [
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802769/large/ff3143056bc8f427c26af4e95dea76db.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802764/large/d9078ca963b19a5d4b5bdecefb2f4562.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802766/large/3a8ed33275c449bccf442139edd24cff.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802767/large/8ca854ef36a600a91ab2796fbce6d60d.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802768/large/add085e978d6df009ced7ba69657734a.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802769/large/ff3143056bc8f427c26af4e95dea76db.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802764/large/d9078ca963b19a5d4b5bdecefb2f4562.jpg"
+      ]
+    },
+    "rewritten_description": "**אופני ילדים SCOTTRoxter 600 – הבחירה המושלמת לרוכבים צעירים!**  הילדים שלכם מוכנים למغامרות חדשות? היכנסו לעולם הרכיבה עם אופני SCOTTRoxter 600 – האופניים שיביאו את החוויה האמיתית של רכיבה לכל ילד!   עם שלדת אלומיניום קלה במיוחד, האופניים הללו תוכננו לדינמיקה מושלמת ולנוחות מרבית. הבולם הקדמי עם מהלך של 80 מ'מ יספק רכות בכל פנייה ובכל שטח, כך שהילדים ירגישו בטוחים ונינוחים בכל רכיבה.  הבלמים הידראוליים החזקים מבטיחים שליטה מדויקת ובקרה מושלמת, גם בתנאים מאתגרים. עם מערכת הילוכים Shimano המתקדמת, שמציעה 8 מהירויות שונות, כל עלייה תהפוך לאתגר מהנה ולא למאמצים קשים.  גלגלי 26 אינץ' מספקים יציבות ושיפור שליטה, כך שהילדים יוכלו לרכב בביטחון ובקלות בכל מסלול.   SCOTTRoxter 600 הוא לא רק אופניים – זהו כרטיס כניסה לחופש, הרפתקאות ותחושת רכיבה אמיתית, שתהפוך כל ילד לרוכב גאה. אל תפספסו את ההזדמנות להעניק לילדים שלכם את החוויה המושלמת על שני גלגלים!",
+    "specs": {
+      "frame": "KIDS26, Alloy 6061, custom tubing, semi int. CBR, BB68, SCOTT dropout, PM",
+      "fork": "SR Suntour XCE28 80mm travel Softer spring setup",
+      "rear_derailleur": "Shimano Tourney RD-M3020 8 Speed",
+      "shifters": "Shimano SL-RV400-8R Revo Shifter",
+      "crankset": "Prowheel, Alloy Crank 140mm 32T, w/CG PVG single cover",
+      "bottom_bracket": "Feimin, BB68, cartridge, square taper",
+      "chain": "KMC Z8.3",
+      "cassette": "Shimano CS-HG400-8 11-40T, 8-Speed",
+      "ידות בלם": "Tektro HD-M276",
+      "brakes": "Tektro HD-M276, Hydr. Disc 160F/160R rotor, short reach lever",
+      "handlebar": "LEADTEC Kids riser bar alloy D:19 580mm, 20mm Rise Syncros Grips Kids 100/80",
+      "stem": "LEADTEC Alloy 50mm, +10°, 25.4 clamp",
+      "seatpost": "Alloy, 31.6mm, 300mm",
+      "weight": "12.3",
+      "saddle": "Syncros Future Pro",
+      "headset": "Feimin SCT Syncros HS OE Pressfit, ZS56-62mm",
+      "front_hub": "Formula 5x100mm, 32H, disc 6 bolt",
+      "rear_hub": "Formula 5x135mm, 32H, disc 6 bolt",
+      "rims": "Alloy anodized black, disc",
+      "spokes": "15G, stainless, black",
+      "front_tire": "Kenda K1227 Booster, 26x2.2', 30TPI",
+      "rear_tire": "Kenda K1227 Booster, 26x2.2', 30TPI",
+      "pedals": "Feimin FP-803, w/Reflector"
+    },
+    "fork length": 80,
+    "style": "cross-country"
+  },
+  {
+    "source": {
+      "importer": "Cobra-Bordo",
+      "domain": "https://www.cobra-bordo.co.il",
+      "product_url": "https://www.cobra-bordo.co.il/items/8572433-%D7%90%D7%95%D7%A4%D7%A0%D7%99-%D7%A1%D7%A7%D7%95%D7%98-SCOTT-Roxter-400-2026"
+    },
+    "firm": "Scott",
+    "model": "Roxter 400",
+    "year": 2026,
+    "category": "kids",
+    "sub_category": "kids",
+    "original_price": 2490,
+    "disc_price": 1390,
+    "images": {
+      "image_url": "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802564/show/9d5f3a5de78dd7f1e19c41e9b31a50cc.jpg",
+      "gallery_images_urls": [
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802568/large/a84cc01c4b9933697780380335320396.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802564/large/9d5f3a5de78dd7f1e19c41e9b31a50cc.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802565/large/3e20c3c93ef0896a87f4d1a7db3fa8f8.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802566/large/1bb7bc9d99946cdb92070202d47bbaf2.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802567/large/52cf48e28eadeea33f3b98b862aad653.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802568/large/a84cc01c4b9933697780380335320396.jpg",
+        "https://d3m9l0v76dty0.cloudfront.net/system/photos/18802564/large/9d5f3a5de78dd7f1e19c41e9b31a50cc.jpg"
+      ]
+    },
+    "rewritten_description": "הכירו את ה־SCOTT Roxter 400 – האופניים המושלמים לילדים שאוהבים את האתגר! עם גודל גלגלים של 24 אינצ', הם מציעים את השילוב המושלם בין עיצוב קליל לביצועים מעולים, כך שהרכיבה עליהם הופכת לחוויה בלתי נשכחת.  השלדה האיכותית מאלומיניום מבטיחה עמידות ומשקל קל, בעוד שהבולם הקדמי מסוג Suntour מספק פיתרון מושלם לספיגת זעזועים בכל שביל או דרך. עם מערכת הילוכים Shimano בעלת 8 הילוכים, הילדים ייהנו מהיכולת להתמודד עם כל טיפוס, והבלמים ההידראוליים של Tektro מבטיחים עצירות מדויקות ובטוחות בכל סיטואציה.  צמיגי Kenda הרחבים (2.2”) מעניקים אחיזה יוצאת דופן, והגיאומטריה המותאמת במיוחד לילדים מספקת שליטה וביטחון גם ברכיבות המאתגרות ביותר. עם משקל קל של כ־10.8 ק'ג, האופניים האלה מיועדים לרוכבים צעירים שמחפשים חוויית רכיבה אמיתית – קלה, מהנה ועמידה לאורך זמן.  ה־SCOTT Roxter 400 הם לא רק כלי תחבורה, אלא גם חברים נאמנים בכל הרפתקה. אל תתפשרו על איכות – תנו לילדים שלכם את הטוב ביותר!",
+    "specs": {
+      "frame": "KIDS24 disc, Alloy 6061, custom tubing, semi int. CBR, BB68, SCOTT dropout, PM",
+      "fork": "SR Suntour XCT-JR 50mm travel Softer spring setup",
+      "rear_derailleur": "Shimano RD-TX800 Tourney 8 Speed",
+      "shifters": "Shimano SL-RV400-8R Revo Shifter",
+      "crankset": "Prowheel, Alloy Crank 127mm 30T, w/CG PVG double cover",
+      "bottom_bracket": "Feimin, BB68, cartridge, square taper",
+      "chain": "KMC Z8.3",
+      "cassette": "SunRace CSM55 8 Speed, 11-34T",
+      "ידות בלם": "Tektro HD-M276",
+      "brakes": "Tektro HD-M276, Hydr. Disc 160F/160R rotor, short reach lever",
+      "handlebar": "LEADTEC Kids riser bar alloy D:19 560mm, 20mm Rise Syncros Grips Kids 100/80",
+      "stem": "LEADTEC Alloy 50mm, +10°, 25.4 clamp",
+      "saddle": "Syncros KIDS III incl. Seatpost 27 2mm",
+      "headset": "Feimin, 48/28.6/44/30, semi int",
+      "front_hub": "Formula 5x100mm, 24H, disc 6 bolt",
+      "rear_hub": "Formula 5x135mm, 24H, disc 6 bolt",
+      "rims": "Alloy anodized black, disc",
+      "spokes": "15G, UCP, black",
+      "front_tire": "Kenda K1237 Karma2, 24x2.2', 30TPI",
+      "rear_tire": "Kenda K1237 Karma2, 24x2.2', 30TPI",
+      "pedals": "Kids pedal, w/Reflector",
+      "accessories": "Kickstand",
+      "אבזרים": "Syncros Stem Protector",
+      "weight": "10.8 ק'ג"
+    },
+    "fork length": null
   },
   {
     "source": {
@@ -2479,7 +1882,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/11324102/large/7f73a013f7fdda1bae844ac4acb74732.jpg"
       ]
     },
-    "rewritten_description": "### אופני BMX COBRA – הצעד הראשון לעולם המופלא של רכיבה!  הילד שלכם מוכן לצאת להרפתקה? עם אופני BMX של COBRA, הוא יגלה את הכיף והחופש שבאופניים בצורה הבטוחה והנוחה ביותר!   **למה לבחור באופני BMX COBRA?** - **עיצוב מותאם לילדים**: כל פרט באופניים תוכנן במיוחד עבור פרופורציות גוף הילד, מה שמבטיח ישיבה נוחה והגעה קלה לכל נקודות המגע. - **שלדה קלה וחזקה**: עם שלדה קלה במיוחד, הילד שלכם יוכל להתמודד עם כל מסלול בקלות ובביטחון. - **ברקס טורפדו משוכלל**: מערכת הבלימה המתקדמת מבטיחה עצירה מהירה ובטוחה, כך שהילד שלכם יוכל לרכב בראש שקט. - **ידיות בלם קצרות**: מתאימות בדיוק לאצבעות הקטנות, להרגשה של שליטה מלאה. - **צמיגים רחבים**: מספקים יציבות מרבית על כל סוגי השטח, כך שהילד שלכם ירגיש בטוח גם כשיגלה את גבולותיו.  **מתאימים לילדים בגילאי 2-3**:  - **גובה הילד/ה**:   - 2-3 שנים: 90-128 ס'מ   - 3-4 שנים: 100-149 ס'מ   - 4-5 שנים: 110-161 ס'מ   - 5-6 שנים: 120-181 ס'מ   - 6-7 שנים: 130-201 ס'מ  הילד שלכם מגיע לטוב ביותר! תנו לו את ההזדמנות לחוות את הכיף שבאופניים עם אופני ה-BMX COBRA – הבחירה המושלמת להתחלה בטוחה ומלאה בהנאה! 🌟🚴‍♂️   **רכוש עכשיו ותן לילד שלך את מתנת החופש!**"
+    "rewritten_description": "### אופני BMX COBRA – הצעד הראשון לעולם הרכיבה המופלא!  הגיע הזמן שהילד שלך יגלה את הכיף שבאופניים! אופני ה-BMX של COBRA נוצרו במיוחד עבור הקטנטנים, עם עיצוב שמותאם לפרופורציות הגוף שלהם, כך שהם יכולים לרכב בנוחות ובקלות.   #### למה לבחור באופני BMX של COBRA? - **שלדה קלה במיוחד**: מאפשרת לילדך להרגיש חופשי ובטוח בכל רכיבה. - **ברקס טורפדו משוכלל**: מבטיח עצירה מהירה ובטוחה, בדיוק כשהילד שלך זקוק לכך. - **ידיות בלם קצרות**: מתאימות לידיים הקטנות, כך שהילד שלך יוכל לשלוט בקלות. - **מסייבים סגורים וצמיגים רחבים**: מספקים יציבות ונוחות על כל משטח, בין אם זה בפארק או ברחובות.  אופני ה-BMX של COBRA הם הבחירה המושלמת עבור ילדים בגילאי 2-3, עם סדרת מידות שמתאימה בדיוק לגובה שלהם. תן לילד שלך את הבסיס המושלם לרכיבה בטוחה ומהנה.   #### טבלת מידות: - **גיל הילד**: 2-3 | **מידת האופניים**: 12' | **גובה הילד**: 90-128 ס'מ - **גיל הילד**: 3-4 | **מידת האופניים**: 14' | **גובה הילד**: 100-149 ס'מ - **גיל הילד**: 4-5 | **מידת האופניים**: 16' | **גובה הילד**: 110-161 ס'מ - **גיל הילד**: 5-6 | **מידת האופניים**: 18' | **גובה הילד**: 120-181 ס'מ - **גיל הילד**: 6-7 | **מידת האופניים**: 20' | **גובה הילד**: 130-201 ס'מ  #### כי לילד שלך מגיע הטוב ביותר! הצטרפו לעולם הרכיבה עם אופני"
   },
   {
     "source": {
@@ -2508,7 +1911,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/11324483/large/63e2e1042479c3cdcf506f99b4e5980b.jpg"
       ]
     },
-    "rewritten_description": "**הצעד הראשון של ילדך לעולם האופניים המופלא – אופני BMX של COBRA!**  האם אתה מוכן לראות את הילד שלך מתאהב ברכיבה? עם אופני ה-BMX של COBRA, זה בדיוק מה שיקרה! האופניים הללו נוצרו במיוחד לילדים בגילאי 3-4, עם עיצוב שמותאם באופן מושלם לפרופורציות גוף הילד, כך שהוא יוכל לשבת בנוחות ולהרגיש בטוח בכל רכיבה.  **מה מיוחד באופני COBRA?** - **שלדה קלה במיוחד**: מאפשרת לילדך לתפעל את האופניים בקלות, ללא מאמץ מיותר. - **ברקס טורפדו (רגל) משוכלל**: מבטיח עצירה בטוחה ומדויקת בכל מצב. - **ידיות בלם קצרות**: מתאימות לידיים הקטנות, כך שהילד שלך יכול לשלוט בקלות ובנוחות. - **מסייבים סגורים וצמיגים רחבים**: מספקים יציבות מרבית על הכביש ובשטח, כך שהילד שלך ירגיש בטוח בכל מסלול.  אופני ה-BMX של COBRA לא רק מספקים חווית רכיבה מהנה, אלא גם מעניקים לילדך את הבסיס המושלם להתחיל את מסע הרכיבה שלו. עם עיצוב שמדגיש את הבטיחות והנוחות, הילד שלך יוכל לדווש ולהרגיש חופשי, בדיוק כמו שצריך!  **מתאים לילדים בגילאי 3-4**: - גיל הילד/ה - מידת האופניים - גובה הילד/ה  אל תפספסו את ההזדמנות להעניק לילדכם את הטוב ביותר – הזמינו עכשיו את אופני ה-BMX של COBRA ותנו לו להתחיל את ההרפתקה שלו!"
+    "rewritten_description": "**אופני BMX COBRA – הצעד הראשון לעולם המופלא של רכיבת האופניים!**  הילד שלכם מוכן לקחת את הצעד הראשון בעולם הדו-גלגלי? אופני ה-BMX של COBRA הם הבחירה המושלמת! עם עיצוב מיוחד שמתחשב בפרופורציות הגוף של הילד, הם מספקים נוחות מקסימלית ויכולת גישה לכל נקודות המגע – כך שהרכיבה תהיה חווייתית ומרגשת.  **תכונות בולטות:** - **שלדה קלה:** מאפשרת לילד שלך לשלוט באופניים בקלות ובביטחון. - **ברקס טורפדו (רגל) מתקדם:** מספק עצירה בטוחה ומדויקת, לכל מצב. - **ידיות בלם קצרות:** מתאימות בדיוק לאחיזת ידיים קטנות, להבטחת שליטה מושלמת. - **צמיגים רחבים:** מבטיחים יציבות רבה על כל סוגי השטח, כך שהרכיבה תהיה חלקה ובטוחה.  עם אופני BMX COBRA, הילד שלכם ייהנה מחוויית רכיבה מהנה ומלאה בביטחון, ויוכל להתרכז במה שחשוב באמת – ליהנות מהדרך!   **מתאימים לילדים בגילאי 3-4:** - גיל הילד / מידת האופניים / גובה הילד - 2-3 שנים / 12” / 80-90 ס'מ - 3-4 שנים / 14” / 90-100 ס'מ - 4-5 שנים / 16” / 100-110 ס'מ - 5-6 שנים / 18” / 110-120 ס'מ - 6-7 שנים / 20” / 120-130 ס'מ  כי לילד שלך מגיע הטוב ביותר! אל תחכו – הצעד הראשון לעולם הרכיבה מתחיל כאן! 🌟🚴‍♂️"
   },
   {
     "source": {
@@ -2537,7 +1940,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/11323763/large/b9f1d3f43f08fb29286f2b48f03b3bb6.jpg"
       ]
     },
-    "rewritten_description": "**אופני BMX COBRA – הצעד הראשון לעולם האופניים!**  הילד שלך מוכן לצאת להרפתקה חדשה? אופני ה-BMX של COBRA הם הבחירה המושלמת עבורו! עם עיצוב מוקפד שמתאים במיוחד לפרופורציות גופו של הילד, הוא יוכל לשבת בנוחות ולהגיע לכל נקודת מגע בקלות.   שלדת האופניים הקלה במיוחד מבטיחה שהילד יוכל לנהל את רכיבתו בקלות ובביטחון. הברקס הטורפדו המתקדם, ידיות הבלם הקצרות, המסייבים הסגורים והצמיגים הרחבים – כל אלו נועדו לספק יציבות מקסימלית על הכביש והשטח.   עם אופני BMX COBRA, הילד שלך יהנה מחווית רכיבה חלקה ומלאה בביטחון, ויוכל לדווש ולהתנסות ללא מאמץ.   כי לילד שלך מגיע הטוב ביותר!   **מתאימים לילדים בגילאי 4-5:** - גיל הילד/ה: 2-3 | מידת האופניים: 12' | גובה הילד/ה: 90-100 ס'מ - גיל הילד/ה: 3-4 | מידת האופניים: 14' | גובה הילד/ה: 100-110 ס'מ - גיל הילד/ה: 4-5 | מידת האופניים: 16' | גובה הילד/ה: 110-120 ס'מ  הצטרפו אל עולם הרכיבה המופלא עם אופני ה-BMX של COBRA – ההתחלה המושלמת להרפתקאות חדשות!"
+    "rewritten_description": "### הופכים את הרכיבה לחוויה בלתי נשכחת עם אופני BMX של COBRA!  אופני BMX הם הצעד הראשון של הילד שלך בעולם המופלא של האופניים! עם עיצוב מתחשב שמתאים בדיוק לפרופורציות גוף הילד, הם מבטיחים נוחות ויכולת גישה קלה לכל נקודת מגע.   אופני ה-BMX של COBRA מגיעים עם שלדה קלה במיוחד, כך שהילד שלך יוכל לרכוב בקלות ובביטחון. תוספות כמו ברקס טורפדו משוכלל, ידיות בלם קצרות, מסייבים סגורים וצמיגים רחבים מבטיחות יציבות מקסימלית על כל פני השטח.  תן לילד שלך את הכלים הנכונים כדי לצאת לדרך, לדווש ולגלות את העולם שסביבו – עם אופני BMX של COBRA, כל רכיבה היא חוויה!   **מתאימים לילדים בגילאי 4-5.**   | גיל הילד | מידת האופניים | גובה הילד | |----------|----------------|------------| | 2-3      | 12'            | 80-90      | | 3-4      | 14'            | 90-100     | | 4-5      | 16'            | 100-110    | | 5-6      | 18'            | 110-120    | | 6-7      | 20'            | 120-130    |  כי לילד שלך מגיע הטוב ביותר – בחרו באופני BMX של COBRA ותנו לו את החופש לרכוב ולהתפתח!"
   },
   {
     "source": {
@@ -2566,7 +1969,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/12863696/large/517e8bf964d57f48aec1f9b62fc29257.jpg"
       ]
     },
-    "rewritten_description": "### הכינו את הילד שלכם לעולם המופלא של רכיבת BMX!  אופני BMX הם הצעד הראשון המושלם של ילדכם אל הרפתקאות חדשות על גלגלים. עם עיצוב מותאם אישית לפרופורציות גוף הילד, האופניים הללו מבטיחים נוחות מרבית וגישה קלה לכל נקודות המגע - כך שהרכיבה תהיה חוויה מהנה ופשוטה!  **אופני BMX של COBRA** מציעים שלדה קלה במיוחד, עם טכנולוגיה מתקדמת כמו ברקס טורפדו משוכלל וידיות בלם קצרות, המאפשרות שליטה מדויקת ובטוחה. הצמיגים הרחבים מספקים יציבות מעולה בכל תנאי שטח, כך שהילד שלכם יוכל לרכוב בביטחון ובקלות.  **כי לילד שלכם מגיע הטוב ביותר!**   מתאימים לילדים בגילאי 5-6, אופני COBRA הם הבחירה המושלמת להיכנס לעולם הרכיבה.   #### טבלת מידות: - **גיל הילד** | **מידת האופניים** | **גובה הילד** - 2-3 שנים | 12” | 80-90 ס'מ - 3-4 שנים | 14” | 90-100 ס'מ - 4-5 שנים | 16” | 100-110 ס'מ - 5-6 שנים | 18” | 110-120 ס'מ - 6-7 שנים | 20” | 120-130 ס'מ  הגיע הזמן לצאת לדרך! הזמינו עכשיו את אופני ה-BMX של COBRA ותנו לילד שלכם את המתנה של חוויות בלתי נשכחות!"
+    "rewritten_description": "### אופני BMX COBRA – הצעד הראשון לעולם המופלא של רכיבת האופניים!  אם הילד שלך מוכן לצאת למסע מרגש על שני גלגלים, אופני ה-BMX של COBRA הם הבחירה המושלמת! בעיצוב חדשני ומותאם אישית, הם נוצרו במיוחד בשביל לתת לילד שלך את הבסיס המושלם לרכיבה בטוחה, נוחה ומהנה.  #### תכונות עיקריות: - **שלדה קלה במיוחד**: מאפשרת לילד שלך לתפעל את האופניים בקלות ולהרגיש בטוח בכל רכיבה. - **ברקס טורפדו משוכלל**: מערכת בלימה מתקדמת שמבטיחה עצירות מהירות ובטוחות. - **ידיות בלם קצרות**: נוחות לשימוש, מותאמות לגובה ידיו של הילד, כך שהוא יכול לשלוט על האופניים ביעילות. - **צמיגים רחבים**: מספקים יציבות מעולה על כל סוגי השטח, כך שהילד שלך יכול לרכב בביטחון בכל מקום. - **מסייבים סגורים**: מוסיפים שכבת בטיחות נוספת, מונעים פגיעות ומבטיחים רכיבה חלקה.  #### גילאים מומלצים: אופני ה-BMX של COBRA מתאימים לילדים בגילאי 5-6, עם מידות מותאמות אישית לפי גובה הילד:  - 3-4 שנים: גובה 90-100 ס'מ - 4-5 שנים: גובה 100-110 ס'מ - 5-6 שנים: גובה 110-120 ס'מ  #### כי לילד שלך מגיע הטוב ביותר! הענק לילד שלך את חווית הרכיבה הראשונה שלו עם אופני BMX COBRA, ותן לו את הכלים להתחיל את המסע המופלא שלו בעולם האופניים. רכיבה עם חיוך, ביטחון והנאה – כל מה שילד צריך כדי לגלות את החופש שבדיווש!   אל תחמיץ את ההזדמנות – הזמן עכשיו את אופני ה-BMX COBRA והתחל את ההרפתקה!"
   },
   {
     "source": {
@@ -2595,7 +1998,7 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/11324879/large/b1520cb85c98a2fa26c1e3076907aa44.jpg"
       ]
     },
-    "rewritten_description": "### אופני BMX COBRA - הצעד הראשון של הילד שלך לעולם הרכיבה!  הילד שלך מוכן לגלות את עולם האופניים? עם אופני BMX COBRA, הוא יקבל את הבסיס המושלם לרכיבה בטוחה ומהנה! האופניים שלנו מיוצרים במיוחד עבור ילדים בגילאי 6-7, תוך דגש על פרופורציות גוף שמתאימות בדיוק למידותיהם, כך שהרכיבה תהיה נוחה וקלה.  #### מה מייחד את אופני BMX COBRA?  - **שלדה קלה במיוחד**: מאפשרת לילד שלך לשלוט באופניים בקלות ובנוחות. - **ברקס טורפדו מתקדמים**: מספקים בלימה מדויקת ובטוחה, כך שהילד ירגיש בטוח בכל רגע. - **ידיות בלם קצרות**: מתאימות לגובה הידיים של ילדים, להרגשה נוחה ובטוחה. - **מסייבים סגורים וצמיגים רחבים**: מעניקים יציבות מצוינת על כל סוגי השטח, כך שהילד שלך יוכל לרכב בכל מקום בלי חשש.  #### יתרונות נוספים: - **רגלית במקום גלגלי עזר**: מאפשרת לילד ללמוד לרכב בצורה עצמאית ובטוחה. - **עיצוב מרהיב**: צבעים מלהיבים שיתאימו לכל ילד ויתנו לו תחושת גאווה בזמן הרכיבה.  אל תחמיצו את ההזדמנות להעניק לילד שלכם את החוויה המושלמת! אופני BMX COBRA הם הבחירה הנכונה למי שמתחיל את דרכו בעולם הרכיבה.   #### טבלת מידות: | גיל הילד | מידת האופניים | גובה הילד | |----------|----------------|-----------| | 2-3      | 12'            | 90-100 ס'מ | | 3-4      | 14'            | 100-110 ס'מ | | 4-5      | 16'            | 110-120 ס'מ | | 5-6      | 18'            | 120-130 ס'מ | | 6-7      | 20'            | 130-140 ס'מ |  **כי לילד שלך מגיע"
+    "rewritten_description": "### אופני BMX COBRA – הצעד הראשון לעולם המופלא של הרכיבה!  היכנסו לעולם המרגש של אופני BMX עם דגם COBRA, המיוצרים במיוחד עבור הקטנטנים שלכם! אופניים אלו נבנו תוך שימת לב מדויקת לפרופורציות הגוף של הילד, כך שהוא יוכל לשבת בנוחות ולהגיע בקלות לכל נקודת מגע – מה שמבטיח חוויית רכיבה מושלמת.  #### למה לבחור באופני BMX COBRA? - **שלדה קלה במיוחד**: מאפשרת לילד שלך לתפעל את האופניים בקלות ובנוחות. - **ברקס טורפדו (רגל) מתקדמים**: מבטיחים עצירות מהירות ובטוחות. - **ידיות בלם קצרות**: מותאמות במיוחד לידיים הקטנות, להרגשה בטוחה ושליטה מלאה. - **מסייבים סגורים וצמיגים רחבים**: מספקים יציבות מרבית על כל סוגי השטח, כך שהילד יכול לדווש ולהתנסות ללא כל מאמץ.  אופני BMX COBRA הם הבחירה המושלמת לילדים בגילאי 6-7, ומגיעים עם רגלית במקום גלגלי עזר, כדי להעניק לילדך את הביטחון והעצמאות שהוא צריך כדי להתחיל את המסע שלו בעולם הרכיבה.  #### טבלת מידות: | גיל הילד | מידת האופניים | גובה הילד | |----------|----------------|-----------| | 2-3      | 12'            | 80-90 ס'מ | | 3-4      | 14'            | 90-100 ס'מ | | 4-5      | 16'            | 100-110 ס'מ | | 5-6      | 18'            | 110-120 ס'מ | | 6-7      | 20'            | 120-130 ס'מ |  **כי לילד שלך מגיע הטוב ביותר!** אל תפספסו את ההזדמנות להעניק לו את הבסיס המושלם לרכיבה בטוחה ומהנה. הזמינו עכשיו את אופני BMX COBRA ותנו לו להתחיל את ההרפתקה!"
   },
   {
     "source": {
@@ -2607,7 +2010,7 @@
     "model": "איזון/ דחיפה פאסט",
     "year": null,
     "category": "kids",
-    "sub_category": "kids",
+    "sub_category": "push_bike",
     "original_price": 299,
     "disc_price": null,
     "images": {
@@ -2622,6 +2025,6 @@
         "https://d3m9l0v76dty0.cloudfront.net/system/photos/4874647/large/ec39129613ac2c88e1fb838058f37c81.jpg"
       ]
     },
-    "rewritten_description": "### אופני איזון FAST – הצעד הראשון לרכיבה מושלמת!  הכירו את **אופני האיזון של FAST** – הבחירה המושלמת לפיתוח מיומנויות האיזון של ילדכם! אופניים ללא פדלים אלו עוצבו במיוחד כדי להקנות לילדכם את הביטחון והיכולת הנדרשים לפני המעבר לרכיבה על אופניים עם פדלים.  #### למה לבחור באופני איזון FAST? - **שלדה חזקה ועמידה**: עשויה מאלומיניום קל אך חזק, מאפשרת לילדכם לתמרן בקלות ובבטחה. - **הגבהה מתכווננת**: מערכת היגוי וכיסא הניתנים להתאמה אישית לפי גובה הילד, כך שהאופניים יגדלו יחד עם הקטנטנים שלכם. - **נוחות מקסימלית**: מושב מרופד ורך המבטיח נוחות במהלך הרכיבה, וגם ידיות מגומי רך שמקלות על האחיזה.  #### מי יכול להשתמש באופניים אלו? אופני האיזון מתאימים לילדים מגיל שנה וחצי ועד גיל 5, ומסייעים להם לפתח את הביטחון והכישורים הנדרשים לרכיבה עצמאית בעתיד.  אל תחכו! העניקו לילדכם את המתנה של חוויית רכיבה מהנה ומלמדת עם אופני האיזון של FAST. **הזמינו עכשיו ותנו להם את הכלים להצלחה!**"
+    "rewritten_description": "### אופני איזון לילדים של FAST – השלב הראשון לרכיבה מוצלחת!  הכירו את אופני האיזון של FAST – הפתרון המושלם לפיתוח האיזון והביטחון של ילדכם! אופניים ללא פדלים אלה נוצרו במיוחד כדי להעניק לילדים חוויית רכיבה מהנה ומועילה, תוך הכנה לרכיבה על אופניים עם פדלים.  **מה היתרונות של אופני האיזון שלנו?**  - **שלדה עמידה**: עשויה מאלומיניום קל וחזק, מבטיחה עמידות לאורך זמן ומאפשרת לילדכם להתמקד ברכיבה ולא בדאגות.    - **התאמה אישית**: מערכת היגוי וכיסא מתכוונים המאפשרים התאמה מושלמת לגובה הילד, כך שכל רכיבה תהיה נוחה ובטוחה.    - **נוחות מירבית**: מושב מרופד וא ergonomic, יחד עם ידיות עשויות מגומי רך, מבטיחים אחיזה נוחה ורכיבה מהנה.  - **גיל יעד**: אופני האיזון שלנו מתאימים לילדים מגיל שנה וחצי ועד גיל 5, מה שמבטיח חוויית רכיבה מתאימה לכל שלב בהתפתחות.  אל תפספסו את ההזדמנות להעניק לילדכם את הכלים הנדרשים כדי לפתח את האיזון והביטחון העצמי על הדרך לרכיבה עצמאית! הזמינו עכשיו את אופני האיזון של FAST ותנו לילדכם את המתנה של חוויית רכיבה בלתי נשכחת!   **לפרטים נוספים ורכישה, לחצו כאן!**"
   }
 ]

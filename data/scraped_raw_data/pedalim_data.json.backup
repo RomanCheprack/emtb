@@ -3244,6 +3244,48 @@
     "source": {
       "importer": "Pedalim",
       "domain": "https://pedalim.co.il",
+      "product_url": "https://pedalim.co.il/bianchi-impulso-rc-grx825-di2"
+    },
+    "firm": "Bianchi",
+    "model": "IMPULSO RC GRX825 DI2",
+    "year": "לא צויין",
+    "category": "road",
+    "sub_category": "road",
+    "original_price": 29990,
+    "disc_price": "",
+    "images": {
+      "image_url": "https://pedalim.co.il/Media/Uploads/IMPULSO_RC(6).webp",
+      "gallery_images_urls": [
+        "https://pedalim.co.il/Media/Uploads/IMPULSO_RC(7).webp"
+      ]
+    },
+    "specs": {
+      "frame": "IMPULSO RC Disc Brake; Flat Mount 140/160; BB PressFit 86.5 X Ø41 Rear Axle: thru12 OLD; Rear Derailleur: SRAM UDH",
+      "fork": "Bianchi Impulso Integrated Fork Disc Brake; Flat Mount 140/160; Front Axle: thru12; OLD: 100mm; Tire Clearance: ETRTO 622-42mm; Carbon Fiber Composite",
+      "shifters": "Shimano GRX, ST-RX825",
+      "front_derailleur": "Shimano GRX FD-RX825",
+      "rear_derailleur": "Shimano GRX RD-RX825",
+      "crankset": "Shimano GRX 820 FC-RX820 48-31T. 4iiii Precision 3, single side powermeter Crank Length: 170mm",
+      "bottom_bracket": "Shimano SM-BB72-41B, press fit",
+      "cassette": "Shimano CS-HG710-12 speed, 11-36T Driver body Interface: HG11",
+      "chain": "Shimano CN-M7100",
+      "brakes": "Shimano Hydraulic Brake, BR-RX820 + Shimano RT-CL800 IceTech Hub Interface: Centerlock Rotor Diameter: 160 mm (front&Rear)",
+      "wheels": "Shimano RT-CL800 IceTech Hub Interface: Centerlock Rotor Diameter: 160 mm (front&Rear)",
+      "tires": "Cinturato Gravel RC, 700 x 40c, 60TPI- TLR, Folding, Tan sidewall",
+      "saddle": "Bianchi RC139 carbon Cover: microfiber Inserts: PWR gel Shell: carbon fiber Rails: carbon fiber lenght: 250mm, wide: 139mm weight: 145g",
+      "seatpost": "Bianchi Custom D-Shape Offset: 20mm Back Seatpost lengths: 350mm Material: Epoxy - HM-HS Carbon Fiber Composite",
+      "handlebar": "included in the stem",
+      "stem": "Reparto Corse AeroFlare Flare: 16°; Drop: 120mm; Reach 80mm; HandleBar Sizes: 100/400; Material: Carbon Fiber Composite",
+      "headset": "Bianchi Custom Acros ICR; Spacers:5mmx1, 10mmx3; Ring: 1.125\"; Top Bearing + Bottom Bearing: Angular contact Bearing 42x52x7 + seal"
+    },
+    "rewritten_description": "",
+    "fork length": 140,
+    "style": "trail"
+  },
+  {
+    "source": {
+      "importer": "Pedalim",
+      "domain": "https://pedalim.co.il",
       "product_url": "https://pedalim.co.il/polygon-strattos-s7d"
     },
     "firm": "Polygon",
