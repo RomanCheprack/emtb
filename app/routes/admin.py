@@ -255,14 +255,27 @@ def guide_new():
         tags = request.form.get('tags', '').strip()
         is_published = request.form.get('is_published') == 'on'
         
+        # Create a temporary object to hold form data for re-rendering on error
+        form_data = type('obj', (object,), {
+            'title': title,
+            'slug': slug,
+            'hero_image': hero_image_url,
+            'content': content,
+            'seo_title': seo_title,
+            'seo_description': seo_description,
+            'tags': tags,
+            'is_published': is_published
+        })()
+        
         # Validate required fields
         if not title:
             flash('כותרת היא שדה חובה', 'error')
-            return render_template('admin/guide_form.html', guide=None)
+            return render_template('admin/guide_form.html', guide=form_data)
         
         # Generate slug if not provided
         if not slug:
             slug = generate_slug_from_title(title)
+            form_data.slug = slug
         
         # Ensure slug is unique
         base_slug = slug
@@ -274,7 +287,7 @@ def guide_new():
         # Validate slug format (English only, alphanumeric and hyphens)
         if not re.match(r'^[a-zA-Z0-9-]+$', slug):
             flash('שגיאה: ה-slug חייב להכיל רק אותיות באנגלית, מספרים ומקפים', 'error')
-            return render_template('admin/guide_form.html', guide=None)
+            return render_template('admin/guide_form.html', guide=form_data)
         
         # Handle image upload (file takes priority over URL)
         hero_image = None
@@ -311,7 +324,10 @@ def guide_new():
         except Exception as e:
             db.session.rollback()
             flash(f'שגיאה ביצירת המדריך: {str(e)}', 'error')
-            return render_template('admin/guide_form.html', guide=None)
+            # Update form_data with the hero_image that was successfully uploaded (if any)
+            if hero_image:
+                form_data.hero_image = hero_image
+            return render_template('admin/guide_form.html', guide=form_data)
     
     return render_template('admin/guide_form.html', guide=None)
 
@@ -617,14 +633,28 @@ def blog_new():
         tags = request.form.get('tags', '').strip()
         is_published = request.form.get('is_published') == 'on'
         
+        # Create a temporary object to hold form data for re-rendering on error
+        form_data = type('obj', (object,), {
+            'title': title,
+            'slug': slug,
+            'author': author,
+            'hero_image': hero_image_url,
+            'content': content,
+            'seo_title': seo_title,
+            'seo_description': seo_description,
+            'tags': tags,
+            'is_published': is_published
+        })()
+        
         # Validate required fields
         if not title:
             flash('כותרת היא שדה חובה', 'error')
-            return render_template('admin/blog_form.html', post=None)
+            return render_template('admin/blog_form.html', post=form_data)
         
         # Generate slug if not provided
         if not slug:
             slug = generate_slug_from_title(title)
+            form_data.slug = slug
         
         # Ensure slug is unique
         base_slug = slug
@@ -636,7 +666,7 @@ def blog_new():
         # Validate slug format (English only, alphanumeric and hyphens)
         if not re.match(r'^[a-zA-Z0-9-]+$', slug):
             flash('שגיאה: ה-slug חייב להכיל רק אותיות באנגלית, מספרים ומקפים', 'error')
-            return render_template('admin/blog_form.html', post=None)
+            return render_template('admin/blog_form.html', post=form_data)
         
         # Handle image upload (file takes priority over URL)
         hero_image = None
@@ -674,7 +704,10 @@ def blog_new():
         except Exception as e:
             db.session.rollback()
             flash(f'שגיאה ביצירת הפוסט: {str(e)}', 'error')
-            return render_template('admin/blog_form.html', post=None)
+            # Update form_data with the hero_image that was successfully uploaded (if any)
+            if hero_image:
+                form_data.hero_image = hero_image
+            return render_template('admin/blog_form.html', post=form_data)
     
     return render_template('admin/blog_form.html', post=None)
 
