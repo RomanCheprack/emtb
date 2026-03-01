@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bikesCount = document.getElementById("bikes-count");
     const firmDropdown = document.getElementById('firmDropdown');
     const motorBrandDropdown = document.getElementById('motorBrandDropdown');
+    const wheelSizeDropdown = document.getElementById('wheelSizeDropdown');
 
     // Debounce function for search input (less aggressive since filtering is instant)
     let searchTimeout;
@@ -228,6 +229,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Hide wheel size filter if category is not kids
+    const wheelSizeFilterContainer = document.getElementById('wheel-size-filter-container');
+    if (wheelSizeFilterContainer) {
+        wheelSizeFilterContainer.style.display = selectedCategory === 'kids' ? '' : 'none';
+    }
+
     // Initialize and manage fork length slider
     const forkSlider = document.getElementById("fork-slider");
     const forkSliderContainer = document.getElementById("fork-slider-container");
@@ -283,6 +290,19 @@ document.addEventListener("DOMContentLoaded", () => {
             motorBrandDropdown.textContent = selectedMotorBrands[0].charAt(0).toUpperCase() + selectedMotorBrands[0].slice(1);
         } else {
             motorBrandDropdown.textContent = `${selectedMotorBrands.length} מותגי מנוע נבחרו`;
+        }
+    }
+
+    function updateWheelSizeDropdownText() {
+        if (!wheelSizeDropdown) return;
+        const selectedWheelSizes = Array.from(document.querySelectorAll('.wheel-size-checkbox:checked')).map(cb => cb.value);
+        
+        if (selectedWheelSizes.length === 0) {
+            wheelSizeDropdown.textContent = 'בחר גודל גלגל';
+        } else if (selectedWheelSizes.length === 1) {
+            wheelSizeDropdown.textContent = selectedWheelSizes[0] + '"';
+        } else {
+            wheelSizeDropdown.textContent = selectedWheelSizes.length + ' גדלים נבחרו';
         }
     }
 
@@ -451,6 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedMotorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
         const selectedStyles = Array.from(document.querySelectorAll('.style-checkbox:checked')).map(cb => cb.value);
         const selectedYears = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => parseInt(cb.value));
+        const selectedWheelSizes = Array.from(document.querySelectorAll('.wheel-size-checkbox:checked')).map(cb => cb.value);
         
         const frameMaterialRadio = document.querySelector('input[name="frame_material"]:checked');
         const frameMaterial = frameMaterialRadio ? frameMaterialRadio.value : undefined;
@@ -522,6 +543,18 @@ document.addEventListener("DOMContentLoaded", () => {
             // Style filter
             if (selectedStyles.length > 0 && bike.style && !selectedStyles.includes(bike.style)) {
                 return false;
+            }
+            
+            // Wheel size filter (for kids category only)
+            if (selectedCategory === 'kids' && selectedWheelSizes.length > 0) {
+                const bikeWheelSize = bike.wheel_size;
+                if (!bikeWheelSize) return false;
+                // Normalize: bike may have "20", 20, 20.0 - compare as numbers
+                const bikeSizeNum = parseInt(String(bikeWheelSize).replace(/[^\d]/g, ''), 10);
+                const selectedNums = selectedWheelSizes.map(s => parseInt(s, 10));
+                if (!selectedNums.includes(bikeSizeNum)) {
+                    return false;
+                }
             }
             
             // Battery filter (for electric bikes only)
@@ -1267,6 +1300,7 @@ function showBikeDetailsModal(bike) {
         // Update dropdown texts
         updateFirmDropdownText();
         updateMotorBrandDropdownText();
+        updateWheelSizeDropdownText();
 
         // Clear compare list asynchronously (don't wait for it)
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -1317,6 +1351,14 @@ function showBikeDetailsModal(bike) {
     document.querySelectorAll('.motor-brand-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             updateMotorBrandDropdownText();
+            applyFilters();
+        });
+    });
+
+    // Add listeners for wheel size checkboxes (kids category)
+    document.querySelectorAll('.wheel-size-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateWheelSizeDropdownText();
             applyFilters();
         });
     });

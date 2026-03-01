@@ -3,7 +3,8 @@ from app.extensions import db
 from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw
 from app.services.bike_service import (
     get_all_firms, get_all_sub_categories, get_firms_by_category, 
-    get_sub_categories_by_category, get_all_styles, get_styles_by_category
+    get_sub_categories_by_category, get_all_styles, get_styles_by_category,
+    get_wheel_sizes_by_category
 )
 from app.utils.helpers import parse_price, get_frame_material, get_motor_brand, translate_spec_key_to_hebrew
 from sqlalchemy import or_
@@ -87,7 +88,8 @@ def bikes():
     bikes_for_template = [bike.to_dict(list_view=True, include_images=False) for bike in initial_bikes]
     bikes_count = len(bikes_for_template)
     
-    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=selected_category, selected_sub_categories=selected_sub_categories)
+    wheel_sizes = get_wheel_sizes_by_category(selected_category) if selected_category else []
+    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, wheel_sizes=wheel_sizes, selected_category=selected_category, selected_sub_categories=selected_sub_categories)
 
 
 @bp.route("/<category>")
@@ -121,8 +123,8 @@ def category_bikes(category):
     sub_categories = get_sub_categories_by_category(category)
     styles = get_styles_by_category(category)
     
-    # Pass all bikes for client-side filtering (instant response!)
-    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, selected_category=category, selected_sub_categories=[])
+    wheel_sizes = get_wheel_sizes_by_category(category)
+    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, wheel_sizes=wheel_sizes, selected_category=category, selected_sub_categories=[])
 
 @bp.route("/api/filter_bikes")
 def filter_bikes():

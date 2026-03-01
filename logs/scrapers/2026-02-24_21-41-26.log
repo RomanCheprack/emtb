@@ -1,0 +1,167 @@
+2026-02-24 21:41:26,745 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-02-24_21-41-26.log
+2026-02-24 21:41:26,745 - INFO - Scraper orchestrator started at 2026-02-24 21:41:26
+2026-02-24 21:41:26,745 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-02-24 21:41:26,745 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-02-24 21:41:26,748 - INFO - Starting scraper: cobra_full_site at 2026-02-24 21:41:26
+2026-02-24 21:46:27,403 - INFO - cobra_full_site still running after 5 minutes
+2026-02-24 21:51:28,058 - INFO - cobra_full_site still running after 10 minutes
+2026-02-24 21:53:28,878 - INFO - [cobra_full_site] 📁 Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,886 - INFO - [cobra_full_site] 🚀 Starting Chrome driver...
+2026-02-24 21:53:28,886 - INFO - [cobra_full_site] ✅ Chrome driver started
+2026-02-24 21:53:28,887 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/158456-אופני-הרים-חשמליים
+2026-02-24 21:53:28,893 - INFO - [cobra_full_site] ✅ Found 15 products
+2026-02-24 21:53:28,895 - INFO - [cobra_full_site] 💾 Saved 1 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,898 - INFO - [cobra_full_site] 💾 Saved 2 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,899 - INFO - [cobra_full_site] 💾 Saved 3 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,899 - INFO - [cobra_full_site] 💾 Saved 4 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,899 - INFO - [cobra_full_site] ✅ Completed electric: 4 products
+2026-02-24 21:53:28,902 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/153435-אופני-הרים-שיכוך-מלא-/245985
+2026-02-24 21:53:28,903 - INFO - [cobra_full_site] ✅ Found 19 products
+2026-02-24 21:53:28,903 - INFO - [cobra_full_site] 💾 Saved 5 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,903 - INFO - [cobra_full_site] 💾 Saved 6 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,905 - INFO - [cobra_full_site] 💾 Saved 7 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,905 - INFO - [cobra_full_site] 💾 Saved 8 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,907 - INFO - [cobra_full_site] 💾 Saved 9 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,907 - INFO - [cobra_full_site] 💾 Saved 10 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,907 - INFO - [cobra_full_site] 💾 Saved 11 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,907 - INFO - [cobra_full_site] 💾 Saved 12 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] ✅ Completed mtb: 8 products
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/153435-אופני-הרים-שיכוך-מלא-/245986
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] ✅ Found 15 products
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] 💾 Saved 13 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] 💾 Saved 14 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] 💾 Saved 15 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,909 - INFO - [cobra_full_site] 💾 Saved 16 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,911 - INFO - [cobra_full_site] ✅ Completed mtb: 12 products
+2026-02-24 21:53:28,911 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/153435-אופני-הרים-שיכוך-מלא-/245987
+2026-02-24 21:53:28,911 - INFO - [cobra_full_site] ✅ Found 12 products
+2026-02-24 21:53:28,911 - INFO - [cobra_full_site] 💾 Saved 17 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,911 - INFO - [cobra_full_site] ✅ Completed mtb: 13 products
+2026-02-24 21:53:28,911 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/153435-אופני-הרים-שיכוך-מלא-/245988
+2026-02-24 21:53:28,913 - INFO - [cobra_full_site] ✅ Found 12 products
+2026-02-24 21:53:28,913 - INFO - [cobra_full_site] 💾 Saved 18 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,913 - INFO - [cobra_full_site] ✅ Completed mtb: 14 products
+2026-02-24 21:53:28,913 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/153436-אופני-הרים-זנב-קשיח
+2026-02-24 21:53:28,920 - INFO - [cobra_full_site] ✅ Found 15 products
+2026-02-24 21:53:28,920 - INFO - [cobra_full_site] 💾 Saved 19 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,920 - INFO - [cobra_full_site] 💾 Saved 20 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,920 - INFO - [cobra_full_site] 💾 Saved 21 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,922 - INFO - [cobra_full_site] 💾 Saved 22 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,922 - INFO - [cobra_full_site] ✅ Completed mtb: 18 products
+2026-02-24 21:53:28,926 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/154360-אופני-כביש
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] ✅ Found 19 products
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] 💾 Saved 23 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] 💾 Saved 24 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] 💾 Saved 25 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] 💾 Saved 26 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] 💾 Saved 27 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,928 - INFO - [cobra_full_site] 💾 Saved 28 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,932 - INFO - [cobra_full_site] 💾 Saved 29 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,932 - INFO - [cobra_full_site] 💾 Saved 30 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,932 - INFO - [cobra_full_site] ✅ Completed road: 8 products
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/179592-אופני-עיר-
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] ✅ Found 15 products
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] 💾 Saved 31 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] 💾 Saved 32 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] 💾 Saved 33 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] 💾 Saved 34 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] ✅ Completed city: 4 products
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/155066-אופני-ילדים-ונוער
+2026-02-24 21:53:28,936 - INFO - [cobra_full_site] ✅ Found 23 products
+2026-02-24 21:53:28,938 - INFO - [cobra_full_site] 💾 Saved 35 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,938 - INFO - [cobra_full_site] 💾 Saved 36 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,940 - INFO - [cobra_full_site] 💾 Saved 37 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,940 - INFO - [cobra_full_site] 💾 Saved 38 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,942 - INFO - [cobra_full_site] 💾 Saved 39 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,942 - INFO - [cobra_full_site] 💾 Saved 40 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,942 - INFO - [cobra_full_site] 💾 Saved 41 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,942 - INFO - [cobra_full_site] 💾 Saved 42 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,942 - INFO - [cobra_full_site] 💾 Saved 43 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 💾 Saved 44 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 💾 Saved 45 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 💾 Saved 46 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] ✅ Completed kids: 12 products
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/167809-אופני-קיבוץ
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] ✅ Found 13 products
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 💾 Saved 47 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 💾 Saved 48 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] ✅ Completed city: 6 products
+2026-02-24 21:53:28,944 - INFO - [cobra_full_site] 🌐 Scraping https://www.cobra-bordo.co.il/217081-אופני-דחיפה-איזון-לילדים
+2026-02-24 21:53:28,946 - INFO - [cobra_full_site] ✅ Found 12 products
+2026-02-24 21:53:28,946 - INFO - [cobra_full_site] 💾 Saved 49 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:28,946 - INFO - [cobra_full_site] ✅ Completed kids: 13 products
+2026-02-24 21:53:28,946 - INFO - [cobra_full_site] 🔒 Chrome driver closed
+2026-02-24 21:53:28,946 - INFO - [cobra_full_site] ✅ Scraping completed: 49 products
+2026-02-24 21:53:28,946 - INFO - [cobra_full_site] 💾 Saved 49 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-02-24 21:53:35,174 - INFO - cobra_full_site completed successfully in 12m 8s
+2026-02-24 21:53:35,174 - INFO - cobra_full_site scraped 49 entries
+2026-02-24 21:53:37,188 - INFO - Starting scraper: ctc_full_site at 2026-02-24 21:53:37
+2026-02-24 21:53:38,500 - INFO - [ctc_full_site] 2026-02-24 21:53:38,500 [INFO] Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\ctc_data.json
+2026-02-24 21:53:38,500 - INFO - [ctc_full_site] 2026-02-24 21:53:38,500 [INFO] Starting Chrome driver...
+2026-02-24 21:53:40,435 - INFO - [ctc_full_site] 2026-02-24 21:53:40,435 [INFO] patching driver executable C:\Users\roman\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-02-24 21:53:45,830 - INFO - [ctc_full_site] 2026-02-24 21:53:45,830 [INFO] Chrome driver started successfully!
+2026-02-24 21:53:45,830 - INFO - [ctc_full_site] 2026-02-24 21:53:45,830 [INFO] Scraping URL #1: https://ctc.co.il/product-category/bikes/e-bikes/e-mtb/
+2026-02-24 21:53:54,349 - INFO - [ctc_full_site] 2026-02-24 21:53:54,348 [INFO] Found 20 product links.
+2026-02-24 21:55:52,988 - INFO - [ctc_full_site] 2026-02-24 21:55:52,988 [INFO] Scraping URL #2: https://ctc.co.il/product-category/bikes/e-bikes/e-city
+2026-02-24 21:55:55,585 - INFO - [ctc_full_site] 2026-02-24 21:55:55,585 [INFO] Found 4 product links.
+2026-02-24 21:56:21,713 - INFO - [ctc_full_site] 2026-02-24 21:56:21,713 [INFO] Scraping URL #3: https://ctc.co.il/product-category/bikes/e-bikes/אופני-כביש-חשמליים/
+2026-02-24 21:56:24,461 - INFO - [ctc_full_site] 2026-02-24 21:56:24,461 [INFO] Found 1 product links.
+2026-02-24 21:56:28,902 - INFO - [ctc_full_site] 2026-02-24 21:56:28,901 [INFO] Scraping URL #4: https://ctc.co.il/product-category/bikes/mountain-bikes/full-suspension/
+2026-02-24 21:56:32,892 - INFO - [ctc_full_site] 2026-02-24 21:56:32,891 [INFO] Found 21 product links.
+2026-02-24 21:58:37,729 - INFO - ctc_full_site still running after 5 minutes
+2026-02-24 21:58:45,403 - INFO - [ctc_full_site] 2026-02-24 21:58:45,403 [INFO] Scraping URL #5: https://ctc.co.il/product-category/bikes/mountain-bikes/hard-tail/
+2026-02-24 21:58:51,289 - INFO - [ctc_full_site] 2026-02-24 21:58:51,288 [INFO] Found 21 product links.
+2026-02-24 22:01:28,551 - INFO - [ctc_full_site] 2026-02-24 22:01:28,548 [INFO] Scraping URL #6: https://ctc.co.il/product-tag/aero/
+2026-02-24 22:01:34,269 - INFO - [ctc_full_site] 2026-02-24 22:01:34,269 [INFO] Found 17 product links.
+2026-02-24 22:03:16,029 - INFO - [ctc_full_site] 2026-02-24 22:03:16,028 [INFO] Scraping URL #7: https://ctc.co.il/product-tag/lightweight/
+2026-02-24 22:03:20,287 - INFO - [ctc_full_site] 2026-02-24 22:03:20,287 [INFO] Found 15 product links.
+2026-02-24 22:03:38,118 - INFO - ctc_full_site still running after 10 minutes
+2026-02-24 22:04:07,236 - INFO - [ctc_full_site] 2026-02-24 22:04:07,236 [INFO] Scraping URL #8: https://ctc.co.il/product-tag/endurance/
+2026-02-24 22:04:11,228 - INFO - [ctc_full_site] 2026-02-24 22:04:11,228 [INFO] Found 8 product links.
+2026-02-24 22:04:55,243 - INFO - [ctc_full_site] 2026-02-24 22:04:55,240 [INFO] Scraping URL #9: https://ctc.co.il/product-tag/גראבל/
+2026-02-24 22:05:02,649 - INFO - [ctc_full_site] 2026-02-24 22:05:02,648 [INFO] Found 16 product links.
+2026-02-24 22:07:04,263 - INFO - [ctc_full_site] 2026-02-24 22:07:04,262 [INFO] Scraping URL #10: https://ctc.co.il/product-category/bikes/city-bikes
+2026-02-24 22:07:09,519 - INFO - [ctc_full_site] 2026-02-24 22:07:09,518 [INFO] Found 21 product links.
+2026-02-24 22:08:38,924 - INFO - ctc_full_site still running after 15 minutes
+2026-02-24 22:09:34,931 - INFO - [ctc_full_site] 2026-02-24 22:09:34,930 [INFO] Scraping URL #11: https://ctc.co.il/product-category/bikes/city-bikes/page/2
+2026-02-24 22:09:43,683 - INFO - [ctc_full_site] 2026-02-24 22:09:43,683 [INFO] Found 16 product links.
+2026-02-24 22:12:21,863 - INFO - [ctc_full_site] 2026-02-24 22:12:21,859 [INFO] Scraping URL #12: https://ctc.co.il/product-category/bikes/kids-bikes/
+2026-02-24 22:12:27,134 - INFO - [ctc_full_site] 2026-02-24 22:12:27,133 [INFO] Found 21 product links.
+2026-02-24 22:13:39,187 - INFO - ctc_full_site still running after 20 minutes
+2026-02-24 22:14:47,037 - INFO - [ctc_full_site] 2026-02-24 22:14:47,036 [INFO] Scraping URL #13: https://ctc.co.il/product-category/bikes/kids-bikes/page/2
+2026-02-24 22:14:52,687 - INFO - [ctc_full_site] 2026-02-24 22:14:52,687 [INFO] Found 7 product links.
+2026-02-24 22:15:44,903 - INFO - [ctc_full_site] 2026-02-24 22:15:44,903 [INFO] Chrome driver closed
+2026-02-24 22:15:44,903 - INFO - [ctc_full_site] 2026-02-24 22:15:44,903 [INFO] Scraping completed! Total products: 170. Data saved to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\ctc_data.json
+2026-02-24 22:15:51,216 - INFO - ctc_full_site completed successfully in 22m 13s
+2026-02-24 22:15:51,216 - INFO - ctc_full_site scraped 170 entries
+2026-02-24 22:15:53,218 - INFO - Starting scraper: cube_full_site at 2026-02-24 22:15:53
+2026-02-24 22:16:39,806 - INFO - [cube_full_site] 🌐 Scraping: https://rudy-extreme.co.il//product-category/אופניים/חשמליים/
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] ✅ Found 0 products.
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] 🌐 Scraping: https://rudy-extreme.co.il//product-category/אופניים/שיכוך-מלא/
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] ✅ Found 0 products.
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] 🌐 Scraping: https://rudy-extreme.co.il//product-category/אופניים/זנב-קשיח/
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] ✅ Found 0 products.
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] 🌐 Scraping: https://rudy-extreme.co.il//product-category/אופניים/אופני-כביש/
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] ✅ Found 0 products.
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] 🌐 Scraping: https://rudy-extreme.co.il//product-category/אופניים/ילדים/
+2026-02-24 22:16:39,808 - INFO - [cube_full_site] ✅ Found 0 products.
+2026-02-24 22:16:39,810 - INFO - [cube_full_site] ✅ Scraping completed! Total products: 0
+2026-02-24 22:16:45,562 - INFO - cube_full_site completed successfully in 0m 52s
+2026-02-24 22:16:45,563 - INFO - cube_full_site scraped 0 entries
+2026-02-24 22:16:47,572 - INFO - Starting scraper: giant_full_site at 2026-02-24 22:16:47
+2026-02-24 22:16:50,758 - INFO - [giant_full_site] 2026-02-24 22:16:50,758 | INFO | patching driver executable C:\Users\roman\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-02-24 22:16:58,543 - INFO - [giant_full_site] 2026-02-24 22:16:58,543 | INFO | Scraping https://giant-bike.co.il/חנות/אופניים/חשמלי-הרים/
+2026-02-24 22:17:14,795 - INFO - [giant_full_site] 2026-02-24 22:17:14,794 | WARNING | ChatGPT attempt 1 failed: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=10)
+2026-02-24 22:17:25,962 - INFO - [giant_full_site] 2026-02-24 22:17:25,961 | WARNING | ChatGPT attempt 2 failed: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=10)
+2026-02-24 22:17:41,737 - INFO - [giant_full_site] 2026-02-24 22:17:41,736 | WARNING | ChatGPT attempt 1 failed: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=10)
+2026-02-24 22:17:52,920 - INFO - [giant_full_site] 2026-02-24 22:17:52,920 | WARNING | ChatGPT attempt 2 failed: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=10)
+2026-02-24 22:18:28,026 - INFO - [giant_full_site] 2026-02-24 22:18:28,025 | INFO | Auto-saved batch.
+2026-02-24 22:18:41,076 - INFO - [giant_full_site] 2026-02-24 22:18:41,075 | WARNING | ChatGPT attempt 1 failed: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=10)
+2026-02-24 22:19:13,978 - INFO - [giant_full_site] 2026-02-24 22:19:13,978 | WARNING | ChatGPT attempt 1 failed: HTTPSConnectionPool(host='api.openai.com', port=443): Read timed out. (read timeout=10)
+2026-02-24 22:19:44,079 - INFO - [giant_full_site] 2026-02-24 22:19:44,079 | INFO | Auto-saved batch.
+2026-02-24 22:19:53,993 - INFO - [giant_full_site] 2026-02-24 22:19:53,993 | INFO | Scraping https://giant-bike.co.il/חנות/אופניים/אופני-כביש/?filter_category-shop=נגד-השעון
+2026-02-24 22:20:40,180 - INFO - [giant_full_site] 2026-02-24 22:20:40,180 | INFO | Auto-saved batch.
+2026-02-24 22:20:52,872 - INFO - [giant_full_site] 2026-02-24 22:20:52,872 | INFO | Scraping https://giant-bike.co.il/חנות/אופניים/אופני-כביש/?filter_category-shop=כביש-דיסק
+2026-02-24 22:21:33,958 - INFO - [giant_full_site] 2026-02-24 22:21:33,957 | INFO | Auto-saved batch.
+2026-02-24 22:21:48,057 - INFO - giant_full_site still running after 5 minutes
+2026-02-24 22:22:15,783 - INFO - [giant_full_site] 2026-02-24 22:22:15,782 | INFO | Auto-saved batch.

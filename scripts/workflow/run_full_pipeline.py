@@ -457,6 +457,50 @@ def step_3_standardize(stats):
     return success
 
 
+def step_4_deduplicate(stats):
+    """Step 4: Deduplicate standardized data (removes cross-category duplicates)"""
+    stats.start_step('deduplication')
+    print("\n" + "="*80)
+    print("STEP 4: DEDUPLICATING STANDARDIZED DATA")
+    print("="*80)
+    print(f"   Removes duplicate bikes (same brand+model+url) across categories")
+    sys.stdout.flush()
+    
+    dedup_script = os.path.join(project_root, 'scripts', 'data', 'deduplicate_standardized_data.py')
+    command = [sys.executable, dedup_script]
+    
+    success, stdout, stderr = run_command(command, "Deduplicating standardized data", stream_output_enabled=True)
+    
+    # Parse output to get statistics
+    duplicates_removed = 0
+    
+    if success:
+        lines = stdout.split('\n')
+        for line in lines:
+            if 'Duplicates removed:' in line:
+                try:
+                    duplicates_removed = int(line.split('Duplicates removed:')[1].strip())
+                except Exception:
+                    pass
+    
+    step_duration = stats.get_step_duration('deduplication')
+    step_duration_min = int(step_duration / 60)
+    step_duration_sec = int(step_duration % 60)
+    
+    print(f"\n📊 Step 4 Summary:")
+    print(f"   Status: {'✅ Success' if success else '❌ Failed'}")
+    print(f"   Duration: {step_duration_min}m {step_duration_sec}s")
+    print(f"   Duplicates removed: {duplicates_removed}")
+    sys.stdout.flush()
+    
+    stats.add_step('deduplication', 'success' if success else 'failed',
+                   duplicates_removed=duplicates_removed,
+                   duration=step_duration,
+                   error=stderr if not success else None)
+    
+    return success
+
+
 def step_5_drop_data(stats, app):
     """Step 5: Drop bike data from database"""
     stats.start_step('drop_data')
@@ -661,12 +705,15 @@ def main():
             error_message = "Standardization failed - check output above for details"
             raise Exception("Pipeline stopped at standardization step")
         
-        # Step 4: Deduplicate (SKIPPED - duplicates already removed in raw stage)
-        # No need to deduplicate standardized data since duplicates were removed in step 2
-        stats.add_step('deduplication', 'skipped',
-                      note='Duplicates already removed in raw JSON stage')
-        print(f"\n⏭️  Step 4/6: Deduplication skipped (already done in Step 2)")
+        # Step 4: Deduplicate standardized data (cross-category duplicates)
+        print(f"\n{'='*80}")
+        print(f"🔄 Starting Step 4/6: Deduplicating Standardized Data")
+        print(f"{'='*80}")
         sys.stdout.flush()
+        if not step_4_deduplicate(stats):
+            pipeline_success = False
+            error_message = "Deduplication failed - check output above for details"
+            raise Exception("Pipeline stopped at deduplication step")
         
         # Step 5: Drop data (only if not dry-run)
         if not args.dry_run:

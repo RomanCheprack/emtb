@@ -60,6 +60,48 @@ else:
     description_cache = {}
 
 # --- Utility Functions ---
+# Kids bike wheel sizes (inches)
+KIDS_WHEEL_SIZE_PATTERN = re.compile(
+    r'\b(12|14|16|18|20|24|26)\b|'
+    r'(12|14|16|18|20|24|26)(?:x|\"| inch| אינץ)'
+)
+
+def extract_wheel_size_from_text(text):
+    """Extract kids bike wheel sizes (12, 14, 16, 18, 20, 24, 26) from text. Returns list of ints."""
+    if not text:
+        return []
+    matches = KIDS_WHEEL_SIZE_PATTERN.findall(str(text))
+    result = []
+    for m in matches:
+        val = m if isinstance(m, str) else next((x for x in m if x), None)
+        if val and int(val) not in result:
+            result.append(int(val))
+    return result
+
+def extract_wheel_size_for_kids_bike(model, specs):
+    """
+    Extract wheel size for kids bikes. Returns int or None.
+    - First try model name for single match
+    - If multiple matches in model or no match, check specs (wheels, rims, front_tire, rear_tire, tires)
+    """
+    model_matches = extract_wheel_size_from_text(model or "")
+
+    if len(model_matches) == 1:
+        return model_matches[0]
+
+    wheel_related_keys = ["wheels", "rims", "front_tire", "rear_tire", "tires", "wheelset"]
+    for key in wheel_related_keys:
+        val = specs.get(key) if specs else None
+        if val:
+            matches = extract_wheel_size_from_text(val)
+            if matches:
+                return matches[0]
+
+    if model_matches:
+        return model_matches[0]
+
+    return None
+
 def clean_and_convert(price_text):
     price_text = price_text.replace('₪', '').replace(',', '').strip()
     if price_text:
@@ -264,6 +306,15 @@ def cube_bikes(driver, output_file):
 
                 except Exception as e:
                     print(f"⚠️ Error scraping product page ({product_url}): {e}")
+
+            # Kids bike wheel size (only when category is kids)
+            if category_text == "kids":
+                wheel_size = extract_wheel_size_for_kids_bike(
+                    product_data.get("model"),
+                    product_data.get("specs"),
+                )
+                if wheel_size is not None:
+                    product_data["wheel_size"] = wheel_size
 
             # --- Append and Save ---
             scraped_data.append(product_data)

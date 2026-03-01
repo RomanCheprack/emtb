@@ -172,7 +172,7 @@ class Bike(Base):
             # Get raw specs from the first listing
             if self.listings[0].raw_specs:
                 # Essential specs for filtering (used in list view)
-                essential_specs = {'wh', 'frame_material', 'frame', 'motor_brand', 'motor'}
+                essential_specs = {'wh', 'frame_material', 'frame', 'motor_brand', 'motor', 'wheel_size'}
                 
                 for raw_spec in self.listings[0].raw_specs:
                     # Use the raw spec key and value directly

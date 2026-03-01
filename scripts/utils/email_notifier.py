@@ -99,6 +99,8 @@ Status: {status_icon} {status_text}
         if scraping.get('status') == 'success':
             body += f"  ✅ Completed: {scraping.get('scrapers_run', 0)} scrapers\n"
             body += f"  📊 Total entries: {scraping.get('total_entries', 0)} bikes\n"
+        elif scraping.get('status') == 'skipped':
+            body += f"  ⏭️ Skipped\n"
         else:
             body += f"  ❌ Failed: {scraping.get('error', 'Unknown error')}\n"
         body += "\n"
@@ -111,6 +113,8 @@ Status: {status_icon} {status_text}
             body += f"  ✅ Processed: {dup.get('files_processed', 0)} files\n"
             body += f"  📊 Total entries: {dup.get('total_entries', 0)}\n"
             body += f"  🔍 Duplicates removed: {dup.get('duplicates_removed', 0)}\n"
+        elif dup.get('status') == 'skipped':
+            body += f"  ⏭️ Skipped\n"
         else:
             body += f"  ❌ Failed: {dup.get('error', 'Unknown error')}\n"
         body += "\n"
@@ -121,6 +125,8 @@ Status: {status_icon} {status_text}
         body += f"Step 3: Standardization\n"
         if std.get('status') == 'success':
             body += f"  ✅ Processed: {std.get('files_processed', 0)} files\n"
+        elif std.get('status') == 'skipped':
+            body += f"  ⏭️ Skipped\n"
         else:
             body += f"  ❌ Failed: {std.get('error', 'Unknown error')}\n"
         body += "\n"
@@ -131,6 +137,8 @@ Status: {status_icon} {status_text}
         body += f"Step 4: Deduplication (Standardized)\n"
         if dedup.get('status') == 'success':
             body += f"  ✅ Removed: {dedup.get('duplicates_removed', 0)} duplicates\n"
+        elif dedup.get('status') == 'skipped':
+            body += f"  ⏭️ Skipped: {dedup.get('note', 'Duplicates removed in raw stage')}\n"
         else:
             body += f"  ❌ Failed: {dedup.get('error', 'Unknown error')}\n"
         body += "\n"
@@ -142,6 +150,8 @@ Status: {status_icon} {status_text}
         if drop.get('status') == 'success':
             body += f"  ✅ Deleted: {drop.get('bikes_deleted', 0)} bikes\n"
             body += f"  ✅ Deleted: {drop.get('listings_deleted', 0)} listings\n"
+        elif drop.get('status') == 'skipped':
+            body += f"  ⏭️ Skipped\n"
         else:
             body += f"  ❌ Failed: {drop.get('error', 'Unknown error')}\n"
         body += "\n"
@@ -155,6 +165,8 @@ Status: {status_icon} {status_text}
             body += f"  ✅ Brands: {mig.get('brands_count', 0)}\n"
             body += f"  ✅ Sources: {mig.get('sources_count', 0)}\n"
             body += f"  📊 Skipped (duplicates): {mig.get('bikes_skipped', 0)}\n"
+        elif mig.get('status') == 'skipped':
+            body += f"  ⏭️ Skipped\n"
         else:
             body += f"  ❌ Failed: {mig.get('error', 'Unknown error')}\n"
         body += "\n"

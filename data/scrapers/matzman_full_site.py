@@ -119,6 +119,50 @@ def determine_bike_style(fork_length):
         return "enduro"
     return None
 
+# Kids bike wheel sizes (inches)
+KIDS_WHEEL_SIZE_PATTERN = re.compile(
+    r'\b(12|14|16|18|20|24|26)\b|'
+    r'(12|14|16|18|20|24|26)(?:x|\"| inch| אינץ)'
+)
+
+def extract_wheel_size_from_text(text):
+    """Extract kids bike wheel sizes (12, 14, 16, 18, 20, 24, 26) from text. Returns list of ints."""
+    if not text:
+        return []
+    matches = KIDS_WHEEL_SIZE_PATTERN.findall(str(text))
+    result = []
+    for m in matches:
+        val = m if isinstance(m, str) else next((x for x in m if x), None)
+        if val and int(val) not in result:
+            result.append(int(val))
+    return result
+
+def extract_wheel_size_for_kids_bike(model, specs):
+    """
+    Extract wheel size for kids bikes. Returns int or None.
+    - First try model name for single match
+    - If multiple matches in model or no match, check specs (wheels, rims, front_tire, rear_tire, tires)
+    """
+    model_matches = extract_wheel_size_from_text(model or "")
+
+    if len(model_matches) == 1:
+        return model_matches[0]
+
+    # Multiple matches in model or no match - check wheel-related specs
+    wheel_related_keys = ["wheels", "rims", "front_tire", "rear_tire", "tires", "front_wheel", "rear_wheel", "wheel_size"]
+    for key in wheel_related_keys:
+        val = specs.get(key) if specs else None
+        if val:
+            matches = extract_wheel_size_from_text(val)
+            if matches:
+                return matches[0]
+
+    # Fallback: if we had multiple in model, return first
+    if model_matches:
+        return model_matches[0]
+
+    return None
+
 def clean_hebrew_phrases(text):
     """
     Remove Hebrew filter phrases from text.
@@ -618,7 +662,16 @@ def scrape_matzman(output_file):
                     if original_bike_type != cleaned_bike_type:
                         print(f"  🧹 [Product #{product_counter}] Cleaned bike_type: '{original_bike_type}' -> '{cleaned_bike_type}'")
                         product_data["specs"]["bike_type"] = cleaned_bike_type
-            
+
+            # Kids bike wheel size (only when category is kids)
+            if category == "kids":
+                wheel_size = extract_wheel_size_for_kids_bike(
+                    product_data.get("model"),
+                    product_data.get("specs"),
+                )
+                if wheel_size is not None:
+                    product_data["wheel_size"] = wheel_size
+
             scraped_data.append(product_data)
 
         # Summary for this category

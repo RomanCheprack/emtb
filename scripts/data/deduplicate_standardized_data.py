@@ -126,9 +126,9 @@ def deduplicate_bikes(bikes_data, source_name):
     
     # Log duplicates fixed
     if duplicates_fixed:
-        print(f"\n   📝 {source_name}: Fixed {len(duplicates_fixed)} duplicates:")
+        print(f"\n   [INFO] {source_name}: Fixed {len(duplicates_fixed)} duplicates:")
         for dup in duplicates_fixed[:5]:  # Show first 5
-            print(f"      {dup['model']}: {dup['old_category']} → {dup['new_category']}")
+            print(f"      {dup['model']}: {dup['old_category']} -> {dup['new_category']}")
         if len(duplicates_fixed) > 5:
             print(f"      ... and {len(duplicates_fixed) - 5} more")
     
@@ -137,12 +137,16 @@ def deduplicate_bikes(bikes_data, source_name):
 
 
 def process_all_standardized_files():
-    """Process all standardized JSON files and deduplicate them"""
+    """Process all standardized JSON files and deduplicate them.
+    
+    Returns:
+        bool: True if successful, False if no files or directory missing.
+    """
     standardized_dir = os.path.join(project_root, 'data', 'standardized_data')
     
     if not os.path.exists(standardized_dir):
-        print(f"❌ Standardized data directory not found: {standardized_dir}")
-        return
+        print(f"[ERROR] Standardized data directory not found: {standardized_dir}")
+        return False
     
     # Get all standardized files
     json_files = [
@@ -152,11 +156,11 @@ def process_all_standardized_files():
     ]
     
     if not json_files:
-        print("❌ No standardized files found!")
-        return
+        print("[ERROR] No standardized files found!")
+        return False
     
     print("=" * 80)
-    print("🔄 DEDUPLICATING STANDARDIZED BIKE DATA")
+    print("DEDUPLICATING STANDARDIZED BIKE DATA")
     print("=" * 80)
     print(f"\nFound {len(json_files)} files to process\n")
     
@@ -189,27 +193,28 @@ def process_all_standardized_files():
                 if not os.path.exists(backup_path):
                     with open(backup_path, 'w', encoding='utf-8') as f:
                         json.dump(bikes_data, f, ensure_ascii=False, indent=2)
-                    print(f"   💾 Created backup: {filename}.backup")
+                    print(f"   [BACKUP] Created backup: {filename}.backup")
                 
                 # Save deduplicated data
                 with open(filepath, 'w', encoding='utf-8') as f:
                     json.dump(deduplicated, f, ensure_ascii=False, indent=2)
                 
-                print(f"   ✅ {source_name}: {original_count} → {dedup_count} bikes (removed {removed} duplicates)")
+                print(f"   [OK] {source_name}: {original_count} -> {dedup_count} bikes (removed {removed} duplicates)")
             else:
-                print(f"   ✅ {source_name}: {original_count} bikes (no duplicates)")
+                print(f"   [OK] {source_name}: {original_count} bikes (no duplicates)")
         
         except Exception as e:
-            print(f"   ❌ Error processing {filename}: {e}")
+            print(f"   [ERROR] Error processing {filename}: {e}")
             continue
     
     print("\n" + "=" * 80)
-    print("📊 SUMMARY")
+    print("SUMMARY")
     print("=" * 80)
     print(f"Total bikes before: {total_original}")
     print(f"Total bikes after:  {total_deduplicated}")
     print(f"Duplicates removed: {total_removed}")
-    print("\n✅ Deduplication complete! You can now run the migration safely.")
+    print("\n[OK] Deduplication complete! You can now run the migration safely.")
+    return True
 
 
 if __name__ == "__main__":
@@ -221,7 +226,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     if args.dry_run:
-        print("🔍 DRY RUN MODE - No files will be modified\n")
+        print("[DRY RUN] No files will be modified\n")
     
-    process_all_standardized_files()
+    success = process_all_standardized_files()
+    sys.exit(0 if success else 1)
 

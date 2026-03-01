@@ -453,6 +453,36 @@
             <input type="hidden" id="min_fork" name="min_fork" value="80">
             <input type="hidden" id="max_fork" name="max_fork" value="170">
         </div>
+        <!-- Wheel Size Filter (kids category only) -->
+        <div class="mb-3" id="wheel-size-filter-container">
+            <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">
+                גודל גלגל (אינץ')
+                <span class="filter-help-icon" data-filter="wheel_size">
+                    <img src="{{ url_for('static', filename='images/info.png') }}" alt="מידע" width="14" height="14">
+                </span>
+            </label>
+            <div class="filter-help-tooltip" id="tooltip-wheel_size">
+                <div class="tooltip-content">
+                    <button class="tooltip-close" aria-label="סגור">×</button>
+                    <p>גודל הגלגל מתאים לגובה הילד. גלגלים קטנים (12-16") לילדים קטנים, בינוניים (18-20") לילדים בוגרים יותר, וגדולים (24-26") לילדים גדולים.</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="wheelSizeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    בחר גודל גלגל
+                </button>
+                <ul class="dropdown-menu w-100" id="wheelSizeDropdownMenu">
+                    {% for size in wheel_sizes or [] %}
+                    <li style="margin-left: 1.5rem;">
+                        <div class="form-check">
+                            <input class="form-check-input wheel-size-checkbox" type="checkbox" value="{{ size }}" id="wheel-size-{{ size }}">
+                            <label class="form-check-label" for="wheel-size-{{ size }}">{{ size }}"</label>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         <!-- Custom Firm Dropdown Filter -->
         <div class="mb-3">
             <label class="form-label d-block mb-1" style="text-align: center; font-weight: bold;">

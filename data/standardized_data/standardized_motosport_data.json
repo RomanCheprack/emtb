@@ -138,6 +138,170 @@
     "source": {
       "importer": "Motosport",
       "domain": "https://motosport-bicycle.co.il",
+      "product_url": "https://motosport-bicycle.co.il/p/SCARP-EXONIC-2026"
+    },
+    "firm": "KTM",
+    "model": "SCARP EXONIC 2026",
+    "year": null,
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 56900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://cdna.wobily.com/images/b8259736-a603-41cc-b0f3-52a1c671155e_500.png",
+      "gallery_images_urls": []
+    },
+    "specs": {
+      "frame": "SCARP 29' Premium Carbon 110 UDH/M4920",
+      "wheels": "DT XRC1200 Spline 29 Carbon 6B 110/15TA|622x30TSS TLR / DT XRC1200 Spline 29 Carbon 6B 148/12TA|622x30TSS XD TLR",
+      "rear_shock": "RockShox SID Luxe Ultimate|FlightAttendant 210x50",
+      "tires": "Maxxis Rekon Race MaxxSpeed/EXO/TR 61-622  / Maxxis Aspen MaxxSpeed/EXO/TR 61-622",
+      "fork": "RockShox SID SL Ultimate 29' 110 15x110",
+      "saddle": "Selle Italia SLR Boost flow Carbon Rails",
+      "שיפטר": "SRAM POD Rocker AXS Controller",
+      "seatpost": "RockShox Reverb AXS 30.9 T100",
+      "rear_derailleur": "SRAM XX SL Eagle Transmission 12speed",
+      "handlebar": "FSA KFX SIC Carbon 65x780mm",
+      "crankset": "SRAM XX SL T-Type Carbon DUB 34T PM",
+      "stem": null,
+      "cassette": "SRAM XX SL T-Type XS-1299 / 10-52",
+      "headset": "FSA ACR drop/in 1.5' internal",
+      "chain": "SRAM XX Eagle SL T-Type 12s",
+      "grips": "ESI Chunky silicone",
+      "brakes": "Trickstuff Piccola C22 2-Piston / Trickstuff Dächle UL 6bolt 160 / Trickstuff Dächle UL 6bolt 160",
+      "": null
+    },
+    "fork length": null,
+    "style": "unknown",
+    "wh": null
+  },
+  {
+    "source": {
+      "importer": "Motosport",
+      "domain": "https://motosport-bicycle.co.il",
+      "product_url": "https://motosport-bicycle.co.il/p/SCARP-LT-292-2026"
+    },
+    "firm": "KTM",
+    "model": "SCARP LT 292 2026",
+    "year": null,
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 10900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://cdna.wobily.com/images/58674282-1740-4209-9162-8421f7d39fe4_500.png",
+      "gallery_images_urls": []
+    },
+    "specs": {
+      "frame": "SCARP 29' Alloy 6061 tb 120 UDH/M4900",
+      "wheels": "Ryde Rival30 32H 622x30C / Ryde Rival30 32H 622x30C",
+      "rear_shock": "RockShox Deluxe Select+ 230x65",
+      "tires": "Maxxis Rekon EXO/TR 62-622",
+      "fork": "RockShox Recon Gold RL 29' 140mm 15x110",
+      "saddle": "Selle Royal SRX",
+      "שיפטר": "Shimano Deore M6100-12",
+      "seatpost": "KTM COMP dropper internal 30.9 T:100",
+      "rear_derailleur": "Shimano Deore XT M8100-12 SGS shadow+",
+      "handlebar": "KTM TEAM II Trail35 rizer25 800mm",
+      "crankset": "Shimano MT512-12 32T",
+      "stem": "KTM TEAM II Trail35",
+      "cassette": "Shimano Deore M6100-12 / 10-51",
+      "headset": "Acros AICR intern 1.1/8'-1.5' angle lim",
+      "chain": "Shimano M6100-12",
+      "grips": "KTM COMP Lock",
+      "brakes": "Shimano M4100 / MT420 4-Piston Shimano RT30 CL 180 / Shimano RT30 CL 180",
+      "": null
+    },
+    "fork length": 140,
+    "style": "trail",
+    "wh": null
+  },
+  {
+    "source": {
+      "importer": "Motosport",
+      "domain": "https://motosport-bicycle.co.il",
+      "product_url": "https://motosport-bicycle.co.il/p/SCARP-MT-291-2026"
+    },
+    "firm": "KTM",
+    "model": "SCARP MT 291 2026",
+    "year": null,
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 10900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://cdna.wobily.com/images/7e4e2de5-0023-44a0-a0a5-1bbf24910c0b_500.png",
+      "gallery_images_urls": []
+    },
+    "specs": {
+      "frame": "SCARP 29' Alloy 6061 tb 120 UDH/M4900",
+      "wheels": "Ryde Rival30 32H 622x30C / Ryde Rival30 32H 622x30C",
+      "rear_shock": "Suntour EDGE-EVO R-2CR remote 210x55",
+      "tires": "Schwalbe Tough Tom K-Guard 60-622",
+      "fork": "RockShox Recon Slv RL 29' 120mm 2P-rem",
+      "saddle": "KTM Line Sport",
+      "שיפטר": "Shimano Deore M6100-12",
+      "seatpost": "KTM COMP dropper internal 30.9 T:100",
+      "rear_derailleur": "Shimano Deore XT M8100-12 SGS shadow+",
+      "handlebar": "KTM TEAM II flat 2X 740mm",
+      "crankset": "Shimano MT512-12 32T",
+      "stem": "KTM TEAM II 7°",
+      "cassette": "Shimano Deore M6100-12 / 10-51",
+      "headset": "Acros AICR intern 1.1/8'-1.5' angle lim",
+      "chain": "Shimano M6100-12",
+      "grips": "KTM COMP Lock",
+      "brakes": "Shimano RT30 CL 180 / Shimano RT30 CL 180",
+      "": null
+    },
+    "fork length": 120,
+    "style": "cross-country",
+    "wh": null
+  },
+  {
+    "source": {
+      "importer": "Motosport",
+      "domain": "https://motosport-bicycle.co.il",
+      "product_url": "https://motosport-bicycle.co.il/p/SCARP-MT-MASTER-2026"
+    },
+    "firm": "KTM",
+    "model": "SCARP MT MASTER 2026",
+    "year": null,
+    "category": "mtb",
+    "sub_category": "full_suspension",
+    "original_price": 27900,
+    "disc_price": null,
+    "images": {
+      "image_url": "https://cdna.wobily.com/images/e4182b2e-9fca-4558-80f8-18cf0cc7442a_500.png",
+      "gallery_images_urls": []
+    },
+    "specs": {
+      "frame": "SCARP 29' Premium Carbon 120 UDH/M4920",
+      "wheels": "Mavic Crosstrail XL 29 CL 110/15TA|622x30TSS TLR / Mavic Crosstrail XL 29 CL 148/12TA|622x30TSS XD TLR",
+      "rear_shock": "FOX Float SL Perf-Elite 3PTL 210x55",
+      "tires": "Maxxis Forekaster EXO/TR 3C MaxxTerra 62-622 / Maxxis Rekon EXO/TR MaxxTerra 62-622",
+      "fork": "FOX 34SC Float 29' Perf 120mm 15x110",
+      "saddle": "Selle San Marco Aspide Short Open Fit Narrow",
+      "שיפטר": "SRAM POD Rocker AXS Controller",
+      "seatpost": "KTM COMP dropper internal 30.9 T:100",
+      "rear_derailleur": "SRAM X0 Eagle Transmission 12speed",
+      "handlebar": "KTM TEAM II flat 2X 740mm",
+      "crankset": "SRAM GX T-Type DUB wide 32T",
+      "stem": "KTM TEAM II 7°",
+      "cassette": "SRAM GX T-Type XS-1275 / 10-52",
+      "headset": "Acros AICR intern 1.1/8'-1.5' angle lim",
+      "chain": "SRAM GX T-Type 12s",
+      "grips": "ESI Chunky silicone",
+      "brakes": "/ Shimano Deore XT M8100 / M8100 2-Piston/ Shimano CL800 CL 160 freeza / Shimano CL800 CL 160 freeza",
+      "": null
+    },
+    "fork length": 120,
+    "style": "cross-country",
+    "wh": null
+  },
+  {
+    "source": {
+      "importer": "Motosport",
+      "domain": "https://motosport-bicycle.co.il",
       "product_url": "https://motosport-bicycle.co.il/p/Scarp-Exonic-2025"
     },
     "firm": "KTM",
@@ -260,51 +424,6 @@
       "seatpost": "KTM COMP II dropper internal",
       "weight": "14,70 kg",
       "max_weight": "125 kg"
-    },
-    "fork length": 120,
-    "style": "cross-country",
-    "wh": null
-  },
-  {
-    "source": {
-      "importer": "Motosport",
-      "domain": "https://motosport-bicycle.co.il",
-      "product_url": "https://motosport-bicycle.co.il/p/SCARP-MT-ELITE-AXS-2024"
-    },
-    "firm": "KTM",
-    "model": "SCARP MT ELITE AXS 2024",
-    "year": null,
-    "category": "mtb",
-    "sub_category": "full_suspension",
-    "original_price": 22000,
-    "disc_price": null,
-    "images": {
-      "image_url": "https://cdna.wobily.com/images/4f3ea8eb-a0b5-4cf5-8714-797b9a224059_500.jpg",
-      "gallery_images_urls": []
-    },
-    "specs": {
-      "frame": "Scarp 29' Premium Carbon-Alloy rear SLL95mm / M-0916",
-      "fork": "FOX 32 Float 29' Rhythm 120mm remote 15x110",
-      "rear_shock": "FOX Float DPS PerformanceElite remote 190x45",
-      "rear_derailleur": "SRAM GX Eagle AXS 12speed",
-      "shifters": "SRAM GX Eagle AXS Controller",
-      "crankset": "SRAM GX Eagle DUB 32T",
-      "cassette": "SRAM GX Eagle XG-1275 / 10-52",
-      "chain": "SRAM GX Eagle 12s",
-      "brakes": "Shimano Deore M6100 / M6100 2-Piston",
-      "rotors": "Shimano RT64 CL 180 / 160",
-      "front_wheel": "KTM Line - DT Swiss 370 CL 28L 110/15 / Ambrosio E30 Trail 28H 622x30TC / DT Champion 2.0 black",
-      "rear_wheel": "KTM Line - DT Swiss 370 CL 28L 148/12 XD LN18 / Ambrosio E30 Trail 28H 622x30TC / DT Champion 2.0 black",
-      "front_tire": "Maxxis Rekon EXO/TR 62-622",
-      "rear_tire": "Maxxis Rekon EXO/TR 62-622",
-      "grips": "KTM Team silicone",
-      "handlebar": "KTM Team flat 2X 740mm",
-      "stem": "KTM Team MTB 7°",
-      "headset": "KTM Team drop/in 1.1/8'-1.5'",
-      "saddle": "Selle San Marco RND Manganese Rails",
-      "seatpost": "KTM COMP II dropper internal",
-      "weight": "12,90 kg",
-      "max_weight": "121 kg"
     },
     "fork length": 120,
     "style": "cross-country",
@@ -1028,7 +1147,7 @@
       "product_url": "https://motosport-bicycle.co.il/p/%D7%A2%D7%95%D7%AA%D7%A7-%D7%A9%D7%9C-Whistle-Axr-CA5-6"
     },
     "firm": "Whistle",
-    "model": "עותק של Whistle Axr CA5.6",
+    "model": "Whistle Axr CA5.6",
     "year": null,
     "category": "electric",
     "sub_category": "electric_mtb",
@@ -1486,9 +1605,9 @@
     },
     "specs": {
       "frame": "Full Carbon 29', Toray T700, integrated battery, internal routing, Rear travel 150 mm, 12x148 mm E-Thru",
-      "brakes": "Shimano XT BR-M8120, Four piston",
+      "brakes": "Magura MT7 4-Piston",
       "fork": "FOX 38 factory 160",
-      "rotors": "RT-MT800 203 mm / 203 mm",
+      "rotors": "203 mm / 203 mm",
       "rear_shock": "Fox Float X2 Factory,EVOL, LSR, HSR, 2 Pos-Lever, 230x65",
       "wheels": "Mavic E-Deemax",
       "motor": "Bosch Smart System Perf. CX Race 36 V, 250 W",

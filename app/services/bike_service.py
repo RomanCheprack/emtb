@@ -122,6 +122,35 @@ def get_styles_by_category(category):
         return []
 
 
+def get_wheel_sizes_by_category(category):
+    """Get unique wheel sizes for bikes in a specific category (kids only).
+    Returns empty list for non-kids categories.
+    Wheel sizes are stored in bike_specs_std (BikeSpecStd) linked to bikes."""
+    if category != 'kids':
+        return []
+    try:
+        # Query distinct wheel_size values from standardized specs for kids bikes
+        results = db.session.query(BikeSpecStd.spec_value).join(Bike).filter(
+            Bike.category == 'kids',
+            BikeSpecStd.spec_name == 'wheel_size',
+            BikeSpecStd.spec_value.isnot(None),
+            BikeSpecStd.spec_value != ''
+        ).distinct().all()
+        # Extract values and sort numerically (12, 14, 16, 18, 20, 24, 26)
+        values = []
+        for (val,) in results:
+            try:
+                num = int(float(str(val).strip()))
+                if num not in values:
+                    values.append(num)
+            except (ValueError, TypeError):
+                pass
+        return sorted(values)
+    except Exception as e:
+        print(f"Error loading wheel sizes for category {category}: {e}")
+        return []
+
+
 def get_bike_by_uuid(uuid):
     """Get a single bike by UUID"""
     try:
