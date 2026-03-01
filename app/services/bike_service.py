@@ -4,7 +4,7 @@ Provides backward compatibility with the old flat structure.
 """
 
 from app.extensions import cache, db
-from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecStd, BikeImage
+from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecStd, BikeSpecRaw, BikeImage
 from app.utils.helpers import clean_bike_data_for_json
 from sqlalchemy import or_
 import json
@@ -125,27 +125,48 @@ def get_styles_by_category(category):
 def get_wheel_sizes_by_category(category):
     """Get unique wheel sizes for bikes in a specific category (kids only).
     Returns empty list for non-kids categories.
-    Wheel sizes are stored in bike_specs_std (BikeSpecStd) linked to bikes."""
+    Queries both bike_specs_std and bike_specs_raw - production may have data in
+    raw specs only (from listings) while std specs come from bike-level migration."""
     if category != 'kids':
         return []
     try:
-        # Query distinct wheel_size values from standardized specs for kids bikes
-        results = db.session.query(BikeSpecStd.spec_value).join(Bike).filter(
+        from sqlalchemy import func
+        values_set = set()
+
+        # 1. Query BikeSpecStd (bike-level standardized specs)
+        std_results = db.session.query(BikeSpecStd.spec_value).join(Bike).filter(
             Bike.category == 'kids',
             BikeSpecStd.spec_name == 'wheel_size',
             BikeSpecStd.spec_value.isnot(None),
             BikeSpecStd.spec_value != ''
         ).distinct().all()
-        # Extract values and sort numerically (12, 14, 16, 18, 20, 24, 26)
-        values = []
-        for (val,) in results:
+
+        # 2. Query BikeSpecRaw (listing-level raw specs) - production often has data here
+        raw_results = db.session.query(BikeSpecRaw.spec_value_raw).join(
+            BikeListing, BikeSpecRaw.listing_id == BikeListing.id
+        ).join(Bike, BikeListing.bike_id == Bike.id).filter(
+            Bike.category == 'kids',
+            func.lower(func.replace(BikeSpecRaw.spec_key_raw, ' ', '_')) == 'wheel_size',
+            BikeSpecRaw.spec_value_raw.isnot(None),
+            BikeSpecRaw.spec_value_raw != ''
+        ).distinct().all()
+
+        def parse_value(val):
             try:
-                num = int(float(str(val).strip()))
-                if num not in values:
-                    values.append(num)
+                return int(float(str(val).strip()))
             except (ValueError, TypeError):
-                pass
-        return sorted(values)
+                return None
+
+        for (val,) in std_results:
+            n = parse_value(val)
+            if n is not None:
+                values_set.add(n)
+        for (val,) in raw_results:
+            n = parse_value(val)
+            if n is not None:
+                values_set.add(n)
+
+        return sorted(values_set)
     except Exception as e:
         print(f"Error loading wheel sizes for category {category}: {e}")
         return []
