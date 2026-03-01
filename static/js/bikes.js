@@ -27,7 +27,7 @@ function formatNumberWithCommas(value) {
  * This allows the frontend to work with both formats during the transition.
  */
 function adaptBikeData(bike) {
-    // Check if already in new format (has 'brand' instead of 'firm')
+    // Check if already in new format (has 'brand' and 'listing')
     if (bike.brand !== undefined && bike.listing !== undefined) {
         // New format - already normalized, but ensure required properties exist
         return {
@@ -43,7 +43,7 @@ function adaptBikeData(bike) {
     
     // Core fields that are NOT specs (these belong at the root level)
     const coreFields = new Set([
-        'id', 'firm', 'model', 'year', 'image_url', 'sub_category', 'category',
+        'id', 'brand', 'model', 'year', 'image_url', 'sub_category', 'category',
         'style', 'product_url', 'price', 'disc_price', 'gallery_images_urls',
         'fork_length' // fork_length is at root level in bikes table
     ]);
@@ -57,7 +57,7 @@ function adaptBikeData(bike) {
     
     return {
         id: bike.id,
-        brand: bike.firm,
+        brand: bike.brand,
         model: bike.model,
         year: bike.year,
         image_url: bike.image_url,
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cache DOM elements for better performance
     const bikesList = document.getElementById("bikes-list");
     const bikesCount = document.getElementById("bikes-count");
-    const firmDropdown = document.getElementById('firmDropdown');
+    const brandDropdown = document.getElementById('brandDropdown');
     const motorBrandDropdown = document.getElementById('motorBrandDropdown');
     const wheelSizeDropdown = document.getElementById('wheelSizeDropdown');
 
@@ -269,15 +269,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function updateFirmDropdownText() {
-        const selectedFirms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
+    function updateBrandDropdownText() {
+        if (!brandDropdown) return;
+        const selectedBrands = Array.from(document.querySelectorAll('.brand-checkbox:checked')).map(cb => cb.value);
         
-        if (selectedFirms.length === 0) {
-            firmDropdown.textContent = 'בחר מותגים';
-        } else if (selectedFirms.length === 1) {
-            firmDropdown.textContent = selectedFirms[0];
+        if (selectedBrands.length === 0) {
+            brandDropdown.textContent = 'בחר מותגים';
+        } else if (selectedBrands.length === 1) {
+            brandDropdown.textContent = selectedBrands[0];
         } else {
-            firmDropdown.textContent = `${selectedFirms.length} מותגים נבחרו`;
+            brandDropdown.textContent = `${selectedBrands.length} מותגים נבחרו`;
         }
     }
 
@@ -467,7 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const min_fork = minForkInput ? parseInt(minForkInput.value) || 0 : 0;
         const max_fork = maxForkInput ? parseInt(maxForkInput.value) || 1000 : 1000;
 
-        const selectedFirms = Array.from(document.querySelectorAll('.firm-checkbox:checked')).map(cb => cb.value);
+        const selectedBrands = Array.from(document.querySelectorAll('.brand-checkbox:checked')).map(cb => cb.value);
         const selectedMotorBrands = Array.from(document.querySelectorAll('.motor-brand-checkbox:checked')).map(cb => cb.value);
         const selectedStyles = Array.from(document.querySelectorAll('.style-checkbox:checked')).map(cb => cb.value);
         const selectedYears = Array.from(document.querySelectorAll('input[name="year"]:checked')).map(cb => parseInt(cb.value));
@@ -491,11 +492,11 @@ document.addEventListener("DOMContentLoaded", () => {
         
         filteredBikes = allBikes.filter((bike) => {
             
-            // Search filter (model or firm)
+            // Search filter (model or brand)
             if (query) {
                 const modelMatch = bike.model?.toLowerCase().includes(query);
-                const firmMatch = bike.firm?.toLowerCase().includes(query);
-                if (!modelMatch && !firmMatch) {
+                const brandMatch = (bike.brand || '')?.toLowerCase().includes(query);
+                if (!modelMatch && !brandMatch) {
                     filterStats.excludedBy.search = (filterStats.excludedBy.search || 0) + 1;
                     return false;
                 }
@@ -533,9 +534,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // If bike.year is null/undefined/empty, include it (don't return false)
             }
             
-            // Firm/Brand filter
-            if (selectedFirms.length > 0) {
-                if (!bike.firm || !selectedFirms.includes(bike.firm)) {
+            // Brand filter
+            if (selectedBrands.length > 0) {
+                const bikeBrand = (bike.brand || '').trim();
+                const brandMatch = selectedBrands.some(b => (b || '').trim().toLowerCase() === bikeBrand.toLowerCase());
+                if (!bikeBrand || !brandMatch) {
                     return false;
                 }
             }
@@ -547,13 +550,20 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Wheel size filter (for kids category only)
             if (selectedCategory === 'kids' && selectedWheelSizes.length > 0) {
-                const bikeWheelSize = bike.wheel_size;
-                if (!bikeWheelSize) return false;
-                // Normalize: bike may have "20", 20, 20.0 - compare as numbers
-                const bikeSizeNum = parseInt(String(bikeWheelSize).replace(/[^\d]/g, ''), 10);
-                const selectedNums = selectedWheelSizes.map(s => parseInt(s, 10));
-                if (!selectedNums.includes(bikeSizeNum)) {
-                    return false;
+                const bikeWheelSize = bike.wheel_size ?? bike.specs?.wheel_size;
+                const totalWheelSizeOptions = document.querySelectorAll('.wheel-size-checkbox').length;
+                const allSizesSelected = selectedWheelSizes.length === totalWheelSizeOptions;
+                if (bikeWheelSize === null || bikeWheelSize === undefined || bikeWheelSize === '') {
+                    // Bike has no wheel_size - only include when user selected ALL sizes
+                    if (!allSizesSelected) return false;
+                } else {
+                    // Extract first number: "16", 16, "16.0", "16 inch", "16\"" all -> 16
+                    const match = String(bikeWheelSize).match(/\d+/);
+                    const bikeSizeNum = match ? parseInt(match[0], 10) : NaN;
+                    const selectedNums = selectedWheelSizes.map(s => parseInt(s, 10)).filter(n => !isNaN(n));
+                    if (isNaN(bikeSizeNum) || !selectedNums.includes(bikeSizeNum)) {
+                        return false;
+                    }
                 }
             }
             
@@ -649,7 +659,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 min_battery, max_battery,
                 min_fork, max_fork,
                 selectedYears,
-                selectedFirms,
+                selectedBrands,
                 selectedStyles,
                 selectedMotorBrands,
                 frameMaterial,
@@ -1298,7 +1308,7 @@ function showBikeDetailsModal(bike) {
         });
 
         // Update dropdown texts
-        updateFirmDropdownText();
+        updateBrandDropdownText();
         updateMotorBrandDropdownText();
         updateWheelSizeDropdownText();
 
@@ -1335,14 +1345,14 @@ function showBikeDetailsModal(bike) {
         searchInput.addEventListener("input", debouncedApplyFilters);
     }
     
-    document.querySelectorAll('input[name="year"], input[name="firm"]').forEach((cb) => {
+    document.querySelectorAll('input[name="year"], input[name="brand"]').forEach((cb) => {
         cb.addEventListener("change", applyFilters);
     });
 
-    // Add listeners for firm checkboxes
-    document.querySelectorAll('.firm-checkbox').forEach(checkbox => {
+    // Add listeners for brand checkboxes
+    document.querySelectorAll('.brand-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
-            updateFirmDropdownText();
+            updateBrandDropdownText();
             applyFilters();
         });
     });
@@ -1580,19 +1590,19 @@ function showBikeDetailsModal(bike) {
             // Get brand name from data attribute first, fallback to text content
             const brandName = brandLink.getAttribute('data-brand') || brandLink.textContent.trim();
             
-            // Find the corresponding firm checkbox
-            const firmCheckboxes = document.querySelectorAll('.firm-checkbox');
+            // Find the corresponding brand checkbox
+            const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
             let foundCheckbox = null;
-            
-            firmCheckboxes.forEach(checkbox => {
+
+            brandCheckboxes.forEach(checkbox => {
                 if (checkbox.value === brandName || checkbox.value.trim() === brandName.trim()) {
                     foundCheckbox = checkbox;
                 }
             });
-            
+
             if (foundCheckbox) {
-                // Uncheck all other firm checkboxes first (single brand selection)
-                firmCheckboxes.forEach(cb => {
+                // Uncheck all other brand checkboxes first (single brand selection)
+                brandCheckboxes.forEach(cb => {
                     if (cb !== foundCheckbox) {
                         cb.checked = false;
                     }
@@ -1602,8 +1612,8 @@ function showBikeDetailsModal(bike) {
                 foundCheckbox.checked = true;
                 
                 // Update dropdown button text to show selected brand
-                if (typeof updateFirmDropdownText === 'function') {
-                    updateFirmDropdownText();
+                if (typeof updateBrandDropdownText === 'function') {
+                    updateBrandDropdownText();
                 }
                 
                 // Apply filters

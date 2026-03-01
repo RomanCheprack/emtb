@@ -1,4 +1,4 @@
-﻿{% extends "layout.html" %}
+{% extends "layout.html" %}
 
 {% block title %}
 {% if bikes and bikes|length > 0 %}
@@ -115,7 +115,7 @@
          <div class="bike-image-wrapper">
              <img src="{{ bike['image_url'] }}" alt="{{ bike['model'] }}" class="img-fluid mb-2" loading="lazy" referrerpolicy="no-referrer">
          </div>
-         <h5 class="mb-1 bike-firm-name" title="{{ bike['firm'] }}">{{ bike['firm'] }}</h5>
+         <h5 class="mb-1 bike-brand-name" title="{{ bike['brand'] }}">{{ bike['brand'] }}</h5>
      </div>
  </th>
                  {% endfor %}

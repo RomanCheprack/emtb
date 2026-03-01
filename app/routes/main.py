@@ -7,17 +7,17 @@ import smtplib
 from email.message import EmailMessage
 from datetime import datetime, timedelta
 from app.models import Bike, Comparison, CompareCount, BikeListing, Source, AvailabilityLead, ContactLead, StoreRequestLead
-from app.services.bike_service import get_all_firms
+from app.services.bike_service import get_all_brands
 
 bp = Blueprint('main', __name__)
 
 @bp.route("/")
 def home():
     # Get only necessary data - don't load all bikes!
-    firms = get_all_firms()
+    brands = get_all_brands()
     
     # Calculate number of unique bike brands
-    brand_count = len(firms)
+    brand_count = len(brands)
     
     # Get total bike count efficiently without loading all bikes
     total_bikes_count = db.session.query(Bike).count()
@@ -73,7 +73,7 @@ def home():
         top_bikes = [bike.to_dict() for bike in fallback_bikes_query]
         total_comparisons = 0
 
-    return render_template("home.html", bikes_count=total_bikes_count, firms=firms, top_bikes=top_bikes, total_comparisons=total_comparisons, brand_count=brand_count, sources_count=sources_count)
+    return render_template("home.html", bikes_count=total_bikes_count, brands=brands, top_bikes=top_bikes, total_comparisons=total_comparisons, brand_count=brand_count, sources_count=sources_count)
 
 @bp.route("/contact", methods=["POST"])
 def contact():

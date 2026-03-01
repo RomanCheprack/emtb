@@ -78,7 +78,7 @@ function renderSimilarBikesCarousel(bikes) {
     bikes.forEach(bike => {
         const bikeId = bike.id || bike.uuid || '';
         const imageUrl = bike.image_url || '/static/images/placeholder.png';
-        const brand = bike.firm || bike.brand || '';
+        const brand = bike.brand || '';
         const model = bike.model || '';
         const year = bike.year || '';
         const price = bike.price || '';

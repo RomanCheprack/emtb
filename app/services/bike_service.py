@@ -28,7 +28,7 @@ def get_bike_serializer():
 
 
 @cache.memoize(timeout=1800)  # Cache for 30 minutes (brands change rarely)
-def get_all_firms():
+def get_all_brands():
     """Get all unique brands from database"""
     try:
         brands = Brand.query.order_by(Brand.name).all()
@@ -53,11 +53,11 @@ def get_all_sub_categories():
         return []
 
 
-def get_firms_by_category(category):
+def get_brands_by_category(category):
     """Get unique brands that have bikes in a specific category"""
     try:
         if not category:
-            return get_all_firms()
+            return get_all_brands()
         
         brands = db.session.query(Brand).join(Bike).filter(
             Bike.category == category
@@ -166,6 +166,8 @@ def get_wheel_sizes_by_category(category):
             if n is not None:
                 values_set.add(n)
 
+        # Ensure standard kids sizes (12-26") are always available in filter
+        values_set.update([12, 14, 16, 18, 20, 24, 26])
         return sorted(values_set)
     except Exception as e:
         print(f"Error loading wheel sizes for category {category}: {e}")

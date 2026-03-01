@@ -160,7 +160,7 @@
             </button>
             <!-- Brand and model in top-right -->
             <div class="bike-header-info">
-                {% if bike['year'] %}<span class="bike-year-header">{{ bike['year'] }}</span> | {% endif %}<span class="bike-model">{{ bike['model'] }}</span> | <a href="#" class="bike-brand-link" data-brand="{{ bike['firm'] }}">{{bike['firm']}}</a>
+                {% if bike['year'] %}<span class="bike-year-header">{{ bike['year'] }}</span> | {% endif %}<span class="bike-model">{{ bike['model'] }}</span> | <a href="#" class="bike-brand-link" data-brand="{{ bike['brand'] }}">{{ bike['brand'] }}</a>
             </div>
             <div class="bike-row-content">
                 <div class="bike-image-container">
@@ -209,7 +209,7 @@
                         <button type="button"
                                 class="btn btn-outline-primary availability-btn"
                                 data-bike-id="{{ bike['id'] }}"
-                                data-bike-model="{{ bike['firm'] }} {{ bike['model'] }}{% if bike['year'] %} {{ bike['year'] }}{% endif %}"
+                                data-bike-model="{{ bike['brand'] }} {{ bike['model'] }}{% if bike['year'] %} {{ bike['year'] }}{% endif %}"
                                 data-bs-toggle="modal"
                                 data-bs-target="#availabilityModal"
                                 style="margin-top: 4px;">
@@ -218,7 +218,7 @@
                         <button type="button"
                                 class="btn btn-outline-primary find-store-btn"
                                 data-bike-id="{{ bike['id'] }}"
-                                data-bike-model="{{ bike['firm'] }} {{ bike['model'] }}{% if bike['year'] %} {{ bike['year'] }}{% endif %}"
+                                data-bike-model="{{ bike['brand'] }} {{ bike['model'] }}{% if bike['year'] %} {{ bike['year'] }}{% endif %}"
                                 data-bs-toggle="modal"
                                 data-bs-target="#findStoreModal"
                                 style="margin-top: 4px;">
@@ -498,15 +498,15 @@
                 </div>
             </div>
             <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="firmDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="brandDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     בחר מותגים
                 </button>
-                <ul class="dropdown-menu w-100" id="firmDropdownMenu">
-                    {% for firm in firms %}
+                <ul class="dropdown-menu w-100" id="brandDropdownMenu">
+                    {% for brand in brands %}
                     <li style="margin-left: 1.5rem;">
                         <div class="form-check">
-                            <input class="form-check-input firm-checkbox" type="checkbox" value="{{ firm }}" id="firm-{{ loop.index }}">
-                            <label class="form-check-label" for="firm-{{ loop.index }}">{{ firm }}</label>
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="{{ brand }}" id="brand-{{ loop.index }}">
+                            <label class="form-check-label" for="brand-{{ loop.index }}">{{ brand }}</label>
                         </div>
                     </li>
                     {% endfor %}

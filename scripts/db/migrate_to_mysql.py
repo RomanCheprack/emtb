@@ -498,7 +498,12 @@ def migrate_json_data(app):
                         specs_data = bike_data.get('specs', {})
                         if specs_data:
                             # Specs are nested - iterate over specs dict
-                            spec_items = specs_data.items()
+                            spec_items = list(specs_data.items())
+                            # Include root-level wheel_size (canonical for kids bikes). Prefer root over specs.
+                            root_wheel_size = bike_data.get('wheel_size')
+                            if root_wheel_size is not None and str(root_wheel_size).strip():
+                                spec_items = [(k, v) for k, v in spec_items if k.lower().replace(' ', '_') != 'wheel_size']
+                                spec_items.append(('wheel_size', str(root_wheel_size)))
                         else:
                             # Specs at root level (old format) - iterate over bike_data
                             spec_items = bike_data.items()

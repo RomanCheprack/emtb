@@ -199,7 +199,7 @@
                                     <img src="{{ bike['image_url'] }}" class="card-img-top" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
                                 </div>
                                 <div class="w3-container bike-card" style="display: flex; flex-direction: column; align-items: center;">
-                                    <h5 class="card-firm"><b>{{ bike['firm'] }}</b></h5>
+                                    <h5 class="card-firm"><b>{{ bike['brand'] }}</b></h5>
                                     <p class="model-text">{{ bike['model'] }}</p>
                                     <div class="price-container">
                                         {% if bike.get('disc_price') and bike['disc_price'] not in [None, '', 'N/A', '#N/A'] %}

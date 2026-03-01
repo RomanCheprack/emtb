@@ -137,10 +137,10 @@ class Bike(Base):
     
     def _to_dict_flat(self, include_specs, include_prices, include_images, list_view=False):
         """Flat format for template compatibility (mimics old SQLite structure)"""
-        # Basic fields with template-compatible names
+        brand_name = self.brand.name if self.brand else None
         data = {
             'id': self.slug if self.slug else self.uuid,  # Prefer slug for SEO, fallback to UUID
-            'firm': self.brand.name if self.brand else None,  # 'firm' = brand
+            'brand': brand_name,
             'model': str(self.model) if self.model else None,
             'year': str(self.year) if self.year else None,
             'image_url': str(self.main_image_url) if self.main_image_url else None,

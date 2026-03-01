@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, jsonify, abort, redirect,
 from app.extensions import db
 from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw
 from app.services.bike_service import (
-    get_all_firms, get_all_sub_categories, get_firms_by_category, 
+    get_all_brands, get_all_sub_categories, get_brands_by_category,
     get_sub_categories_by_category, get_all_styles, get_styles_by_category,
     get_wheel_sizes_by_category
 )
@@ -51,12 +51,12 @@ def bikes():
     # If sub_category is selected, extract firms from the actual filtered bikes
     # This ensures firms list only shows brands present in the filtered results
     if selected_sub_categories:
-        # Extract unique firms from the filtered bikes
-        firms_set = set()
+        # Extract unique brands from the filtered bikes
+        brands_set = set()
         for bike in initial_bikes:
             if bike.brand and bike.brand.name:
-                firms_set.add(bike.brand.name)
-        firms = sorted(list(firms_set))
+                brands_set.add(bike.brand.name)
+        brands = sorted(list(brands_set))
         
         # Extract unique sub_categories from filtered bikes
         sub_categories_set = set()
@@ -73,12 +73,12 @@ def bikes():
         styles = sorted(list(styles_set))
     elif selected_category:
         # Use category-based filtering when only category is selected
-        firms = get_firms_by_category(selected_category)
+        brands = get_brands_by_category(selected_category)
         sub_categories = get_sub_categories_by_category(selected_category)
         styles = get_styles_by_category(selected_category)
     else:
         # No filters - show all
-        firms = get_all_firms()
+        brands = get_all_brands()
         sub_categories = get_all_sub_categories()
         styles = get_all_styles()
     
@@ -89,7 +89,7 @@ def bikes():
     bikes_count = len(bikes_for_template)
     
     wheel_sizes = get_wheel_sizes_by_category(selected_category) if selected_category else []
-    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, wheel_sizes=wheel_sizes, selected_category=selected_category, selected_sub_categories=selected_sub_categories)
+    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, brands=brands, sub_categories=sub_categories, styles=styles, wheel_sizes=wheel_sizes, selected_category=selected_category, selected_sub_categories=selected_sub_categories)
 
 
 @bp.route("/<category>")
@@ -118,13 +118,13 @@ def category_bikes(category):
     bikes_for_template = [bike.to_dict(list_view=True, include_images=False) for bike in category_bikes_query]
     bikes_count = len(bikes_for_template)
     
-    # Get firms, sub_categories, and styles filtered by this specific category
-    firms = get_firms_by_category(category)
+    # Get brands, sub_categories, and styles filtered by this specific category
+    brands = get_brands_by_category(category)
     sub_categories = get_sub_categories_by_category(category)
     styles = get_styles_by_category(category)
     
     wheel_sizes = get_wheel_sizes_by_category(category)
-    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, firms=firms, sub_categories=sub_categories, styles=styles, wheel_sizes=wheel_sizes, selected_category=category, selected_sub_categories=[])
+    return render_template("bikes.html", bikes=bikes_for_template, bikes_count=bikes_count, brands=brands, sub_categories=sub_categories, styles=styles, wheel_sizes=wheel_sizes, selected_category=category, selected_sub_categories=[])
 
 @bp.route("/api/filter_bikes")
 def filter_bikes():
@@ -133,7 +133,7 @@ def filter_bikes():
         min_price = request.args.get("min_price", type=int)
         max_price = request.args.get("max_price", type=int)
         years = request.args.getlist("year", type=int)
-        firms = request.args.getlist("firm")
+        brands_filter = request.args.getlist("brand")
         min_battery = request.args.get("min_battery", type=int)
         max_battery = request.args.get("max_battery", type=int)
         min_fork = request.args.get("min_fork", type=int)
@@ -179,13 +179,12 @@ def filter_bikes():
             # Include bikes matching selected years OR bikes with null year
             db_query = db_query.filter(or_(Bike.year.in_(years), Bike.year.is_(None)))
 
-        if firms:
-            # Firms = brands in MySQL model
-            # Only join if not already joined for search
+        if brands_filter:
+            # Filter by brand names
             if not brand_joined:
                 db_query = db_query.join(Brand, Bike.brand_id == Brand.id)
                 brand_joined = True
-            db_query = db_query.filter(Brand.name.in_(firms))
+            db_query = db_query.filter(Brand.name.in_(brands_filter))
 
         # Battery and other specs are in bike_specs_std table
         # For now, we'll filter these in Python after query (less efficient but works)

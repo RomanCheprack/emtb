@@ -25,7 +25,7 @@ def _extract_all_bike_fields(bike: Dict[str, Any]) -> Dict[str, Any]:
         # Add all specs
         fields.update(bike['specs'])
         # Add top-level fields
-        for key in ['firm', 'brand', 'model', 'year', 'category', 'sub_category', 'style', 
+        for key in ['brand', 'model', 'year', 'category', 'sub_category', 'style', 
                     'description', 'rewritten_description', 'slug', 'main_image_url']:
             if key in bike:
                 fields[key] = bike[key]
@@ -61,7 +61,7 @@ def _get_all_comparable_fields(bikes: List[Dict[str, Any]]) -> List[str]:
     - Always includes core fields
     - Includes other fields if present in at least one bike
     """
-    core_fields = ['firm', 'brand', 'model', 'year', 'price', 'disc_price']
+    core_fields = ['brand', 'model', 'year', 'price', 'disc_price']
     
     # Collect all fields from all bikes
     all_fields_set = set(core_fields)
@@ -129,7 +129,6 @@ def create_ai_prompt(bikes_to_compare):
     
     # Hebrew field name mapping
     field_names_he = {
-        'firm': 'חברה',
         'brand': 'חברה',
         'model': 'דגם',
         'year': 'שנה',
@@ -247,10 +246,10 @@ async def _gather_bikes_research(bikes: List[Dict[str, Any]]) -> List[Dict[str, 
     """Run per-bike research concurrently. Try OpenAI web_search first, then DDG fallback."""
     queries: List[str] = []
     for bike in bikes:
-        firm = bike.get("firm", "")
+        brand = bike.get("brand", "")
         model = bike.get("model", "")
         year = bike.get("year", "")
-        q = " ".join([str(x) for x in [firm, model, year] if x])
+        q = " ".join([str(x) for x in [brand, model, year] if x])
         queries.append(q.strip() or "אופניים חשמליים דגם לא ידוע")
 
     # First try OpenAI web search concurrently (in threadpool since SDK is sync)
@@ -301,7 +300,6 @@ def _build_comparison_prompt(bikes: List[Dict[str, Any]], research: List[Dict[st
     
     # Hebrew field name mapping
     field_names_he = {
-        'firm': 'חברה',
         'brand': 'חברה',
         'model': 'דגם',
         'year': 'שנה',
