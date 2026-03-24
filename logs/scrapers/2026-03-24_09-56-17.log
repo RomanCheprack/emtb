@@ -1,0 +1,93 @@
+2026-03-24 09:56:17,236 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-03-24_09-56-17.log
+2026-03-24 09:56:17,236 - INFO - Scraper orchestrator started at 2026-03-24 09:56:17
+2026-03-24 09:56:17,236 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-03-24 09:56:17,236 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-03-24 09:56:17,236 - INFO - Filtering: --only ['cube_full_site', 'cobra_full_site']
+2026-03-24 09:56:17,236 - INFO - Running 2 scrapers in parallel with 2 workers
+2026-03-24 09:56:17,236 - INFO - Starting scraper: cobra_full_site at 2026-03-24 09:56:17
+2026-03-24 09:56:22,250 - INFO - Starting scraper: cube_full_site at 2026-03-24 09:56:22
+2026-03-24 09:56:27,517 - INFO - [cobra_full_site] 📁 Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-03-24 09:56:27,517 - INFO - [cobra_full_site] 🚀 Starting Chrome driver...
+2026-03-24 09:56:27,517 - INFO - [cobra_full_site] ❌ Chrome driver init error: Message: session not created: cannot connect to chrome at 127.0.0.1:50553
+2026-03-24 09:56:27,517 - INFO - [cobra_full_site] from session not created: This version of ChromeDriver only supports Chrome version 144
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] Current browser version is 146.0.7680.155
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] Stacktrace:
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] 	0x6e5093
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] 	0x6e50d4
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] 	0x4db490
+2026-03-24 09:56:27,530 - INFO - [cobra_full_site] 	0x516ae2
+2026-03-24 09:56:27,532 - INFO - [cobra_full_site] 	0x515b1c
+2026-03-24 09:56:27,532 - INFO - [cobra_full_site] 	0x50bbf5
+2026-03-24 09:56:27,532 - INFO - [cobra_full_site] 	0x50ba16
+2026-03-24 09:56:27,533 - INFO - [cobra_full_site] 	0x5547bf
+2026-03-24 09:56:27,533 - INFO - [cobra_full_site] 	0x553fd7
+2026-03-24 09:56:27,533 - INFO - [cobra_full_site] 	0x547f56
+2026-03-24 09:56:27,534 - INFO - [cobra_full_site] 	0x5196c9
+2026-03-24 09:56:27,534 - INFO - [cobra_full_site] 	0x51a484
+2026-03-24 09:56:27,534 - INFO - [cobra_full_site] 	0x937e34
+2026-03-24 09:56:27,534 - INFO - [cobra_full_site] 	0x9330c9
+2026-03-24 09:56:27,534 - INFO - [cobra_full_site] 	0x950add
+2026-03-24 09:56:27,536 - INFO - [cobra_full_site] 	0x6fdb38
+2026-03-24 09:56:27,536 - INFO - [cobra_full_site] 	0x7058ad
+2026-03-24 09:56:27,536 - INFO - [cobra_full_site] 	0x6ed848
+2026-03-24 09:56:27,536 - INFO - [cobra_full_site] 	0x6eda12
+2026-03-24 09:56:27,536 - INFO - [cobra_full_site] 	0x6d75fa
+2026-03-24 09:56:27,536 - INFO - [cobra_full_site] 	0x76335d49
+2026-03-24 09:56:27,538 - INFO - [cobra_full_site] 	0x777dd81b
+2026-03-24 09:56:27,538 - INFO - [cobra_full_site] 	0x777dd7a1
+2026-03-24 09:56:27,538 - INFO - [cobra_full_site] ✅ Scraping completed: 0 products
+2026-03-24 09:56:27,538 - INFO - [cobra_full_site] 💾 Saved 0 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: Traceback (most recent call last):
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "cube_full_site.py", line 350, in <module>
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     driver = uc.Chrome(options=options, version_main=144)
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     super(Chrome, self).__init__(
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     super().__init__(
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     super().__init__(command_executor=executor, options=options)
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 241, in __init__
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     self.start_session(capabilities)
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 329, in start_session
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     response = self.execute(Command.NEW_SESSION, caps)["value"]
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     self.error_handler.check_response(response)
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR:     raise exception_class(message, screen, stacktrace)
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:50552
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: from session not created: This version of ChromeDriver only supports Chrome version 144
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: Current browser version is 146.0.7680.155
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: Stacktrace:
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: Symbols not available. Dumping unresolved backtrace:
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: 	0x6e5093
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: 	0x6e50d4
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: 	0x4db490
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: 	0x516ae2
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: 	0x515b1c
+2026-03-24 09:56:27,667 - INFO - [cube_full_site] ERROR: 	0x50bbf5
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x50ba16
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x5547bf
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x553fd7
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x547f56
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x5196c9
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x51a484
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x937e34
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x9330c9
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x950add
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x6fdb38
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x7058ad
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x6ed848
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x6eda12
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x6d75fa
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x76335d49
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x777dd81b
+2026-03-24 09:56:27,674 - INFO - [cube_full_site] ERROR: 	0x777dd7a1
+2026-03-24 09:56:32,405 - ERROR - cube_full_site failed with return code 1 after 0m 10s
+2026-03-24 09:56:32,406 - INFO - cube_full_site finished with status: failed
+2026-03-24 09:56:32,420 - INFO - cobra_full_site completed successfully in 0m 15s
+2026-03-24 09:56:32,421 - INFO - cobra_full_site scraped 0 entries
+2026-03-24 09:56:32,421 - INFO - cobra_full_site finished with status: success
+2026-03-24 09:56:32,423 - INFO - Orchestrator completed. Success: 1/2, Total time: 0m 15s

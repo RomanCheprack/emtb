@@ -10,6 +10,7 @@ import time
 import json
 import logging
 import argparse
+import concurrent.futures
 from datetime import datetime
 from pathlib import Path
 from threading import Thread
@@ -83,10 +84,7 @@ def run_scraper(scraper_path, output_dir, logger):
     print(f"{'='*50}")
     logger.info(f"Starting scraper: {scraper_name} at {start_datetime}")
     
-    # Change to the scrapers directory so relative imports work
-    original_dir = os.getcwd()
     scrapers_dir = Path(scraper_path).parent
-    os.chdir(scrapers_dir)
     
     result_info = {
         "name": scraper_name,
@@ -218,10 +216,6 @@ def run_scraper(scraper_path, output_dir, logger):
         result_info["elapsed_time"] = elapsed_time
         result_info["error"] = str(e)
         logger.error(f"Error running {scraper_name}: {e}", exc_info=True)
-    finally:
-        # Change back to original directory
-        os.chdir(original_dir)
-    
     return result_info
 
 def setup_logging(project_root):
@@ -392,7 +386,9 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python run_all_scrapers.py                          # Run all scrapers
+  python run_all_scrapers.py                          # Run all scrapers (3 in parallel)
+  python run_all_scrapers.py --workers 5              # Run with 5 parallel workers
+  python run_all_scrapers.py --workers 1              # Run sequentially (one at a time)
   python run_all_scrapers.py --only matzman_full_site # Run only matzman_full_site
   python run_all_scrapers.py --skip cobra_full_site   # Skip cobra_full_site
   python run_all_scrapers.py --from matzman_full_site # Start from matzman_full_site (inclusive)
@@ -401,6 +397,8 @@ Examples:
     parser.add_argument('--only', nargs='+', help='Run only these scrapers (by name, without .py)')
     parser.add_argument('--skip', nargs='+', help='Skip these scrapers (by name, without .py)')
     parser.add_argument('--from', dest='from_scraper', help='Start from this scraper (inclusive, by name, without .py)')
+    parser.add_argument('--workers', type=int, default=3,
+                        help='Number of scrapers to run in parallel (default: 3, use 1 for sequential)')
     
     args = parser.parse_args()
     
@@ -478,13 +476,54 @@ Examples:
     # Create output directory
     os.makedirs(output_dir, exist_ok=True)
     
-    # Run each scraper and collect results
+    # Determine parallelism
+    max_workers = max(1, min(args.workers, len(scraper_files)))
+    
+    if max_workers > 1:
+        print(f"\n🔀 Running {len(scraper_files)} scrapers in parallel ({max_workers} workers)")
+        logger.info(f"Running {len(scraper_files)} scrapers in parallel with {max_workers} workers")
+    else:
+        print(f"\n▶️  Running {len(scraper_files)} scrapers sequentially")
+        logger.info(f"Running {len(scraper_files)} scrapers sequentially")
+    
+    # Run scrapers
     results = []
-    for i, scraper_file in enumerate(scraper_files, 1):
-        print(f"\n[{i}/{len(scraper_files)}] ", end="")
-        result = run_scraper(scraper_file, output_dir, logger)
-        results.append(result)
-        time.sleep(2)  # Small delay between scrapers
+    if max_workers <= 1:
+        for i, scraper_file in enumerate(scraper_files, 1):
+            print(f"\n[{i}/{len(scraper_files)}] ", end="")
+            result = run_scraper(scraper_file, output_dir, logger)
+            results.append(result)
+            time.sleep(2)
+    else:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_scraper = {}
+            for idx, scraper_file in enumerate(scraper_files):
+                future = executor.submit(run_scraper, scraper_file, output_dir, logger)
+                future_to_scraper[future] = scraper_file
+                if idx < len(scraper_files) - 1:
+                    time.sleep(10)
+            
+            for future in concurrent.futures.as_completed(future_to_scraper):
+                scraper_file = future_to_scraper[future]
+                try:
+                    result = future.result()
+                    results.append(result)
+                    status_icon = {"success": "✅", "failed": "❌", "timeout": "⏰"}.get(result["status"], "⚠️")
+                    elapsed = result["elapsed_time"]
+                    elapsed_str = f"{int(elapsed/60)}m {int(elapsed%60)}s"
+                    print(f"\n{status_icon} {scraper_file.stem} finished ({result['status']}) in {elapsed_str}")
+                    logger.info(f"{scraper_file.stem} finished with status: {result['status']}")
+                except Exception as e:
+                    logger.error(f"Scraper {scraper_file.stem} raised exception: {e}")
+                    results.append({
+                        "name": scraper_file.stem,
+                        "status": "error",
+                        "returncode": None,
+                        "elapsed_time": 0,
+                        "error": str(e),
+                        "stdout_lines": [],
+                        "stderr_lines": []
+                    })
     
     # Calculate overall statistics
     overall_elapsed = time.time() - overall_start_time

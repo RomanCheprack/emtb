@@ -503,7 +503,7 @@ if __name__ == '__main__':
         options.add_argument('--disable-web-security')
         options.add_argument('--allow-running-insecure-content')
         
-        driver = uc.Chrome(options=options, version_main=144)
+        driver = uc.Chrome(options=options, version_main=146)
         print("✅ Chrome driver started successfully!")
         
         # Run the scraper

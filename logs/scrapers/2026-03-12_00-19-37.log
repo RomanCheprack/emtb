@@ -1,0 +1,5 @@
+2026-03-12 00:19:37,139 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-03-12_00-19-37.log
+2026-03-12 00:19:37,139 - INFO - Scraper orchestrator started at 2026-03-12 00:19:37
+2026-03-12 00:19:37,139 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-03-12 00:19:37,139 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-03-12 00:19:37,146 - INFO - Starting scraper: cobra_full_site at 2026-03-12 00:19:37

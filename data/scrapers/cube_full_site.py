@@ -347,7 +347,7 @@ if __name__ == '__main__':
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--disable-gpu')
         options.add_argument('--disable-extensions')
-        driver = uc.Chrome(options=options, version_main=144)
+        driver = uc.Chrome(options=options, version_main=146)
         products = cube_bikes(driver, output_file)
     finally:
         if driver:

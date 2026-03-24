@@ -1,0 +1,56 @@
+2026-03-24 09:55:20,685 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-03-24_09-55-20.log
+2026-03-24 09:55:20,685 - INFO - Scraper orchestrator started at 2026-03-24 09:55:20
+2026-03-24 09:55:20,685 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-03-24 09:55:20,685 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-03-24 09:55:20,685 - INFO - Filtering: --only ['cube_full_site', 'cobra_full_site']
+2026-03-24 09:55:20,685 - INFO - Running 2 scrapers in parallel with 2 workers
+2026-03-24 09:55:20,700 - INFO - Starting scraper: cobra_full_site at 2026-03-24 09:55:20
+2026-03-24 09:55:20,701 - INFO - Starting scraper: cube_full_site at 2026-03-24 09:55:20
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR: Traceback (most recent call last):
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:   File "cube_full_site.py", line 350, in <module>
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:     driver = uc.Chrome(options=options, version_main=144)
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\undetected_chromedriver\__init__.py", line 258, in __init__
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:     self.patcher.auto()
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\undetected_chromedriver\patcher.py", line 178, in auto
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:     self.unzip_package(self.fetch_package())
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:   File "C:\Users\roman\AppData\Local\Programs\Python\Python38\lib\site-packages\undetected_chromedriver\patcher.py", line 310, in unzip_package
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR:     os.rename(os.path.join(self.zip_path, exe_path), self.executable_path)
+2026-03-24 09:55:27,400 - INFO - [cube_full_site] ERROR: FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\roman\\appdata\\roaming\\undetected_chromedriver\\undetected\\chromedriver-win32\\chromedriver.exe' -> 'C:\\Users\\roman\\appdata\\roaming\\undetected_chromedriver\\undetected_chromedriver.exe'
+2026-03-24 09:55:27,767 - ERROR - cube_full_site failed with return code 1 after 0m 7s
+2026-03-24 09:55:27,767 - INFO - cube_full_site finished with status: failed
+2026-03-24 09:55:39,273 - INFO - [cobra_full_site] 📁 Output file ready: C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-03-24 09:55:39,274 - INFO - [cobra_full_site] 🚀 Starting Chrome driver...
+2026-03-24 09:55:39,274 - INFO - [cobra_full_site] ❌ Chrome driver init error: Message: session not created: cannot connect to chrome at 127.0.0.1:64629
+2026-03-24 09:55:39,275 - INFO - [cobra_full_site] from session not created: This version of ChromeDriver only supports Chrome version 144
+2026-03-24 09:55:39,275 - INFO - [cobra_full_site] Current browser version is 146.0.7680.155
+2026-03-24 09:55:39,275 - INFO - [cobra_full_site] Stacktrace:
+2026-03-24 09:55:39,276 - INFO - [cobra_full_site] Symbols not available. Dumping unresolved backtrace:
+2026-03-24 09:55:39,276 - INFO - [cobra_full_site] 	0xe25093
+2026-03-24 09:55:39,276 - INFO - [cobra_full_site] 	0xe250d4
+2026-03-24 09:55:39,277 - INFO - [cobra_full_site] 	0xc1b490
+2026-03-24 09:55:39,277 - INFO - [cobra_full_site] 	0xc56ae2
+2026-03-24 09:55:39,277 - INFO - [cobra_full_site] 	0xc55b1c
+2026-03-24 09:55:39,278 - INFO - [cobra_full_site] 	0xc4bbf5
+2026-03-24 09:55:39,278 - INFO - [cobra_full_site] 	0xc4ba16
+2026-03-24 09:55:39,278 - INFO - [cobra_full_site] 	0xc947bf
+2026-03-24 09:55:39,279 - INFO - [cobra_full_site] 	0xc93fd7
+2026-03-24 09:55:39,279 - INFO - [cobra_full_site] 	0xc87f56
+2026-03-24 09:55:39,279 - INFO - [cobra_full_site] 	0xc596c9
+2026-03-24 09:55:39,280 - INFO - [cobra_full_site] 	0xc5a484
+2026-03-24 09:55:39,280 - INFO - [cobra_full_site] 	0x1077e34
+2026-03-24 09:55:39,280 - INFO - [cobra_full_site] 	0x10730c9
+2026-03-24 09:55:39,281 - INFO - [cobra_full_site] 	0x1090add
+2026-03-24 09:55:39,281 - INFO - [cobra_full_site] 	0xe3db38
+2026-03-24 09:55:39,282 - INFO - [cobra_full_site] 	0xe458ad
+2026-03-24 09:55:39,282 - INFO - [cobra_full_site] 	0xe2d848
+2026-03-24 09:55:39,283 - INFO - [cobra_full_site] 	0xe2da12
+2026-03-24 09:55:39,283 - INFO - [cobra_full_site] 	0xe175fa
+2026-03-24 09:55:39,284 - INFO - [cobra_full_site] 	0x76335d49
+2026-03-24 09:55:39,284 - INFO - [cobra_full_site] 	0x777dd81b
+2026-03-24 09:55:39,285 - INFO - [cobra_full_site] 	0x777dd7a1
+2026-03-24 09:55:39,286 - INFO - [cobra_full_site] ✅ Scraping completed: 0 products
+2026-03-24 09:55:39,286 - INFO - [cobra_full_site] 💾 Saved 0 products to C:\Users\roman\Code\emtb_site\data\scraped_raw_data\cobra_data.json
+2026-03-24 09:55:44,927 - INFO - cobra_full_site completed successfully in 0m 24s
+2026-03-24 09:55:44,927 - INFO - cobra_full_site scraped 0 entries
+2026-03-24 09:55:44,927 - INFO - cobra_full_site finished with status: success
+2026-03-24 09:55:44,927 - INFO - Orchestrator completed. Success: 1/2, Total time: 0m 24s

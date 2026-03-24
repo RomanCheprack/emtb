@@ -534,7 +534,7 @@ if __name__ == '__main__':
         options.add_argument('--disable-web-security')
         options.add_argument('--allow-running-insecure-content')
         
-        driver = uc.Chrome(options=options, version_main=144)
+        driver = uc.Chrome(options=options, version_main=146)
         print("✅ Chrome driver started successfully!")
         products = recycles_bikes(driver, output_file)
     except Exception as e:

@@ -135,7 +135,7 @@ def is_driver_alive(driver):
 
 def recreate_driver(options=None):
     opts = options or uc.ChromeOptions()
-    return uc.Chrome(options=opts, version_main=144)
+    return uc.Chrome(options=opts, version_main=146)
 
 def safe_get(driver, url, timeout=PAGE_LOAD_TIMEOUT, retries=PAGE_LOAD_RETRIES):
     for attempt in range(1, retries + 1):
@@ -372,7 +372,7 @@ def main():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
 
-    driver = uc.Chrome(options=options, version_main=144)
+    driver = uc.Chrome(options=options, version_main=146)
     try:
         giant_bikes(driver)
     finally:

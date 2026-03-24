@@ -1,0 +1,5 @@
+2026-03-24 09:55:01,442 - INFO - Logging to: C:\Users\roman\Code\emtb_site\logs\scrapers\2026-03-24_09-55-01.log
+2026-03-24 09:55:01,443 - INFO - Scraper orchestrator started at 2026-03-24 09:55:01
+2026-03-24 09:55:01,443 - INFO - Scrapers directory: C:\Users\roman\Code\emtb_site\data\scrapers
+2026-03-24 09:55:01,443 - INFO - Output directory: C:\Users\roman\Code\emtb_site\data\scraped_raw_data
+2026-03-24 09:55:01,443 - INFO - Filtering: --only ['cube_full_site', 'cobra_full_site']
