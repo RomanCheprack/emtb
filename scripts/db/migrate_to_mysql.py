@@ -20,7 +20,7 @@ from app import create_app
 from app.extensions import db
 from app.models import (
     User, Brand, Source, Bike, BikeListing, BikePrice,
-    BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison
+    BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison,
 )
 
 

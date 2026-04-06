@@ -2,7 +2,7 @@ from datetime import datetime
 import uuid
 from sqlalchemy import (
     Column, Integer, BigInteger, String, Text, Boolean, DateTime,
-    ForeignKey, UniqueConstraint
+    ForeignKey, UniqueConstraint, Index,
 )
 from sqlalchemy.dialects.mysql import CHAR, DECIMAL
 from sqlalchemy.orm import relationship
@@ -89,6 +89,7 @@ class Bike(Base):
     standardized_specs = relationship("BikeSpecStd", back_populates="bike", cascade="all, delete-orphan")
     images = relationship("BikeImage", back_populates="bike", cascade="all, delete-orphan")
     compare_count = relationship("CompareCount", uselist=False, back_populates="bike")
+    purchase_clicks = relationship("PurchaseClick", back_populates="bike", cascade="all, delete-orphan")
 
     def to_dict(self, include_specs=True, include_prices=True, include_images=True, flat_format=True, list_view=False):
         """
@@ -432,6 +433,23 @@ class StoreRequestLead(Base):
             "remarks": self.remarks,
             "created_at": self.created_at.isoformat() if self.created_at else None
         }
+
+
+class PurchaseClick(Base):
+    """Outbound purchase button click (valid product URL only); importer denormalized for reporting."""
+    __tablename__ = "purchase_clicks"
+    __table_args__ = (
+        Index("ix_purchase_clicks_created_at", "created_at"),
+        Index("ix_purchase_clicks_bike_created", "bike_id", "created_at"),
+        Index("ix_purchase_clicks_importer_created", "importer", "created_at"),
+    )
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    bike_id = Column(BigInteger, ForeignKey("bikes.id", ondelete="CASCADE"), nullable=False)
+    importer = Column(String(500), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    bike = relationship("Bike", back_populates="purchase_clicks")
 
 
 # ---------------------------

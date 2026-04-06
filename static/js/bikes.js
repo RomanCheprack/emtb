@@ -742,9 +742,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".purchase-btn").forEach((btn) => {
             btn.onclick = () => {
                 const productUrl = btn.getAttribute("data-product-url");
-                
+                const bikeId = btn.getAttribute("data-bike-id");
+
                 if (productUrl && productUrl.trim() !== '') {
-                    // Open the product URL in a new tab
+                    if (typeof window.recordPurchaseClick === "function") {
+                        window.recordPurchaseClick(bikeId, productUrl);
+                    }
                     window.open(productUrl, '_blank');
                 } else {
                     // Show a message if no product URL is available
@@ -1226,7 +1229,7 @@ function showBikeDetailsModal(bike) {
                     </table>
                 </div>
                 <div class="mt-3">
-                    ${adaptedBike.listing?.product_url ? `<a href="${adaptedBike.listing.product_url}" class="btn btn-info" target="_blank">לרכישה</a>` : ''}
+                    ${adaptedBike.listing?.product_url ? `<a href="${adaptedBike.listing.product_url}" class="btn btn-info bike-modal-purchase-link" target="_blank" data-bike-id="${String(adaptedBike.id).replace(/"/g, '&quot;')}" data-product-url="${String(adaptedBike.listing.product_url).replace(/"/g, '&quot;')}">לרכישה</a>` : ''}
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 10px;">סגור</button>
                 </div>
             </div>
@@ -1235,6 +1238,16 @@ function showBikeDetailsModal(bike) {
 
         try {
             document.getElementById('bike-details-content').innerHTML = html;
+
+            const modalPurchase = document.querySelector('#bike-details-content .bike-modal-purchase-link');
+            if (modalPurchase && typeof window.recordPurchaseClick === 'function') {
+                modalPurchase.addEventListener('click', function () {
+                    window.recordPurchaseClick(
+                        modalPurchase.getAttribute('data-bike-id'),
+                        modalPurchase.getAttribute('data-product-url')
+                    );
+                });
+            }
             
             // Check if Bootstrap is available
             if (typeof bootstrap === 'undefined') {

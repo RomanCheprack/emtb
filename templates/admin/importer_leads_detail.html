@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/admin.css') }}">
+
+<div class="admin-container" style="direction: rtl;">
+    <div class="admin-header">
+        <h1>לידי רכישה — {{ display_label }}</h1>
+        <div>
+            <a href="{{ url_for('admin.importer_leads', days=days_param) }}" class="btn btn-outline-secondary me-2">חזרה לרשימת יבואנים</a>
+            <a href="{{ url_for('admin.logout') }}" class="btn btn-outline-danger">התנתק</a>
+        </div>
+    </div>
+
+    <div class="btn-group mb-3" role="group" aria-label="טווח">
+        <a href="{{ url_for('admin.importer_leads_detail', importer=importer_arg, days=7) }}" class="btn btn-sm {% if days_param == '7' %}btn-primary{% else %}btn-outline-primary{% endif %}">7 ימים</a>
+        <a href="{{ url_for('admin.importer_leads_detail', importer=importer_arg, days=30) }}" class="btn btn-sm {% if days_param == '30' %}btn-primary{% else %}btn-outline-primary{% endif %}">30 ימים</a>
+        <a href="{{ url_for('admin.importer_leads_detail', importer=importer_arg, days=90) }}" class="btn btn-sm {% if days_param == '90' %}btn-primary{% else %}btn-outline-primary{% endif %}">90 ימים</a>
+        <a href="{{ url_for('admin.importer_leads_detail', importer=importer_arg, days='all') }}" class="btn btn-sm {% if days_param == 'all' %}btn-primary{% else %}btn-outline-primary{% endif %}">הכל</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>מותג</th>
+                            <th>דגם</th>
+                            <th>מספר לחיצות</th>
+                            <th>לחיצה אחרונה (UTC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in bike_rows %}
+                        <tr>
+                            <td>{{ row.brand_name or '—' }}</td>
+                            <td>{{ row.model or '—' }}</td>
+                            <td>{{ row.click_count }}</td>
+                            <td>{{ row.last_click.strftime('%d/%m/%Y %H:%M') if row.last_click else '—' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% if not bike_rows %}
+    <p class="mt-3">אין לידים בטווח שנבחר.</p>
+    {% endif %}
+</div>
+{% endblock %}

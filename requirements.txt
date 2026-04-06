@@ -48,3 +48,4 @@ Pillow==10.4.0
 pytesseract==0.3.10
 bleach==6.1.0
 mammoth==1.7.0
+flask-limiter==3.5.0

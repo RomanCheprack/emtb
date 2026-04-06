@@ -3,6 +3,7 @@
 Drop all bike-related data from the database while preserving user data.
 
 This script drops:
+- purchase_clicks (purchase analytics; references bikes)
 - bikes
 - bike_listings
 - bike_prices
@@ -32,9 +33,13 @@ from app import create_app
 from app.extensions import db
 from app.models import (
     User, Brand, Source, Bike, BikeListing, BikePrice,
-    BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison
+    BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison, PurchaseClick,
 )
-from sqlalchemy import text
+from sqlalchemy import text, inspect
+
+
+def _purchase_clicks_table_exists():
+    return "purchase_clicks" in inspect(db.engine).get_table_names()
 
 
 def get_table_counts(app):
@@ -52,6 +57,7 @@ def get_table_counts(app):
             'bike_specs_std': BikeSpecStd.query.count(),
             'bike_images': BikeImage.query.count(),
             'compare_counts': CompareCount.query.count(),
+            'purchase_clicks': PurchaseClick.query.count() if _purchase_clicks_table_exists() else 0,
         }
         return counts
 
@@ -92,6 +98,7 @@ def drop_bike_data(app, dry_run=False):
         print(f"   Bike Specs (Std): {counts_before['bike_specs_std']}")
         print(f"   Bike Images: {counts_before['bike_images']}")
         print(f"   Compare Counts: {counts_before['compare_counts']} (preserved)")
+        print(f"   Purchase clicks: {counts_before['purchase_clicks']}")
         
         if dry_run:
             print("\n🔍 DRY RUN MODE - No data will be deleted")
@@ -101,6 +108,7 @@ def drop_bike_data(app, dry_run=False):
             print(f"   - {counts_before['bike_specs_raw']} raw specs")
             print(f"   - {counts_before['bike_prices']} prices")
             print(f"   - {counts_before['bike_listings']} listings")
+            print(f"   - {counts_before['purchase_clicks']} purchase clicks")
             print(f"   (Compare counts will be preserved)")
             print(f"   - {counts_before['bikes']} bikes")
             return True
@@ -115,43 +123,54 @@ def drop_bike_data(app, dry_run=False):
             
             deleted_counts = {}
             
-            # 1. Delete bike_images
-            print("   1. Deleting bike images...")
+            # 1. Delete purchase_clicks (references bikes)
+            print("   1. Deleting purchase clicks...")
+            if _purchase_clicks_table_exists():
+                deleted = PurchaseClick.query.delete()
+                deleted_counts['purchase_clicks'] = deleted
+                print(f"      ✅ Deleted {deleted} purchase click rows")
+            else:
+                deleted_counts['purchase_clicks'] = 0
+                print("      ⏭️  Table purchase_clicks does not exist (skipped)")
+            db.session.flush()
+            
+            # 2. Delete bike_images
+            print("   2. Deleting bike images...")
             deleted = BikeImage.query.delete()
             deleted_counts['bike_images'] = deleted
             print(f"      ✅ Deleted {deleted} bike images")
             db.session.flush()
             
-            # 2. Delete bike_specs_std
-            print("   2. Deleting standardized specs...")
+            # 3. Delete bike_specs_std
+            print("   3. Deleting standardized specs...")
             deleted = BikeSpecStd.query.delete()
             deleted_counts['bike_specs_std'] = deleted
             print(f"      ✅ Deleted {deleted} standardized specs")
             db.session.flush()
             
-            # 3. Delete bike_specs_raw
-            print("   3. Deleting raw specs...")
+            # 4. Delete bike_specs_raw
+            print("   4. Deleting raw specs...")
             deleted = BikeSpecRaw.query.delete()
             deleted_counts['bike_specs_raw'] = deleted
             print(f"      ✅ Deleted {deleted} raw specs")
             db.session.flush()
             
-            # 4. Delete bike_prices
-            print("   4. Deleting bike prices...")
+            # 5. Delete bike_prices
+            print("   5. Deleting bike prices...")
             deleted = BikePrice.query.delete()
             deleted_counts['bike_prices'] = deleted
             print(f"      ✅ Deleted {deleted} prices")
             db.session.flush()
             
-            # 5. Delete bike_listings (compare_counts preserved - will be orphaned but kept)
-            print("   5. Deleting bike listings...")
+            # 6. Delete bike_listings (compare_counts preserved - will be orphaned but kept)
+            print("   6. Deleting bike listings...")
             deleted = BikeListing.query.delete()
             deleted_counts['bike_listings'] = deleted
             print(f"      ✅ Deleted {deleted} listings")
             db.session.flush()
             
-            # 6. Delete bikes (compare_counts has FK with CASCADE, but we preserve it by disabling FK checks)
-            print("   6. Deleting bikes...")
+            # 7. Delete bikes (compare_counts has FK with CASCADE, but we preserve it by disabling FK checks)
+            print("   7. Deleting bikes...")
             print("      ⚠️  Note: compare_counts will be orphaned (FK references will be invalid)")
             print("      ⚠️  After migration, compare_counts will need to be updated to match new bike IDs")
             deleted = Bike.query.delete()
@@ -180,6 +199,7 @@ def drop_bike_data(app, dry_run=False):
             print(f"   Bike Specs (Std): {counts_after['bike_specs_std']} (deleted)")
             print(f"   Bike Images: {counts_after['bike_images']} (deleted)")
             print(f"   Compare Counts: {counts_after['compare_counts']} (preserved)")
+            print(f"   Purchase clicks: {counts_after['purchase_clicks']} (deleted)")
             
             return True
             
@@ -282,7 +302,7 @@ def main():
         if not args.force and not args.dry_run:
             print("\n⚠️  WARNING: This will DELETE ALL bike-related data!")
             print("   Preserved: users, comparisons, brands, sources, compare_counts")
-            print("   Deleted: bikes, listings, prices, specs, images")
+            print("   Deleted: purchase_clicks, bikes, listings, prices, specs, images")
             response = input("\nDo you want to continue? (yes/no): ")
             if response.lower() != 'yes':
                 print("❌ Aborted.")

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
-from app.extensions import csrf, cache, db
-from app.models import Bike, BikeListing
+from datetime import datetime
+from app.extensions import csrf, cache, db, limiter
+from app.models import Bike, BikeListing, PurchaseClick
 from app.utils.helpers import clean_bike_data_for_json
 import hmac
 import hashlib
@@ -13,6 +14,55 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 bp = Blueprint('api', __name__, url_prefix='/api')
+
+
+@bp.route('/purchase_click', methods=['POST'])
+@csrf.exempt
+@limiter.limit("20 per minute; 100 per hour")
+def purchase_click():
+    """
+    Record a purchase outbound click. Only persisted when product_url matches a listing
+    for the bike (same rules as frontend: valid URL path only).
+    """
+    try:
+        data = request.get_json(silent=True) or {}
+        bike_key = (data.get('bike_id') or '').strip()
+        product_url = (data.get('product_url') or '').strip()
+
+        if not bike_key or not product_url:
+            return jsonify({'success': False, 'error': 'Missing bike_id or product_url'}), 400
+
+        bike = db.session.query(Bike).options(
+            db.joinedload(Bike.listings).joinedload(BikeListing.source)
+        ).filter(
+            (Bike.slug == bike_key) | (Bike.uuid == bike_key)
+        ).first()
+
+        if not bike:
+            return jsonify({'success': False, 'error': 'Bike not found'}), 404
+
+        listing = None
+        for lst in bike.listings:
+            if lst.product_url and lst.product_url.strip() == product_url:
+                listing = lst
+                break
+
+        if not listing:
+            return jsonify({'success': False, 'error': 'Listing URL does not match bike'}), 400
+
+        importer = None
+        if listing.source:
+            importer = listing.source.importer
+
+        row = PurchaseClick(bike_id=bike.id, importer=importer, created_at=datetime.utcnow())
+        db.session.add(row)
+        db.session.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        logger.error(f"purchase_click error: {e}")
+        db.session.rollback()
+        return jsonify({'success': False, 'error': 'Server error'}), 500
+
 
 @bp.route('/webhook/github', methods=['POST'])
 @csrf.exempt

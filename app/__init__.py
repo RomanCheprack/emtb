@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 # Import extensions
-from .extensions import cache, csrf, db
+from .extensions import cache, csrf, db, limiter
 
 def create_app(config_name=None):
     """Application factory function"""
@@ -33,6 +33,7 @@ def create_app(config_name=None):
     cache.init_app(app)
     csrf.init_app(app)
     db.init_app(app)
+    limiter.init_app(app)
     
     # Register blueprints
     from .routes import main, bikes, blog, compare, api, debug, admin, guides

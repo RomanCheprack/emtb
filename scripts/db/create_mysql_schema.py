@@ -85,7 +85,7 @@ def create_schema(force=False):
         from app.models import (
             User, Brand, Source, Bike, BikeListing, BikePrice,
             BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison,
-            AvailabilityLead, ContactLead, Guide
+            AvailabilityLead, ContactLead, Guide,
         )
         
         print(f"📊 Database URI: {app.config['SQLALCHEMY_DATABASE_URI'][:50]}...")

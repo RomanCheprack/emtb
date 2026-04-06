@@ -2,10 +2,14 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from functools import wraps
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
+from sqlalchemy import func, desc
 from app.extensions import db
-from app.models import AvailabilityLead, ContactLead, StoreRequestLead, Guide, BlogPost
+from app.models import (
+    AvailabilityLead, ContactLead, StoreRequestLead, Guide, BlogPost,
+    PurchaseClick, Source, Bike, Brand,
+)
 from app.utils.helpers import generate_slug_from_title
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import re
 from pathlib import Path
@@ -30,6 +34,19 @@ def login_required(f):
             return redirect(url_for('admin.login'))
         return f(*args, **kwargs)
     return decorated_function
+
+
+def _purchase_click_range_start(days_key):
+    """Return UTC datetime lower bound, or None for all-time."""
+    if days_key is None or str(days_key).lower() in ("all", "none", ""):
+        return None
+    try:
+        d = int(days_key)
+        if d <= 0:
+            return None
+        return datetime.utcnow() - timedelta(days=d)
+    except (TypeError, ValueError):
+        return None
 
 
 @bp.route('/login', methods=['GET', 'POST'])
@@ -144,6 +161,94 @@ def store_request_leads():
         flash(f'שגיאה בטעינת הלידים: {str(e)}', 'error')
     
     return render_template('admin/store_request_leads.html', leads=leads)
+
+
+@bp.route('/importer-leads')
+@login_required
+def importer_leads():
+    """Distinct importers (from sources) with purchase-click counts in the selected range."""
+    days_param = request.args.get("days", "30")
+    start = _purchase_click_range_start(days_param)
+
+    q = db.session.query(
+        PurchaseClick.importer,
+        func.count(PurchaseClick.id).label("cnt"),
+    )
+    if start:
+        q = q.filter(PurchaseClick.created_at >= start)
+    q = q.group_by(PurchaseClick.importer)
+    count_rows = q.all()
+    count_map = {imp: cnt for imp, cnt in count_rows}
+
+    source_importers = (
+        db.session.query(Source.importer)
+        .filter(Source.importer.isnot(None), Source.importer != "")
+        .distinct()
+        .all()
+    )
+    names = sorted([r[0] for r in source_importers])
+    table_rows = [{"importer": name, "leads": count_map.get(name, 0)} for name in names]
+    table_rows.sort(key=lambda x: (-x["leads"], x["importer"]))
+
+    unknown = count_map.get(None, 0)
+    if unknown > 0:
+        table_rows.append({"importer": None, "leads": unknown})
+
+    return render_template(
+        "admin/importer_leads.html",
+        table_rows=table_rows,
+        days_param=days_param,
+    )
+
+
+@bp.route("/importer-leads/detail")
+@login_required
+def importer_leads_detail():
+    """Per-bike aggregates for one importer (or unknown)."""
+    arg = request.args.get("importer")
+    days_param = request.args.get("days", "30")
+    start = _purchase_click_range_start(days_param)
+
+    if arg is None:
+        flash("חסר פרמטר יבואן", "error")
+        return redirect(url_for("admin.importer_leads", days=days_param))
+
+    if arg == "__none__":
+        filter_imp = None
+        display_label = "לא ידוע (ללא יבואן)"
+    else:
+        filter_imp = arg
+        display_label = arg
+
+    q = (
+        db.session.query(
+            Bike.id,
+            Bike.model,
+            Brand.name.label("brand_name"),
+            func.count(PurchaseClick.id).label("click_count"),
+            func.max(PurchaseClick.created_at).label("last_click"),
+        )
+        .join(PurchaseClick, PurchaseClick.bike_id == Bike.id)
+        .join(Brand, Brand.id == Bike.brand_id)
+    )
+    if filter_imp is None:
+        q = q.filter(PurchaseClick.importer.is_(None))
+    else:
+        q = q.filter(PurchaseClick.importer == filter_imp)
+    if start:
+        q = q.filter(PurchaseClick.created_at >= start)
+    q = q.group_by(Bike.id, Bike.model, Brand.name).order_by(
+        desc(func.count(PurchaseClick.id)), Bike.model
+    )
+    bike_rows = q.all()
+
+    return render_template(
+        "admin/importer_leads_detail.html",
+        display_label=display_label,
+        importer_arg=arg,
+        bike_rows=bike_rows,
+        days_param=days_param,
+    )
 
 
 @bp.route('/availability-leads/<int:lead_id>/delete', methods=['POST'])

@@ -239,7 +239,9 @@
             <div class="purchase-section mb-4">
                 <a href="{{ product_url }}" 
                    target="_blank" 
-                   class="btn btn-primary btn-lg purchase-button w-100">
+                   class="btn btn-primary btn-lg purchase-button purchase-track w-100"
+                   data-bike-id="{{ bike_id|e }}"
+                   data-product-url="{{ product_url|e }}">
                     <i class="fas fa-shopping-cart me-2"></i>
                     רכישה
                 </a>
@@ -320,6 +322,7 @@ function zoomImage() {
 }
 </script>
 
+<script src="{{ url_for('static', filename='js/purchase_click.js') }}"></script>
 <!-- Similar Bikes Carousel Script -->
 <script src="{{ url_for('static', filename='js/similar_bikes.js') }}"></script>
 
