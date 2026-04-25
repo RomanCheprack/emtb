@@ -529,6 +529,11 @@ def standardize_bike_data(bike_data):
                 standardized['images'] = standardize_nested_object(value, keep_lists=True)
             elif original_field == 'specs' and isinstance(value, dict):
                 standardized['specs'] = standardize_nested_object(value)
+            elif original_field == 'variants':
+                # Preserve the full variants structure untouched. It contains
+                # nested dicts/lists plus numeric stock and boolean in_stock
+                # flags which must not be passed through string cleaning.
+                standardized['variants'] = value
             else:
                 # Regular top-level fields - keep field name as-is, only clean value
                 standardized[cleaned_original_field] = clean_bike_field_value(value)

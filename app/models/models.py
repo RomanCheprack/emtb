@@ -88,6 +88,7 @@ class Bike(Base):
     listings = relationship("BikeListing", back_populates="bike", cascade="all, delete-orphan")
     standardized_specs = relationship("BikeSpecStd", back_populates="bike", cascade="all, delete-orphan")
     images = relationship("BikeImage", back_populates="bike", cascade="all, delete-orphan")
+    variants = relationship("BikeVariant", back_populates="bike", cascade="all, delete-orphan")
     compare_count = relationship("CompareCount", uselist=False, back_populates="bike")
     purchase_clicks = relationship("PurchaseClick", back_populates="bike", cascade="all, delete-orphan")
 
@@ -317,6 +318,63 @@ class BikeImage(Base):
             "is_main": self.is_main,
             "position": self.position,
             "local_url": self.local_url
+        }
+
+
+# ---------------------------
+# Variants (size x color inventory)
+# ---------------------------
+class BikeVariant(Base):
+    """Per-(size x color) inventory cell for a bike listing.
+
+    Currently populated only for Pedalim bikes. Rows with a NULL size_label
+    represent a color that has no size picker on the source page.
+    """
+    __tablename__ = "bike_variants"
+    __table_args__ = (
+        UniqueConstraint("bike_id", "color_id", "size_label", name="uq_bike_variant"),
+        Index("ix_bike_variants_bike", "bike_id"),
+        Index("ix_bike_variants_bike_stock", "bike_id", "in_stock"),
+    )
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    bike_id = Column(BigInteger, ForeignKey("bikes.id", ondelete="CASCADE"), nullable=False)
+    listing_id = Column(BigInteger, ForeignKey("bike_listings.id", ondelete="CASCADE"), nullable=True)
+    color_id = Column(String(64), nullable=True)
+    color_label = Column(String(255), nullable=True)
+    size_label = Column(String(64), nullable=True)
+    sku = Column(String(128), nullable=True)
+    stock = Column(Integer, nullable=True)
+    in_stock = Column(Boolean, default=False, nullable=False)
+    is_default_color = Column(Boolean, default=False, nullable=False)
+    image_url = Column(String(500), nullable=True)
+    gallery_json = Column(Text, nullable=True)
+    position = Column(Integer, default=0, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    bike = relationship("Bike", back_populates="variants")
+    listing = relationship("BikeListing")
+
+    def to_dict(self):
+        import json as _json
+        gallery = []
+        if self.gallery_json:
+            try:
+                gallery = _json.loads(self.gallery_json) or []
+            except (ValueError, TypeError):
+                gallery = []
+        return {
+            "id": self.id,
+            "color_id": self.color_id,
+            "color_label": self.color_label,
+            "size_label": self.size_label,
+            "sku": self.sku,
+            "stock": self.stock,
+            "in_stock": bool(self.in_stock),
+            "is_default_color": bool(self.is_default_color),
+            "image_url": self.image_url,
+            "gallery_images_urls": gallery,
+            "position": self.position,
         }
 
 

@@ -42,17 +42,17 @@ CHATGPT_API_KEY = os.getenv('SCRAPER_OPENAI_API_KEY', '')
 scraped_data = []
 
 PEDALIM_TARGET_URLS = [
-    {"url": f"{BASE_URL}/אופניים-חשמליים?סוג%20אופניים=333012&bsfilter-13166=333012", "category": "electric", "sub_category": "electric_mtb"},
-    {"url": f"{BASE_URL}/אופניים-חשמליים?סוג%20אופניים=339479&bsfilter-13166=339479", "category": "electric", "sub_category": "electric_city"},
+    {"url": f"{BASE_URL}/אופניים-חשמליים", "category": "electric", "sub_category": "electric_mtb"},
+    {"url": f"{BASE_URL}/אופניים-היברידיים-חשמליים", "category": "electric", "sub_category": "electric_city"},
     {"url": f"{BASE_URL}/אופני-הרים?סוג%20אופניים=307444&bsfilter-13166=307444", "category": "mtb", "sub_category": "hardtail"},
     {"url": f"{BASE_URL}/אופני-הרים?סוג%20אופניים=306187&bsfilter-13166=306187", "category": "mtb", "sub_category": "full_suspension"},
     {"url": f"{BASE_URL}/אופני-הרים?סוג%20אופניים=310291&bsfilter-13166=310291", "category": "mtb", "sub_category": "tandem"},
-    {"url": f"{BASE_URL}/אופני-כביש?סוג%20אופניים=339667,339773&bsfilter-13166=339667,339773", "category": "gravel", "sub_category": "gravel"},
-    {"url": f"{BASE_URL}/אופני-כביש?סוג%20אופניים=306189,307446&bsfilter-13166=306189,307446", "category": "road", "sub_category": "road"},
+    {"url": f"{BASE_URL}/אופני-גראבל", "category": "gravel", "sub_category": "gravel"},
+    {"url": f"{BASE_URL}/אופני-כביש", "category": "road", "sub_category": "road"},
+    {"url": f"{BASE_URL}/אופני-כביש?bscrp=2", "category": "road", "sub_category": "road"},
     {"url": f"{BASE_URL}/אופני-עיר", "category": "city", "sub_category": "city"},
     {"url": f"{BASE_URL}/אופני-ילדים", "category": "kids", "sub_category": "kids"},
     {"url": f"{BASE_URL}/אופני_נשים", "category": "city", "sub_category": "woman"},
-    {"url": f"{BASE_URL}/אופני-גראבל", "category": "gravel", "sub_category": "gravel"},
 ]
 
 def safe_to_int(text):
@@ -60,6 +60,489 @@ def safe_to_int(text):
         return int(str(text).replace(',', '').replace('₪', '').strip())
     except (ValueError, AttributeError):
         return "צור קשר"
+
+# ---------- Variant extraction (size + color) ----------
+# Pedalim product pages embed all per-variant data as JS arrays in the page
+# source (IdArrAss, sizeArr, colorArr, arrCode, stockArr, prodImage1..12).
+# Each index across these arrays describes a single (size x color) variant.
+def _js_string_array(html, var_name):
+    """Extract a JS array of quoted strings, returning a Python list[str]."""
+    pattern = rf"var\s+{re.escape(var_name)}\s*=\s*\[(.*?)\]\s*;"
+    m = re.search(pattern, html, re.DOTALL)
+    if not m:
+        return None
+    items = re.findall(r'"((?:[^"\\]|\\.)*)"|\'((?:[^\'\\]|\\.)*)\'', m.group(1))
+    return [a or b for a, b in items]
+
+def _js_int_array(html, var_name):
+    pattern = rf"var\s+{re.escape(var_name)}\s*=\s*\[([^\]]*)\]\s*;"
+    m = re.search(pattern, html, re.DOTALL)
+    if not m:
+        return None
+    out = []
+    for x in m.group(1).split(','):
+        x = x.strip().strip("'\"")
+        if not x:
+            continue
+        try:
+            out.append(int(x))
+        except ValueError:
+            out.append(None)
+    return out
+
+def _js_string(html, var_name):
+    pattern = rf"var\s+{re.escape(var_name)}\s*=\s*'((?:[^'\\]|\\.)*)'\s*;"
+    m = re.search(pattern, html, re.DOTALL)
+    return m.group(1) if m else None
+
+def extract_pedalim_variants_live(driver, timeout=12):
+    """Read live per-variant data from the page's `ListObj` JS variable.
+
+    Pedalim product pages declare an initial ``stockArr = [0,0,0,0,...]`` that
+    is almost always stale. The real stock is fetched after page load via
+    ``bsGetStockAndPriceJson(arrCode, true)`` and each variant's live stock +
+    sale price is then written into ``ListObj[<variant_id>]`` inside the page's
+    ``$(document).ready`` handler. This helper polls the browser until
+    ``ListObj`` has been populated for every id in ``IdArrAss`` and converts it
+    to the same shape as :func:`extract_pedalim_variants`.
+
+    Returns ``None`` if the page has no variants or the AJAX never populated
+    ``ListObj`` within ``timeout`` seconds; callers should fall back to
+    :func:`extract_pedalim_variants` in that case.
+    """
+    script = r"""
+        try {
+            var idArr = window.IdArrAss;
+            var obj = window.ListObj;
+            if (!idArr || !idArr.length || !obj) return null;
+            var out = [];
+            for (var i = 0; i < idArr.length; i++) {
+                var id = idArr[i];
+                var v = obj[id];
+                if (!v) return null; // not populated yet — keep polling
+                out.push({
+                    variant_id: String(id),
+                    size: v.size || null,
+                    color: v.color || null,
+                    sku: v.code || null,
+                    stock: (typeof v.stock === 'number') ? v.stock : (v.stock != null ? parseInt(v.stock, 10) : null),
+                    saleprice: v.saleprice != null ? v.saleprice : null,
+                    img1: v.img1 || null,
+                    img3: v.img3 || null,
+                    img4: v.img4 || null,
+                    img5: v.img5 || null,
+                    img6: v.img6 || null,
+                    img7: v.img7 || null,
+                    img8: v.img8 || null,
+                    img9: v.img9 || null,
+                    img10: v.img10 || null,
+                    img11: v.img11 || null,
+                    img12: v.img12 || null
+                });
+            }
+            return out;
+        } catch (e) { return null; }
+    """
+    deadline = time.time() + timeout
+    raw = None
+    while time.time() < deadline:
+        try:
+            raw = driver.execute_script(script)
+        except Exception:
+            raw = None
+        if raw:
+            break
+        time.sleep(0.25)
+    if not raw:
+        return None
+
+    out = []
+    for entry in raw:
+        gallery = []
+        for key in (
+            "img1", "img3", "img4", "img5", "img6", "img7",
+            "img8", "img9", "img10", "img11", "img12",
+        ):
+            path = (entry.get(key) or "").strip()
+            if not path:
+                continue
+            full = path if path.startswith("http") else urljoin(BASE_URL + "/", path)
+            if full not in gallery:
+                gallery.append(full)
+        stock_val = entry.get("stock")
+        if isinstance(stock_val, bool):  # JS truthiness guard
+            stock_val = int(stock_val)
+        elif stock_val is not None and not isinstance(stock_val, int):
+            try:
+                stock_val = int(stock_val)
+            except (TypeError, ValueError):
+                stock_val = None
+        out.append({
+            "variant_id": entry.get("variant_id"),
+            "size": (entry.get("size") or "").strip() or None,
+            "color": (entry.get("color") or "").strip() or None,
+            "sku": (entry.get("sku") or "").strip() or None,
+            "stock": stock_val,
+            "image_url": gallery[0] if gallery else None,
+            "gallery_images_urls": gallery,
+        })
+    return out
+
+
+def extract_pedalim_variants(html):
+    """Extract size/color variants from a Pedalim product page.
+
+    Returns a list of dicts, one per variant:
+        {
+            "variant_id": str,
+            "size": str | None,
+            "color": str | None,
+            "sku": str | None,
+            "stock": int | None,
+            "image_url": str | None,           # primary image for this variant
+            "gallery_images_urls": list[str],  # all images for this variant
+        }
+    Returns [] when the page has no variant data (e.g. single-SKU product).
+
+    Note: the ``stock`` values come from the page's inlined ``stockArr`` which
+    is frequently stale (often all zeros). Prefer
+    :func:`extract_pedalim_variants_live` when a live Chrome driver is
+    available.
+    """
+    ids = _js_int_array(html, "IdArrAss") or []
+    if not ids:
+        return []
+    sizes = _js_string_array(html, "sizeArr") or []
+    colors = _js_string_array(html, "colorArr") or []
+    arr_code = _js_string(html, "arrCode") or ""
+    skus = arr_code.split(";") if arr_code else []
+    stocks = _js_int_array(html, "stockArr") or []
+
+    image_arrays = []
+    for i in [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
+        arr = _js_string_array(html, f"prodImage{i}")
+        if arr:
+            image_arrays.append(arr)
+
+    variants = []
+    for idx, vid in enumerate(ids):
+        gallery = []
+        for arr in image_arrays:
+            if idx < len(arr):
+                p = (arr[idx] or "").strip()
+                if not p:
+                    continue
+                full = p if p.startswith("http") else urljoin(BASE_URL + "/", p)
+                if full not in gallery:
+                    gallery.append(full)
+        variants.append({
+            "variant_id": str(vid),
+            "size": sizes[idx].strip() if idx < len(sizes) and sizes[idx] else None,
+            "color": colors[idx].strip() if idx < len(colors) and colors[idx] else None,
+            "sku": skus[idx].strip() if idx < len(skus) and skus[idx].strip() else None,
+            "stock": stocks[idx] if idx < len(stocks) else None,
+            "image_url": gallery[0] if gallery else None,
+            "gallery_images_urls": gallery,
+        })
+    return variants
+
+
+# ---------- DOM-based variant extraction ----------
+# Pedalim product pages also expose size/color pickers as buttons:
+#   <div id="size"><button value="<idx>" onclick="setImage(<imgId>);setColor2(<colorId>)">XS</button> ...</div>
+#   <div id="color"><button id="s<colorId>" onclick="setImage(<colorId>);selectedProduct(<colorId>)"
+#                           class="stock_in|stock_out [active]" mystock="<N>">label</button> ...</div>
+# This gives us ordered Hebrew labels, the "default" selection, stock per color,
+# and the primary image for each color (via setImage argument).
+_ONCLICK_SETIMAGE_RE = re.compile(r"setImage\(\s*(\d+)\s*\)")
+_ONCLICK_SETCOLOR2_RE = re.compile(r"setColor2\(\s*(\d+)\s*\)")
+
+
+def _resolve_image_url(img_id, soup):
+    """Best-effort resolve an image id (from setImage(<id>)) to a URL.
+
+    Pedalim's setImage() uses the prodImage* arrays as the actual image source.
+    Most of the time we can recover the URL from the gallery thumbnails on the
+    page (they share the same file naming). If we cannot resolve it, return
+    None and let the JS-array merge fill it in.
+    """
+    if not img_id or not soup:
+        return None
+    # Look for an img tag whose URL contains the id as a number token.
+    pattern = re.compile(rf"(?<!\d){re.escape(str(img_id))}(?!\d)")
+    for img in soup.find_all("img"):
+        src = img.get("src") or img.get("data-src") or img.get("data-lazy-src") or ""
+        if src and pattern.search(src):
+            src = src.strip()
+            return src if src.startswith("http") else urljoin(BASE_URL, src)
+    return None
+
+
+def extract_pedalim_variants_dom(page_soup):
+    """Parse size/color button groups from the Pedalim product page DOM.
+
+    Returns:
+        {
+            "colors": [
+                {"color_id": str, "label": str, "image_id": str|None,
+                 "image_url": str|None, "total_stock": int, "in_stock": bool,
+                 "is_default": bool, "position": int}
+            ],
+            "sizes": [
+                {"label": str, "value": str|None, "image_id": str|None,
+                 "color_id": str|None, "is_default": bool, "position": int}
+            ],
+        }
+    Returns {"colors": [], "sizes": []} when neither picker exists.
+    """
+    result = {"colors": [], "sizes": []}
+    if page_soup is None:
+        return result
+
+    color_div = page_soup.find("div", id="color")
+    if color_div:
+        for pos, btn in enumerate(color_div.find_all("button")):
+            btn_id = (btn.get("id") or "").strip()
+            color_id = btn_id[1:] if btn_id.startswith("s") else btn_id or None
+            label = btn.get_text(strip=True)
+            onclick = btn.get("onclick") or ""
+            img_match = _ONCLICK_SETIMAGE_RE.search(onclick)
+            image_id = img_match.group(1) if img_match else color_id
+            classes = btn.get("class") or []
+            class_str = " ".join(classes)
+            try:
+                total_stock = int((btn.get("mystock") or "0").strip() or 0)
+            except ValueError:
+                total_stock = 0
+            in_stock = "stock_in" in class_str or total_stock > 0
+            if "stock_out" in class_str:
+                in_stock = False
+            result["colors"].append({
+                "color_id": str(color_id) if color_id else None,
+                "label": label or None,
+                "image_id": str(image_id) if image_id else None,
+                "image_url": _resolve_image_url(image_id, page_soup),
+                "total_stock": total_stock,
+                "in_stock": bool(in_stock),
+                "is_default": "active" in classes,
+                "position": pos,
+            })
+
+    size_div = page_soup.find("div", id="size")
+    if size_div:
+        for pos, btn in enumerate(size_div.find_all("button")):
+            label = btn.get_text(strip=True)
+            onclick = btn.get("onclick") or ""
+            img_match = _ONCLICK_SETIMAGE_RE.search(onclick)
+            color2_match = _ONCLICK_SETCOLOR2_RE.search(onclick)
+            classes = btn.get("class") or []
+            result["sizes"].append({
+                "label": label or None,
+                "value": (btn.get("value") or "").strip() or None,
+                "image_id": img_match.group(1) if img_match else None,
+                "color_id": color2_match.group(1) if color2_match else None,
+                "is_default": "active" in classes,
+                "position": pos,
+            })
+
+    return result
+
+
+# ---------- Merge JS-array variants with DOM buttons ----------
+def merge_variants(js_variants, dom):
+    """Merge the flat JS-array per-(size,color) list with DOM color/size buttons.
+
+    Produces the normalized shape consumed by the rest of the pipeline:
+        {
+            "sizes": [label, ...],                # ordered by DOM, fallback to JS
+            "colors": [
+                {
+                    "color_id": str,
+                    "label": str,
+                    "image_url": str|None,
+                    "gallery_images_urls": [str, ...],
+                    "total_stock": int,
+                    "in_stock": bool,
+                    "is_default": bool,
+                    "position": int,
+                    "sizes": {
+                        size_label: {"sku": str|None, "stock": int|None, "in_stock": bool}
+                    }
+                }
+            ],
+        }
+    Returns None when neither source yields any data.
+    """
+    dom = dom or {"colors": [], "sizes": []}
+    js_variants = js_variants or []
+
+    # ---- Ordered size labels ----
+    size_labels_ordered = []
+    for s in dom.get("sizes", []):
+        lbl = (s.get("label") or "").strip()
+        if lbl and lbl not in size_labels_ordered:
+            size_labels_ordered.append(lbl)
+    if not size_labels_ordered:
+        for v in js_variants:
+            lbl = (v.get("size") or "").strip()
+            if lbl and lbl not in size_labels_ordered:
+                size_labels_ordered.append(lbl)
+
+    # ---- Group JS variants by color label for later lookup ----
+    js_by_color_label = {}
+    for v in js_variants:
+        color_lbl = (v.get("color") or "").strip()
+        if not color_lbl:
+            continue
+        js_by_color_label.setdefault(color_lbl, []).append(v)
+
+    colors_out = []
+
+    # Prefer DOM colors as the canonical list (Hebrew labels, order, stock flags).
+    dom_colors = dom.get("colors", [])
+    if dom_colors:
+        for dc in dom_colors:
+            label = dc.get("label")
+            color_id = dc.get("color_id")
+            js_rows = js_by_color_label.get(label, []) if label else []
+            # Build per-size lookup for this color.
+            sizes_map = {}
+            gallery = []
+            primary_image = dc.get("image_url")
+            for size_lbl in size_labels_ordered:
+                # Find the JS variant matching (size, color).
+                match = next(
+                    (v for v in js_rows if (v.get("size") or "").strip() == size_lbl),
+                    None,
+                )
+                if match:
+                    stock = match.get("stock")
+                    sizes_map[size_lbl] = {
+                        "sku": match.get("sku"),
+                        "stock": stock,
+                        "in_stock": bool(stock) if stock is not None else dc.get("in_stock", False),
+                    }
+                    for img in match.get("gallery_images_urls") or []:
+                        if img and img not in gallery:
+                            gallery.append(img)
+                    if not primary_image and match.get("image_url"):
+                        primary_image = match.get("image_url")
+                else:
+                    sizes_map[size_lbl] = {
+                        "sku": None,
+                        "stock": None,
+                        "in_stock": False,
+                    }
+            # If the color has no per-size data (e.g., bike without sizes), and
+            # there is exactly one JS row for this color, use it for primary image.
+            if not sizes_map and js_rows:
+                row = js_rows[0]
+                if not primary_image:
+                    primary_image = row.get("image_url")
+                for img in row.get("gallery_images_urls") or []:
+                    if img and img not in gallery:
+                        gallery.append(img)
+            # When we have per-size data, derive the color-level stock totals
+            # from the merged sizes_map. The DOM button's ``mystock`` attribute
+            # reflects only the *currently selected* variant (Pedalim reuses
+            # the #color div to echo the active size on single-color bikes),
+            # so using it as the color total would mark in-stock sizes as OOS.
+            if sizes_map:
+                size_stocks = [
+                    s.get("stock") for s in sizes_map.values()
+                    if isinstance(s.get("stock"), int)
+                ]
+                if size_stocks:
+                    color_total_stock = sum(size_stocks)
+                    color_in_stock = color_total_stock > 0
+                else:
+                    color_total_stock = dc.get("total_stock", 0)
+                    color_in_stock = any(
+                        s.get("in_stock") for s in sizes_map.values()
+                    ) or dc.get("in_stock", False)
+            else:
+                color_total_stock = dc.get("total_stock", 0)
+                color_in_stock = dc.get("in_stock", False)
+            colors_out.append({
+                "color_id": color_id,
+                "label": label,
+                "image_url": primary_image,
+                "gallery_images_urls": gallery,
+                "total_stock": color_total_stock,
+                "in_stock": color_in_stock,
+                "is_default": dc.get("is_default", False),
+                "position": dc.get("position", len(colors_out)),
+                "sizes": sizes_map,
+            })
+    elif js_variants:
+        # DOM has no colors; synthesize from JS-array grouping.
+        ordered_color_labels = []
+        for v in js_variants:
+            lbl = (v.get("color") or "").strip()
+            if lbl and lbl not in ordered_color_labels:
+                ordered_color_labels.append(lbl)
+        for pos, label in enumerate(ordered_color_labels):
+            rows = js_by_color_label.get(label, [])
+            sizes_map = {}
+            gallery = []
+            primary_image = None
+            total_stock = 0
+            for size_lbl in size_labels_ordered or [None]:
+                match = None
+                if size_lbl is None:
+                    match = rows[0] if rows else None
+                else:
+                    match = next(
+                        (v for v in rows if (v.get("size") or "").strip() == size_lbl),
+                        None,
+                    )
+                if match:
+                    stock = match.get("stock")
+                    if size_lbl is not None:
+                        sizes_map[size_lbl] = {
+                            "sku": match.get("sku"),
+                            "stock": stock,
+                            "in_stock": bool(stock) if stock is not None else False,
+                        }
+                    if isinstance(stock, int):
+                        total_stock += stock
+                    if not primary_image and match.get("image_url"):
+                        primary_image = match.get("image_url")
+                    for img in match.get("gallery_images_urls") or []:
+                        if img and img not in gallery:
+                            gallery.append(img)
+            # Use the first JS row's variant_id as color_id fallback.
+            first_row = rows[0] if rows else {}
+            colors_out.append({
+                "color_id": str(first_row.get("variant_id")) if first_row.get("variant_id") else None,
+                "label": label,
+                "image_url": primary_image,
+                "gallery_images_urls": gallery,
+                "total_stock": total_stock,
+                "in_stock": total_stock > 0,
+                "is_default": pos == 0,
+                "position": pos,
+                "sizes": sizes_map,
+            })
+    else:
+        return None
+
+    if not colors_out and not size_labels_ordered:
+        return None
+
+    # Ensure at least one default color is flagged.
+    if colors_out and not any(c.get("is_default") for c in colors_out):
+        for c in colors_out:
+            if c.get("in_stock"):
+                c["is_default"] = True
+                break
+        else:
+            colors_out[0]["is_default"] = True
+
+    return {
+        "sizes": size_labels_ordered,
+        "colors": colors_out,
+    }
 
 # Kids bike wheel sizes (inches)
 KIDS_WHEEL_SIZE_PATTERN = re.compile(
@@ -228,6 +711,24 @@ def pedalim_bikes(driver, output_file):
                                 if src and src not in gallery_images_urls:
                                     gallery_images_urls.append(src)
                     product_data["images"]["gallery_images_urls"] = gallery_images_urls
+                    # ---- Variants (size + color combinations) ----
+                    # Each variant carries its own image set so the frontend
+                    # can swap the displayed image when the user picks a
+                    # specific size/color, mirroring pedalim.co.il behavior.
+                    try:
+                        # Prefer live JS state: Pedalim fetches real stock via
+                        # AJAX (bsGetStockAndPriceJson) after page load and
+                        # stashes it in ListObj. The inline stockArr in the
+                        # page source is almost always stale (often all zeros).
+                        js_variants = extract_pedalim_variants_live(driver)
+                        if not js_variants:
+                            js_variants = extract_pedalim_variants(driver.page_source)
+                        dom_variants = extract_pedalim_variants_dom(page_soup)
+                        merged = merge_variants(js_variants, dom_variants)
+                        if merged and (merged.get("colors") or merged.get("sizes")):
+                            product_data["variants"] = merged
+                    except Exception as e:
+                        print(f"  ⚠️ Failed to extract variants: {e}")
                     # ---- Specs ----
                     # Try multiple selectors for specs list
                     spec_list = None

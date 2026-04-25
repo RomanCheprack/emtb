@@ -20,7 +20,8 @@ from app import create_app
 from app.extensions import db
 from app.models import (
     User, Brand, Source, Bike, BikeListing, BikePrice,
-    BikeSpecRaw, BikeSpecStd, BikeImage, CompareCount, Comparison,
+    BikeSpecRaw, BikeSpecStd, BikeImage, BikeVariant,
+    CompareCount, Comparison,
 )
 
 
@@ -514,7 +515,7 @@ def migrate_json_data(app):
                             if json_key in ['id', 'firm', 'model', 'year', 'price', 'disc_price', 'original_price',
                                            'image_url', 'product_url', 'gallery_images_urls', 'category',
                                            'source', 'images', 'specs', 'wh', 'fork length', 'style',
-                                           'sub_category', 'sub-category']:
+                                           'sub_category', 'sub-category', 'variants']:
                                 continue
                             
                             if value and str(value).strip():
@@ -554,7 +555,69 @@ def migrate_json_data(app):
                                     )
                                     db.session.add(img)
                                     position += 1
-                        
+
+                        # Add per-(size x color) variants (Pedalim only, today)
+                        variants_payload = bike_data.get('variants') or {}
+                        colors_list = variants_payload.get('colors') or []
+                        if colors_list:
+                            seen_keys = set()  # (color_id, size_label)
+                            for color in colors_list:
+                                color_id = color.get('color_id')
+                                color_label = color.get('label')
+                                is_default_color = bool(color.get('is_default'))
+                                color_position = color.get('position', 0)
+                                color_image = color.get('image_url')
+                                gallery = color.get('gallery_images_urls') or []
+                                gallery_json = json.dumps(gallery, ensure_ascii=False) if gallery else None
+                                color_in_stock = bool(color.get('in_stock'))
+                                color_total_stock = color.get('total_stock')
+
+                                sizes_dict = color.get('sizes') or {}
+                                if sizes_dict:
+                                    for size_label, size_entry in sizes_dict.items():
+                                        key = (str(color_id) if color_id else None, size_label)
+                                        if key in seen_keys:
+                                            continue
+                                        seen_keys.add(key)
+                                        stock = (size_entry or {}).get('stock')
+                                        in_stock = bool((size_entry or {}).get('in_stock'))
+                                        variant = BikeVariant(
+                                            bike_id=bike.id,
+                                            listing_id=listing.id,
+                                            color_id=str(color_id) if color_id else None,
+                                            color_label=color_label,
+                                            size_label=size_label,
+                                            sku=(size_entry or {}).get('sku'),
+                                            stock=stock,
+                                            in_stock=in_stock,
+                                            is_default_color=is_default_color,
+                                            image_url=color_image,
+                                            gallery_json=gallery_json,
+                                            position=color_position,
+                                        )
+                                        db.session.add(variant)
+                                else:
+                                    # Color without size options - single row.
+                                    key = (str(color_id) if color_id else None, None)
+                                    if key in seen_keys:
+                                        continue
+                                    seen_keys.add(key)
+                                    variant = BikeVariant(
+                                        bike_id=bike.id,
+                                        listing_id=listing.id,
+                                        color_id=str(color_id) if color_id else None,
+                                        color_label=color_label,
+                                        size_label=None,
+                                        sku=None,
+                                        stock=color_total_stock if isinstance(color_total_stock, int) else None,
+                                        in_stock=color_in_stock,
+                                        is_default_color=is_default_color,
+                                        image_url=color_image,
+                                        gallery_json=gallery_json,
+                                        position=color_position,
+                                    )
+                                    db.session.add(variant)
+
                         total_added += 1
                         
                         # Track this bike as added in current file batch

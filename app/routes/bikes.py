@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify, abort, redirect, url_for
 from app.extensions import db
-from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw
+from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw, BikeVariant
 from app.services.bike_service import (
     get_all_brands, get_all_sub_categories, get_brands_by_category,
     get_sub_categories_by_category, get_all_styles, get_styles_by_category,
@@ -310,7 +310,8 @@ def bike_detail(bike_id):
             db.joinedload(Bike.brand),
             db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs),
             db.joinedload(Bike.listings).joinedload(BikeListing.prices),
-            db.joinedload(Bike.images)
+            db.joinedload(Bike.images),
+            db.joinedload(Bike.variants)
         ).filter(
             (Bike.slug == bike_id) | (Bike.uuid == bike_id)
         ).first()
@@ -415,7 +416,79 @@ def bike_detail(bike_id):
         
         # Get canonical bike_id (prefer slug, fallback to uuid)
         canonical_bike_id = bike.slug if bike.slug else bike.uuid
-        
+
+        # Build a template-friendly variants payload (colors ordered by
+        # position, with a nested sizes dict). None when no variants exist,
+        # so the template can simply skip the block.
+        variants_payload = None
+        if bike.variants:
+            colors_map = {}
+            size_order = []
+            for v in sorted(bike.variants, key=lambda x: (x.position or 0, x.id)):
+                key = v.color_id or f"__label__:{v.color_label}"
+                if key not in colors_map:
+                    import json as _json
+                    gallery = []
+                    if v.gallery_json:
+                        try:
+                            gallery = _json.loads(v.gallery_json) or []
+                        except (ValueError, TypeError):
+                            gallery = []
+                    colors_map[key] = {
+                        "color_id": v.color_id or "",
+                        "label": v.color_label or "",
+                        "image_url": v.image_url,
+                        "gallery_images_urls": gallery,
+                        "is_default": bool(v.is_default_color),
+                        "position": v.position or 0,
+                        "sizes": {},
+                    }
+                if v.size_label:
+                    if v.size_label not in size_order:
+                        size_order.append(v.size_label)
+                    colors_map[key]["sizes"][v.size_label] = {
+                        "sku": v.sku,
+                        "stock": v.stock,
+                        "in_stock": bool(v.in_stock),
+                    }
+
+            colors_list = list(colors_map.values())
+            # Compute total_stock + in_stock per color from the child rows.
+            for c in colors_list:
+                if c["sizes"]:
+                    total = sum(
+                        (s.get("stock") or 0)
+                        for s in c["sizes"].values()
+                        if isinstance(s.get("stock"), int)
+                    )
+                    any_in = any(bool(s.get("in_stock")) for s in c["sizes"].values())
+                else:
+                    total = 0
+                    any_in = False
+                c["total_stock"] = total
+                c["in_stock"] = any_in or (total > 0)
+
+            # Pick a default color: is_default flag, else first in_stock, else first.
+            default_color_id = None
+            for c in colors_list:
+                if c["is_default"]:
+                    default_color_id = c["color_id"]
+                    break
+            if not default_color_id:
+                for c in colors_list:
+                    if c["in_stock"]:
+                        default_color_id = c["color_id"]
+                        break
+            if not default_color_id and colors_list:
+                default_color_id = colors_list[0]["color_id"]
+
+            if colors_list or size_order:
+                variants_payload = {
+                    "sizes": size_order,
+                    "colors": colors_list,
+                    "default_color_id": default_color_id,
+                }
+
         return render_template(
             "bike_detail.html",
             bike=bike_dict,
@@ -434,7 +507,8 @@ def bike_detail(bike_id):
             rewritten_description=rewritten_description,
             raw_specs=raw_specs,
             bike_id=canonical_bike_id,
-            parsed_price=parsed_price
+            parsed_price=parsed_price,
+            variants=variants_payload
         )
     except Exception as e:
         print(f"Error in bike_detail: {e}")

@@ -152,15 +152,15 @@
 
         <!-- Right Column: Images -->
         <div class="col-lg-6 mb-4">
-            <!-- Main Image -->
+            <!-- Main Image (click to open fullscreen lightbox) -->
             {% if main_image %}
             <div class="main-image-container mb-3">
                 <div class="zoom-icon-container">
-                    <i class="fas fa-search-plus zoom-icon" onclick="zoomImage()"></i>
+                    <i class="fas fa-search-plus zoom-icon" onclick="zoomImage()" aria-label="הגדל תמונה" role="button" tabindex="0"></i>
                 </div>
-                <img id="main-bike-image" 
-                     src="{{ main_image }}" 
-                     alt="{{ brand }} {{ model }}" 
+                <img id="main-bike-image"
+                     src="{{ main_image }}"
+                     alt="{{ brand }} {{ model }}"
                      class="img-fluid main-bike-image"
                      loading="eager"
                      fetchpriority="high"
@@ -169,11 +169,11 @@
             {% elif gallery_images and gallery_images|length > 0 %}
             <div class="main-image-container mb-3">
                 <div class="zoom-icon-container">
-                    <i class="fas fa-search-plus zoom-icon" onclick="zoomImage()"></i>
+                    <i class="fas fa-search-plus zoom-icon" onclick="zoomImage()" aria-label="הגדל תמונה" role="button" tabindex="0"></i>
                 </div>
-                <img id="main-bike-image" 
-                     src="{{ gallery_images[0] }}" 
-                     alt="{{ brand }} {{ model }}" 
+                <img id="main-bike-image"
+                     src="{{ gallery_images[0] }}"
+                     alt="{{ brand }} {{ model }}"
                      class="img-fluid main-bike-image"
                      loading="eager"
                      fetchpriority="high"
@@ -197,6 +197,50 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
+
+            <!-- Variants - Size pills + Color swatches (only when available).
+                 Order matches pedalim.co.il: user picks a size first, then the
+                 color swatches grey out per the selected size's availability. -->
+            {% if variants and (variants.colors or variants.sizes) %}
+            <div class="variants-section mb-4 mt-4" dir="rtl">
+                {% if variants.sizes %}
+                <div class="variant-group mb-3">
+                    <div class="variant-group-label">בחירת מידה: <span id="selected-size-label" class="variant-selected-label"></span></div>
+                    <div class="variant-size-pills" role="radiogroup" aria-label="בחירת מידה">
+                        {% for size in variants.sizes %}
+                        <button type="button"
+                                class="variant-size-pill"
+                                data-size-label="{{ size }}"
+                                aria-label="{{ size }}"
+                                aria-pressed="false">
+                            {{ size }}
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if variants.colors %}
+                <div class="variant-group mb-3">
+                    <div class="variant-group-label">בחירת צבע: <span id="selected-color-label" class="variant-selected-label"></span></div>
+                    <div class="variant-color-swatches" role="radiogroup" aria-label="בחירת צבע">
+                        {% for color in variants.colors %}
+                        <button type="button"
+                                class="variant-color-swatch"
+                                data-color-id="{{ color.color_id }}"
+                                data-color-label="{{ color.label }}"
+                                data-image-url="{{ color.image_url or '' }}"
+                                aria-label="{{ color.label }}"
+                                aria-pressed="false">
+                            <span class="variant-color-text">{{ color.label }}</span>
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div id="variant-availability-help" class="variant-size-help" aria-live="polite"></div>
+            </div>
+            <script type="application/json" id="variants-data">{{ variants | tojson }}</script>
             {% endif %}
 
             <!-- Prices - Below Gallery -->
@@ -296,30 +340,333 @@
     </div>
 </div>
 
+<!-- Fullscreen image view (opened by clicking the main image) -->
+<div id="image-lightbox" class="image-lightbox" hidden role="dialog" aria-modal="true" aria-label="תצוגת תמונה מוגדלת">
+    <button type="button" class="image-lightbox-close" aria-label="סגור">&times;</button>
+    <img id="image-lightbox-img" src="" alt="" referrerpolicy="no-referrer">
+</div>
+
 <script>
-// Function to change main image when clicking thumbnail
-function changeMainImage(imageUrl, thumbnailElement) {
-    // Update main image
-    const mainImage = document.getElementById('main-bike-image');
-    if (mainImage) {
-        mainImage.src = imageUrl;
-        mainImage.referrerPolicy = "no-referrer";
+// Pedalim stores three sizes per image under the same base name:
+//   name.webp        -> ~22 KB thumbnail (what our scraper recorded)
+//   name(1).webp     -> ~43 KB medium
+//   name(2).webp     -> ~145 KB full resolution  <-- want this for display & fullscreen
+// Convert any pedalim Media/Uploads URL to its (2).webp variant. Non-pedalim
+// URLs and non-.webp paths are returned unchanged.
+function upgradePedalimImage(url) {
+    if (!url) return url;
+    if (!/pedalim\.co\.il\/Media\/Uploads\//i.test(url)) return url;
+    if (!/\.webp(\?|#|$)/i.test(url)) return url;
+    return url.replace(/(?:\(\d+\))?\.webp(\?.*)?$/i, '(2).webp$1');
+}
+
+// Set <img>.src to the upgraded URL; if that 404s (no (2) variant exists for
+// this particular image), fall back to the original URL we were given.
+function setUpgradedImageSrc(imgEl, originalUrl) {
+    if (!imgEl || !originalUrl) return;
+    const upgraded = upgradePedalimImage(originalUrl);
+    imgEl.referrerPolicy = 'no-referrer';
+    if (upgraded === originalUrl) {
+        imgEl.onerror = null;
+        imgEl.src = originalUrl;
+        return;
     }
-    
-    // Update active thumbnail
+    imgEl.onerror = function () {
+        imgEl.onerror = null; // avoid loops
+        imgEl.src = originalUrl;
+    };
+    imgEl.src = upgraded;
+}
+
+// Upgrade the initially-rendered main image (template emitted the small URL).
+document.addEventListener('DOMContentLoaded', function () {
+    const m = document.getElementById('main-bike-image');
+    if (m) setUpgradedImageSrc(m, m.getAttribute('src'));
+});
+
+function changeMainImage(imageUrl, thumbnailElement) {
+    const mainImage = document.getElementById('main-bike-image');
+    if (mainImage) setUpgradedImageSrc(mainImage, imageUrl);
+
     const allThumbnails = document.querySelectorAll('.gallery-thumbnail');
     allThumbnails.forEach(thumb => thumb.classList.remove('active'));
     thumbnailElement.classList.add('active');
 }
 
-// Function to zoom image (opens in modal or new window)
-function zoomImage() {
-    const mainImage = document.getElementById('main-bike-image');
-    if (mainImage && mainImage.src) {
-        // Open image in new window for zoom
-        window.open(mainImage.src, '_blank');
+// ---- Fullscreen image view ----
+// Click the main image (or zoom icon) to view it in the browser's native
+// fullscreen mode (same as pedalim.co.il via the Fullscreen API). Browser
+// chrome hides; an X in the top-right closes. ESC also closes (handled by
+// the browser's built-in fullscreen exit).
+const Lightbox = (function () {
+    let overlay, img, closeBtn, mainImage, lastFocused;
+
+    function requestFs(el) {
+        const fn = el.requestFullscreen
+            || el.webkitRequestFullscreen
+            || el.mozRequestFullScreen
+            || el.msRequestFullscreen;
+        return fn ? fn.call(el) : null;
     }
-}
+
+    function exitFs() {
+        const fn = document.exitFullscreen
+            || document.webkitExitFullscreen
+            || document.mozCancelFullScreen
+            || document.msExitFullscreen;
+        if (fn) return fn.call(document);
+    }
+
+    function fsElement() {
+        return document.fullscreenElement
+            || document.webkitFullscreenElement
+            || document.mozFullScreenElement
+            || document.msFullscreenElement
+            || null;
+    }
+
+    function show() {
+        overlay.hidden = false;
+        document.body.classList.add('lightbox-open');
+    }
+
+    function hide() {
+        overlay.hidden = true;
+        document.body.classList.remove('lightbox-open');
+        if (lastFocused && typeof lastFocused.focus === 'function') {
+            lastFocused.focus();
+        }
+    }
+
+    function open() {
+        if (!mainImage || !overlay) return;
+        // mainImage.src may already be the upgraded (2).webp; passing it
+        // through upgradePedalimImage is idempotent so this stays safe.
+        setUpgradedImageSrc(img, mainImage.src);
+        img.alt = mainImage.alt || '';
+        lastFocused = document.activeElement;
+        show();
+        // Try the browser's native fullscreen so the browser UI hides too.
+        // If the browser refuses (rare; some iOS versions), fall back to the
+        // CSS-only fixed overlay we already showed.
+        const req = requestFs(overlay);
+        if (req && typeof req.then === 'function') {
+            req.catch(() => { /* keep overlay-only fallback */ });
+        }
+        // Defer focus so it lands after the fullscreen transition.
+        setTimeout(() => closeBtn && closeBtn.focus(), 0);
+    }
+
+    function close() {
+        if (!overlay) return;
+        if (fsElement()) {
+            // hide() runs from the fullscreenchange listener once we exit.
+            exitFs();
+        } else {
+            hide();
+        }
+    }
+
+    function init() {
+        overlay = document.getElementById('image-lightbox');
+        if (!overlay) return;
+        img = document.getElementById('image-lightbox-img');
+        closeBtn = overlay.querySelector('.image-lightbox-close');
+        mainImage = document.getElementById('main-bike-image');
+
+        if (mainImage) mainImage.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', e => {
+            // Only matters in the CSS-fallback case; browser handles ESC
+            // natively when in real fullscreen mode.
+            if (!overlay.hidden && !fsElement() && e.key === 'Escape') close();
+        });
+        // Sync overlay visibility with the browser's fullscreen state, so
+        // pressing ESC (which exits fullscreen) also dismisses the overlay.
+        ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange']
+            .forEach(evt => document.addEventListener(evt, () => {
+                if (!fsElement() && !overlay.hidden) hide();
+            }));
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    return { open, close };
+})();
+
+// The magnifier icon's inline handler still works.
+function zoomImage() { Lightbox.open(); }
+
+// ---- Variant picker — size drives color availability (one-way) ----
+// Mirrors pedalim.co.il: the user picks a size first; colors that aren't in
+// stock for that size become greyed/disabled. Picking a color only swaps the
+// preview image, never disables sizes. When there are no sizes at all (single-
+// size product with multiple colors) the color picker still works on its own.
+(function initVariants() {
+    const dataEl = document.getElementById('variants-data');
+    if (!dataEl) return;
+    let variants;
+    try { variants = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    if (!variants) return;
+
+    const colors = Array.isArray(variants.colors) ? variants.colors : [];
+    const sizes = Array.isArray(variants.sizes) ? variants.sizes : [];
+    if (colors.length === 0 && sizes.length === 0) return;
+
+    const colorsById = {};
+    colors.forEach(c => { colorsById[c.color_id] = c; });
+
+    // size label -> [color_id, ...] in stock for that size
+    const colorsAvailableForSize = {};
+    sizes.forEach(s => {
+        colorsAvailableForSize[s] = colors
+            .filter(c => c.sizes && c.sizes[s] && c.sizes[s].in_stock)
+            .map(c => c.color_id);
+    });
+    // size label -> bool: true when any color stocks that size
+    const sizeGloballyAvailable = {};
+    sizes.forEach(s => {
+        sizeGloballyAvailable[s] = (colorsAvailableForSize[s] || []).length > 0;
+    });
+
+    const pills = Array.from(document.querySelectorAll('.variant-size-pill'));
+    const swatches = Array.from(document.querySelectorAll('.variant-color-swatch'));
+    const selectedSizeLabel = document.getElementById('selected-size-label');
+    const selectedColorLabel = document.getElementById('selected-color-label');
+    const helpEl = document.getElementById('variant-availability-help');
+    const mainImage = document.getElementById('main-bike-image');
+    const thumbs = Array.from(document.querySelectorAll('.gallery-thumbnail'));
+
+    let currentSize = null;
+    let currentColorId = null;
+
+    function setMainImage(colorId) {
+        const c = colorsById[colorId];
+        if (!c || !c.image_url || !mainImage) return;
+        setUpgradedImageSrc(mainImage, c.image_url);
+        // Match the active thumbnail using the original (small) URL, since
+        // that's still what the thumbnail <img> elements use.
+        thumbs.forEach(t => {
+            const img = t.querySelector('img');
+            t.classList.toggle('active', !!(img && img.src === c.image_url));
+        });
+    }
+
+    function pickInitialSize() {
+        if (sizes.length === 0) return null;
+        return sizes.find(s => sizeGloballyAvailable[s]) || sizes[0];
+    }
+
+    function pickColorForSize(sizeLbl) {
+        if (!sizeLbl) {
+            return variants.default_color_id ||
+                (colors.find(c => c.in_stock) || colors[0] || {}).color_id ||
+                null;
+        }
+        const avail = colorsAvailableForSize[sizeLbl] || [];
+        if (avail.length === 0) {
+            return variants.default_color_id || (colors[0] && colors[0].color_id) || null;
+        }
+        if (variants.default_color_id && avail.includes(variants.default_color_id)) {
+            return variants.default_color_id;
+        }
+        return avail[0];
+    }
+
+    function renderSizes() {
+        pills.forEach(pill => {
+            const lbl = pill.getAttribute('data-size-label');
+            const inStock = !!sizeGloballyAvailable[lbl];
+            pill.disabled = !inStock;
+            pill.classList.toggle('stock-out', !inStock);
+            const isActive = inStock && lbl === currentSize;
+            pill.classList.toggle('active', isActive);
+            pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            pill.title = inStock ? lbl : (lbl + ' — אזל מהמלאי');
+        });
+        if (selectedSizeLabel) selectedSizeLabel.textContent = currentSize || '';
+    }
+
+    function renderColors() {
+        const availForCurrent = currentSize ? (colorsAvailableForSize[currentSize] || []) : null;
+        swatches.forEach(s => {
+            const cid = s.getAttribute('data-color-id');
+            const c = colorsById[cid];
+            let inStock;
+            if (availForCurrent && availForCurrent.length > 0) {
+                inStock = availForCurrent.indexOf(cid) !== -1;
+            } else {
+                // No size selected (or no size has stock); fall back to color's own flag.
+                inStock = !!(c && c.in_stock);
+            }
+            s.disabled = !inStock;
+            s.classList.toggle('stock-out', !inStock);
+            const isActive = inStock && cid === currentColorId;
+            s.classList.toggle('active', isActive);
+            s.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            const lbl = c ? c.label : cid;
+            s.title = inStock ? lbl : (lbl + ' — אזל מהמלאי');
+        });
+        if (selectedColorLabel) {
+            const c = colorsById[currentColorId];
+            selectedColorLabel.textContent = (c && c.label) || '';
+        }
+        if (helpEl) {
+            const anyColor = swatches.some(s => !s.disabled);
+            if (currentSize && !anyColor) {
+                helpEl.textContent = 'אין צבעים זמינים עבור המידה שנבחרה';
+            } else {
+                helpEl.textContent = '';
+            }
+        }
+    }
+
+    function selectSize(lbl) {
+        if (!lbl || !sizeGloballyAvailable[lbl]) return;
+        currentSize = lbl;
+        const avail = colorsAvailableForSize[lbl] || [];
+        // If the currently selected color isn't stocked in this size, switch
+        // to the first available color (and update the main image to match).
+        if (!currentColorId || avail.indexOf(currentColorId) === -1) {
+            currentColorId = pickColorForSize(lbl);
+            setMainImage(currentColorId);
+        }
+        renderSizes();
+        renderColors();
+    }
+
+    function selectColor(cid) {
+        if (!cid) return;
+        // Block selecting a color that's out of stock for the current size.
+        if (currentSize) {
+            const avail = colorsAvailableForSize[currentSize] || [];
+            if (avail.length > 0 && avail.indexOf(cid) === -1) return;
+        }
+        currentColorId = cid;
+        setMainImage(cid);
+        renderColors();
+    }
+
+    pills.forEach(p => p.addEventListener('click', () => {
+        if (p.disabled) return;
+        selectSize(p.getAttribute('data-size-label'));
+    }));
+    swatches.forEach(s => s.addEventListener('click', () => {
+        if (s.disabled) return;
+        selectColor(s.getAttribute('data-color-id'));
+    }));
+
+    // Initial render: pick the first in-stock size, then the best color for it.
+    currentSize = pickInitialSize();
+    currentColorId = pickColorForSize(currentSize);
+    if (currentColorId) setMainImage(currentColorId);
+    renderSizes();
+    renderColors();
+})();
 </script>
 
 <script src="{{ url_for('static', filename='js/purchase_click.js') }}"></script>
