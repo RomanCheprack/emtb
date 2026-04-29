@@ -1,7 +1,9 @@
 ﻿
 /* Hero Section */
 .hero-container {
-    background-image: url('../images/cool-bicycle-studio.webp');
+    /* Absolute path so this rule works whether the file is loaded as a
+       stylesheet OR inlined into the <head> of layout.html. */
+    background-image: url('/static/images/cool-bicycle-studio.webp');
     background-size: cover;
     background-position: center;
     height: 100vh;

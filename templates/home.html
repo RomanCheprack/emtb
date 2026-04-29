@@ -12,6 +12,12 @@
       type="image/webp">
 {% endblock %}
 
+{% block critical_css %}
+{# Inline vision-section.css on home only. Above-the-fold stats grid and
+   vision header depend on it, so loading it async caused CLS reflows. #}
+{{ inline_css('styles/vision-section.css') | safe }}
+{% endblock %}
+
 {% block meta %}
 {% set home_url = url_for('main.home', _external=True) %}
 {% set home_image = url_for('static', filename='images/rideal_logo_bg.png', _external=True) %}

@@ -24,18 +24,21 @@
     {# Per-page preload hints (e.g. LCP background image). Pages override this. #}
     {% block head_preloads %}{% endblock %}
 
-    <!-- Critical CSS: load our own small stylesheets render-blocking so the
-         hero/navbar paint without FOUC. Everything else is made non-blocking
-         below to avoid the long render-blocking chain reported by PageSpeed. -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <!-- Critical CSS inlined directly in the HTML. Eliminates the serial
+         layout.css -> navbar.css -> home.css request chain that was costing
+         ~1.6s on the critical path according to PageSpeed. -->
+    {{ inline_css('styles/layout.css', 'styles/navbar.css', 'styles/home.css') | safe }}
+    {# Pages can inline additional page-specific critical CSS here to avoid
+       layout shifts when their above-the-fold elements depend on it. #}
+    {% block critical_css %}{% endblock %}
 
     <!-- Non-critical CSS loaded asynchronously via the preload+onload pattern.
          Each <link> is followed by a <noscript> fallback for users without JS. -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+    {# display=optional: Lato is only used if cached; otherwise the system
+       font is kept. Avoids the layout shift caused by font swap-in. #}
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Lato&display=optional"
           onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap"></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=optional"></noscript>
 
     <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           onload="this.onload=null;this.rel='stylesheet'">
@@ -56,9 +59,8 @@
     {# Splide CSS+JS are now lazy-loaded by carousel.js when the carousel
        scrolls into view, so they're not in this <head> anymore. #}
 
-    <link rel="preload" as="style" href="{{ url_for('static', filename='styles/vision-section.css') }}"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='styles/vision-section.css') }}"></noscript>
+    {# vision-section.css is only used on the home page and is now inlined
+       there via the critical_css block, so it's no longer in this <head>. #}
 
     <link rel="preload" as="style" href="{{ url_for('static', filename='styles/categories.css') }}"
           onload="this.onload=null;this.rel='stylesheet'">

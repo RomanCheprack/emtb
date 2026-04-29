@@ -1,3 +1,50 @@
+import os
+from functools import lru_cache
+
+
+@lru_cache(maxsize=64)
+def _read_static_file(static_root: str, relpath: str) -> str:
+    """Read a file from the static folder. Cached so we only hit disk once
+    per process. Restart the app (or bust the cache) when CSS changes.
+
+    Returns an empty string on failure so a missing file doesn't crash the page.
+    """
+    try:
+        full = os.path.join(static_root, relpath)
+        with open(full, "r", encoding="utf-8") as f:
+            return f.read()
+    except OSError:
+        return ""
+
+
+def make_inline_static(app):
+    """Build Jinja globals for inlining small static files into the initial
+    HTML, avoiding the round-trip cost of separate <link> requests on the
+    critical path.
+
+    Two helpers are returned:
+
+    - ``inline_static(relpath)`` returns the raw file contents.
+    - ``inline_css(*relpaths)`` returns a complete ``<style>...</style>``
+      block built from one or more CSS files. Prefer this for inlining
+      stylesheets so the template doesn't need a literal ``<style>`` tag
+      (which confuses editor CSS linters when Jinja expressions live inside).
+
+    Example:
+        {{ inline_css('styles/layout.css', 'styles/home.css') | safe }}
+    """
+    static_root = app.static_folder
+
+    def inline_static(relpath: str) -> str:
+        return _read_static_file(static_root, relpath)
+
+    def inline_css(*relpaths: str) -> str:
+        body = "\n".join(_read_static_file(static_root, p) for p in relpaths)
+        return f"<style>{body}</style>"
+
+    return inline_static, inline_css
+
+
 def format_number_with_commas(value):
     """Format a number with commas for better readability"""
     if value is None:

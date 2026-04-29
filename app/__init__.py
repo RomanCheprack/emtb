@@ -48,8 +48,13 @@ def create_app(config_name=None):
     app.register_blueprint(guides.bp)
     
     # Register Jinja2 filters
-    from .utils.helpers import format_number_with_commas
+    from .utils.helpers import format_number_with_commas, make_inline_static
     app.jinja_env.filters['format_number'] = format_number_with_commas
+    # Jinja globals for inlining small static files (e.g. critical CSS) to
+    # avoid render-blocking round trips on first paint.
+    inline_static, inline_css = make_inline_static(app)
+    app.jinja_env.globals['inline_static'] = inline_static
+    app.jinja_env.globals['inline_css'] = inline_css
     
     # Create database tables (if they don't exist)
     with app.app_context():
