@@ -8,7 +8,7 @@
 <!-- Preload the hero background image. Without this hint the browser can only
      discover the URL after parsing home.css, which adds ~1.3s to LCP. -->
 <link rel="preload" as="image" fetchpriority="high"
-      href="{{ url_for('static', filename='images/cool-bicycle-studio.webp') }}"
+      href="{{ url_for('static', filename='images/cool-bicycle-studio.webp') }}?v=2"
       type="image/webp">
 {% endblock %}
 

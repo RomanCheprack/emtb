@@ -3,18 +3,35 @@ from functools import lru_cache
 
 
 @lru_cache(maxsize=64)
-def _read_static_file(static_root: str, relpath: str) -> str:
-    """Read a file from the static folder. Cached so we only hit disk once
-    per process. Restart the app (or bust the cache) when CSS changes.
+def _read_static_file_cached(static_root: str, relpath: str, mtime: float) -> str:
+    """Cached file read keyed on (path, mtime) so edits invalidate automatically.
+
+    Uses ``utf-8-sig`` so any UTF-8 BOM at the start of the file is stripped.
+    A BOM in the middle of a concatenated <style> block silently breaks the
+    next CSS rule in many browsers, which is exactly the kind of bug we don't
+    want lurking inside an inlined critical CSS block.
 
     Returns an empty string on failure so a missing file doesn't crash the page.
     """
     try:
         full = os.path.join(static_root, relpath)
-        with open(full, "r", encoding="utf-8") as f:
+        with open(full, "r", encoding="utf-8-sig") as f:
             return f.read()
     except OSError:
         return ""
+
+
+def _read_static_file(static_root: str, relpath: str) -> str:
+    """Read a static file with mtime-keyed caching. Edits to the file are
+    picked up automatically because changing the file changes its mtime,
+    which is part of the cache key.
+    """
+    full = os.path.join(static_root, relpath)
+    try:
+        mtime = os.path.getmtime(full)
+    except OSError:
+        return ""
+    return _read_static_file_cached(static_root, relpath, mtime)
 
 
 def make_inline_static(app):

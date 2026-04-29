@@ -2,7 +2,15 @@ from flask import Flask
 from flask_caching import Cache
 from flask_wtf.csrf import CSRFProtect
 from dotenv import load_dotenv
+import mimetypes
 import os
+
+# Make sure modern image formats have correct MIME types. On Windows the
+# stdlib mimetypes registry sometimes ships without .webp/.avif, causing
+# Flask's static handler to send Content-Type: application/octet-stream,
+# which breaks CSS background-image rendering in strict browsers.
+mimetypes.add_type("image/webp", ".webp")
+mimetypes.add_type("image/avif", ".avif")
 
 # Import extensions
 from .extensions import cache, csrf, db, limiter
