@@ -36,13 +36,13 @@
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-    /* Hide H1 with typing animation initially to prevent flash of content */
-    .hero-body h1[data-typing-animation] {
+    /* The H1 paints immediately for the best LCP. The typing animation now
+       only kicks in if JS marks the element with .js-typing-ready before the
+       browser has painted; otherwise the text remains visible as-is. */
+    .hero-body h1[data-typing-animation].js-typing-ready {
         visibility: hidden;
     }
-
-    /* Show H1 when animation is ready to start */
-    .hero-body h1[data-typing-animation].animation-ready {
+    .hero-body h1[data-typing-animation].js-typing-ready.animation-ready {
         visibility: visible;
     }
 
@@ -58,15 +58,14 @@
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
     
-    /* Text animation specific styles */
-    .hero-body span[data-text-animate] {
+    /* Same progressive-enhancement pattern as the H1: the span paints
+       immediately on first frame; the blur-in animation only runs if JS
+       gets there in time and adds .js-typing-ready before paint. */
+    .hero-body span[data-text-animate].js-typing-ready {
         will-change: transform, opacity, filter;
-        /* Hide initially to prevent flash of content */
         visibility: hidden;
     }
-    
-    /* Show container when it's ready to animate */
-    .hero-body span[data-text-animate].animation-ready {
+    .hero-body span[data-text-animate].js-typing-ready.animation-ready {
         visibility: visible;
     }
     

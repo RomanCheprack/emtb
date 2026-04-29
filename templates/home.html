@@ -4,6 +4,14 @@
 <title>Rideal - השוואת אופניים בעברית | מצא את האופניים המושלמים</title>
 {% endblock %}
 
+{% block head_preloads %}
+<!-- Preload the hero background image. Without this hint the browser can only
+     discover the URL after parsing home.css, which adds ~1.3s to LCP. -->
+<link rel="preload" as="image" fetchpriority="high"
+      href="{{ url_for('static', filename='images/cool-bicycle-studio.webp') }}"
+      type="image/webp">
+{% endblock %}
+
 {% block meta %}
 {% set home_url = url_for('main.home', _external=True) %}
 {% set home_image = url_for('static', filename='images/rideal_logo_bg.png', _external=True) %}
@@ -82,12 +90,21 @@
                 <!-- Hero Banner Image -->
                 <div class="hero-banner">
                     <div class="hero-banner-container">
-                        <!-- Fallback image for production -->
-                        <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
-                             alt="Electric bike in alps" 
-                             class="hero-banner-fallback-image"
-                             loading="eager"
-                             fetchpriority="high">
+                        <!-- Responsive WebP with JPG fallback. Lazy-loaded
+                             because this image is below the fold. -->
+                        <picture>
+                            <source type="image/webp"
+                                    srcset="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding-400.webp') }} 400w,
+                                            {{ url_for('static', filename='images/blog/electric_bike_alps_man_riding-800.webp') }} 800w,
+                                            {{ url_for('static', filename='images/blog/electric_bike_alps_man_riding-1200.webp') }} 1200w"
+                                    sizes="(max-width: 600px) 100vw, 800px">
+                            <img src="{{ url_for('static', filename='images/blog/electric_bike_alps_man_riding.jpg') }}?v={{ config.VERSION if config.VERSION else '1.0' }}"
+                                 alt="Electric bike in alps"
+                                 class="hero-banner-fallback-image"
+                                 width="853" height="1280"
+                                 loading="lazy"
+                                 decoding="async">
+                        </picture>
                         <div class="hero-banner-overlay"></div>
                         <div class="hero-banner-content">
                             <h3 class="hero-banner-title">טכנולוגיה חדשה נפגשת עם הטבע </h3>
@@ -287,9 +304,9 @@
     </div>
 
     <!-- End Page Content -->
-    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/test-ride-modal.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/test-ride-modal.js') }}"></script>
 
     <style>
     /* Test Ride Modal Styles */

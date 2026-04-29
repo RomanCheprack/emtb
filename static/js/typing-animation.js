@@ -65,7 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroH1 = document.querySelector('.hero-body h1[data-typing-animation]');
     const heroSpan = document.querySelector('.hero-body span[data-text-animate]');
     const heroButton = document.querySelector('.hero-body .cta-button-primary');
-    
+
+    // Respect the user's motion preference and don't run intro animations
+    // for them. This also gives us a great LCP for those users.
+    const prefersReducedMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        return;
+    }
+
+    // Opt the elements into the "hide-then-animate" mode. The CSS only hides
+    // them once this class is present, so if our JS runs late the LCP text
+    // is already visible to the user and we just bail out of animating.
+    if (heroH1) heroH1.classList.add('js-typing-ready');
+    if (heroSpan) heroSpan.classList.add('js-typing-ready');
+
     // Immediately prepare the span to prevent flash of content
     if (heroSpan) {
         prepareSpanForAnimation(heroSpan);
