@@ -12,9 +12,11 @@
     <!-- Preconnect to third-party origins so the TLS/DNS handshake happens
          in parallel with HTML parsing instead of blocking the CSS chain. -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {# cdnjs.cloudflare.com is only used by Font Awesome, which is now
+       per-page. Pages that load FA can preconnect explicitly if needed. #}
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://connect.facebook.net">
 
@@ -48,13 +50,14 @@
           onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css"></noscript>
 
-    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"></noscript>
+    {# Bootstrap Icons and Font Awesome are NOT loaded globally anymore.
+       Each page that needs them adds its own preload via the
+       extra_async_css block below. PageSpeed flagged ~23 KB of unused CSS
+       on pages that don't actually use any icons. #}
 
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+    {# Per-page async CSS hook (e.g. icon fonts only loaded where they
+       are actually used). Each page can append its own preload+noscript. #}
+    {% block extra_async_css %}{% endblock %}
 
     {# Splide CSS+JS are now lazy-loaded by carousel.js when the carousel
        scrolls into view, so they're not in this <head> anymore. #}

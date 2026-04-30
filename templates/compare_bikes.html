@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{% block extra_async_css %}
+{% from "_icon_preloads.html" import font_awesome %}
+{{ font_awesome() }}
+{% endblock %}
+
 {% block title %}
 {% if bikes and bikes|length > 0 %}
 {% set bike_names = bikes | map(attribute='model') | list | join(', ') %}

@@ -28,6 +28,26 @@ JOBS: list[tuple[Path, list[tuple[int, Path]]]] = [
     ),
 ]
 
+# Auto-generate jobs for the category card images at three responsive
+# widths. The cards display at ~370 px max, so 800 px is plenty for
+# high-DPI displays and 400 px is the mobile target.
+_CATEGORIES_DIR = IMAGES_DIR / "categories"
+_CATEGORY_SOURCES = sorted(_CATEGORIES_DIR.glob("*_rider.jpg")) + [
+    _CATEGORIES_DIR / "electric.jpg",
+]
+for _src in _CATEGORY_SOURCES:
+    if not _src.exists():
+        continue
+    _stem = _src.stem  # e.g. "gravel_rider" or "electric"
+    JOBS.append((
+        _src,
+        [
+            (1200, _CATEGORIES_DIR / f"{_stem}-1200.webp"),
+            (800,  _CATEGORIES_DIR / f"{_stem}-800.webp"),
+            (400,  _CATEGORIES_DIR / f"{_stem}-400.webp"),
+        ],
+    ))
+
 
 def convert(src: Path, width: int, dst: Path, quality: int = 78, force: bool = False) -> None:
     if dst.exists() and not force:

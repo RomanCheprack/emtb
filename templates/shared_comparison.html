@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{% block extra_async_css %}
+{% from "_icon_preloads.html" import font_awesome %}
+{{ font_awesome() }}
+{% endblock %}
+
 {% block title %}
 השוואת אופניים - {{ comparison_data.intro[:50] if comparison_data.intro else 'השוואה מקצועית' }}
 {% endblock %}

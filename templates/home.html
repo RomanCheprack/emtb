@@ -18,6 +18,12 @@
 {{ inline_css('styles/vision-section.css') | safe }}
 {% endblock %}
 
+{% block extra_async_css %}
+{# Vision cards use bi-search / bi-bar-chart-line / bi-cart-check icons. #}
+{% from "_icon_preloads.html" import bootstrap_icons %}
+{{ bootstrap_icons() }}
+{% endblock %}
+
 {% block meta %}
 {% set home_url = url_for('main.home', _external=True) %}
 {% set home_image = url_for('static', filename='images/rideal_logo_bg.png', _external=True) %}

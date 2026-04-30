@@ -1,0 +1,26 @@
+{# Reusable preload snippets for icon fonts.
+
+   Usage in a child template:
+
+       {% block extra_async_css %}
+       {% from "_icon_preloads.html" import bootstrap_icons, font_awesome %}
+       {{ bootstrap_icons() }}
+       {{ font_awesome() }}
+       {% endblock %}
+
+   Each macro emits a preload+onload <link> plus a <noscript> fallback.
+   Only include the macros for icon fonts the page actually uses; loading
+   them on pages that don't use them was flagged by PageSpeed as ~23 KB
+   of unused CSS. #}
+
+{% macro bootstrap_icons() -%}
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"></noscript>
+{%- endmacro %}
+
+{% macro font_awesome() -%}
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+{%- endmacro %}

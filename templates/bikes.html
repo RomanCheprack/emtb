@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+{% block extra_async_css %}
+{% from "_icon_preloads.html" import bootstrap_icons, font_awesome %}
+{{ bootstrap_icons() }}
+{{ font_awesome() }}
+{% endblock %}
+
 {% block title %}
 {% if selected_category %}
 {% set category_names = {

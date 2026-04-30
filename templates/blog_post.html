@@ -1,5 +1,10 @@
 ﻿{% extends "layout.html" %}
 
+{% block extra_async_css %}
+{% from "_icon_preloads.html" import bootstrap_icons %}
+{{ bootstrap_icons() }}
+{% endblock %}
+
 {% block title %}
 <title>{% if post.seo_title %}{{ post.seo_title }}{% else %}{{ post.title }}{% endif %} | בלוג Rideal</title>
 {% endblock %}

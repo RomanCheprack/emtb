@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{% block extra_async_css %}
+{% from "_icon_preloads.html" import bootstrap_icons %}
+{{ bootstrap_icons() }}
+{% endblock %}
+
 {% block title %}
 <title>{% if guide.seo_title %}{{ guide.seo_title }}{% else %}{{ guide.title }}{% endif %} | Rideal</title>
 {% endblock %}

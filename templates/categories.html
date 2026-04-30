@@ -4,6 +4,29 @@
 <title>קטגוריות אופניים - גראבל, ילדים, חשמליים, שטח, עיר, כביש | Rideal</title>
 {% endblock %}
 
+{% block head_preloads %}
+{# Preload the first card's image as the LCP candidate. The browser would
+   otherwise only discover this image after parsing the document, costing
+   ~1s on the critical path. #}
+{% if categories and categories[0].image %}
+{% set _lcp_stem = categories[0].image.rsplit('.', 1)[0] %}
+<link rel="preload" as="image" fetchpriority="high"
+      href="{{ url_for('static', filename=_lcp_stem ~ '-800.webp') }}"
+      imagesrcset="{{ url_for('static', filename=_lcp_stem ~ '-400.webp') }} 400w,
+                   {{ url_for('static', filename=_lcp_stem ~ '-800.webp') }} 800w,
+                   {{ url_for('static', filename=_lcp_stem ~ '-1200.webp') }} 1200w"
+      imagesizes="(max-width: 600px) 100vw, 400px"
+      type="image/webp">
+{% endif %}
+{% endblock %}
+
+{% block critical_css %}
+{# Inline categories.css on this page only. The page is mostly grid +
+   cards that depend entirely on this stylesheet, so loading it async
+   caused a CLS of 0.332 (cards reflowing once styles arrived). #}
+{{ inline_css('styles/categories.css') | safe }}
+{% endblock %}
+
 {% block meta %}
 {% set categories_url = url_for('main.categories', _external=True) %}
 {% set total_bikes = categories | sum(attribute='count') if categories else 0 %}
@@ -61,14 +84,28 @@
 <div class="categories-container">
     <div class="categories-grid">
         {% for category in categories %}
-        <a href="{% if category.slug == 'mtb' %}{{ url_for('main.mtb_subcategories') }}{% elif category.slug == 'electric' %}{{ url_for('main.electric_subcategories') }}{% else %}{{ url_for('bikes.category_bikes', category=category.slug) }}{% endif %}" 
+        {% set _stem = category.image.rsplit('.', 1)[0] %}
+        {# The first card is the LCP candidate, so it loads eagerly with high
+           priority. All other cards lazy-load. #}
+        {% set _is_lcp = loop.first %}
+        <a href="{% if category.slug == 'mtb' %}{{ url_for('main.mtb_subcategories') }}{% elif category.slug == 'electric' %}{{ url_for('main.electric_subcategories') }}{% else %}{{ url_for('bikes.category_bikes', category=category.slug) }}{% endif %}"
            class="category-card"
            aria-label="{{ category.name }} - {{ category.description }}">
             <div class="category-card-image-wrapper">
-                <img src="{{ url_for('static', filename=category.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}" 
-                     alt="{{ category.name }}"
-                     class="category-card-image"
-                     loading="lazy">
+                <picture>
+                    <source type="image/webp"
+                            srcset="{{ url_for('static', filename=_stem ~ '-400.webp') }} 400w,
+                                    {{ url_for('static', filename=_stem ~ '-800.webp') }} 800w,
+                                    {{ url_for('static', filename=_stem ~ '-1200.webp') }} 1200w"
+                            sizes="(max-width: 600px) 100vw, 400px">
+                    <img src="{{ url_for('static', filename=category.image) }}?v={{ config.VERSION if config.VERSION else '1.0' }}"
+                         alt="{{ category.name }}"
+                         class="category-card-image"
+                         width="400" height="300"
+                         loading="{{ 'eager' if _is_lcp else 'lazy' }}"
+                         {% if _is_lcp %}fetchpriority="high"{% endif %}
+                         decoding="async">
+                </picture>
             </div>
             <div class="category-card-content">
                 <div class="category-card-header">
