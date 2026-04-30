@@ -63,15 +63,17 @@
        scrolls into view, so they're not in this <head> anymore. #}
 
     {# vision-section.css is only used on the home page and is now inlined
-       there via the critical_css block, so it's no longer in this <head>. #}
+       there via the critical_css block, so it's no longer in this <head>.
+       categories.css is only used on the /categories page and is inlined
+       there too — no global preload needed. #}
 
-    <link rel="preload" as="style" href="{{ url_for('static', filename='styles/categories.css') }}"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='styles/categories.css') }}"></noscript>
-
-    <link rel="preload" as="style" href="{{ url_for('static', filename='styles/cookie-consent.css') }}"
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='styles/cookie-consent.css') }}"></noscript>
+    {# cookie-consent.css is tiny (~3.5 KB) and the modal is rendered
+       server-side at FCP for first-time visitors, so we inline its CSS
+       to guarantee it's already styled when it paints. Otherwise the
+       unstyled modal would briefly count as a giant LCP candidate. #}
+    {% if not request.cookies.get('rideal_cookie_consent') %}
+    {{ inline_css('styles/cookie-consent.css') | safe }}
+    {% endif %}
 
     <!-- Google Analytics: gtag library loads async, consent gate runs inline. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W93XNT3WSV"></script>
@@ -188,8 +190,16 @@
     {% include 'navbar.html' %}
     {% block content %}{% endblock %}
 
-    <!-- Cookie Consent Modal -->
-    <div id="cookieConsentModal" class="cookie-modal" style="display: none;">
+    {# Cookie Consent Modal.
+       We decide server-side whether to render it visible. If the
+       `rideal_cookie_consent` cookie is already set, the user has chosen
+       and the modal is hidden and not even rendered to keep the DOM
+       lean. Otherwise we render it visible immediately, so it counts
+       toward LCP at first paint instead of popping up ~4s later (which
+       PageSpeed flagged as a 3,800 ms element render delay). #}
+    {% set _has_consent = request.cookies.get('rideal_cookie_consent') %}
+    {% if not _has_consent %}
+    <div id="cookieConsentModal" class="cookie-modal" style="display: flex;">
         <div class="cookie-modal-content">
             <div class="cookie-header">
                 <h3>🍪 מדיניות עוגיות (Cookies)</h3>
@@ -238,6 +248,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- Footer -->
     <footer class="w3-container w3-padding-54 w3-center w3-opacity w3-light-grey w3-xlarge">

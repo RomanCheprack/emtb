@@ -10,19 +10,19 @@ class CookieConsent {
     }
     
     init() {
-        // Check if user has already made a choice
+        // The modal is rendered server-side already (visible if no consent
+        // cookie, omitted from the DOM if consent was previously given).
+        // We just need to apply saved preferences and wire up button handlers.
         const consent = this.getConsent();
-        
-        if (!consent) {
-            // Show modal on first visit
-            this.showModal();
-        } else {
-            // Apply saved preferences
+        if (consent) {
             this.applyConsent(consent);
         }
-        
-        // Add event listeners
-        this.addEventListeners();
+
+        // Only attach event listeners if the modal is actually present
+        // (it won't be on returning visits, since we no longer render it).
+        if (this.modal) {
+            this.addEventListeners();
+        }
     }
     
     showModal() {

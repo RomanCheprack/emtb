@@ -4,6 +4,19 @@
 {% from "_icon_preloads.html" import bootstrap_icons, font_awesome %}
 {{ bootstrap_icons() }}
 {{ font_awesome() }}
+
+{# bikes.css is the main stylesheet for this page (~37 KB). Async-load it
+   via the standard preload+onload pattern so it doesn't block render.
+   Was previously a synchronous <link> inside the body, which PageSpeed
+   flagged as a render-blocking request that delayed LCP. #}
+<link rel="preload" as="style" href="{{ url_for('static', filename='styles/bikes.css') }}"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ url_for('static', filename='styles/bikes.css') }}"></noscript>
+
+{# noUiSlider CSS — only used by the price filter slider. Async-loaded. #}
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css"></noscript>
 {% endblock %}
 
 {% block title %}
@@ -65,8 +78,8 @@
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/bikes.css') }}">
+{# bikes.css and nouislider.css are now loaded in <head> via the
+   extra_async_css block above (non-blocking). #}
 
 <!-- Hidden input to store the selected category for JavaScript -->
 <input type="hidden" id="selected-category" value="{{ selected_category if selected_category else '' }}">
@@ -697,12 +710,11 @@
 {{ bikes|tojson|safe }}
 </script>
 
-<!-- noUiSlider CSS/JS (include once, ideally in layout.html) -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
-<script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
-<script src="{{ url_for('static', filename='js/purchase_click.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bikes.js') }}"></script>
+{# noUiSlider CSS already loaded in <head> via extra_async_css. JS and our
+   own scripts are deferred so they don't block rendering. #}
+<script defer src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+<script defer src="{{ url_for('static', filename='js/purchase_click.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/bikes.js') }}"></script>
 
 
 {% endblock %}

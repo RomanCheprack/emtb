@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, abort, redirect, url_for
-from app.extensions import db
+from app.extensions import db, cache
 from app.models import Bike, Brand, BikeListing, BikePrice, BikeSpecRaw, BikeVariant
 from app.services.bike_service import (
     get_all_brands, get_all_sub_categories, get_brands_by_category,
@@ -10,6 +10,24 @@ from app.utils.helpers import parse_price, get_frame_material, get_motor_brand, 
 from sqlalchemy import or_
 
 bp = Blueprint('bikes', __name__)
+
+
+@cache.memoize(timeout=600)  # 10 minutes; cleared explicitly when bikes change.
+def _load_category_bikes(category):
+    """Load and serialize all bikes for a category.
+
+    PageSpeed flagged TTFB of ~1.2s for /<category> pages on mobile, which
+    came from the joined query + per-bike serialization. The result set
+    rarely changes (prices update at most a few times per day), so a short
+    in-process cache slashes TTFB on repeat hits and absorbs traffic spikes
+    without any change in correctness.
+    """
+    rows = db.session.query(Bike).options(
+        db.joinedload(Bike.brand),
+        db.joinedload(Bike.listings).joinedload(BikeListing.prices),
+        db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs)
+    ).filter(Bike.category == category).all()
+    return [bike.to_dict(list_view=True, include_images=False) for bike in rows]
 
 @bp.route("/bikes")
 def bikes():
@@ -102,20 +120,10 @@ def category_bikes(category):
     if category not in valid_categories:
         abort(404)
     
-    # Load ALL bikes for this category for client-side filtering
-    # With max 300 bikes per category, this is faster than AJAX calls
-    # Optimized: Skip images loading for list view (not needed for initial render)
-    category_bikes_query = db.session.query(Bike).options(
-        db.joinedload(Bike.brand),
-        db.joinedload(Bike.listings).joinedload(BikeListing.prices),
-        db.joinedload(Bike.listings).joinedload(BikeListing.raw_specs)
-        # Note: Images not loaded here - not needed for list view, reduces query time
-    ).filter(Bike.category == category).all()  # Load ALL bikes
-    
-    # Convert to template-compatible format using lightweight list_view mode
-    # This only includes essential specs (wh, frame_material, motor_brand) for filtering
-    # and skips gallery images, significantly reducing payload size
-    bikes_for_template = [bike.to_dict(list_view=True, include_images=False) for bike in category_bikes_query]
+    # Load ALL bikes for this category for client-side filtering.
+    # Cached for 10 minutes (see _load_category_bikes) so repeat hits skip
+    # the joined SQL query + serialization that dominated TTFB.
+    bikes_for_template = _load_category_bikes(category)
     bikes_count = len(bikes_for_template)
     
     # Get brands, sub_categories, and styles filtered by this specific category
