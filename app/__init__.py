@@ -44,9 +44,10 @@ def create_app(config_name=None):
     limiter.init_app(app)
     
     # Register blueprints
-    from .routes import main, bikes, blog, compare, api, debug, admin, guides
+    from .routes import main, bikes, blog, compare, api, debug, admin, guides, image_proxy
     
     app.register_blueprint(main.bp)
+    app.register_blueprint(image_proxy.bp)
     app.register_blueprint(bikes.bp)
     app.register_blueprint(blog.bp)
     app.register_blueprint(compare.bp)
@@ -63,6 +64,8 @@ def create_app(config_name=None):
     inline_static, inline_css = make_inline_static(app)
     app.jinja_env.globals['inline_static'] = inline_static
     app.jinja_env.globals['inline_css'] = inline_css
+    from app.utils.bike_images import bike_list_thumb_url
+    app.jinja_env.globals['bike_list_thumb_url'] = bike_list_thumb_url
     
     # Create database tables (if they don't exist)
     with app.app_context():

@@ -7,9 +7,18 @@ from app.services.bike_service import (
     get_wheel_sizes_by_category
 )
 from app.utils.helpers import parse_price, get_frame_material, get_motor_brand, translate_spec_key_to_hebrew
+from app.utils.bike_images import bike_list_thumb_url
 from sqlalchemy import or_
 
 bp = Blueprint('bikes', __name__)
+
+
+def _enrich_list_thumb_urls(bikes: list) -> None:
+    """Attach list_image_url (proxied WebP or original) for each row."""
+    for b in bikes:
+        if not isinstance(b, dict):
+            continue
+        b['list_image_url'] = bike_list_thumb_url(b.get('image_url'))
 
 
 @cache.memoize(timeout=600)  # 10 minutes; cleared explicitly when bikes change.
@@ -124,6 +133,7 @@ def category_bikes(category):
     # Cached for 10 minutes (see _load_category_bikes) so repeat hits skip
     # the joined SQL query + serialization that dominated TTFB.
     bikes_for_template = _load_category_bikes(category)
+    _enrich_list_thumb_urls(bikes_for_template)
     bikes_count = len(bikes_for_template)
     
     # Get brands, sub_categories, and styles filtered by this specific category

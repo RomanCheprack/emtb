@@ -1,19 +1,18 @@
 {% extends "layout.html" %}
 
+{% block critical_css %}
+{# Match categories page: main list layout must paint synchronously or PageSpeed
+   sees huge CLS (~0.35) while async bikes.css arrives. ~37 KB is acceptable
+   trade-off for a stable first paint. #}
+{{ inline_css('styles/bikes.css') | safe }}
+{% endblock %}
+
 {% block extra_async_css %}
 {% from "_icon_preloads.html" import bootstrap_icons, font_awesome %}
 {{ bootstrap_icons() }}
 {{ font_awesome() }}
 
-{# bikes.css is the main stylesheet for this page (~37 KB). Async-load it
-   via the standard preload+onload pattern so it doesn't block render.
-   Was previously a synchronous <link> inside the body, which PageSpeed
-   flagged as a render-blocking request that delayed LCP. #}
-<link rel="preload" as="style" href="{{ url_for('static', filename='styles/bikes.css') }}"
-      onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ url_for('static', filename='styles/bikes.css') }}"></noscript>
-
-{# noUiSlider CSS — only used by the price filter slider. Async-loaded. #}
+{# noUiSlider — price filter only; async is fine. #}
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css"
       onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css"></noscript>
@@ -183,7 +182,23 @@
             </div>
             <div class="bike-row-content">
                 <div class="bike-image-container">
-                    <img src="{{ bike['image_url'] }}" class="bike-row-image" alt="{{ bike['model'] }}" loading="lazy" referrerpolicy="no-referrer">
+                    {% set iu = bike.get('image_url') %}
+                    {% set liu = bike.get('list_image_url') %}
+                    {% set src = liu or iu %}
+                    {% if src %}
+                    <img src="{{ src }}"
+                         class="bike-row-image"
+                         alt="{{ bike['model'] }}"
+                         width="140"
+                         height="101"
+                         loading="lazy"
+                         decoding="async"
+                         referrerpolicy="no-referrer"
+                         {% if liu and iu and liu != iu %}
+                         data-fallback="{{ iu|e }}"
+                         onerror="if(this.dataset.fallback){this.onerror=null;this.src=this.dataset.fallback;}"
+                         {% endif %}>
+                    {% endif %}
                     <!-- Comparison link below image -->
                     <a href="#" class="bike-compare-link" data-bike-id="{{ bike['id'] }}">
                        הוסף להשוואה

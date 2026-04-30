@@ -43,7 +43,7 @@ function adaptBikeData(bike) {
     
     // Core fields that are NOT specs (these belong at the root level)
     const coreFields = new Set([
-        'id', 'brand', 'model', 'year', 'image_url', 'sub_category', 'category',
+        'id', 'brand', 'model', 'year', 'image_url', 'list_image_url', 'sub_category', 'category',
         'style', 'product_url', 'price', 'disc_price', 'gallery_images_urls',
         'fork_length' // fork_length is at root level in bikes table
     ]);
@@ -61,6 +61,7 @@ function adaptBikeData(bike) {
         model: bike.model,
         year: bike.year,
         image_url: bike.image_url,
+        list_image_url: bike.list_image_url,
         sub_category: bike.sub_category,
         listing: {
             product_url: bike.product_url,
@@ -372,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="bike-row-content">
                         <div class="bike-image-container">
-                            <img src="${adaptedBike.image_url}" class="bike-row-image" alt="${adaptedBike.model}" loading="lazy" referrerpolicy="no-referrer">
+                            <img src="${(adaptedBike.list_image_url || adaptedBike.image_url || '').replace(/"/g, '&quot;')}" class="bike-row-image" alt="${(adaptedBike.model || '').replace(/"/g, '&quot;')}" width="140" height="101" loading="lazy" decoding="async" referrerpolicy="no-referrer"${adaptedBike.list_image_url && adaptedBike.image_url && adaptedBike.list_image_url !== adaptedBike.image_url ? ` data-fallback="${String(adaptedBike.image_url).replace(/"/g, '&quot;')}" onerror="if(this.dataset.fallback){this.onerror=null;this.src=this.dataset.fallback;}"` : ''}>
                             <a href="#" class="bike-compare-link" data-bike-id="${adaptedBike.id}">
                                הוסף להשוואה
                             </a>
